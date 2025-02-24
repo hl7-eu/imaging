@@ -32,9 +32,9 @@ Title: "Mapping of A.1.8 Document Metadata"
   * insert ElementMapping( #documentStatus, "A.1.8.2 Document status", #composition.status, "", #equivalent )
   * insert ElementMapping( #reportDateTime, "A.1.8.3 Report date and time", #composition.date, "", #equivalent )
   * insert ElementMapping( #documentTitle, "A.1.8.4 Document title", #composition.title, "", #equivalent )
-  * insert ElementMapping( #reportCustodian, "A.1.8.4 Document Custodian", #composition.custodian, "", #equivalent )
+  * insert ElementMapping( #reportCustodian, "A.1.8.6 Report Custodian", #composition.custodian, "", #equivalent )
   * insert ElementMapping( #confidentiality, "A.1.8.7 Confidentiality", #composition.meta.security, "", #equivalent )
-  * insert ElementMapping( #language, "A.1.8.7 Language", #composition.language, "", #equivalent )
+  * insert ElementMapping( #language, "A.1.8.8 Language", #composition.language, "", #equivalent )
   * insert ElementMapping( #version, "A.1.8.9 Version", #composition.extension.artifactVersion, "", #equivalent )
 
 // setting the target to im-imaging-study
