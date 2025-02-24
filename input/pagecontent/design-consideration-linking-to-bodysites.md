@@ -21,6 +21,6 @@ The second option is not feasible in all cases as both options are not supported
 
 The third option is allows for searched but does allow to specify further information if needed. But does require definition of resources that are not providing additional information.
 
-**CHOICE:**: when referring to a body site on a resource that allows both a reference as a coded value, always populate the coded value.
+**CHOICE:**: when referring to a body site on a resource that allows both a reference and a coded value, always populate the coded value.
 
-**CHOICE:**: when referring to a body site and more information is available (such as tracking id or laterality), include both a code as well as reference.
+**CHOICE:**: when referring to a body site and more information is available (such as tracking id or laterality), include both a code as well as a reference.
