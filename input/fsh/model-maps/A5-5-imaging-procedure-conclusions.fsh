@@ -35,7 +35,7 @@ In FHIR, these are mapped on `Observation` and `Condition` resources.
   * source = "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport"
   * target = "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition" 
   * insert ElementMapping( #impression,         "A.5.5.1 Impression",             #section[impression].text, "The narrative needs to be included in the text.", #equivalent )
-  * insert ElementMapping( #codedConclusions,   "A.5.5.2 Coded conclusions",      #section[impression].text, "Are represented by Observations and/or Conditions", #equivalent ) // TODO
+  * insert ElementMapping( #codedConclusions,   "A.5.5.2 Coded conclusions",      #section[impression].entry, "Are represented by Observations and/or Conditions", #equivalent ) // TODO
   * insert ElementMapping( #conditionOrFinding, "A.5.5.2.1 Condition or finding", #section[impression].entry[finding], "", #equivalent )
   * insert ElementMapping( #stagingOrGrading,   "A.5.5.2.2 Staging or grading"	, #section[impression].entry[impression], "", #equivalent )
   

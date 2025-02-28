@@ -17,10 +17,10 @@ Title: "Mapping of A.2 Order Information to FHIR profiles"
   * insert ElementMapping( #orderDateTime, "A.2.2 Order date and time", #authoredOn, "", #equivalent )
   * insert ElementMapping( #orderPlacerIdentifier, "A.2.3 Order placer professional identifier", #practitioner.practitioner.identifier, "", #equivalent )
   * insert ElementMapping( #orderPlacerName, "A.2.4 Order placer name", #practitioner.practitioner.name, "", #equivalent )
-  * insert ElementMapping( #orderPlacerSpecialty, "A.2.5 Order placer specialty", #practitioner.practitioner.name, "", #equivalent )
-  * insert ElementMapping( #orderPlacerContactDetails, "A.2.6 Order placer contact details", #practitioner.practitioner.address, "", #source-is-broader-than-target )
-  * insert ElementMapping( #orderPlacerContactDetails, "A.2.6 Order placer contact details", #practitioner.practitioner.telecom, "", #source-is-broader-than-target )
-  * insert ElementMapping( #orderPlacerOrganization, "A.2.7 Order placer organization", #practitioner.organization, "", #equivalent )
+  * insert ElementMapping( #orderPlacerSpecialty, "A.2.5 Order placer specialty", #requester[OrderPlacer].speciality, "", #equivalent )
+  * insert ElementMapping( #orderPlacerContactDetails, "A.2.6 Order placer contact details", #requester[OrderPlacer].practitioner.address, "", #source-is-broader-than-target )
+  * insert ElementMapping( #orderPlacerContactDetails, "A.2.6 Order placer contact details", #requester[OrderPlacer].practitioner.telecom, "", #source-is-broader-than-target )
+  * insert ElementMapping( #orderPlacerOrganization, "A.2.7 Order placer organization", #requester[OrderPlacer].organization, "", #equivalent )
 
 * group[+]
   * source = "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order"
