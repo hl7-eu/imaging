@@ -1,0 +1,51 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport-recommendation",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-recommendation",
+  "name": "MedicalImagingReportOrderExaminationReportRecommendationEhn",
+  "title": "A.5.6 Recommendation",
+  "status": "draft",
+  "description": "Recommendation",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-recommendation",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport-recommendation",
+        "path": "ehn-medical-imaging-report-examreport-recommendation",
+        "short": "A.5.6 Recommendation",
+        "definition": "Recommendation"
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-recommendation.description",
+        "path": "ehn-medical-imaging-report-examreport-recommendation.description",
+        "short": "A.5.6.1 Description",
+        "definition": "Narrative description of the recommended activities including additional tests, medication etc.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-recommendation.carePlan",
+        "path": "ehn-medical-imaging-report-examreport-recommendation.carePlan",
+        "short": "A.5.6.2 Care plan",
+        "definition": "Narrative containing the plan including proposals, goals, and order requests for monitoring, tracking, or improving the condition of the patient. In the future it is expected that the care plan could be provided in a structured and coded format.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

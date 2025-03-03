@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ciUrl="" defaultVersion="current" defaultWorkgroup="eu" url="http://hl7.eu/fhir/imaging">
+<version code="current" url=""/>
+<artifactPageExtension value="-definitions"/>
+<artifactPageExtension value="-examples"/>
+<artifactPageExtension value="-mappings"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report" key="StructureDefinition-ehn-medical-imaging-report" name="A Medical Imaging Report (eHN)"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header" key="StructureDefinition-ehn-medical-imaging-report-header" name="A.1 Report header data elements (eHN)"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-patient-identification" key="StructureDefinition-ehn-medical-imaging-report-header-patient-identification" name="A.1.1 Identification of the patient/subject"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-patient-contact" key="StructureDefinition-ehn-medical-imaging-report-header-patient-contact" name="A.1.2 Patient/subject related contact information"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-health-insurance-information" key="StructureDefinition-ehn-medical-imaging-report-header-health-insurance-information" name="A.1.3 Health insurance and payment information"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-information-recipient" key="StructureDefinition-ehn-medical-imaging-report-header-information-recipient" name="A.1.4 Information recipient"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-author" key="StructureDefinition-ehn-medical-imaging-report-header-author" name="A.1.5 Author"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-legal-authenticator" key="StructureDefinition-ehn-medical-imaging-report-header-legal-authenticator" name="A.1.6 Legal authenticator"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-result-validator" key="StructureDefinition-ehn-medical-imaging-report-header-result-validator" name="A.1.7 Result validator"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-header-document-metadata" key="StructureDefinition-ehn-medical-imaging-report-header-document-metadata" name="A.1.8 Document metadata"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-order" key="StructureDefinition-ehn-medical-imaging-report-order" name="A.2 Order information"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-order-reason" key="StructureDefinition-ehn-medical-imaging-report-order-reason" name="A.3 Order Reason"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-specimen-information" key="StructureDefinition-ehn-medical-imaging-report-specimen-information" name="A.4 Specimen information"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport" key="StructureDefinition-ehn-medical-imaging-report-examreport" name="A.5 Examination Report"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description" key="StructureDefinition-ehn-medical-imaging-report-examreport-imaging-proc-description" name="A.5.1 Imaging procedure description"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport-medication" key="StructureDefinition-ehn-medical-imaging-report-examreport-medication" name="A.5.2 Medication"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction" key="StructureDefinition-ehn-medical-imaging-report-examreport-adverse-reaction" name="A.5.3 Adverse reaction"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport-results" key="StructureDefinition-ehn-medical-imaging-report-examreport-results" name="A.5.4 Results"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport-conclusion" key="StructureDefinition-ehn-medical-imaging-report-examreport-conclusion" name="A.5.5 Conclusion"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-examreport-recommendation" key="StructureDefinition-ehn-medical-imaging-report-examreport-recommendation" name="A.5.6 Recommendation"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-order-media" key="StructureDefinition-ehn-medical-imaging-report-order-media" name="A.6 Key images associated with this report"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-comparison-study" key="StructureDefinition-ehn-medical-imaging-report-comparison-study" name="A.7 Comparison study"/>
+<artifact id="StructureDefinition/ehn-medical-imaging-report-presented-form" key="StructureDefinition-ehn-medical-imaging-report-presented-form" name="A.8 Presented form"/>
+<artifact id="StructureDefinition/im-adversereaction" key="StructureDefinition-im-adversereaction" name="Adverse Event"/>
+<artifact id="StructureDefinition/im-allergic-reaction" key="StructureDefinition-im-allergic-reaction" name="Allergic Reaction"/>
+<artifact id="StructureDefinition/ehn-imaging-study-manifest-dataset" key="StructureDefinition-ehn-imaging-study-manifest-dataset" name="B Imaging study manifest data set (eHN)"/>
+<artifact id="StructureDefinition/im-bundle" key="StructureDefinition-im-bundle" name="Bundle: Imaging Study Report"/>
+<artifact id="CodeSystem/codesystem-endpoint-terminology" key="CodeSystem-codesystem-endpoint-terminology" name="CodeSystem for terminology for Endpoint resources used in the EU Imaging IG."/>
+<artifact id="StructureDefinition/im-coverage" key="StructureDefinition-im-coverage" name="Coverage information"/>
+<artifact id="CodeSystem/codesystem-diagnostic-report-support-info" key="CodeSystem-codesystem-diagnostic-report-support-info" name="Diagnostic Report Support Info Code System"/>
+<artifact id="ValueSet/valueset-diagnosticreport-report-support-info" key="ValueSet-valueset-diagnosticreport-report-support-info" name="DiagnosticReport supportInfo codes"/>
+<artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
+<artifact id="StructureDefinition/im-finding" key="StructureDefinition-im-finding" name="Finding"/>
+<artifact id="StructureDefinition/im-health-insurance-provider" key="StructureDefinition-im-health-insurance-provider" name="Health Insurance Provider"/>
+<artifact id="StructureDefinition/im-body-structure" key="StructureDefinition-im-body-structure" name="ImBodyStructure"/>
+<artifact id="StructureDefinition/im-accession-number-identifier" key="StructureDefinition-im-accession-number-identifier" name="Imaging Accession Number Identifier"/>
+<artifact id="StructureDefinition/im-order-reference" key="StructureDefinition-im-order-reference" name="Imaging Accession Number Reference"/>
+<artifact id="StructureDefinition/im-adverse-event-criticality" key="StructureDefinition-im-adverse-event-criticality" name="Imaging Adverse Event Criticality"/>
+<artifact id="StructureDefinition/im-authoring-device" key="StructureDefinition-im-authoring-device" name="Imaging Authoring Device"/>
+<artifact id="StructureDefinition/im-composition" key="StructureDefinition-im-composition" name="Imaging Composition"/>
+<artifact id="StructureDefinition/im-imaging-device" key="StructureDefinition-im-imaging-device" name="Imaging Device"/>
+<artifact id="StructureDefinition/im-diagnostic-report" key="StructureDefinition-im-diagnostic-report" name="Imaging Diagnostic Report"/>
+<artifact id="StructureDefinition/im-keyimages-document-reference" key="StructureDefinition-im-keyimages-document-reference" name="Imaging Key Image Document Reference"/>
+<artifact id="StructureDefinition/im-order" key="StructureDefinition-im-order" name="Imaging Order"/>
+<artifact id="StructureDefinition/im-patient" key="StructureDefinition-im-patient" name="Imaging Patient"/>
+<artifact id="StructureDefinition/im-procedure" key="StructureDefinition-im-procedure" name="Imaging Procedure"/>
+<artifact id="ValueSet/im-reportType-eu-lab" key="ValueSet-im-reportType-eu-lab" name="Imaging Report Types"/>
+<artifact id="ActorDefinition/ImProducer" key="ActorDefinition-ImProducer" name="Imaging Study Reports Producer"/>
+<artifact id="StructureDefinition/im-imaging-study-phase" key="StructureDefinition-im-imaging-study-phase" name="Imaging results from Procedure Phase"/>
+<artifact id="StructureDefinition/im-performer" key="StructureDefinition-im-performer" name="Imaging study performer"/>
+<artifact id="StructureDefinition/im-imagingstudy" key="StructureDefinition-im-imagingstudy" name="ImagingStudy"/>
+<artifact id="StructureDefinition/im-impression" key="StructureDefinition-im-impression" name="Impression"/>
+<artifact id="StructureDefinition/im-information-recipient" key="StructureDefinition-im-information-recipient" name="Information Recipient"/>
+<artifact id="StructureDefinition/im-keyimages-imaging-selection" key="StructureDefinition-im-keyimages-imaging-selection" name="Key images represented as an ImagingSelection"/>
+<artifact id="StructureDefinition/im-legal-authenticator" key="StructureDefinition-im-legal-authenticator" name="Legal Authenticator"/>
+<artifact id="ConceptMap/A-1-1-PatientInformationMapping" key="ConceptMap-A-1-1-PatientInformationMapping" name="Mapping of A.1.1 Identification of the patient/subject"/>
+<artifact id="ConceptMap/A-1-2-PatientContactInformationMapping" key="ConceptMap-A-1-2-PatientContactInformationMapping" name="Mapping of A.1.2 Patient/subject related contact information"/>
+<artifact id="ConceptMap/A-1-3-HealthInsurenceAndPaymentInformationMapping" key="ConceptMap-A-1-3-HealthInsurenceAndPaymentInformationMapping" name="Mapping of A.1.3 Health Insurance and Payment Information"/>
+<artifact id="ConceptMap/A-1-4-InformationRecipientMapping" key="ConceptMap-A-1-4-InformationRecipientMapping" name="Mapping of A.1.4 Information Recipient"/>
+<artifact id="ConceptMap/A-1-5-InformationAuthorMapping" key="ConceptMap-A-1-5-InformationAuthorMapping" name="Mapping of A.1.5 Information Author"/>
+<artifact id="ConceptMap/A-1-6-LegalAuthenticatorMapping" key="ConceptMap-A-1-6-LegalAuthenticatorMapping" name="Mapping of A.1.6 Legal Authenticator"/>
+<artifact id="ConceptMap/A-1-7-LegalAuthenticatorMapping" key="ConceptMap-A-1-7-LegalAuthenticatorMapping" name="Mapping of A.1.7 Result Validator"/>
+<artifact id="ConceptMap/A-1-8-DocumentMetadataMapping" key="ConceptMap-A-1-8-DocumentMetadataMapping" name="Mapping of A.1.8 Document Metadata"/>
+<artifact id="ConceptMap/A-2-OrderInformationMapping" key="ConceptMap-A-2-OrderInformationMapping" name="Mapping of A.2 Order Information to FHIR profiles"/>
+<artifact id="ConceptMap/A-3-OrderReasonMapping" key="ConceptMap-A-3-OrderReasonMapping" name="Mapping of A.3 Order Reason to FHIR profiles"/>
+<artifact id="ConceptMap/A-4-SpecimenMapping" key="ConceptMap-A-4-SpecimenMapping" name="Mapping of A.4 Specimen"/>
+<artifact id="ConceptMap/A-5.1-ImagingProcedureDescriptionMapping" key="ConceptMap-A-5.1-ImagingProcedureDescriptionMapping" name="Mapping of A.5.1 Imaging Procedure Description"/>
+<artifact id="ConceptMap/A-5.2-ImagingProcedureMedicationMapping" key="ConceptMap-A-5.2-ImagingProcedureMedicationMapping" name="Mapping of A.5.2 Imaging Procedure Medication"/>
+<artifact id="ConceptMap/A-5.3-ImagingProcedureAdverseReactionMapping" key="ConceptMap-A-5.3-ImagingProcedureAdverseReactionMapping" name="Mapping of A.5.3 Adverse reaction (Adverse reactions manifested during imaging investigation."/>
+<artifact id="ConceptMap/A-5.4-ResultsMapping" key="ConceptMap-A-5.4-ResultsMapping" name="Mapping of A.5.4 Results"/>
+<artifact id="ConceptMap/A-5.5-ConclusionMapping" key="ConceptMap-A-5.5-ConclusionMapping" name="Mapping of A.5.5 Conclusion"/>
+<artifact id="ConceptMap/A-5.6-RecommendationsMapping" key="ConceptMap-A-5.6-RecommendationsMapping" name="Mapping of A.5.6 Recommendation"/>
+<artifact id="ConceptMap/A-6-KeyImagesMapping" key="ConceptMap-A-6-KeyImagesMapping" name="Mapping of A.6 Key images associated with this report"/>
+<artifact id="ConceptMap/A-7-ComparisonStudy" key="ConceptMap-A-7-ComparisonStudy" name="Mapping of A.7 Comparison Study"/>
+<artifact id="ConceptMap/A-8-PresentedFormMapping" key="ConceptMap-A-8-PresentedFormMapping" name="Mapping of A.8 Presented Form"/>
+<artifact id="ConceptMap/B-ImagingstudyMnifestDataset" key="ConceptMap-B-ImagingstudyMnifestDataset" name="Mapping of B Imaging study manifest data set"/>
+<artifact id="StructureDefinition/im-medication" key="StructureDefinition-im-medication" name="Medication"/>
+<artifact id="StructureDefinition/im-medication-administration" key="StructureDefinition-im-medication-administration" name="Medication Administration"/>
+<artifact id="CodeSystem/codesystem-missing-dicom-terminology" key="CodeSystem-codesystem-missing-dicom-terminology" name="Missing DICOM Terminology"/>
+<artifact id="StructureDefinition/im-order-placer" key="StructureDefinition-im-order-placer" name="Order Placer"/>
+<artifact id="StructureDefinition/im-organization" key="StructureDefinition-im-organization" name="Organization"/>
+<artifact id="StructureDefinition/im-practitioner" key="StructureDefinition-im-practitioner" name="Practitioner"/>
+<artifact id="StructureDefinition/im-practitioner-role" key="StructureDefinition-im-practitioner-role" name="Practitioner Role"/>
+<artifact id="StructureDefinition/im-radiation-dose-information" key="StructureDefinition-im-radiation-dose-information" name="Radiation Dose Observation"/>
+<artifact id="ValueSet/im-radiation-dose-observation-unit-vs" key="ValueSet-im-radiation-dose-observation-unit-vs" name="Radiation Dose Observation Unit ValueSet"/>
+<artifact id="StructureDefinition/im-recommended-careplan" key="StructureDefinition-im-recommended-careplan" name="Recommended CarePlan"/>
+<artifact id="StructureDefinition/im-author" key="StructureDefinition-im-author" name="Report Author"/>
+<artifact id="StructureDefinition/ImImagingSelection" key="StructureDefinition-ImImagingSelection" name="Represents the part of an imaging study."/>
+<artifact id="StructureDefinition/im-result-validator" key="StructureDefinition-im-result-validator" name="Result Validator"/>
+<artifact id="StructureDefinition/im-viewer-endpoint" key="StructureDefinition-im-viewer-endpoint" name="Viewer endpoint"/>
+<artifact id="StructureDefinition/im-wado-endpoint" key="StructureDefinition-im-wado-endpoint" name="WADO endpoint"/>
+<page key="NA" name="(NA)"/>
+<page key="many" name="(many)"/>
+<page key="actors-and-transactions" name="Actors and Transactions"/>
+<page key="adapting" name="Adapting Guidelines for Country use"/>
+<page key="artifacts" name="Artifacts Summary"/>
+<page key="changes" name="Changes"/>
+<page key="contributors" name="Contributors"/>
+<page key="design-considerations" name="Design Considerations"/>
+<page key="domain-model" name="Domain Model"/>
+<page key="index" name="Home"/>
+<page key="open-topics" name="Open Topics"/>
+<page key="system-actors" name="System Actors"/>
+<page key="toc" name="Table of Contents"/>
+<page key="transactions" name="Transactions"/>
+<page key="use-cases" name="Use Cases"/>
+<page key="ehn-guidelines" name="eHN Imaging Studies and Reports Guidelines"/>
+</specification>

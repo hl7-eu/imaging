@@ -1,0 +1,64 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-imaging-study-phase",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imaging-study-phase",
+  "name": "ImImagingStudyPhase",
+  "title": "Imaging results from Procedure Phase",
+  "status": "draft",
+  "description": "Represents the part of an imaging study that relates to a procedure phase such as e.g., without contrast, arterial phase, venous \nphase, delayed phase. Only some types of studies have phases.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ImagingSelection",
+  "baseDefinition": "http://hl7.eu/fhir/imaging/StructureDefinition/ImImagingSelection",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ImagingSelection.category",
+        "path": "ImagingSelection.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "\"\"coding\"\""
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "ImagingSelection.category:phase",
+        "path": "ImagingSelection.category",
+        "sliceName": "phase",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingSelection.category:phase.coding",
+        "path": "ImagingSelection.category.coding",
+        "min": 1,
+        "max": "1",
+        "patternCoding": {
+          "code": "128954007",
+          "system": "http://snomed.info/sct",
+          "display": "Procedure phase"
+        },
+        "mustSupport": true
+      }
+    ]
+  }
+}

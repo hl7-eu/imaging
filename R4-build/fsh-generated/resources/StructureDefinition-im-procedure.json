@@ -1,0 +1,244 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-procedure",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-procedure",
+  "name": "ImProcedure",
+  "title": "Imaging Procedure",
+  "status": "draft",
+  "description": "This profile on Procedure represents the imaging procedure.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Procedure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Procedure.meta.security",
+        "path": "Procedure.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.language",
+        "path": "Procedure.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.identifier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Procedure.identifier",
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.basedOn",
+        "path": "Procedure.basedOn",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Procedure.basedOn:imorderaccession",
+        "path": "Procedure.basedOn",
+        "sliceName": "imorderaccession",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer",
+        "path": "Procedure.performer",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "\"\"function\"\""
+            }
+          ],
+          "rules": "open",
+          "description": "Different performers can be added to the procedure.",
+          "ordered": false
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer.function",
+        "path": "Procedure.performer.function",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer:performer",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Procedure.performer",
+        "sliceName": "performer",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer:performer.function.coding",
+        "path": "Procedure.performer.function.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "\"\"$this\"\""
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Procedure.performer:performer.function.coding:healthcare-professional",
+        "path": "Procedure.performer.function.coding",
+        "sliceName": "healthcare-professional",
+        "min": 0,
+        "max": "1",
+        "patternCoding": {
+          "code": "223366009",
+          "system": "http://snomed.info/sct",
+          "display": "Healthcare professional"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer:performer.actor",
+        "path": "Procedure.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-performer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Procedure.performer:imaging-device",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Procedure.performer",
+        "sliceName": "imaging-device",
+        "min": 0,
+        "max": "*",
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer:imaging-device.function.coding",
+        "path": "Procedure.performer.function.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "\"\"$this\"\""
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Procedure.performer:imaging-device.function.coding:imaging-equipment",
+        "path": "Procedure.performer.function.coding",
+        "sliceName": "imaging-equipment",
+        "min": 0,
+        "max": "1",
+        "patternCoding": {
+          "code": "314789007",
+          "system": "http://snomed.info/sct",
+          "display": "Diagnostic imaging equipment"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Procedure.performer:imaging-device.actor",
+        "path": "Procedure.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-imaging-device"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

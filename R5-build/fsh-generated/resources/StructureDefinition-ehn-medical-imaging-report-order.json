@@ -1,0 +1,126 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-order",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+  "name": "MedicalImagingReportOrderEhn",
+  "title": "A.2 Order information",
+  "status": "draft",
+  "description": "Note: an imaging report could respond to multiple orders.",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-order",
+        "path": "ehn-medical-imaging-report-order",
+        "short": "A.2 Order information",
+        "definition": "Note: an imaging report could respond to multiple orders."
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderId",
+        "path": "ehn-medical-imaging-report-order.orderId",
+        "short": "A.2.1 Order ID",
+        "definition": "A unique identifier of the imaging study order.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderDateTime",
+        "path": "ehn-medical-imaging-report-order.orderDateTime",
+        "short": "A.2.2 Order date and time",
+        "definition": "Date and time of the order placement. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderPlacerIdentifier",
+        "path": "ehn-medical-imaging-report-order.orderPlacerIdentifier",
+        "short": "A.2.3 Order placer professional identifier",
+        "definition": "The health professional identification number. Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderPlacerName",
+        "path": "ehn-medical-imaging-report-order.orderPlacerName",
+        "short": "A.2.4 Order placer name",
+        "definition": "Person name.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HumanName"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderPlacerSpecialty",
+        "path": "ehn-medical-imaging-report-order.orderPlacerSpecialty",
+        "short": "A.2.5 Order placer specialty",
+        "definition": "Medical specialty of the requester (e.g. Oncology, Neurosurgery, Dermatology, Gastroenterology). SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderPlacerContactDetails",
+        "path": "ehn-medical-imaging-report-order.orderPlacerContactDetails",
+        "short": "A.2.6 Order placer contact details",
+        "definition": "Contact details of order placer (address and telecom details).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "ContactPoint"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order.orderPlacerOrganization",
+        "path": "ehn-medical-imaging-report-order.orderPlacerOrganization",
+        "short": "A.2.7 Order placer organization",
+        "definition": "Order placer organization information.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

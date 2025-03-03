@@ -1,0 +1,70 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-2-PatientContactInformationMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-2-PatientContactInformationMapping",
+  "title": "A.1.2 Patient/subject related contact information mapping",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "address",
+              "display": ""
+            }
+          ],
+          "code": "address",
+          "display": "A.1.2.1 Address"
+        },
+        {
+          "target": [
+            {
+              "code": "telecom",
+              "display": ""
+            }
+          ],
+          "code": "telecom",
+          "display": "A.1.2.2 Telecom"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-contact",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-patient"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "subject",
+              "display": ""
+            }
+          ],
+          "code": "contact",
+          "display": "A.1.2 Patient/subject related contact information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "subject",
+              "display": ""
+            }
+          ],
+          "code": "contact",
+          "display": "A.1.2 Patient/subject related contact information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.1.2",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.2 Patient/subject related contact information section and the FHIR profiles."
+}

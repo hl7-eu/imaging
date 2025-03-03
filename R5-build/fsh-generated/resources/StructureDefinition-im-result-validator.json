@@ -1,0 +1,24 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-result-validator",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-result-validator",
+  "name": "ImResultValidator",
+  "title": "Result Validator",
+  "status": "draft",
+  "description": "Result validator. The healthcare professional who is responsible \nvalidating the diagnostic report. ",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PractitionerRole",
+  "baseDefinition": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner-role",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "PractitionerRole.practitioner",
+        "path": "PractitionerRole.practitioner",
+        "min": 1
+      }
+    ]
+  }
+}

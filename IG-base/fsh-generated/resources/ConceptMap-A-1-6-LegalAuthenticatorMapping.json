@@ -1,0 +1,141 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-6-LegalAuthenticatorMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-6-LegalAuthenticatorMapping",
+  "title": "A.1.6 Legal Authenticator",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "practitioner.identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatorIdentifier",
+          "display": "A.1.6.1 Legal Authenticator identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatorName",
+          "display": "A.1.6.2 Legal Authenticator name"
+        },
+        {
+          "target": [
+            {
+              "code": "organization.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatorOrganization",
+          "display": "A.1.6.3 Legal Authenticator organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-legal-authenticator",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-legal-authenticator"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatorIdentifier",
+          "display": "A.1.6.1 Legal Authenticator identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatorName",
+          "display": "A.1.6.2 Legal Authenticator name"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatorOrganization",
+          "display": "A.1.6.3 Legal Authenticator organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-organization"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "issued",
+              "display": "",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
+          "code": "authenticatingDateTime",
+          "display": "A.1.6 Authentication date and time"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "attester[legal-authenticator]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticator",
+          "display": "A.1.6 Legal Authenticator"
+        },
+        {
+          "target": [
+            {
+              "code": "attester[legal-authenticator].time",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authenticatingDateTime",
+          "display": "A.1.6 Authentication date and time"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.1.6",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.6 Legal Authenticator section and the FHIR profiles."
+}

@@ -1,0 +1,83 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-coverage",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-coverage",
+  "name": "ImCoverage",
+  "title": "Coverage information",
+  "status": "draft",
+  "description": "Health Insurance and Payment Information. This resource represents the insurance coverage for a patient.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Coverage",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Coverage",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Coverage.meta.security",
+        "path": "Coverage.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.language",
+        "path": "Coverage.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.identifier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Coverage.identifier",
+        "definition": "Insurance policy number registered at the provider. Note in some area's this may serve as Patient ID. ",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.status",
+        "path": "Coverage.status",
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.beneficiary",
+        "path": "Coverage.beneficiary",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-patient"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Coverage.period",
+        "path": "Coverage.period",
+        "mustSupport": true
+      }
+    ]
+  }
+}

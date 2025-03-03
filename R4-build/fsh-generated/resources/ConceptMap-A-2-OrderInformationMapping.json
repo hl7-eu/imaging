@@ -1,0 +1,294 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-2-OrderInformationMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-2-OrderInformationMapping",
+  "title": "A.2 Order Information to FHIR profiles",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "requester",
+              "display": ""
+            }
+          ],
+          "code": "requester",
+          "display": "A.2 Order Placer"
+        },
+        {
+          "target": [
+            {
+              "code": "identifier[accession-number]",
+              "display": ""
+            }
+          ],
+          "code": "orderId",
+          "display": "A.2.1 Order ID"
+        },
+        {
+          "target": [
+            {
+              "code": "identifier[order-id]",
+              "display": ""
+            }
+          ],
+          "code": "orderId",
+          "display": "A.2.1 Order ID"
+        },
+        {
+          "target": [
+            {
+              "code": "authoredOn",
+              "display": ""
+            }
+          ],
+          "code": "orderDateTime",
+          "display": "A.2.2 Order date and time"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.practitioner.identifier",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerIdentifier",
+          "display": "A.2.3 Order placer professional identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.practitioner.name",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerName",
+          "display": "A.2.4 Order placer name"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.practitioner.name",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerSpecialty",
+          "display": "A.2.5 Order placer specialty"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.practitioner.address",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerContactDetails",
+          "display": "A.2.6 Order placer contact details"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.practitioner.telecom",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerContactDetails",
+          "display": "A.2.6 Order placer contact details"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.organization",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerOrganization",
+          "display": "A.2.7 Order placer organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "practitioner.identifier",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerIdentifier",
+          "display": "A.2.3 Order placer professional identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.name",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerName",
+          "display": "A.2.4 Order placer name"
+        },
+        {
+          "target": [
+            {
+              "code": "specialty",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerSpecialty",
+          "display": "A.2.5 Order placer specialty"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.address",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerContactDetails",
+          "display": "A.2.6 Order placer contact details"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.telecom",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerContactDetails",
+          "display": "A.2.6 Order placer contact details"
+        },
+        {
+          "target": [
+            {
+              "code": "organization",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerOrganization",
+          "display": "A.2.7 Order placer organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-order-placer"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerIdentifier",
+          "display": "A.2.3 Order placer professional identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerName",
+          "display": "A.2.4 Order placer name"
+        },
+        {
+          "target": [
+            {
+              "code": "address",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerContactDetails",
+          "display": "A.2.6 Order placer contact details"
+        },
+        {
+          "target": [
+            {
+              "code": "telecom",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerContactDetails",
+          "display": "A.2.6 Order placer contact details"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerOrganization",
+          "display": "A.2.7 Order placer organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-organization"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": ""
+            }
+          ],
+          "code": "orderPlacerOrganization",
+          "display": "A.2.7 Order placer organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "based[ImOrder]",
+              "display": ""
+            }
+          ],
+          "code": "orderInformation",
+          "display": "A.2 Order Information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "based[ImOrder]",
+              "display": ""
+            }
+          ],
+          "code": "orderInformation",
+          "display": "A.2 Order Information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.2",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.2 Order Information section and the FHIR profiles."
+}

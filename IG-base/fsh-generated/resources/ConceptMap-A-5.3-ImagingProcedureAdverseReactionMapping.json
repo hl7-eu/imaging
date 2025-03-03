@@ -1,0 +1,201 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-5.3-ImagingProcedureAdverseReactionMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-5.3-ImagingProcedureAdverseReactionMapping",
+  "title": "A.5.3 Adverse reaction",
+  "description": "This concept map defines the mapping between the eHN A.5.3 Adverse reaction section and the FHIR profiles. \nIn FHIR, adverse reactions are modelled using the `AdverseEvent` resource.",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "code.text",
+              "display": "Description of event when not coded.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "allergyDescription",
+          "display": "A.5.3.1 Allergy description"
+        },
+        {
+          "target": [
+            {
+              "code": "note",
+              "display": "Description of event additional information is recorded.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "allergyDescription",
+          "display": "A.5.3.1 Allergy description"
+        },
+        {
+          "target": [
+            {
+              "code": "category",
+              "display": "",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
+          "code": "typeOfPropensity",
+          "display": "A.5.3.2 Type of propensity"
+        },
+        {
+          "target": [
+            {
+              "code": "resultingEffect",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "allergyManifestation",
+          "display": "A.5.3.3 Allergy manifestation"
+        },
+        {
+          "target": [
+            {
+              "code": "seriousness",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "severity",
+          "display": "A.5.3.4 Severity"
+        },
+        {
+          "target": [
+            {
+              "code": "extension.ImAdverseEventCriticality",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "criticality",
+          "display": "A.5.3.5 Criticality"
+        },
+        {
+          "target": [
+            {
+              "code": "occurance[dateTime]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "onsetDate",
+          "display": "A.5.3.6 Onset date"
+        },
+        {
+          "target": [
+            {
+              "code": "suspectEntity.causality.entityRelatedness",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "certainty",
+          "display": "A.5.3.7 Certainty"
+        },
+        {
+          "target": [
+            {
+              "code": "suspectEntity.instance:medicationAdministered",
+              "display": "When no formal allergy intolerance has been diagnosed.",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
+          "code": "agentOrAllergen",
+          "display": "A.5.3.8 Agent or Allergen"
+        },
+        {
+          "target": [
+            {
+              "code": "contributingFactor[allergy]",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "agentOrAllergen",
+          "display": "A.5.3.8 Agent or Allergen"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-adversereaction"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "criticallity",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "criticality",
+          "display": "A.5.3.5 Criticality"
+        },
+        {
+          "target": [
+            {
+              "code": "reaction.manifestation",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "allergyManifestation",
+          "display": "A.5.3.3 Allergy manifestation"
+        },
+        {
+          "target": [
+            {
+              "code": "reaction.severity",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "severity",
+          "display": "A.5.3.4 Severity"
+        },
+        {
+          "target": [
+            {
+              "code": "reacton.onset",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "onsetDate",
+          "display": "A.5.3.6 Onset date"
+        },
+        {
+          "target": [
+            {
+              "code": "extension.allergyCertainty",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "certainty",
+          "display": "A.5.3.7 Certainty"
+        },
+        {
+          "target": [
+            {
+              "code": "reaction.substance",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "agentOrAllergen",
+          "display": "A.5.3.8 Agent or Allergen"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-allergic-reaction"
+    }
+  ],
+  "name": "A.5.3",
+  "status": "draft",
+  "experimental": true,
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction"
+}

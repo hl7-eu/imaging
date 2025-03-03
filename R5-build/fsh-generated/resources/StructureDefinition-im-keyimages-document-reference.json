@@ -1,0 +1,716 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-keyimages-document-reference",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-keyimages-document-reference",
+  "name": "ImKeyImageDocumentReference",
+  "title": "Imaging Key Image Document Reference",
+  "status": "draft",
+  "description": "A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n\nWhen the resource represents a DICOM instance it SHALL contain a the SOP Instance UID in the identifier element. When the resource represents a DICOM series it SHALL contain the Series Instance UID in the identifier element. ",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "DocumentReference",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DocumentReference.meta.security",
+        "path": "DocumentReference.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.language",
+        "path": "DocumentReference.language",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid",
+        "path": "DocumentReference.identifier",
+        "sliceName": "seriesInstanceUid",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid.type",
+        "path": "DocumentReference.identifier.type",
+        "min": 1,
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "00080018",
+              "system": "http://hl7.eu/fhir/imaging/CodeSystem/codesystem-missing-dicom-terminology"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid.system",
+        "path": "DocumentReference.identifier.system",
+        "min": 1,
+        "patternUri": "urn:ietf:rfc:3986",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid.value",
+        "path": "DocumentReference.identifier.value",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid",
+        "path": "DocumentReference.identifier",
+        "sliceName": "sopClassInstanceUid",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid.type",
+        "path": "DocumentReference.identifier.type",
+        "min": 1,
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "112002",
+              "system": "http://dicom.nema.org/resources/ontology/DCM"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid.system",
+        "path": "DocumentReference.identifier.system",
+        "min": 1,
+        "patternUri": "urn:ietf:rfc:3986",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid.value",
+        "path": "DocumentReference.identifier.value",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.basedOn",
+        "path": "DocumentReference.basedOn",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "DocumentReference.basedOn:imorderaccession",
+        "path": "DocumentReference.basedOn",
+        "sliceName": "imorderaccession",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.status",
+        "path": "DocumentReference.status",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.modality",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.modality",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.category",
+        "path": "DocumentReference.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.category:imkeyimages",
+        "path": "DocumentReference.category",
+        "sliceName": "imkeyimages",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.category:imkeyimages.coding",
+        "path": "DocumentReference.category.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.category:imkeyimages.coding:keyimagecode",
+        "path": "DocumentReference.category.coding",
+        "sliceName": "keyimagecode",
+        "min": 1,
+        "max": "1",
+        "patternCoding": {
+          "code": "55113-5",
+          "system": "http://loinc.org",
+          "display": "Imaging Key Images Document"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.subject",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.subject",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-patient"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.bodySite",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.bodySite",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.date",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.date",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.author",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.author",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.author:performer",
+        "path": "DocumentReference.author",
+        "sliceName": "performer",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner-role"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.description",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.description",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content",
+        "path": "DocumentReference.content",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "extension.where( url = 'http://hl7.org/fhir/StructureDefinition/documentreference-thumbnail'"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content.attachment",
+        "path": "DocumentReference.content.attachment",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:thumbnail",
+        "path": "DocumentReference.content",
+        "sliceName": "thumbnail",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:thumbnail.extension",
+        "path": "DocumentReference.content.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.content:thumbnail.extension:thumbnail",
+        "path": "DocumentReference.content.extension",
+        "sliceName": "thumbnail",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/documentreference-thumbnail"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:thumbnail.extension:thumbnail.value[x]",
+        "path": "DocumentReference.content.extension.value[x]",
+        "patternBoolean": true
+      },
+      {
+        "id": "DocumentReference.content:content",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content",
+        "sliceName": "content",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.extension",
+        "path": "DocumentReference.content.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.content:content.extension:thumbnail",
+        "path": "DocumentReference.content.extension",
+        "sliceName": "thumbnail",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/documentreference-thumbnail"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.extension:thumbnail.value[x]",
+        "path": "DocumentReference.content.extension.value[x]",
+        "patternBoolean": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment"
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.contentType",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.contentType",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.url",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.url",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.title",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+            "valueBoolean": true
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable",
+            "valueBoolean": true
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.title",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.height",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+            "valueCode": "trial-use"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.height",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.width",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+            "valueCode": "trial-use"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.width",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.frames",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+            "valueCode": "trial-use"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.frames",
+        "mustSupport": true
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.duration",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+            "valueCode": "trial-use"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "DocumentReference.content.attachment.duration",
+        "mustSupport": true
+      }
+    ]
+  }
+}

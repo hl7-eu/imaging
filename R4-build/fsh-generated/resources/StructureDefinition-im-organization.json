@@ -1,0 +1,100 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-organization",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-organization",
+  "name": "ImOrganization",
+  "title": "Organization",
+  "status": "draft",
+  "description": "Organization profile for healthcare organizations, this resource contains all information\nrelated to healthcare organizations.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Organization",
+  "baseDefinition": "http://hl7.eu/fhir/base/StructureDefinition/organization-eu",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Organization.meta.security",
+        "path": "Organization.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.language",
+        "path": "Organization.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.active",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Organization.active",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.name",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Organization.name",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.contact",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Organization.contact",
+        "max": "1",
+        "mustSupport": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0" version="24.7.17">
+  <diagram name="Page-1" id="c4acf3e9-155e-7222-9cf6-157b1a14988f">
+    <mxGraphModel dx="1426" dy="789" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5d2195bd80daf111-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;labelBackgroundColor=none;startFill=0;endArrow=open;endFill=0;endSize=10;fontFamily=Verdana;fontSize=10;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="490" />
+              <mxPoint x="320" y="460" />
+            </Array>
+            <mxPoint x="380" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5d2195bd80daf111-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;labelBackgroundColor=none;startFill=0;endArrow=open;endFill=0;endSize=10;fontFamily=Verdana;fontSize=10;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5d2195bd80daf111-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;labelBackgroundColor=none;startFill=0;endArrow=open;endFill=0;endSize=10;fontFamily=Verdana;fontSize=10;" parent="1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="580" />
+              <mxPoint x="300" y="642" />
+            </Array>
+            <mxPoint x="350" y="642" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-1" value="Imaging Study and Report Dataset" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="750" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-2" value="&amp;nbsp;B study manifest" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-3" value="A Medical imaging report data set" style="rounded=0;whiteSpace=wrap;html=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="130" width="380" height="460" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-4" value="A.1 Report header data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="170" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-6" value="A.2 Order information data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="220" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-9" value="A.3 Order reason data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="270" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-10" value="A.4 Specimen information&amp;nbsp;data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="320" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-11" value="A.5 Examination report&amp;nbsp;data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="370" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-12" value="A.6 Key imaging associated with this report&amp;nbsp;&amp;nbsp;data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="420" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-13" value="A.7 Comparison study&amp;nbsp;data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="470" width="340" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e0jWH1JbXt2_JoP3dwSK-14" value="A.8 Attachment (report as issued)&amp;nbsp;data elements" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=9;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="70" y="520" width="340" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

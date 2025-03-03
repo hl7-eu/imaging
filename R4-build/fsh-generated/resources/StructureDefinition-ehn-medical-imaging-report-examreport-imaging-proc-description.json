@@ -1,0 +1,207 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport-imaging-proc-description",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+  "name": "MedicalImagingReportOrderExaminationReportImagingProcedureDescriptionEhn",
+  "title": "A.5.1 Imaging procedure description",
+  "status": "draft",
+  "description": "Note: this part records the technical details of the performed procedures and may include information about protocol, imaging phases, imaging device, anatomical location, performer, place, date and time of performance.",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description",
+        "short": "A.5.1 Imaging procedure description",
+        "definition": "Note: this part records the technical details of the performed procedures and may include information about protocol, imaging phases, imaging device, anatomical location, performer, place, date and time of performance."
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.modality",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.modality",
+        "short": "A.5.1.1 Modality",
+        "definition": "Imaging modality (or modalities) expresses the type of device used during imaging procedure. This element is relevant for the interactive selection of the available studies. DICOM Modality",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureDate",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureDate",
+        "short": "A.5.1.2 Procedure date",
+        "definition": "Date and time of the procedure or interval of its performance. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureText",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureText",
+        "short": "A.5.1.3 Procedure text",
+        "definition": "Detailed textual description of the procedure.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureCode",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureCode",
+        "short": "A.5.1.4 Procedure code",
+        "definition": "Code representing the procedure. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureName",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.procedureName",
+        "short": "A.5.1.5 Procedure name",
+        "definition": "Full name of the procedure according to the used procedure coding standard.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.anatomicalFocus",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.anatomicalFocus",
+        "short": "A.5.1.6 Anatomical focus",
+        "definition": "A.5.1.6 Anatomical focus",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.anatomicalFocus.bodyLocation",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.anatomicalFocus.bodyLocation",
+        "short": "A.5.1.6.1 Body location",
+        "definition": "Localisation on/in the body (part of the body focused during the procedure). The element could be repeated to provide information at multiple levels (bigger body location, smaller body location). This element is relevant for the interactive selection of the available studies. SNOMED CT, ICD-O-3",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.anatomicalFocus.laterality",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.anatomicalFocus.laterality",
+        "short": "A.5.1.6.2 Laterality",
+        "definition": "Body side of the body location, if needed to distinguish from a similar location on the other side of the body. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.deviceId",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.deviceId",
+        "short": "A.5.1.7 Device ID",
+        "definition": "Normalised identifier of the acquisition modality equipment instance such as UDI according to REGULATION (EU) 2017/745.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer",
+        "short": "A.5.1.8 Performer",
+        "definition": "A.5.1.8 Performer",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer.performerId",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer.performerId",
+        "short": "A.5.1.8.1 Performer Id",
+        "definition": "Performer identifier unique within a given context (namespace). Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer.performerName",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer.performerName",
+        "short": "A.5.1.8.2 Performer Name",
+        "definition": "Person name.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HumanName"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer.performerOrganization",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.performer.performerOrganization",
+        "short": "A.5.1.8.3 Performer Organisation",
+        "definition": "The healthcare provider organisation information.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-imaging-proc-description.additionalProcedureDetails",
+        "path": "ehn-medical-imaging-report-examreport-imaging-proc-description.additionalProcedureDetails",
+        "short": "A.5.1.9 Additional procedure details",
+        "definition": "Additional information pertaining imaging procedure, such as imaging phase. e.g., without contrast, arterial phase, venous phase, delayed phase. Only some types of studies have phases. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

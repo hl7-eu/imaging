@@ -1,0 +1,216 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-8-DocumentMetadataMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-8-DocumentMetadataMapping",
+  "title": "A.1.8 Document Metadata",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.code",
+              "display": ""
+            }
+          ],
+          "code": "documentType",
+          "display": "A.1.8.1 Document type"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.basedOn:imorderaccession",
+              "display": ""
+            }
+          ],
+          "code": "accessionNumber",
+          "display": "A.1.8.11 Accession number"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.status",
+              "display": ""
+            }
+          ],
+          "code": "documentStatus",
+          "display": "A.1.8.2 Document status"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.issued",
+              "display": ""
+            }
+          ],
+          "code": "reportDateTime",
+          "display": "A.1.8.3 Report date and time"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.supportingInfo:procedure",
+              "display": ""
+            }
+          ],
+          "code": "imagingProcedure",
+          "display": "A.1.8.5 Imaging procedure"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.meta.security",
+              "display": ""
+            }
+          ],
+          "code": "confidentiality",
+          "display": "A.1.8.7 Confidentiality"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.language",
+              "display": ""
+            }
+          ],
+          "code": "language",
+          "display": "A.1.8.8 Language"
+        },
+        {
+          "target": [
+            {
+              "code": "diagnosticReport.extension.artifactVersion",
+              "display": ""
+            }
+          ],
+          "code": "version",
+          "display": "A.1.8.9 Version"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "composition.type",
+              "display": ""
+            }
+          ],
+          "code": "documentType",
+          "display": "A.1.8.1 Document type"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.status",
+              "display": ""
+            }
+          ],
+          "code": "documentStatus",
+          "display": "A.1.8.2 Document status"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.date",
+              "display": ""
+            }
+          ],
+          "code": "reportDateTime",
+          "display": "A.1.8.3 Report date and time"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.title",
+              "display": ""
+            }
+          ],
+          "code": "documentTitle",
+          "display": "A.1.8.4 Document title"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.custodian",
+              "display": ""
+            }
+          ],
+          "code": "reportCustodian",
+          "display": "A.1.8.4 Document Custodian"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.meta.security",
+              "display": ""
+            }
+          ],
+          "code": "confidentiality",
+          "display": "A.1.8.7 Confidentiality"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.language",
+              "display": ""
+            }
+          ],
+          "code": "language",
+          "display": "A.1.8.7 Language"
+        },
+        {
+          "target": [
+            {
+              "code": "composition.extension.artifactVersion",
+              "display": ""
+            }
+          ],
+          "code": "version",
+          "display": "A.1.8.9 Version"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier:studyUID",
+              "display": ""
+            }
+          ],
+          "code": "studyInstanceUID",
+          "display": "A.1.8.10 Legal Study Instance UID"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imagingstudy"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "order.identifier:accessionNumber",
+              "display": ""
+            }
+          ],
+          "code": "accessionNumber",
+          "display": "A.1.8.11 Accession number"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+    }
+  ],
+  "name": "A.1.8",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.8 Document Metadata section and the FHIR profiles."
+}

@@ -1,0 +1,191 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-header-document-metadata",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata",
+  "name": "MedicalImagingReportHeaderDocumentMetadataEhn",
+  "title": "A.1.8 Document metadata",
+  "status": "draft",
+  "description": "Document metadata",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata",
+        "path": "ehn-medical-imaging-report-header-document-metadata",
+        "short": "A.1.8 Document metadata",
+        "definition": "Document metadata"
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.documentId",
+        "path": "ehn-medical-imaging-report-header-document-metadata.documentId",
+        "short": "A.1.8.0 Document ID",
+        "definition": "Unique identifier of the document.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.documentType",
+        "path": "ehn-medical-imaging-report-header-document-metadata.documentType",
+        "short": "A.1.8.1 Document type",
+        "definition": "A coded type of the document. Fixed value \\\"Diagnostic Imaging report\\\" LOINC.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.documentStatus",
+        "path": "ehn-medical-imaging-report-header-document-metadata.documentStatus",
+        "short": "A.1.8.2 Document status",
+        "definition": "The status of the imaging result report. E.g., preliminary (in case of an emergency situation), final. hl7:DiagnosticReportStatus.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.reportDateTime",
+        "path": "ehn-medical-imaging-report-header-document-metadata.reportDateTime",
+        "short": "A.1.8.3 Report date and time",
+        "definition": "Date and time of the result report creation. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.documentTitle",
+        "path": "ehn-medical-imaging-report-header-document-metadata.documentTitle",
+        "short": "A.1.8.4 Document title",
+        "definition": "Document title, e.g., \"Diagnostic Imaging Report\".",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.imagingProcedure",
+        "path": "ehn-medical-imaging-report-header-document-metadata.imagingProcedure",
+        "short": "A.1.8.5 Imaging procedure",
+        "definition": "Imaging study procedure(s) performed. This element is relevant for the interactive selection of the available studies. LOINC, SNOMED CT.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.reportCustodian",
+        "path": "ehn-medical-imaging-report-header-document-metadata.reportCustodian",
+        "short": "A.1.8.6 Report custodian",
+        "definition": "Organization that is in charge of maintaining the imaging report.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.confidentiality",
+        "path": "ehn-medical-imaging-report-header-document-metadata.confidentiality",
+        "short": "A.1.8.7 Confidentiality",
+        "definition": "Level of confidentiality of the document. Implicit value is normal. hl7:Confidentiality.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.language",
+        "path": "ehn-medical-imaging-report-header-document-metadata.language",
+        "short": "A.1.8.8 Language",
+        "definition": "Language in which the document is written. ISO 639.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.version",
+        "path": "ehn-medical-imaging-report-header-document-metadata.version",
+        "short": "A.1.8.9 Version",
+        "definition": "Version of the document.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.studyInstanceUID",
+        "path": "ehn-medical-imaging-report-header-document-metadata.studyInstanceUID",
+        "short": "A.1.8.10 Study Instance UID",
+        "definition": "Unique global identifier(s) that identifies an imaging study upon which the imaging report is based. An identifier that links an imaging report to one or more imaging studies. This element is relevant for the interactive selection of the available studies. OID.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-document-metadata.accessionNumber",
+        "path": "ehn-medical-imaging-report-header-document-metadata.accessionNumber",
+        "short": "A.1.8.11 Accession number",
+        "definition": "This is an identifier, managed by the RIS at the local level, which usually uniquely identifies an imaging procedure request, and links it to imaging study(ies) and related imaging report(s). As it is prefixed by the registration authority it is a globally unique ID, usable both nationally and cross-border.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      }
+    ]
+  }
+}

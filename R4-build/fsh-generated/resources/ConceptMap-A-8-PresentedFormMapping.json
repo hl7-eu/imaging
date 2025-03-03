@@ -1,0 +1,28 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-8-PresentedFormMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-8-PresentedFormMapping",
+  "title": "A.8 Comparison Study",
+  "description": "This concept map defines the mapping between the eHN A.8 Comparison Study section and the FHIR profiles. \n",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "presentedForm",
+              "display": ""
+            }
+          ],
+          "code": "presentedForm",
+          "display": "A.8 Presented Form"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-presented-form",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.8",
+  "status": "draft",
+  "experimental": true
+}

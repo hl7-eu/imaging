@@ -1,0 +1,126 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-3-HealthInsurenceAndPaymentInformationMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-3-HealthInsurenceAndPaymentInformationMapping",
+  "title": "A.1.3 Health Insurance and Payment Information mapping",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "insurer",
+              "display": ""
+            }
+          ],
+          "code": "providerCode",
+          "display": "A.1.3.1 Health Insurance Provider Code"
+        },
+        {
+          "target": [
+            {
+              "code": "insurer",
+              "display": ""
+            }
+          ],
+          "code": "providerName",
+          "display": "A.1.3.2 Health insurance provider name"
+        },
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": ""
+            }
+          ],
+          "code": "providerNumber",
+          "display": "A.1.3.3 Health insurance policy number"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-health-insurance-information",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-coverage"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": ""
+            }
+          ],
+          "code": "providerCode",
+          "display": "A.1.3.1 Health Insurance Provider Code"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": ""
+            }
+          ],
+          "code": "providerName",
+          "display": "A.1.3.2 Health insurance provider name"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-health-insurance-information",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-health-insurance-provider"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "insurance",
+              "display": ""
+            }
+          ],
+          "code": "insuranceAndPayment",
+          "display": "A.1.3 Health insurance"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section[order].entry[order]",
+              "display": ""
+            }
+          ],
+          "code": "insuranceAndPayment",
+          "display": "A.1.3 Health insurance"
+        },
+        {
+          "target": [
+            {
+              "code": "section[order].entry[insurance]",
+              "display": ""
+            }
+          ],
+          "code": "insuranceAndPayment",
+          "display": "A.1.3 Health insurance"
+        },
+        {
+          "target": [
+            {
+              "code": "section[order].entry[insuranceprovider]",
+              "display": ""
+            }
+          ],
+          "code": "insuranceAndPayment",
+          "display": "A.1.3 Health insurance"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.1.3",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.3. Health Insurance and Payment Information section and the FHIR profiles."
+}

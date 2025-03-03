@@ -1,0 +1,139 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-specimen-information",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-specimen-information",
+  "name": "MedicalImagingReportOrderSpecimenInformationEhn",
+  "title": "A.4 Specimen information",
+  "status": "draft",
+  "description": "Note: a specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes.",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-specimen-information",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-specimen-information",
+        "path": "ehn-medical-imaging-report-specimen-information",
+        "short": "A.4 Specimen information",
+        "definition": "Note: a specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes."
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.specimenIdentifier",
+        "path": "ehn-medical-imaging-report-specimen-information.specimenIdentifier",
+        "short": "A.4.1 Specimen identifier",
+        "definition": "An identifier of the specimen which is unique within in a defined scope. Example: identifier assigned by ordering system. Multiple identifiers can be used.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.material",
+        "path": "ehn-medical-imaging-report-specimen-information.material",
+        "short": "A.4.2 Material",
+        "definition": "Specimen material (e.g. \"Specimen from breast obtained by biopsy\"). SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.collectionPeriod",
+        "path": "ehn-medical-imaging-report-specimen-information.collectionPeriod",
+        "short": "A.4.3 Collection period",
+        "definition": "Collection date time or period. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.anatomicLocation",
+        "path": "ehn-medical-imaging-report-specimen-information.anatomicLocation",
+        "short": "A.4.4 Anatomic location",
+        "definition": "Anatomic location (body location, laterality) where the material is collected (e.g. \"Elbow, left\"). SNOMED CT, ICD-O-3",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.morphology",
+        "path": "ehn-medical-imaging-report-specimen-information.morphology",
+        "short": "A.4.5 Morphology",
+        "definition": "Morphological abnormalities of the anatomical location where the material is taken, for example wound, ulcer. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.sourceDevice",
+        "path": "ehn-medical-imaging-report-specimen-information.sourceDevice",
+        "short": "A.4.6 Source Device",
+        "definition": "If the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter. SNOMED CT, EMDN",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.collectionProcedureMethod",
+        "path": "ehn-medical-imaging-report-specimen-information.collectionProcedureMethod",
+        "short": "A.4.7 Collection procedure/method",
+        "definition": "If relevant for the results, the method of obtaining the specimen. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-specimen-information.receivedDate",
+        "path": "ehn-medical-imaging-report-specimen-information.receivedDate",
+        "short": "A.4.8 Received date",
+        "definition": "Date and time that the material is handed over at imaging department or workplace performing imaging study. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "Hl7EuImagingEndpointTerminologyCodeSystem",
+  "id": "codesystem-endpoint-terminology",
+  "title": "CodeSystem for terminology for Endpoint resources used in the EU Imaging IG.",
+  "description": "This code system defines various codes used to define ValueSets for Endpoints within the HL7-EU imaging IG.",
+  "url": "http://hl7.eu/fhir/imaging/CodeSystem/codesystem-endpoint-terminology",
+  "concept": [
+    {
+      "code": "connection-type",
+      "display": "Endpoint connection type",
+      "definition": "The type of connection that the endpoint supports.",
+      "concept": [
+        {
+          "code": "ihe-iid",
+          "display": "IHE IID endpoint",
+          "definition": "IHE IID endpoint connection type."
+        }
+      ]
+    }
+  ],
+  "experimental": true,
+  "caseSensitive": true,
+  "hierarchyMeaning": "is-a",
+  "count": 2
+}

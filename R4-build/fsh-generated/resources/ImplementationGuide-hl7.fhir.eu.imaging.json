@@ -1,0 +1,935 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "hl7.fhir.eu.imaging",
+  "meta": {
+    "profile": [
+      "http://smart.who.int/base/StructureDefinition/SGImplementationGuide"
+    ]
+  },
+  "url": "http://hl7.eu/fhir/imaging/ImplementationGuide/hl7.fhir.eu.imaging",
+  "version": "0.1.0",
+  "name": "HL7EuImagingStudyReport",
+  "title": "HL7 Europe Imaging Study Report",
+  "status": "draft",
+  "experimental": false,
+  "publisher": "HL7 Europe",
+  "contact": [
+    {
+      "name": "HL7 Europe",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.eu"
+        }
+      ]
+    }
+  ],
+  "description": "This guide describes how a Imaging Study Report can be represented in the European REALM.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "150",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.htm",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "copyright": "Used by permission of HL7 Europe, all rights reserved Creative Commons License",
+  "packageId": "hl7.fhir.eu.imaging",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "dependsOn": [
+    {
+      "packageId": "hl7.fhir.uv.extensions.r4",
+      "version": "5.2.0",
+      "uri": "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+      "id": "hl7_fhir_uv_extensions_r4"
+    },
+    {
+      "packageId": "hl7.fhir.eu.extensions",
+      "version": "current",
+      "uri": "http://hl7.eu/fhir/extensions/ImplementationGuide/hl7.fhir.eu.extensions",
+      "id": "hl7_fhir_eu_extensions"
+    },
+    {
+      "packageId": "hl7.fhir.eu.base.r4",
+      "version": "current",
+      "uri": "http://hl7.eu/fhir/base/ImplementationGuide/hl7.fhir.eu.base.r4",
+      "id": "hl7_fhir_eu_base_r4"
+    },
+    {
+      "id": "DICOM",
+      "packageId": "fhir.dicom",
+      "uri": "http://fhir.org/packages/fhir.dicom",
+      "version": "2024.2.20240331"
+    }
+  ],
+  "definition": {
+    "grouping": [
+      {
+        "id": "eHNGuidelines",
+        "name": "eHN Imaging Studies and Reports Guidelines (informative)",
+        "description": "Logical models  representing the eHN Imaging Studies and Reports Guidelines. This is informative material."
+      },
+      {
+        "id": "dataEntryPoints",
+        "name": "Data Entry Points",
+        "description": "The key resources representing the entry points for imaging study reports."
+      }
+    ],
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report"
+        },
+        "name": "A Medical Imaging Report (eHN)",
+        "description": "Medical Imaging Report",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header"
+        },
+        "name": "A.1 Report header data elements (eHN)",
+        "description": "A.1 Report header data elements (eHN)",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-patient-identification"
+        },
+        "name": "A.1.1 Identification of the patient/subject",
+        "description": "Identification of the patient/subject",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-patient-contact"
+        },
+        "name": "A.1.2 Patient/subject related contact information",
+        "description": "Patient/subject related contact information",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-health-insurance-information"
+        },
+        "name": "A.1.3 Health insurance and payment information",
+        "description": " Health insurance information is not always required, \nhowever, in some jurisdictions, the insurance number is also \nused as the patient identifier. It is necessary not just for \nidentification but also forms access to funding for care.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-information-recipient"
+        },
+        "name": "A.1.4 Information recipient",
+        "description": "Intended recipient or recipients of the report, e.g., GP, another specialist. Multiple recipients could be provided.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-author"
+        },
+        "name": "A.1.5 Author",
+        "description": "Author (by whom the imaging report or a subset of its results was authored). Multiple authors could be provided.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-legal-authenticator"
+        },
+        "name": "A.1.6 Legal authenticator",
+        "description": "The person taking responsibility for the medical content of the document.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-result-validator"
+        },
+        "name": "A.1.7 Result validator",
+        "description": "Result validator",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-header-document-metadata"
+        },
+        "name": "A.1.8 Document metadata",
+        "description": "Document metadata",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-order"
+        },
+        "name": "A.2 Order information",
+        "description": "Note: an imaging report could respond to multiple orders.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-order-reason"
+        },
+        "name": "A.3 Order Reason",
+        "description": "Note: an imaging report could respond to multiple reasons.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-specimen-information"
+        },
+        "name": "A.4 Specimen information",
+        "description": "Note: a specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport"
+        },
+        "name": "A.5 Examination Report",
+        "description": "Examination Report",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description"
+        },
+        "name": "A.5.1 Imaging procedure description",
+        "description": "Note: this part records the technical details of the performed procedures and may include information about protocol, imaging phases, imaging device, anatomical location, performer, place, date and time of performance.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport-medication"
+        },
+        "name": "A.5.2 Medication",
+        "description": "Medication section includes information about medication administered during the medical imaging examination (contrast, sedation, stress agents), etc.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction"
+        },
+        "name": "A.5.3 Adverse reaction",
+        "description": "Adverse reactions manifested during imaging investigation.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport-results"
+        },
+        "name": "A.5.4 Results",
+        "description": "Note: The results summarise the findings and observations by the health professional following the imaging study. Note: this part includes textual as well as structured results or findings of the imaging investigation.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport-conclusion"
+        },
+        "name": "A.5.5 Conclusion",
+        "description": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-examreport-recommendation"
+        },
+        "name": "A.5.6 Recommendation",
+        "description": "Recommendation",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-order-media"
+        },
+        "name": "A.6 Key images associated with this report",
+        "description": "Key images associated with this report",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-comparison-study"
+        },
+        "name": "A.7 Comparison study",
+        "description": "Comparison study",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-medical-imaging-report-presented-form"
+        },
+        "name": "A.8 Presented form",
+        "description": "Presented form",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-adversereaction"
+        },
+        "name": "Adverse Event",
+        "description": "Adverse event during imaging procedure.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-allergic-reaction"
+        },
+        "name": "Allergic Reaction",
+        "description": "This profile represents a suspected allergic reaction occurred during or due to an imaging study procedure.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/ehn-imaging-study-manifest-dataset"
+        },
+        "name": "B Imaging study manifest data set (eHN)",
+        "description": "The data set defines the contents of the key information about the imaging study as conveyed by the imaging study manifest data set. \nThe imaging study manifest contains key information about the imaging study that is referenced, including the “pointers” that allow \naccess to the series of images.\nIt is important to note that the metadata used in expressing the filters associated with the querying for a list of imaging studies and/or \nimaging reports are defined in Section 2 Article 10: Selection List and filtering Parameters. These parameters are expressed as coded \nvalues from standardised value sets to ensure a robust search for a list of relevant imaging studies. Such metadata filtering parameters \nare associated with imaging studies, but may not be present in the content of the imaging study manifest.",
+        "exampleBoolean": false,
+        "groupingId": "eHNGuidelines"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-bundle"
+        },
+        "name": "Bundle: Imaging Study Report",
+        "description": "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/codesystem-endpoint-terminology"
+        },
+        "name": "CodeSystem for terminology for Endpoint resources used in the EU Imaging IG.",
+        "description": "This code system defines various codes used to define ValueSets for Endpoints within the HL7-EU imaging IG.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-coverage"
+        },
+        "name": "Coverage information",
+        "description": "Health Insurance and Payment Information. This resource represents the insurance coverage for a patient.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/codesystem-diagnostic-report-support-info"
+        },
+        "name": "Diagnostic Report Support Info Code System",
+        "description": "Code system for codes to be used in `DiagnosticReport.supportInfo` for imaging reports.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/valueset-diagnosticreport-report-support-info"
+        },
+        "name": "DiagnosticReport supportInfo codes",
+        "description": "Codes to be used in `DiagnosticReport.supportInfo` for imaging reports.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "DiagnosticReport/DianogsticReportR4"
+        },
+        "name": "DianogsticReportR4",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "DiagnosticReport/DianosticoReporto"
+        },
+        "name": "DianosticoReporto",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-composition-diagnosticReportReference"
+        },
+        "name": "Document DiagnosticReport Reference",
+        "description": "This extension provides a reference to the DiagnosticReport instance that is associated with this Composition.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-finding"
+        },
+        "name": "Finding",
+        "description": "Finding during imaging procedure.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-health-insurance-provider"
+        },
+        "name": "Health Insurance Provider",
+        "description": "Health Insurance Provider profile for healthcare organizations, this resource contains all information\nrelated to a health insurance provider.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-accession-number-identifier"
+        },
+        "name": "Imaging Accession Number Identifier",
+        "description": "This profile on Identifier represents the Accession Number for the Imaging Order.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-order-reference"
+        },
+        "name": "Imaging Accession Number Reference",
+        "description": "This profile on Reference represents a reference to an Imaging Order.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-adverse-event-criticality"
+        },
+        "name": "Imaging Adverse Event Criticality",
+        "description": "Replicates AllergyIntolerance.criticality to introduce functionality in AdverseEvent resource.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-authoring-device"
+        },
+        "name": "Imaging Authoring Device",
+        "description": "This profile represents the device used to author the Imaging Diagnostic Report.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-composition"
+        },
+        "name": "Imaging Composition",
+        "description": "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project.",
+        "exampleBoolean": false,
+        "groupingId": "dataEntryPoints"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-imaging-device"
+        },
+        "name": "Imaging Device",
+        "description": "This profile on Device represents the imaging device.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-diagnostic-report"
+        },
+        "name": "Imaging Diagnostic Report",
+        "description": "Diagnostic Report profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.",
+        "exampleBoolean": false,
+        "groupingId": "dataEntryPoints"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-keyimages-document-reference"
+        },
+        "name": "Imaging Key Image Document Reference",
+        "description": "A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n\nWhen the resource represents a DICOM instance it SHALL contain a the SOP Instance UID in the identifier element. When the resource represents a DICOM series it SHALL contain the Series Instance UID in the identifier element. ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-order"
+        },
+        "name": "Imaging Order",
+        "description": "This profile on ServiceRequest represents the order for the Imaging Study and report.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-patient"
+        },
+        "name": "Imaging Patient",
+        "description": "Human patient representing the subject of a medical imaging study for the scope of the HL7 Europe project.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-procedure"
+        },
+        "name": "Imaging Procedure",
+        "description": "This profile on Procedure represents the imaging procedure.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/im-reportType-eu-lab"
+        },
+        "name": "Imaging Report Types",
+        "description": "Imaging Report Types.\nThis version includes only one code as suggested by the eHN guideline.\nTo add specificity the https://loinc.org/kb/users-guide/loinc-rsna-radiology-playbook-user-guide/ could be incorporated as the source of imaging study/report types.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-performer"
+        },
+        "name": "Imaging study performer",
+        "description": "The healtcare professional who performed the study/procedure.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ActorDefinition/ImProducer"
+        },
+        "name": "Imaging Study Reports Producer",
+        "description": "Producer profile for this IG",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-imagingstudy"
+        },
+        "name": "ImagingStudy",
+        "description": "This profile represents an imaging study instance.",
+        "exampleBoolean": false,
+        "groupingId": "dataEntryPoints"
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-body-structure"
+        },
+        "name": "ImBodyStructure",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-impression"
+        },
+        "name": "Impression",
+        "description": "Impression of the imaging study. A conclusion drawn by the author based on the findings of the study.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-information-recipient"
+        },
+        "name": "Information Recipient",
+        "description": "Information recipient (intended recipient or recipients of the report, e.g., GP, another specialist).",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-legal-authenticator"
+        },
+        "name": "Legal Authenticator",
+        "description": "Legal authenticator (The person taking responsibility for the medical content of the document). ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-1-PatientInformationMapping"
+        },
+        "name": "Mapping of A.1.1 Identification of the patient/subject",
+        "description": "This concept map defines the mapping between the A.1.1 Identification of the patient/subject section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-2-PatientContactInformationMapping"
+        },
+        "name": "Mapping of A.1.2 Patient/subject related contact information",
+        "description": "This concept map defines the mapping between the A.1.2 Patient/subject related contact information section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-3-HealthInsurenceAndPaymentInformationMapping"
+        },
+        "name": "Mapping of A.1.3 Health Insurance and Payment Information",
+        "description": "This concept map defines the mapping between the A.1.3. Health Insurance and Payment Information section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-4-InformationRecipientMapping"
+        },
+        "name": "Mapping of A.1.4 Information Recipient",
+        "description": "This concept map defines the mapping between the A.1.4 Information Recipient section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-5-InformationAuthorMapping"
+        },
+        "name": "Mapping of A.1.5 Information Author",
+        "description": "This concept map defines the mapping between the A.1.5 Information Author section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-6-LegalAuthenticatorMapping"
+        },
+        "name": "Mapping of A.1.6 Legal Authenticator",
+        "description": "This concept map defines the mapping between the A.1.6 Legal Authenticator section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-7-LegalAuthenticatorMapping"
+        },
+        "name": "Mapping of A.1.7 Result Validator",
+        "description": "This concept map defines the mapping between the A.1.7 Result Validator section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-1-8-DocumentMetadataMapping"
+        },
+        "name": "Mapping of A.1.8 Document Metadata",
+        "description": "This concept map defines the mapping between the A.1.8 Document Metadata section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-2-OrderInformationMapping"
+        },
+        "name": "Mapping of A.2 Order Information to FHIR profiles",
+        "description": "This concept map defines the mapping between the A.2 Order Information section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-3-OrderReasonMapping"
+        },
+        "name": "Mapping of A.3 Order Reason to FHIR profiles",
+        "description": "This concept map defines the mapping between the A.3 Order Reason section and the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-4-SpecimenMapping"
+        },
+        "name": "Mapping of A.4 Specimen",
+        "description": "This concept map defines the mapping between the A.3 Order Reason section and the FHIR profiles.  \n\nThe Specimen relates to a different type of information stored in a PACS: digital pathology. This has to analysed in more detail before inclusion in the IG. One of the things that might be impacted is the structure of the report.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-5.1-ImagingProcedureDescriptionMapping"
+        },
+        "name": "Mapping of A.5.1 Imaging Procedure Description",
+        "description": "The procedure information is expected to be part of the `ImProcedure` profile and not on `ImagingStudy.procedure` as there is a large overlap in information that is to be presented.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-5.2-ImagingProcedureMedicationMapping"
+        },
+        "name": "Mapping of A.5.2 Imaging Procedure Medication",
+        "description": "Maps on A.5.2-ImagingProcedureMedication section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-5.3-ImagingProcedureAdverseReactionMapping"
+        },
+        "name": "Mapping of A.5.3 Adverse reaction (Adverse reactions manifested during imaging investigation.",
+        "description": "Maps on A.5.2-ImagingProcedureMedication section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-5.4-ResultsMapping"
+        },
+        "name": "Mapping of A.5.4 Results",
+        "description": "Maps the A.5.4 Results section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-5.5-ConclusionMapping"
+        },
+        "name": "Mapping of A.5.5 Conclusion",
+        "description": "Maps the A.5.5 Results section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-5.6-RecommendationsMapping"
+        },
+        "name": "Mapping of A.5.6 Recommendation",
+        "description": "Maps the A.5.6 Results section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-6-KeyImagesMapping"
+        },
+        "name": "Mapping of A.6 Key images associated with this report",
+        "description": "Maps the A.6 Key Images section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-7-ComparisonStudy"
+        },
+        "name": "Mapping of A.7 Comparison Study",
+        "description": "Maps the A.7 Key Images section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/A-8-PresentedFormMapping"
+        },
+        "name": "Mapping of A.8 Presented Form",
+        "description": "Maps the A.8 Presented Form section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ConceptMap/B-ImagingstudyMnifestDataset"
+        },
+        "name": "Mapping of B Imaging study manifest data set ",
+        "description": "Maps the B Imaging study manifest data set  section of the eHN Medical Imaging Report to the FHIR profiles.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-medication"
+        },
+        "name": "Medication",
+        "description": "Based on EPD Medication profile. Reference it once it is published.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-medication-administration"
+        },
+        "name": "Medication Administration",
+        "description": "Record of medication administration during imaging procedure.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "CodeSystem/codesystem-missing-dicom-terminology"
+        },
+        "name": "Missing DICOM Terminology",
+        "description": "Code system for codes that are defined in DICOM but for which no matching code system is available in FHIR.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-order-placer"
+        },
+        "name": "Order Placer",
+        "description": "The healthcare professional who placed the order for the study. ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-organization"
+        },
+        "name": "Organization",
+        "description": "Organization profile for healthcare organizations, this resource contains all information\nrelated to healthcare organizations.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-practitioner"
+        },
+        "name": "Practitioner",
+        "description": "Practitioner profile for healthcare professionals, this resource contains all demographic information\nreleted to healthcare professionals.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-practitioner-role"
+        },
+        "name": "Practitioner Role",
+        "description": "Practitioner Role profile for healthcare professionals, all references to healthcare professionals\nwill be of this type.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-radiation-dose-information"
+        },
+        "name": "Radiation Dose Observation",
+        "description": "A record for the radiation dose the subject has been exposed to during an imaging procedure.\n\nThis resource is a placeholder pending further refinement in this topic.\n\n\nE.g. based on information from https://dicom.nema.org/medical/dicom/current/output/html/part16.html.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "ValueSet/im-radiation-dose-observation-unit-vs"
+        },
+        "name": "Radiation Dose Observation Unit ValueSet",
+        "description": "Units for Radiation Dose Observations.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-recommended-careplan"
+        },
+        "name": "Recommended CarePlan",
+        "description": "Recommended care plan for the patient based on the imaging study. \nContains the narrative containing the plan including proposals, goals, and order requests for monitoring, tracking, or improving the condition of the patient. In the future it is expected that the care plan could be provided in a structured and coded format.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-author"
+        },
+        "name": "Report Author",
+        "description": "Author (by whom the imaging report or a subset of its results was authored). Multiple authors could be provided.",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-result-validator"
+        },
+        "name": "Result Validator",
+        "description": "Result validator. The healthcare professional who is responsible \nvalidating the diagnostic report. ",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-viewer-endpoint"
+        },
+        "name": "Viewer endpoint",
+        "description": "This profile defines a placeholder for an Endpoint for a viewer that can be used to access the study, serie it is present on.\nThe application is based on [IHE-IID](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_IID.pdf).",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "StructureDefinition/im-wado-endpoint"
+        },
+        "name": "WADO endpoint",
+        "description": "This profile defines the WADO endpoint for accessing imaging study content.",
+        "exampleBoolean": false
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "index.html",
+          "title": "Home",
+          "generation": "markdown",
+          "page": [
+            {
+              "nameUrl": "changes.html",
+              "title": "Changes",
+              "generation": "markdown"
+            },
+            {
+              "nameUrl": "adapting.html",
+              "title": "Adapting Guidelines for Country use",
+              "generation": "markdown"
+            }
+          ]
+        },
+        {
+          "nameUrl": "actors-and-transactions.html",
+          "title": "Actors and Transactions",
+          "generation": "markdown",
+          "page": [
+            {
+              "nameUrl": "system-actors.html",
+              "title": "System Actors",
+              "generation": "markdown"
+            },
+            {
+              "nameUrl": "use-cases.html",
+              "title": "Use Cases",
+              "generation": "markdown"
+            },
+            {
+              "nameUrl": "transactions.html",
+              "title": "Transactions",
+              "generation": "markdown"
+            }
+          ]
+        },
+        {
+          "nameUrl": "domain-model.html",
+          "title": "Domain Model",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "ehn-guidelines.html",
+          "title": "eHN Imaging Studies and Reports Guidelines",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "design-considerations.html",
+          "title": "Design Considerations",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "contributors.html",
+          "title": "Contributors",
+          "generation": "markdown"
+        },
+        {
+          "nameUrl": "open-topics.html",
+          "title": "Open Topics",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2025+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "ci-build"
+      },
+      {
+        "code": "apply-contact",
+        "value": "true"
+      },
+      {
+        "code": "apply-jurisdiction",
+        "value": "true"
+      },
+      {
+        "code": "apply-publisher",
+        "value": "true"
+      },
+      {
+        "code": "apply-version",
+        "value": "true"
+      },
+      {
+        "code": "show-inherited-invariants",
+        "value": "true"
+      },
+      {
+        "code": "usage-stats-opt-out",
+        "value": "true"
+      }
+    ]
+  }
+}

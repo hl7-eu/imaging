@@ -1,0 +1,14 @@
+== Suppressed Messages ==
+
+# Add warning and/or information messages here after you've confirmed that they aren't really a problem
+# (And include comments like this justifying why)
+# See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
+
+# Logical model fields should allow this
+Constraint failed: eld-20: 'The first component of the path should be UpperCamelCase. Additional components (following a '.') should be lowerCamelCase. If this syntax is not adhered to, code generation tools may be broken. Logical models may be less concerned about this implication.' (defined in http://hl7.org/fhir/StructureDefinition/ElementDefinition)
+Coding has no system. A code with no system has no defined meaning, and it cannot be validated. A system should be provided
+is not fully defined and populated, and no targetScope is specified, so the target code checking will not be performed
+Reference must be to a ValueSet, but found a StructureDefinition instead
+
+# Outdated terminology references from R5
+Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction|5.0.0

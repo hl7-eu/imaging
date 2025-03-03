@@ -1,0 +1,13 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "DianosticoReporto",
+  "code": {
+    "text": "CT of head and neck"
+  },
+  "imagingStudy": [
+    {
+      "reference": "ImagingStudy/example"
+    }
+  ],
+  "status": "registered"
+}

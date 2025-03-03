@@ -1,0 +1,69 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-5.6-RecommendationsMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-5.6-RecommendationsMapping",
+  "title": "A.5.6 Recommendation",
+  "description": "This concept map defines the mapping between the eHN A.5.6 Recommendation section and the FHIR profiles. \nThe eHN Guideline requires narrative recommendations only.  It also states that in the future it is expected to also contain structured and coded recommendations. In order to support a transition towards a structured and coded format, the mapping is defined to the FHIR `CarePlan` resource. This also prevents akward mappings on the text field of `Composition.section`.",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "description",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "description",
+          "display": "A.5.6.1 Description"
+        },
+        {
+          "target": [
+            {
+              "code": "description",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "carePlan",
+          "display": "A.5.6.2 Care plan"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-recommendation",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-recommended-careplan"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section[recommendation].entry",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "description",
+          "display": "A.5.6.1 Description"
+        },
+        {
+          "target": [
+            {
+              "code": "section[recommendation].entry",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "carePlan",
+          "display": "A.5.6.2 Care plan"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-recommendation",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.5.6",
+  "status": "draft",
+  "experimental": true,
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-recommendation"
+}

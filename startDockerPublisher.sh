@@ -1,4 +1,5 @@
 #!/bin/sh
+docker build -t dbuild docker-builder/
 
 docker run \
     --rm -it \

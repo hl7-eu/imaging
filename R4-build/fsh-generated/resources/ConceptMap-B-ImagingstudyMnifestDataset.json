@@ -1,0 +1,214 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "B-ImagingstudyMnifestDataset",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/B-ImagingstudyMnifestDataset",
+  "title": "B Comparison Study",
+  "description": "This concept map defines the mapping between the eHN B Comparison Study section and the FHIR profiles.",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier[studyInstanceUid]",
+              "display": ""
+            }
+          ],
+          "code": "studyInstanceUid",
+          "display": "B.1.1 Study instance UID"
+        },
+        {
+          "target": [
+            {
+              "code": "description",
+              "display": ""
+            }
+          ],
+          "code": "description",
+          "display": "B.1.2 Description"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[custodian].actor",
+              "display": ""
+            }
+          ],
+          "code": "studyCustodian",
+          "display": "B.1.3 Study custodian"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[custodian].actor->name",
+              "display": ""
+            }
+          ],
+          "code": "organizationName",
+          "display": "B.1.3.1 Organization name"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[custodian].actor->address",
+              "display": ""
+            }
+          ],
+          "code": "address",
+          "display": "B.1.3.2 Address"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[custodian].actor->telecom",
+              "display": ""
+            }
+          ],
+          "code": "contact",
+          "display": "B.1.3.3 Contact information"
+        },
+        {
+          "target": [
+            {
+              "code": "series",
+              "display": ""
+            }
+          ],
+          "code": "series",
+          "display": "B.1.4 List of Series"
+        },
+        {
+          "target": [
+            {
+              "code": "series.description",
+              "display": ""
+            }
+          ],
+          "code": "seriesDescription",
+          "display": "B.1.4.1 Series Description"
+        },
+        {
+          "target": [
+            {
+              "code": "series.uid",
+              "display": ""
+            }
+          ],
+          "code": "seriesInstanceUid",
+          "display": "B.1.4.2 Series Unique Identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "series.modality",
+              "display": ""
+            }
+          ],
+          "code": "modality",
+          "display": "B.1.4.3 Modality"
+        },
+        {
+          "target": [
+            {
+              "code": "series.number",
+              "display": ""
+            }
+          ],
+          "code": "seriesNumber",
+          "display": "B.1.4.5.1 Series Number"
+        },
+        {
+          "target": [
+            {
+              "code": "endpoint",
+              "display": ""
+            }
+          ],
+          "code": "seriesEndpoint",
+          "display": "B.1.4.6 Series endpoint"
+        },
+        {
+          "target": [
+            {
+              "code": "series.endpoint",
+              "display": ""
+            }
+          ],
+          "code": "seriesEndpoint",
+          "display": "B.1.4.6 Series endpoint"
+        },
+        {
+          "target": [
+            {
+              "code": "series.instance",
+              "display": ""
+            }
+          ],
+          "code": "instance",
+          "display": "B.1.4.7 List of Instances in the series"
+        },
+        {
+          "target": [
+            {
+              "code": "series.instance.uid",
+              "display": ""
+            }
+          ],
+          "code": "instanceGlobalUid",
+          "display": "B.1.4.7.1 Instance Globally Unique Identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "series.instance.sopClass",
+              "display": ""
+            }
+          ],
+          "code": "instanceClassUid",
+          "display": "B.1.4.7.2 Instance Class Globally Unique Identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "series.instance.number",
+              "display": ""
+            }
+          ],
+          "code": "instanceNumber",
+          "display": "B.1.4.7.3 Instance Number"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-imaging-study-manifest-dataset",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imagingstudy"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "code",
+              "display": "Code the radiation dose."
+            }
+          ],
+          "code": "radiationDoseInformation",
+          "display": "B.1.4.4 Radiation dose information"
+        },
+        {
+          "target": [
+            {
+              "code": "valueQuantity",
+              "display": "Dose value."
+            }
+          ],
+          "code": "radiationDoseInformation",
+          "display": "B.1.4.4 Radiation dose information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-imaging-study-manifest-dataset",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-radiation-dose-information"
+    }
+  ],
+  "name": "B",
+  "status": "draft",
+  "experimental": true
+}

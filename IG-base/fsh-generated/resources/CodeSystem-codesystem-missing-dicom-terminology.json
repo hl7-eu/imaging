@@ -1,0 +1,48 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "MissingDicomTerminology",
+  "id": "codesystem-missing-dicom-terminology",
+  "title": "Missing DICOM Terminology",
+  "description": "Code system for codes that are defined in DICOM but for which no matching code system is available in FHIR.",
+  "url": "http://hl7.eu/fhir/imaging/CodeSystem/codesystem-missing-dicom-terminology",
+  "concept": [
+    {
+      "code": "elements",
+      "display": "DICOM Elements",
+      "definition": "DICOM Element definitions",
+      "concept": [
+        {
+          "code": "00080018",
+          "display": "SOP Instance UID",
+          "definition": "SOP Instance UID"
+        },
+        {
+          "code": "00080016",
+          "display": "SOP Class UID",
+          "definition": "SOP Class UID"
+        },
+        {
+          "code": "00080060",
+          "display": "Modality",
+          "definition": "Modality"
+        },
+        {
+          "code": "00080061",
+          "display": "Series Instance UID",
+          "definition": "Series Instance UID"
+        },
+        {
+          "code": "00080062",
+          "display": "Study Instance UID",
+          "definition": "Study Instance UID"
+        }
+      ]
+    }
+  ],
+  "experimental": true,
+  "caseSensitive": true,
+  "hierarchyMeaning": "is-a",
+  "count": 6
+}

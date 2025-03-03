@@ -1,0 +1,441 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-5.1-ImagingProcedureDescriptionMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-5.1-ImagingProcedureDescriptionMapping",
+  "title": "A.5.1 Imaging Procedure Description",
+  "description": "This concept map defines the mapping between the A.3 Order Reason section and the FHIR profiles. The rationale related to representing procedure phases can be found in [Design consideration: Procedure Phases](design-considerations.html#procedure-phases).",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "occurenceDateTime",
+              "display": "As a single time",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "procedureDate",
+          "display": "A.5.1.2 Procedure date"
+        },
+        {
+          "target": [
+            {
+              "code": "occurencePeriod",
+              "display": "As a time period",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "procedureDate",
+          "display": "A.5.1.2 Procedure date"
+        },
+        {
+          "target": [
+            {
+              "code": "note",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "procedureText",
+          "display": "A.5.1.3 Procedure text"
+        },
+        {
+          "target": [
+            {
+              "code": "code",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "procedureCode",
+          "display": "A.5.1.4 Procedure code"
+        },
+        {
+          "target": [
+            {
+              "code": "code.display",
+              "display": "Name of procedure in coding standard.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "procedureName",
+          "display": "A.5.1.5 Procedure name"
+        },
+        {
+          "target": [
+            {
+              "code": "bodySite",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.5.1.6.1 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[imaging-device]",
+              "display": "Performer representing the imaging device.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "deviceId",
+          "display": "A.5.1.7 Device ID"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[performer]",
+              "display": "The healthcare professional performing the study.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performer",
+          "display": "A.5.1.8 Performer"
+        },
+        {
+          "target": [
+            {
+              "code": "#performer[performer].actor.practitioner.id",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerId",
+          "display": "A.5.1.8.1 Performer Id"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[performer].actor.practitioner.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerName",
+          "display": "A.5.1.8.2 Performer Name"
+        },
+        {
+          "target": [
+            {
+              "code": "performer[performer].actor.organization.",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerOrganization",
+          "display": "A.5.1.8.3 Performer Organisation"
+        },
+        {
+          "target": [
+            {
+              "code": "note",
+              "display": "Uncoded information",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "additionalProcedureDetails",
+          "display": "A.5.1.9 Additional procedure details"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-procedure"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "partOf[imagingstudy]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "modality",
+          "display": "A.5.1 Imaging Procedure Description"
+        },
+        {
+          "target": [
+            {
+              "code": "modality",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "modality",
+          "display": "A.5.1.1 Modality"
+        },
+        {
+          "target": [
+            {
+              "code": "started",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "procedureDate",
+          "display": "A.5.1.2 Procedure date"
+        },
+        {
+          "target": [
+            {
+              "code": "series.bodySite",
+              "display": "Include code and when required reference to body site or structure.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "anatomicalFocus",
+          "display": "A.5.1.6 Anatomical focus"
+        },
+        {
+          "target": [
+            {
+              "code": "series.bodySite",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.5.1.6.1 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "series.laterality",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "laterality",
+          "display": "A.5.1.6.2 Laterality"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imagingstudy"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "practitioner.identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerId",
+          "display": "A.5.1.8.1 Performer Id"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerName",
+          "display": "A.5.1.8.2 Performer Name"
+        },
+        {
+          "target": [
+            {
+              "code": "organization",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerOrganization",
+          "display": "A.5.1.8.3 Performer Organisation"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-performer"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerId",
+          "display": "A.5.1.8.1 Performer Id"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "performerName",
+          "display": "A.5.1.8.2 Performer Name"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "morphology",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.5.1.6.1 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "includedStructure",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.5.1.6.1 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "excludedStructure",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.5.1.6.1 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "includedStructure.laterality",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "laterality",
+          "display": "A.5.1.6.2 Laterality"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-body-structure"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "equivalent",
+              "display": "Device ID",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "deviceId",
+          "display": "A.5.1.7 Device ID"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imaging-device"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "category",
+              "display": "marks it as a phase",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "additionalProcedureDetails",
+          "display": "A.5.1.9 Additional procedure details"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imaging-study-phase"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section[procedure].entry[procedure]",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "imagingProcedureDescription",
+          "display": "A.5.1 Imaging procedure description"
+        },
+        {
+          "target": [
+            {
+              "code": "section[procedure].entry[performer]",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "imagingProcedureDescription",
+          "display": "A.5.1 Imaging procedure description"
+        },
+        {
+          "target": [
+            {
+              "code": "section[procedure].entry[imaging-device]",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "imagingProcedureDescription",
+          "display": "A.5.1 Imaging procedure description"
+        },
+        {
+          "target": [
+            {
+              "code": "section[procedure].entry[imaging-phase]",
+              "display": "",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "imagingProcedureDescription",
+          "display": "A.5.1 Imaging procedure description"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "supportingInfo[procedure]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "orderInformation",
+          "display": "A.2 Order Information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.5.1",
+  "status": "draft",
+  "experimental": true,
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description"
+}

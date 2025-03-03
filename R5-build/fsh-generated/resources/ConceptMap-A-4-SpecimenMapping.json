@@ -1,0 +1,141 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-4-SpecimenMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-4-SpecimenMapping",
+  "title": "A.4 Specimen",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "specimenIdentifier",
+          "display": "A.4.1 Specimen identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "material",
+          "display": "A.4.2 Material"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "collectionPeriod",
+          "display": "A.4.3 Collection period"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "anatomicLocation",
+          "display": "A.4.4 Anatomic location"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "morphology",
+          "display": "A.4.5 Morphology"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "sourceDevice",
+          "display": "A.4.6 Source Device"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "collectionProcedureMethod",
+          "display": "A.4.7 Collection procedure/method"
+        },
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "To be done",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "receivedDate",
+          "display": "A.4.8 Received date"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imagingstudy"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "specimenInformation",
+          "display": "A.4 Specimen information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "tbd",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "specimenInformation",
+          "display": "A.4 Specimen information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.4",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.3 Order Reason section and the FHIR profiles.  \n\nThe Specimen relates to a different type of information stored in a PACS: digital pathology. This has to analysed in more detail before inclusion in the IG. One of the things that might be impacted is the structure of the report.",
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason"
+}

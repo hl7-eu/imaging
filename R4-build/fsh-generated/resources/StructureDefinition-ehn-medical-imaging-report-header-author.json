@@ -1,0 +1,87 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-header-author",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+  "name": "MedicalImagingReportHeaderAuthorEhn",
+  "title": "A.1.5 Author",
+  "status": "draft",
+  "description": "Author (by whom the imaging report or a subset of its results was authored). Multiple authors could be provided.",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-header-author",
+        "path": "ehn-medical-imaging-report-header-author",
+        "short": "A.1.5 Author",
+        "definition": "Author (by whom the imaging report or a subset of its results was authored). Multiple authors could be provided."
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-author.authorIdentifier",
+        "path": "ehn-medical-imaging-report-header-author.authorIdentifier",
+        "short": "A.1.5.1 Author identifier",
+        "definition": "The health professional or authoring device identification number. Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-author.authorName",
+        "path": "ehn-medical-imaging-report-header-author.authorName",
+        "short": "A.1.5.2 Author name",
+        "definition": "Person or device name.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HumanName"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-author.authorOrganization",
+        "path": "ehn-medical-imaging-report-header-author.authorOrganization",
+        "short": "A.1.5.3 Author organization",
+        "definition": "The healthcare provider organization information.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-author.authoringDateTime",
+        "path": "ehn-medical-imaging-report-header-author.authoringDateTime",
+        "short": "A.1.5.4 Authoring date and time",
+        "definition": "Date and time the document was last modified. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

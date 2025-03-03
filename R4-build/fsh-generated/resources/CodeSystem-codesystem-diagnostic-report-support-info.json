@@ -1,0 +1,21 @@
+{
+  "resourceType": "CodeSystem",
+  "status": "draft",
+  "content": "complete",
+  "name": "DiagnosticReportSupportingInfoCodeSystem",
+  "id": "codesystem-diagnostic-report-support-info",
+  "title": "Diagnostic Report Support Info Code System",
+  "description": "Code system for codes to be used in `DiagnosticReport.supportInfo` for imaging reports.",
+  "url": "http://hl7.eu/fhir/imaging/CodeSystem/codesystem-diagnostic-report-support-info",
+  "concept": [
+    {
+      "code": "imaging-procedure",
+      "display": "Imaging Procedure",
+      "definition": "The procedure in which the imaging study was performed supportInfo codesCodes to be used in `DiagnosticReport.supportInfo` for imaging reports."
+    }
+  ],
+  "experimental": true,
+  "caseSensitive": true,
+  "hierarchyMeaning": "is-a",
+  "count": 1
+}

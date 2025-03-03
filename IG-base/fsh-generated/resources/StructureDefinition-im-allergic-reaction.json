@@ -1,0 +1,124 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-allergic-reaction",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-allergic-reaction",
+  "name": "ImAllergicReaction",
+  "title": "Allergic Reaction",
+  "status": "draft",
+  "description": "This profile represents a suspected allergic reaction occurred during or due to an imaging study procedure.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "AllergyIntolerance",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/AllergyIntolerance",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "AllergyIntolerance.meta.security",
+        "path": "AllergyIntolerance.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.language",
+        "path": "AllergyIntolerance.language",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.verificationStatus",
+        "path": "AllergyIntolerance.verificationStatus",
+        "short": "Verification status of the allergic reaction",
+        "definition": "The verification status to support the allergic origin of the observed reaction",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.type",
+        "path": "AllergyIntolerance.type",
+        "short": "The type of the allergic reaction",
+        "definition": "Type of underlying pathogenic mechanism for the reaction",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.criticality",
+        "path": "AllergyIntolerance.criticality",
+        "short": "Criticality of the allergic reaction",
+        "definition": "Potential risk for future life-threatening adverse reactions when exposed to a substance known to cause an adverse reaction.",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.note",
+        "path": "AllergyIntolerance.note",
+        "short": "Free text to capture additional information about the allergic reaction",
+        "definition": "Additional information about the allergic reaction",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.reaction",
+        "path": "AllergyIntolerance.reaction",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.reaction.extension",
+        "path": "AllergyIntolerance.reaction.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "AllergyIntolerance.reaction.extension:allergyCertainty",
+        "path": "AllergyIntolerance.reaction.extension",
+        "sliceName": "allergyCertainty",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/allergyintolerance-certainty"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.reaction.substance",
+        "path": "AllergyIntolerance.reaction.substance",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.reaction.manifestation",
+        "path": "AllergyIntolerance.reaction.manifestation",
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.reaction.onset",
+        "path": "AllergyIntolerance.reaction.onset",
+        "mustSupport": true
+      },
+      {
+        "id": "AllergyIntolerance.reaction.severity",
+        "path": "AllergyIntolerance.reaction.severity",
+        "mustSupport": true
+      }
+    ]
+  }
+}

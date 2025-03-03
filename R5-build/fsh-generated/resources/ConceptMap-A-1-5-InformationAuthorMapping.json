@@ -1,0 +1,208 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-5-InformationAuthorMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-5-InformationAuthorMapping",
+  "title": "A.1.5 Information Author",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "practitioner.identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authorIdentifier",
+          "display": "A.1.5.1 Author identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "providerName",
+          "display": "A.1.5.2 Author name"
+        },
+        {
+          "target": [
+            {
+              "code": "organization.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "providerOrganization",
+          "display": "A.1.5.3 Author organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-author"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authorIdentifier",
+          "display": "A.1.5.1 Author identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "providerName",
+          "display": "A.1.5.2 Author name"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "organization.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authorOrganization",
+          "display": "A.1.5.3 Author organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-organization"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "issued",
+              "display": "",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
+          "code": "authoringDateTime",
+          "display": "A.1.5 Authoring Datetime"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "author[author]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "author",
+          "display": "A.1.5 Author"
+        },
+        {
+          "target": [
+            {
+              "code": "author[authoring-device]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "author",
+          "display": "A.1.5 Authoring Device"
+        },
+        {
+          "target": [
+            {
+              "code": "date",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authoringDateTime",
+          "display": "A.1.5 Author"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "resultsInterpreter[author]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "author",
+          "display": "A.1.5 Author"
+        },
+        {
+          "target": [
+            {
+              "code": "resultsInterpreter",
+              "display": "Is not mapped",
+              "relationship": "not-related-to"
+            }
+          ],
+          "code": "author",
+          "display": "A.1.5 Authoring Device"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authorIdentifier",
+          "display": "A.1.5 Author"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "authorName",
+          "display": "A.1.5 Author"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-authoring-device"
+    }
+  ],
+  "name": "A.1.5",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.5 Information Author section and the FHIR profiles."
+}

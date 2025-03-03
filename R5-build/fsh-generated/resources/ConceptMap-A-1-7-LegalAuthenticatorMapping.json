@@ -1,0 +1,141 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-7-LegalAuthenticatorMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-7-LegalAuthenticatorMapping",
+  "title": "A.1.7 ResultValidator",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "practitioner.identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validatorIdentifier",
+          "display": "A.1.7.1 Result Validator identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "practitioner.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validatorName",
+          "display": "A.1.7.2 Result Validator name"
+        },
+        {
+          "target": [
+            {
+              "code": "organization.name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validatorOrganization",
+          "display": "A.1.7.3 Result Validator organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-result-validator"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validatorIdentifier",
+          "display": "A.1.7.1 Result Validator identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validatorName",
+          "display": "A.1.7.2 Result Validator name"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validatorOrganization",
+          "display": "A.1.7.3 Result Validator organization"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-organization"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "issued",
+              "display": "DiagnosticReport.issuer could also have other meanings.",
+              "relationship": "source-is-narrower-than-target"
+            }
+          ],
+          "code": "validatorDateTime",
+          "display": "A.1.7.4 Authentication date and timeDatetime"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "attester[legal-authenticator]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validator",
+          "display": "A.1.7 Result Validator"
+        },
+        {
+          "target": [
+            {
+              "code": "attester[legal-authenticator].time",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "validationDateTime",
+          "display": "A.1.7 Authentication date and time"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.1.7",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.7 Result Validator section and the FHIR profiles."
+}

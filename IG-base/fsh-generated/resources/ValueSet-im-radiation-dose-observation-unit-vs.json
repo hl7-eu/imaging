@@ -1,0 +1,30 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ImRadiationDoseObservationUnitValueSet",
+  "id": "im-radiation-dose-observation-unit-vs",
+  "title": "Radiation Dose Observation Unit ValueSet",
+  "description": "Units for Radiation Dose Observations.",
+  "url": "http://hl7.eu/fhir/imaging/ValueSet/im-radiation-dose-observation-unit-vs",
+  "compose": {
+    "include": [
+      {
+        "system": "http://unitsofmeasure.org",
+        "concept": [
+          {
+            "code": "mGy",
+            "display": "mGy"
+          },
+          {
+            "code": "mGy.cm",
+            "display": "mGy.cm"
+          },
+          {
+            "code": "mSv",
+            "display": "mSv"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImImagingSelection",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ImImagingSelection",
+  "name": "ImImagingSelection",
+  "title": "Represents the part of an imaging study.",
+  "status": "draft",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ImagingSelection",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ImagingSelection",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ImagingSelection.meta.security",
+        "path": "ImagingSelection.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingSelection.language",
+        "path": "ImagingSelection.language",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingSelection.status",
+        "path": "ImagingSelection.status",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingSelection.subject",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-display-hint",
+            "valueString": "dicom=http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.2.2.html"
+          },
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingSelection.subject",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingSelection.category",
+        "path": "ImagingSelection.category",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingSelection.code",
+        "path": "ImagingSelection.code",
+        "mustSupport": true
+      }
+    ]
+  }
+}

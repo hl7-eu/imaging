@@ -1,0 +1,139 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-header",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+  "name": "MedicalImagingReportHeaderEhn",
+  "title": "A.1 Report header data elements (eHN)",
+  "status": "draft",
+  "description": "A.1 Report header data elements (eHN)",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-header",
+        "path": "ehn-medical-imaging-report-header",
+        "short": "A.1 Report header data elements (eHN)",
+        "definition": "A.1 Report header data elements (eHN)"
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.identification",
+        "path": "ehn-medical-imaging-report-header.identification",
+        "short": "A.1.1 Identification of the patient/subject",
+        "definition": "A.1.1 Identification of the patient/subject",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-identification"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.contact",
+        "path": "ehn-medical-imaging-report-header.contact",
+        "short": "A.1.2 Patient/subject related contact information",
+        "definition": "A.1.2 Patient/subject related contact information",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-contact"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.insuranceAndPayment",
+        "path": "ehn-medical-imaging-report-header.insuranceAndPayment",
+        "short": "A.1.3 Health insurance and payment information",
+        "definition": " Health insurance information is not always required, \nhowever, in some jurisdictions, the insurance number is also \nused as the patient identifier. It is necessary not just for \nidentification but also forms access to funding for care.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-health-insurance-information"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.informationRecipient",
+        "path": "ehn-medical-imaging-report-header.informationRecipient",
+        "short": "A.1.4 Information recipient",
+        "definition": "Intended recipient or recipients of the report, e.g., GP, another specialist. Multiple recipients could be provided.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-information-recipient"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.author",
+        "path": "ehn-medical-imaging-report-header.author",
+        "short": "A.1.5 Author",
+        "definition": "Author (by whom the imaging report or a subset of its results was authored). Multiple authors could be provided.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-author"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.legalAuthenticator",
+        "path": "ehn-medical-imaging-report-header.legalAuthenticator",
+        "short": "A.1.6 Legal authenticator",
+        "definition": "The person taking responsibility for the medical content of the document.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-legal-authenticator"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.resultValidator",
+        "path": "ehn-medical-imaging-report-header.resultValidator",
+        "short": "A.1.7 Result validator",
+        "definition": "A.1.7 Result validator",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header.documentMetadata",
+        "path": "ehn-medical-imaging-report-header.documentMetadata",
+        "short": "A.1.8 Document metadata",
+        "definition": "A.1.8 Document metadata",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-document-metadata"
+          }
+        ]
+      }
+    ]
+  }
+}

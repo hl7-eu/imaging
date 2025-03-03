@@ -1,0 +1,87 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-header-legal-authenticator",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-legal-authenticator",
+  "name": "MedicalImagingReportHeaderLegalAuthenticatorEhn",
+  "title": "A.1.6 Legal authenticator",
+  "status": "draft",
+  "description": "The person taking responsibility for the medical content of the document.",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-legal-authenticator",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-header-legal-authenticator",
+        "path": "ehn-medical-imaging-report-header-legal-authenticator",
+        "short": "A.1.6 Legal authenticator",
+        "definition": "The person taking responsibility for the medical content of the document."
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorIdentifier",
+        "path": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorIdentifier",
+        "short": "A.1.6.1 Authenticator identifier",
+        "definition": "The health professional identification number. Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorName",
+        "path": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorName",
+        "short": "A.1.6.2 Authenticator name",
+        "definition": "Person name [the structure of the name will be the same as for the patient (given name, family name / surname)].",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HumanName"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorOrganization",
+        "path": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorOrganization",
+        "short": "A.1.6.3 Authenticator organization",
+        "definition": "The healthcare provider organization information.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorDateTime",
+        "path": "ehn-medical-imaging-report-header-legal-authenticator.authenticatorDateTime",
+        "short": "A.1.6.4 Authenticator date and time",
+        "definition": "Date and time the document was last authenticated. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-legal-authenticator",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-legal-authenticator",
+  "name": "ImLegalAuthenticator",
+  "title": "Legal Authenticator",
+  "status": "draft",
+  "description": "Legal authenticator (The person taking responsibility for the medical content of the document). ",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PractitionerRole",
+  "baseDefinition": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner-role",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "PractitionerRole.practitioner",
+        "path": "PractitionerRole.practitioner",
+        "min": 1
+      }
+    ]
+  }
+}

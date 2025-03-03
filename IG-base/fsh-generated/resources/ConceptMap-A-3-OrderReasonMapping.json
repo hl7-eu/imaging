@@ -1,0 +1,130 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-3-OrderReasonMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-3-OrderReasonMapping",
+  "title": "A.3 Order Reason to FHIR profiles",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "reason.concept.coding",
+              "display": "When the reason is expressed as a code",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "reason",
+          "display": "A.3.1 Reason"
+        },
+        {
+          "target": [
+            {
+              "code": "reason.concept.text",
+              "display": "When the reason is expressed as text",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "reason",
+          "display": "A.3.1 Reason"
+        },
+        {
+          "target": [
+            {
+              "code": "supportingInfo[problem].coding",
+              "display": "When condition is expressed as a code",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "problemDiagnosisCondition",
+          "display": "A.3.2 Problem"
+        },
+        {
+          "target": [
+            {
+              "code": "supportingInfo[problem]",
+              "display": "When condition is expressed as a Condition",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "problemDiagnosisCondition",
+          "display": "A.3.2 Problem"
+        },
+        {
+          "target": [
+            {
+              "code": "reason.concept.coding",
+              "display": "When reason is expressed as code",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "clinicalQuestion",
+          "display": "A.3.3 Clinical question"
+        },
+        {
+          "target": [
+            {
+              "code": "reason.concept.text",
+              "display": "When reason is expressed as code",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "clinicalQuestion",
+          "display": "A.3.3 Clinical question"
+        },
+        {
+          "target": [
+            {
+              "code": "reason.concept.reference",
+              "display": "When reason is a reference to a structured element.",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "clinicalQuestion",
+          "display": "A.3.3 Clinical question"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "based[ImOrder]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "orderInformation",
+          "display": "A.2 Order Information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "based[ImOrder]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "orderInformation",
+          "display": "A.2 Order Information"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.3",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.3 Order Reason section and the FHIR profiles.",
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason"
+}

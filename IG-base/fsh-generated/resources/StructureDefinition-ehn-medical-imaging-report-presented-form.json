@@ -1,0 +1,48 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-presented-form",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-presented-form",
+  "name": "MedicalImagingReportOrderPresentedFormEhn",
+  "title": "A.8 Presented form",
+  "status": "draft",
+  "description": "Presented form",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-presented-form",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-presented-form",
+        "path": "ehn-medical-imaging-report-presented-form",
+        "short": "A.8 Presented form",
+        "definition": "Presented form"
+      },
+      {
+        "id": "ehn-medical-imaging-report-presented-form.attachment",
+        "path": "ehn-medical-imaging-report-presented-form.attachment",
+        "short": "A.8.1 Attachment",
+        "definition": "Entire report as issued. Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Attachment"
+          }
+        ]
+      }
+    ]
+  }
+}

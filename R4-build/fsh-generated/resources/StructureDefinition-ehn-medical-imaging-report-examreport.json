@@ -1,0 +1,113 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport",
+  "name": "MedicalImagingReportOrderExaminationReportEhn",
+  "title": "A.5 Examination Report",
+  "status": "draft",
+  "description": "Examination Report",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport",
+        "path": "ehn-medical-imaging-report-examreport",
+        "short": "A.5 Examination Report",
+        "definition": "Examination Report"
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport.imagingProcedureDescription",
+        "path": "ehn-medical-imaging-report-examreport.imagingProcedureDescription",
+        "short": "A.5.1 Imaging procedure description",
+        "definition": "Note: this part records the technical details of the performed procedures and may include information about protocol, imaging phases, imaging device, anatomical location, performer, place, date and time of performance.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport.medication",
+        "path": "ehn-medical-imaging-report-examreport.medication",
+        "short": "A.5.2 Medication",
+        "definition": "Medication section includes information about medication administered during the medical imaging examination (contrast, sedation, stress agents), etc.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-imaging-proc-description"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport.adverseReaction",
+        "path": "ehn-medical-imaging-report-examreport.adverseReaction",
+        "short": "A.5.3 Adverse reaction",
+        "definition": "Adverse reactions manifested during imaging investigation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport.results",
+        "path": "ehn-medical-imaging-report-examreport.results",
+        "short": "A.5.4 Results",
+        "definition": "Note: The results summarise the findings and observations by the health professional following the imaging study. Note: this part includes textual as well as structured results or findings of the imaging investigation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-results"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport.conclusion",
+        "path": "ehn-medical-imaging-report-examreport.conclusion",
+        "short": "A.5.5 Conclusion",
+        "definition": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-conclusion"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport.recommendation",
+        "path": "ehn-medical-imaging-report-examreport.recommendation",
+        "short": "A.5.6 Recommendation",
+        "definition": "Recommendation",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-recommendation"
+          }
+        ]
+      }
+    ]
+  }
+}

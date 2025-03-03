@@ -1,0 +1,48 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-body-structure",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-body-structure",
+  "name": "ImBodyStructure",
+  "status": "draft",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "BodyStructure",
+  "baseDefinition": "http://hl7.eu/fhir/base/StructureDefinition/BodyStructure-eu",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "BodyStructure.meta.security",
+        "path": "BodyStructure.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "BodyStructure.language",
+        "path": "BodyStructure.language",
+        "mustSupport": true
+      },
+      {
+        "id": "BodyStructure.active",
+        "path": "BodyStructure.active",
+        "mustSupport": true
+      },
+      {
+        "id": "BodyStructure.morphology",
+        "path": "BodyStructure.morphology",
+        "min": 1,
+        "mustSupport": true
+      }
+    ]
+  }
+}

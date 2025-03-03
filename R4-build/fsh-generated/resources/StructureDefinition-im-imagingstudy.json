@@ -1,0 +1,448 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-imagingstudy",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imagingstudy",
+  "name": "ImImagingStudy",
+  "title": "ImagingStudy",
+  "status": "draft",
+  "description": "This profile represents an imaging study instance.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "ImagingStudy",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ImagingStudy",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ImagingStudy",
+        "path": "ImagingStudy",
+        "constraint": [
+          {
+            "key": "im-imagingstudy-01",
+            "severity": "warning",
+            "human": "A DICOM instance UID must start with 'urn:oid:'",
+            "expression": "identifier.where(system='urn:dicom:uid').value.startsWith('urn:oid:')",
+            "source": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imagingstudy"
+          }
+        ]
+      },
+      {
+        "id": "ImagingStudy.meta.security",
+        "path": "ImagingStudy.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.language",
+        "path": "ImagingStudy.language",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.identifier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingStudy.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "system"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.identifier:studyInstanceUid",
+        "path": "ImagingStudy.identifier",
+        "sliceName": "studyInstanceUid",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.identifier:studyInstanceUid.system",
+        "path": "ImagingStudy.identifier.system",
+        "patternUri": "urn:dicom:uid"
+      },
+      {
+        "id": "ImagingStudy.status",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingStudy.status",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.subject",
+        "path": "ImagingStudy.subject",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-patient"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.basedOn",
+        "path": "ImagingStudy.basedOn",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "ImagingStudy.basedOn:imorderaccession",
+        "path": "ImagingStudy.basedOn",
+        "sliceName": "imorderaccession",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-order"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.endpoint",
+        "path": "ImagingStudy.endpoint",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.endpoint:wado",
+        "path": "ImagingStudy.endpoint",
+        "sliceName": "wado",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-wado-endpoint"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.endpoint:iid",
+        "path": "ImagingStudy.endpoint",
+        "sliceName": "iid",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-viewer-endpoint"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.description",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingStudy.description",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series",
+        "path": "ImagingStudy.series",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.uid",
+        "path": "ImagingStudy.series.uid",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.number",
+        "path": "ImagingStudy.series.number",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.modality",
+        "path": "ImagingStudy.series.modality",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.description",
+        "path": "ImagingStudy.series.description",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.endpoint",
+        "path": "ImagingStudy.series.endpoint",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.endpoint:wado",
+        "path": "ImagingStudy.series.endpoint",
+        "sliceName": "wado",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-wado-endpoint"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.endpoint:iid",
+        "path": "ImagingStudy.series.endpoint",
+        "sliceName": "iid",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-viewer-endpoint"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.performer",
+        "path": "ImagingStudy.series.performer",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "actor"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.performer:performer",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingStudy.series.performer",
+        "sliceName": "performer",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.performer:performer.actor",
+        "path": "ImagingStudy.series.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner-role"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ImagingStudy.series.performer:device",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingStudy.series.performer",
+        "sliceName": "device",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.performer:device.actor",
+        "path": "ImagingStudy.series.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-imaging-device"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ImagingStudy.series.performer:custodian",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "ImagingStudy.series.performer",
+        "sliceName": "custodian",
+        "min": 0,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.performer:custodian.actor",
+        "path": "ImagingStudy.series.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging/StructureDefinition/im-organization"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ImagingStudy.series.instance",
+        "path": "ImagingStudy.series.instance",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.instance.uid",
+        "path": "ImagingStudy.series.instance.uid",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.instance.sopClass",
+        "path": "ImagingStudy.series.instance.sopClass",
+        "mustSupport": true
+      },
+      {
+        "id": "ImagingStudy.series.instance.number",
+        "path": "ImagingStudy.series.instance.number",
+        "mustSupport": true
+      }
+    ]
+  }
+}

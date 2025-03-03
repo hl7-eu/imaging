@@ -1,0 +1,730 @@
+[
+  {
+    "outputFile": "ActorDefinition-ImProducer.json",
+    "fshName": "ImProducer",
+    "fshType": "Instance",
+    "fshFile": "actors/producer.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
+    "outputFile": "CodeSystem-codesystem-diagnostic-report-support-info.json",
+    "fshName": "DiagnosticReportSupportingInfoCodeSystem",
+    "fshType": "CodeSystem",
+    "fshFile": "terminologies/DiagnosticReportSupportInfo.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
+    "outputFile": "CodeSystem-codesystem-endpoint-terminology.json",
+    "fshName": "Hl7EuImagingEndpointTerminologyCodeSystem",
+    "fshType": "CodeSystem",
+    "fshFile": "terminologies/EndpointTerminology.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
+    "outputFile": "CodeSystem-codesystem-missing-dicom-terminology.json",
+    "fshName": "MissingDicomTerminology",
+    "fshType": "CodeSystem",
+    "fshFile": "terminologies/MissingDicomTerminology.fsh",
+    "startLine": 1,
+    "endLine": 14
+  },
+  {
+    "outputFile": "ConceptMap-A-1-1-PatientInformationMapping.json",
+    "fshName": "A-1-1-PatientInformationMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-1-patient-information.fsh",
+    "startLine": 1,
+    "endLine": 32
+  },
+  {
+    "outputFile": "ConceptMap-A-1-2-PatientContactInformationMapping.json",
+    "fshName": "A-1-2-PatientContactInformationMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-2-patient-contact-info.fsh",
+    "startLine": 1,
+    "endLine": 28
+  },
+  {
+    "outputFile": "ConceptMap-A-1-3-HealthInsurenceAndPaymentInformationMapping.json",
+    "fshName": "A-1-3-HealthInsurenceAndPaymentInformationMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-3-health-insurance-and-payment-information.fsh",
+    "startLine": 1,
+    "endLine": 34
+  },
+  {
+    "outputFile": "ConceptMap-A-1-4-InformationRecipientMapping.json",
+    "fshName": "A-1-4-InformationRecipientMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-4-information-recipient.fsh",
+    "startLine": 1,
+    "endLine": 41
+  },
+  {
+    "outputFile": "ConceptMap-A-1-5-InformationAuthorMapping.json",
+    "fshName": "A-1-5-InformationAuthorMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-5-author.fsh",
+    "startLine": 1,
+    "endLine": 57
+  },
+  {
+    "outputFile": "ConceptMap-A-1-6-LegalAuthenticatorMapping.json",
+    "fshName": "A-1-6-LegalAuthenticatorMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-6-legal-validator.fsh",
+    "startLine": 1,
+    "endLine": 42
+  },
+  {
+    "outputFile": "ConceptMap-A-1-7-LegalAuthenticatorMapping.json",
+    "fshName": "A-1-7-LegalAuthenticatorMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-7-result-validator.fsh",
+    "startLine": 1,
+    "endLine": 38
+  },
+  {
+    "outputFile": "ConceptMap-A-1-8-DocumentMetadataMapping.json",
+    "fshName": "A-1-8-DocumentMetadataMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A1-8-document-metadata.fsh",
+    "startLine": 1,
+    "endLine": 52
+  },
+  {
+    "outputFile": "ConceptMap-A-2-OrderInformationMapping.json",
+    "fshName": "A-2-OrderInformationMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A2-order-information.fsh",
+    "startLine": 1,
+    "endLine": 81
+  },
+  {
+    "outputFile": "ConceptMap-A-3-OrderReasonMapping.json",
+    "fshName": "A-3-OrderReasonMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A3-order-reason.fsh",
+    "startLine": 1,
+    "endLine": 30
+  },
+  {
+    "outputFile": "ConceptMap-A-4-SpecimenMapping.json",
+    "fshName": "A-4-SpecimenMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A4-specimen.fsh",
+    "startLine": 1,
+    "endLine": 36
+  },
+  {
+    "outputFile": "ConceptMap-A-5.1-ImagingProcedureDescriptionMapping.json",
+    "fshName": "A-5.1-ImagingProcedureDescriptionMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A5-1-imaging-procedure-description.fsh",
+    "startLine": 1,
+    "endLine": 135
+  },
+  {
+    "outputFile": "ConceptMap-A-5.2-ImagingProcedureMedicationMapping.json",
+    "fshName": "A-5.2-ImagingProcedureMedicationMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A5-2-imaging-procedure-medication.fsh",
+    "startLine": 1,
+    "endLine": 42
+  },
+  {
+    "outputFile": "ConceptMap-A-5.3-ImagingProcedureAdverseReactionMapping.json",
+    "fshName": "A-5.3-ImagingProcedureAdverseReactionMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A5-3-imaging-procedure-allergies.fsh",
+    "startLine": 1,
+    "endLine": 43
+  },
+  {
+    "outputFile": "ConceptMap-A-5.4-ResultsMapping.json",
+    "fshName": "A-5.4-ResultsMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A5-4-imaging-procedure-results.fsh",
+    "startLine": 1,
+    "endLine": 37
+  },
+  {
+    "outputFile": "ConceptMap-A-5.5-ConclusionMapping.json",
+    "fshName": "A-5.5-ConclusionMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A5-5-imaging-procedure-conclusions.fsh",
+    "startLine": 1,
+    "endLine": 46
+  },
+  {
+    "outputFile": "ConceptMap-A-5.6-RecommendationsMapping.json",
+    "fshName": "A-5.6-RecommendationsMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A5-6-imaging-procedure-recommendations.fsh",
+    "startLine": 1,
+    "endLine": 27
+  },
+  {
+    "outputFile": "ConceptMap-A-6-KeyImagesMapping.json",
+    "fshName": "A-6-KeyImagesMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A6-key-images.fsh",
+    "startLine": 1,
+    "endLine": 69
+  },
+  {
+    "outputFile": "ConceptMap-A-7-ComparisonStudy.json",
+    "fshName": "A-7-ComparisonStudy",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A7-comparison-study.fsh",
+    "startLine": 1,
+    "endLine": 19
+  },
+  {
+    "outputFile": "ConceptMap-A-8-PresentedFormMapping.json",
+    "fshName": "A-8-PresentedFormMapping",
+    "fshType": "Instance",
+    "fshFile": "model-maps/A8-presented-form.fsh",
+    "startLine": 1,
+    "endLine": 24
+  },
+  {
+    "outputFile": "ConceptMap-B-ImagingstudyMnifestDataset.json",
+    "fshName": "B-ImagingstudyMnifestDataset",
+    "fshType": "Instance",
+    "fshFile": "model-maps/B-Imaging-study-manifest-data-set .fsh",
+    "startLine": 1,
+    "endLine": 56
+  },
+  {
+    "outputFile": "StructureDefinition-ImImagingSelection.json",
+    "fshName": "ImImagingSelection",
+    "fshType": "Profile",
+    "fshFile": "profiles/ìm-imaging-selection.fsh",
+    "startLine": 1,
+    "endLine": 11
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-imaging-study-manifest-dataset.json",
+    "fshName": "ImagingStudyManifestDataSetEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-imaging-study-manifest-dataset.fsh",
+    "startLine": 1,
+    "endLine": 89
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-comparison-study.json",
+    "fshName": "MedicalImagingReportOrderComparisonStudyEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a7-comparison-study.fsh",
+    "startLine": 1,
+    "endLine": 6
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport-adverse-reaction.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportAdverseReactionEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 99,
+    "endLine": 126
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport-conclusion.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportConclusionEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 157,
+    "endLine": 170
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport-imaging-proc-description.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportImagingProcedureDescriptionEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 25,
+    "endLine": 66
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport-medication.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportMedicationEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 71,
+    "endLine": 95
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport-recommendation.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportRecommendationEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 175,
+    "endLine": 182
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport-results.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportResultsEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 130,
+    "endLine": 152
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-examreport.json",
+    "fshName": "MedicalImagingReportOrderExaminationReportEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a5-examination-report.fsh",
+    "startLine": 1,
+    "endLine": 21
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-author.json",
+    "fshName": "MedicalImagingReportHeaderAuthorEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 123,
+    "endLine": 138
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-document-metadata.json",
+    "fshName": "MedicalImagingReportHeaderDocumentMetadataEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 180,
+    "endLine": 218
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-health-insurance-information.json",
+    "fshName": "MedicalImagingReportHeaderHealthInsuranceAndPaymentInformationEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 76,
+    "endLine": 92
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-information-recipient.json",
+    "fshName": "MedicalImagingReportHeaderInformationRecipientEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 96,
+    "endLine": 119
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-legal-authenticator.json",
+    "fshName": "MedicalImagingReportHeaderLegalAuthenticatorEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 142,
+    "endLine": 158
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-patient-contact.json",
+    "fshName": "MedicalImagingReportHeaderPatientContactEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 55,
+    "endLine": 69
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-patient-identification.json",
+    "fshName": "MedicalImagingReportHeaderPatientIdentificationEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 26,
+    "endLine": 47
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header-result-validator.json",
+    "fshName": "MedicalImagingReportHeaderResultValidatorEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 162,
+    "endLine": 176
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-header.json",
+    "fshName": "MedicalImagingReportHeaderEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a1-header.fsh",
+    "startLine": 1,
+    "endLine": 23
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-order-media.json",
+    "fshName": "MedicalImagingReportOrderMediaEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a6-order-media.fsh",
+    "startLine": 1,
+    "endLine": 52
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-order-reason.json",
+    "fshName": "MedicalImagingReportOrderReasonEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a3-order-reason.fsh",
+    "startLine": 1,
+    "endLine": 13
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-order.json",
+    "fshName": "MedicalImagingReportOrderEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a2-order.fsh",
+    "startLine": 1,
+    "endLine": 24
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-presented-form.json",
+    "fshName": "MedicalImagingReportOrderPresentedFormEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a8-presented-form.fsh",
+    "startLine": 1,
+    "endLine": 6
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report-specimen-information.json",
+    "fshName": "MedicalImagingReportOrderSpecimenInformationEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a4-specimen-info.fsh",
+    "startLine": 1,
+    "endLine": 27
+  },
+  {
+    "outputFile": "StructureDefinition-ehn-medical-imaging-report.json",
+    "fshName": "MedicalImagingReportEhn",
+    "fshType": "Logical",
+    "fshFile": "models/ehn-medical-imaging-report-a.fsh",
+    "startLine": 1,
+    "endLine": 13
+  },
+  {
+    "outputFile": "StructureDefinition-im-accession-number-identifier.json",
+    "fshName": "ImAccessionNumberIdentifier",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-order.fsh",
+    "startLine": 48,
+    "endLine": 57
+  },
+  {
+    "outputFile": "StructureDefinition-im-adverse-event-criticality.json",
+    "fshName": "ImAdverseEventCriticality",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-adverse-reaction.fsh",
+    "startLine": 48,
+    "endLine": 56
+  },
+  {
+    "outputFile": "StructureDefinition-im-adversereaction.json",
+    "fshName": "ImAdverseReaction",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-adverse-reaction.fsh",
+    "startLine": 1,
+    "endLine": 46
+  },
+  {
+    "outputFile": "StructureDefinition-im-allergic-reaction.json",
+    "fshName": "ImAllergicReaction",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-allergic-reaction.fsh",
+    "startLine": 1,
+    "endLine": 30
+  },
+  {
+    "outputFile": "StructureDefinition-im-author.json",
+    "fshName": "ImAuthor",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 10,
+    "endLine": 17
+  },
+  {
+    "outputFile": "StructureDefinition-im-authoring-device.json",
+    "fshName": "ImAuthoringDevice",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-device-profiles.fsh",
+    "startLine": 1,
+    "endLine": 19
+  },
+  {
+    "outputFile": "StructureDefinition-im-body-structure.json",
+    "fshName": "ImBodyStructure",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-bodystructure.fsh",
+    "startLine": 1,
+    "endLine": 11
+  },
+  {
+    "outputFile": "StructureDefinition-im-bundle.json",
+    "fshName": "ImBundle",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-bundle.fsh",
+    "startLine": 1,
+    "endLine": 20
+  },
+  {
+    "outputFile": "StructureDefinition-im-composition-diagnosticReportReference.json",
+    "fshName": "ImDiagnosticReportReference",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-composition.fsh",
+    "startLine": 238,
+    "endLine": 247
+  },
+  {
+    "outputFile": "StructureDefinition-im-composition.json",
+    "fshName": "ImComposition",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-composition.fsh",
+    "startLine": 1,
+    "endLine": 235
+  },
+  {
+    "outputFile": "StructureDefinition-im-coverage.json",
+    "fshName": "ImCoverage",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-coverage.fsh",
+    "startLine": 1,
+    "endLine": 27
+  },
+  {
+    "outputFile": "StructureDefinition-im-diagnostic-report.json",
+    "fshName": "ImDiagnosticReport",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 1,
+    "endLine": 87
+  },
+  {
+    "outputFile": "StructureDefinition-im-finding.json",
+    "fshName": "ImFinding",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-finding.fsh",
+    "startLine": 1,
+    "endLine": 64
+  },
+  {
+    "outputFile": "StructureDefinition-im-health-insurance-provider.json",
+    "fshName": "ImHealthInsuranceProvider",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-coverage.fsh",
+    "startLine": 32,
+    "endLine": 54
+  },
+  {
+    "outputFile": "StructureDefinition-im-imaging-device.json",
+    "fshName": "ImImagingDevice",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-device-profiles.fsh",
+    "startLine": 21,
+    "endLine": 41
+  },
+  {
+    "outputFile": "StructureDefinition-im-imaging-study-phase.json",
+    "fshName": "ImImagingStudyPhase",
+    "fshType": "Profile",
+    "fshFile": "profiles/ìm-imaging-selection.fsh",
+    "startLine": 13,
+    "endLine": 26
+  },
+  {
+    "outputFile": "StructureDefinition-im-imagingstudy.json",
+    "fshName": "ImImagingStudy",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-imagingstudy.fsh",
+    "startLine": 1,
+    "endLine": 69
+  },
+  {
+    "outputFile": "StructureDefinition-im-impression.json",
+    "fshName": "ImImpression",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-impression.fsh",
+    "startLine": 1,
+    "endLine": 20
+  },
+  {
+    "outputFile": "StructureDefinition-im-information-recipient.json",
+    "fshName": "ImInformationRecipient",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 1,
+    "endLine": 8
+  },
+  {
+    "outputFile": "StructureDefinition-im-keyimages-document-reference.json",
+    "fshName": "ImKeyImageDocumentReference",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-keyimages-documentreference.fsh",
+    "startLine": 1,
+    "endLine": 96
+  },
+  {
+    "outputFile": "StructureDefinition-im-keyimages-imaging-selection.json",
+    "fshName": "ImKeyImagesSelection",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-keyimages-imagingselection.fsh",
+    "startLine": 1,
+    "endLine": 28
+  },
+  {
+    "outputFile": "StructureDefinition-im-legal-authenticator.json",
+    "fshName": "ImLegalAuthenticator",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 20,
+    "endLine": 28
+  },
+  {
+    "outputFile": "StructureDefinition-im-medication-administration.json",
+    "fshName": "ImMedicationAdministration",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-medication-administration.fsh",
+    "startLine": 1,
+    "endLine": 30
+  },
+  {
+    "outputFile": "StructureDefinition-im-medication.json",
+    "fshName": "ImMedication",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-medication.fsh",
+    "startLine": 1,
+    "endLine": 17
+  },
+  {
+    "outputFile": "StructureDefinition-im-order-placer.json",
+    "fshName": "ImOrderPlacer",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 42,
+    "endLine": 51
+  },
+  {
+    "outputFile": "StructureDefinition-im-order-reference.json",
+    "fshName": "ImOrderReference",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-order.fsh",
+    "startLine": 59,
+    "endLine": 68
+  },
+  {
+    "outputFile": "StructureDefinition-im-order.json",
+    "fshName": "ImOrder",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-order.fsh",
+    "startLine": 1,
+    "endLine": 45
+  },
+  {
+    "outputFile": "StructureDefinition-im-organization.json",
+    "fshName": "ImOrganization",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 106,
+    "endLine": 122
+  },
+  {
+    "outputFile": "StructureDefinition-im-patient.json",
+    "fshName": "ImPatient",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-patient.fsh",
+    "startLine": 1,
+    "endLine": 42
+  },
+  {
+    "outputFile": "StructureDefinition-im-performer.json",
+    "fshName": "ImPerformer",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 54,
+    "endLine": 61
+  },
+  {
+    "outputFile": "StructureDefinition-im-practitioner-role.json",
+    "fshName": "ImPractitionerRole",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 63,
+    "endLine": 81
+  },
+  {
+    "outputFile": "StructureDefinition-im-practitioner.json",
+    "fshName": "ImPractitioner",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 83,
+    "endLine": 104
+  },
+  {
+    "outputFile": "StructureDefinition-im-procedure.json",
+    "fshName": "ImProcedure",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-procedure.fsh",
+    "startLine": 1,
+    "endLine": 34
+  },
+  {
+    "outputFile": "StructureDefinition-im-radiation-dose-information.json",
+    "fshName": "ImRadiationDoseObservation",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-radiationdose-observation.fsh",
+    "startLine": 1,
+    "endLine": 34
+  },
+  {
+    "outputFile": "StructureDefinition-im-recommended-careplan.json",
+    "fshName": "ImRecommendedCarePlan",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-recommended-careplan.fsh",
+    "startLine": 1,
+    "endLine": 20
+  },
+  {
+    "outputFile": "StructureDefinition-im-result-validator.json",
+    "fshName": "ImResultValidator",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-healthcare-professional.fsh",
+    "startLine": 30,
+    "endLine": 40
+  },
+  {
+    "outputFile": "StructureDefinition-im-viewer-endpoint.json",
+    "fshName": "ImImageIidViewerEndpoint",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-ihe-iid-viewer.fsh",
+    "startLine": 1,
+    "endLine": 34
+  },
+  {
+    "outputFile": "StructureDefinition-im-wado-endpoint.json",
+    "fshName": "ImWadoEndpoint",
+    "fshType": "Profile",
+    "fshFile": "profiles/ImWadoEndpoint.fsh",
+    "startLine": 1,
+    "endLine": 72
+  },
+  {
+    "outputFile": "ValueSet-im-radiation-dose-observation-unit-vs.json",
+    "fshName": "ImRadiationDoseObservationUnitValueSet",
+    "fshType": "ValueSet",
+    "fshFile": "profiles/im-radiationdose-observation.fsh",
+    "startLine": 45,
+    "endLine": 51
+  },
+  {
+    "outputFile": "ValueSet-im-reportType-eu-lab.json",
+    "fshName": "ImagingReportTypesEuVS",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/ImagingReportTypesEuVs.fsh",
+    "startLine": 1,
+    "endLine": 11
+  },
+  {
+    "outputFile": "ValueSet-valueset-diagnosticreport-report-support-info.json",
+    "fshName": "DiagnosticReportSupportingInfoVCodes",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/DiagnosticReportSupportInfo.fsh",
+    "startLine": 12,
+    "endLine": 16
+  }
+]

@@ -1,0 +1,119 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-1-1-PatientInformationMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-1-1-PatientInformationMapping",
+  "title": "A.1.1 Identification of the patient/subject mapping",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "name",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "name",
+          "display": "A.1.1.1 Family name/surname"
+        },
+        {
+          "target": [
+            {
+              "code": "name.given",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "givenName",
+          "display": "A.1.1.2 Given name"
+        },
+        {
+          "target": [
+            {
+              "code": "birthDate",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "dob",
+          "display": "A.1.1.3 Date of birth"
+        },
+        {
+          "target": [
+            {
+              "code": "identifier",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "personalIdentifier",
+          "display": "A.1.1.4 Personal identifier"
+        },
+        {
+          "target": [
+            {
+              "code": "gender",
+              "display": "adminstrative gender",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "gender",
+          "display": "A.1.1.5 Gender"
+        },
+        {
+          "target": [
+            {
+              "code": "extions[genderIdentity]",
+              "display": "physiological gender",
+              "relationship": "source-is-broader-than-target"
+            }
+          ],
+          "code": "gender",
+          "display": "A.1.1.5 Gender"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-identification",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-patient"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "subject",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "identification",
+          "display": "A.1.1 Identification of the patient/subject"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "subject",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "identification",
+          "display": "A.1.1 Identification of the patient/subject"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.1.1",
+  "status": "draft",
+  "experimental": true,
+  "description": "This concept map defines the mapping between the A.1.1 Identification of the patient/subject section and the FHIR profiles.",
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-identification"
+}

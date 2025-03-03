@@ -1,0 +1,139 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+  "name": "MedicalImagingReportEhn",
+  "title": "A Medical Imaging Report (eHN)",
+  "status": "draft",
+  "description": "Medical Imaging Report",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report",
+        "path": "ehn-medical-imaging-report",
+        "short": "A Medical Imaging Report (eHN)",
+        "definition": "Medical Imaging Report"
+      },
+      {
+        "id": "ehn-medical-imaging-report.header",
+        "path": "ehn-medical-imaging-report.header",
+        "short": "Header",
+        "definition": "Header",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.orderInformation",
+        "path": "ehn-medical-imaging-report.orderInformation",
+        "short": "A.2 Order Information",
+        "definition": "A.2 Order Information",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.orderReason",
+        "path": "ehn-medical-imaging-report.orderReason",
+        "short": "A.3 Order Reason",
+        "definition": "A.3 Order Reason",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.specimenInformation",
+        "path": "ehn-medical-imaging-report.specimenInformation",
+        "short": "A.4 Specimen information",
+        "definition": "A.4 Specimen information",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-specimen-information"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.examinationReport",
+        "path": "ehn-medical-imaging-report.examinationReport",
+        "short": "A.5 Examination Report",
+        "definition": "A.5 Examination Report",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.media",
+        "path": "ehn-medical-imaging-report.media",
+        "short": "A.6 Key images associated with this report",
+        "definition": "A.6 Key images associated with this report",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-media"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.comparisonStudy",
+        "path": "ehn-medical-imaging-report.comparisonStudy",
+        "short": "A.7 Comparison study",
+        "definition": "A.7 Comparison study",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-comparison-study"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report.presentedForm",
+        "path": "ehn-medical-imaging-report.presentedForm",
+        "short": "A.8 Presented form",
+        "definition": "A.8 Presented form",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-presented-form"
+          }
+        ]
+      }
+    ]
+  }
+}

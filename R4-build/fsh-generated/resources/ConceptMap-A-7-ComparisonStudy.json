@@ -1,0 +1,28 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-7-ComparisonStudy",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-7-ComparisonStudy",
+  "title": "A.7 Comparison Study",
+  "description": "This concept map defines the mapping between the eHN A.7 Comparison Study section and the FHIR profiles. \n",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section[comparison].entry",
+              "display": ""
+            }
+          ],
+          "code": "comparisonStudyDocumentation",
+          "display": "A.7.1 Comparison Study Documentation"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-comparison-study",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.7",
+  "status": "draft",
+  "experimental": true
+}

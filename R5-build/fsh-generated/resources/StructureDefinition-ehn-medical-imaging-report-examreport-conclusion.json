@@ -1,0 +1,77 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport-conclusion",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-conclusion",
+  "name": "MedicalImagingReportOrderExaminationReportConclusionEhn",
+  "title": "A.5.5 Conclusion",
+  "status": "draft",
+  "description": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-conclusion",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport-conclusion",
+        "path": "ehn-medical-imaging-report-examreport-conclusion",
+        "short": "A.5.5 Conclusion",
+        "definition": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report"
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-conclusion.impression",
+        "path": "ehn-medical-imaging-report-examreport-conclusion.impression",
+        "short": "A.5.5.1 Impression",
+        "definition": "Narrative description of the clinical conclusion (impression).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-conclusion.codedConclusions",
+        "path": "ehn-medical-imaging-report-examreport-conclusion.codedConclusions",
+        "short": "A.5.5.2 Coded conclusions",
+        "definition": "A.5.5.2 Coded conclusions",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-conclusion.codedConclusions.conditionOrFinding",
+        "path": "ehn-medical-imaging-report-examreport-conclusion.codedConclusions.conditionOrFinding",
+        "short": "A.5.5.2.1 Condition or finding",
+        "definition": "Condition or finding from imaging investigation. ICD-10, SNOMED CT, Orphacode",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-conclusion.codedConclusions.stagingOrGrading",
+        "path": "ehn-medical-imaging-report-examreport-conclusion.codedConclusions.stagingOrGrading",
+        "short": "A.5.5.2.2 Staging or grading",
+        "definition": "Assessment of the condition expressed using common staging or grading (typically TNM but also other) or coded observations (Bi-Rads, Li-Rads etc.). E.g. TNM, Bi-Rads, Li-Rads",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      }
+    ]
+  }
+}

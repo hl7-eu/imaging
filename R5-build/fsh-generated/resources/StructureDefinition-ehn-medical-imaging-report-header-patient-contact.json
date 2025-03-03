@@ -1,0 +1,61 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-header-patient-contact",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-contact",
+  "name": "MedicalImagingReportHeaderPatientContactEhn",
+  "title": "A.1.2 Patient/subject related contact information",
+  "status": "draft",
+  "description": "Patient/subject related contact information",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-patient-contact",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-header-patient-contact",
+        "path": "ehn-medical-imaging-report-header-patient-contact",
+        "short": "A.1.2 Patient/subject related contact information",
+        "definition": "Patient/subject related contact information"
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-patient-contact.address",
+        "path": "ehn-medical-imaging-report-header-patient-contact.address",
+        "short": "A.1.2.1 Address",
+        "definition": "Mailing and home or office addresses. The addresses are \nalways sequences of address parts (e.g., street address line, \ncountry, ZIP code, city) even if postal address formats may \nvary depending on the country. An address may or may not \ninclude a specific use code; if this attribute is not present it is \nassumed to be the default address useful for any purpose.\nISO 3166 for Country Code",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Address"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-patient-contact.telecom",
+        "path": "ehn-medical-imaging-report-header-patient-contact.telecom",
+        "short": "A.1.2.2 Telecom",
+        "definition": "Telecommunication contact information (addresses) \nassociated with a person, such as phone number, email, or \nmessaging service. Multiple telecommunication addresses \nmight be provided",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "ContactPoint"
+          }
+        ]
+      }
+    ]
+  }
+}

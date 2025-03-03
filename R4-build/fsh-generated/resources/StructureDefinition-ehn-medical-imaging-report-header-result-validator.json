@@ -1,0 +1,87 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-header-result-validator",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator",
+  "name": "MedicalImagingReportHeaderResultValidatorEhn",
+  "title": "A.1.7 Result validator",
+  "status": "draft",
+  "description": "Result validator",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-header-result-validator",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-header-result-validator",
+        "path": "ehn-medical-imaging-report-header-result-validator",
+        "short": "A.1.7 Result validator",
+        "definition": "Result validator"
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-result-validator.validatorIdentifier",
+        "path": "ehn-medical-imaging-report-header-result-validator.validatorIdentifier",
+        "short": "A.1.7.1 Result validator identifier",
+        "definition": "The health professional identification number. Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-result-validator.validatorName",
+        "path": "ehn-medical-imaging-report-header-result-validator.validatorName",
+        "short": "A.1.7.2 Result validator name",
+        "definition": "Person name.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HumanName"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-result-validator.validatorOrganization",
+        "path": "ehn-medical-imaging-report-header-result-validator.validatorOrganization",
+        "short": "A.1.7.3 Result validator organization",
+        "definition": "The healthcare provider organization information.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-header-result-validator.validationDateTime",
+        "path": "ehn-medical-imaging-report-header-result-validator.validationDateTime",
+        "short": "A.1.7.4 Validation date and time",
+        "definition": "Date and time when the document was validated. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

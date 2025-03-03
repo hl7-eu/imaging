@@ -1,0 +1,74 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-order-reason",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason",
+  "name": "MedicalImagingReportOrderReasonEhn",
+  "title": "A.3 Order Reason",
+  "status": "draft",
+  "description": "Note: an imaging report could respond to multiple reasons.",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-reason",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-order-reason",
+        "path": "ehn-medical-imaging-report-order-reason",
+        "short": "A.3 Order Reason",
+        "definition": "Note: an imaging report could respond to multiple reasons."
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-reason.reason",
+        "path": "ehn-medical-imaging-report-order-reason.reason",
+        "short": "A.3.1 Reason",
+        "definition": "Description of a clinical condition indicating why imaging examination was ordered. The reason could be expressed in coded or textual form. The reason represents the primary condition or finding leading up to a request for an imaging investigation.\nExample: \"Cough lasting for 3 months\". SNOMED CT",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-reason.problemDiagnosisCondition",
+        "path": "ehn-medical-imaging-report-order-reason.problemDiagnosisCondition",
+        "short": "A.3.2 Problem / diagnosis / condition",
+        "definition": "Health conditions affecting the health of the patient are important to be known for a health professional in relation to the imaging encounter. Clinical conditions of the subject are relevant for the interpretation of the results. ICD-10, SNOMED CT, Orphanet",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-reason.clinicalQuestion",
+        "path": "ehn-medical-imaging-report-order-reason.clinicalQuestion",
+        "short": "A.3.3 Clinical question",
+        "definition": "Specification of clinical question (goal of the investigation) to be answered by the imaging investigation.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

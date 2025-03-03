@@ -1,0 +1,129 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport-adverse-reaction",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction",
+  "name": "MedicalImagingReportOrderExaminationReportAdverseReactionEhn",
+  "title": "A.5.3 Adverse reaction",
+  "status": "draft",
+  "description": "Adverse reactions manifested during imaging investigation.",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-adverse-reaction",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction",
+        "short": "A.5.3 Adverse reaction",
+        "definition": "Adverse reactions manifested during imaging investigation."
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.allergyDescription",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.allergyDescription",
+        "short": "A.5.3.1 Allergy description",
+        "definition": "Textual description of the allergy or intolerance.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.typeOfPropensity",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.typeOfPropensity",
+        "short": "A.5.3.2 Type of propensity",
+        "definition": "This element describes whether this condition refers to an allergy, non-allergy intolerance, or unknown class of intolerance (not known to be allergy or intolerance). SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.allergyManifestation",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.allergyManifestation",
+        "short": "A.5.3.3 Allergy manifestation",
+        "definition": "Description of the clinical manifestation of the allergic reaction. Example: anaphylactic shock, angioedema (the clinical manifestation also gives information about the severity of the observed reaction). SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.severity",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.severity",
+        "short": "A.5.3.4 Severity",
+        "definition": "Severity of the clinical manifestation of the allergic reaction. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.criticality",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.criticality",
+        "short": "A.5.3.5 Criticality",
+        "definition": "Potential risk for future life-threatening adverse reactions when exposed to a substance known to cause an adverse reaction. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.onsetDate",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.onsetDate",
+        "short": "A.5.3.6 Onset date",
+        "definition": "Date of the observation of the reaction. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.certainty",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.certainty",
+        "short": "A.5.3.7 Certainty",
+        "definition": "Assertion about the certainty associated with a propensity, or potential risk, of a reaction to the identified substance. Diagnostic and/or clinical evidence of the condition. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-adverse-reaction.agentOrAllergen",
+        "path": "ehn-medical-imaging-report-examreport-adverse-reaction.agentOrAllergen",
+        "short": "A.5.3.8 Agent or Allergen",
+        "definition": "A specific allergen or other agent/substance (drug, food, chemical agent, etc.) to which the patient has an adverse reaction propensity. SNOMED CT (for non-drug allergy) or ATC (for drug allergy) (IDMP, when available)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      }
+    ]
+  }
+}

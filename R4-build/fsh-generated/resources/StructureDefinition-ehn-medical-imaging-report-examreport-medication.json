@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport-medication",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-medication",
+  "name": "MedicalImagingReportOrderExaminationReportMedicationEhn",
+  "title": "A.5.2 Medication",
+  "status": "draft",
+  "description": "Medication section includes information about medication administered during the medical imaging examination (contrast, sedation, stress agents), etc.",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-medication",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication",
+        "path": "ehn-medical-imaging-report-examreport-medication",
+        "short": "A.5.2 Medication",
+        "definition": "Medication section includes information about medication administered during the medical imaging examination (contrast, sedation, stress agents), etc."
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.brandName",
+        "path": "ehn-medical-imaging-report-examreport-medication.brandName",
+        "short": "A.5.2.1 Brand name",
+        "definition": "Brand name of biological medicinal product or when justified by the health professional (ref. Commission Directive 2012/52/EU)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.code",
+        "path": "ehn-medical-imaging-report-examreport-medication.code",
+        "short": "A.5.2.2 Code",
+        "definition": "Product Code IDMP",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.activeIngredientList",
+        "path": "ehn-medical-imaging-report-examreport-medication.activeIngredientList",
+        "short": "A.5.2.3 Active ingredient list",
+        "definition": "Substance that alone or in combination with one or more other ingredients produces the intended activity of a medicinal product. Example: \"paracetamol\". ATC* (IDMP identifier, when available)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.strength",
+        "path": "ehn-medical-imaging-report-examreport-medication.strength",
+        "short": "A.5.2.4 Strength",
+        "definition": "The content of the active ingredient expressed quantifiably per dosage unit, per unit of volume or per unit of weight, according to the pharmaceutical dosage form. Example: 500 mg per tablet. UCUM, EDQM Standard Terms",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.pharmaceuticalDoseForm",
+        "path": "ehn-medical-imaging-report-examreport-medication.pharmaceuticalDoseForm",
+        "short": "A.5.2.5 Pharmaceutical dose form",
+        "definition": "The form in which a pharmaceutical product is presented in the medicinal product package (e.g. tablet, syrup). EDQM Standard Terms",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.routeOfAdministration",
+        "path": "ehn-medical-imaging-report-examreport-medication.routeOfAdministration",
+        "short": "A.5.2.6 Route of administration",
+        "definition": "Path by which the pharmaceutical product is taken into or makes contact with the body. EDQM Standard Terms",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-medication.dateTime",
+        "path": "ehn-medical-imaging-report-examreport-medication.dateTime",
+        "short": "A.5.2.7 Date and time",
+        "definition": "Date and time of medication. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      }
+    ]
+  }
+}

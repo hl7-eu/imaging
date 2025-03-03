@@ -1,0 +1,420 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-6-KeyImagesMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-6-KeyImagesMapping",
+  "title": "A.6 Key images associated with this report",
+  "description": "This concept map defines the mapping between the eHN A.6 Key images associated with this report section and the FHIR profiles. \n\n\nA key choice in modelling this dataset is the resources to use, the model is based on the design consideration on [key image representation](http://130.145.232.202:8081/design-considerations.html#representation-of-key-images), both the DocumentReference and ImagingSelection resources are used to represent the key images. ",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "description",
+              "display": "Described in text."
+            }
+          ],
+          "code": "view",
+          "display": "A.6.1 View"
+        },
+        {
+          "target": [
+            {
+              "code": "content.attachment.title",
+              "display": "Described in text."
+            }
+          ],
+          "code": "view",
+          "display": "A.6.1 View"
+        },
+        {
+          "target": [
+            {
+              "code": "bodysite",
+              "display": ""
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.6.2 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "attachment.contentType",
+              "display": ""
+            }
+          ],
+          "code": "mediaType",
+          "display": "A.6.3 Media type"
+        },
+        {
+          "target": [
+            {
+              "code": "modality",
+              "display": ""
+            }
+          ],
+          "code": "modality",
+          "display": "A.6.4 Modality"
+        },
+        {
+          "target": [
+            {
+              "code": "content.attachment.contentType",
+              "display": ""
+            }
+          ],
+          "code": "device",
+          "display": "A.6.5 Device"
+        },
+        {
+          "target": [
+            {
+              "code": "content.attachment.width",
+              "display": ""
+            }
+          ],
+          "code": "format",
+          "display": "A.6.6 Format"
+        },
+        {
+          "target": [
+            {
+              "code": "content.attachment.heigth",
+              "display": ""
+            }
+          ],
+          "code": "format",
+          "display": "A.6.6 Format"
+        },
+        {
+          "target": [
+            {
+              "code": "content.attachment.frames",
+              "display": ""
+            }
+          ],
+          "code": "format",
+          "display": "A.6.6 Format"
+        },
+        {
+          "target": [
+            {
+              "code": "content.attachment.duration",
+              "display": ""
+            }
+          ],
+          "code": "duration",
+          "display": "A.6.7 Duration"
+        },
+        {
+          "target": [
+            {
+              "code": "author",
+              "display": ""
+            }
+          ],
+          "code": "performer",
+          "display": "A.6.8 Performer"
+        },
+        {
+          "target": [
+            {
+              "code": "author.practitioner.id",
+              "display": ""
+            }
+          ],
+          "code": "performerId",
+          "display": "A.6.8.1 Performer Id"
+        },
+        {
+          "target": [
+            {
+              "code": "author.practitioner.naem",
+              "display": ""
+            }
+          ],
+          "code": "performerName",
+          "display": "A.6.8.2 Performer Name"
+        },
+        {
+          "target": [
+            {
+              "code": "author",
+              "display": ""
+            }
+          ],
+          "code": "performerType",
+          "display": "A.6.8.3 Performer Type"
+        },
+        {
+          "target": [
+            {
+              "code": "author.practitioner.speciality",
+              "display": ""
+            }
+          ],
+          "code": "performerMedicalSpecialty",
+          "display": "A.6.8.4 Performer Medical Specialty"
+        },
+        {
+          "target": [
+            {
+              "code": "author.organization",
+              "display": ""
+            }
+          ],
+          "code": "performerOrganization",
+          "display": "A.6.8.5 Performer Organisation"
+        },
+        {
+          "target": [
+            {
+              "code": "author.practitioner.address",
+              "display": ""
+            }
+          ],
+          "code": "performerContactDetails",
+          "display": "A.6.8.6 Performer Contact Details"
+        },
+        {
+          "target": [
+            {
+              "code": "author.practitioner.telecom",
+              "display": ""
+            }
+          ],
+          "code": "performerContactDetails",
+          "display": "A.6.8.6 Performer Contact Details"
+        },
+        {
+          "target": [
+            {
+              "code": "description",
+              "display": ""
+            }
+          ],
+          "code": "comment",
+          "display": "A.6.9 Comment"
+        },
+        {
+          "target": [
+            {
+              "code": "attachement.url",
+              "display": ""
+            }
+          ],
+          "code": "content",
+          "display": "A.6.10 Content"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-media",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-keyimages-document-reference"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "extension[artifact-title]",
+              "display": ""
+            }
+          ],
+          "code": "view",
+          "display": "A.6.1 View"
+        },
+        {
+          "target": [
+            {
+              "code": "bodySite",
+              "display": ""
+            }
+          ],
+          "code": "bodyLocation",
+          "display": "A.6.2 Body location"
+        },
+        {
+          "target": [
+            {
+              "code": "endpoint->DICOM",
+              "display": "The media type can be selected when retrieving the image through WADO."
+            }
+          ],
+          "code": "mediaType",
+          "display": "A.6.3 Media type"
+        },
+        {
+          "target": [
+            {
+              "code": "derivedFrom[study]->series.modality",
+              "display": "Can be retrieved from the ImagingStudy resource."
+            }
+          ],
+          "code": "modality",
+          "display": "A.6.4 Modality"
+        },
+        {
+          "target": [
+            {
+              "code": "derivedFrom[study]->#performer[device].actor",
+              "display": ""
+            }
+          ],
+          "code": "device",
+          "display": "A.6.5 Device"
+        },
+        {
+          "target": [
+            {
+              "code": "endpoint->DICOM",
+              "display": "The information can be selected when retrieving the image through WADO."
+            }
+          ],
+          "code": "format",
+          "display": "A.6.6 Format"
+        },
+        {
+          "target": [
+            {
+              "code": "endpoint->DICOM",
+              "display": "The information can be selected when retrieving the image through WADO."
+            }
+          ],
+          "code": "duration",
+          "display": "A.6.7 Duration"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.actor",
+              "display": ""
+            }
+          ],
+          "code": "performer",
+          "display": "A.6.8 Performer"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.practitioner.id",
+              "display": ""
+            }
+          ],
+          "code": "performerId",
+          "display": "A.6.8.1 Performer Id"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.practitioner.naem",
+              "display": ""
+            }
+          ],
+          "code": "performerName",
+          "display": "A.6.8.2 Performer Name"
+        },
+        {
+          "target": [
+            {
+              "code": "performer",
+              "display": ""
+            }
+          ],
+          "code": "performerType",
+          "display": "A.6.8.3 Performer Type"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.practitioner.speciality",
+              "display": ""
+            }
+          ],
+          "code": "performerMedicalSpecialty",
+          "display": "A.6.8.4 Performer Medical Specialty"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.organization",
+              "display": ""
+            }
+          ],
+          "code": "performerOrganization",
+          "display": "A.6.8.5 Performer Organisation"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.practitioner.address",
+              "display": ""
+            }
+          ],
+          "code": "performerContactDetails",
+          "display": "A.6.8.6 Performer Contact Details"
+        },
+        {
+          "target": [
+            {
+              "code": "performer.practitioner.telecom",
+              "display": ""
+            }
+          ],
+          "code": "performerContactDetails",
+          "display": "A.6.8.6 Performer Contact Details"
+        },
+        {
+          "target": [
+            {
+              "code": "extension[artifact-description]",
+              "display": ""
+            }
+          ],
+          "code": "comment",
+          "display": "A.6.9 Comment"
+        },
+        {
+          "target": [
+            {
+              "code": "#endpoint->DICOM",
+              "display": ""
+            }
+          ],
+          "code": "content",
+          "display": "A.6.10 Content"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-media",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-keyimages-imaging-selection"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section[finding].entry[keyimage]",
+              "display": "Inserted with findings that use them."
+            }
+          ],
+          "code": "media",
+          "display": "A.6 Key images associated with this report"
+        },
+        {
+          "target": [
+            {
+              "code": "section[recommendation].entry[keyimage]",
+              "display": "Inserted with findings that use them."
+            }
+          ],
+          "code": "media",
+          "display": "A.6 Key images associated with this report"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.6",
+  "status": "draft",
+  "experimental": true
+}

@@ -1,0 +1,314 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-wado-endpoint",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-wado-endpoint",
+  "name": "ImWadoEndpoint",
+  "title": "WADO endpoint",
+  "status": "draft",
+  "description": "This profile defines the WADO endpoint for accessing imaging study content.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Endpoint",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Endpoint",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Endpoint.meta.security",
+        "path": "Endpoint.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.language",
+        "path": "Endpoint.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.status",
+        "path": "Endpoint.status",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.connectionType",
+        "path": "Endpoint.connectionType",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "coding"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Endpoint.connectionType:wado",
+        "path": "Endpoint.connectionType",
+        "sliceName": "wado",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "dicom-wado-rs",
+              "system": "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+              "display": "DICOM WADO-RS"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.name",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Endpoint.name",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.description",
+        "path": "Endpoint.description",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.managingOrganization",
+        "path": "Endpoint.managingOrganization",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload",
+        "path": "Endpoint.payload",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "type"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors",
+        "path": "Endpoint.payload",
+        "sliceName": "wadors",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.type",
+        "path": "Endpoint.payload.type",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "dicom-wado-rs",
+              "system": "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+              "display": "DICOM WADO-RS"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType",
+        "path": "Endpoint.payload.mimeType",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 17,
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:dicom",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "dicom",
+        "min": 1,
+        "max": "1",
+        "patternCode": "application/dicom",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:dicom-octet",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "dicom-octet",
+        "min": 1,
+        "max": "1",
+        "patternCode": "application/octet-stream",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:dicom-xml",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "dicom-xml",
+        "min": 1,
+        "max": "1",
+        "patternCode": "application/dicom+xml",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:dicom-json",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "dicom-json",
+        "min": 1,
+        "max": "1",
+        "patternCode": "application/json",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:image-jpg",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "image-jpg",
+        "min": 1,
+        "max": "1",
+        "patternCode": "image/jpg",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:image-gif",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "image-gif",
+        "min": 1,
+        "max": "1",
+        "patternCode": "image/gif",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:image-jp2",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "image-jp2",
+        "min": 1,
+        "max": "1",
+        "patternCode": "image/jp2",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:image-jph",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "image-jph",
+        "min": 1,
+        "max": "1",
+        "patternCode": "image/jph",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:image-jxl",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "image-jxl",
+        "min": 1,
+        "max": "1",
+        "patternCode": "image/jxl",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:video-mpeg",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "video-mpeg",
+        "min": 1,
+        "max": "1",
+        "patternCode": "video/mpeg",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:video-mp4",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "video-mp4",
+        "min": 1,
+        "max": "1",
+        "patternCode": "video/mp4",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:video-H265",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "video-H265",
+        "min": 1,
+        "max": "1",
+        "patternCode": "video/H265",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:text-html",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "text-html",
+        "min": 1,
+        "max": "1",
+        "patternCode": "text/html",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:text-plain",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "text-plain",
+        "min": 1,
+        "max": "1",
+        "patternCode": "text/plain",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:text-xml",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "text-xml",
+        "min": 1,
+        "max": "1",
+        "patternCode": "text/xml",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:text-rtf",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "text-rtf",
+        "min": 1,
+        "max": "1",
+        "patternCode": "text/rtf",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload:wadors.mimeType:application-pdf",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "application-pdf",
+        "min": 1,
+        "max": "1",
+        "patternCode": "application/pdf",
+        "mustSupport": true
+      }
+    ]
+  }
+}

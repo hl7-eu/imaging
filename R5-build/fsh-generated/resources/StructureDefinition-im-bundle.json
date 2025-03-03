@@ -1,0 +1,56 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-bundle",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-bundle",
+  "name": "ImBundle",
+  "title": "Bundle: Imaging Study Report",
+  "status": "draft",
+  "description": "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Bundle",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Bundle",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Bundle",
+        "path": "Bundle",
+        "short": "Imaging Study Bundle",
+        "definition": "Imaging Study Report composition.\n\nA composition is a set of healthcare-related information that is assembled together into a single logical document that \nprovides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard \nto who is making the statement.\n\nWhile a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, \nof which the Composition is the first resource contained."
+      },
+      {
+        "id": "Bundle.meta.security",
+        "path": "Bundle.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Bundle.language",
+        "path": "Bundle.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Bundle.identifier",
+        "path": "Bundle.identifier",
+        "short": "Business identifier for this Imaging Study Report",
+        "min": 1
+      },
+      {
+        "id": "Bundle.type",
+        "path": "Bundle.type",
+        "patternCode": "document"
+      }
+    ]
+  }
+}

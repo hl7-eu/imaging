@@ -1,0 +1,87 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-imaging-device",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-imaging-device",
+  "name": "ImImagingDevice",
+  "title": "Imaging Device",
+  "status": "draft",
+  "description": "This profile on Device represents the imaging device.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Device",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Device",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device.meta.security",
+        "path": "Device.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.language",
+        "path": "Device.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.udiCarrier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Device.udiCarrier",
+        "definition": "Normalized identifier of the acquisition modality equipment instance such as UDI according to REGULATION (EU) 2017/745.",
+        "mustSupport": true
+      },
+      {
+        "id": "Device.udiCarrier.deviceIdentifier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Device.udiCarrier.deviceIdentifier",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Device.status",
+        "path": "Device.status",
+        "min": 1,
+        "mustSupport": true
+      }
+    ]
+  }
+}

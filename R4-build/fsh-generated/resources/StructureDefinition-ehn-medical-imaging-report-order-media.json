@@ -1,0 +1,243 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-order-media",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-media",
+  "name": "MedicalImagingReportOrderMediaEhn",
+  "title": "A.6 Key images associated with this report",
+  "status": "draft",
+  "description": "Key images associated with this report",
+  "fhirVersion": "4.0.1",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-order-media",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-order-media",
+        "path": "ehn-medical-imaging-report-order-media",
+        "short": "A.6 Key images associated with this report",
+        "definition": "Key images associated with this report"
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.view",
+        "path": "ehn-medical-imaging-report-order-media.view",
+        "short": "A.6.1 View",
+        "definition": "The name of the imaging view e.g. Lateral or Antero-posterior (AP).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.bodyLocation",
+        "path": "ehn-medical-imaging-report-order-media.bodyLocation",
+        "short": "A.6.2 Body location",
+        "definition": "Anatomic location (body location, laterality) where the material is collected, e.g. Elbow, left. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.mediaType",
+        "path": "ehn-medical-imaging-report-order-media.mediaType",
+        "short": "A.6.3 Media type",
+        "definition": "Classification of media as image, video, or audio. hl7:media-type",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.modality",
+        "path": "ehn-medical-imaging-report-order-media.modality",
+        "short": "A.6.4 Modality",
+        "definition": "The type of acquisition equipment/process. This element is relevant for the interactive selection of the available studies. DICOM Modality",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.device",
+        "path": "ehn-medical-imaging-report-order-media.device",
+        "short": "A.6.5 Device",
+        "definition": "The device used to perform an imaging study. SNOMED CT, EMDN",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.format",
+        "path": "ehn-medical-imaging-report-order-media.format",
+        "short": "A.6.6 Format",
+        "definition": "Height, width, and number of frames of the image in pixels (photo/video). UCUM",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.duration",
+        "path": "ehn-medical-imaging-report-order-media.duration",
+        "short": "A.6.7 Duration",
+        "definition": "The duration of the recording in seconds - for audio and video. UCUM",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer",
+        "path": "ehn-medical-imaging-report-order-media.performer",
+        "short": "A.6.8 Performer",
+        "definition": "Identifies the performer of the imaging acquisition process. \nPerformer may include: performer identifier, performer name, performer type, performer medical specialty, performer organization, and performer contact details.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer.performerId",
+        "path": "ehn-medical-imaging-report-order-media.performer.performerId",
+        "short": "A.6.8.1 Performer Id",
+        "definition": "Performer identifier unique within a given context (namespace). Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer.performerName",
+        "path": "ehn-medical-imaging-report-order-media.performer.performerName",
+        "short": "A.6.8.2 Performer Name",
+        "definition": "Person name.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "HumanName"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer.performerType",
+        "path": "ehn-medical-imaging-report-order-media.performer.performerType",
+        "short": "A.6.8.3 Performer Type",
+        "definition": "Type of performer (e.g., radiologist, technician).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer.performerMedicalSpecialty",
+        "path": "ehn-medical-imaging-report-order-media.performer.performerMedicalSpecialty",
+        "short": "A.6.8.4 Performer Medical Specialty",
+        "definition": "Medical specialty of the performer. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer.performerOrganization",
+        "path": "ehn-medical-imaging-report-order-media.performer.performerOrganization",
+        "short": "A.6.8.5 Performer Organization",
+        "definition": "The healthcare provider organization information.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.performer.performerContactDetails",
+        "path": "ehn-medical-imaging-report-order-media.performer.performerContactDetails",
+        "short": "A.6.8.6 Performer Contact Details",
+        "definition": "Contact details of the performer (address and telecom details).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "ContactPoint"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.comment",
+        "path": "ehn-medical-imaging-report-order-media.comment",
+        "short": "A.6.9 Comment",
+        "definition": "A comment about the image. Typically, this is used to provide an explanation for why the image is included, or to draw the viewer's attention to important features.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-order-media.content",
+        "path": "ehn-medical-imaging-report-order-media.content",
+        "short": "A.6.10 Content",
+        "definition": "The actual Media, such as selected key image data inline or a reference. Consider FHIR Attachment resource.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Attachment"
+          }
+        ]
+      }
+    ]
+  }
+}

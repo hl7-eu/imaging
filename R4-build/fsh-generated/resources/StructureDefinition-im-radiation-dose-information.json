@@ -1,0 +1,65 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-radiation-dose-information",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-radiation-dose-information",
+  "name": "ImRadiationDoseObservation",
+  "title": "Radiation Dose Observation",
+  "status": "draft",
+  "description": "A record for the radiation dose the subject has been exposed to during an imaging procedure.\n\nThis resource is a placeholder pending further refinement in this topic.\n\n\nE.g. based on information from https://dicom.nema.org/medical/dicom/current/output/html/part16.html.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Observation",
+  "baseDefinition": "http://hl7.eu/fhir/imaging/StructureDefinition/im-finding",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Observation.category",
+        "path": "Observation.category",
+        "max": "1"
+      },
+      {
+        "id": "Observation.code.coding",
+        "path": "Observation.code.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "Observation.code.coding:magiccode",
+        "path": "Observation.code.coding",
+        "sliceName": "magiccode",
+        "min": 1,
+        "max": "1",
+        "patternCoding": {
+          "code": "LP190649-6",
+          "system": "http://loinc.org",
+          "display": "Radiation dose"
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Observation.value[x]",
+        "path": "Observation.value[x]",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "valueSet": "http://hl7.eu/fhir/imaging/ValueSet/im-radiation-dose-observation-unit-vs",
+          "strength": "extensible"
+        }
+      }
+    ]
+  }
+}

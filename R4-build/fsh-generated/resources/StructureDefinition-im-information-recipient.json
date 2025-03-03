@@ -1,0 +1,24 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-information-recipient",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-information-recipient",
+  "name": "ImInformationRecipient",
+  "title": "Information Recipient",
+  "status": "draft",
+  "description": "Information recipient (intended recipient or recipients of the report, e.g., GP, another specialist).",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PractitionerRole",
+  "baseDefinition": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner-role",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "PractitionerRole.practitioner",
+        "path": "PractitionerRole.practitioner",
+        "min": 1
+      }
+    ]
+  }
+}

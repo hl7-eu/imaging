@@ -1,0 +1,197 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-medication",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-medication",
+  "name": "ImMedication",
+  "title": "Medication",
+  "status": "draft",
+  "description": "Based on EPD Medication profile. Reference it once it is published.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Medication",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Medication",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Medication.meta.security",
+        "path": "Medication.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.language",
+        "path": "Medication.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.extension",
+        "path": "Medication.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Medication.extension:productName",
+        "path": "Medication.extension",
+        "sliceName": "productName",
+        "short": "Name of the medicinal product. Names of different types (full name, short name, etc) and in different languages can be provided if relevant.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://profiles.ihe.net/PHARM/ihe.pharm.mpd/StructureDefinition/ihe-ext-medication-productname"
+            ]
+          }
+        ],
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.extension:classification",
+        "path": "Medication.extension",
+        "sliceName": "classification",
+        "short": "Classifications of the product, e.g ATC, narcotic/psychotropic, orphan drug, etc",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://profiles.ihe.net/PHARM/ihe.pharm.mpd/StructureDefinition/ihe-ext-medication-classification"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Medication.extension:sizeOfItem",
+        "path": "Medication.extension",
+        "sliceName": "sizeOfItem",
+        "short": "Size of one item (for example, in a pack of 5 vials, this would represent the size of 1 vial)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://profiles.ihe.net/PHARM/ihe.pharm.mpd/StructureDefinition/ihe-ext-medication-sizeofitem"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Medication.extension:characteristic",
+        "path": "Medication.extension",
+        "sliceName": "characteristic",
+        "short": "Specifies other descriptive properties of the medication.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://profiles.ihe.net/PHARM/ihe.pharm.mpd/StructureDefinition/ihe-ext-medication-characteristic"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Medication.extension:unitOfPresentation",
+        "path": "Medication.extension",
+        "sliceName": "unitOfPresentation",
+        "short": "Unit of presentation of the product (e.g. tablet, vial, ampoule, etc)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://profiles.ihe.net/PHARM/ihe.pharm.mpd/StructureDefinition/ihe-ext-medication-unitofpresentation"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Medication.extension:packageType",
+        "path": "Medication.extension",
+        "sliceName": "packageType",
+        "short": "Type of container. This information is more relevant in cases when the packaging has an impact on administration of the product (e.g. pre-filled syringe)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.eu/fhir/StructureDefinition/package-type"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Medication.identifier",
+        "path": "Medication.identifier",
+        "short": "Identifier for the medicinal product, its generic representation, or packaged product."
+      },
+      {
+        "id": "Medication.code",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Medication.code",
+        "short": "A terminology-based code for the product",
+        "mustSupport": true
+      },
+      {
+        "id": "Medication.ingredient",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Medication.ingredient",
+        "short": "Ingredient or a part product. For combination packs, each ingredient can be a separate manufactured item with its own ingredients, dose form, and strength",
+        "mustSupport": true
+      }
+    ]
+  }
+}

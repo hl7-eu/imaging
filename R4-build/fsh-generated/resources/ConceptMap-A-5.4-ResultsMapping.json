@@ -1,0 +1,130 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-5.4-ResultsMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-5.4-ResultsMapping",
+  "title": "A.5.4 Results",
+  "description": "This concept map defines the mapping between the eHN A.5.4 Results section and the FHIR profiles. \nIn FHIR, these are mapped on `Observation` resources.",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "effective[x]",
+              "display": ""
+            }
+          ],
+          "code": "date",
+          "display": "A.5.4.1 Date"
+        },
+        {
+          "target": [
+            {
+              "code": "code.text",
+              "display": "Text description when no code available."
+            }
+          ],
+          "code": "resultText",
+          "display": "A.5.4.2 Result text"
+        },
+        {
+          "target": [
+            {
+              "code": "note",
+              "display": "Text description when coding is available."
+            }
+          ],
+          "code": "resultText",
+          "display": "A.5.4.2 Result text"
+        },
+        {
+          "target": [
+            {
+              "code": "code",
+              "display": ""
+            }
+          ],
+          "code": "observationCode",
+          "display": "A.5.4.3.1 Observation code"
+        },
+        {
+          "target": [
+            {
+              "code": "code.coding.display",
+              "display": ""
+            }
+          ],
+          "code": "observationName",
+          "display": "A.5.4.3.2 Observation name"
+        },
+        {
+          "target": [
+            {
+              "code": "code.text",
+              "display": ""
+            }
+          ],
+          "code": "observationName",
+          "display": "A.5.4.3.2 Observation name"
+        },
+        {
+          "target": [
+            {
+              "code": "method",
+              "display": ""
+            }
+          ],
+          "code": "observationMethod",
+          "display": "A.5.4.3.3 Observation method"
+        },
+        {
+          "target": [
+            {
+              "code": "value[x]",
+              "display": ""
+            }
+          ],
+          "code": "observationResult",
+          "display": "A.5.4.3.4 Observation result"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-results",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-finding"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section.entry[findings]",
+              "display": ""
+            }
+          ],
+          "code": "results",
+          "display": "A.5.4 Results"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "result",
+              "display": ""
+            }
+          ],
+          "code": "results",
+          "display": "A.5.4 Results"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.5.4",
+  "status": "draft",
+  "experimental": true
+}

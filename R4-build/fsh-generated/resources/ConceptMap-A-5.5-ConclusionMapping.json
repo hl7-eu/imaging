@@ -1,0 +1,126 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-5.5-ConclusionMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-5.5-ConclusionMapping",
+  "title": "A.5.5 Conclusion",
+  "description": "This concept map defines the mapping between the eHN A.5.5 Conclusion section and the FHIR profiles. \nThe coded conclusions and narrative are mapped directly on `DiagnosticReport`, they are also present in `Composition.section.text`.\nIn FHIR, these are mapped on `Observation` and `Condition` resources.",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "code",
+              "display": ""
+            }
+          ],
+          "code": "conditionOrFinding",
+          "display": "A.5.5.2.1 Condition or finding"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-conclusion",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-finding"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "code",
+              "display": ""
+            }
+          ],
+          "code": "conditionOrFinding",
+          "display": "A.5.5.2.1 Condition or finding"
+        },
+        {
+          "target": [
+            {
+              "code": "stage",
+              "display": ""
+            }
+          ],
+          "code": "stagingOrGrading",
+          "display": "A.5.5.2.2 Staging or grading"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-conclusion",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-impression"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section[impression].text",
+              "display": "The narrative needs to be included in the text."
+            }
+          ],
+          "code": "impression",
+          "display": "A.5.5.1 Impression"
+        },
+        {
+          "target": [
+            {
+              "code": "section[impression].text",
+              "display": "Are represented by Observations and/or Conditions"
+            }
+          ],
+          "code": "codedConclusions",
+          "display": "A.5.5.2 Coded conclusions"
+        },
+        {
+          "target": [
+            {
+              "code": "section[impression].entry[finding]",
+              "display": ""
+            }
+          ],
+          "code": "conditionOrFinding",
+          "display": "A.5.5.2.1 Condition or finding"
+        },
+        {
+          "target": [
+            {
+              "code": "section[impression].entry[impression]",
+              "display": ""
+            }
+          ],
+          "code": "stagingOrGrading",
+          "display": "A.5.5.2.2 Staging or grading"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "conclusion",
+              "display": ""
+            }
+          ],
+          "code": "impression",
+          "display": "A.5.5.1 Impression"
+        },
+        {
+          "target": [
+            {
+              "code": "conclusionCode",
+              "display": ""
+            }
+          ],
+          "code": "codedConclusions",
+          "display": "A.5.5.2 Coded conclusions"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-conclusion",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-diagnostic-report"
+    }
+  ],
+  "name": "A.5.5",
+  "status": "draft",
+  "experimental": true
+}

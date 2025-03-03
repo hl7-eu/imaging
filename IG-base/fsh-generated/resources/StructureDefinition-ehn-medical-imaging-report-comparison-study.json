@@ -1,0 +1,48 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-comparison-study",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 2
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "informative"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-comparison-study",
+  "name": "MedicalImagingReportOrderComparisonStudyEhn",
+  "title": "A.7 Comparison study",
+  "status": "draft",
+  "description": "Comparison study",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-comparison-study",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-comparison-study",
+        "path": "ehn-medical-imaging-report-comparison-study",
+        "short": "A.7 Comparison study",
+        "definition": "Comparison study"
+      },
+      {
+        "id": "ehn-medical-imaging-report-comparison-study.comparisonStudyDocumentation",
+        "path": "ehn-medical-imaging-report-comparison-study.comparisonStudyDocumentation",
+        "short": "A.7.1 Comparison Study Documentation",
+        "definition": "Reference of a prior Imaging Report to which the current images were compared.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

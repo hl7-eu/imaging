@@ -1,0 +1,16 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "DiagnosticReportSupportingInfoVCodes",
+  "id": "valueset-diagnosticreport-report-support-info",
+  "title": "DiagnosticReport supportInfo codes",
+  "description": "Codes to be used in `DiagnosticReport.supportInfo` for imaging reports.",
+  "url": "http://hl7.eu/fhir/imaging/ValueSet/valueset-diagnosticreport-report-support-info",
+  "compose": {
+    "include": [
+      {
+        "system": "http://hl7.eu/fhir/imaging/CodeSystem/codesystem-diagnostic-report-support-info"
+      }
+    ]
+  }
+}

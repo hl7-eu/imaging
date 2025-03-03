@@ -1,0 +1,8 @@
+{
+  "resourceType": "DiagnosticReport",
+  "id": "DianogsticReportR4",
+  "code": {
+    "text": "CT of head and neck"
+  },
+  "status": "registered"
+}

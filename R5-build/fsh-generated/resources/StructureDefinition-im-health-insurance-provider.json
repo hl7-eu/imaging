@@ -1,0 +1,87 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-health-insurance-provider",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-health-insurance-provider",
+  "name": "ImHealthInsuranceProvider",
+  "title": "Health Insurance Provider",
+  "status": "draft",
+  "description": "Health Insurance Provider profile for healthcare organizations, this resource contains all information\nrelated to a health insurance provider.",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Organization",
+  "baseDefinition": "http://hl7.eu/fhir/base/StructureDefinition/organization-eu",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Organization.meta.security",
+        "path": "Organization.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.language",
+        "path": "Organization.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.identifier",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Organization.identifier",
+        "definition": "Unique code for the health insurance company.",
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.active",
+        "path": "Organization.active",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Organization.name",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Organization.name",
+        "definition": "Official name of the health insurance provider.",
+        "mustSupport": true
+      }
+    ]
+  }
+}

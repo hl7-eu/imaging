@@ -1,0 +1,153 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-viewer-endpoint",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-viewer-endpoint",
+  "name": "ImImageIidViewerEndpoint",
+  "title": "Viewer endpoint",
+  "status": "draft",
+  "description": "This profile defines a placeholder for an Endpoint for a viewer that can be used to access the study, serie it is present on.\nThe application is based on [IHE-IID](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_IID.pdf).",
+  "fhirVersion": "5.0.0",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Endpoint",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Endpoint",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Endpoint.meta.security",
+        "path": "Endpoint.meta.security",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.language",
+        "path": "Endpoint.language",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.status",
+        "path": "Endpoint.status",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.connectionType",
+        "path": "Endpoint.connectionType",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "coding"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Endpoint.connectionType:iid",
+        "path": "Endpoint.connectionType",
+        "sliceName": "iid",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "ihe-iid",
+              "system": "http://hl7.eu/fhir/imaging/CodeSystem/codesystem-endpoint-terminology",
+              "display": "IHE IID endpoint"
+            }
+          ]
+        },
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.name",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/obligation",
+            "extension": [
+              {
+                "url": "code",
+                "valueCode": "SHALL:populate-if-known"
+              },
+              {
+                "url": "actor",
+                "valueCanonical": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer"
+              }
+            ]
+          }
+        ],
+        "path": "Endpoint.name",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.description",
+        "path": "Endpoint.description",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.managingOrganization",
+        "path": "Endpoint.managingOrganization",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload",
+        "path": "Endpoint.payload",
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload.type",
+        "path": "Endpoint.payload.type",
+        "min": 1,
+        "max": "1",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload.type.text",
+        "path": "Endpoint.payload.type.text",
+        "patternString": "IHE IID"
+      },
+      {
+        "id": "Endpoint.payload.mimeType",
+        "path": "Endpoint.payload.mimeType",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1,
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.payload.mimeType:text-html",
+        "path": "Endpoint.payload.mimeType",
+        "sliceName": "text-html",
+        "min": 1,
+        "max": "1",
+        "patternCode": "text/html",
+        "mustSupport": true
+      },
+      {
+        "id": "Endpoint.address",
+        "path": "Endpoint.address",
+        "mustSupport": true
+      }
+    ]
+  }
+}

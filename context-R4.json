@@ -1,0 +1,8 @@
+{ 
+    "isR4": true,
+    "isR5": false,
+    "fhirVersionNo": "4.0.1",
+    "fhirVersion": "4.0.1",
+    "R4": "",
+    "R5": "//R5"
+}

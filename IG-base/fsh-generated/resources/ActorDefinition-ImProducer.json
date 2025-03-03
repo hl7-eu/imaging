@@ -1,0 +1,10 @@
+{
+  "resourceType": "ActorDefinition",
+  "id": "ImProducer",
+  "url": "http://hl7.eu/fhir/imaging/ActorDefinition/ImProducer",
+  "title": "IM Producer",
+  "description": "Producer of the data.",
+  "name": "IM Producer",
+  "status": "draft",
+  "type": "system"
+}

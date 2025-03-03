@@ -1,0 +1,119 @@
+{
+  "resourceType": "ConceptMap",
+  "id": "A-5.2-ImagingProcedureMedicationMapping",
+  "url": "http://hl7.eu/fhir/imaging/ConceptMap/A-5.2-ImagingProcedureMedicationMapping",
+  "title": "A.5.2 Imaging Procedure Medication",
+  "description": "This concept map defines the mapping between the eHN A.5.2-ImagingProcedureMedication section and the FHIR profiles. \nThe medication information is mapped on the FHIR `Medication` resource. The use of the medication is modelled using MedicationDispense.\nLinks to these resource are added to the composition resource.\n",
+  "group": [
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "extension[productName]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "brandName",
+          "display": "A.5.2.1 Brand name"
+        },
+        {
+          "target": [
+            {
+              "code": "code",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "code",
+          "display": "A.5.2.2 Code"
+        },
+        {
+          "target": [
+            {
+              "code": "ingredient",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "activeIngredientList",
+          "display": "A.5.2.3 Active ingredient list"
+        },
+        {
+          "target": [
+            {
+              "code": "ingredient.strength",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "strength",
+          "display": "A.5.2.4 Strength"
+        },
+        {
+          "target": [
+            {
+              "code": "doseForm",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "pharmaceuticalDoseForm",
+          "display": "A.5.2.5 Pharmaceutical dose form"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-medication",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-medication"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "dosage.route",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "routeOfAdministration",
+          "display": "A.5.2.6 Route of administration"
+        },
+        {
+          "target": [
+            {
+              "code": "occurance",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "dateTime",
+          "display": "A.5.2.7 Date and time"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-medication",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-medication-administration"
+    },
+    {
+      "element": [
+        {
+          "target": [
+            {
+              "code": "section.entry[medication]",
+              "display": "",
+              "relationship": "equivalent"
+            }
+          ],
+          "code": "medication",
+          "display": "A.5.2 Imaging Procedure Medication"
+        }
+      ],
+      "source": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report",
+      "target": "http://hl7.eu/fhir/imaging/StructureDefinition/im-composition"
+    }
+  ],
+  "name": "A.5.2",
+  "status": "draft",
+  "experimental": true,
+  "sourceScopeUri": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-medication"
+}

@@ -1,0 +1,24 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "im-author",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/im-author",
+  "name": "ImAuthor",
+  "title": "Report Author",
+  "status": "draft",
+  "description": "Author (by whom the imaging report or a subset of its results was authored). Multiple authors could be provided.",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PractitionerRole",
+  "baseDefinition": "http://hl7.eu/fhir/imaging/StructureDefinition/im-practitioner-role",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "PractitionerRole.practitioner",
+        "path": "PractitionerRole.practitioner",
+        "min": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ehn-medical-imaging-report-examreport-results",
+  "url": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-results",
+  "name": "MedicalImagingReportOrderExaminationReportResultsEhn",
+  "title": "A.5.4 Results",
+  "status": "draft",
+  "description": "Note: The results summarise the findings and observations by the health professional following the imaging study. Note: this part includes textual as well as structured results or findings of the imaging investigation.",
+  "fhirVersion": "5.0.0",
+  "kind": "logical",
+  "abstract": false,
+  "type": "http://hl7.eu/fhir/imaging/StructureDefinition/ehn-medical-imaging-report-examreport-results",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "differential": {
+    "element": [
+      {
+        "id": "ehn-medical-imaging-report-examreport-results",
+        "path": "ehn-medical-imaging-report-examreport-results",
+        "short": "A.5.4 Results",
+        "definition": "Note: The results summarise the findings and observations by the health professional following the imaging study. Note: this part includes textual as well as structured results or findings of the imaging investigation."
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.date",
+        "path": "ehn-medical-imaging-report-examreport-results.date",
+        "short": "A.5.4.1 Date",
+        "definition": "Date and time of the observation. ISO 8601",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.resultText",
+        "path": "ehn-medical-imaging-report-examreport-results.resultText",
+        "short": "A.5.4.2 Result text",
+        "definition": "Comments and narrative representation of the observation results and findings.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.observationDetails",
+        "path": "ehn-medical-imaging-report-examreport-results.observationDetails",
+        "short": "A.5.4.3 Observation details",
+        "definition": "A.5.4.3 Observation details",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.observationDetails.observationCode",
+        "path": "ehn-medical-imaging-report-examreport-results.observationDetails.observationCode",
+        "short": "A.5.4.3.1 Observation code",
+        "definition": "Code representing the observation. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.observationDetails.observationName",
+        "path": "ehn-medical-imaging-report-examreport-results.observationDetails.observationName",
+        "short": "A.5.4.3.2 Observation name",
+        "definition": "Full name of the observation according to the used observation coding standard.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.observationDetails.observationMethod",
+        "path": "ehn-medical-imaging-report-examreport-results.observationDetails.observationMethod",
+        "short": "A.5.4.3.3 Observation method",
+        "definition": "Observation method (measurement principle) to obtain the result. SNOMED CT",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "ehn-medical-imaging-report-examreport-results.observationDetails.observationResult",
+        "path": "ehn-medical-imaging-report-examreport-results.observationDetails.observationResult",
+        "short": "A.5.4.3.4 Observation result",
+        "definition": "Results of the observation including text, numeric and coded results of the measurement and measurement uncertainty. The content of the observation result will vary according to the type of observation. Examples: diameter, density, and number of nodes. SNOMED CT (for ordinal or nominal scale results and result interpretation) UCUM (for units)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}
