@@ -17,9 +17,9 @@
 
 ### Scope
 
-This implementation guide specifies how to represent imaging reports and studies in the **European** context as required by {{ehnImaging}} and as defined within and as defined within the Xt-EHR workpackage (see {{XtEhr-workpages}}) *D7.2 Medical images and reports: EEHRxF, requirements and specifications for EHR systems*. 
+This implementation guide specifies how to represent imaging reports and studies in the **European** context as required by {{ehnImaging}} and as defined within and as defined within the Xt-EHR work package *D7.2 Medical images and reports: EEHRxF, requirements and specifications for EHR systems* (see {{XtEhrWorkPackages}}).
 
-The IG is developed in close coorperation with {{IHEeu}}, {{IHE-RAD}}, and {{HL7-FHIR-II}} as they are working on overlapping specifications (IHE-IDR and IDS). The development has been done in close collaboration with the dedicated FHIR Imaging Report team that sits under the Xt-EHR project in Task 7.2 Medical Imaging Studies and Related Reports (see {{XtEHR-workpages}}).
+The IG is developed in close cooperation with {{IHEeu}}, {{IHE-RAD}}, and {{HL7-FHIR-II}} as they are working on overlapping specifications (IHE-IDR and IDS). The development has been done in close collaboration with the dedicated FHIR Imaging Report team that sits under the Xt-EHR project in Task 7.2 Medical Imaging Studies and Related Reports.
 
 This way the EU FHIR Imaging report aims to comply to EHDS requirements for the prioritized category of medical imaging studies and related reports.
 
@@ -64,8 +64,9 @@ Besides the requirements defined in the {{ehnImagingGuidelines}}, it also uses i
 
 * Related activities in other Standard Development Organizations (SDO):
 
-  * {{iheRad}}
-  * HL7 FHIR Imaging Integration
+  * {{IHE-RAD}}
+  * {{HL7-FHIR-II}}
+
 * Related specifications:
   * IHE-IDR, draft version as discussed on Jan 19 2025
     * {{iheRad}} is working on a machine readable specification for diagnostic reports of (common) radiology procedures. The draft results of this activity have been taken along in the definition of this IG.

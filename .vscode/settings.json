@@ -1,11 +1,12 @@
 {
     "cSpell.words": [
+        "CodeableConcept",
+        "DICOM",
         "EDQM",
+        "EHDS",
         "LOINC",
         "UCUM",
-        "WADO",
-        "CodeableConcept",
-        "DICOM"
+        "WADO"
     ],
     "editor.wordWrap": "on",
     "markdownlint.config": {
