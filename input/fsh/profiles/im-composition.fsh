@@ -114,10 +114,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   // * title = "Imaging Studies"
   * code = $loinc#18726-0
   * entry MS
-    * ^slicing.discriminator.type = #profile
-    * ^slicing.discriminator.path = "$this"
-    * ^slicing.rules = #open
-    * ^slicing.ordered = false
+    * insert SliceElement( #profile, "$this" )
   * entry contains imagingstudy 1..* MS
   * entry[imagingstudy]
     * ^short = "Imaging Study Reference"

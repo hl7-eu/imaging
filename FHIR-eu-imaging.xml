@@ -30,6 +30,7 @@
 <artifact id="StructureDefinition/im-adversereaction" key="StructureDefinition-im-adversereaction" name="Adverse Event"/>
 <artifact id="StructureDefinition/im-allergic-reaction" key="StructureDefinition-im-allergic-reaction" name="Allergic Reaction"/>
 <artifact id="StructureDefinition/ehn-imaging-study-manifest-dataset" key="StructureDefinition-ehn-imaging-study-manifest-dataset" name="B Imaging study manifest data set (eHN)"/>
+<artifact id="Composition/ImComposition-example" key="Composition-ImComposition-example" name="Brain MRI example"/>
 <artifact id="StructureDefinition/im-bundle" key="StructureDefinition-im-bundle" name="Bundle: Imaging Study Report"/>
 <artifact id="CodeSystem/codesystem-endpoint-terminology" key="CodeSystem-codesystem-endpoint-terminology" name="CodeSystem for terminology for Endpoint resources used in the EU Imaging IG."/>
 <artifact id="StructureDefinition/im-coverage" key="StructureDefinition-im-coverage" name="Coverage information"/>
@@ -38,7 +39,23 @@
 <artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
 <artifact id="StructureDefinition/im-finding" key="StructureDefinition-im-finding" name="Finding"/>
 <artifact id="StructureDefinition/im-health-insurance-provider" key="StructureDefinition-im-health-insurance-provider" name="Health Insurance Provider"/>
+<artifact id="PractitionerRole/ImAuthor-example" key="PractitionerRole-ImAuthor-example" name="ImAuthor-example"/>
+<artifact id="Device/ImAuthoringDevice-example" key="Device-ImAuthoringDevice-example" name="ImAuthoringDevice-example"/>
 <artifact id="StructureDefinition/im-body-structure" key="StructureDefinition-im-body-structure" name="ImBodyStructure"/>
+<artifact id="DiagnosticReport/ImDiagnosticReport-example" key="DiagnosticReport-ImDiagnosticReport-example" name="ImDiagnosticReport-example"/>
+<artifact id="Observation/ImFinding-example" key="Observation-ImFinding-example" name="ImFinding-example"/>
+<artifact id="ImagingStudy/ImImagingStudy-example" key="ImagingStudy-ImImagingStudy-example" name="ImImagingStudy-example"/>
+<artifact id="Condition/ImImpression-example" key="Condition-ImImpression-example" name="ImImpression-example"/>
+<artifact id="PractitionerRole/ImInformationRecipient-example" key="PractitionerRole-ImInformationRecipient-example" name="ImInformationRecipient-example"/>
+<artifact id="ImagingSelection/ImKeyImagesSelection-example" key="ImagingSelection-ImKeyImagesSelection-example" name="ImKeyImagesSelection-example"/>
+<artifact id="PractitionerRole/ImLegalAuthenticator-example" key="PractitionerRole-ImLegalAuthenticator-example" name="ImLegalAuthenticator-example"/>
+<artifact id="ServiceRequest/ImOrder-example" key="ServiceRequest-ImOrder-example" name="ImOrder-example"/>
+<artifact id="Organization/ImOrganization-example" key="Organization-ImOrganization-example" name="ImOrganization-example"/>
+<artifact id="Patient/ImPatient-example" key="Patient-ImPatient-example" name="ImPatient-example"/>
+<artifact id="Practitioner/ImPractitioner-example" key="Practitioner-ImPractitioner-example" name="ImPractitioner-example"/>
+<artifact id="Procedure/ImProcedure-example" key="Procedure-ImProcedure-example" name="ImProcedure-example"/>
+<artifact id="CarePlan/ImRecommendedCarePlan-example" key="CarePlan-ImRecommendedCarePlan-example" name="ImRecommendedCarePlan-example"/>
+<artifact id="PractitionerRole/ImResultValidator-example" key="PractitionerRole-ImResultValidator-example" name="ImResultValidator-example"/>
 <artifact id="StructureDefinition/im-accession-number-identifier" key="StructureDefinition-im-accession-number-identifier" name="Imaging Accession Number Identifier"/>
 <artifact id="StructureDefinition/im-order-reference" key="StructureDefinition-im-order-reference" name="Imaging Accession Number Reference"/>
 <artifact id="StructureDefinition/im-adverse-event-criticality" key="StructureDefinition-im-adverse-event-criticality" name="Imaging Adverse Event Criticality"/>

@@ -1,0 +1,109 @@
+<!-- Liquid template version: 0.4.6 -->
+<div>
+  {% if Composition.meta.profile.exists() %}
+    {% for profile in Composition.meta.profile %}
+      <div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%">
+        <p style="margin-bottom: 0px"></p>
+        <p style="margin-bottom: 0px">Profile: {{profile}}</p>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <table class="grid dict">
+
+    {% if Composition.title.exists() %}
+      <tr>
+          <th scope="row"><b>Title: </b></th>
+          <td style="padding-left: 4px;">{{Composition.title}}</td>
+      </tr>
+    {% endif %}
+
+    {% if Composition.id.exists() %}
+      <tr>
+          <th scope="row"><b>Id: </b></th>
+          <td style="padding-left: 4px;">{{Composition.id}}</td>
+      </tr>
+    {% endif %}
+
+    {% if Composition.version.exists() %}
+      <tr>
+          <th scope="row"><b>Version: </b></th>
+          <td style="padding-left: 4px;">{{Composition.version}}</td>
+      </tr>
+    {% endif %}
+
+    {% if Composition.language.exists() %}
+      <tr>
+          <th scope="row"><b>Language: </b></th>
+          <td style="padding-left: 4px;">{{Composition.language}}</td>
+      </tr>
+    {% endif %}
+
+    {% for identifier in Composition.identifier %}
+      <tr>
+          <th scope="row">
+              <b>
+                  {% if identifier.type.coding.exists() %}
+                      {% if identifier.type.coding.display.exists() %}
+                          {{identifier.type.coding.display}}{% if identifier.assigner.display.exists() %} ({{identifier.assigner.display}}){% endif %} Identifier:
+                      {% else %}
+                          {{identifier.type.coding.code}}{% if identifier.assigner.display.exists() %} ({{identifier.assigner.display}}){% endif %} identifier:
+                      {% endif %}
+                  {% else %}
+                      {{identifier.use}}
+                  {% endif %}
+              </b>
+          </th>
+          <td style="padding-left: 4px;">
+              {% if identifier.value.exists() %}
+              <p style="margin-bottom: 5px;">
+                  <span>{{identifier.value}}</span>
+              </p>
+              {% endif %}
+          </td>
+      </tr>
+      {% endfor %}
+
+      {% if Composition.date.exists() %}
+        <tr>
+          <th scope="row"><b>Date: </b></th>
+          <td style="padding-left: 4px;">{{Composition.date}}</td>
+        </tr>
+      {% endif %}
+
+      {% if Composition.author.exists() %}
+        {% for author in Composition.author %}
+          <tr>
+            <th scope="row"><b>Author: </b></th>
+            <td style="padding-left: 4px;">{{author}}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+
+      {% if Composition.attester.exists() %}
+        {% for attester in Composition.attester %}
+          <tr>
+            <th scope="row"><b>Attester: </b></th>
+            <td style="padding-left: 4px;">
+              {{attester.party}} {% if attester.time.exists() %}({{attester.time}}) {% else %}<i>none</i>{% endif %} {{attester.mode}}
+            </td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+
+      {% if Composition.custodian.exists() %}
+        <tr>
+          <th scope="row"><b>Custodian: </b></th>
+          <td style="padding-left: 4px;">
+            {{Composition.custodian}}
+          </td>
+        </tr>
+      {% endif %}
+  </table>
+
+  {% if Composition.section.exists() %}
+    {% for section in Composition.section %}
+      {%include composition-section.html %}
+    {% endfor %}
+  {% endif %}
+</div>
