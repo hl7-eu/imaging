@@ -148,31 +148,12 @@ The `text` field of each section SHALL contain a textual representation of all l
 
   * entry
     * insert SliceElement( #profile, "$this" )
-  * entry contains 
-      order 0..* and 
-      orderPlacer 0..* and 
-      insurance 0..* and 
-      insurranceprovider 0..*
+  * entry contains order 0..*
 
   * entry[order]
     * ^short = "Order reference"
     * ^definition = "This entry holds a reference to the order for the Imaging Study and report."
-  * entry[order] only Reference(ImOrder)  
-  
-  * entry[orderPlacer]
-    * ^short = "Order Placer"
-    * ^definition = "This entry holds a reference to order placer."
-  * entry[orderPlacer] only Reference(ImOrderPlacer)  
-
-  * entry[insurance]
-    * ^short = "Insurrance"
-    * ^definition = "This entry holds a reference to insurance."
-  * entry[insurance] only Reference(ImCoverage)  
-
-  * entry[insurranceprovider]
-    * ^short = "Insurrance"
-    * ^definition = "This entry holds a reference to insurance provider."
-  * entry[insurranceprovider] only Reference(ImHealthInsuranceProvider)  
+  * entry[order] only Reference(ImOrder)
 
   
 ///////////////////////////////// HISTORY SECTION ///////////////////////////////////////
@@ -187,16 +168,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry
     * insert SliceElement( #profile, $this )
   * entry contains 
-      procedure 0..* and
-      performer 0..* and
-      imaging-device 0..* and
-      imaging-phase 0..* and
-      medication 0..*
+      procedure 0..*
   * entry[procedure] only Reference(ImProcedure)
-  * entry[performer] only Reference(ImPerformer) 
-  * entry[imaging-device] only Reference(ImImagingDevice)
-  * entry[imaging-phase] only Reference(ImImagingStudyPhase)
-  * entry[medication] only Reference(ImMedicationAdministration)
 
 ////////////////// COMPARISON SECTION //////////////////////////
 * section[comparison]
