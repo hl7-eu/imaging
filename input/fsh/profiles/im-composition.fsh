@@ -20,7 +20,7 @@ The `text` field of each section SHALL contain a textual representation of all l
     ImDiagnosticReportReference named diagnosticreport-reference 1..1  
 * extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
 
-* custodian only Reference(OrganizationEu)
+* custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
 
 * attester 0..*
@@ -29,12 +29,12 @@ The `text` field of each section SHALL contain a textual representation of all l
 * attester[legalAuthenticator]
   * mode 1..1
   * mode = http://hl7.org/fhir/composition-attestation-mode#legal
-  * party only Reference($EuPractitionerRole)
+  * party only Reference( $EuPractitionerRole )
   * time 1..1
 * attester[resultValidator]
   * mode 1..1
   * mode = http://hl7.org/fhir/composition-attestation-mode#professional
-  * party only Reference($EuPractitionerRole)
+  * party only Reference( $EuPractitionerRole )
   * time 1..1
 
 * author 1..*
@@ -42,17 +42,17 @@ The `text` field of each section SHALL contain a textual representation of all l
 * author contains 
     author 0..* and 
     authoringDevice 0..*
-* author[author] only Reference($EuPractitionerRole)
-* author[authoringDevice] only Reference($EuDevice)
+* author[author] only Reference( $EuPractitionerRole )
+* author[authoringDevice] only Reference( $EuDevice )
 
 // type of the report. Matching DiagnosticReport.code
 // code 
-* type from ImImagingDocumentTypesEuVS (extensible)
+* type from ImImagingReportTypesEuVS (extensible)
 * type
   * coding 1..*
     * insert SliceElement( #value, $this )
-  * coding contains imaging-report-v1-0-0 1..1
-  * coding[imaging-report-v1-0-0] = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report V0.0.1"
+  * coding contains eu-template 1..1
+  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report V0.0.1"
 
 * category 1..*
   * insert SliceElement( #value, $this )

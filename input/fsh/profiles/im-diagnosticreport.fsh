@@ -68,5 +68,5 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 * code
   * coding 1..*
     * insert SliceElement( #value, $this )
-  * coding contains imaging-report-v0-0-1 1..1
-  * coding[imaging-report-v0-0-1] = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report V0.0.1"
+  * coding contains eu-template 1..1
+  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report V0.0.1"

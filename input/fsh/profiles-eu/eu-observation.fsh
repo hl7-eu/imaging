@@ -32,8 +32,8 @@ Description: "A quantity profile for the EU."
 
 Profile: SimpleQuantityEu
 Parent: SimpleQuantity
-Title: "EU Quantity"
-Description: "A quantity profile for the EU."
+Title: "EU SimpleQuantity"
+Description: "A simple quantity profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * extension contains $iso21090-uncertainty-url named uncertainty 0..1
 * extension contains $iso21090-uncertainty-type-url named uncertaintyType 0..1

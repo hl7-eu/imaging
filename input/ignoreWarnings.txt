@@ -23,6 +23,9 @@ This IG is version 5.0.0, while the IG 'hl7.fhir.uv.ips' is from version 4.0.1
 # IG's are not available for R5, dependencies are compatible
 This IG is version 5.0.0, while the IG 'fhir.dicom' is from version 4.0.1
 
+# Artifact of the R5 specification
+The extension http://hl7.org/fhir/StructureDefinition/regex|5.2.0 is deprecated with the note This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex
+
 # Error likely caused by missing or incorrect CodeSystem at the FHIR side
 %Error converting output stream to byte array%
 
@@ -72,3 +75,5 @@ Canonical URL 'https://dicom.nema.org/medical/dicom/current/output/chtml/part16%
 # No code system exists for DICOM SOPclass
 %in the CodeSystem 'urn:ietf:rfc:3986' version 'null'
 
+# Remove warnings related to R5 use of R4 packages
+%based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try

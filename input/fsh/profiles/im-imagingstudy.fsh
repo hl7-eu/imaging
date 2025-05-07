@@ -30,10 +30,10 @@ This profile represents an imaging study instance.
   * performer contains performer 0..1 and device 0..1 and custodian 0..1
   * performer[performer]
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF
-    * actor only Reference( http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu )
+    * actor only Reference( $EuPractitionerRole )
   * performer[custodian]
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST
-    * actor only Reference( http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu )
+    * actor only Reference( $EuOrganization )
   * performer[device]
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
     * actor only Reference( ImImagingDevice ) 

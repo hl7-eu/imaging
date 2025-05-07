@@ -28,13 +28,9 @@ dependencies:
   hl7.terminology.r5: 6.3.0
   hl7.fhir.uv.extensions: 5.2.0
   hl7.fhir.uv.ips: 1.1.0
-  # hl7.fhir.eu.extensions.r5: 0.1.0-ballot
-  # hl7.fhir.eu.extensions.r5: current
-  hl7.fhir.eu.extensions.r5: 0.1.1-ballot
-  # hl7.fhir.eu.base.r5: current
-  # hl7.fhir.eu.base.r5: current/0.1.0-ballot
+  hl7.fhir.eu.extensions: 0.1.1-ballot
   hl7.fhir.eu.base-r5: 0.1.0-ballot
-
+  
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions
@@ -104,6 +100,8 @@ parameters:
   usage-stats-opt-out: true
   # packages: ./package-cache
   releaselabel: 0.1.0-ballot
+
+  special-url-base: https://www.xt-ehr.eu/specifications/fhir
   # add all fsh results to _data directory
   # produce-jekyll-data: true
   # broken links are not errors, but warnings

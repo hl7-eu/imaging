@@ -33,13 +33,12 @@
 <artifact id="StructureDefinition/ConditionEu" key="StructureDefinition-ConditionEu" name="EU Condition"/>
 <artifact id="StructureDefinition/EncounterEu" key="StructureDefinition-EncounterEu" name="EU Encounter"/>
 <artifact id="StructureDefinition/EndpointEu" key="StructureDefinition-EndpointEu" name="EU Endpoint"/>
-<artifact id="StructureDefinition/LocationImgEu" key="StructureDefinition-LocationImgEu" name="EU Location"/>
 <artifact id="StructureDefinition/MedicationEu" key="StructureDefinition-MedicationEu" name="EU Medication"/>
 <artifact id="StructureDefinition/ObservationEu" key="StructureDefinition-ObservationEu" name="EU Observation"/>
 <artifact id="StructureDefinition/ProcedureEu" key="StructureDefinition-ProcedureEu" name="EU Procedure"/>
-<artifact id="StructureDefinition/SimpleQuantityEu" key="StructureDefinition-SimpleQuantityEu" name="EU Quantity"/>
 <artifact id="StructureDefinition/quantity-eu" key="StructureDefinition-quantity-eu" name="EU Quantity"/>
 <artifact id="StructureDefinition/range-eu" key="StructureDefinition-range-eu" name="EU Range"/>
+<artifact id="StructureDefinition/SimpleQuantityEu" key="StructureDefinition-SimpleQuantityEu" name="EU SimpleQuantity"/>
 <artifact id="ValueSet/im-effective-dose-units" key="ValueSet-im-effective-dose-units" name="Effective Dose Units"/>
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>

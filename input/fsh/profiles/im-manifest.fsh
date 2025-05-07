@@ -21,7 +21,7 @@ This profile represents a manifest of an imaging study. It holds the ImagingStud
 * entry[patient]
   * fullUrl 1..1
   * resource 1..1
-  * resource only http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu
+  * resource only $EuPatient
 * entry[order]
   * fullUrl 1..1
   * resource 1..1

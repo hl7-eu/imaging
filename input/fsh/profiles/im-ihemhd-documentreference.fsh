@@ -74,7 +74,7 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
     * language 
     * creation 
   * profile 1..*
-    * insert SliceElement( #value, valueCanonical )
+    * insert SliceElement( #value, value )
   * profile contains hl7eu-imaging-report 1..1 
   * profile[hl7eu-imaging-report].valueCanonical = Canonical( ImReport )
 * bodySite 0..*
