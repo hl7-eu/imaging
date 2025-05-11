@@ -10,6 +10,7 @@
 <artifact id="StructureDefinition/EHDSAppointment" key="StructureDefinition-EHDSAppointment" name="Appointment model"/>
 <artifact id="StructureDefinition/EHDSAttachment" key="StructureDefinition-EHDSAttachment" name="Attachment model"/>
 <artifact id="StructureDefinition/EHDSAttachments" key="StructureDefinition-EHDSAttachments" name="Attachments"/>
+<artifact id="Composition/Composition-knee-mri-exmaple" key="Composition-Composition-knee-mri-exmaple" name="Brain MRI example"/>
 <artifact id="StructureDefinition/EHDSCarePlan" key="StructureDefinition-EHDSCarePlan" name="Care plan model"/>
 <artifact id="StructureDefinition/EHDSClinicalImpression" key="StructureDefinition-EHDSClinicalImpression" name="Clinical impression model"/>
 <artifact id="CodeSystem/codesystem-endpoint-terminology" key="CodeSystem-codesystem-endpoint-terminology" name="CodeSystem for terminology used in Endpoint resources in the EU Imaging IG."/>
@@ -19,6 +20,7 @@
 <artifact id="StructureDefinition/EHDSDeviceUse" key="StructureDefinition-EHDSDeviceUse" name="Device use model"/>
 <artifact id="CodeSystem/codesystem-diagnostic-report-support-info" key="CodeSystem-codesystem-diagnostic-report-support-info" name="Diagnostic Report Support Info Code System"/>
 <artifact id="ValueSet/valueset-diagnosticreport-report-support-info" key="ValueSet-valueset-diagnosticreport-report-support-info" name="DiagnosticReport supportInfo codes"/>
+<artifact id="DiagnosticReport/DiagnosticReport-knee-mri-example" key="DiagnosticReport-DiagnosticReport-knee-mri-example" name="DiagnosticReport-knee-mri-example"/>
 <artifact id="StructureDefinition/EHDSDispenseDecline" key="StructureDefinition-EHDSDispenseDecline" name="Dispense decline"/>
 <artifact id="StructureDefinition/ImReport" key="StructureDefinition-ImReport" name="Document Bundle for Imaging Report"/>
 <artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
@@ -43,6 +45,8 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
+<artifact id="Bundle/ImagingReport-knee-mri-example" key="Bundle-ImagingReport-knee-mri-example" name="Example ImagingStudy Manifest"/>
+<artifact id="Bundle/MHDTransactionBundleKneeMriExample" key="Bundle-MHDTransactionBundleKneeMriExample" name="Example MHD Knee Mri Transaction Bundle"/>
 <artifact id="StructureDefinition/ImFinding" key="StructureDefinition-ImFinding" name="Finding"/>
 <artifact id="StructureDefinition/EHDSFunctionalStatus" key="StructureDefinition-EHDSFunctionalStatus" name="Functional status"/>
 <artifact id="StructureDefinition/ImGestationalAgeObservation" key="StructureDefinition-ImGestationalAgeObservation" name="Gestational Age Observation"/>
@@ -64,6 +68,9 @@
 <artifact id="StructureDefinition/ImImagingStudyManifest" key="StructureDefinition-ImImagingStudyManifest" name="IM ImagingStudy Manifest"/>
 <artifact id="StructureDefinition/ImWadoEndpoint" key="StructureDefinition-ImWadoEndpoint" name="IM WADO Endpoint"/>
 <artifact id="StructureDefinition/ImImagingDevice" key="StructureDefinition-ImImagingDevice" name="Im Imaging Device"/>
+<artifact id="Observation/ImFinding-knee-mri-example" key="Observation-ImFinding-knee-mri-example" name="ImFinding-knee-mri-example"/>
+<artifact id="Condition/ImImpression-knee-mri-example" key="Condition-ImImpression-knee-mri-example" name="ImImpression-knee-mri-example"/>
+<artifact id="Procedure/ImProcedure-knee-mri-example" key="Procedure-ImProcedure-knee-mri-example" name="ImProcedure-knee-mri-example"/>
 <artifact id="StructureDefinition/im-accession-number-identifier" key="StructureDefinition-im-accession-number-identifier" name="Imaging Accession Number Identifier"/>
 <artifact id="StructureDefinition/ImAdverseEvent" key="StructureDefinition-ImAdverseEvent" name="Imaging Adverse Event"/>
 <artifact id="StructureDefinition/ImComposition" key="StructureDefinition-ImComposition" name="Imaging Composition"/>
@@ -93,6 +100,7 @@
 <artifact id="StructureDefinition/EHDSLaboratoryReportHeader" key="StructureDefinition-EHDSLaboratoryReportHeader" name="Laboratory report header model"/>
 <artifact id="StructureDefinition/EHDSLaboratoryReport" key="StructureDefinition-EHDSLaboratoryReport" name="Laboratory report model"/>
 <artifact id="StructureDefinition/EHDSLocation" key="StructureDefinition-EHDSLocation" name="Location model"/>
+<artifact id="DocumentReference/iheMdhDocumentReference-knee-mri-example" key="DocumentReference-iheMdhDocumentReference-knee-mri-example" name="MHD DocumentReference for knee MRI Imaging Report example"/>
 <artifact id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="Manifest DocumentReference for MHD deployments"/>
 <artifact id="StructureDefinition/Manifest-ImManifestDocumentReference" key="StructureDefinition-Manifest-ImManifestDocumentReference" name="Manifest Obligations for ImManifestIheMhdDocumentReference"/>
 <artifact id="StructureDefinition/Manifest-EuAddress" key="StructureDefinition-Manifest-EuAddress" name="Manifest obligations for EuAddress"/>
@@ -157,6 +165,7 @@
 <artifact id="CodeSystem/codesystem-missing-dicom-terminology" key="CodeSystem-codesystem-missing-dicom-terminology" name="Missing DICOM Terminology"/>
 <artifact id="StructureDefinition/EHDSObservation" key="StructureDefinition-EHDSObservation" name="Observation model"/>
 <artifact id="StructureDefinition/EHDSOrganization" key="StructureDefinition-EHDSOrganization" name="Organization model"/>
+<artifact id="Organization/Organization-knee-mri-example" key="Organization-Organization-knee-mri-example" name="Organization-knee-mri-example"/>
 <artifact id="StructureDefinition/EHDSPatient" key="StructureDefinition-EHDSPatient" name="Patient model"/>
 <artifact id="StructureDefinition/EHDSPatientSummaryBody" key="StructureDefinition-EHDSPatientSummaryBody" name="Patient summary body model"/>
 <artifact id="StructureDefinition/EHDSPatientSummaryHeader" key="StructureDefinition-EHDSPatientSummaryHeader" name="Patient summary header model"/>
@@ -216,6 +225,7 @@
 <artifact id="StructureDefinition/Report-ImRadiationDoseObservation" key="StructureDefinition-Report-ImRadiationDoseObservation" name="Report obligations for ImRadiationDoseObservation"/>
 <artifact id="StructureDefinition/EHDSCommonHeader" key="StructureDefinition-EHDSCommonHeader" name="Resource header model"/>
 <artifact id="StructureDefinition/EHDSServiceRequest" key="StructureDefinition-EHDSServiceRequest" name="Service request model"/>
+<artifact id="ServiceRequest/ServiceRequest-knee-mri-example" key="ServiceRequest-ServiceRequest-knee-mri-example" name="ServiceRequest-knee-mri-example"/>
 <artifact id="StructureDefinition/EHDSSlot" key="StructureDefinition-EHDSSlot" name="Slot model"/>
 <artifact id="StructureDefinition/EHDSSpecimen" key="StructureDefinition-EHDSSpecimen" name="Specimen model"/>
 <artifact id="StructureDefinition/SpecimenEu" key="StructureDefinition-SpecimenEu" name="Specimen: Laboratory"/>
