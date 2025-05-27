@@ -1,0 +1,145 @@
+
+# Dicom-File-Format
+
+# Dicom-Meta-Information-Header
+# Used TransferSyntax: Little Endian Explicit
+(0002,0000) UL 192                                      #   4, 1 FileMetaInformationGroupLength
+(0002,0001) OB 00\01                                    #   2, 1 FileMetaInformationVersion
+(0002,0002) UI =KeyObjectSelectionDocumentStorage       #  30, 1 MediaStorageSOPClassUID
+(0002,0003) UI [1.3.6.1.4.1.40771.195243408406719620054624468635736553936] #  58, 1 MediaStorageSOPInstanceUID
+(0002,0010) UI =LittleEndianExplicit                    #  20, 1 TransferSyntaxUID
+(0002,0012) UI [1.2.40.0.13.1.3]                        #  16, 1 ImplementationClassUID
+(0002,0013) SH [dcm4che-5.23.3]                         #  14, 1 ImplementationVersionName
+
+# Dicom-Data-Set
+# Used TransferSyntax: Little Endian Explicit
+(0008,0005) CS [ISO_IR 100]                             #  10, 1 SpecificCharacterSet
+(0008,0016) UI =KeyObjectSelectionDocumentStorage       #  30, 1 SOPClassUID
+(0008,0018) UI [1.3.6.1.4.1.40771.195243408406719620054624468635736553936] #  58, 1 SOPInstanceUID
+(0008,0020) DA [20240111]                               #   8, 1 StudyDate
+(0008,0023) DA [20240111]                               #   8, 1 ContentDate
+(0008,0030) TM [163748.100]                             #  10, 1 StudyTime
+(0008,0033) TM [163800.707]                             #  10, 1 ContentTime
+(0008,0050) SH [123445678]                              #  10, 1 AccessionNumber
+(0008,0060) CS [KO]                                     #   2, 1 Modality
+(0008,0070) LO [VISUAPPS GmbH.]                         #  14, 1 Manufacturer
+(0008,0090) PN (no value available)                     #   0, 0 ReferringPhysicianName
+(0008,1030) LO [KOSTest 1-4 for com.visuapps.web.app.ihe-*.war] #  46, 1 StudyDescription
+(0008,1111) SQ (Sequence with explicit length #=0)      #   0, 1 ReferencedPerformedProcedureStepSequence
+(fffe,e0dd) na (SequenceDelimitationItem for re-encod.) #   0, 0 SequenceDelimitationItem
+(0010,0010) PN [ALJMMazar ELGATest^Helmtraut]           #  28, 1 PatientName
+(0010,0020) LO [000120170710]                           #  12, 1 PatientID
+(0010,0030) DA [19430504]                               #   8, 1 PatientBirthDate
+(0010,0040) CS [M]                                      #   2, 1 PatientSex
+(0020,000d) UI [1.2.840.113674.1115.261.200.20240111.163748.100] #  48, 1 StudyInstanceUID
+(0020,000e) UI [1.3.6.1.4.1.40771.77902411457117259815679070341354945427] #  56, 1 SeriesInstanceUID
+(0020,0010) SH [29301]                                  #   6, 1 StudyID
+(0020,0011) IS [1]                                      #   2, 1 SeriesNumber
+(0020,0013) IS [1]                                      #   2, 1 InstanceNumber
+(0038,0010) LO [2020500302]                             #  10, 1 AdmissionID
+(0040,a040) CS [CONTAINER]                              #  10, 1 ValueType
+(0040,a043) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptNameCodeSequence
+  (fffe,e000) na (Item with undefined length #=4)         # u/l, 1 Item
+    (0008,0100) SH [113000]                                 #   6, 1 CodeValue
+    (0008,0102) SH [DCM]                                    #   4, 1 CodingSchemeDesignator
+    (0008,0103) SH [1.0]                                    #   4, 1 CodingSchemeVersion
+    (0008,0104) LO [Of Interest]                            #  12, 1 CodeMeaning
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0040,a050) CS [SEPARATE]                               #   8, 1 ContinuityOfContent
+(0040,a375) SQ (Sequence with undefined length #=1)     # u/l, 1 CurrentRequestedProcedureEvidenceSequence
+  (fffe,e000) na (Item with undefined length #=2)         # u/l, 1 Item
+    (0008,1115) SQ (Sequence with undefined length #=1)     # u/l, 1 ReferencedSeriesSequence
+      (fffe,e000) na (Item with undefined length #=4)         # u/l, 1 Item
+        (0008,0054) AE [NOELGA_QS_SP_RAD]                       #  16, 1 RetrieveAETitle
+        (0008,1199) SQ (Sequence with undefined length #=1)     # u/l, 1 ReferencedSOPSequence
+          (fffe,e000) na (Item with undefined length #=2)         # u/l, 1 Item
+            (0008,1150) UI =MRImageStorage                          #  26, 1 ReferencedSOPClassUID
+            (0008,1155) UI [1.2.840.113674.950809133358028.100.20240111.163748.100.1] #  56, 1 ReferencedSOPInstanceUID
+          (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+        (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+        (0020,000e) UI [1.2.840.113674.1115.261.178.300.20240111.163748.100.1] #  54, 1 SeriesInstanceUID
+        (0040,e011) UI [1.2.40.0.10.1.6.1.1.1.382.2.103.5.4]    #  36, 1 RetrieveLocationUID
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+    (0020,000d) UI [1.2.840.113674.1115.261.200.20240111.163748.100] #  48, 1 StudyInstanceUID
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0040,a504) SQ (Sequence with undefined length #=1)     # u/l, 1 ContentTemplateSequence
+  (fffe,e000) na (Item with undefined length #=2)         # u/l, 1 Item
+    (0008,0105) CS [DCMR]                                   #   4, 1 MappingResource
+    (0040,db00) CS [2010]                                   #   4, 1 TemplateIdentifier
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+(0040,a730) SQ (Sequence with undefined length #=5)     # u/l, 1 ContentSequence
+  (fffe,e000) na (Item with undefined length #=4)         # u/l, 1 Item
+    (0040,a010) CS [HAS CONCEPT MOD]                        #  16, 1 RelationshipType
+    (0040,a040) CS [CODE]                                   #   4, 1 ValueType
+    (0040,a043) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptNameCodeSequence
+      (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+        (0008,0100) SH [121049]                                 #   6, 1 CodeValue
+        (0008,0102) SH [DCM]                                    #   4, 1 CodingSchemeDesignator
+        (0008,0104) LO [Language of Content Item and Descendants] #  40, 1 CodeMeaning
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+    (0040,a168) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptCodeSequence
+      (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+        (0008,0100) SH [eng]                                    #   4, 1 CodeValue
+        (0008,0102) SH [ISO639_2]                               #   8, 1 CodingSchemeDesignator
+        (0008,0104) LO [English]                                #   8, 1 CodeMeaning
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+  (fffe,e000) na (Item with undefined length #=4)         # u/l, 1 Item
+    (0040,a010) CS [HAS OBS CONTEXT]                        #  16, 1 RelationshipType
+    (0040,a040) CS [CODE]                                   #   4, 1 ValueType
+    (0040,a043) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptNameCodeSequence
+      (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+        (0008,0100) SH [121005]                                 #   6, 1 CodeValue
+        (0008,0102) SH [DCM]                                    #   4, 1 CodingSchemeDesignator
+        (0008,0104) LO [Observer Type]                          #  14, 1 CodeMeaning
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+    (0040,a168) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptCodeSequence
+      (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+        (0008,0100) SH [121006]                                 #   6, 1 CodeValue
+        (0008,0102) SH [DCM]                                    #   4, 1 CodingSchemeDesignator
+        (0008,0104) LO [Person]                                 #   6, 1 CodeMeaning
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+  (fffe,e000) na (Item with undefined length #=4)         # u/l, 1 Item
+    (0040,a010) CS [HAS OBS CONTEXT]                        #  16, 1 RelationshipType
+    (0040,a040) CS [PNAME]                                  #   6, 1 ValueType
+    (0040,a043) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptNameCodeSequence
+      (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+        (0008,0100) SH [121008]                                 #   6, 1 CodeValue
+        (0008,0102) SH [DCM]                                    #   4, 1 CodingSchemeDesignator
+        (0008,0104) LO [Person Observer Name]                   #  20, 1 CodeMeaning
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+    (0040,a123) PN [DICOM^Router]                           #  12, 1 PersonName
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+  (fffe,e000) na (Item with undefined length #=4)         # u/l, 1 Item
+    (0040,a010) CS [CONTAINS]                               #   8, 1 RelationshipType
+    (0040,a040) CS [TEXT]                                   #   4, 1 ValueType
+    (0040,a043) SQ (Sequence with undefined length #=1)     # u/l, 1 ConceptNameCodeSequence
+      (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+        (0008,0100) SH [113012]                                 #   6, 1 CodeValue
+        (0008,0102) SH [DCM]                                    #   4, 1 CodingSchemeDesignator
+        (0008,0104) LO [Key Object Description]                 #  22, 1 CodeMeaning
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+    (0040,a160) UT [Automatic created]                      #  18, 1 TextValue
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+  (fffe,e000) na (Item with undefined length #=3)         # u/l, 1 Item
+    (0008,1199) SQ (Sequence with undefined length #=1)     # u/l, 1 ReferencedSOPSequence
+      (fffe,e000) na (Item with undefined length #=2)         # u/l, 1 Item
+        (0008,1150) UI =MRImageStorage                          #  26, 1 ReferencedSOPClassUID
+        (0008,1155) UI [1.2.840.113674.950809133358028.100.20240111.163748.100.1] #  56, 1 ReferencedSOPInstanceUID
+      (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+    (fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem
+    (0040,a010) CS [CONTAINS]                               #   8, 1 RelationshipType
+    (0040,a040) CS [IMAGE]                                  #   6, 1 ValueType
+  (fffe,e00d) na (ItemDelimitationItem)                   #   0, 0 ItemDelimitationItem
+(fffe,e0dd) na (SequenceDelimitationItem)               #   0, 0 SequenceDelimitationItem

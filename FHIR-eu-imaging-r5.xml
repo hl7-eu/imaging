@@ -43,8 +43,20 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
+<artifact id="Bundle/Example1-ImagingStudyManifest" key="Bundle-Example1-ImagingStudyManifest" name="Example ImagingStudy Manifest"/>
+<artifact id="Bundle/Example2-ImagingStudyManifest" key="Bundle-Example2-ImagingStudyManifest" name="Example ImagingStudy Manifest"/>
+<artifact id="Bundle/ImagingReport-knee-mri-example" key="Bundle-ImagingReport-knee-mri-example" name="Example ImagingStudy Manifest"/>
+<artifact id="Bundle/MHDTransactionBundleKneeMriExample" key="Bundle-MHDTransactionBundleKneeMriExample" name="Example MHD Knee Mri Transaction Bundle"/>
+<artifact id="Endpoint/Example-WadoEndpoint" key="Endpoint-Example-WadoEndpoint" name="Example-WadoEndpoint"/>
 <artifact id="StructureDefinition/ImFinding" key="StructureDefinition-ImFinding" name="Finding"/>
 <artifact id="StructureDefinition/EHDSFunctionalStatus" key="StructureDefinition-EHDSFunctionalStatus" name="Functional status"/>
+<artifact id="Practitioner/G1Author" key="Practitioner-G1Author" name="G1Author"/>
+<artifact id="Organization/G1AuthorOrganization" key="Organization-G1AuthorOrganization" name="G1AuthorOrganization"/>
+<artifact id="PractitionerRole/G1AuthorRole" key="PractitionerRole-G1AuthorRole" name="G1AuthorRole"/>
+<artifact id="DiagnosticReport/G1DiagnosticReport" key="DiagnosticReport-G1DiagnosticReport" name="G1DiagnosticReport"/>
+<artifact id="ImagingStudy/G1ImImagingStudy1" key="ImagingStudy-G1ImImagingStudy1" name="G1ImImagingStudy1"/>
+<artifact id="ImagingStudy/G1ImImagingStudy2" key="ImagingStudy-G1ImImagingStudy2" name="G1ImImagingStudy2"/>
+<artifact id="Patient/G1Patient" key="Patient-G1Patient" name="G1Patient"/>
 <artifact id="StructureDefinition/ImGestationalAgeObservation" key="StructureDefinition-ImGestationalAgeObservation" name="Gestational Age Observation"/>
 <artifact id="StructureDefinition/EHDSGoal" key="StructureDefinition-EHDSGoal" name="Goal model"/>
 <artifact id="ValueSet/im-gray-square-units" key="ValueSet-im-gray-square-units" name="Gray Square Units"/>
@@ -93,6 +105,7 @@
 <artifact id="StructureDefinition/EHDSLaboratoryReportHeader" key="StructureDefinition-EHDSLaboratoryReportHeader" name="Laboratory report header model"/>
 <artifact id="StructureDefinition/EHDSLaboratoryReport" key="StructureDefinition-EHDSLaboratoryReport" name="Laboratory report model"/>
 <artifact id="StructureDefinition/EHDSLocation" key="StructureDefinition-EHDSLocation" name="Location model"/>
+<artifact id="DocumentReference/iheMdhDocumentReference-knee-mri-example" key="DocumentReference-iheMdhDocumentReference-knee-mri-example" name="MHD DocumentReference for knee MRI Imaging Report example"/>
 <artifact id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="Manifest DocumentReference for MHD deployments"/>
 <artifact id="StructureDefinition/Manifest-ImManifestDocumentReference" key="StructureDefinition-Manifest-ImManifestDocumentReference" name="Manifest Obligations for ImManifestIheMhdDocumentReference"/>
 <artifact id="StructureDefinition/Manifest-EuAddress" key="StructureDefinition-Manifest-EuAddress" name="Manifest obligations for EuAddress"/>
@@ -169,6 +182,7 @@
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ImIheMhdDocumentReference" key="StructureDefinition-ImIheMhdDocumentReference" name="R5 DocumentReference for MHD deployments"/>
 <artifact id="StructureDefinition/ImRadiationDoseObservation" key="StructureDefinition-ImRadiationDoseObservation" name="Radiation Dose Observation"/>
+<artifact id="Composition/G1Composition" key="Composition-G1Composition" name="Radiology Report for the left/right foot study"/>
 <artifact id="ValueSet/ImSectionEmptyReason" key="ValueSet-ImSectionEmptyReason" name="Reasons a section in an imaging report is empty."/>
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
 <artifact id="StructureDefinition/RelatedPersonEu" key="StructureDefinition-RelatedPersonEu" name="RelatedPerson Eu"/>
