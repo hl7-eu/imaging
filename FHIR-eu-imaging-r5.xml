@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ciUrl="" defaultVersion="current" defaultWorkgroup="eu" gitUrl="https://github.com/HL7-eu/imaging-r5" url="http://hl7.eu/fhir/imaging-r5">
-<version code="current" url=""/>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.eu/fhir/imaging-r5/0.1.0-ballot" ciUrl="https://build.fhir.org/ig/hl7-eu/imaging-r5" defaultVersion="0.1.0-ballot" defaultWorkgroup="eu" gitUrl="https://github.com/HL7-eu/imaging-r5" url="http://hl7.eu/fhir/imaging-r5">
+<version code="current" url="https://build.fhir.org/ig/hl7-eu/imaging-r5"/>
+<version code="0.1.0-ballot" url="http://hl7.eu/fhir/imaging-r5/0.1.0-ballot"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
@@ -43,11 +44,8 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
-<artifact id="Bundle/Example1-ImagingStudyManifest" key="Bundle-Example1-ImagingStudyManifest" name="Example ImagingStudy Manifest"/>
-<artifact id="Bundle/Example2-ImagingStudyManifest" key="Bundle-Example2-ImagingStudyManifest" name="Example ImagingStudy Manifest"/>
 <artifact id="Bundle/ImagingReport-knee-mri-example" key="Bundle-ImagingReport-knee-mri-example" name="Example ImagingStudy Manifest"/>
 <artifact id="Bundle/MHDTransactionBundleKneeMriExample" key="Bundle-MHDTransactionBundleKneeMriExample" name="Example MHD Knee Mri Transaction Bundle"/>
-<artifact id="Endpoint/Example-WadoEndpoint" key="Endpoint-Example-WadoEndpoint" name="Example-WadoEndpoint"/>
 <artifact id="StructureDefinition/ImFinding" key="StructureDefinition-ImFinding" name="Finding"/>
 <artifact id="StructureDefinition/EHDSFunctionalStatus" key="StructureDefinition-EHDSFunctionalStatus" name="Functional status"/>
 <artifact id="Practitioner/G1Author" key="Practitioner-G1Author" name="G1Author"/>
@@ -108,28 +106,28 @@
 <artifact id="DocumentReference/iheMdhDocumentReference-knee-mri-example" key="DocumentReference-iheMdhDocumentReference-knee-mri-example" name="MHD DocumentReference for knee MRI Imaging Report example"/>
 <artifact id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="Manifest DocumentReference for MHD deployments"/>
 <artifact id="StructureDefinition/Manifest-ImManifestDocumentReference" key="StructureDefinition-Manifest-ImManifestDocumentReference" name="Manifest Obligations for ImManifestIheMhdDocumentReference"/>
-<artifact id="StructureDefinition/Manifest-EuAddress" key="StructureDefinition-Manifest-EuAddress" name="Manifest obligations for EuAddress"/>
-<artifact id="StructureDefinition/Manifest-EuBodyStructure" key="StructureDefinition-Manifest-EuBodyStructure" name="Manifest obligations for EuBodyStructure"/>
-<artifact id="StructureDefinition/Manifest-EuContactPoint" key="StructureDefinition-Manifest-EuContactPoint" name="Manifest obligations for EuContactPoint"/>
-<artifact id="StructureDefinition/Manifest-EuDevice" key="StructureDefinition-Manifest-EuDevice" name="Manifest obligations for EuDevice"/>
-<artifact id="StructureDefinition/Manifest-EuEndpoint" key="StructureDefinition-Manifest-EuEndpoint" name="Manifest obligations for EuEndpoint"/>
-<artifact id="StructureDefinition/Manifest-EuHumanName" key="StructureDefinition-Manifest-EuHumanName" name="Manifest obligations for EuHumanName"/>
-<artifact id="StructureDefinition/Manifest-EuLocation" key="StructureDefinition-Manifest-EuLocation" name="Manifest obligations for EuLocation"/>
-<artifact id="StructureDefinition/Manifest-EuOrganization" key="StructureDefinition-Manifest-EuOrganization" name="Manifest obligations for EuOrganization"/>
-<artifact id="StructureDefinition/Manifest-EuPatient" key="StructureDefinition-Manifest-EuPatient" name="Manifest obligations for EuPatient"/>
-<artifact id="StructureDefinition/Manifest-EuPatientAnimal" key="StructureDefinition-Manifest-EuPatientAnimal" name="Manifest obligations for EuPatientAnimal"/>
-<artifact id="StructureDefinition/Manifest-EuPractitioner" key="StructureDefinition-Manifest-EuPractitioner" name="Manifest obligations for EuPractitioner"/>
-<artifact id="StructureDefinition/Manifest-EuPractitionerRole" key="StructureDefinition-Manifest-EuPractitionerRole" name="Manifest obligations for EuPractitionerRole"/>
-<artifact id="StructureDefinition/Manifest-EuProcedure" key="StructureDefinition-Manifest-EuProcedure" name="Manifest obligations for EuProcedure"/>
-<artifact id="StructureDefinition/Manifest-EuServiceRequest" key="StructureDefinition-Manifest-EuServiceRequest" name="Manifest obligations for EuServiceRequest"/>
-<artifact id="StructureDefinition/Manifest-EuSpecimen" key="StructureDefinition-Manifest-EuSpecimen" name="Manifest obligations for EuSpecimen"/>
-<artifact id="StructureDefinition/Manifest-ImImageIidViewerEndpoint" key="StructureDefinition-Manifest-ImImageIidViewerEndpoint" name="Manifest obligations for ImImageIidViewerEndpoint"/>
-<artifact id="StructureDefinition/Manifest-ImImagingStudy" key="StructureDefinition-Manifest-ImImagingStudy" name="Manifest obligations for ImImagingStudy"/>
-<artifact id="StructureDefinition/Manifest-ImImagingStudyManifest" key="StructureDefinition-Manifest-ImImagingStudyManifest" name="Manifest obligations for ImImagingStudyManifest"/>
-<artifact id="StructureDefinition/Manifest-ImOrder" key="StructureDefinition-Manifest-ImOrder" name="Manifest obligations for ImOrder"/>
-<artifact id="StructureDefinition/Manifest-ImPatient" key="StructureDefinition-Manifest-ImPatient" name="Manifest obligations for ImPatient"/>
-<artifact id="StructureDefinition/Manifest-ImProcedure" key="StructureDefinition-Manifest-ImProcedure" name="Manifest obligations for ImProcedure"/>
-<artifact id="StructureDefinition/Manifest-ImWadoEndpoint" key="StructureDefinition-Manifest-ImWadoEndpoint" name="Manifest obligations for ImWadoEndpoint"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuAddress" key="StructureDefinition-Manifest-EuAddress" name="Manifest obligations for EuAddress"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuBodyStructure" key="StructureDefinition-Manifest-EuBodyStructure" name="Manifest obligations for EuBodyStructure"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuContactPoint" key="StructureDefinition-Manifest-EuContactPoint" name="Manifest obligations for EuContactPoint"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuDevice" key="StructureDefinition-Manifest-EuDevice" name="Manifest obligations for EuDevice"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuEndpoint" key="StructureDefinition-Manifest-EuEndpoint" name="Manifest obligations for EuEndpoint"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuHumanName" key="StructureDefinition-Manifest-EuHumanName" name="Manifest obligations for EuHumanName"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuLocation" key="StructureDefinition-Manifest-EuLocation" name="Manifest obligations for EuLocation"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuOrganization" key="StructureDefinition-Manifest-EuOrganization" name="Manifest obligations for EuOrganization"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuPatient" key="StructureDefinition-Manifest-EuPatient" name="Manifest obligations for EuPatient"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuPatientAnimal" key="StructureDefinition-Manifest-EuPatientAnimal" name="Manifest obligations for EuPatientAnimal"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuPractitioner" key="StructureDefinition-Manifest-EuPractitioner" name="Manifest obligations for EuPractitioner"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuPractitionerRole" key="StructureDefinition-Manifest-EuPractitionerRole" name="Manifest obligations for EuPractitionerRole"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuProcedure" key="StructureDefinition-Manifest-EuProcedure" name="Manifest obligations for EuProcedure"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuServiceRequest" key="StructureDefinition-Manifest-EuServiceRequest" name="Manifest obligations for EuServiceRequest"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-EuSpecimen" key="StructureDefinition-Manifest-EuSpecimen" name="Manifest obligations for EuSpecimen"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImImageIidViewerEndpoint" key="StructureDefinition-Manifest-ImImageIidViewerEndpoint" name="Manifest obligations for ImImageIidViewerEndpoint"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImImagingStudy" key="StructureDefinition-Manifest-ImImagingStudy" name="Manifest obligations for ImImagingStudy"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImImagingStudyManifest" key="StructureDefinition-Manifest-ImImagingStudyManifest" name="Manifest obligations for ImImagingStudyManifest"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImOrder" key="StructureDefinition-Manifest-ImOrder" name="Manifest obligations for ImOrder"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImPatient" key="StructureDefinition-Manifest-ImPatient" name="Manifest obligations for ImPatient"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImProcedure" key="StructureDefinition-Manifest-ImProcedure" name="Manifest obligations for ImProcedure"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImWadoEndpoint" key="StructureDefinition-Manifest-ImWadoEndpoint" name="Manifest obligations for ImWadoEndpoint"/>
 <artifact id="ConceptMap/EHDSAddressMap" key="ConceptMap-EHDSAddressMap" name="Map for EHDSAddress"/>
 <artifact id="ConceptMap/EHDSAllergyIntoleranceMap" key="ConceptMap-EHDSAllergyIntoleranceMap" name="Map for EHDSAllergyIntolerance"/>
 <artifact id="ConceptMap/EHDSAttachmentMap" key="ConceptMap-EHDSAttachmentMap" name="Map for EHDSAttachment"/>
@@ -247,10 +245,10 @@
 <page key="artifacts" name="Artifacts Summary"/>
 <page key="changes" name="Changes"/>
 <page key="contributors" name="Contributors"/>
-<page key="profiles" name="Deployment profiles"/>
+<page deprecated="true" key="profiles" name="Deployment profiles"/>
 <page key="design-considerations" name="Design Considerations"/>
 <page key="index" name="Home"/>
-<page key="imaging-manifest" name="Imaging Manifest"/>
+<page deprecated="true" key="imaging-manifest" name="Imaging Manifest"/>
 <page key="imaging-report" name="Imaging Report"/>
 <page key="xtehr-mapping" name="Mapping to XtEHR Logical Model"/>
 <page key="artifacts-structural" name="Structural artifacts"/>
