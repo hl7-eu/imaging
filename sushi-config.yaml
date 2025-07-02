@@ -118,7 +118,7 @@ menu:
   XtEHR model:
     XtEHR-model: xtehr-logical-model.html
     XtEHR-mapping: xtehr-mapping.html
-  Imaging Manifest: https://github.com/hl7-eu/imaging-manifest
+  Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
   Imaging Report: imaging-report.html
   Artifacts: 
     All: artifacts.html
