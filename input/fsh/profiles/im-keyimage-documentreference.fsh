@@ -34,7 +34,7 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
   * coding
     insert SliceElement( #value, $this )
   * coding contains keyimagecode 1..1
-  * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"
+  * coding[keyimagecode] = $loinc#55113-5
 
 * modality 1..1
   
