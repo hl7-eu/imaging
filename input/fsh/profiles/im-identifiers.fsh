@@ -23,7 +23,7 @@ Description: "This profile on Identifier represents the Study Instance UID (0020
 * system = "urn:dicom:uid"
 * value 1..1
 * type 0..1
-* type = MissingDicomTerminology#0020000D "Study Instance UID" 
+* type = MissingDicomTerminology#0020000D
 
 Profile: ImSopInstanceUidIdentifier
 Parent: Identifier
@@ -34,4 +34,4 @@ Description: "This profile on Identifier represents the SOP Class UID (0008,0018
 * system = "urn:dicom:uid"
 * value 1..1
 * type 1..1
-* type = MissingDicomTerminology#00080018 "SOP Instance UID"
+* type = MissingDicomTerminology#00080018
