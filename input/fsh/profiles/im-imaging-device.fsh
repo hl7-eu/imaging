@@ -7,7 +7,7 @@ Description: """The device the made the image."""
 * category 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1
-* category[imaging] = $sct#314789007 "Diagnostic imaging equipment"
+* category[imaging] = $sct#314789007
 
 * type from ImImagingDeviceType (extensible)
 
