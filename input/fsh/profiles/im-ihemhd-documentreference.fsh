@@ -61,7 +61,7 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 * category 1..* 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* category[imaging] = $loinc#18748-4
 * subject 1..1 
 * custodian 0..1 
 * author 
