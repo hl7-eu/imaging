@@ -115,7 +115,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[order]
   * ^short = "Order"
   * ^definition = "This section holds information related to the order for the imaging study."
-  * code = $loinc#55115-0 "Requested imaging studies information Document"
+  * code = $loinc#55115-0
   * extension contains $note-url named note 0..*
 
   * entry
