@@ -18,7 +18,7 @@ Title: "Imaging Device Type"
 Description: "Imaging Device Type."
 * insert SNOMEDCopyrightForVS
 * ^experimental = false
-* include codes from system $sct where concept is-a #314789007 "Diagnostic imaging equipment"
+* include codes from system $sct where concept is-a #314789007
 
 Mapping: DicomToImImagingDevice
 Source: ImImagingDevice
