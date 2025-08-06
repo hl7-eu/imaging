@@ -29,7 +29,7 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 * category 1..*
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1
-* category[imaging] = $loinc#18748-4
+* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * category[imaging].coding 1..1
 
 * subject only Reference(ImPatient)
@@ -69,4 +69,4 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
   * coding 1..*
     * insert SliceElement( #value, $this )
   * coding contains eu-template 1..1
-  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1
+  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 // "Imaging Report V0.0.1"
