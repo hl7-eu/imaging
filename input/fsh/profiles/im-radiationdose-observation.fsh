@@ -16,7 +16,7 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
   * insert SliceElement( #value, type )
 * identifier contains radiation-sr-instance-uid 0..1
 * identifier[radiation-sr-instance-uid]
-  * type = MissingDicomTerminology#00083010
+  * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
 
 * partOf 1..*
   * insert SliceElement( #profile, $this )
@@ -32,7 +32,7 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
   * coding 1..*
     * insert SliceElement( #value, $this )
   * coding contains radiation-dose 1..1
-  * coding[radiation-dose] = $loinc#73569-6
+  * coding[radiation-dose] = $loinc#73569-6 // "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 
 * subject 1..1
 * subject only Reference( $EuPatient )
@@ -57,53 +57,53 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
     CTEffectiveDoseTotal 0..* and EffectiveDose 0..*
 
 * component[doseAreaProductTotal]
-  * code = $dcm#113722
+  * code = $dcm#113722 // "Dose Area Product Total"
   * value[x] only QuantityEu
   * valueQuantity from ImGraySquareUnits
 * component[fluorDoseAreaProductTotal]
-  * code = $dcm#113726
+  * code = $dcm#113726 // "Fluoro Dose Area Product Total"
   * value[x] only QuantityEu
   * valueQuantity from ImGraySquareUnits
 * component[doseAreaProduct]
-  * code = $dcm#122130
+  * code = $dcm#122130 // "Dose Area Product"
   * value[x] only QuantityEu
   * valueQuantity from ImGraySquareUnits
 
 * component[CTDoseLengthProductTotal]
-  * code = $dcm#113813
+  * code = $dcm#113813 // "CT Dose Length Product Total"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 * component[DLP]
-  * code = $dcm#113838
+  * code = $dcm#113838 // "DLP"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 * component[DLPAlertValue]
-  * code = $dcm#113903
+  * code = $dcm#113903 // "DLP Alert Value"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 * component[AccumulatedDLPForwardEstimate]  
-  * code = $dcm#113905
+  * code = $dcm#113905 // "Accumulated DLP Forward Estimate"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 * component[DLPNotificationValue]
-  * code = $dcm#113911
+  * code = $dcm#113911 // "DLP Notification Value"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 * component[DLPForwardEstimate]
-  * code = $dcm#113913
+  * code = $dcm#113913 // "DLP Forward Estimate"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 * component[CRDoseLengthProductSubTotal]
-  * code = $dcm#130745
+  * code = $dcm#130745 // "CT Dose Length Product Sub-Total"
   * value[x] only QuantityEu
   * valueQuantity from ImDoseLengthUnits
 
 * component[CTEffectiveDoseTotal]
-  * code = $dcm#113814
+  * code = $dcm#113814 // "CT Effective Dose Total"
   * value[x] only QuantityEu
   * valueQuantity from ImEffectiveDoseUnits
 * component[EffectiveDose]
-  * code = $dcm#113839
+  * code = $dcm#113839 // "Effective Dose"
   * value[x] only QuantityEu
   * valueQuantity from ImEffectiveDoseUnits
 
