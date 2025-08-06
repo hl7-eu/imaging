@@ -10,7 +10,7 @@ The application is based on [IHE-IID](https://www.ihe.net/uploadedFiles/Document
 * connectionType 
   * insert SliceElement( #value, coding )
 * connectionType contains iid 1..1
-* connectionType[iid] = Hl7EuImagingEndpointTerminologyCodeSystem#ihe-iid "IHE IID endpoint"
+* connectionType[iid] = Hl7EuImagingEndpointTerminologyCodeSystem#ihe-iid // "IHE IID endpoint"
 
 * payload 1..*
 * payload
