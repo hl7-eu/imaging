@@ -7,7 +7,7 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 * category 1..*
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1
-* category[imaging] = $sct#363679005
+* category[imaging] = $sct#363679005 // "Imaging"
 
 * identifier
   * insert SliceElement( #value, type )
