@@ -9,14 +9,14 @@ This profile defines the WADO endpoint for accessing imaging study content.
 * connectionType 
   * insert SliceElement( #value, coding )
 * connectionType contains wado 1..1 
-* connectionType[wado].coding = http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-rs
+* connectionType[wado].coding = http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-rs // "DICOM WADO-RS"
 
 * payload 
   * insert SliceElement( #value, type )
 * payload contains wadors 1..1 
 * payload[wadors]
   * type 1..1 
-  * type = http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-rs
+  * type = http://terminology.hl7.org/CodeSystem/endpoint-connection-type#dicom-wado-rs // "DICOM WADO-RS"
   * mimeType 
     * insert SliceElement( #value, $this )
   * mimeType contains 
