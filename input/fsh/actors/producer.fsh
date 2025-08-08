@@ -17,5 +17,5 @@ Usage: #definition
 * name = "ImManifestProvider"
 * title = "Imaging study manifest provider"
 * status = #draft
-* description = "Provides the Imaging study manifest."
+* description = "Responsible for assembling and making available a structured representation of imaging study metadata including references to imaging instances and related clinical context."
 * type = #system
