@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const obligationsDir = '../input/fsh/obligations';	
-const conceptMapDir = '../input/fsh/xtehr-model-maps';	
+const mappingTablesDir = '../input/pagecontent';	
 const xtehrDir = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';	
 
@@ -119,6 +119,9 @@ function extractAndCopyResources(parsedData, srcResources ) {
 // }
 
 function generateMappingTables(parsedData, srcResources) {
+    // Store all generated files for the main index
+    const generatedFiles = [];
+    
     srcResources.forEach(srcResource => {
         // Create a hash table to store mappings: srcField -> array of target mappings
         const mappingTable = new Map();
@@ -158,11 +161,15 @@ function generateMappingTables(parsedData, srcResources) {
             });
         
         // Generate the markdown file
-        const mappingTablePath = `${conceptMapDir}/${srcResource}-mapping.md`;
+        const mappingTablePath = `${mappingTablesDir}/${srcResource}-mapping.md`;
         console.log(mappingTablePath);
         const writable = fs.createWriteStream(mappingTablePath);
         
+        writable.write(`---\n`);
+        writable.write(`title: ${srcResource} Mapping\n`);
+        writable.write(`---\n\n`);
         writable.write(`## ${srcResource}\n\n`);
+        writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
         writable.write(`| Element | Target FHIR resource.element |\n`);
         writable.write(`| ------- | ---------------------------- |\n`);
         
@@ -177,7 +184,35 @@ function generateMappingTables(parsedData, srcResources) {
         
         writable.write(`\n`);
         writable.end();
+        
+        // Store for index generation
+        generatedFiles.push({
+            filename: `${srcResource}-mapping.md`,
+            resource: srcResource
+        });
     });
+    
+    // Generate the main index file
+    generateMappingIndex(generatedFiles);
+}
+
+function generateMappingIndex(generatedFiles) {
+    const indexPath = '../input/pagecontent/xtehr-mapping.md';
+    console.log(`Generating mapping index: ${indexPath}`);
+    const writable = fs.createWriteStream(indexPath);
+    
+    writable.write('{% include variable-definitions.md %}\n\n');
+    writable.write('### Logical model mapping onto HL7 FHIR\n\n');
+    writable.write('The following tables describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.\n\n');
+    
+    // Sort files alphabetically for consistent output
+    const sortedFiles = generatedFiles.sort((a, b) => a.resource.localeCompare(b.resource));
+    
+    sortedFiles.forEach(file => {
+        writable.write(`{% include ${file.filename} %}\n\n`);
+    });
+    
+    writable.end();
 }
 
 // Generate intro files mermaid
