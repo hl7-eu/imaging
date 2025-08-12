@@ -118,124 +118,65 @@ function extractAndCopyResources(parsedData, srcResources ) {
 
 // }
 
-function generateConceptMapFiles(parsedData, srcResources) {
+function generateMappingTables(parsedData, srcResources) {
     srcResources.forEach(srcResource => {
-        const tgtResources = new Set(
-            parsedData.filter(row => row[indices.srcResource] === srcResource)
-                      .filter(row => row[indices.tgtResource].length > 0)
-                      .map(row => row[indices.tgtResource])
-        );
-        const srcFields = new Set( 
-            parsedData.filter(row => row[indices.srcResource] === srcResource)
-                      .filter(row => row[indices.srcField].length > 0)
-                      .map(row => row[indices.srcField])
-        );
-        if (tgtResources.size > 0) {
-            const conceptMapPath = `${conceptMapDir}/ConceptMap_${srcResource}.fsh`;
-            console.log(conceptMapPath);
-            const writable = fs.createWriteStream(conceptMapPath);
-
-            writable.write(`////////////////////////////////////////////////////\n`);
-            writable.write(`// Generated file. Do not edit.\n`);
-            writable.write(`////////////////////////////////////////////////////\n`);
-            writable.write(`\n`);
-            writable.write(`Instance: ${srcResource}Map\n`);
-            writable.write(`InstanceOf: ConceptMap\n`);
-            writable.write(`Usage: #definition\n`);
-            writable.write(`Title: "Map for ${srcResource}"\n`);
-            writable.write(`Description: "Map for ${srcResource}"\n`);
-            writable.write(`* status = #draft\n`);
-            writable.write(`* experimental = true\n`);
-            writable.write(`* title = "${srcResource} Mapping"\n`);
-            writable.write(`* name = "${srcResource}Map"\n`);
-            writable.write(`* sourceScopeUri = "${XtEHRBaseUrl}${srcResource}"\n`);
-
-            tgtResources.forEach(tgtResource => {
-                
-                writable.write(`* group[+]\n`);
-                writable.write(`  * source = "${XtEHRBaseUrl}${srcResource}"\n`);
-                writable.write(`  * target = $${tgtResource}Url\n`);
-
-                const elementCodes = new Set(
-                    parsedData
-                        .filter(row => row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource)
-                        .map(row => row[indices.srcField].trim())
-                        .filter(code => code.length > 0)
-                );
-                elementCodes.forEach(code => srcFields.delete(code));
-
-                if ( elementCodes.size == 0 ) {
-                    writable.write(`  * element[+]\n`);
-                    writable.write(`    * noMap = true\n`);
-                }
-
-                elementCodes.forEach(code => {
-                    writable.write(`  * element[+]\n`);
-                    writable.write(`    * code = #${code}\n`);
-
-                    const targets = new Map();
-                    parsedData
-                        .filter(row => row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource)
-                        .filter(row => row[indices.srcField].trim() === code.trim())
-                        .filter(row => row[indices.srcField].trim().length > 0 )
-                        .filter(row => row[indices.tgtElement].trim().length > 0 )
-                        .forEach(row => {
-                            const comment = row[indices.tgtRationale];
-                            const tgtField = row[indices.tgtElement];
-                            if (code) {
-                                targets.set(
-                                    `${tgtField}-${comment}-${getEquivalence(row[indices.tgtEquivalence])}`,
-                                    row
-                                );
-                            }
-                        });
-
-                    if ( targets.size == 0 ) {
-                        writable.write(`    * noMap = true\n`); // TODO not sure this is correct
-                    }
+        // Create a hash table to store mappings: srcField -> array of target mappings
+        const mappingTable = new Map();
         
-                                
-                    targets.forEach((value, key) => {
-                        const comment = value[indices.tgtRationale];
-                        const srcReq  = value[indices.srcReq];
-                        const tgtField = value[indices.tgtElement];
-                        writable.write(`    * target[+]\n`);
-                        writable.write(`      * code = #${tgtField}\n`);
-                        if (comment.length > 0) {
-                            writable.write(`      * comment = "${comment}"\n`);
-                        }
-                        if (srcReq.length > 0) {
-                            writable.write(`      * display = "${srcReq}"\n`);
-                        }
-                        writable.write(`      * relationship = ${getEquivalence(value[indices.tgtEquivalence])}\n`);
-                    });
-                });
-            });
-            // add entries for missed fields
-            if ( srcFields.size > 0 ) {
-                writable.write(`* group[+]\n`);
-                writable.write(`  * source = "${XtEHRBaseUrl}${srcResource}"\n`);
-                srcFields.forEach(code => {
-                    console.log(`No mapping for ${srcResource}.${code}`);
-                    const rows = parsedData
-                        .filter( row => row[indices.srcResource] === srcResource && row[indices.srcField] === code );
-                    const comment = rows.length > 0 ? rows[0][indices.tgtRationale] : undefined;
-                    const display = rows.length > 0 ? rows[0][indices.srcReq] : undefined;
-                    const modelling = rows.length > 0 ? rows[0][indices.tgtModeling] : undefined;
-                    writable.write(`  * element[+]\n`);
-                    writable.write(`    * code = #${code}\n`);
-                    writable.write(`    * noMap = true\n`);
-                    let str = 
-                        `${comment}${comment.length>0?' - '+modelling:modelling} ${display.length>0?"("+display+")":''} `.replace(/\s+/g, ' ').trim();
-                    if (str.length > 0 ) {
-                        writable.write(`    * display = "${str}"\n`);
+        // Get all source fields for this resource
+        const srcFields = new Set(
+            parsedData
+                .filter(row => row[indices.srcResource] === srcResource)
+                .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
+                .map(row => row[indices.srcField].trim())
+        );
+        
+        // Initialize the mapping table with all source fields
+        srcFields.forEach(srcField => {
+            mappingTable.set(srcField, []);
+        });
+        
+        // Populate the mapping table with target mappings
+        parsedData
+            .filter(row => row[indices.srcResource] === srcResource)
+            .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
+            .filter(row => row[indices.tgtResource] && row[indices.tgtResource].length > 0)
+            .filter(row => row[indices.tgtElement] && row[indices.tgtElement].length > 0)
+            .forEach(row => {
+                const srcField = row[indices.srcField].trim();
+                const tgtResource = row[indices.tgtResource].trim();
+                const tgtElement = row[indices.tgtElement].trim();
+                const targetMapping = `${tgtResource}.${tgtElement}`;
+                
+                if (mappingTable.has(srcField)) {
+                    // Avoid duplicates
+                    const existingMappings = mappingTable.get(srcField);
+                    if (!existingMappings.includes(targetMapping)) {
+                        existingMappings.push(targetMapping);
                     }
-                });
-            }
-            writable.write(`\n`);
-            writable.write(`////////////////////////////////////////////////////\n`);
-            writable.end();
-        }
+                }
+            });
+        
+        // Generate the markdown file
+        const mappingTablePath = `${conceptMapDir}/${srcResource}-mapping.md`;
+        console.log(mappingTablePath);
+        const writable = fs.createWriteStream(mappingTablePath);
+        
+        writable.write(`## ${srcResource}\n\n`);
+        writable.write(`| Element | Target FHIR resource.element |\n`);
+        writable.write(`| ------- | ---------------------------- |\n`);
+        
+        // Sort source fields for consistent output
+        const sortedSrcFields = Array.from(srcFields).sort();
+        
+        sortedSrcFields.forEach(srcField => {
+            const targetMappings = mappingTable.get(srcField);
+            const targetMappingsStr = targetMappings.length > 0 ? targetMappings.join(' ; ') : '';
+            writable.write(`| ${srcField} | ${targetMappingsStr} |\n`);
+        });
+        
+        writable.write(`\n`);
+        writable.end();
     });
 }
 
@@ -638,7 +579,7 @@ function main() {
         
         extractAndCopyResources(parsedData, srcResources);
         
-        generateConceptMapFiles(parsedData, srcResources);
+        generateMappingTables(parsedData, srcResources);
         
         generateIntroFiles(parsedData, srcResources);
                 
