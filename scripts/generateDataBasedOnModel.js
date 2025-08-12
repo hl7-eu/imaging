@@ -141,16 +141,23 @@ function generateMappingTables(parsedData, srcResources) {
         
         // Populate the mapping table with target mappings and collect source type info
         const sourceTypeMap = new Map(); // srcField -> srcType
+        const modelingMap = new Map(); // srcField -> tgtModeling
         parsedData
             .filter(row => row[indices.srcResource] === srcResource)
             .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
             .forEach(row => {
                 const srcField = row[indices.srcField].trim();
                 const srcType = row[indices.srcType] ? row[indices.srcType].trim() : '';
+                const tgtModeling = row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : '';
                 
                 // Store the source type for hyperlink generation
                 if (srcType.length > 0) {
                     sourceTypeMap.set(srcField, srcType);
+                }
+                
+                // Store the tgtModeling value
+                if (tgtModeling.length > 0) {
+                    modelingMap.set(srcField, tgtModeling);
                 }
                 
                 // Process target mappings
@@ -181,8 +188,8 @@ function generateMappingTables(parsedData, srcResources) {
         writable.write(`### ${srcResource}\n\n`);
         writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
         writable.write(`{:.grid}\n`);
-        writable.write(`| Element | Target FHIR resource.element |\n`);
-        writable.write(`| ------- | ---------------------------- |\n`);
+        writable.write(`| Element | Target FHIR resource.element | Comments |\n`);
+        writable.write(`| ------- | ---------------------------- | -------- |\n`);
         
         // Sort source fields for consistent output
         const sortedSrcFields = Array.from(srcFields).sort();
@@ -190,6 +197,9 @@ function generateMappingTables(parsedData, srcResources) {
         sortedSrcFields.forEach(srcField => {
             const targetMappings = mappingTable.get(srcField);
             const targetMappingsStr = targetMappings.length > 0 ? targetMappings.join(' ; ') : '';
+            
+            // Get the modeling value for this field
+            const modelingValue = modelingMap.get(srcField) || '';
             
             // Create hyperlink for source field if it has an EHDS srcType
             let sourceFieldDisplay = srcField;
@@ -199,7 +209,7 @@ function generateMappingTables(parsedData, srcResources) {
                 sourceFieldDisplay = `[${srcField}](#${srcType.toLowerCase()})`;
             }
             
-            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} |\n`);
+            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} | ${modelingValue} |\n`);
         });
         
         writable.write(`\n`);
