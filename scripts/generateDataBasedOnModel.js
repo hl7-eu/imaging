@@ -139,23 +139,33 @@ function generateMappingTables(parsedData, srcResources) {
             mappingTable.set(srcField, []);
         });
         
-        // Populate the mapping table with target mappings
+        // Populate the mapping table with target mappings and collect source type info
+        const sourceTypeMap = new Map(); // srcField -> srcType
         parsedData
             .filter(row => row[indices.srcResource] === srcResource)
             .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
-            .filter(row => row[indices.tgtResource] && row[indices.tgtResource].length > 0)
-            .filter(row => row[indices.tgtElement] && row[indices.tgtElement].length > 0)
             .forEach(row => {
                 const srcField = row[indices.srcField].trim();
-                const tgtResource = row[indices.tgtResource].trim();
-                const tgtElement = row[indices.tgtElement].trim();
-                const targetMapping = `${tgtResource}.${tgtElement}`;
+                const srcType = row[indices.srcType] ? row[indices.srcType].trim() : '';
                 
-                if (mappingTable.has(srcField)) {
-                    // Avoid duplicates
-                    const existingMappings = mappingTable.get(srcField);
-                    if (!existingMappings.includes(targetMapping)) {
-                        existingMappings.push(targetMapping);
+                // Store the source type for hyperlink generation
+                if (srcType.length > 0) {
+                    sourceTypeMap.set(srcField, srcType);
+                }
+                
+                // Process target mappings
+                if (row[indices.tgtResource] && row[indices.tgtResource].length > 0 && 
+                    row[indices.tgtElement] && row[indices.tgtElement].length > 0) {
+                    const tgtResource = row[indices.tgtResource].trim();
+                    const tgtElement = row[indices.tgtElement].trim();
+                    const targetMapping = `${tgtResource}.${tgtElement}`;
+                    
+                    if (mappingTable.has(srcField)) {
+                        // Avoid duplicates
+                        const existingMappings = mappingTable.get(srcField);
+                        if (!existingMappings.includes(targetMapping)) {
+                            existingMappings.push(targetMapping);
+                        }
                     }
                 }
             });
@@ -168,8 +178,9 @@ function generateMappingTables(parsedData, srcResources) {
         writable.write(`---\n`);
         writable.write(`title: ${srcResource} Mapping\n`);
         writable.write(`---\n\n`);
-        writable.write(`## ${srcResource}\n\n`);
+        writable.write(`### ${srcResource}\n\n`);
         writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
+        writable.write(`{:.grid}\n`);
         writable.write(`| Element | Target FHIR resource.element |\n`);
         writable.write(`| ------- | ---------------------------- |\n`);
         
@@ -179,7 +190,16 @@ function generateMappingTables(parsedData, srcResources) {
         sortedSrcFields.forEach(srcField => {
             const targetMappings = mappingTable.get(srcField);
             const targetMappingsStr = targetMappings.length > 0 ? targetMappings.join(' ; ') : '';
-            writable.write(`| ${srcField} | ${targetMappingsStr} |\n`);
+            
+            // Create hyperlink for source field if it has an EHDS srcType
+            let sourceFieldDisplay = srcField;
+            const srcType = sourceTypeMap.get(srcField);
+            if (srcType && srcType.startsWith('EHDS')) {
+                // Create markdown link to the section for that srcType
+                sourceFieldDisplay = `[${srcField}](#${srcType.toLowerCase()})`;
+            }
+            
+            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} |\n`);
         });
         
         writable.write(`\n`);
@@ -202,7 +222,6 @@ function generateMappingIndex(generatedFiles) {
     const writable = fs.createWriteStream(indexPath);
     
     writable.write('{% include variable-definitions.md %}\n\n');
-    writable.write('### Logical model mapping onto HL7 FHIR\n\n');
     writable.write('The following tables describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.\n\n');
     
     // Sort files alphabetically for consistent output
