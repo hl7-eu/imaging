@@ -57,12 +57,8 @@ pages:
       title: XtEHR Logical Model
     xtehr-mapping.md:
       title: Mapping to XtEHR Logical Model
-  profiles.md:
-    title: Deployment profiles
-    imaging-manifest.md:
-      title: Imaging Manifest
-    imaging-report.md:
-      title: Imaging Report
+  imaging-report.md:
+    title: Imaging Report
   design-considerations.md:
     title: Design Considerations
   artifacts-intro.md:
@@ -122,7 +118,7 @@ menu:
   XtEHR model:
     XtEHR-model: xtehr-logical-model.html
     XtEHR-mapping: xtehr-mapping.html
-  Imaging Manifest: imaging-manifest.html
+  Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
   Imaging Report: imaging-report.html
   Artifacts: 
     All: artifacts.html
