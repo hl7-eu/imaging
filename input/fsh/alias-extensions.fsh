@@ -29,3 +29,4 @@ Alias: $performer-function-url                = http://hl7.org/fhir/StructureDef
 Alias: $sexParameter-for-clinical-use-url     = http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse
 Alias: $workflow-reason-url                   = http://hl7.org/fhir/StructureDefinition/workflow-reason
 Alias: $birth-time-url                        = http://hl7.org/fhir/StructureDefinition/patient-birthTime
+Alias: $workflow-status-reason-url              = http://hl7.org/fhir/StructureDefinition/workflow-statusReason
