@@ -5,7 +5,7 @@ title: HL7 Europe Imaging Study Report
 description: This guide describes how a Imaging Study Report can be represented in the European REALM.
 status: draft # draft | active | retired | unknown
 experimental: false
-version: 0.1.0-ballot
+version: 0.1.0-build
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+

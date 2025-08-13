@@ -7,7 +7,7 @@ Description: """The device the made the image."""
 * category 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1
-* category[imaging] = $sct#314789007 "Diagnostic imaging equipment"
+* category[imaging] = $sct#314789007 // "Diagnostic imaging equipment"
 
 * type from ImImagingDeviceType (extensible)
 
@@ -18,7 +18,7 @@ Title: "Imaging Device Type"
 Description: "Imaging Device Type."
 * insert SNOMEDCopyrightForVS
 * ^experimental = false
-* include codes from system $sct where concept is-a #314789007 "Diagnostic imaging equipment"
+* include codes from system $sct where concept is-a #314789007 // "Diagnostic imaging equipment"
 
 Mapping: DicomToImImagingDevice
 Source: ImImagingDevice

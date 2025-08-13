@@ -61,7 +61,7 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 * category 1..* 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * subject 1..1 
 * custodian 0..1 
 * author 
@@ -137,7 +137,7 @@ A DocumentReference profile for the Manifest DocumentReference used in MHD deplo
 * category 1..* 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * type from ImImagingManifestTypesEuVS (preferred) 
   * ^short = "Type of Imaging Manifest"
   * ^definition = "Specifies that it refers to a Imaging Manifest"

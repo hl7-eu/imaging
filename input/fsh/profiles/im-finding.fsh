@@ -7,7 +7,7 @@ Description: "Finding during imaging procedure."
 * identifier
   * insert SliceElement( #value, type )
 * identifier contains observationUid 0..1
-* identifier[observationUid].type = MissingDicomTerminology#00080018 "SOP Instance UID"
+* identifier[observationUid].type = MissingDicomTerminology#00080018 // "SOP Instance UID"
 
 * basedOn
   * insert SliceElement( #type, $this )
