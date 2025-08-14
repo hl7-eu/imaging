@@ -199,6 +199,9 @@ function generateMappingTables(parsedData, srcResources) {
         console.log(mappingTablePath);
         const writable = fs.createWriteStream(mappingTablePath);
         
+        writable.write(`<!--\n`);
+        writable.write(`  Generated file. Do not edit.\n`);
+        writable.write(`-->\n\n`);
         writable.write(`---\n`);
         writable.write(`title: ${srcResource} Mapping\n`);
         writable.write(`---\n\n`);
@@ -213,7 +216,18 @@ function generateMappingTables(parsedData, srcResources) {
         
         sortedSrcFields.forEach(srcField => {
             const targetMappings = mappingTable.get(srcField);
-            const targetMappingsStr = targetMappings.length > 0 ? targetMappings.join(' ; ') : '';
+            
+            // Convert target mappings to hyperlinked format
+            const targetMappingsWithLinks = targetMappings.map(mapping => {
+                const [tgtResource, tgtElement] = mapping.split('.');
+                // Only create hyperlinks for resources that start with "Im"
+                if (tgtResource.startsWith('Im')) {
+                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
+                } else {
+                    return mapping; // Return original mapping without hyperlink
+                }
+            });
+            const targetMappingsStr = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(' ; ') : '';
             
             // Get the modeling value for this field
             const modelingValue = modelingMap.get(srcField) || '';
@@ -248,6 +262,9 @@ function generateMappingIndex(generatedFiles, excludedResources) {
     console.log(`Generating mapping index: ${indexPath}`);
     const writable = fs.createWriteStream(indexPath);
     
+    writable.write(`<!--\n`);
+    writable.write(`  Generated file. Do not edit.\n`);
+    writable.write(`-->\n\n`);
     writable.write('{% include variable-definitions.md %}\n\n');
     writable.write('The following tables describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.\n\n');
     
