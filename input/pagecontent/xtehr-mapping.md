@@ -1,15 +1,46 @@
+<!--
+  Generated file. Do not edit.
+-->
+
 {% include variable-definitions.md %}
 
-### Logical model mapping onto HL7 FHIR
+The following tables describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.
 
-The following FHIR {{ConceptMaps}} describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.
+{% include EHDSAddress-mapping.md %}
 
-{% sql {
-  "query" : "SELECT name AS Name, title AS Title, Type, Description, Web FROM Resources WHERE Type='ConceptMap' ORDER BY Name",
-  "class" : "lines",
-  "columns" : [
-    { "name" : "Title"      , "type" : "link"     , "source" : "Name", "target" : "Web"},
-    { "name" : "Name"       , "type" : "markdown" , "source" : "Title" },
-    { "name" : "Description", "type" : "markdown" , "source" : "Description"}
-  ]
-} %}
+{% include EHDSAllergyIntolerance-mapping.md %}
+
+{% include EHDSAttachment-mapping.md %}
+
+{% include EHDSCarePlan-mapping.md %}
+
+{% include EHDSCondition-mapping.md %}
+
+{% include EHDSCoverage-mapping.md %}
+
+{% include EHDSDevice-mapping.md %}
+
+{% include EHDSEncounter-mapping.md %}
+
+{% include EHDSHealthProfessional-mapping.md %}
+
+{% include EHDSHumanName-mapping.md %}
+
+{% include EHDSImagingReport-mapping.md %}
+
+{% include EHDSMedia-mapping.md %}
+
+{% include EHDSMedicationAdministration-mapping.md %}
+
+{% include EHDSObservation-mapping.md %}
+
+{% include EHDSOrganisation-mapping.md %}
+
+{% include EHDSPatient-mapping.md %}
+
+{% include EHDSProcedure-mapping.md %}
+
+{% include EHDSServiceRequest-mapping.md %}
+
+The logical models EHDSAdvanceDirective, EHDSAlert, EHDSAppointment, EHDSBodyStructure, EHDSCurrentPregnancy, EHDSDataSet, EHDSDeviceUse, EHDSDischargeReport, EHDSDispenseDecline, EHDSDocument, EHDSDosage, EHDSDosaging, EHDSEndpoint, EHDSEpisodeOfCare, EHDSFamilyMemberHistory, EHDSFunctionalStatus, EHDSImagingStudy, EHDSImmunisation, EHDSInfectiousContact, EHDSLaboratoryObservation, EHDSLaboratoryOrder, EHDSLaboratoryOrderBody, EHDSLaboratoryOrderHeader, EHDSLaboratoryReport, EHDSLaboratoryReportBody, EHDSLaboratoryReportHeader, EHDSLocation, EHDSMedication, EHDSMedicationDispense, EHDSMedicationPrescription, EHDSMedicationStatement, EHDSPatientAnimal, EHDSPatientSummary, EHDSPregnancyHistory, EHDSRelatedPerson, EHDSSocialHistory, EHDSSpecimen, EHDSSubstance, EHDSSubstanceUse, EHDSTelecom, EHDSTravelHistory were left out of this page as they don't relate with the content of this IG.
+
