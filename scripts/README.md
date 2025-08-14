@@ -35,7 +35,11 @@ This will store the data of the source model in xtehr-model.csv.
 
 ### Edit mapping
 
-The content of `xtehr-mode.csv` is copied into a [Google spreadsheet](https://docs.google.com/spreadsheets/d/1r7f3w-IaaoJR80CqtPz-ZwB5cfJ3mPe73HvJT9j7Js4/edit?usp=sharing) (authorization is required and can be requested). If this an update, copy it into a new tab and align the existing content with the new model, remove the old tab.
+The content of `xtehr-mode.csv` is copied into a [Google spreadsheet](https://docs.google.com/spreadsheets/d/1r7f3w-IaaoJR80CqtPz-ZwB5cfJ3mPe73HvJT9j7Js4/edit?usp=sharing). 
+
+<mark>**Note:** Authorization is required to access the Google spreadsheet and can be requested.</mark>
+
+If this an update, copy it into a new tab and align the existing content with the new model, remove the old tab.
 This is the master file for the mapping and is read when generating the result files.
 
 ## Update the mapping related fields in the IG
@@ -55,3 +59,5 @@ Run `xtehr-mapping.sh`, which will read the `xtehr-mode-mapping.tsv` file and ge
 Run `sushi` to check the mapping.
 
 > sushi .
+
+Note: The script generates Obligations files, which will no longer be required by this IG, but still provide the functionality of validating FHIR compliance of the mapped paths.
