@@ -122,7 +122,24 @@ function generateMappingTables(parsedData, srcResources) {
     // Store all generated files for the main index
     const generatedFiles = [];
     
+    // Filter srcResources to only include those with actors containing "R"
+    const resourcesWithR = [];
+    const resourcesWithoutR = [];
+    
     srcResources.forEach(srcResource => {
+        const hasActorWithR = parsedData
+            .filter(row => row[indices.srcResource] === srcResource)
+            .filter(row => row[indices.actors] && row[indices.actors].length > 0)
+            .some(row => row[indices.actors].includes('R'));
+        
+        if (hasActorWithR) {
+            resourcesWithR.push(srcResource);
+        } else {
+            resourcesWithoutR.push(srcResource);
+        }
+    });
+    
+    resourcesWithR.forEach(srcResource => {
         // Create a hash table to store mappings: srcField -> array of target mappings
         const mappingTable = new Map();
         
@@ -223,10 +240,10 @@ function generateMappingTables(parsedData, srcResources) {
     });
     
     // Generate the main index file
-    generateMappingIndex(generatedFiles);
+    generateMappingIndex(generatedFiles, resourcesWithoutR);
 }
 
-function generateMappingIndex(generatedFiles) {
+function generateMappingIndex(generatedFiles, excludedResources) {
     const indexPath = '../input/pagecontent/xtehr-mapping.md';
     console.log(`Generating mapping index: ${indexPath}`);
     const writable = fs.createWriteStream(indexPath);
@@ -240,6 +257,12 @@ function generateMappingIndex(generatedFiles) {
     sortedFiles.forEach(file => {
         writable.write(`{% include ${file.filename} %}\n\n`);
     });
+    
+    // Add message about excluded resources if any
+    if (excludedResources && excludedResources.length > 0) {
+        const excludedNames = excludedResources.join(', ');
+        writable.write(`The logical models ${excludedNames} were left out of this page as they don't relate with the content of this IG.\n\n`);
+    }
     
     writable.end();
 }
@@ -371,6 +394,8 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
             .forEach(row => { 
                 shallPopulateObligations.add(row[indices.tgtElement])
                 // if it has a type that exists in parseData and is not a reference, include sibling elements
+                // COMMENTED OUT: This was causing unwanted sub-element expansion
+                /*
                 if (row[indices.srcType] && row[indices.srcType].length > 0 && row[indices.tgtRefType].length==0 ) {
                     const srcType = row[indices.srcType].trim();
                     let res = parsedData
@@ -382,6 +407,7 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
                             shallPopulateObligations.add(row[indices.tgtElement] + '.' + r[indices.tgtElement]);
                         })
                 }
+                */
         });
         return shallPopulateObligations;
     }
@@ -409,6 +435,9 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
             .filter(row => !row[indices.tgtElement] || row[indices.tgtElement].length == 0)
         ;
 
+        // COMMENTED OUT: includeAsWell logic that was causing cross-resource obligation contamination
+        // This was adding obligations from other resources that reference the current resource in their includeAsWell column
+        /*
         const includeAsWell = new Set( parsedData
             .filter(row => row[indices.tgtResource] === resourceUrl )
             .filter(row => row[indices.includeAsWell] && row[indices.includeAsWell].length > 0)
@@ -426,6 +455,7 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
                 shallPopulateObligations.add(obligation);
             });     
          });
+        */
 
         const allObligations = new Set([...shallPopulateObligations, ...shallHandleCorrectlyObligations]);  
   
