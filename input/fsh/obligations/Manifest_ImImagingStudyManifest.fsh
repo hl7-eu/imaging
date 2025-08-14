@@ -4,7 +4,7 @@
 Profile: Manifest_ImImagingStudyManifest
 Parent: ImImagingStudyManifest
 Id: Manifest-ImImagingStudyManifest
-Title: "Manifest obligations for ImImagingStudyManifest"
+Title: "ImImagingStudyManifest: obligations"
 Description: "Manifest obligations for ImImagingStudyManifest"
 * entry[imagingstudy]
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known

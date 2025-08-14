@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Manifest_ImProcedure
-Parent: ImProcedure
-Id: Manifest-ImProcedure
-Title: "ImProcedure: obligations"
-Description: "Manifest obligations for ImProcedure"
-* location
+Profile: Manifest_EuObservation
+Parent: $EuObservation
+Id: Manifest-EuObservation
+Title: "EuObservation: obligations"
+Description: "Manifest obligations for EuObservation"
+* identifier
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImManifestProvider)
-  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.eventType, EHDSImagingReport.header.authorSpecialty"
+  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSObservation.header.identifier"

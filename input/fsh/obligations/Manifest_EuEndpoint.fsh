@@ -4,7 +4,7 @@
 Profile: Manifest_EuEndpoint
 Parent: $EuEndpoint
 Id: Manifest-EuEndpoint
-Title: "Manifest obligations for EuEndpoint"
+Title: "EuEndpoint: obligations"
 Description: "Manifest obligations for EuEndpoint"
 * identifier
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
@@ -25,7 +25,7 @@ Description: "Manifest obligations for EuEndpoint"
 * managingOrganization
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImManifestProvider)
-  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSEndpoint.managingOrganization"
+  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSEndpoint.managingOrganisation"
 * payload
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImManifestProvider)

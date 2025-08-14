@@ -4,7 +4,7 @@
 Profile: Manifest_EuHumanName
 Parent: $EuHumanName
 Id: Manifest-EuHumanName
-Title: "Manifest obligations for EuHumanName"
+Title: "EuHumanName: obligations"
 Description: "Manifest obligations for EuHumanName"
 * use
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
