@@ -3,6 +3,9 @@ Parent: Observation
 Title: "EU Observation"
 Description: "A observation profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
+
+* extension contains
+  $workflow-status-reason-url named status-reason 0..1
 * effective[x] 1..1
 
 * code 1..1
