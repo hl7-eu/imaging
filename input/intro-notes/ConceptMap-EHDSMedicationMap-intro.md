@@ -11,8 +11,8 @@ class EHDSMedication {
   classification
   productName
   marketingAuthorisationHolder
-  marketingAuthorisationHolder.organizationName
-  marketingAuthorisationHolder.organizationIdentifier
+  marketingAuthorisationHolder.organisationName
+  marketingAuthorisationHolder.organisationIdentifier
   doseForm
   packSize
   item
@@ -38,7 +38,13 @@ class EHDSMedication {
   batch.expirationDate
 }
 link EHDSMedication "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSMedication.html"
-class EuMedication
-EHDSMedication --> EuMedication
+class orphan drug{
+  <<FHIR>>
+  etc.)
+}
+
+class 1 creme & 6 pessaries)
+EHDSMedication --> orphan drug
+EHDSMedication --> 1 creme & 6 pessaries)
 ```
 

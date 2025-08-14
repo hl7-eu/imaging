@@ -14,7 +14,6 @@ class EHDSPatient {
   address
   telecom
   maritalStatus
-  citizenship
   communicationLanguage
 }
 link EHDSPatient "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSPatient.html"
@@ -27,8 +26,6 @@ class EuPatient{
   address
   telecom
   maritalStatus
-  extension[patient-citizenship]
-  extension[patient-nationality]
   communication.language
 }
 

@@ -12,7 +12,7 @@ class EHDSAddress {
   text
   street
   houseNumber
-  pOBox
+  postBox
   city
   postalCode
   country

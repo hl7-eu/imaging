@@ -11,7 +11,7 @@ class EHDSCoverage {
   type
   patient
   payor
-  payor.payorEntity
+  payor.payorEntity[x]
   payor.subscriberId
 }
 link EHDSCoverage "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSCoverage.html"

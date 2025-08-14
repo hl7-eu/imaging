@@ -7,16 +7,25 @@ classDiagram
 direction LR
 class EHDSEncounter {
   <<XtEHR dataset>>
-  identifier
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
   priority
-  encounterType
-  encounterNote
-  patient
+  type
+  note
   episodeOfCare
-  basedOn
+  basedOn[x]
   partOf
   serviceProvider
-  appointment
   actualPeriod
   plannedStartDate
   plannedEndDate
@@ -24,29 +33,35 @@ class EHDSEncounter {
   admission.admitter
   admission.admitSource
   admission.referringProfessional
-  admission.admissionReason
-  admission.admissionReasonComment
-  admission.admissionLegalStatus
+  admission.reason[x]
+  admission.reasonComment
+  admission.legalStatus
   discharge
   discharge.destinationType
-  discharge.destinationLocation
+  discharge.destinationLocation[x]
   location
   location.period
-  location.organizationPart
+  location.organisationPart[x]
 }
 link EHDSEncounter "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSEncounter.html"
 class EuEncounter{
   <<FHIR>>
+  subject
   identifier
+  meta.lastUpdated
+  status
+  extension[status-reason]
+  extension[status-reason].valueCodeableConcept.text
+  language
+  meta.versionId
+  text
   priority
   type
   extension[note]
-  subject
   episodeOfCare
   basedOn
   partOf
   serviceProvider
-  appointment
   actualPeriod
   plannedStartDate
   plannedEndDate
@@ -55,8 +70,6 @@ class EuEncounter{
   admission.admitSource
   participant[referrer].actor
   reason.value.reference
-  reason.value.concept.text
-  extension[legalStatus]
   admission.dischargeDisposition
   admission.destination
   location
@@ -64,9 +77,10 @@ class EuEncounter{
   location.location
 }
 
-class EuPatient {
-  <<FHIR>>
-}
+class FLAG: CHANGED FROM admission.admissionReasonComment - REVIEW MAPPING
+class FLAG: CHANGED FROM admission.admissionLegalStatus - REVIEW MAPPING
+class FLAG: MULTIPLE discharge.destinationLocation[x] - REVIEW MAPPING
+class FLAG: MULTIPLE location.organisationPart[x] - REVIEW MAPPING
 class EuEpisodeOfCare {
   <<FHIR>>
 }
@@ -79,19 +93,18 @@ class EuEncounter {
 class EuOrganization {
   <<FHIR>>
 }
-class EuAppointment {
-  <<FHIR>>
-}
 class EuLocation {
   <<FHIR>>
 }
 EHDSEncounter --> EuEncounter
-EuEncounter --> EuPatient : subject
 EuEncounter --> EuEpisodeOfCare : episodeOfCare
 EuEncounter --> EuServiceRequest : basedOn
 EuEncounter --> EuEncounter : partOf
 EuEncounter --> EuOrganization : serviceProvider
-EuEncounter --> EuAppointment : appointment
 EuEncounter --> EuLocation : location.location
+EHDSEncounter --> FLAG: CHANGED FROM admission.admissionReasonComment - REVIEW MAPPING
+EHDSEncounter --> FLAG: CHANGED FROM admission.admissionLegalStatus - REVIEW MAPPING
+EHDSEncounter --> FLAG: MULTIPLE discharge.destinationLocation[x] - REVIEW MAPPING
+EHDSEncounter --> FLAG: MULTIPLE location.organisationPart[x] - REVIEW MAPPING
 ```
 

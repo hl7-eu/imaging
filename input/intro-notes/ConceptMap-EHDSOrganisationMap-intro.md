@@ -5,7 +5,7 @@ The figure below presents the {{XtEhrImaging}} DataSet representation and the FH
 ```mermaid
 classDiagram
 direction LR
-class EHDSOrganization {
+class EHDSOrganisation {
   <<XtEHR dataset>>
   identifier
   type
@@ -14,7 +14,7 @@ class EHDSOrganization {
   telecom
   partOf
 }
-link EHDSOrganization "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSOrganization.html"
+link EHDSOrganisation "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSOrganisation.html"
 class EuOrganization{
   <<FHIR>>
   identifier
@@ -28,7 +28,7 @@ class EuOrganization{
 class EuOrganization {
   <<FHIR>>
 }
-EHDSOrganization --> EuOrganization
+EHDSOrganisation --> EuOrganization
 EuOrganization --> EuOrganization : partOf
 ```
 

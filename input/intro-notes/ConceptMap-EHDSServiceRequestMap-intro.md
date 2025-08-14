@@ -7,24 +7,46 @@ classDiagram
 direction LR
 class EHDSServiceRequest {
   <<XtEHR dataset>>
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
   serviceText
   serviceCode
   reasonCode
   quantity
   anatomicLocation
-  reasonReference
+  reasonReference[x]
   priority
-  supportingInformation
+  supportingInformation[x]
   specimen
-  subject
   encounter
-  occurance[x]
+  occurrence[x]
   patientInstructions
   coverage
 }
 link EHDSServiceRequest "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSServiceRequest.html"
 class EuServiceRequest{
   <<FHIR>>
+  subject
+  identifier
+  requester
+  performer
+  occurrenceDateTime
+  meta.lastUpdated
+  status
+  extension[status-reason]
+  extension[status-reason].valueCodeableConcept.text
+  language
+  meta.versionId
   text
   code.concept
   reason.concept
@@ -34,9 +56,7 @@ class EuServiceRequest{
   priority
   supportingInfo
   specimen
-  subject
   encounter
-  occurrenceDateTime
   occurrencePeriod
   patientInstruction.instructionMarkdown
   insurance

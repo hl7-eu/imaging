@@ -7,29 +7,46 @@ classDiagram
 direction LR
 class EHDSCondition {
   <<XtEHR dataset>>
-  identifier
-  description
-  code
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
+  problem
   onsetDate
   endDate
   category
-  clinicalStatus
+  problemStatus
   resolutionCircumstances
   severity
   anatomicLocation
   stage
-  patient
-  participant
-  participant.function
-  participant.actor
-  externalResourceRelatedWith
   diagnosisAssertionStatus
+  asserter
+  assertedDate
+  specialistContact
+  externalResource
 }
 link EHDSCondition "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSCondition.html"
 class EuCondition{
   <<FHIR>>
+  subject
   identifier
-  note
+  participant
+  recordedDate
+  meta.lastUpdated
+  extension[status-reason]
+  extension[status-reason].valueCodeableConcept.text
+  language
+  meta.versionId
+  text
   code
   onset[x]
   abatement[x]
@@ -39,38 +56,11 @@ class EuCondition{
   severity
   bodySite
   stage
-  stage.summary
-  stage.type
-  subject
-  participant
-  participant.function
-  participant.actor
-  stage.assessment
-  extension[relatedArtifact]
-  evidence
   verificationStatus
+  participant.extension[specialist-contact]
+  evidence
 }
 
-class EuPatient {
-  <<FHIR>>
-}
-class EuPracitioner {
-  <<FHIR>>
-}
-class  EuPractitionerRole {
-  <<FHIR>>
-}
-class  EuPatient {
-  <<FHIR>>
-}
-class  EuOrganization {
-  <<FHIR>>
-}
 EHDSCondition --> EuCondition
-EuCondition --> EuPatient : subject
-EuCondition --> EuPracitioner : participant.actor
-EuCondition -->  EuPractitionerRole : participant.actor
-EuCondition -->  EuPatient : participant.actor
-EuCondition -->  EuOrganization : participant.actor
 ```
 

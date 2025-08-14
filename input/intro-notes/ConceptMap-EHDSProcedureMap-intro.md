@@ -7,65 +7,67 @@ classDiagram
 direction LR
 class EHDSProcedure {
   <<XtEHR dataset>>
-  identifier
-  description
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
   code
   date[x]
   performer
-  anatomicLocation
-  reason
+  bodySite
+  reason[x]
   outcome
   complication
   deviceUsed
   focalDevice
-  location
   note
-  subject
 }
 link EHDSProcedure "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSProcedure.html"
 class EuProcedure{
   <<FHIR>>
+  subject
   identifier
+  performer
+  performer.actor
+  occurrenceDateTime
+  meta.lastUpdated
+  status
+  statusReason.coding
+  statusReason.text
+  language
+  meta.versionId
   text
   code
-  occurrenceDateTime
   occurrencePeriod
-  performer.actor
   bodySite
-  bodySite.extension[bodyStructure]
   reason
   outcome
   complication.concept
   used[device]
   focalDevice.manipulated
-  location
   note
-  subject
 }
 
-class EuBodyStructure{
+class EuPatient {
   <<FHIR>>
-  includedStructure.laterality
-  includedStructure.
 }
-
 class EuPractitionerRole {
   <<FHIR>>
 }
 class EuDevice {
   <<FHIR>>
 }
-class EuLocation {
-  <<FHIR>>
-}
-class EuPatient {
-  <<FHIR>>
-}
 EHDSProcedure --> EuProcedure
+EuProcedure --> EuPatient : subject
 EuProcedure --> EuPractitionerRole : performer.actor
 EuProcedure --> EuDevice : used[device]
-EuProcedure --> EuLocation : location
-EuProcedure --> EuPatient : subject
-EHDSProcedure --> EuBodyStructure
 ```
 

@@ -7,110 +7,97 @@ classDiagram
 direction LR
 class EHDSObservation {
   <<XtEHR dataset>>
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
+  header.directSubject[x]
   observationDate[x]
-  observationCode
-  observationName
-  observationOriginalName
-  observationMethod
-  observationDevice
+  code
+  originalName
+  method
   order
   performer
-  reporter
-  observationResult
-  observationResult.textualResult
-  observationResult.numericResult
-  observationResult.numericResult.numericValue[x]
-  observationResult.numericResult.units
-  observationResult.numericResult.uncertainty
-  observationResult.codedResult
+  anatomicLocation
+  result
+  result.value[x]
+  result.uncertainty
   dataAbsentReason
   referenceRange
-  observationInterpretation
-  triggeredBy[x]
-  hasMember[x]
+  interpretation
   resultDescription
-  anatomicLocation
-  subject
   component
   component.code
-  component.textualResult
-  component.numericResult
-  component.numericResult.numericValue[x]
-  component.numericResult.units
-  component.numericResult.uncertainty
-  component.codedResult
+  component.result
+  component.result.value[x]
+  component.result.uncertainty
   component.dataAbsentReason
   component.referenceRange
-  component.observationInterpretation
-  status
+  component.interpretation
+  derivedFrom[x]
+  triggeredBy[x]
+  hasMember[x]
 }
 link EHDSObservation "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSObservation.html"
 class EuObservation{
   <<FHIR>>
+  subject
+  identifier
+  performer
+  issued
+  meta.lastUpdated
+  status
+  extension[status-reason]
+  extension[status-reason].valueCodeableConcept.text
+  language
+  meta.versionId
+  text
+  focus
   effectiveDateTime
   effectivePeriod
   code
-  code.coding.display
   method
-  device
   basedOn
-  performer
   performer.extension[performerFunction]
-  value[x]
+  bodySite
   valueString
   valueQuantity
   valueRange
   valueCodeableConcept
+  value[x].extension[dataAbsentReason]
   referenceRange
   interpretation
+  note
+  component
+  component.referenceRange
+  component.interpretation
+  derivedFrom
   triggeredBy.observation
   triggeredBy.type
   hasMember
-  note
-  bodySite
-  subject
-  component
-  component.valueQuantity
-  component.valueRange
-  component.valueCodeableConcept
-  component.referenceRange
-  component.interpretation
-  status.value
-}
-
-class EuServiceRequest{
-  <<FHIR>>
-  requester
 }
 
 class EuQuantity{
   <<FHIR>>
-  system
-  code
-  unit
   extension[uncertainty]
   extension[uncertaintyType]
-}
-
-class EuRange{
-  <<FHIR>>
-  low
-  high
 }
 
 class EuSimpleQuantity{
   <<FHIR>>
-  system
-  code
-  unit
   extension[uncertainty]
   extension[uncertaintyType]
 }
 
-class EuDevice {
-  <<FHIR>>
-}
-class EuServiceRequest {
+class Resource {
   <<FHIR>>
 }
 class EuPractitionerRole {
@@ -119,20 +106,12 @@ class EuPractitionerRole {
 class EuObervation {
   <<FHIR>>
 }
-class Resource {
-  <<FHIR>>
-}
 EHDSObservation --> EuObservation
-EuObservation --> EuDevice : device
-EuObservation --> EuServiceRequest : basedOn
+EuObservation --> Resource : subject
 EuObservation --> EuPractitionerRole : performer
 EuObservation --> EuObervation : triggeredBy.observation
 EuObservation --> EuObervation : hasMember
-EuObservation --> Resource : subject
-EHDSObservation --> EuServiceRequest
-EuServiceRequest --> EuPractitionerRole : requester
 EHDSObservation --> EuQuantity
-EHDSObservation --> EuRange
 EHDSObservation --> EuSimpleQuantity
 ```
 

@@ -11,7 +11,7 @@ class EHDSEndpoint {
   status
   connectionType
   name
-  managingOrganization
+  managingOrganisation
   payload
   payload.type
   payload.mimeType

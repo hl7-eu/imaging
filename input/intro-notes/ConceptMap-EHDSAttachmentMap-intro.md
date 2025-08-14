@@ -12,13 +12,7 @@ class EHDSAttachment {
   data
   url
   size
-  hash
   title
-  creationDate
-  height
-  width
-  frames
-  duration
 }
 link EHDSAttachment "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSAttachment.html"
 class EuAttachment{
@@ -28,13 +22,7 @@ class EuAttachment{
   data
   url
   size
-  hash
   title
-  creation
-  height
-  width
-  frames
-  duration
 }
 
 EHDSAttachment --> EuAttachment

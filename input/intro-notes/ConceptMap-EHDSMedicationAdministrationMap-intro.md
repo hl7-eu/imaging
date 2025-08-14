@@ -7,52 +7,52 @@ classDiagram
 direction LR
 class EHDSMedicationAdministration {
   <<XtEHR dataset>>
-  identifier
-  status
-  statusReason
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
   medication
-  occurance[x]
-  reason
+  occurrence[x]
+  reason[x]
   note
   dosage
-  dosage.dosageDescription
-  dosage.site
-  dosage.route
-  dosage.method
-  dosage.dose
-  dosage.rate[x]
-  subject
 }
 link EHDSMedicationAdministration "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSMedicationAdministration.html"
 class EuMedicationAdministration{
   <<FHIR>>
+  subject
   identifier
-  status
-  statusReason
-  medication
+  performer
+  performer.actor
   occurenceDateTime
   occurencePeriod
+  meta.lastUpdated
+  status
+  statusReason
+  language
+  text
+  medication
   reason
   note
   dosage
-  dosage.text
-  dosage.site
-  dosage.route
-  dosage.method
-  dosage.dose
-  dosage.rateRatio
-  dosage.rateQuantity
-  subject
 }
 
-class EuMedication {
-  <<FHIR>>
-}
 class EuPatient {
   <<FHIR>>
 }
+class EuMedication {
+  <<FHIR>>
+}
 EHDSMedicationAdministration --> EuMedicationAdministration
-EuMedicationAdministration --> EuMedication : medication
 EuMedicationAdministration --> EuPatient : subject
+EuMedicationAdministration --> EuMedication : medication
 ```
 

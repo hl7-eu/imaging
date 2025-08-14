@@ -7,37 +7,41 @@ classDiagram
 direction LR
 class EHDSCarePlan {
   <<XtEHR dataset>>
-  identifier
-  status
-  intent
+  header
+  header.subject
+  header.identifier
+  header.authorship
+  header.authorship.author[x]
+  header.authorship.datetime
+  header.lastUpdate
+  header.status
+  header.statusReason[x]
+  header.language
+  header.version
+  presentedForm
   title
   description
-  patient
   period
-  custodian
-  contributor
   addresses
-  goal
-  activity
-  note
+  activity[x]
 }
 link EHDSCarePlan "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSCarePlan.html"
 class EuCarePlan{
   <<FHIR>>
+  subject
   identifier
+  contributor
+  created
+  meta.lastUpdated
   status
-  intent
+  language
+  meta.versionId
+  text
   title
   title.extension[http\://hl7.org/fhir/StructureDefinition/rendering-xhtml]
   description
   description.extension[http\://hl7.org/fhir/StructureDefinition/rendering-xhtml]
-  subject
-  period
-  custodian
-  contributor
-  goal
   activity
-  note
 }
 
 class EuPatient {
@@ -46,13 +50,9 @@ class EuPatient {
 class EuPractitionerRole {
   <<FHIR>>
 }
-class EuGoal {
-  <<FHIR>>
-}
 EHDSCarePlan --> EuCarePlan
 EuCarePlan --> EuPatient : subject
-EuCarePlan --> EuPractitionerRole : custodian
 EuCarePlan --> EuPractitionerRole : contributor
-EuCarePlan --> EuGoal : goal
+EuCarePlan --> EuPractitionerRole : meta.lastUpdated
 ```
 

@@ -12,7 +12,7 @@ class EHDSHealthProfessional {
   address
   telecom
   role
-  organization
+  organisation
   specialty
 }
 link EHDSHealthProfessional "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-EHDSHealthProfessional.html"
