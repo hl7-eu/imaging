@@ -35,16 +35,14 @@ This will store the data of the source model in xtehr-model.csv.
 
 ### Edit mapping
 
-The content of `xtehr-mode.csv` is copied into `xtehr-model-mapping.ods`. If this an update, copy it into a new tab and align the existing content with the new model, remove the old tab.
+The content of `xtehr-mode.csv` is copied into a [Google spreadsheet](https://docs.google.com/spreadsheets/d/1r7f3w-IaaoJR80CqtPz-ZwB5cfJ3mPe73HvJT9j7Js4/edit?usp=sharing) (authorization is required and can be requested). If this an update, copy it into a new tab and align the existing content with the new model, remove the old tab.
 This is the master file for the mapping and is read when generating the result files.
 
 ## Update the mapping related fields in the IG
 
-Edit the mappings defined in the file `extehr-mode-mapping.ods`.
+Edit the mappings defined in the Google spreadsheet.
 
-First open `extehr-mode-mapping.ods` and save it as a tab-separated-file. How this is done depends on the tool used to edit the file. In linux environments the tool `ods2tsv` can be used:
-
-> ods2tsv xtehr-model-mapping.ods > xtehr-model-mapping.tsv
+First download the Google spreadsheet as a tab-separated-file (.tsv). This can be done by going to File > Download > Tab-separated values (.tsv) and saving it as `xtehr-model-mapping.tsv`.
 
 ### Run script
 
