@@ -1,6 +1,6 @@
 Profile: ImProcedure
 Parent: $EuProcedure
-Title: "IM Imaging Procedure"
+Title: "Procedure: Imaging Acquisition"
 Description: "This profile on Procedure represents the imaging procedure."
 * insert SetFmmAndStatusRule( 1, draft )
 

@@ -1,6 +1,6 @@
 Profile: ImKeyImageImagingSelection
 Parent: ImImagingSelection
-Title: "Key images represented as an ImagingSelection"
+Title: "ImagingSelection: Key Image"
 Description: "Key images represented as an ImagingSelection"
 * insert SetFmmAndStatusRule( 1, draft )
 

@@ -1,6 +1,6 @@
 Profile: ImGestationalAgeObservation
 Parent: $EuObservation
-Title: "Gestational Age Observation"
+Title: "Observation: Gestational Age"
 Description: "Gestational Age Observation"
 * insert SetFmmAndStatusRule( 1, draft )
 

@@ -1,6 +1,6 @@
 Profile: ImDiagnosticReport
 Parent: DiagnosticReport
-Title: "Imaging Diagnostic Report"
+Title: "DiagnosticReport: Imaging Report"
 Description: """
 Diagnostic Report profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.
 """

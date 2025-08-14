@@ -1,6 +1,6 @@
 Profile: ImWadoEndpoint
 Parent: EndpointEu
-Title: "IM WADO Endpoint"
+Title: "Endpoint: WADO-RS"
 Description: """
 This profile defines the WADO endpoint for accessing imaging study content.
 """

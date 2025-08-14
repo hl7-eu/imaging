@@ -1,6 +1,6 @@
 Profile: ImComposition
 Parent: CompositionEu
-Title: "Imaging Composition"
+Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
 * . ^short = "Imaging Report composition"
 * . ^definition = """

@@ -1,6 +1,6 @@
 Profile: ImOrder
 Parent: $EuServiceRequest
-Title: "IM Imaging Order"
+Title: "ServiceRequest: Imaging Order"
 Description: "This profile on ServiceRequest represents the order for the Imaging Study and report."
 * insert SetFmmAndStatusRule( 1, draft )
 

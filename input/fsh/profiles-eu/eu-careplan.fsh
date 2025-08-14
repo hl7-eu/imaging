@@ -1,6 +1,6 @@
 Profile: CarePlanEu
 Parent: CarePlan
-Title: "EU CarePlan"
+Title: "CarePlan: EU CarePlan"
 Description: "Care plan for the patient. 
 Contains the narrative containing the plan including proposals, goals, and order requests for monitoring, tracking, or improving the condition of the patient. In the future it is expected that the care plan could be provided in a structured and coded format."
 * insert SetFmmAndStatusRule( 1, draft )
