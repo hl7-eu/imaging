@@ -54,4 +54,4 @@ Run `xtehr-mapping.sh`, which will read the `xtehr-mode-mapping.tsv` file and ge
 
 Run `sushi` to check the mapping.
 
-> sushi ..
+> sushi .
