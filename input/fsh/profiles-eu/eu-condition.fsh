@@ -1,6 +1,6 @@
 Profile: ConditionEu
 Parent: Condition
-Title: "EU Condition"
+Title: "Condition: EU Condition"
 Description: "A condition profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * extension contains $artifact-related-artifact-url named relatedArtifact 0..*

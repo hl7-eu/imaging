@@ -1,6 +1,6 @@
 Profile: EndpointEu
 Parent: Endpoint
-Title: "EU Endpoint"
+Title: "Endpoint: EU Endpoint"
 Description: """
 The FHIR endpoint resource with EU specific references.
 """

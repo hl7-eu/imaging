@@ -1,6 +1,6 @@
 Profile: ImKeyImageDocumentReference
 Parent: $EuDocumentReference
-Title: "Imaging Key Image Document Reference"
+Title: "DocumentReference: Key Image"
 Description: """A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n
 When the resource represents a DICOM instance it SHALL contain a the SOP Instance UID in the identifier element. When the resource represents a DICOM series it SHALL contain the Series Instance UID in the identifier element. 
 """

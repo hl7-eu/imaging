@@ -1,6 +1,6 @@
 Profile: EncounterEu
 Parent: Encounter
-Title: "EU Encounter"
+Title: "Encounter: EU Encounter"
 Description: "A encounter profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * priority from http://terminology.hl7.org/ValueSet/v3-xEncounterAdmissionUrgency (preferred)
