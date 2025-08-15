@@ -243,6 +243,9 @@ Rechter Fuß:
 Instance: G1DiagnosticReport
 InstanceOf: ImDiagnosticReport
 * extension[artifactVersion].valueString = "1.0.0" // invented - not there in the report
+* identifier
+  * system = "http://example.org/myhosptital/reportidentifiers"
+  * value = "o32u4js8492ff" // invented - not there in the report* status = #final
 * status = #final
 * effectiveDateTime = "2025-04-29"
 * language = #de-DE
@@ -255,7 +258,6 @@ InstanceOf: ImDiagnosticReport
 * subject = Reference( G1Patient)
 * study[+] = Reference( G1ImImagingStudy1 )
 * study[+] = Reference( G1ImImagingStudy2 )
-* performer[author] = Reference(G1AuthorRole)
 * resultsInterpreter[author] = Reference(G1AuthorRole)
 * composition = Reference(G1Composition)
 * code = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report v0.0.1"
