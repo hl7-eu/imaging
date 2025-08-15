@@ -12,7 +12,7 @@ The following table shows the mapping from EHDSHealthProfessional logical model 
 | identifier | EuPractitioner.identifier |  |
 | [name](#ehdshumanname) | EuPractitioner.name |  |
 | [address](#ehdsaddress) | EuPractitioner.address |  |
-| [telecom](#ehdstelecom) | EuPractitioner.telecom |  |
+| [telecom](StructureDefinition-EHDSTelecom.html) | EuPractitioner.telecom |  |
 | role | EuPractitionerRole.code |  |
 | [organisation](#ehdsorganisation) | EuPractitionerRole.organization |  |
 | specialty | EuPractitionerRole.specialty |  |

@@ -25,11 +25,11 @@ The following table shows the mapping from EHDSServiceRequest logical model elem
 | serviceCode | EuServiceRequest.code.concept |  |
 | reasonCode | EuServiceRequest.reason.concept |  |
 | quantity | EuServiceRequest.quantityQuantity |  |
-| [anatomicLocation](#ehdsbodystructure) | EuServiceRequest.bodySite |  |
-| reasonReference[x] ([EHDSObservation](#ehdsobservation), [EHDSCondition](#ehdscondition), [EHDSMedication](#ehdsmedication)) | EuServiceRequest.reason.reference |  |
+| [anatomicLocation](StructureDefinition-EHDSBodyStructure.html) | EuServiceRequest.bodySite |  |
+| reasonReference[x] ([EHDSObservation](#ehdsobservation), [EHDSCondition](#ehdscondition), [EHDSMedication](StructureDefinition-EHDSMedication.html)) | EuServiceRequest.reason.reference |  |
 | priority | EuServiceRequest.priority |  |
 | supportingInformation[x] ([EHDSObservation](#ehdsobservation), [EHDSCondition](#ehdscondition), [EHDSProcedure](#ehdsprocedure), [EHDSMedicationAdministration](#ehdsmedicationadministration)) | EuServiceRequest.supportingInfo |  |
-| [specimen](#ehdsspecimen) | EuServiceRequest.specimen |  |
+| [specimen](StructureDefinition-EHDSSpecimen.html) | EuServiceRequest.specimen |  |
 | [encounter](#ehdsencounter) | EuServiceRequest.encounter |  |
 | occurrence[x] | EuServiceRequest.occurrenceDateTime ; EuServiceRequest.occurrencePeriod |  |
 | patientInstructions | EuServiceRequest.patientInstruction.instructionMarkdown |  |

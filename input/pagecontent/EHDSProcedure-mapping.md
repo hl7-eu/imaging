@@ -24,7 +24,7 @@ The following table shows the mapping from EHDSProcedure logical model elements 
 | code | EuProcedure.code |  |
 | date[x] | EuProcedure.occurrenceDateTime ; EuProcedure.occurrencePeriod |  |
 | [performer](#ehdshealthprofessional) | EuProcedure.performer.actor |  |
-| [bodySite](#ehdsbodystructure) | EuProcedure.bodySite |  |
+| [bodySite](StructureDefinition-EHDSBodyStructure.html) | EuProcedure.bodySite |  |
 | reason[x] ([EHDSCondition](#ehdscondition), [EHDSObservation](#ehdsobservation), [EHDSProcedure](#ehdsprocedure)) | EuProcedure.reason |  |
 | outcome | EuProcedure.outcome |  |
 | complication | EuProcedure.complication.concept |  |

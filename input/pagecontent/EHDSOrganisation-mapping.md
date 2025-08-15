@@ -13,6 +13,6 @@ The following table shows the mapping from EHDSOrganisation logical model elemen
 | type | EuOrganization.type |  |
 | name | EuOrganization.name |  |
 | [address](#ehdsaddress) | EuOrganization.contact.address |  |
-| [telecom](#ehdstelecom) | EuOrganization.contact.telecom |  |
+| [telecom](StructureDefinition-EHDSTelecom.html) | EuOrganization.contact.telecom |  |
 | partOf | EuOrganization.partOf |  |
 

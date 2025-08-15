@@ -14,7 +14,7 @@ The following table shows the mapping from EHDSPatient logical model elements to
 | dateOfBirth | EuPatient.birthDate |  |
 | administrativeGender | EuPatient.gender |  |
 | [address](#ehdsaddress) | EuPatient.address |  |
-| [telecom](#ehdstelecom) | EuPatient.telecom |  |
+| [telecom](StructureDefinition-EHDSTelecom.html) | EuPatient.telecom |  |
 | maritalStatus | EuPatient.maritalStatus |  |
 | communicationLanguage | EuPatient.communication.language |  |
 

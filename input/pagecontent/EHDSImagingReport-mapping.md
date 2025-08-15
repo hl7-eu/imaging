@@ -52,10 +52,10 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
 | [body.orderInformation.supportingInformation.condition](#ehdscondition) | [ImComposition](StructureDefinition-ImComposition.html).section[history] ; [ImOrder](StructureDefinition-ImOrder.html).supportingInfo |  |
 | [body.orderInformation.supportingInformation.medicationAdministration](#ehdsmedicationadministration) | [ImComposition](StructureDefinition-ImComposition.html).section[history] ; [ImOrder](StructureDefinition-ImOrder.html).reason |  |
 | [body.orderInformation.supportingInformation.devices](#ehdsdevice) | [ImComposition](StructureDefinition-ImComposition.html).section[history] ; [ImOrder](StructureDefinition-ImOrder.html).supportingInfo |  |
-| [body.orderInformation.supportingInformation.pregnancyStatus](#ehdscurrentpregnancy) | [ImComposition](StructureDefinition-ImComposition.html).section[history] ; [ImOrder](StructureDefinition-ImOrder.html).supportingInfo[pregnancy] |  |
+| [body.orderInformation.supportingInformation.pregnancyStatus](StructureDefinition-EHDSCurrentPregnancy.html) | [ImComposition](StructureDefinition-ImComposition.html).section[history] ; [ImOrder](StructureDefinition-ImOrder.html).supportingInfo[pregnancy] |  |
 | body.orderInformation.supportingInformation.sexForClinicalUse | [ImComposition](StructureDefinition-ImComposition.html).subject ; [ImPatient](StructureDefinition-ImPatient.html).extension[sex-for-clinical-use] ; [ImPatient](StructureDefinition-ImPatient.html).extension[sex-for-clinical-use] ; [ImPatient](StructureDefinition-ImPatient.html).extension[sex-for-clinical-use] |  |
 | body.orderInformation.supportingInformation.otherSupportingInformation | [ImComposition](StructureDefinition-ImComposition.html).section[history] |  |
-| [body.specimen](#ehdsspecimen) | [ImImagingStudy](StructureDefinition-ImImagingStudy.html).series |  |
+| [body.specimen](StructureDefinition-EHDSSpecimen.html) | [ImImagingStudy](StructureDefinition-ImImagingStudy.html).series |  |
 | [body.serviceRequest](#ehdsservicerequest) | [ImComposition](StructureDefinition-ImComposition.html).section[order] |  |
 | body.exposureInformation |  |  |
 | body.exposureInformation.effectiveDose | [ImRadiationDoseObservation](StructureDefinition-ImRadiationDoseObservation.html).component | Mapping to slice needed |
@@ -64,7 +64,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
 | body.exposureInformation.equivalentDoseInformation.tissueType | [ImRadiationDoseObservation](StructureDefinition-ImRadiationDoseObservation.html).bodySite |  |
 | body.examinationReport |  |  |
 | body.examinationReport.modality | [ImImagingStudy](StructureDefinition-ImImagingStudy.html).series |  |
-| [body.examinationReport.bodyPart](#ehdsbodystructure) |  |  |
+| [body.examinationReport.bodyPart](StructureDefinition-EHDSBodyStructure.html) |  |  |
 | examinationReport.bodyPart.bodyLocation | [ImImagingStudy](StructureDefinition-ImImagingStudy.html).series ; EuBodyStructure.morphology ; EuBodyStructure.includedStructure.structure |  |
 | examinationReport.bodyPart.laterality | [ImImagingStudy](StructureDefinition-ImImagingStudy.html).series ; EuBodyStructure.includedStructure.laterality |  |
 | [body.examinationReport.imagingProcedures](#ehdsprocedure) | [ImComposition](StructureDefinition-ImComposition.html).section[procedure] |  |
@@ -80,6 +80,6 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
 | body.recommendation.description | EuCarePlan.description |  |
 | [body.recommendation.carePlan](#ehdscareplan) | [ImComposition](StructureDefinition-ImComposition.html).section[recommendation] |  |
 | [body.comparisonStudy](#ehdsimagingreport) | [ImComposition](StructureDefinition-ImComposition.html).section[comparison] |  |
-| [dicomStudyMetadata](#ehdsimagingstudy) | [ImImagingStudyManifest](StructureDefinition-ImImagingStudyManifest.html).entry[imagingstudy] |  |
+| [dicomStudyMetadata](StructureDefinition-EHDSImagingStudy.html) | [ImImagingStudyManifest](StructureDefinition-ImImagingStudyManifest.html).entry[imagingstudy] |  |
 | attachments[x] ([EHDSAttachment](#ehdsattachment), [EHDSMedia](#ehdsmedia)) | [ImComposition](StructureDefinition-ImComposition.html).section[comparison] ; [ImDiagnosticReport](StructureDefinition-ImDiagnosticReport.html).media ; [ImFinding](StructureDefinition-ImFinding.html).derivedFrom | supporting info and key images |
 

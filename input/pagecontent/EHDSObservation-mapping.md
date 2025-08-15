@@ -21,14 +21,14 @@ The following table shows the mapping from EHDSObservation logical model element
 | header.language | EuObservation.language |  |
 | header.version | EuObservation.meta.versionId |  |
 | [presentedForm](#ehdsattachment) | EuObservation.text |  |
-| header.directSubject[x] ([EHDSPatient](#ehdspatient), [EHDSPatientAnimal](#ehdspatientanimal), [EHDSLocation](#ehdslocation), [EHDSDevice](#ehdsdevice), [EHDSHealthProfessional](#ehdshealthprofessional), [EHDSOrganisation](#ehdsorganisation), [EHDSProcedure](#ehdsprocedure)) | EuObservation.focus |  |
+| header.directSubject[x] ([EHDSPatient](#ehdspatient), [EHDSPatientAnimal](StructureDefinition-EHDSPatientAnimal.html), [EHDSLocation](StructureDefinition-EHDSLocation.html), [EHDSDevice](#ehdsdevice), [EHDSHealthProfessional](#ehdshealthprofessional), [EHDSOrganisation](#ehdsorganisation), [EHDSProcedure](#ehdsprocedure)) | EuObservation.focus |  |
 | observationDate[x] | EuObservation.effectiveDateTime ; EuObservation.effectivePeriod |  |
 | code | EuObservation.code |  |
 | originalName |  |  |
 | method | EuObservation.method |  |
 | [order](#ehdsservicerequest) | EuObservation.basedOn |  |
 | [performer](#ehdshealthprofessional) | EuObservation.performer ; EuObservation.performer.extension[performerFunction] |  |
-| [anatomicLocation](#ehdsbodystructure) | EuObservation.bodySite |  |
+| [anatomicLocation](StructureDefinition-EHDSBodyStructure.html) | EuObservation.bodySite |  |
 | result |  | Mapping provided for each .value data type |
 | result.value[x] | EuObservation.valueString ; EuObservation.valueQuantity ; EuObservation.valueRange ; EuObservation.valueCodeableConcept |  |
 | result.uncertainty | EuQuantity.extension[uncertainty] |  |
@@ -44,7 +44,7 @@ The following table shows the mapping from EHDSObservation logical model element
 | component.dataAbsentReason |  |  |
 | component.referenceRange | EuObservation.component.referenceRange |  |
 | component.interpretation | EuObservation.component.interpretation |  |
-| derivedFrom[x] ([EHDSObservation](#ehdsobservation), [EHDSLaboratoryObservation](#ehdslaboratoryobservation), [EHDSImagingStudy](#ehdsimagingstudy)) | EuObservation.derivedFrom |  |
-| triggeredBy[x] ([EHDSLaboratoryObservation](#ehdslaboratoryobservation), [EHDSObservation](#ehdsobservation)) | EuObservation.triggeredBy.observation ; EuObservation.triggeredBy.type |  |
-| hasMember[x] ([EHDSLaboratoryObservation](#ehdslaboratoryobservation), [EHDSObservation](#ehdsobservation)) | EuObservation.hasMember |  |
+| derivedFrom[x] ([EHDSObservation](#ehdsobservation), [EHDSLaboratoryObservation](StructureDefinition-EHDSLaboratoryObservation.html), [EHDSImagingStudy](StructureDefinition-EHDSImagingStudy.html)) | EuObservation.derivedFrom |  |
+| triggeredBy[x] ([EHDSLaboratoryObservation](StructureDefinition-EHDSLaboratoryObservation.html), [EHDSObservation](#ehdsobservation)) | EuObservation.triggeredBy.observation ; EuObservation.triggeredBy.type |  |
+| hasMember[x] ([EHDSLaboratoryObservation](StructureDefinition-EHDSLaboratoryObservation.html), [EHDSObservation](#ehdsobservation)) | EuObservation.hasMember |  |
 

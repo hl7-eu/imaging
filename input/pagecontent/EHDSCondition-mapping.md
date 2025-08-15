@@ -28,7 +28,7 @@ The following table shows the mapping from EHDSCondition logical model elements 
 | problemStatus | EuCondition.clinicalStatus |  |
 | resolutionCircumstances | EuCondition.evidence.concept |  |
 | severity | EuCondition.severity |  |
-| [anatomicLocation](#ehdsbodystructure) | EuCondition.bodySite |  |
+| [anatomicLocation](StructureDefinition-EHDSBodyStructure.html) | EuCondition.bodySite |  |
 | stage | EuCondition.stage |  |
 | diagnosisAssertionStatus | EuCondition.verificationStatus |  |
 | [asserter](#ehdshealthprofessional) |  | The meaning of this field is not clear. If it's the author it is mapped in the participant element |

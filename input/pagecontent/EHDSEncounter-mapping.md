@@ -24,7 +24,7 @@ The following table shows the mapping from EHDSEncounter logical model elements 
 | priority | EuEncounter.priority |  |
 | type | EuEncounter.type |  |
 | note | EuEncounter.extension[note] |  |
-| [episodeOfCare](#ehdsepisodeofcare) | EuEncounter.episodeOfCare |  |
+| [episodeOfCare](StructureDefinition-EHDSEpisodeOfCare.html) | EuEncounter.episodeOfCare |  |
 | basedOn[x] ([EHDSCarePlan](#ehdscareplan), [EHDSServiceRequest](#ehdsservicerequest)) | EuEncounter.basedOn |  |
 | [partOf](#ehdsencounter) | EuEncounter.partOf |  |
 | [serviceProvider](#ehdsorganisation) | EuEncounter.serviceProvider |  |
@@ -40,8 +40,8 @@ The following table shows the mapping from EHDSEncounter logical model elements 
 | admission.legalStatus |  |  |
 | discharge | EuEncounter.admission.dischargeDisposition |  |
 | discharge.destinationType | EuEncounter.admission.dischargeDisposition |  |
-| discharge.destinationLocation[x] ([EHDSOrganisation](#ehdsorganisation), [EHDSLocation](#ehdslocation)) | EuEncounter.admission.destination |  |
+| discharge.destinationLocation[x] ([EHDSOrganisation](#ehdsorganisation), [EHDSLocation](StructureDefinition-EHDSLocation.html)) | EuEncounter.admission.destination |  |
 | location | EuEncounter.location |  |
 | location.period | EuEncounter.location.period |  |
-| location.organisationPart[x] ([EHDSOrganisation](#ehdsorganisation), [EHDSLocation](#ehdslocation)) | EuEncounter.location.location |  |
+| location.organisationPart[x] ([EHDSOrganisation](#ehdsorganisation), [EHDSLocation](StructureDefinition-EHDSLocation.html)) | EuEncounter.location.location |  |
 
