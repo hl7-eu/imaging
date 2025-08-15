@@ -27,6 +27,12 @@ const indices = {
 
 const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
 
+// Configuration: Define which models are considered "core" for this IG
+const CORE_MODELS = [
+    'EHDSImagingReport'
+    // Add other core models here as needed
+];
+
 function extractAndCopyResources(parsedData, srcResources ) {
     // Extract unique source resources
     
@@ -143,21 +149,29 @@ function generateMappingTables(parsedData, srcResources) {
         // Create a hash table to store mappings: srcField -> array of target mappings
         const mappingTable = new Map();
         
-        // Get all source fields for this resource
-        const srcFields = new Set(
-            parsedData
-                .filter(row => row[indices.srcResource] === srcResource)
-                .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
-                .map(row => row[indices.srcField].trim())
-        );
+        // Get all source fields for this resource in their original order
+        const srcFieldsWithOrder = [];
+        const seenFields = new Set();
+        
+        parsedData.forEach((row, index) => {
+            if (row[indices.srcResource] === srcResource && 
+                row[indices.srcField] && 
+                row[indices.srcField].length > 0) {
+                const srcField = row[indices.srcField].trim();
+                if (!seenFields.has(srcField)) {
+                    srcFieldsWithOrder.push({ field: srcField, originalIndex: index });
+                    seenFields.add(srcField);
+                }
+            }
+        });
         
         // Initialize the mapping table with all source fields
-        srcFields.forEach(srcField => {
-            mappingTable.set(srcField, []);
+        srcFieldsWithOrder.forEach(({ field }) => {
+            mappingTable.set(field, []);
         });
         
         // Populate the mapping table with target mappings and collect source type info
-        const sourceTypeMap = new Map(); // srcField -> srcType
+        const sourceTypeMap = new Map(); // srcField -> array of srcTypes
         const modelingMap = new Map(); // srcField -> tgtModeling
         parsedData
             .filter(row => row[indices.srcResource] === srcResource)
@@ -167,9 +181,15 @@ function generateMappingTables(parsedData, srcResources) {
                 const srcType = row[indices.srcType] ? row[indices.srcType].trim() : '';
                 const tgtModeling = row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : '';
                 
-                // Store the source type for hyperlink generation
+                // Store the source types for hyperlink generation (can be multiple for [x] fields)
                 if (srcType.length > 0) {
-                    sourceTypeMap.set(srcField, srcType);
+                    if (!sourceTypeMap.has(srcField)) {
+                        sourceTypeMap.set(srcField, []);
+                    }
+                    const existingTypes = sourceTypeMap.get(srcField);
+                    if (!existingTypes.includes(srcType)) {
+                        existingTypes.push(srcType);
+                    }
                 }
                 
                 // Store the tgtModeling value
@@ -202,19 +222,14 @@ function generateMappingTables(parsedData, srcResources) {
         writable.write(`<!--\n`);
         writable.write(`  Generated file. Do not edit.\n`);
         writable.write(`-->\n\n`);
-        writable.write(`---\n`);
-        writable.write(`title: ${srcResource} Mapping\n`);
-        writable.write(`---\n\n`);
-        writable.write(`### ${srcResource}\n\n`);
+        writable.write(`#### ${srcResource}\n\n`);
         writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
         writable.write(`{:.grid}\n`);
         writable.write(`| Element | Target FHIR resource.element | Comments |\n`);
         writable.write(`| ------- | ---------------------------- | -------- |\n`);
         
-        // Sort source fields for consistent output
-        const sortedSrcFields = Array.from(srcFields).sort();
-        
-        sortedSrcFields.forEach(srcField => {
+        // Use source fields in their original order from the TSV file
+        srcFieldsWithOrder.forEach(({ field: srcField }) => {
             const targetMappings = mappingTable.get(srcField);
             
             // Convert target mappings to hyperlinked format
@@ -232,12 +247,21 @@ function generateMappingTables(parsedData, srcResources) {
             // Get the modeling value for this field
             const modelingValue = modelingMap.get(srcField) || '';
             
-            // Create hyperlink for source field if it has an EHDS srcType
+            // Create hyperlink for source field if it has EHDS srcType(s)
             let sourceFieldDisplay = srcField;
-            const srcType = sourceTypeMap.get(srcField);
-            if (srcType && srcType.startsWith('EHDS')) {
-                // Create markdown link to the section for that srcType
-                sourceFieldDisplay = `[${srcField}](#${srcType.toLowerCase()})`;
+            const srcTypes = sourceTypeMap.get(srcField);
+            if (srcTypes && srcTypes.length > 0) {
+                const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
+                if (ehdsTypes.length > 0) {
+                    if (ehdsTypes.length === 1) {
+                        // Single type - simple link format
+                        sourceFieldDisplay = `[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
+                    } else {
+                        // Multiple types - format with parentheses and multiple links
+                        const typeLinks = ehdsTypes.map(type => `[${type}](#${type.toLowerCase()})`).join(', ');
+                        sourceFieldDisplay = `${srcField} (${typeLinks})`;
+                    }
+                }
             }
             
             writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} | ${modelingValue} |\n`);
@@ -266,14 +290,30 @@ function generateMappingIndex(generatedFiles, excludedResources) {
     writable.write(`  Generated file. Do not edit.\n`);
     writable.write(`-->\n\n`);
     writable.write('{% include variable-definitions.md %}\n\n');
-    writable.write('The following tables describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.\n\n');
-    
+    writable.write('The following tables describe the way the [XtEHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.\n\n');
+
     // Sort files alphabetically for consistent output
     const sortedFiles = generatedFiles.sort((a, b) => a.resource.localeCompare(b.resource));
     
-    sortedFiles.forEach(file => {
-        writable.write(`{% include ${file.filename} %}\n\n`);
-    });
+    // Separate core models from other files based on configuration
+    const coreModelFiles = sortedFiles.filter(file => CORE_MODELS.includes(file.resource));
+    const otherModelFiles = sortedFiles.filter(file => !CORE_MODELS.includes(file.resource));
+    
+    // Core models section
+    if (coreModelFiles.length > 0) {
+        writable.write('### Core models of the Imaging Report IG\n\n');
+        coreModelFiles.forEach(file => {
+            writable.write(`{% include ${file.filename} %}\n\n`);
+        });
+    }
+    
+    // Other models section
+    if (otherModelFiles.length > 0) {
+        writable.write('### Other models used in this IG\n\n');
+        otherModelFiles.forEach(file => {
+            writable.write(`{% include ${file.filename} %}\n\n`);
+        });
+    }
     
     // Add message about excluded resources if any
     if (excludedResources && excludedResources.length > 0) {
