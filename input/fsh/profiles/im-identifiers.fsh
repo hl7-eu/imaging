@@ -29,7 +29,7 @@ Profile: ImSopInstanceUidIdentifier
 Parent: Identifier
 Id: im-sop-instance-uid-identifier
 Title: "Identifier: SOP Instance UID"
-Description: "This profile on Identifier represents the SOP Class UID (0008,0018) for the Imaging Order."
+Description: "This profile on Identifier represents the SOP Instance UID	(0008,0018) for the Imaging Order."
 * insert SetFmmAndStatusRule( 1, draft )
 * system = "urn:dicom:uid"
 * value 1..1
