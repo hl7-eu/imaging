@@ -1,0 +1,550 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSMedicationDispense",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationDispense",
+  "version": "0.1.0",
+  "name": "EHDSMedicationDispense",
+  "title": "Medication dispensation model",
+  "status": "draft",
+  "date": "2025-03-21T08:17:12+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "Logical model for medication dispensation (based on request or independently)",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationDispense",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "5.0.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSMedicationDispense",
+        "path": "EHDSMedicationDispense",
+        "short": "Medication dispensation model",
+        "definition": "Logical model for medication dispensation (based on request or independently)",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.header",
+        "path": "EHDSMedicationDispense.header",
+        "short": "Header level metadata about the dispense",
+        "definition": "Header level metadata about the dispense",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationDispenseHeader"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dispensingOrganizationOrDevice[x]",
+        "path": "EHDSMedicationDispense.dispensingOrganizationOrDevice[x]",
+        "short": "Dispensing organization or device",
+        "definition": "Dispensing organization or device",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationDispense.dispensingOrganizationOrDevice[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dispenseLocation",
+        "path": "EHDSMedicationDispense.dispenseLocation",
+        "short": "Location of dispense",
+        "definition": "Location of dispense",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.dispenseLocation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.receiver[x]",
+        "path": "EHDSMedicationDispense.receiver[x]",
+        "short": "Identification of the person who received the dispensed medication, especially when it was not the patient",
+        "definition": "Identification of the person who received the dispensed medication, especially when it was not the patient",
+        "comment": "Added",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.receiver[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.relatedRequest",
+        "path": "EHDSMedicationDispense.relatedRequest",
+        "short": "Identifier of the prescription or prescription item the dispense is related to",
+        "definition": "Identifier of the prescription or prescription item the dispense is related to",
+        "comment": "No change",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationDispense.relatedRequest",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.medication",
+        "path": "EHDSMedicationDispense.medication",
+        "short": "Exact dispensed product",
+        "definition": "Exact dispensed product",
+        "comment": "No change",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.medication",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dispensedQuantity",
+        "path": "EHDSMedicationDispense.dispensedQuantity",
+        "short": "Number of dispensed packages if the pack size is known, or number of smaller items/units",
+        "definition": "Number of dispensed packages if the pack size is known, or number of smaller items/units",
+        "comment": "No change",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.dispensedQuantity",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.timeOfDispensation",
+        "path": "EHDSMedicationDispense.timeOfDispensation",
+        "short": "Date and time of dispensation",
+        "definition": "Date and time of dispensation",
+        "comment": "No change",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.timeOfDispensation",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution",
+        "path": "EHDSMedicationDispense.substitution",
+        "short": "Indicated whether substitution was made by the dispenser",
+        "definition": "Indicated whether substitution was made by the dispenser",
+        "comment": "No change but subelements added",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.substitution",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution.substitutionOccurred",
+        "path": "EHDSMedicationDispense.substitution.substitutionOccurred",
+        "short": "Indicated whether substitution was made by the dispenser",
+        "definition": "Indicated whether substitution was made by the dispenser",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.substitution.substitutionOccurred",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution.type",
+        "path": "EHDSMedicationDispense.substitution.type",
+        "short": "What kind of substitution was made by the dispenser",
+        "definition": "What kind of substitution was made by the dispenser",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationDispense.substitution.type",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution.reason",
+        "path": "EHDSMedicationDispense.substitution.reason",
+        "short": "Reason why the substitution was made",
+        "definition": "Reason why the substitution was made",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationDispense.substitution.reason",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dosageInstructions",
+        "path": "EHDSMedicationDispense.dosageInstructions",
+        "short": "Dosaging and administration instructions",
+        "definition": "Dosaging and administration instructions",
+        "comment": "Added",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationDispense.dosageInstructions",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDosaging"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.comment",
+        "path": "EHDSMedicationDispense.comment",
+        "short": "Additional information or comments",
+        "definition": "Additional information or comments",
+        "comment": "Added.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationDispense.comment",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSMedicationDispense",
+        "path": "EHDSMedicationDispense",
+        "short": "Medication dispensation model",
+        "definition": "Logical model for medication dispensation (based on request or independently)"
+      },
+      {
+        "id": "EHDSMedicationDispense.header",
+        "path": "EHDSMedicationDispense.header",
+        "short": "Header level metadata about the dispense",
+        "definition": "Header level metadata about the dispense",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationDispenseHeader"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dispensingOrganizationOrDevice[x]",
+        "path": "EHDSMedicationDispense.dispensingOrganizationOrDevice[x]",
+        "short": "Dispensing organization or device",
+        "definition": "Dispensing organization or device",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dispenseLocation",
+        "path": "EHDSMedicationDispense.dispenseLocation",
+        "short": "Location of dispense",
+        "definition": "Location of dispense",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.receiver[x]",
+        "path": "EHDSMedicationDispense.receiver[x]",
+        "short": "Identification of the person who received the dispensed medication, especially when it was not the patient",
+        "definition": "Identification of the person who received the dispensed medication, especially when it was not the patient",
+        "comment": "Added",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.relatedRequest",
+        "path": "EHDSMedicationDispense.relatedRequest",
+        "short": "Identifier of the prescription or prescription item the dispense is related to",
+        "definition": "Identifier of the prescription or prescription item the dispense is related to",
+        "comment": "No change",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.medication",
+        "path": "EHDSMedicationDispense.medication",
+        "short": "Exact dispensed product",
+        "definition": "Exact dispensed product",
+        "comment": "No change",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dispensedQuantity",
+        "path": "EHDSMedicationDispense.dispensedQuantity",
+        "short": "Number of dispensed packages if the pack size is known, or number of smaller items/units",
+        "definition": "Number of dispensed packages if the pack size is known, or number of smaller items/units",
+        "comment": "No change",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.timeOfDispensation",
+        "path": "EHDSMedicationDispense.timeOfDispensation",
+        "short": "Date and time of dispensation",
+        "definition": "Date and time of dispensation",
+        "comment": "No change",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution",
+        "path": "EHDSMedicationDispense.substitution",
+        "short": "Indicated whether substitution was made by the dispenser",
+        "definition": "Indicated whether substitution was made by the dispenser",
+        "comment": "No change but subelements added",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution.substitutionOccurred",
+        "path": "EHDSMedicationDispense.substitution.substitutionOccurred",
+        "short": "Indicated whether substitution was made by the dispenser",
+        "definition": "Indicated whether substitution was made by the dispenser",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution.type",
+        "path": "EHDSMedicationDispense.substitution.type",
+        "short": "What kind of substitution was made by the dispenser",
+        "definition": "What kind of substitution was made by the dispenser",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.substitution.reason",
+        "path": "EHDSMedicationDispense.substitution.reason",
+        "short": "Reason why the substitution was made",
+        "definition": "Reason why the substitution was made",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.dosageInstructions",
+        "path": "EHDSMedicationDispense.dosageInstructions",
+        "short": "Dosaging and administration instructions",
+        "definition": "Dosaging and administration instructions",
+        "comment": "Added",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDosaging"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationDispense.comment",
+        "path": "EHDSMedicationDispense.comment",
+        "short": "Additional information or comments",
+        "definition": "Additional information or comments",
+        "comment": "Added.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

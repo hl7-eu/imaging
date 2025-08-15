@@ -6,7 +6,9 @@ Description: "A encounter profile for the EU."
 * priority from http://terminology.hl7.org/ValueSet/v3-xEncounterAdmissionUrgency (preferred)
 * type from http://terminology.hl7.org/ValueSet/v3-ActEncounterCode (preferred)
 
-* extension contains $note-url named note 0..1 and $encounter-legal-status-url named legalStatus 0..1
+* extension contains $note-url named note 0..1 and 
+  $encounter-legal-status-url named legalStatus 0..1 and
+  $workflow-status-reason-url named status-reason 0..1
 
 * partOf only Reference( $EuEncounter )
 * serviceProvider only Reference( $EuOrganization )

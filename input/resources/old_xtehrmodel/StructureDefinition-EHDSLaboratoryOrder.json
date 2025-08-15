@@ -1,0 +1,212 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSLaboratoryOrder",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryOrder",
+  "version": "0.1.0",
+  "name": "EHDSLaboratoryOrder",
+  "title": "Laboratory order",
+  "status": "draft",
+  "date": "2025-03-21T08:17:12+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "A - EHDS refined base model for Laboratory order",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryOrder",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "5.0.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSLaboratoryOrder",
+        "path": "EHDSLaboratoryOrder",
+        "short": "Laboratory order",
+        "definition": "A - EHDS refined base model for Laboratory order",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.laboratoryOrderHeader",
+        "path": "EHDSLaboratoryOrder.laboratoryOrderHeader",
+        "short": "A.1 - Laboratory Order header",
+        "definition": "Laboratory Order header",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSLaboratoryOrder.laboratoryOrderHeader",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryOrderHeader"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
+        "path": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
+        "short": "A.2 - Laboratory order structured body",
+        "definition": "Laboratory order body",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryOrderBody"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.presentedForms",
+        "path": "EHDSLaboratoryOrder.presentedForms",
+        "short": "A.3 - Attachment",
+        "definition": "Entire report as issued. Various formats could be provided,  pdf format is recommended.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSLaboratoryOrder.presentedForms",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.laboratoryOrderAttachments[x]",
+        "path": "EHDSLaboratoryOrder.laboratoryOrderAttachments[x]",
+        "short": "A.4 - Attachment, Media",
+        "definition": "Document attachments",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSLaboratoryOrder.laboratoryOrderAttachments[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedia"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSLaboratoryOrder",
+        "path": "EHDSLaboratoryOrder",
+        "short": "Laboratory order",
+        "definition": "A - EHDS refined base model for Laboratory order"
+      },
+      {
+        "id": "EHDSLaboratoryOrder.laboratoryOrderHeader",
+        "path": "EHDSLaboratoryOrder.laboratoryOrderHeader",
+        "short": "A.1 - Laboratory Order header",
+        "definition": "Laboratory Order header",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryOrderHeader"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
+        "path": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
+        "short": "A.2 - Laboratory order structured body",
+        "definition": "Laboratory order body",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryOrderBody"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.presentedForms",
+        "path": "EHDSLaboratoryOrder.presentedForms",
+        "short": "A.3 - Attachment",
+        "definition": "Entire report as issued. Various formats could be provided,  pdf format is recommended.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryOrder.laboratoryOrderAttachments[x]",
+        "path": "EHDSLaboratoryOrder.laboratoryOrderAttachments[x]",
+        "short": "A.4 - Attachment, Media",
+        "definition": "Document attachments",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedia"
+          }
+        ]
+      }
+    ]
+  }
+}

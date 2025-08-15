@@ -1,0 +1,66 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "status-reason",
+  "meta" : {
+    "lastUpdated" : "2023-01-31T07:07:38.434+11:00",
+    "profile" : ["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]
+  },
+  "text" : {
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ValueSet status-reason</b></p><a name=\"status-reason\"> </a><a name=\"hcstatus-reason\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Last updated: 2023-01-31 07:07:38+1100</p><p style=\"margin-bottom: 0px\">Profile: <a href=\"http://hl7.org/fhir/R5/shareablevalueset.html\">Shareable ValueSet</a></p></div><ul><li>Include these codes as defined in <a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-ActReason.html\"><code>http://terminology.hl7.org/CodeSystem/v3-ActReason</code></a><table class=\"none\"><tr><td style=\"white-space:nowrap\"><b>Code</b></td><td><b>Display</b></td><td><b>Definition</b></td></tr><tr><td><a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-ActReason.html#v3-ActReason-HLEGAL\">HLEGAL</a></td><td>legal</td><td>To perform one or more operations on information for conducting activities required by legal proceeding.</td></tr><tr><td><a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-ActReason.html#v3-ActReason-PATSFTY\">PATSFTY</a></td><td>patient safety</td><td>To perform one or more operations on information in processes related to ensuring the safety of health care.</td></tr><tr><td><a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-ActReason.html#v3-ActReason-EIE\">EIE</a></td><td>entered in error</td><td>**Description:**The information was recorded incorrectly or was recorded in the wrong record.</td></tr><tr><td><a href=\"http://terminology.hl7.org/6.5.0/CodeSystem-v3-ActReason.html#v3-ActReason-RR\">RR</a></td><td>regulatory requirement</td><td>Indicates that the decision to substitute or to not substitute was driven by a jurisdictional regulatory requirement mandating or prohibiting substitution.</td></tr></table></li></ul></div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-wg",
+    "valueCode" : "fhir"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+    "valueCode" : "trial-use"
+  },
+  {
+    "url" : "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+    "valueInteger" : 2
+  }],
+  "url" : "http://hl7.org/fhir/ValueSet/status-reason",
+  "version" : "5.3.0-ballot-tc1",
+  "name" : "StatusReasonValueSet",
+  "title" : "Status Reaaon",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2025-08-04T03:03:22+00:00",
+  "publisher" : "HL7 International / FHIR Infrastructure",
+  "contact" : [{
+    "telecom" : [{
+      "system" : "url",
+      "value" : "http://www.hl7.org/Special/committees/fiwg"
+    }]
+  }],
+  "description" : "This example value set defines a set of codes that can be used to indicate the reason for a status change.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "http://unstats.un.org/unsd/methods/m49/m49.htm",
+      "code" : "001"
+    }]
+  }],
+  "compose" : {
+    "include" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/v3-ActReason",
+      "concept" : [{
+        "code" : "HLEGAL",
+        "display" : "legal"
+      },
+      {
+        "code" : "PATSFTY",
+        "display" : "patient safety"
+      },
+      {
+        "code" : "EIE",
+        "display" : "entered in error"
+      },
+      {
+        "code" : "RR",
+        "display" : "regulatory requirement"
+      }]
+    }]
+  }
+}

@@ -1,20 +1,8 @@
 {% include variable-definitions.md %}
 
-### {{XtEhrImaging}} logical model
+### {{XtEhrImaging}}
 
 The {{XtEhrImaging}} is based on {{ehnImagingGuidelines}} and has defined a logical model for imaging reports and manifests.
-
-<!-- Use the URL below to change the mermaid into svg -->
-<!-- https://codepen.io/netsi1964/pen/MWMboow -->
-{% include xtEHR-model.md %}
-
-<div xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- <blockquote class="stu-note">  
-   <p>This specification uses a snapshot of the EHDS model. Future versions of this specification will replace these files with a reference to a model release.
-   </p>
- </blockquote>
-</div>
 
 The following logical models where used to generate this overview and the mapping using in this IG:
 
