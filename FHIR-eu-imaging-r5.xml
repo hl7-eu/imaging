@@ -272,9 +272,9 @@
 <page key="index" name="Home"/>
 <page deprecated="true" key="imaging-manifest" name="Imaging Manifest"/>
 <page key="imaging-report" name="Imaging Report"/>
-<page key="xtehr-mapping" name="Mapping to XtEHR Logical Model"/>
+<page key="xtehr-mapping" name="Mapping to Xt-EHR Logical Model"/>
 <page key="artifacts-structural" name="Structural artifacts"/>
 <page key="toc" name="Table of Contents"/>
-<page key="xtehr" name="XtEHR"/>
-<page key="xtehr-logical-model" name="XtEHR Logical Model"/>
+<page key="xtehr" name="Xt-EHR"/>
+<page key="xtehr-logical-model" name="Xt-EHR Logical Model"/>
 </specification>

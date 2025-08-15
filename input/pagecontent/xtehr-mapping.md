@@ -4,7 +4,7 @@
 
 {% include variable-definitions.md %}
 
-The following tables describe the way the [XtEHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.
+The following tables describe the way the [Xt-EHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.
 
 ### Core models of the Imaging Report IG
 
@@ -45,6 +45,8 @@ The following tables describe the way the [XtEHR logical model](https://build.fh
 {% include EHDSProcedure-mapping.md %}
 
 {% include EHDSServiceRequest-mapping.md %}
+
+### Models not included in this IG
 
 The logical models EHDSAdvanceDirective, EHDSAlert, EHDSAppointment, EHDSBodyStructure, EHDSCurrentPregnancy, EHDSDataSet, EHDSDeviceUse, EHDSDischargeReport, EHDSDispenseDecline, EHDSDocument, EHDSDosage, EHDSDosaging, EHDSEndpoint, EHDSEpisodeOfCare, EHDSFamilyMemberHistory, EHDSFunctionalStatus, EHDSImagingStudy, EHDSImmunisation, EHDSInfectiousContact, EHDSLaboratoryObservation, EHDSLaboratoryOrder, EHDSLaboratoryOrderBody, EHDSLaboratoryOrderHeader, EHDSLaboratoryReport, EHDSLaboratoryReportBody, EHDSLaboratoryReportHeader, EHDSLocation, EHDSMedication, EHDSMedicationDispense, EHDSMedicationPrescription, EHDSMedicationStatement, EHDSPatientAnimal, EHDSPatientSummary, EHDSPregnancyHistory, EHDSRelatedPerson, EHDSSocialHistory, EHDSSpecimen, EHDSSubstance, EHDSSubstanceUse, EHDSTelecom, EHDSTravelHistory were left out of this page as they don't relate with the content of this IG.
 

@@ -302,7 +302,7 @@ function generateMappingIndex(generatedFiles, excludedResources) {
     writable.write(`  Generated file. Do not edit.\n`);
     writable.write(`-->\n\n`);
     writable.write('{% include variable-definitions.md %}\n\n');
-    writable.write('The following tables describe the way the [XtEHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.\n\n');
+    writable.write('The following tables describe the way the [Xt-EHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.\n\n');
 
     // Sort files alphabetically for consistent output
     const sortedFiles = generatedFiles.sort((a, b) => a.resource.localeCompare(b.resource));
