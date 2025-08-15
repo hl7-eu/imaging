@@ -4,7 +4,13 @@
 
 {% include variable-definitions.md %}
 
-The following tables describe the way the logical model has been mapped onto the FHIR profiles defined in this specification.
+The following tables describe the way the [XtEHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.
+
+### Core models of the Imaging Report IG
+
+{% include EHDSImagingReport-mapping.md %}
+
+### Other models used in this IG
 
 {% include EHDSAddress-mapping.md %}
 
@@ -25,8 +31,6 @@ The following tables describe the way the logical model has been mapped onto the
 {% include EHDSHealthProfessional-mapping.md %}
 
 {% include EHDSHumanName-mapping.md %}
-
-{% include EHDSImagingReport-mapping.md %}
 
 {% include EHDSMedia-mapping.md %}
 

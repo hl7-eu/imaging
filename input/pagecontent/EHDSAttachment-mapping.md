@@ -2,11 +2,7 @@
   Generated file. Do not edit.
 -->
 
----
-title: EHDSAttachment Mapping
----
-
-### EHDSAttachment
+#### EHDSAttachment
 
 The following table shows the mapping from EHDSAttachment logical model elements to FHIR profiles.
 
@@ -14,9 +10,9 @@ The following table shows the mapping from EHDSAttachment logical model elements
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
 | contentType | EuAttachment.contentType |  |
-| data | EuAttachment.data |  |
 | language | EuAttachment.language |  |
+| data | EuAttachment.data |  |
+| url | EuAttachment.url |  |
 | size | EuAttachment.size |  |
 | title | EuAttachment.title |  |
-| url | EuAttachment.url |  |
 

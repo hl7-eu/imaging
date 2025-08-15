@@ -2,43 +2,39 @@
   Generated file. Do not edit.
 -->
 
----
-title: EHDSAllergyIntolerance Mapping
----
-
-### EHDSAllergyIntolerance
+#### EHDSAllergyIntolerance
 
 The following table shows the mapping from EHDSAllergyIntolerance logical model elements to FHIR profiles.
 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| agentOrAllergen | EuAllergyIntolerance.code ; EuAllergyIntolerance.reaction.substance |  |
-| [authorEHDSDevice](#ehdsdevice) |  |  |
+| header |  |  |
+| [header.subject](#ehdspatient) | EuAllergyIntolerance.patient |  |
+| header.identifier | EuAllergyIntolerance.identifier |  |
+| header.authorship |  |  |
 | [authorEHDSHealthProfessional](#ehdshealthprofessional) |  |  |
 | [authorEHDSOrganisation](#ehdsorganisation) |  |  |
-| certainty | EuAllergyIntolerance.verificationStatus |  |
-| criticality | EuAllergyIntolerance.criticality |  |
-| description | EuAllergyIntolerance.text |  |
-| endDate | EuAllergyIntolerance.extension[abatement].valueDateTime |  |
-| header |  |  |
-| header.authorship |  |  |
+| [authorEHDSDevice](#ehdsdevice) |  |  |
 | header.authorship.datetime | EuAllergyIntolerance.recordedDate |  |
-| header.identifier | EuAllergyIntolerance.identifier |  |
-| header.language | EuAllergyIntolerance.language |  |
 | header.lastUpdate | EuAllergyIntolerance.meta.lastUpdated |  |
 | header.status | EuAllergyIntolerance.verificationStatus |  |
 | header.statusReasonCodeableConcept | EuAllergyIntolerance.verificationStatus.coding |  |
 | header.statusReasonString |  |  |
-| [header.subject](#ehdspatient) | EuAllergyIntolerance.patient |  |
+| header.language | EuAllergyIntolerance.language |  |
 | header.version | EuAllergyIntolerance.meta.versionId |  |
-| onsetDate | EuAllergyIntolerance.onsetPeriod ; EuAllergyIntolerance.onsetDateTime |  |
 | [presentedForm](#ehdsattachment) | EuAllergyIntolerance.text |  |
-| reaction | EuAllergyIntolerance.reaction |  |
-| reaction.date | EuAllergyIntolerance.reaction.onset |  |
-| reaction.manifestation | EuAllergyIntolerance.reaction.manifestation |  |
-| reaction.onsetDate |  |  |
-| reaction.severity | EuAllergyIntolerance.reaction.severity |  |
-| status | EuAllergyIntolerance.clinicalStatus |  |
+| agentOrAllergen | EuAllergyIntolerance.code ; EuAllergyIntolerance.reaction.substance |  |
 | typeOfPropensity | EuAllergyIntolerance.type |  |
+| description | EuAllergyIntolerance.text |  |
+| criticality | EuAllergyIntolerance.criticality |  |
+| certainty | EuAllergyIntolerance.verificationStatus |  |
+| status | EuAllergyIntolerance.clinicalStatus |  |
+| onsetDate | EuAllergyIntolerance.onsetPeriod ; EuAllergyIntolerance.onsetDateTime |  |
+| endDate | EuAllergyIntolerance.extension[abatement].valueDateTime |  |
+| reaction | EuAllergyIntolerance.reaction |  |
+| reaction.manifestation | EuAllergyIntolerance.reaction.manifestation |  |
+| reaction.date | EuAllergyIntolerance.reaction.onset |  |
+| reaction.severity | EuAllergyIntolerance.reaction.severity |  |
+| reaction.onsetDate |  |  |
 

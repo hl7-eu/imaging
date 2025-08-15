@@ -2,23 +2,19 @@
   Generated file. Do not edit.
 -->
 
----
-title: EHDSPatient Mapping
----
-
-### EHDSPatient
+#### EHDSPatient
 
 The following table shows the mapping from EHDSPatient logical model elements to FHIR profiles.
 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| [address](#ehdsaddress) | EuPatient.address |  |
-| administrativeGender | EuPatient.gender |  |
-| communicationLanguage | EuPatient.communication.language |  |
-| dateOfBirth | EuPatient.birthDate |  |
-| maritalStatus | EuPatient.maritalStatus |  |
-| [name](#ehdshumanname) | EuPatient.name |  |
 | personalIdentifier | EuPatient.identifier |  |
+| [name](#ehdshumanname) | EuPatient.name |  |
+| dateOfBirth | EuPatient.birthDate |  |
+| administrativeGender | EuPatient.gender |  |
+| [address](#ehdsaddress) | EuPatient.address |  |
 | [telecom](#ehdstelecom) | EuPatient.telecom |  |
+| maritalStatus | EuPatient.maritalStatus |  |
+| communicationLanguage | EuPatient.communication.language |  |
 

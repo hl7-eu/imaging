@@ -2,32 +2,28 @@
   Generated file. Do not edit.
 -->
 
----
-title: EHDSMedicationAdministration Mapping
----
-
-### EHDSMedicationAdministration
+#### EHDSMedicationAdministration
 
 The following table shows the mapping from EHDSMedicationAdministration logical model elements to FHIR profiles.
 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| [dosage](#ehdsdosage) | EuMedicationAdministration.dosage |  |
 | header |  |  |
-| header.authorship | EuMedicationAdministration.performer |  |
-| [header.authorship.author[x]](#ehdsdevice) | EuMedicationAdministration.performer.actor |  |
-| header.authorship.datetime | EuMedicationAdministration.occurenceDateTime ; EuMedicationAdministration.occurencePeriod |  |
+| [header.subject](#ehdspatient) | EuMedicationAdministration.subject |  |
 | header.identifier | EuMedicationAdministration.identifier |  |
-| header.language | EuMedicationAdministration.language |  |
+| header.authorship | EuMedicationAdministration.performer |  |
+| header.authorship.author[x] ([EHDSHealthProfessional](#ehdshealthprofessional), [EHDSOrganisation](#ehdsorganisation), [EHDSDevice](#ehdsdevice)) | EuMedicationAdministration.performer.actor |  |
+| header.authorship.datetime | EuMedicationAdministration.occurenceDateTime ; EuMedicationAdministration.occurencePeriod |  |
 | header.lastUpdate | EuMedicationAdministration.meta.lastUpdated |  |
 | header.status | EuMedicationAdministration.status |  |
 | header.statusReason[x] | EuMedicationAdministration.statusReason |  |
-| [header.subject](#ehdspatient) | EuMedicationAdministration.subject |  |
+| header.language | EuMedicationAdministration.language |  |
 | header.version | EuMedicationAdministration.meta.lastUpdated |  |
-| [medication](#ehdsmedication) | EuMedicationAdministration.medication |  |
-| note | EuMedicationAdministration.note |  |
-| occurrence[x] | EuMedicationAdministration.occurenceDateTime ; EuMedicationAdministration.occurencePeriod |  |
 | [presentedForm](#ehdsattachment) | EuMedicationAdministration.text | No element to map this, will require an extension |
-| [reason[x]](#ehdsobservation) | EuMedicationAdministration.reason |  |
+| [medication](#ehdsmedication) | EuMedicationAdministration.medication |  |
+| occurrence[x] | EuMedicationAdministration.occurenceDateTime ; EuMedicationAdministration.occurencePeriod |  |
+| reason[x] ([EHDSCondition](#ehdscondition), [EHDSObservation](#ehdsobservation)) | EuMedicationAdministration.reason |  |
+| note | EuMedicationAdministration.note |  |
+| [dosage](#ehdsdosage) | EuMedicationAdministration.dosage |  |
 

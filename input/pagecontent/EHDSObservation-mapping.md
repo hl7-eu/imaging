@@ -2,53 +2,49 @@
   Generated file. Do not edit.
 -->
 
----
-title: EHDSObservation Mapping
----
-
-### EHDSObservation
+#### EHDSObservation
 
 The following table shows the mapping from EHDSObservation logical model elements to FHIR profiles.
 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| [anatomicLocation](#ehdsbodystructure) | EuObservation.bodySite |  |
-| code | EuObservation.code |  |
-| component | EuObservation.component |  |
-| component.code | EuObservation.code |  |
-| component.dataAbsentReason |  |  |
-| component.interpretation | EuObservation.component.interpretation |  |
-| component.referenceRange | EuObservation.component.referenceRange |  |
-| component.result |  |  |
-| component.result.uncertainty | EuQuantity.extension[uncertainty] ; EuQuantity.extension[uncertaintyType] ; EuSimpleQuantity.extension[uncertainty] ; EuSimpleQuantity.extension[uncertaintyType] |  |
-| component.result.value[x] | EuObservation.valueString ; EuObservation.valueQuantity ; EuObservation.valueRange ; EuObservation.valueCodeableConcept |  |
-| dataAbsentReason | EuObservation.value[x].extension[dataAbsentReason] |  |
-| [derivedFrom[x]](#ehdsimagingstudy) | EuObservation.derivedFrom |  |
-| [hasMember[x]](#ehdsobservation) | EuObservation.hasMember |  |
 | header |  |  |
-| header.authorship | EuObservation.performer |  |
-| [header.authorship.author[x]](#ehdsdevice) | EuObservation.performer |  |
-| header.authorship.datetime | EuObservation.issued |  |
-| [header.directSubject[x]](#ehdsprocedure) | EuObservation.focus |  |
+| [header.subject](#ehdspatient) | EuObservation.subject |  |
 | header.identifier | EuObservation.identifier |  |
-| header.language | EuObservation.language |  |
+| header.authorship | EuObservation.performer |  |
+| header.authorship.author[x] ([EHDSHealthProfessional](#ehdshealthprofessional), [EHDSOrganisation](#ehdsorganisation), [EHDSDevice](#ehdsdevice)) | EuObservation.performer |  |
+| header.authorship.datetime | EuObservation.issued |  |
 | header.lastUpdate | EuObservation.meta.lastUpdated |  |
 | header.status | EuObservation.status |  |
 | header.statusReason[x] | EuObservation.extension[status-reason] ; EuObservation.extension[status-reason].valueCodeableConcept.text |  |
-| [header.subject](#ehdspatient) | EuObservation.subject |  |
+| header.language | EuObservation.language |  |
 | header.version | EuObservation.meta.versionId |  |
-| interpretation | EuObservation.interpretation |  |
-| method | EuObservation.method |  |
-| observationDate[x] | EuObservation.effectiveDateTime ; EuObservation.effectivePeriod |  |
-| [order](#ehdsservicerequest) | EuObservation.basedOn |  |
-| originalName |  |  |
-| [performer](#ehdshealthprofessional) | EuObservation.performer ; EuObservation.performer.extension[performerFunction] |  |
 | [presentedForm](#ehdsattachment) | EuObservation.text |  |
-| referenceRange | EuObservation.referenceRange |  |
+| header.directSubject[x] ([EHDSPatient](#ehdspatient), [EHDSPatientAnimal](#ehdspatientanimal), [EHDSLocation](#ehdslocation), [EHDSDevice](#ehdsdevice), [EHDSHealthProfessional](#ehdshealthprofessional), [EHDSOrganisation](#ehdsorganisation), [EHDSProcedure](#ehdsprocedure)) | EuObservation.focus |  |
+| observationDate[x] | EuObservation.effectiveDateTime ; EuObservation.effectivePeriod |  |
+| code | EuObservation.code |  |
+| originalName |  |  |
+| method | EuObservation.method |  |
+| [order](#ehdsservicerequest) | EuObservation.basedOn |  |
+| [performer](#ehdshealthprofessional) | EuObservation.performer ; EuObservation.performer.extension[performerFunction] |  |
+| [anatomicLocation](#ehdsbodystructure) | EuObservation.bodySite |  |
 | result |  | Mapping provided for each .value data type |
-| result.uncertainty | EuQuantity.extension[uncertainty] |  |
 | result.value[x] | EuObservation.valueString ; EuObservation.valueQuantity ; EuObservation.valueRange ; EuObservation.valueCodeableConcept |  |
+| result.uncertainty | EuQuantity.extension[uncertainty] |  |
+| dataAbsentReason | EuObservation.value[x].extension[dataAbsentReason] |  |
+| referenceRange | EuObservation.referenceRange |  |
+| interpretation | EuObservation.interpretation |  |
 | resultDescription | EuObservation.note |  |
-| [triggeredBy[x]](#ehdsobservation) | EuObservation.triggeredBy.observation ; EuObservation.triggeredBy.type |  |
+| component | EuObservation.component |  |
+| component.code | EuObservation.code |  |
+| component.result |  |  |
+| component.result.value[x] | EuObservation.valueString ; EuObservation.valueQuantity ; EuObservation.valueRange ; EuObservation.valueCodeableConcept |  |
+| component.result.uncertainty | EuQuantity.extension[uncertainty] ; EuQuantity.extension[uncertaintyType] ; EuSimpleQuantity.extension[uncertainty] ; EuSimpleQuantity.extension[uncertaintyType] |  |
+| component.dataAbsentReason |  |  |
+| component.referenceRange | EuObservation.component.referenceRange |  |
+| component.interpretation | EuObservation.component.interpretation |  |
+| derivedFrom[x] ([EHDSObservation](#ehdsobservation), [EHDSLaboratoryObservation](#ehdslaboratoryobservation), [EHDSImagingStudy](#ehdsimagingstudy)) | EuObservation.derivedFrom |  |
+| triggeredBy[x] ([EHDSLaboratoryObservation](#ehdslaboratoryobservation), [EHDSObservation](#ehdsobservation)) | EuObservation.triggeredBy.observation ; EuObservation.triggeredBy.type |  |
+| hasMember[x] ([EHDSLaboratoryObservation](#ehdslaboratoryobservation), [EHDSObservation](#ehdsobservation)) | EuObservation.hasMember |  |
 

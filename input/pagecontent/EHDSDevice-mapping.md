@@ -2,26 +2,22 @@
   Generated file. Do not edit.
 -->
 
----
-title: EHDSDevice Mapping
----
-
-### EHDSDevice
+#### EHDSDevice
 
 The following table shows the mapping from EHDSDevice logical model elements to FHIR profiles.
 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| expiryDate | EuDevice.expirationDate |  |
 | identifier | EuDevice.identifier |  |
-| lotNumber | EuDevice.lotNumber |  |
-| manufactureDate | EuDevice.manufactureDate |  |
 | manufacturer | EuDevice.manufacturer |  |
-| modelNumber | EuDevice.modelNumber |  |
-| name | EuDevice.name |  |
-| note | EuDevice.note |  |
+| manufactureDate | EuDevice.manufactureDate |  |
+| expiryDate | EuDevice.expirationDate |  |
+| lotNumber | EuDevice.lotNumber |  |
 | serialNumber | EuDevice.serialNumber |  |
-| type | EuDevice.type |  |
+| name | EuDevice.name |  |
+| modelNumber | EuDevice.modelNumber |  |
 | version | EuDevice.version |  |
+| type | EuDevice.type |  |
+| note | EuDevice.note |  |
 
