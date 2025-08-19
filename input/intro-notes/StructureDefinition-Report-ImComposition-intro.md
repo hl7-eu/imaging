@@ -21,6 +21,11 @@ The following table lists the elements that should be included in the narrative 
 | ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.bodyLocation |
 | ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.laterality |
 | EuBodyStructure | includedStructure.laterality |  | EHDSImagingReport.examinationReport.bodyPart.laterality |
+| ImImagingStudy | series.performer |  | EHDSImagingStudy.header.authorship |
+| ImImagingStudy | status |  | EHDSImagingStudy.header.status |
+| ImImagingStudy | modality |  | EHDSImagingStudy.modality |
+| ImImagingStudy | started |  | EHDSImagingStudy.started |
+| ImImagingStudy | description |  | EHDSImagingStudy.description |
 | EuDevice | name |  | EHDSMedia.deviceName |
 
 ### Order
