@@ -9,11 +9,11 @@ The following table shows the mapping from EHDSHealthProfessional logical model 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| identifier | EuPractitioner.identifier |  |
-| [name](#ehdshumanname) | EuPractitioner.name |  |
-| [address](#ehdsaddress) | EuPractitioner.address |  |
-| [telecom](StructureDefinition-EHDSTelecom.html) | EuPractitioner.telecom |  |
-| role | EuPractitionerRole.code |  |
-| [organisation](#ehdsorganisation) | EuPractitionerRole.organization |  |
-| specialty | EuPractitionerRole.specialty |  |
+| EHDSHealthProfessional.identifier | EuPractitioner.identifier |  |
+| EHDSHealthProfessional.[name](#ehdshumanname) | EuPractitioner.name |  |
+| EHDSHealthProfessional.[address](#ehdsaddress) | EuPractitioner.address |  |
+| EHDSHealthProfessional.[telecom](StructureDefinition-EHDSTelecom.html) | EuPractitioner.telecom |  |
+| EHDSHealthProfessional.role | EuPractitionerRole.code |  |
+| EHDSHealthProfessional.[organisation](#ehdsorganisation) | EuPractitionerRole.organization |  |
+| EHDSHealthProfessional.specialty | EuPractitionerRole.specialty |  |
 

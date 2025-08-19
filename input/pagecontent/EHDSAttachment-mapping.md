@@ -9,10 +9,10 @@ The following table shows the mapping from EHDSAttachment logical model elements
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| contentType | EuAttachment.contentType |  |
-| language | EuAttachment.language |  |
-| data | EuAttachment.data |  |
-| url | EuAttachment.url |  |
-| size | EuAttachment.size |  |
-| title | EuAttachment.title |  |
+| EHDSAttachment.contentType | EuAttachment.contentType |  |
+| EHDSAttachment.language | EuAttachment.language |  |
+| EHDSAttachment.data | EuAttachment.data |  |
+| EHDSAttachment.url | EuAttachment.url |  |
+| EHDSAttachment.size | EuAttachment.size |  |
+| EHDSAttachment.title | EuAttachment.title |  |
 

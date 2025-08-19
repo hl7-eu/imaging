@@ -9,15 +9,15 @@ The following table shows the mapping from EHDSDevice logical model elements to 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| identifier | EuDevice.identifier |  |
-| manufacturer | EuDevice.manufacturer |  |
-| manufactureDate | EuDevice.manufactureDate |  |
-| expiryDate | EuDevice.expirationDate |  |
-| lotNumber | EuDevice.lotNumber |  |
-| serialNumber | EuDevice.serialNumber |  |
-| name | EuDevice.name |  |
-| modelNumber | EuDevice.modelNumber |  |
-| version | EuDevice.version |  |
-| type | EuDevice.type |  |
-| note | EuDevice.note |  |
+| EHDSDevice.identifier | EuDevice.identifier |  |
+| EHDSDevice.manufacturer | EuDevice.manufacturer |  |
+| EHDSDevice.manufactureDate | EuDevice.manufactureDate |  |
+| EHDSDevice.expiryDate | EuDevice.expirationDate |  |
+| EHDSDevice.lotNumber | EuDevice.lotNumber |  |
+| EHDSDevice.serialNumber | EuDevice.serialNumber |  |
+| EHDSDevice.name | EuDevice.name |  |
+| EHDSDevice.modelNumber | EuDevice.modelNumber |  |
+| EHDSDevice.version | EuDevice.version |  |
+| EHDSDevice.type | EuDevice.type |  |
+| EHDSDevice.note | EuDevice.note |  |
 

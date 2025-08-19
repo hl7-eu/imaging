@@ -9,13 +9,13 @@ The following table shows the mapping from EHDSAddress logical model elements to
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| use | EuAddress.use |  |
-| type | EuAddress.type |  |
-| text | EuAddress.text |  |
-| street | EuAddress.line ; EuAddress.line.extension[streetName] |  |
-| houseNumber | EuAddress.line ; EuAddress.line.extension[houseNumber] |  |
-| postBox | EuAddress.line ; EuAddress.line.extension[postBox] |  |
-| city | EuAddress.city |  |
-| postalCode | EuAddress.postalCode |  |
-| country | EuAddress.country ; EuAddress.country.extension[countryCode] |  |
+| EHDSAddress.use | EuAddress.use |  |
+| EHDSAddress.type | EuAddress.type |  |
+| EHDSAddress.text | EuAddress.text |  |
+| EHDSAddress.street | EuAddress.line ; EuAddress.line.extension[streetName] |  |
+| EHDSAddress.houseNumber | EuAddress.line ; EuAddress.line.extension[houseNumber] |  |
+| EHDSAddress.postBox | EuAddress.line ; EuAddress.line.extension[postBox] |  |
+| EHDSAddress.city | EuAddress.city |  |
+| EHDSAddress.postalCode | EuAddress.postalCode |  |
+| EHDSAddress.country | EuAddress.country ; EuAddress.country.extension[countryCode] |  |
 

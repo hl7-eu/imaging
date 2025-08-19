@@ -9,10 +9,10 @@ The following table shows the mapping from EHDSHumanName logical model elements 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| use | EuHumanName.use |  |
-| text | EuHumanName.text |  |
-| family | EuHumanName.family |  |
-| given | EuHumanName.given |  |
-| prefix | EuHumanName.prefix |  |
-| suffix | EuHumanName.suffix |  |
+| EHDSHumanName.use | EuHumanName.use |  |
+| EHDSHumanName.text | EuHumanName.text |  |
+| EHDSHumanName.family | EuHumanName.family |  |
+| EHDSHumanName.given | EuHumanName.given |  |
+| EHDSHumanName.prefix | EuHumanName.prefix |  |
+| EHDSHumanName.suffix | EuHumanName.suffix |  |
 

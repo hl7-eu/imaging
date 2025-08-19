@@ -9,10 +9,10 @@ The following table shows the mapping from EHDSCoverage logical model elements t
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| identifier | EuCoverage.identifier |  |
-| type | EuCoverage.type |  |
-| [patient](#ehdspatient) | EuCoverage.beneficiary |  |
-| payor | EuCoverage.kind ; EuCoverage.paymentBy.party |  |
-| payor.payorEntity[x] ([EHDSOrganisation](#ehdsorganisation), [EHDSPatient](#ehdspatient)) | EuCoverage.insurer |  |
-| payor.subscriberId | EuCoverage.subscriberId |  |
+| EHDSCoverage.identifier | EuCoverage.identifier |  |
+| EHDSCoverage.type | EuCoverage.type |  |
+| EHDSCoverage.[patient](#ehdspatient) | EuCoverage.beneficiary |  |
+| EHDSCoverage.payor | EuCoverage.kind ; EuCoverage.paymentBy.party |  |
+| EHDSCoverage.payor.payorEntity[x] ([EHDSOrganisation](#ehdsorganisation), [EHDSPatient](#ehdspatient)) | EuCoverage.insurer |  |
+| EHDSCoverage.payor.subscriberId | EuCoverage.subscriberId |  |
 

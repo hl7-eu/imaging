@@ -10,6 +10,8 @@ The following tables describe the way the [Xt-EHR logical model](https://build.f
 
 {% include EHDSImagingReport-mapping.md %}
 
+{% include EHDSImagingStudy-mapping.md %}
+
 ### Other models used in this IG
 
 {% include EHDSAddress-mapping.md %}
@@ -48,5 +50,5 @@ The following tables describe the way the [Xt-EHR logical model](https://build.f
 
 ### Models not included in this IG
 
-The logical models EHDSAdvanceDirective, EHDSAlert, EHDSAppointment, EHDSBodyStructure, EHDSCurrentPregnancy, EHDSDataSet, EHDSDeviceUse, EHDSDischargeReport, EHDSDispenseDecline, EHDSDocument, EHDSDosage, EHDSDosaging, EHDSEndpoint, EHDSEpisodeOfCare, EHDSFamilyMemberHistory, EHDSFunctionalStatus, EHDSImagingStudy, EHDSImmunisation, EHDSInfectiousContact, EHDSLaboratoryObservation, EHDSLaboratoryOrder, EHDSLaboratoryOrderBody, EHDSLaboratoryOrderHeader, EHDSLaboratoryReport, EHDSLaboratoryReportBody, EHDSLaboratoryReportHeader, EHDSLocation, EHDSMedication, EHDSMedicationDispense, EHDSMedicationPrescription, EHDSMedicationStatement, EHDSPatientAnimal, EHDSPatientSummary, EHDSPregnancyHistory, EHDSRelatedPerson, EHDSSocialHistory, EHDSSpecimen, EHDSSubstance, EHDSSubstanceUse, EHDSTelecom, EHDSTravelHistory were left out of this page as they don't relate with the content of this IG.
+The logical models EHDSAdvanceDirective, EHDSAlert, EHDSAppointment, EHDSBodyStructure, EHDSCurrentPregnancy, EHDSDataSet, EHDSDeviceUse, EHDSDischargeReport, EHDSDispenseDecline, EHDSDocument, EHDSDosage, EHDSDosaging, EHDSEndpoint, EHDSEpisodeOfCare, EHDSFamilyMemberHistory, EHDSFunctionalStatus, EHDSImmunisation, EHDSInfectiousContact, EHDSLaboratoryObservation, EHDSLaboratoryOrder, EHDSLaboratoryOrderBody, EHDSLaboratoryOrderHeader, EHDSLaboratoryReport, EHDSLaboratoryReportBody, EHDSLaboratoryReportHeader, EHDSLocation, EHDSMedication, EHDSMedicationDispense, EHDSMedicationPrescription, EHDSMedicationStatement, EHDSPatientAnimal, EHDSPatientSummary, EHDSPregnancyHistory, EHDSRelatedPerson, EHDSSocialHistory, EHDSSpecimen, EHDSSubstance, EHDSSubstanceUse, EHDSTelecom, EHDSTravelHistory were left out of this page as they don't relate with the content of this IG.
 

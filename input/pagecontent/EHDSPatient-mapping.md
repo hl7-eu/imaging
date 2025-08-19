@@ -9,12 +9,12 @@ The following table shows the mapping from EHDSPatient logical model elements to
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| personalIdentifier | EuPatient.identifier |  |
-| [name](#ehdshumanname) | EuPatient.name |  |
-| dateOfBirth | EuPatient.birthDate |  |
-| administrativeGender | EuPatient.gender |  |
-| [address](#ehdsaddress) | EuPatient.address |  |
-| [telecom](StructureDefinition-EHDSTelecom.html) | EuPatient.telecom |  |
-| maritalStatus | EuPatient.maritalStatus |  |
-| communicationLanguage | EuPatient.communication.language |  |
+| EHDSPatient.personalIdentifier | EuPatient.identifier |  |
+| EHDSPatient.[name](#ehdshumanname) | EuPatient.name |  |
+| EHDSPatient.dateOfBirth | EuPatient.birthDate |  |
+| EHDSPatient.administrativeGender | EuPatient.gender |  |
+| EHDSPatient.[address](#ehdsaddress) | EuPatient.address |  |
+| EHDSPatient.[telecom](StructureDefinition-EHDSTelecom.html) | EuPatient.telecom |  |
+| EHDSPatient.maritalStatus | EuPatient.maritalStatus |  |
+| EHDSPatient.communicationLanguage | EuPatient.communication.language |  |
 

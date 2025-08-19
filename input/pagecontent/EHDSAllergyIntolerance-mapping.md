@@ -9,32 +9,32 @@ The following table shows the mapping from EHDSAllergyIntolerance logical model 
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| header |  |  |
-| [header.subject](#ehdspatient) | EuAllergyIntolerance.patient |  |
-| header.identifier | EuAllergyIntolerance.identifier |  |
-| header.authorship |  |  |
-| [authorEHDSHealthProfessional](#ehdshealthprofessional) |  |  |
-| [authorEHDSOrganisation](#ehdsorganisation) |  |  |
-| [authorEHDSDevice](#ehdsdevice) |  |  |
-| header.authorship.datetime | EuAllergyIntolerance.recordedDate |  |
-| header.lastUpdate | EuAllergyIntolerance.meta.lastUpdated |  |
-| header.status | EuAllergyIntolerance.verificationStatus |  |
-| header.statusReasonCodeableConcept | EuAllergyIntolerance.verificationStatus.coding |  |
-| header.statusReasonString |  |  |
-| header.language | EuAllergyIntolerance.language |  |
-| header.version | EuAllergyIntolerance.meta.versionId |  |
-| [presentedForm](#ehdsattachment) | EuAllergyIntolerance.text |  |
-| agentOrAllergen | EuAllergyIntolerance.code ; EuAllergyIntolerance.reaction.substance |  |
-| typeOfPropensity | EuAllergyIntolerance.type |  |
-| description | EuAllergyIntolerance.text |  |
-| criticality | EuAllergyIntolerance.criticality |  |
-| certainty | EuAllergyIntolerance.verificationStatus |  |
-| status | EuAllergyIntolerance.clinicalStatus |  |
-| onsetDate | EuAllergyIntolerance.onsetPeriod ; EuAllergyIntolerance.onsetDateTime |  |
-| endDate | EuAllergyIntolerance.extension[abatement].valueDateTime |  |
-| reaction | EuAllergyIntolerance.reaction |  |
-| reaction.manifestation | EuAllergyIntolerance.reaction.manifestation |  |
-| reaction.date | EuAllergyIntolerance.reaction.onset |  |
-| reaction.severity | EuAllergyIntolerance.reaction.severity |  |
-| reaction.onsetDate |  |  |
+| EHDSAllergyIntolerance.header |  |  |
+| EHDSAllergyIntolerance.[header.subject](#ehdspatient) | EuAllergyIntolerance.patient |  |
+| EHDSAllergyIntolerance.header.identifier | EuAllergyIntolerance.identifier |  |
+| EHDSAllergyIntolerance.header.authorship |  |  |
+| EHDSAllergyIntolerance.[authorEHDSHealthProfessional](#ehdshealthprofessional) |  |  |
+| EHDSAllergyIntolerance.[authorEHDSOrganisation](#ehdsorganisation) |  |  |
+| EHDSAllergyIntolerance.[authorEHDSDevice](#ehdsdevice) |  |  |
+| EHDSAllergyIntolerance.header.authorship.datetime | EuAllergyIntolerance.recordedDate |  |
+| EHDSAllergyIntolerance.header.lastUpdate | EuAllergyIntolerance.meta.lastUpdated |  |
+| EHDSAllergyIntolerance.header.status | EuAllergyIntolerance.verificationStatus |  |
+| EHDSAllergyIntolerance.header.statusReasonCodeableConcept | EuAllergyIntolerance.verificationStatus.coding |  |
+| EHDSAllergyIntolerance.header.statusReasonString |  |  |
+| EHDSAllergyIntolerance.header.language | EuAllergyIntolerance.language |  |
+| EHDSAllergyIntolerance.header.version | EuAllergyIntolerance.meta.versionId |  |
+| EHDSAllergyIntolerance.[presentedForm](#ehdsattachment) | EuAllergyIntolerance.text |  |
+| EHDSAllergyIntolerance.agentOrAllergen | EuAllergyIntolerance.code ; EuAllergyIntolerance.reaction.substance |  |
+| EHDSAllergyIntolerance.typeOfPropensity | EuAllergyIntolerance.type |  |
+| EHDSAllergyIntolerance.description | EuAllergyIntolerance.text |  |
+| EHDSAllergyIntolerance.criticality | EuAllergyIntolerance.criticality |  |
+| EHDSAllergyIntolerance.certainty | EuAllergyIntolerance.verificationStatus |  |
+| EHDSAllergyIntolerance.status | EuAllergyIntolerance.clinicalStatus |  |
+| EHDSAllergyIntolerance.onsetDate | EuAllergyIntolerance.onsetPeriod ; EuAllergyIntolerance.onsetDateTime |  |
+| EHDSAllergyIntolerance.endDate | EuAllergyIntolerance.extension[abatement].valueDateTime |  |
+| EHDSAllergyIntolerance.reaction | EuAllergyIntolerance.reaction |  |
+| EHDSAllergyIntolerance.reaction.manifestation | EuAllergyIntolerance.reaction.manifestation |  |
+| EHDSAllergyIntolerance.reaction.date | EuAllergyIntolerance.reaction.onset |  |
+| EHDSAllergyIntolerance.reaction.severity | EuAllergyIntolerance.reaction.severity |  |
+| EHDSAllergyIntolerance.reaction.onsetDate |  |  |
 

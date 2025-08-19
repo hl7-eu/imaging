@@ -9,10 +9,10 @@ The following table shows the mapping from EHDSOrganisation logical model elemen
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| identifier | EuOrganization.identifier |  |
-| type | EuOrganization.type |  |
-| name | EuOrganization.name |  |
-| [address](#ehdsaddress) | EuOrganization.contact.address |  |
-| [telecom](StructureDefinition-EHDSTelecom.html) | EuOrganization.contact.telecom |  |
-| partOf | EuOrganization.partOf |  |
+| EHDSOrganisation.identifier | EuOrganization.identifier |  |
+| EHDSOrganisation.type | EuOrganization.type |  |
+| EHDSOrganisation.name | EuOrganization.name |  |
+| EHDSOrganisation.[address](#ehdsaddress) | EuOrganization.contact.address |  |
+| EHDSOrganisation.[telecom](StructureDefinition-EHDSTelecom.html) | EuOrganization.contact.telecom |  |
+| EHDSOrganisation.partOf | EuOrganization.partOf |  |
 

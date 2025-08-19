@@ -9,17 +9,17 @@ The following table shows the mapping from EHDSMedia logical model elements to F
 {:.grid}
 | Element | Target FHIR resource.element | Comments |
 | ------- | ---------------------------- | -------- |
-| identifier | EuDocumentReference.identifier |  |
-| type | EuDocumentReference.type |  |
-| modality | EuDocumentReference.modality |  |
-| view | EuDocumentReference.extension[view] | Media.type in R4 |
-| subject[x] | EuDocumentReference.subject |  |
-| created[x] | EuDocumentReference.period |  |
-| reason | EuDocumentReference.event |  |
-| bodysite | EuDocumentReference.bodySite.concept |  |
-| deviceName | EuDocumentReference.author ; EuDevice.name |  |
-| device | EuDocumentReference.author |  |
-| [content](#ehdsattachment) | EuDocumentReference.content.attachment |  |
-| note | EuDocumentReference.extension[note] |  |
-| performer | EuDocumentReference.author |  |
+| EHDSMedia.identifier | EuDocumentReference.identifier |  |
+| EHDSMedia.type | EuDocumentReference.type |  |
+| EHDSMedia.modality | EuDocumentReference.modality |  |
+| EHDSMedia.view | EuDocumentReference.extension[view] | Media.type in R4 |
+| EHDSMedia.subject[x] | EuDocumentReference.subject |  |
+| EHDSMedia.created[x] | EuDocumentReference.period |  |
+| EHDSMedia.reason | EuDocumentReference.event |  |
+| EHDSMedia.bodysite | EuDocumentReference.bodySite.concept |  |
+| EHDSMedia.deviceName | EuDocumentReference.author ; EuDevice.name |  |
+| EHDSMedia.device | EuDocumentReference.author |  |
+| EHDSMedia.[content](#ehdsattachment) | EuDocumentReference.content.attachment |  |
+| EHDSMedia.note | EuDocumentReference.extension[note] |  |
+| EHDSMedia.performer | EuDocumentReference.author |  |
 
