@@ -209,6 +209,7 @@
 <artifact id="StructureDefinition/EHDSMedicationPrescription" key="StructureDefinition-EHDSMedicationPrescription" name="Medication prescription model"/>
 <artifact id="StructureDefinition/EHDSMedicationStatement" key="StructureDefinition-EHDSMedicationStatement" name="Medication statement model"/>
 <artifact id="CodeSystem/codesystem-missing-dicom-terminology" key="CodeSystem-codesystem-missing-dicom-terminology" name="Missing DICOM Terminology"/>
+<artifact id="StructureDefinition/number-of-frames" key="StructureDefinition-number-of-frames" name="Number of Frames"/>
 <artifact id="StructureDefinition/EHDSObservation" key="StructureDefinition-EHDSObservation" name="Observation model"/>
 <artifact id="StructureDefinition/EHDSOrganisation" key="StructureDefinition-EHDSOrganisation" name="Organisation model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSOrganization" key="StructureDefinition-EHDSOrganization" name="Organization model"/>
