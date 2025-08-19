@@ -29,7 +29,8 @@ const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinit
 
 // Configuration: Define which models are considered "core" for this IG
 const CORE_MODELS = [
-    'EHDSImagingReport'
+    'EHDSImagingReport',
+    'EHDSImagingStudy'
     // Add other core models here as needed
 ];
 
@@ -248,7 +249,8 @@ function generateMappingTables(parsedData, srcResources) {
             const modelingValue = modelingMap.get(srcField) || '';
             
             // Create hyperlink for source field if it has EHDS srcType(s)
-            let sourceFieldDisplay = srcField;
+            // Initialize the display with the source resource and field
+            let sourceFieldDisplay = `${srcResource}.${srcField}`;
             const srcTypes = sourceTypeMap.get(srcField);
             if (srcTypes && srcTypes.length > 0) {
                 const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
@@ -257,10 +259,10 @@ function generateMappingTables(parsedData, srcResources) {
                         // Check if the ehdsType is in excludedResources (resourcesWithoutR)
                         if (resourcesWithoutR.includes(ehdsTypes[0])) {
                             // Single excluded type - link directly to resource page
-                            sourceFieldDisplay = `[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
+                            sourceFieldDisplay = `${srcResource}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
                         } else {
                             // Single type - simple link format
-                            sourceFieldDisplay = `[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
+                            sourceFieldDisplay = `${srcResource}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
                         }
                     } else {
                         // Multiple types - format with parentheses and multiple links
@@ -271,7 +273,7 @@ function generateMappingTables(parsedData, srcResources) {
                                 return `[${type}](#${type.toLowerCase()})`;
                             }
                         }).join(', ');
-                        sourceFieldDisplay = `${srcField} (${typeLinks})`;
+                        sourceFieldDisplay = `${srcResource}.${srcField} (${typeLinks})`;
                     }
                 }
             }
