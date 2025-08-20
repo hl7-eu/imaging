@@ -5,6 +5,7 @@ This guide is part of the HL7 EU suite of report related implementation guides t
 This implementation guide follows the approach taken by those specifications in that a Imaging Study Report is:
 * represented by one `DiagnosticReport` and and `Composition` resource.
 * the `DiagnosticReport` will always point to a  `Composition`.
+* the `Composition` can point to the `DiagnositcReport` through a dedicated extension, though this patters is discouraged.
 * the referred Composition:
   * defines the report structure, often just a single section;
   * provides a mean for assembling the report as a document (i.e. as a Bundle of type 'document')
