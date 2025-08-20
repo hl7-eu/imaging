@@ -1,7 +1,7 @@
 Profile: ImAccessionNumberIdentifier
 Parent: Identifier
 Id: im-accession-number-identifier
-Title: "Imaging Accession Number Identifier"
+Title: "Identifier: Accession Number"
 Description: "This profile on Identifier represents the Accession Number for the Imaging Order."
 * insert SetFmmAndStatusRule( 1, draft )
 * system 1..1
@@ -17,7 +17,7 @@ RuleSet: BasedOnImOrderReference( slicename )
 Profile: ImStudyInstanceUidIdentifier
 Parent: Identifier
 Id: im-study-instance-uid-identifier
-Title: "Study Instance UID Identifier"
+Title: "Identifier: Study Instance UID"
 Description: "This profile on Identifier represents the Study Instance UID (0020,000D) for the Imaging Order."
 * insert SetFmmAndStatusRule( 1, draft )
 * system = "urn:dicom:uid"
@@ -28,8 +28,8 @@ Description: "This profile on Identifier represents the Study Instance UID (0020
 Profile: ImSopInstanceUidIdentifier
 Parent: Identifier
 Id: im-sop-instance-uid-identifier
-Title: "Imaging SOP Class UID Identifier"
-Description: "This profile on Identifier represents the SOP Class UID (0008,0018) for the Imaging Order."
+Title: "Identifier: SOP Instance UID"
+Description: "This profile on Identifier represents the SOP Instance UID	(0008,0018) for the Imaging Order."
 * insert SetFmmAndStatusRule( 1, draft )
 * system = "urn:dicom:uid"
 * value 1..1

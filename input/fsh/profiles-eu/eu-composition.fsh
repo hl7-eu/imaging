@@ -1,6 +1,6 @@
 Profile: CompositionEu
 Parent: http://hl7.org/fhir/StructureDefinition/clinicaldocument
-Title: "EU Composition"
+Title: "Composition: EU Composition"
 Description: "Clinical document used to represent a report for the scope of the HL7 Europe project."
 * insert SetFmmAndStatusRule( 1, draft )
 

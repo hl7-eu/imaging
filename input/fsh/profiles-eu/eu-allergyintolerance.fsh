@@ -1,6 +1,6 @@
 Profile: AllergyIntoleranceEu
 Parent: AllergyIntolerance
-Title: "EU AllergyIntolerance"
+Title: "AllergyIntolerance: EU AllergyIntolerance"
 Description: "A allergyintolerance profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * extension contains $allergyintolerance-abatement-url named abatement 0..1

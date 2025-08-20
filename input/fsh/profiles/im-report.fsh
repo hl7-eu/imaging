@@ -1,6 +1,6 @@
 Profile: ImReport
 Parent: Bundle
-Title: "Document Bundle for Imaging Report"
+Title: "Bundle: Imaging Report"
 Description: "Document Bundle for Imaging Report"
 * insert SetFmmAndStatusRule( 1, draft )
 * type = #document
