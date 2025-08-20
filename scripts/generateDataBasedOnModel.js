@@ -129,8 +129,26 @@ function generateMappingTables(parsedData, srcResources) {
     // Store all generated files for the main index
     const generatedFiles = [];
     
-    // Filter srcResources to only include those with actors containing "R"
-    const resourcesWithR = [];
+    // First, remove any existing mapping files that we don't want to keep
+    console.log("Removing old mapping files...");
+    fs.readdirSync(mappingTablesDir).forEach(file => {
+        if (file.endsWith('-mapping.md') && file !== 'xtehr-mapping.md') {
+            // Only keep files for core models
+            const resourceName = file.replace('-mapping.md', '');
+            if (!CORE_MODELS.includes(resourceName)) {
+                const filePath = path.join(mappingTablesDir, file);
+                fs.unlinkSync(filePath);
+                console.log(`Removed ${filePath}`);
+            }
+        }
+    });
+    
+    // We need to categorize resources into:
+    // 1. Core resources (in CORE_MODELS) -> Generate .md files
+    // 2. Resources with actor 'R' but not in CORE_MODELS -> List in separate section, no .md files
+    // 3. Resources without actor 'R' -> List as "not included"
+    const coreResources = [];
+    const nonCoreWithR = [];
     const resourcesWithoutR = [];
     
     srcResources.forEach(srcResource => {
@@ -139,14 +157,16 @@ function generateMappingTables(parsedData, srcResources) {
             .filter(row => row[indices.actors] && row[indices.actors].length > 0)
             .some(row => row[indices.actors].includes('R'));
         
-        if (hasActorWithR) {
-            resourcesWithR.push(srcResource);
+        if (CORE_MODELS.includes(srcResource)) {
+            coreResources.push(srcResource);
+        } else if (hasActorWithR) {
+            nonCoreWithR.push(srcResource);
         } else {
             resourcesWithoutR.push(srcResource);
         }
     });
     
-    resourcesWithR.forEach(srcResource => {
+    coreResources.forEach(srcResource => {
         // Create a hash table to store mappings: srcField -> array of target mappings
         const mappingTable = new Map();
         
@@ -256,8 +276,8 @@ function generateMappingTables(parsedData, srcResources) {
                 const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
                 if (ehdsTypes.length > 0) {
                     if (ehdsTypes.length === 1) {
-                        // Check if the ehdsType is in excludedResources (resourcesWithoutR)
-                        if (resourcesWithoutR.includes(ehdsTypes[0])) {
+                        // Check if the ehdsType is not a core resource
+                        if (!coreResources.includes(ehdsTypes[0])) {
                             // Single excluded type - link directly to resource page
                             sourceFieldDisplay = `${srcResource}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
                         } else {
@@ -267,7 +287,7 @@ function generateMappingTables(parsedData, srcResources) {
                     } else {
                         // Multiple types - format with parentheses and multiple links
                         const typeLinks = ehdsTypes.map(type => {
-                            if (resourcesWithoutR.includes(type)) {
+                            if (!coreResources.includes(type)) {
                                 return `[${type}](StructureDefinition-${type}.html)`;
                             } else {
                                 return `[${type}](#${type.toLowerCase()})`;
@@ -292,10 +312,10 @@ function generateMappingTables(parsedData, srcResources) {
     });
     
     // Generate the main index file
-    generateMappingIndex(generatedFiles, resourcesWithoutR);
+    generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR);
 }
 
-function generateMappingIndex(generatedFiles, excludedResources) {
+function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
     const indexPath = '../input/pagecontent/xtehr-mapping.md';
     console.log(`Generating mapping index: ${indexPath}`);
     const writable = fs.createWriteStream(indexPath);
@@ -309,31 +329,30 @@ function generateMappingIndex(generatedFiles, excludedResources) {
     // Sort files alphabetically for consistent output
     const sortedFiles = generatedFiles.sort((a, b) => a.resource.localeCompare(b.resource));
     
-    // Separate core models from other files based on configuration
-    const coreModelFiles = sortedFiles.filter(file => CORE_MODELS.includes(file.resource));
-    const otherModelFiles = sortedFiles.filter(file => !CORE_MODELS.includes(file.resource));
-    
-    // Core models section
-    if (coreModelFiles.length > 0) {
+    // Core models section - include the .md files
+    if (sortedFiles.length > 0) {
         writable.write('### Core models of the Imaging Report IG\n\n');
-        coreModelFiles.forEach(file => {
+        sortedFiles.forEach(file => {
             writable.write(`{% include ${file.filename} %}\n\n`);
         });
     }
     
-    // Other models section
-    if (otherModelFiles.length > 0) {
-        writable.write('### Other models used in this IG\n\n');
-        otherModelFiles.forEach(file => {
-            writable.write(`{% include ${file.filename} %}\n\n`);
-        });
+    // Section for resources with 'R' but not in CORE_MODELS
+    if (nonCoreWithR && nonCoreWithR.length > 0) {
+        const sortedNonCoreWithR = [...nonCoreWithR].sort();
+        const nonCoreWithRNames = sortedNonCoreWithR.join(', ');
+        writable.write(`### Other logical models that are used by this IG\n\n`);
+        writable.write(`The following logical models describe data that is used in the context of this IG, but the mapping will be defined by another higher level IG, because they are common to many domains:\n\n`);
+        writable.write(`${nonCoreWithRNames}\n\n`);
     }
     
-    // Add message about excluded resources if any
-    if (excludedResources && excludedResources.length > 0) {
-        const excludedNames = excludedResources.join(', ');
+    // Section for resources without 'R'
+    if (resourcesWithoutR && resourcesWithoutR.length > 0) {
+        const sortedWithoutR = [...resourcesWithoutR].sort();
+        const withoutRNames = sortedWithoutR.join(', ');
         writable.write(`### Models not included in this IG\n\n`);
-        writable.write(`The logical models ${excludedNames} were left out of this page as they don't relate with the content of this IG.\n\n`);
+        writable.write(`The following logical models describe data that is not used in the context of this Imaging Report IG:\n\n`);
+        writable.write(`${withoutRNames}\n\n`);
     }
     
     writable.end();
