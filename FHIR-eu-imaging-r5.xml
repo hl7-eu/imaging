@@ -229,6 +229,7 @@
 <artifact id="Composition/G1Composition" key="Composition-G1Composition" name="Radiology Report for the left/right foot study"/>
 <artifact id="StructureDefinition/range-eu" key="StructureDefinition-range-eu" name="Range: EU Range"/>
 <artifact id="ValueSet/ImSectionEmptyReason" key="ValueSet-ImSectionEmptyReason" name="Reasons a section in an imaging report is empty."/>
+<artifact id="ValueSet/recommendation-servicerequest-intent-vs" key="ValueSet-recommendation-servicerequest-intent-vs" name="Recommendation Imaging ServiceRequest intent Value Set"/>
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
 <artifact id="StructureDefinition/RelatedPersonEu" key="StructureDefinition-RelatedPersonEu" name="RelatedPerson: EU RelatedPerson"/>
 <artifact deprecated="true" id="StructureDefinition/ImReportIheMhdDocumentReference" key="StructureDefinition-ImReportIheMhdDocumentReference" name="Report DocumentReference for MHD deployments"/>
