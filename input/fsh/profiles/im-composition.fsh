@@ -17,7 +17,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * identifier 1..*
 * extension contains 
-    ImDiagnosticReportReference named diagnosticreport-reference 1..1  
+    ImDiagnosticReportReference named diagnosticreport-reference 0..1  
 * extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
 
 * custodian only Reference( $EuOrganization )
