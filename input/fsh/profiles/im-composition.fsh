@@ -194,8 +194,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry
     * insert SliceElement( #profile, $this )
   * entry contains 
-      careplan 0..*
-  * entry[careplan] only Reference($EuCarePlan or ImRecommendation)
+      suggestion 0..*
+  * entry[suggestion] only Reference($EuCarePlan or ImRecommendation)
 
 
 // /////////////////// COMMUNICATION SECTION //////////////////////////
