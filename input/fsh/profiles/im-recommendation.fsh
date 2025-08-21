@@ -1,7 +1,7 @@
 Profile: ImRecommendation
 Parent: $EuServiceRequest
 Title: "ServiceRequest: Recommendation"
-Description: "Recommendations made in the context of an Imaging Report, encodeded as a ServiceRequest"
+Description: "Recommendations made in the context of an Imaging Report, encoded as a ServiceRequest"
 
 * insert SetFmmAndStatusRule( 1, draft )
 
