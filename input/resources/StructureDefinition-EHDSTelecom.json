@@ -12,7 +12,7 @@
   "name": "EHDSTelecom",
   "title": "Telecom model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.6 - EHDS refined base model for Telecommunication contact information structure",
+  "description": "EHDS refined base model for Telecommunication contact information structure",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSTelecom",
         "path": "EHDSTelecom",
         "short": "Telecom model",
-        "definition": "C.6 - EHDS refined base model for Telecommunication contact information structure",
+        "definition": "EHDS refined base model for Telecommunication contact information structure",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSTelecom.use",
         "path": "EHDSTelecom.use",
-        "short": "C.6.1 - Use",
+        "short": "Use",
         "definition": "Purpose of the address",
         "min": 0,
         "max": "1",
@@ -92,7 +92,7 @@
       {
         "id": "EHDSTelecom.type",
         "path": "EHDSTelecom.type",
-        "short": "C.6.2 - Type",
+        "short": "Type",
         "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
         "min": 0,
         "max": "1",
@@ -114,7 +114,7 @@
       {
         "id": "EHDSTelecom.value",
         "path": "EHDSTelecom.value",
-        "short": "C.6.3 - Value",
+        "short": "Value",
         "definition": "The actual contact point details, in a form that is meaningful to the designated communication type (i.e. phone number or email address).",
         "min": 1,
         "max": "1",
@@ -137,12 +137,12 @@
         "id": "EHDSTelecom",
         "path": "EHDSTelecom",
         "short": "Telecom model",
-        "definition": "C.6 - EHDS refined base model for Telecommunication contact information structure"
+        "definition": "EHDS refined base model for Telecommunication contact information structure"
       },
       {
         "id": "EHDSTelecom.use",
         "path": "EHDSTelecom.use",
-        "short": "C.6.1 - Use",
+        "short": "Use",
         "definition": "Purpose of the address",
         "min": 0,
         "max": "1",
@@ -159,7 +159,7 @@
       {
         "id": "EHDSTelecom.type",
         "path": "EHDSTelecom.type",
-        "short": "C.6.2 - Type",
+        "short": "Type",
         "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
         "min": 0,
         "max": "1",
@@ -176,7 +176,7 @@
       {
         "id": "EHDSTelecom.value",
         "path": "EHDSTelecom.value",
-        "short": "C.6.3 - Value",
+        "short": "Value",
         "definition": "The actual contact point details, in a form that is meaningful to the designated communication type (i.e. phone number or email address).",
         "min": 1,
         "max": "1",

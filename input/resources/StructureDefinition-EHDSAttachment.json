@@ -12,7 +12,7 @@
   "name": "EHDSAttachment",
   "title": "Attachment model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.7 - EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
+  "description": "EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSAttachment",
         "path": "EHDSAttachment",
         "short": "Attachment model",
-        "definition": "C.7 - EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
+        "definition": "EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSAttachment.contentType",
         "path": "EHDSAttachment.contentType",
-        "short": "C.7.1 - Content Type",
+        "short": "Mime type of the content, with charset etc.",
         "definition": "Mime type of the content, with charset etc.",
         "min": 0,
         "max": "1",
@@ -92,7 +92,7 @@
       {
         "id": "EHDSAttachment.language",
         "path": "EHDSAttachment.language",
-        "short": "C.7.2 - Language",
+        "short": "Human language of the content",
         "definition": "Human language of the content",
         "min": 0,
         "max": "1",
@@ -114,7 +114,7 @@
       {
         "id": "EHDSAttachment.data",
         "path": "EHDSAttachment.data",
-        "short": "C.7.3 - Data",
+        "short": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
         "definition": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
         "min": 0,
         "max": "1",
@@ -132,7 +132,7 @@
       {
         "id": "EHDSAttachment.url",
         "path": "EHDSAttachment.url",
-        "short": "C.7.4 - URL",
+        "short": "A location where the data can be accessed.",
         "definition": "A location where the data can be accessed.",
         "min": 0,
         "max": "1",
@@ -150,7 +150,7 @@
       {
         "id": "EHDSAttachment.size",
         "path": "EHDSAttachment.size",
-        "short": "C.7.5 - Size",
+        "short": "The number of bytes of data that make up this attachment (before base64 encoding).",
         "definition": "The number of bytes of data that make up this attachment (before base64 encoding).",
         "min": 0,
         "max": "1",
@@ -166,27 +166,9 @@
         ]
       },
       {
-        "id": "EHDSAttachment.hash",
-        "path": "EHDSAttachment.hash",
-        "short": "C.7.6 - Hash",
-        "definition": "The calculated hash of the data using SHA-1. Represented using base64.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAttachment.hash",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "base64Binary"
-          }
-        ]
-      },
-      {
         "id": "EHDSAttachment.title",
         "path": "EHDSAttachment.title",
-        "short": "C.7.7 - Title",
+        "short": "A label or set of text to display in place of the data.",
         "definition": "A label or set of text to display in place of the data.",
         "min": 0,
         "max": "1",
@@ -200,96 +182,6 @@
             "code": "string"
           }
         ]
-      },
-      {
-        "id": "EHDSAttachment.creationDate",
-        "path": "EHDSAttachment.creationDate",
-        "short": "C.7.8 - Creation date",
-        "definition": "The date that the attachment was created.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAttachment.creationDate",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "dateTime"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.height",
-        "path": "EHDSAttachment.height",
-        "short": "C.7.9 - Height",
-        "definition": "Height of the image in pixels (photo/video)",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAttachment.height",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "unsignedInt"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.width",
-        "path": "EHDSAttachment.width",
-        "short": "C.7.10 - Width",
-        "definition": "Width of the image in pixels (photo/video)",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAttachment.width",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "unsignedInt"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.frames",
-        "path": "EHDSAttachment.frames",
-        "short": "C.7.11 - Frames",
-        "definition": "Number of frames if > 1 (photo)",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAttachment.frames",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "unsignedInt"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.duration",
-        "path": "EHDSAttachment.duration",
-        "short": "C.7.12 - Duration",
-        "definition": "Length in seconds (audio / video)",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAttachment.duration",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "decimal"
-          }
-        ]
       }
     ]
   },
@@ -299,12 +191,12 @@
         "id": "EHDSAttachment",
         "path": "EHDSAttachment",
         "short": "Attachment model",
-        "definition": "C.7 - EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type."
+        "definition": "EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type."
       },
       {
         "id": "EHDSAttachment.contentType",
         "path": "EHDSAttachment.contentType",
-        "short": "C.7.1 - Content Type",
+        "short": "Mime type of the content, with charset etc.",
         "definition": "Mime type of the content, with charset etc.",
         "min": 0,
         "max": "1",
@@ -321,7 +213,7 @@
       {
         "id": "EHDSAttachment.language",
         "path": "EHDSAttachment.language",
-        "short": "C.7.2 - Language",
+        "short": "Human language of the content",
         "definition": "Human language of the content",
         "min": 0,
         "max": "1",
@@ -338,7 +230,7 @@
       {
         "id": "EHDSAttachment.data",
         "path": "EHDSAttachment.data",
-        "short": "C.7.3 - Data",
+        "short": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
         "definition": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
         "min": 0,
         "max": "1",
@@ -351,7 +243,7 @@
       {
         "id": "EHDSAttachment.url",
         "path": "EHDSAttachment.url",
-        "short": "C.7.4 - URL",
+        "short": "A location where the data can be accessed.",
         "definition": "A location where the data can be accessed.",
         "min": 0,
         "max": "1",
@@ -364,7 +256,7 @@
       {
         "id": "EHDSAttachment.size",
         "path": "EHDSAttachment.size",
-        "short": "C.7.5 - Size",
+        "short": "The number of bytes of data that make up this attachment (before base64 encoding).",
         "definition": "The number of bytes of data that make up this attachment (before base64 encoding).",
         "min": 0,
         "max": "1",
@@ -375,93 +267,15 @@
         ]
       },
       {
-        "id": "EHDSAttachment.hash",
-        "path": "EHDSAttachment.hash",
-        "short": "C.7.6 - Hash",
-        "definition": "The calculated hash of the data using SHA-1. Represented using base64.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "base64Binary"
-          }
-        ]
-      },
-      {
         "id": "EHDSAttachment.title",
         "path": "EHDSAttachment.title",
-        "short": "C.7.7 - Title",
+        "short": "A label or set of text to display in place of the data.",
         "definition": "A label or set of text to display in place of the data.",
         "min": 0,
         "max": "1",
         "type": [
           {
             "code": "string"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.creationDate",
-        "path": "EHDSAttachment.creationDate",
-        "short": "C.7.8 - Creation date",
-        "definition": "The date that the attachment was created.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "dateTime"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.height",
-        "path": "EHDSAttachment.height",
-        "short": "C.7.9 - Height",
-        "definition": "Height of the image in pixels (photo/video)",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "unsignedInt"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.width",
-        "path": "EHDSAttachment.width",
-        "short": "C.7.10 - Width",
-        "definition": "Width of the image in pixels (photo/video)",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "unsignedInt"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.frames",
-        "path": "EHDSAttachment.frames",
-        "short": "C.7.11 - Frames",
-        "definition": "Number of frames if > 1 (photo)",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "unsignedInt"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAttachment.duration",
-        "path": "EHDSAttachment.duration",
-        "short": "C.7.12 - Duration",
-        "definition": "Length in seconds (audio / video)",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "decimal"
           }
         ]
       }

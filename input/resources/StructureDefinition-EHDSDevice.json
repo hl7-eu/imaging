@@ -12,7 +12,7 @@
   "name": "EHDSDevice",
   "title": "Device model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.12 - EHDS refined base model for Device information",
+  "description": "EHDS refined base model for Device information",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSDevice",
         "path": "EHDSDevice",
         "short": "Device model",
-        "definition": "C.12 - EHDS refined base model for Device information",
+        "definition": "EHDS refined base model for Device information",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,8 +70,8 @@
       {
         "id": "EHDSDevice.identifier",
         "path": "EHDSDevice.identifier",
-        "short": "C.12.1 - Identifier",
-        "definition": "An identifier of the device which is unique within in a defined scope. Multiple identifiers can be used.",
+        "short": "Normalised identifier of the device instance, such as UDI according to REGULATION (EU) 2017/745. Multiple identifiers can be used.",
+        "definition": "Normalised identifier of the device instance, such as UDI according to REGULATION (EU) 2017/745. Multiple identifiers can be used.",
         "min": 1,
         "max": "*",
         "base": {
@@ -88,7 +88,7 @@
       {
         "id": "EHDSDevice.manufacturer",
         "path": "EHDSDevice.manufacturer",
-        "short": "C.12.2 - Manufacturer",
+        "short": "Name of device manufacturer",
         "definition": "Name of device manufacturer",
         "min": 0,
         "max": "1",
@@ -106,7 +106,7 @@
       {
         "id": "EHDSDevice.manufactureDate",
         "path": "EHDSDevice.manufactureDate",
-        "short": "C.12.3 - Manufacture date",
+        "short": "The date and time when the device was manufactured",
         "definition": "The date and time when the device was manufactured",
         "min": 0,
         "max": "1",
@@ -124,7 +124,7 @@
       {
         "id": "EHDSDevice.expiryDate",
         "path": "EHDSDevice.expiryDate",
-        "short": "C.12.4 - Expiry date",
+        "short": "The date and time beyond which this device is no longer valid or should not be used (if applicable).",
         "definition": "The date and time beyond which this device is no longer valid or should not be used (if applicable).",
         "min": 0,
         "max": "1",
@@ -142,7 +142,7 @@
       {
         "id": "EHDSDevice.lotNumber",
         "path": "EHDSDevice.lotNumber",
-        "short": "C.12.5 - Lot number",
+        "short": "Lot number of manufacture",
         "definition": "Lot number of manufacture",
         "min": 0,
         "max": "1",
@@ -160,7 +160,7 @@
       {
         "id": "EHDSDevice.serialNumber",
         "path": "EHDSDevice.serialNumber",
-        "short": "C.12.6 - Serial number",
+        "short": "Serial number assigned by the manufacturer",
         "definition": "Serial number assigned by the manufacturer",
         "min": 0,
         "max": "1",
@@ -178,7 +178,7 @@
       {
         "id": "EHDSDevice.name",
         "path": "EHDSDevice.name",
-        "short": "C.12.7 - Name",
+        "short": "The name and name type of the device as known to the manufacturer and/or patient",
         "definition": "The name and name type of the device as known to the manufacturer and/or patient",
         "min": 0,
         "max": "*",
@@ -196,7 +196,7 @@
       {
         "id": "EHDSDevice.modelNumber",
         "path": "EHDSDevice.modelNumber",
-        "short": "C.12.8 - Model number",
+        "short": "The manufacturer's model number for the device",
         "definition": "The manufacturer's model number for the device",
         "min": 0,
         "max": "1",
@@ -214,7 +214,7 @@
       {
         "id": "EHDSDevice.version",
         "path": "EHDSDevice.version",
-        "short": "C.12.9 - Version",
+        "short": "The actual design of the device or software version running on the device",
         "definition": "The actual design of the device or software version running on the device",
         "min": 0,
         "max": "1",
@@ -232,7 +232,7 @@
       {
         "id": "EHDSDevice.type",
         "path": "EHDSDevice.type",
-        "short": "C.12.10 - Type",
+        "short": "Device type",
         "definition": "Device type",
         "min": 0,
         "max": "*",
@@ -254,7 +254,7 @@
       {
         "id": "EHDSDevice.note",
         "path": "EHDSDevice.note",
-        "short": "C.12.11 - Note",
+        "short": "Device notes and comments",
         "definition": "Device notes and comments",
         "min": 0,
         "max": "*",
@@ -265,7 +265,7 @@
         },
         "type": [
           {
-            "code": "Narrative"
+            "code": "string"
           }
         ]
       }
@@ -277,13 +277,13 @@
         "id": "EHDSDevice",
         "path": "EHDSDevice",
         "short": "Device model",
-        "definition": "C.12 - EHDS refined base model for Device information"
+        "definition": "EHDS refined base model for Device information"
       },
       {
         "id": "EHDSDevice.identifier",
         "path": "EHDSDevice.identifier",
-        "short": "C.12.1 - Identifier",
-        "definition": "An identifier of the device which is unique within in a defined scope. Multiple identifiers can be used.",
+        "short": "Normalised identifier of the device instance, such as UDI according to REGULATION (EU) 2017/745. Multiple identifiers can be used.",
+        "definition": "Normalised identifier of the device instance, such as UDI according to REGULATION (EU) 2017/745. Multiple identifiers can be used.",
         "min": 1,
         "max": "*",
         "type": [
@@ -295,7 +295,7 @@
       {
         "id": "EHDSDevice.manufacturer",
         "path": "EHDSDevice.manufacturer",
-        "short": "C.12.2 - Manufacturer",
+        "short": "Name of device manufacturer",
         "definition": "Name of device manufacturer",
         "min": 0,
         "max": "1",
@@ -308,7 +308,7 @@
       {
         "id": "EHDSDevice.manufactureDate",
         "path": "EHDSDevice.manufactureDate",
-        "short": "C.12.3 - Manufacture date",
+        "short": "The date and time when the device was manufactured",
         "definition": "The date and time when the device was manufactured",
         "min": 0,
         "max": "1",
@@ -321,7 +321,7 @@
       {
         "id": "EHDSDevice.expiryDate",
         "path": "EHDSDevice.expiryDate",
-        "short": "C.12.4 - Expiry date",
+        "short": "The date and time beyond which this device is no longer valid or should not be used (if applicable).",
         "definition": "The date and time beyond which this device is no longer valid or should not be used (if applicable).",
         "min": 0,
         "max": "1",
@@ -334,7 +334,7 @@
       {
         "id": "EHDSDevice.lotNumber",
         "path": "EHDSDevice.lotNumber",
-        "short": "C.12.5 - Lot number",
+        "short": "Lot number of manufacture",
         "definition": "Lot number of manufacture",
         "min": 0,
         "max": "1",
@@ -347,7 +347,7 @@
       {
         "id": "EHDSDevice.serialNumber",
         "path": "EHDSDevice.serialNumber",
-        "short": "C.12.6 - Serial number",
+        "short": "Serial number assigned by the manufacturer",
         "definition": "Serial number assigned by the manufacturer",
         "min": 0,
         "max": "1",
@@ -360,7 +360,7 @@
       {
         "id": "EHDSDevice.name",
         "path": "EHDSDevice.name",
-        "short": "C.12.7 - Name",
+        "short": "The name and name type of the device as known to the manufacturer and/or patient",
         "definition": "The name and name type of the device as known to the manufacturer and/or patient",
         "min": 0,
         "max": "*",
@@ -373,7 +373,7 @@
       {
         "id": "EHDSDevice.modelNumber",
         "path": "EHDSDevice.modelNumber",
-        "short": "C.12.8 - Model number",
+        "short": "The manufacturer's model number for the device",
         "definition": "The manufacturer's model number for the device",
         "min": 0,
         "max": "1",
@@ -386,7 +386,7 @@
       {
         "id": "EHDSDevice.version",
         "path": "EHDSDevice.version",
-        "short": "C.12.9 - Version",
+        "short": "The actual design of the device or software version running on the device",
         "definition": "The actual design of the device or software version running on the device",
         "min": 0,
         "max": "1",
@@ -399,7 +399,7 @@
       {
         "id": "EHDSDevice.type",
         "path": "EHDSDevice.type",
-        "short": "C.12.10 - Type",
+        "short": "Device type",
         "definition": "Device type",
         "min": 0,
         "max": "*",
@@ -416,13 +416,13 @@
       {
         "id": "EHDSDevice.note",
         "path": "EHDSDevice.note",
-        "short": "C.12.11 - Note",
+        "short": "Device notes and comments",
         "definition": "Device notes and comments",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Narrative"
+            "code": "string"
           }
         ]
       }

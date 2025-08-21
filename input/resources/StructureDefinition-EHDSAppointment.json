@@ -12,7 +12,7 @@
   "name": "EHDSAppointment",
   "title": "Appointment model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.20 - EHDS refined base model for Appointment",
+  "description": "EHDS refined base model for Appointment. This is a simplified model with minimal information - it is not intended to cover the full functionality of booking systems.",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSAppointment",
         "path": "EHDSAppointment",
         "short": "Appointment model",
-        "definition": "C.20 - EHDS refined base model for Appointment",
+        "definition": "EHDS refined base model for Appointment. This is a simplified model with minimal information - it is not intended to cover the full functionality of booking systems.",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSAppointment.identifier",
         "path": "EHDSAppointment.identifier",
-        "short": "C.20.1 - Identifier",
+        "short": "Appointment identifier",
         "definition": "Appointment identifier",
         "min": 0,
         "max": "*",
@@ -86,10 +86,28 @@
         ]
       },
       {
+        "id": "EHDSAppointment.subject",
+        "path": "EHDSAppointment.subject",
+        "short": "The patient associated with the appointment.",
+        "definition": "The patient associated with the appointment.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAppointment.subject",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
         "id": "EHDSAppointment.status",
         "path": "EHDSAppointment.status",
-        "short": "C.20.2 - Status",
-        "definition": "The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.",
+        "short": "The overall status of the Appointment.",
+        "definition": "The overall status of the Appointment.",
         "min": 1,
         "max": "1",
         "base": {
@@ -110,8 +128,8 @@
       {
         "id": "EHDSAppointment.class",
         "path": "EHDSAppointment.class",
-        "short": "C.20.3 - Class",
-        "definition": "Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.",
+        "short": "Classification of patient encounter (e.g. inpatient, outpatient, emergency).",
+        "definition": "Classification of patient encounter (e.g. inpatient, outpatient, emergency).",
         "min": 0,
         "max": "*",
         "base": {
@@ -132,8 +150,8 @@
       {
         "id": "EHDSAppointment.serviceType",
         "path": "EHDSAppointment.serviceType",
-        "short": "C.20.4 - Service type",
-        "definition": "The specific service that is to be performed during this appointment",
+        "short": "The specific service that is to be performed during this appointment.",
+        "definition": "The specific service that is to be performed during this appointment.",
         "min": 0,
         "max": "*",
         "base": {
@@ -154,7 +172,7 @@
       {
         "id": "EHDSAppointment.specialty",
         "path": "EHDSAppointment.specialty",
-        "short": "C.20.5 - Specialty",
+        "short": "The specialty of a practitioner that would be required to perform the service requested in this appointment",
         "definition": "The specialty of a practitioner that would be required to perform the service requested in this appointment",
         "min": 0,
         "max": "*",
@@ -174,125 +192,10 @@
         }
       },
       {
-        "id": "EHDSAppointment.type",
-        "path": "EHDSAppointment.type",
-        "short": "C.20.6 - Type",
-        "definition": "The type of appointment or patient that has been booked in the slot, e.g. Routine, check-up, walk-in, routine, emenrgency etc.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAppointment.type",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "TBD"
-        }
-      },
-      {
-        "id": "EHDSAppointment.reason",
-        "path": "EHDSAppointment.reason",
-        "short": "C.20.7 - Reason",
-        "definition": "The reason that this appointment is being scheduled.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.reason",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "CodeableReference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
-            ]
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
-      },
-      {
-        "id": "EHDSAppointment.priority",
-        "path": "EHDSAppointment.priority",
-        "short": "C.20.8 - Priority",
-        "definition": "The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAppointment.priority",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "HL7 Act priority"
-        }
-      },
-      {
-        "id": "EHDSAppointment.description",
-        "path": "EHDSAppointment.description",
-        "short": "C.20.9 - Description",
-        "definition": "The brief description of the appointment as would be shown on a subject line in a meeting request, or appointment list.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAppointment.description",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Narrative"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.supportingInformation",
-        "path": "EHDSAppointment.supportingInformation",
-        "short": "C.20.10 - Supporting information",
-        "definition": "Additional information to support the appointment provided when making the appointment.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.supportingInformation",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation",
-              "http://hl7.org/fhir/StructureDefinition/Resource"
-            ]
-          }
-        ]
-      },
-      {
         "id": "EHDSAppointment.start",
         "path": "EHDSAppointment.start",
-        "short": "C.20.11 - Start",
-        "definition": "Date/Time that the appointment is to take place.",
+        "short": "Date and time that the appointment is to take place.",
+        "definition": "Date and time that the appointment is to take place.",
         "min": 0,
         "max": "1",
         "base": {
@@ -309,8 +212,8 @@
       {
         "id": "EHDSAppointment.end",
         "path": "EHDSAppointment.end",
-        "short": "C.20.12 - End",
-        "definition": "Date/Time that the appointment is to conclude.",
+        "short": "Date and time that the appointment is to conclude.",
+        "definition": "Date and time that the appointment is to conclude.",
         "min": 0,
         "max": "1",
         "base": {
@@ -325,66 +228,9 @@
         ]
       },
       {
-        "id": "EHDSAppointment.requestedPeriod",
-        "path": "EHDSAppointment.requestedPeriod",
-        "short": "C.20.13 - Requested period",
-        "definition": "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.requestedPeriod",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "Period"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.slot",
-        "path": "EHDSAppointment.slot",
-        "short": "C.20.14 - Slot",
-        "definition": "The slots from the participants' schedules that will be filled by the appointment.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.slot",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSlot"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.patientInstruction",
-        "path": "EHDSAppointment.patientInstruction",
-        "short": "C.20.15 - Patient instruction",
-        "definition": "Patient facing information about the Appointment (e.g. fast from 8pm night before).",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.patientInstruction",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "Narrative"
-          }
-        ]
-      },
-      {
         "id": "EHDSAppointment.note",
         "path": "EHDSAppointment.note",
-        "short": "C.20.16 - Note",
+        "short": "Additional notes/comments about the appointment.",
         "definition": "Additional notes/comments about the appointment.",
         "min": 0,
         "max": "*",
@@ -395,114 +241,7 @@
         },
         "type": [
           {
-            "code": "Narrative"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.subject",
-        "path": "EHDSAppointment.subject",
-        "short": "C.20.17 - Subject",
-        "definition": "The patient or group associated with the appointment, if they are to be present (usually) then they should also be included in the participant backbone element.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAppointment.subject",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.participant",
-        "path": "EHDSAppointment.participant",
-        "short": "C.20.18 - Participant",
-        "definition": "List of participants involved in the appointment.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.participant",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.participant.type",
-        "path": "EHDSAppointment.participant.type",
-        "short": "C.20.18.1 - Type",
-        "definition": "List of participants involved in the appointment.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSAppointment.participant.type",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "HL7 Participant Type"
-        }
-      },
-      {
-        "id": "EHDSAppointment.participant.actor",
-        "path": "EHDSAppointment.participant.actor",
-        "short": "C.20.18.2 - Actor",
-        "definition": "The individual, device, location, or service participating in the appointment.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAppointment.participant.actor",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.participant.required",
-        "path": "EHDSAppointment.participant.required",
-        "short": "C.20.18.3 - Required",
-        "definition": "Whether this participant is required to be present at the meeting.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSAppointment.participant.required",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "boolean"
+            "code": "string"
           }
         ]
       }
@@ -514,12 +253,12 @@
         "id": "EHDSAppointment",
         "path": "EHDSAppointment",
         "short": "Appointment model",
-        "definition": "C.20 - EHDS refined base model for Appointment"
+        "definition": "EHDS refined base model for Appointment. This is a simplified model with minimal information - it is not intended to cover the full functionality of booking systems."
       },
       {
         "id": "EHDSAppointment.identifier",
         "path": "EHDSAppointment.identifier",
-        "short": "C.20.1 - Identifier",
+        "short": "Appointment identifier",
         "definition": "Appointment identifier",
         "min": 0,
         "max": "*",
@@ -530,10 +269,23 @@
         ]
       },
       {
+        "id": "EHDSAppointment.subject",
+        "path": "EHDSAppointment.subject",
+        "short": "The patient associated with the appointment.",
+        "definition": "The patient associated with the appointment.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
         "id": "EHDSAppointment.status",
         "path": "EHDSAppointment.status",
-        "short": "C.20.2 - Status",
-        "definition": "The overall status of the Appointment. Each of the participants has their own participation status which indicates their involvement in the process, however this status indicates the shared status.",
+        "short": "The overall status of the Appointment.",
+        "definition": "The overall status of the Appointment.",
         "min": 1,
         "max": "1",
         "type": [
@@ -549,8 +301,8 @@
       {
         "id": "EHDSAppointment.class",
         "path": "EHDSAppointment.class",
-        "short": "C.20.3 - Class",
-        "definition": "Concepts representing classification of patient encounter such as ambulatory (outpatient), inpatient, emergency, home health or others due to local variations.",
+        "short": "Classification of patient encounter (e.g. inpatient, outpatient, emergency).",
+        "definition": "Classification of patient encounter (e.g. inpatient, outpatient, emergency).",
         "min": 0,
         "max": "*",
         "type": [
@@ -566,8 +318,8 @@
       {
         "id": "EHDSAppointment.serviceType",
         "path": "EHDSAppointment.serviceType",
-        "short": "C.20.4 - Service type",
-        "definition": "The specific service that is to be performed during this appointment",
+        "short": "The specific service that is to be performed during this appointment.",
+        "definition": "The specific service that is to be performed during this appointment.",
         "min": 0,
         "max": "*",
         "type": [
@@ -583,7 +335,7 @@
       {
         "id": "EHDSAppointment.specialty",
         "path": "EHDSAppointment.specialty",
-        "short": "C.20.5 - Specialty",
+        "short": "The specialty of a practitioner that would be required to perform the service requested in this appointment",
         "definition": "The specialty of a practitioner that would be required to perform the service requested in this appointment",
         "min": 0,
         "max": "*",
@@ -598,100 +350,10 @@
         }
       },
       {
-        "id": "EHDSAppointment.type",
-        "path": "EHDSAppointment.type",
-        "short": "C.20.6 - Type",
-        "definition": "The type of appointment or patient that has been booked in the slot, e.g. Routine, check-up, walk-in, routine, emenrgency etc.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "TBD"
-        }
-      },
-      {
-        "id": "EHDSAppointment.reason",
-        "path": "EHDSAppointment.reason",
-        "short": "C.20.7 - Reason",
-        "definition": "The reason that this appointment is being scheduled.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "CodeableReference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
-            ]
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
-      },
-      {
-        "id": "EHDSAppointment.priority",
-        "path": "EHDSAppointment.priority",
-        "short": "C.20.8 - Priority",
-        "definition": "The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize appointments. ",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "HL7 Act priority"
-        }
-      },
-      {
-        "id": "EHDSAppointment.description",
-        "path": "EHDSAppointment.description",
-        "short": "C.20.9 - Description",
-        "definition": "The brief description of the appointment as would be shown on a subject line in a meeting request, or appointment list.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Narrative"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.supportingInformation",
-        "path": "EHDSAppointment.supportingInformation",
-        "short": "C.20.10 - Supporting information",
-        "definition": "Additional information to support the appointment provided when making the appointment.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation",
-              "http://hl7.org/fhir/StructureDefinition/Resource"
-            ]
-          }
-        ]
-      },
-      {
         "id": "EHDSAppointment.start",
         "path": "EHDSAppointment.start",
-        "short": "C.20.11 - Start",
-        "definition": "Date/Time that the appointment is to take place.",
+        "short": "Date and time that the appointment is to take place.",
+        "definition": "Date and time that the appointment is to take place.",
         "min": 0,
         "max": "1",
         "type": [
@@ -703,8 +365,8 @@
       {
         "id": "EHDSAppointment.end",
         "path": "EHDSAppointment.end",
-        "short": "C.20.12 - End",
-        "definition": "Date/Time that the appointment is to conclude.",
+        "short": "Date and time that the appointment is to conclude.",
+        "definition": "Date and time that the appointment is to conclude.",
         "min": 0,
         "max": "1",
         "type": [
@@ -714,139 +376,15 @@
         ]
       },
       {
-        "id": "EHDSAppointment.requestedPeriod",
-        "path": "EHDSAppointment.requestedPeriod",
-        "short": "C.20.13 - Requested period",
-        "definition": "A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Period"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.slot",
-        "path": "EHDSAppointment.slot",
-        "short": "C.20.14 - Slot",
-        "definition": "The slots from the participants' schedules that will be filled by the appointment.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSlot"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.patientInstruction",
-        "path": "EHDSAppointment.patientInstruction",
-        "short": "C.20.15 - Patient instruction",
-        "definition": "Patient facing information about the Appointment (e.g. fast from 8pm night before).",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Narrative"
-          }
-        ]
-      },
-      {
         "id": "EHDSAppointment.note",
         "path": "EHDSAppointment.note",
-        "short": "C.20.16 - Note",
+        "short": "Additional notes/comments about the appointment.",
         "definition": "Additional notes/comments about the appointment.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Narrative"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.subject",
-        "path": "EHDSAppointment.subject",
-        "short": "C.20.17 - Subject",
-        "definition": "The patient or group associated with the appointment, if they are to be present (usually) then they should also be included in the participant backbone element.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.participant",
-        "path": "EHDSAppointment.participant",
-        "short": "C.20.18 - Participant",
-        "definition": "List of participants involved in the appointment.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.participant.type",
-        "path": "EHDSAppointment.participant.type",
-        "short": "C.20.18.1 - Type",
-        "definition": "List of participants involved in the appointment.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "HL7 Participant Type"
-        }
-      },
-      {
-        "id": "EHDSAppointment.participant.actor",
-        "path": "EHDSAppointment.participant.actor",
-        "short": "C.20.18.2 - Actor",
-        "definition": "The individual, device, location, or service participating in the appointment.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSAppointment.participant.required",
-        "path": "EHDSAppointment.participant.required",
-        "short": "C.20.18.3 - Required",
-        "definition": "Whether this participant is required to be present at the meeting.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "boolean"
+            "code": "string"
           }
         ]
       }

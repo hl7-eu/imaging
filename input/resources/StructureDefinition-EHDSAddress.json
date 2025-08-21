@@ -12,7 +12,7 @@
   "name": "EHDSAddress",
   "title": "Address model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.5 - EHDS refined base model for Address structure",
+  "description": "EHDS refined base model for Address structure",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSAddress",
         "path": "EHDSAddress",
         "short": "Address model",
-        "definition": "C.5 - EHDS refined base model for Address structure",
+        "definition": "EHDS refined base model for Address structure",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSAddress.use",
         "path": "EHDSAddress.use",
-        "short": "C.5.1 - Use",
+        "short": "Purpose of the address",
         "definition": "Purpose of the address",
         "min": 0,
         "max": "1",
@@ -92,7 +92,7 @@
       {
         "id": "EHDSAddress.type",
         "path": "EHDSAddress.type",
-        "short": "C.5.2 - Type",
+        "short": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
         "definition": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
         "min": 0,
         "max": "1",
@@ -114,13 +114,13 @@
       {
         "id": "EHDSAddress.text",
         "path": "EHDSAddress.text",
-        "short": "C.5.3 - Text",
-        "definition": "Text represenation of the address",
-        "min": 1,
+        "short": "Text representation of the address",
+        "definition": "Text representation of the address",
+        "min": 0,
         "max": "1",
         "base": {
           "path": "EHDSAddress.text",
-          "min": 1,
+          "min": 0,
           "max": "1"
         },
         "type": [
@@ -132,7 +132,7 @@
       {
         "id": "EHDSAddress.street",
         "path": "EHDSAddress.street",
-        "short": "C.5.4 - Street",
+        "short": "Name of the street",
         "definition": "Name of the street",
         "min": 0,
         "max": "1",
@@ -150,7 +150,7 @@
       {
         "id": "EHDSAddress.houseNumber",
         "path": "EHDSAddress.houseNumber",
-        "short": "C.5.5 - House number",
+        "short": "House number",
         "definition": "House number",
         "min": 0,
         "max": "1",
@@ -166,14 +166,14 @@
         ]
       },
       {
-        "id": "EHDSAddress.pOBox",
-        "path": "EHDSAddress.pOBox",
-        "short": "C.5.6 - P.O. Box",
+        "id": "EHDSAddress.postBox",
+        "path": "EHDSAddress.postBox",
+        "short": "Post box",
         "definition": "Post box",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSAddress.pOBox",
+          "path": "EHDSAddress.postBox",
           "min": 0,
           "max": "1"
         },
@@ -186,7 +186,7 @@
       {
         "id": "EHDSAddress.city",
         "path": "EHDSAddress.city",
-        "short": "C.5.7 - City",
+        "short": "City",
         "definition": "City",
         "min": 0,
         "max": "1",
@@ -204,7 +204,7 @@
       {
         "id": "EHDSAddress.postalCode",
         "path": "EHDSAddress.postalCode",
-        "short": "C.5.8 - Postal code",
+        "short": "Postal code",
         "definition": "Postal code",
         "min": 0,
         "max": "1",
@@ -222,7 +222,7 @@
       {
         "id": "EHDSAddress.country",
         "path": "EHDSAddress.country",
-        "short": "C.5.9 - Country",
+        "short": "Country name and country code",
         "definition": "Country name and country code",
         "min": 0,
         "max": "1",
@@ -238,7 +238,7 @@
         ],
         "binding": {
           "strength": "preferred",
-          "description": "ISO 3166-1-2"
+          "description": "ISO 3166-1 alpha-2"
         }
       }
     ]
@@ -249,12 +249,12 @@
         "id": "EHDSAddress",
         "path": "EHDSAddress",
         "short": "Address model",
-        "definition": "C.5 - EHDS refined base model for Address structure"
+        "definition": "EHDS refined base model for Address structure"
       },
       {
         "id": "EHDSAddress.use",
         "path": "EHDSAddress.use",
-        "short": "C.5.1 - Use",
+        "short": "Purpose of the address",
         "definition": "Purpose of the address",
         "min": 0,
         "max": "1",
@@ -271,7 +271,7 @@
       {
         "id": "EHDSAddress.type",
         "path": "EHDSAddress.type",
-        "short": "C.5.2 - Type",
+        "short": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
         "definition": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
         "min": 0,
         "max": "1",
@@ -288,9 +288,9 @@
       {
         "id": "EHDSAddress.text",
         "path": "EHDSAddress.text",
-        "short": "C.5.3 - Text",
-        "definition": "Text represenation of the address",
-        "min": 1,
+        "short": "Text representation of the address",
+        "definition": "Text representation of the address",
+        "min": 0,
         "max": "1",
         "type": [
           {
@@ -301,7 +301,7 @@
       {
         "id": "EHDSAddress.street",
         "path": "EHDSAddress.street",
-        "short": "C.5.4 - Street",
+        "short": "Name of the street",
         "definition": "Name of the street",
         "min": 0,
         "max": "1",
@@ -314,7 +314,7 @@
       {
         "id": "EHDSAddress.houseNumber",
         "path": "EHDSAddress.houseNumber",
-        "short": "C.5.5 - House number",
+        "short": "House number",
         "definition": "House number",
         "min": 0,
         "max": "1",
@@ -325,9 +325,9 @@
         ]
       },
       {
-        "id": "EHDSAddress.pOBox",
-        "path": "EHDSAddress.pOBox",
-        "short": "C.5.6 - P.O. Box",
+        "id": "EHDSAddress.postBox",
+        "path": "EHDSAddress.postBox",
+        "short": "Post box",
         "definition": "Post box",
         "min": 0,
         "max": "1",
@@ -340,7 +340,7 @@
       {
         "id": "EHDSAddress.city",
         "path": "EHDSAddress.city",
-        "short": "C.5.7 - City",
+        "short": "City",
         "definition": "City",
         "min": 0,
         "max": "1",
@@ -353,7 +353,7 @@
       {
         "id": "EHDSAddress.postalCode",
         "path": "EHDSAddress.postalCode",
-        "short": "C.5.8 - Postal code",
+        "short": "Postal code",
         "definition": "Postal code",
         "min": 0,
         "max": "1",
@@ -366,7 +366,7 @@
       {
         "id": "EHDSAddress.country",
         "path": "EHDSAddress.country",
-        "short": "C.5.9 - Country",
+        "short": "Country name and country code",
         "definition": "Country name and country code",
         "min": 0,
         "max": "1",
@@ -377,7 +377,7 @@
         ],
         "binding": {
           "strength": "preferred",
-          "description": "ISO 3166-1-2"
+          "description": "ISO 3166-1 alpha-2"
         }
       }
     ]

@@ -12,7 +12,7 @@
   "name": "EHDSRelatedPerson",
   "title": "Related person model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.13 - EHDS refined base model for Patient/subject guardian and other related person information",
+  "description": "EHDS refined base model for Patient/subject guardian and other related person information",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSRelatedPerson",
         "path": "EHDSRelatedPerson",
         "short": "Related person model",
-        "definition": "C.13 - EHDS refined base model for Patient/subject guardian and other related person information",
+        "definition": "EHDS refined base model for Patient/subject guardian and other related person information",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSRelatedPerson.personalIdentifier",
         "path": "EHDSRelatedPerson.personalIdentifier",
-        "short": "C.13.1 - Personal identifier",
+        "short": "Personal identifier",
         "definition": "An identifier of the related person that is unique within a defined scope. Example: National ID (birth number) for the Czech citizen. Multiple identifiers could be provided. ",
         "min": 0,
         "max": "*",
@@ -88,7 +88,7 @@
       {
         "id": "EHDSRelatedPerson.name",
         "path": "EHDSRelatedPerson.name",
-        "short": "C.13.2 - Name",
+        "short": "Name",
         "definition": "Name associated with the person. Name might consists of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
         "min": 0,
         "max": "*",
@@ -104,9 +104,27 @@
         ]
       },
       {
+        "id": "EHDSRelatedPerson.subject",
+        "path": "EHDSRelatedPerson.subject",
+        "short": "The patient in relation to whom the related person is defined.",
+        "definition": "The patient in relation to whom the related person is defined.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSRelatedPerson.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
         "id": "EHDSRelatedPerson.relationship",
         "path": "EHDSRelatedPerson.relationship",
-        "short": "C.13.3 - Relationship",
+        "short": "Relationship",
         "definition": "Relationship between a patient and a contact person for that patient. This includes relatives, guardians, caring persons etc.",
         "min": 0,
         "max": "1",
@@ -128,7 +146,7 @@
       {
         "id": "EHDSRelatedPerson.address",
         "path": "EHDSRelatedPerson.address",
-        "short": "C.13.4 - Address",
+        "short": "Address",
         "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, ZIP code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
         "min": 0,
         "max": "*",
@@ -146,7 +164,7 @@
       {
         "id": "EHDSRelatedPerson.telecom",
         "path": "EHDSRelatedPerson.telecom",
-        "short": "C.13.5 - Telecom",
+        "short": "Telecom",
         "definition": "Telecommunication contact information (addresses) associated to a person. Multiple telecommunication addresses might be provided.",
         "min": 0,
         "max": "*",
@@ -169,12 +187,12 @@
         "id": "EHDSRelatedPerson",
         "path": "EHDSRelatedPerson",
         "short": "Related person model",
-        "definition": "C.13 - EHDS refined base model for Patient/subject guardian and other related person information"
+        "definition": "EHDS refined base model for Patient/subject guardian and other related person information"
       },
       {
         "id": "EHDSRelatedPerson.personalIdentifier",
         "path": "EHDSRelatedPerson.personalIdentifier",
-        "short": "C.13.1 - Personal identifier",
+        "short": "Personal identifier",
         "definition": "An identifier of the related person that is unique within a defined scope. Example: National ID (birth number) for the Czech citizen. Multiple identifiers could be provided. ",
         "min": 0,
         "max": "*",
@@ -187,7 +205,7 @@
       {
         "id": "EHDSRelatedPerson.name",
         "path": "EHDSRelatedPerson.name",
-        "short": "C.13.2 - Name",
+        "short": "Name",
         "definition": "Name associated with the person. Name might consists of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
         "min": 0,
         "max": "*",
@@ -198,9 +216,22 @@
         ]
       },
       {
+        "id": "EHDSRelatedPerson.subject",
+        "path": "EHDSRelatedPerson.subject",
+        "short": "The patient in relation to whom the related person is defined.",
+        "definition": "The patient in relation to whom the related person is defined.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
         "id": "EHDSRelatedPerson.relationship",
         "path": "EHDSRelatedPerson.relationship",
-        "short": "C.13.3 - Relationship",
+        "short": "Relationship",
         "definition": "Relationship between a patient and a contact person for that patient. This includes relatives, guardians, caring persons etc.",
         "min": 0,
         "max": "1",
@@ -217,7 +248,7 @@
       {
         "id": "EHDSRelatedPerson.address",
         "path": "EHDSRelatedPerson.address",
-        "short": "C.13.4 - Address",
+        "short": "Address",
         "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, ZIP code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
         "min": 0,
         "max": "*",
@@ -230,7 +261,7 @@
       {
         "id": "EHDSRelatedPerson.telecom",
         "path": "EHDSRelatedPerson.telecom",
-        "short": "C.13.5 - Telecom",
+        "short": "Telecom",
         "definition": "Telecommunication contact information (addresses) associated to a person. Multiple telecommunication addresses might be provided.",
         "min": 0,
         "max": "*",

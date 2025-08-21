@@ -12,7 +12,7 @@
   "name": "EHDSLocation",
   "title": "Location model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.17 - EHDS refined base model for Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.",
+  "description": "EHDS refined base model for Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSLocation",
         "path": "EHDSLocation",
         "short": "Location model",
-        "definition": "C.17 - EHDS refined base model for Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.",
+        "definition": "EHDS refined base model for Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated.",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSLocation.identifier",
         "path": "EHDSLocation.identifier",
-        "short": "C.17.1 - Identifier",
+        "short": "Identifier",
         "definition": "Location identifier",
         "min": 0,
         "max": "*",
@@ -88,7 +88,7 @@
       {
         "id": "EHDSLocation.name",
         "path": "EHDSLocation.name",
-        "short": "C.17.2 - Name",
+        "short": "Name",
         "definition": "Name of the location as used by humans",
         "min": 0,
         "max": "1",
@@ -106,7 +106,7 @@
       {
         "id": "EHDSLocation.description",
         "path": "EHDSLocation.description",
-        "short": "C.17.3 - Description",
+        "short": "Description",
         "definition": "Additional details about the location that could be displayed as further information to identify the location beyond its name",
         "min": 0,
         "max": "1",
@@ -117,14 +117,14 @@
         },
         "type": [
           {
-            "code": "Narrative"
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSLocation.type",
         "path": "EHDSLocation.type",
-        "short": "C.17.4 - Type",
+        "short": "Type",
         "definition": "Type of function performed at the location",
         "min": 0,
         "max": "*",
@@ -146,7 +146,7 @@
       {
         "id": "EHDSLocation.address",
         "path": "EHDSLocation.address",
-        "short": "C.17.5 - Address",
+        "short": "Address",
         "definition": "Physical location address",
         "min": 0,
         "max": "1",
@@ -162,68 +162,14 @@
         ]
       },
       {
-        "id": "EHDSLocation.position",
-        "path": "EHDSLocation.position",
-        "short": "C.17.6 - Position",
-        "definition": "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).",
+        "id": "EHDSLocation.managingOrganisation",
+        "path": "EHDSLocation.managingOrganisation",
+        "short": "Managing organisation",
+        "definition": "The organisation responsible for the provisioning and upkeep of the location",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSLocation.position",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSLocation.position.longitude",
-        "path": "EHDSLocation.position.longitude",
-        "short": "C.17.6.1 - Longitude",
-        "definition": "Longitude with WGS84 datum",
-        "min": 1,
-        "max": "1",
-        "base": {
-          "path": "EHDSLocation.position.longitude",
-          "min": 1,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "decimal"
-          }
-        ]
-      },
-      {
-        "id": "EHDSLocation.position.latitude",
-        "path": "EHDSLocation.position.latitude",
-        "short": "C.17.6.2 - Latitude",
-        "definition": "Latitude with WGS84 datum",
-        "min": 1,
-        "max": "1",
-        "base": {
-          "path": "EHDSLocation.position.latitude",
-          "min": 1,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "decimal"
-          }
-        ]
-      },
-      {
-        "id": "EHDSLocation.managingOrganization",
-        "path": "EHDSLocation.managingOrganization",
-        "short": "C.17.7 - Managing organization",
-        "definition": "The organization responsible for the provisioning and upkeep of the location",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSLocation.managingOrganization",
+          "path": "EHDSLocation.managingOrganisation",
           "min": 0,
           "max": "1"
         },
@@ -231,7 +177,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
             ]
           }
         ]
@@ -239,7 +185,7 @@
       {
         "id": "EHDSLocation.partOf",
         "path": "EHDSLocation.partOf",
-        "short": "C.17.8 - Part of",
+        "short": "Part of",
         "definition": "Another Location of which this Location is physically a part of",
         "min": 0,
         "max": "1",
@@ -252,7 +198,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
             ]
           }
         ]
@@ -265,12 +211,12 @@
         "id": "EHDSLocation",
         "path": "EHDSLocation",
         "short": "Location model",
-        "definition": "C.17 - EHDS refined base model for Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated."
+        "definition": "EHDS refined base model for Details and position information for a place where services are provided and resources and participants may be stored, found, contained, or accommodated."
       },
       {
         "id": "EHDSLocation.identifier",
         "path": "EHDSLocation.identifier",
-        "short": "C.17.1 - Identifier",
+        "short": "Identifier",
         "definition": "Location identifier",
         "min": 0,
         "max": "*",
@@ -283,7 +229,7 @@
       {
         "id": "EHDSLocation.name",
         "path": "EHDSLocation.name",
-        "short": "C.17.2 - Name",
+        "short": "Name",
         "definition": "Name of the location as used by humans",
         "min": 0,
         "max": "1",
@@ -296,20 +242,20 @@
       {
         "id": "EHDSLocation.description",
         "path": "EHDSLocation.description",
-        "short": "C.17.3 - Description",
+        "short": "Description",
         "definition": "Additional details about the location that could be displayed as further information to identify the location beyond its name",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "Narrative"
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSLocation.type",
         "path": "EHDSLocation.type",
-        "short": "C.17.4 - Type",
+        "short": "Type",
         "definition": "Type of function performed at the location",
         "min": 0,
         "max": "*",
@@ -326,7 +272,7 @@
       {
         "id": "EHDSLocation.address",
         "path": "EHDSLocation.address",
-        "short": "C.17.5 - Address",
+        "short": "Address",
         "definition": "Physical location address",
         "min": 0,
         "max": "1",
@@ -337,56 +283,17 @@
         ]
       },
       {
-        "id": "EHDSLocation.position",
-        "path": "EHDSLocation.position",
-        "short": "C.17.6 - Position",
-        "definition": "The absolute geographic location of the Location, expressed using the WGS84 datum (This is the same co-ordinate system used in KML).",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSLocation.position.longitude",
-        "path": "EHDSLocation.position.longitude",
-        "short": "C.17.6.1 - Longitude",
-        "definition": "Longitude with WGS84 datum",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "decimal"
-          }
-        ]
-      },
-      {
-        "id": "EHDSLocation.position.latitude",
-        "path": "EHDSLocation.position.latitude",
-        "short": "C.17.6.2 - Latitude",
-        "definition": "Latitude with WGS84 datum",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "decimal"
-          }
-        ]
-      },
-      {
-        "id": "EHDSLocation.managingOrganization",
-        "path": "EHDSLocation.managingOrganization",
-        "short": "C.17.7 - Managing organization",
-        "definition": "The organization responsible for the provisioning and upkeep of the location",
+        "id": "EHDSLocation.managingOrganisation",
+        "path": "EHDSLocation.managingOrganisation",
+        "short": "Managing organisation",
+        "definition": "The organisation responsible for the provisioning and upkeep of the location",
         "min": 0,
         "max": "1",
         "type": [
           {
             "code": "Reference",
             "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
             ]
           }
         ]
@@ -394,7 +301,7 @@
       {
         "id": "EHDSLocation.partOf",
         "path": "EHDSLocation.partOf",
-        "short": "C.17.8 - Part of",
+        "short": "Part of",
         "definition": "Another Location of which this Location is physically a part of",
         "min": 0,
         "max": "1",
@@ -402,7 +309,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
             ]
           }
         ]

@@ -10,9 +10,9 @@
   "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication",
   "version": "0.1.0",
   "name": "EHDSMedication",
-  "title": "Medicinal product model",
+  "title": "Medication model",
   "status": "active",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "Logical model for prescribed/dispensed medication. The model is shared by statements, requests, dispensations, and treatment lines. Each of those may have different restrictions in FHIR profile.",
+  "description": "Logical model for prescribed/dispensed medication. The model is shared by statements, requests, dispensations, and treatment lines. Each of those may have different restrictions in FHIR profile. Model is suitable for generic/virtual medications as well as branded/real products.",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -50,8 +50,8 @@
       {
         "id": "EHDSMedication",
         "path": "EHDSMedication",
-        "short": "Medicinal product model",
-        "definition": "Logical model for prescribed/dispensed medication. The model is shared by statements, requests, dispensations, and treatment lines. Each of those may have different restrictions in FHIR profile.",
+        "short": "Medication model",
+        "definition": "Logical model for prescribed/dispensed medication. The model is shared by statements, requests, dispensations, and treatment lines. Each of those may have different restrictions in FHIR profile. Model is suitable for generic/virtual medications as well as branded/real products.",
         "min": 0,
         "max": "*",
         "base": {
@@ -72,7 +72,6 @@
         "path": "EHDSMedication.identifyingCode[x]",
         "short": "Identifier or code for the product (virtual product, branded product or package). If several identifiers are specified, they shall not have conflicting meanings or very different granularities.",
         "definition": "Identifier or code for the product (virtual product, branded product or package). If several identifiers are specified, they shall not have conflicting meanings or very different granularities.",
-        "comment": "Non-conflicting change",
         "min": 0,
         "max": "*",
         "base": {
@@ -94,7 +93,6 @@
         "path": "EHDSMedication.classification",
         "short": "Classification (e.g. ATC; narcotic/psychotropic; orphan drug; etc.)",
         "definition": "Classification (e.g. ATC; narcotic/psychotropic; orphan drug; etc.)",
-        "comment": "No change",
         "min": 0,
         "max": "*",
         "base": {
@@ -117,7 +115,6 @@
         "path": "EHDSMedication.productName",
         "short": "Name of the product (full name, invented name, other). When the product has different names, the appropriate one for the context should be used. Translations of names can be provided.",
         "definition": "Name of the product (full name, invented name, other). When the product has different names, the appropriate one for the context should be used. Translations of names can be provided.",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "base": {
@@ -136,7 +133,6 @@
         "path": "EHDSMedication.marketingAuthorisationHolder",
         "short": "Marketing authorisation holder or manufacturer of the medicinal product. Relevant for identifying the exact product.",
         "definition": "Marketing authorisation holder or manufacturer of the medicinal product. Relevant for identifying the exact product.",
-        "comment": "No change, but subelements added",
         "min": 0,
         "max": "1",
         "base": {
@@ -151,14 +147,14 @@
         ]
       },
       {
-        "id": "EHDSMedication.marketingAuthorisationHolder.organizationName",
-        "path": "EHDSMedication.marketingAuthorisationHolder.organizationName",
+        "id": "EHDSMedication.marketingAuthorisationHolder.organisationName",
+        "path": "EHDSMedication.marketingAuthorisationHolder.organisationName",
         "short": "Name of the organisation holding the authorisation for marketing/mahufacturing",
         "definition": "Name of the organisation holding the authorisation for marketing/mahufacturing",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSMedication.marketingAuthorisationHolder.organizationName",
+          "path": "EHDSMedication.marketingAuthorisationHolder.organisationName",
           "min": 0,
           "max": "1"
         },
@@ -169,14 +165,14 @@
         ]
       },
       {
-        "id": "EHDSMedication.marketingAuthorisationHolder.organizationIdentifier",
-        "path": "EHDSMedication.marketingAuthorisationHolder.organizationIdentifier",
+        "id": "EHDSMedication.marketingAuthorisationHolder.organisationIdentifier",
+        "path": "EHDSMedication.marketingAuthorisationHolder.organisationIdentifier",
         "short": "Identifier of the organisation and/or its physical location",
         "definition": "Identifier of the organisation and/or its physical location",
         "min": 0,
         "max": "*",
         "base": {
-          "path": "EHDSMedication.marketingAuthorisationHolder.organizationIdentifier",
+          "path": "EHDSMedication.marketingAuthorisationHolder.organisationIdentifier",
           "min": 0,
           "max": "*"
         },
@@ -191,7 +187,6 @@
         "path": "EHDSMedication.doseForm",
         "short": "Dose form(s) on a product level. Dose form for a single package item is defined below.",
         "definition": "Dose form(s) on a product level. Dose form for a single package item is defined below.",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "base": {
@@ -214,7 +209,6 @@
         "path": "EHDSMedication.packSize",
         "short": "Overall amount of product in one package (100ml; 20 tablets; 1 creme & 6 pessaries)",
         "definition": "Overall amount of product in one package (100ml; 20 tablets; 1 creme & 6 pessaries)",
-        "comment": "No change",
         "min": 0,
         "max": "*",
         "base": {
@@ -237,7 +231,6 @@
         "path": "EHDSMedication.item",
         "short": "A medication item. For combination packs, this can be manufactured items with each item having its own dose form and ingredients+strengths defined",
         "definition": "A medication item. For combination packs, this can be manufactured items with each item having its own dose form and ingredients+strengths defined",
-        "comment": "Structure changed, elements repeated for complex packages",
         "min": 0,
         "max": "*",
         "base": {
@@ -256,7 +249,6 @@
         "path": "EHDSMedication.item.doseForm",
         "short": "Dose form",
         "definition": "Dose form",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "base": {
@@ -279,7 +271,6 @@
         "path": "EHDSMedication.item.ingredient",
         "short": "Ingredients",
         "definition": "Ingredients",
-        "comment": "No conflicting change",
         "min": 1,
         "max": "*",
         "base": {
@@ -298,7 +289,6 @@
         "path": "EHDSMedication.item.ingredient.isActive",
         "short": "Marks if the ingredient is considered an active ingredient. Typically excipients are not needed, so by default active ingredients are expected.",
         "definition": "Marks if the ingredient is considered an active ingredient. Typically excipients are not needed, so by default active ingredients are expected.",
-        "comment": "Added",
         "min": 0,
         "max": "1",
         "base": {
@@ -357,7 +347,6 @@
         "path": "EHDSMedication.item.ingredient.strengthInfo.strength",
         "short": "Concentration or presentation strength, e.g 100mg/1ml or 500mg per 1 tablet",
         "definition": "Concentration or presentation strength, e.g 100mg/1ml or 500mg per 1 tablet",
-        "comment": "No change",
         "min": 1,
         "max": "1",
         "base": {
@@ -376,7 +365,6 @@
         "path": "EHDSMedication.item.ingredient.strengthInfo.basisOfStrengthSubstance",
         "short": "Substance that the strength refers to, in case it's different from the main substance",
         "definition": "Substance that the strength refers to, in case it's different from the main substance",
-        "comment": "Added (eHN guidelines A.1.4.4.1 'in addition reference strength could be provided')",
         "min": 0,
         "max": "1",
         "base": {
@@ -399,7 +387,6 @@
         "path": "EHDSMedication.item.unitOfPresentation",
         "short": "Unit of presentation for the manufactured item (tablet, vial, tube). Typically, the smallest countable object in the package.",
         "definition": "Unit of presentation for the manufactured item (tablet, vial, tube). Typically, the smallest countable object in the package.",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "base": {
@@ -422,7 +409,6 @@
         "path": "EHDSMedication.item.containedQuantity",
         "short": "Manufactured item quantity for liquids (3ml / 1 vial)",
         "definition": "Manufactured item quantity for liquids (3ml / 1 vial)",
-        "comment": "Added (eHN guidelines A.1.4.9 mention layered structure for describing a package)",
         "min": 0,
         "max": "1",
         "base": {
@@ -441,7 +427,6 @@
         "path": "EHDSMedication.item.amount",
         "short": "Number of such manufactured items in this product (5 vials)",
         "definition": "Number of such manufactured items in this product (5 vials)",
-        "comment": "Added (eHN guidelines A.1.4.9 mention layered structure for describing a package)",
         "min": 0,
         "max": "1",
         "base": {
@@ -464,7 +449,6 @@
         "path": "EHDSMedication.item.packageType",
         "short": "Type of package of the medication item",
         "definition": "Type of package of the medication item",
-        "comment": "Added (eHN guidelines A.1.4.8 Package type)",
         "min": 0,
         "max": "1",
         "base": {
@@ -523,7 +507,6 @@
         "path": "EHDSMedication.device.device[x]",
         "short": "Device coded",
         "definition": "Device coded",
-        "comment": "Added",
         "min": 1,
         "max": "1",
         "base": {
@@ -548,7 +531,6 @@
         "path": "EHDSMedication.characteristic",
         "short": "Other features of the product",
         "definition": "Other features of the product",
-        "comment": "Added for any other information.",
         "min": 0,
         "max": "*",
         "base": {
@@ -624,7 +606,6 @@
         "path": "EHDSMedication.batch",
         "short": "Batch information of a medicinal product. Typically recorded during dispense or administration, rarely known or relevant for a prescription/request.",
         "definition": "Batch information of a medicinal product. Typically recorded during dispense or administration, rarely known or relevant for a prescription/request.",
-        "comment": "Added from Patient Summary",
         "min": 0,
         "max": "1",
         "base": {
@@ -681,15 +662,14 @@
       {
         "id": "EHDSMedication",
         "path": "EHDSMedication",
-        "short": "Medicinal product model",
-        "definition": "Logical model for prescribed/dispensed medication. The model is shared by statements, requests, dispensations, and treatment lines. Each of those may have different restrictions in FHIR profile."
+        "short": "Medication model",
+        "definition": "Logical model for prescribed/dispensed medication. The model is shared by statements, requests, dispensations, and treatment lines. Each of those may have different restrictions in FHIR profile. Model is suitable for generic/virtual medications as well as branded/real products."
       },
       {
         "id": "EHDSMedication.identifyingCode[x]",
         "path": "EHDSMedication.identifyingCode[x]",
         "short": "Identifier or code for the product (virtual product, branded product or package). If several identifiers are specified, they shall not have conflicting meanings or very different granularities.",
         "definition": "Identifier or code for the product (virtual product, branded product or package). If several identifiers are specified, they shall not have conflicting meanings or very different granularities.",
-        "comment": "Non-conflicting change",
         "min": 0,
         "max": "*",
         "type": [
@@ -706,7 +686,6 @@
         "path": "EHDSMedication.classification",
         "short": "Classification (e.g. ATC; narcotic/psychotropic; orphan drug; etc.)",
         "definition": "Classification (e.g. ATC; narcotic/psychotropic; orphan drug; etc.)",
-        "comment": "No change",
         "min": 0,
         "max": "*",
         "type": [
@@ -724,7 +703,6 @@
         "path": "EHDSMedication.productName",
         "short": "Name of the product (full name, invented name, other). When the product has different names, the appropriate one for the context should be used. Translations of names can be provided.",
         "definition": "Name of the product (full name, invented name, other). When the product has different names, the appropriate one for the context should be used. Translations of names can be provided.",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "type": [
@@ -738,7 +716,6 @@
         "path": "EHDSMedication.marketingAuthorisationHolder",
         "short": "Marketing authorisation holder or manufacturer of the medicinal product. Relevant for identifying the exact product.",
         "definition": "Marketing authorisation holder or manufacturer of the medicinal product. Relevant for identifying the exact product.",
-        "comment": "No change, but subelements added",
         "min": 0,
         "max": "1",
         "type": [
@@ -748,8 +725,8 @@
         ]
       },
       {
-        "id": "EHDSMedication.marketingAuthorisationHolder.organizationName",
-        "path": "EHDSMedication.marketingAuthorisationHolder.organizationName",
+        "id": "EHDSMedication.marketingAuthorisationHolder.organisationName",
+        "path": "EHDSMedication.marketingAuthorisationHolder.organisationName",
         "short": "Name of the organisation holding the authorisation for marketing/mahufacturing",
         "definition": "Name of the organisation holding the authorisation for marketing/mahufacturing",
         "min": 0,
@@ -761,8 +738,8 @@
         ]
       },
       {
-        "id": "EHDSMedication.marketingAuthorisationHolder.organizationIdentifier",
-        "path": "EHDSMedication.marketingAuthorisationHolder.organizationIdentifier",
+        "id": "EHDSMedication.marketingAuthorisationHolder.organisationIdentifier",
+        "path": "EHDSMedication.marketingAuthorisationHolder.organisationIdentifier",
         "short": "Identifier of the organisation and/or its physical location",
         "definition": "Identifier of the organisation and/or its physical location",
         "min": 0,
@@ -778,7 +755,6 @@
         "path": "EHDSMedication.doseForm",
         "short": "Dose form(s) on a product level. Dose form for a single package item is defined below.",
         "definition": "Dose form(s) on a product level. Dose form for a single package item is defined below.",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "type": [
@@ -796,7 +772,6 @@
         "path": "EHDSMedication.packSize",
         "short": "Overall amount of product in one package (100ml; 20 tablets; 1 creme & 6 pessaries)",
         "definition": "Overall amount of product in one package (100ml; 20 tablets; 1 creme & 6 pessaries)",
-        "comment": "No change",
         "min": 0,
         "max": "*",
         "type": [
@@ -814,7 +789,6 @@
         "path": "EHDSMedication.item",
         "short": "A medication item. For combination packs, this can be manufactured items with each item having its own dose form and ingredients+strengths defined",
         "definition": "A medication item. For combination packs, this can be manufactured items with each item having its own dose form and ingredients+strengths defined",
-        "comment": "Structure changed, elements repeated for complex packages",
         "min": 0,
         "max": "*",
         "type": [
@@ -828,7 +802,6 @@
         "path": "EHDSMedication.item.doseForm",
         "short": "Dose form",
         "definition": "Dose form",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "type": [
@@ -846,7 +819,6 @@
         "path": "EHDSMedication.item.ingredient",
         "short": "Ingredients",
         "definition": "Ingredients",
-        "comment": "No conflicting change",
         "min": 1,
         "max": "*",
         "type": [
@@ -860,7 +832,6 @@
         "path": "EHDSMedication.item.ingredient.isActive",
         "short": "Marks if the ingredient is considered an active ingredient. Typically excipients are not needed, so by default active ingredients are expected.",
         "definition": "Marks if the ingredient is considered an active ingredient. Typically excipients are not needed, so by default active ingredients are expected.",
-        "comment": "Added",
         "min": 0,
         "max": "1",
         "type": [
@@ -904,7 +875,6 @@
         "path": "EHDSMedication.item.ingredient.strengthInfo.strength",
         "short": "Concentration or presentation strength, e.g 100mg/1ml or 500mg per 1 tablet",
         "definition": "Concentration or presentation strength, e.g 100mg/1ml or 500mg per 1 tablet",
-        "comment": "No change",
         "min": 1,
         "max": "1",
         "type": [
@@ -918,7 +888,6 @@
         "path": "EHDSMedication.item.ingredient.strengthInfo.basisOfStrengthSubstance",
         "short": "Substance that the strength refers to, in case it's different from the main substance",
         "definition": "Substance that the strength refers to, in case it's different from the main substance",
-        "comment": "Added (eHN guidelines A.1.4.4.1 'in addition reference strength could be provided')",
         "min": 0,
         "max": "1",
         "type": [
@@ -936,7 +905,6 @@
         "path": "EHDSMedication.item.unitOfPresentation",
         "short": "Unit of presentation for the manufactured item (tablet, vial, tube). Typically, the smallest countable object in the package.",
         "definition": "Unit of presentation for the manufactured item (tablet, vial, tube). Typically, the smallest countable object in the package.",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "type": [
@@ -954,7 +922,6 @@
         "path": "EHDSMedication.item.containedQuantity",
         "short": "Manufactured item quantity for liquids (3ml / 1 vial)",
         "definition": "Manufactured item quantity for liquids (3ml / 1 vial)",
-        "comment": "Added (eHN guidelines A.1.4.9 mention layered structure for describing a package)",
         "min": 0,
         "max": "1",
         "type": [
@@ -968,7 +935,6 @@
         "path": "EHDSMedication.item.amount",
         "short": "Number of such manufactured items in this product (5 vials)",
         "definition": "Number of such manufactured items in this product (5 vials)",
-        "comment": "Added (eHN guidelines A.1.4.9 mention layered structure for describing a package)",
         "min": 0,
         "max": "1",
         "type": [
@@ -986,7 +952,6 @@
         "path": "EHDSMedication.item.packageType",
         "short": "Type of package of the medication item",
         "definition": "Type of package of the medication item",
-        "comment": "Added (eHN guidelines A.1.4.8 Package type)",
         "min": 0,
         "max": "1",
         "type": [
@@ -1030,7 +995,6 @@
         "path": "EHDSMedication.device.device[x]",
         "short": "Device coded",
         "definition": "Device coded",
-        "comment": "Added",
         "min": 1,
         "max": "1",
         "type": [
@@ -1050,7 +1014,6 @@
         "path": "EHDSMedication.characteristic",
         "short": "Other features of the product",
         "definition": "Other features of the product",
-        "comment": "Added for any other information. ",
         "min": 0,
         "max": "*",
         "type": [
@@ -1111,7 +1074,6 @@
         "path": "EHDSMedication.batch",
         "short": "Batch information of a medicinal product. Typically recorded during dispense or administration, rarely known or relevant for a prescription/request.",
         "definition": "Batch information of a medicinal product. Typically recorded during dispense or administration, rarely known or relevant for a prescription/request.",
-        "comment": "Added from Patient Summary",
         "min": 0,
         "max": "1",
         "type": [

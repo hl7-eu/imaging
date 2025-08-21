@@ -4,7 +4,7 @@
 Profile: Report_EuDocumentReference
 Parent: $EuDocumentReference
 Id: Report-EuDocumentReference
-Title: "Report obligations for EuDocumentReference"
+Title: "EuDocumentReference: obligations"
 Description: "Report obligations for EuDocumentReference"
 * identifier
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known

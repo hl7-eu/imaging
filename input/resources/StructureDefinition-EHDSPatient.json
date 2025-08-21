@@ -12,7 +12,7 @@
   "name": "EHDSPatient",
   "title": "Patient model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.1 - EHDS refined base model for Patient/subject information",
+  "description": "EHDS refined base model for patient (subject of care) information",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSPatient",
         "path": "EHDSPatient",
         "short": "Patient model",
-        "definition": "C.1 - EHDS refined base model for Patient/subject information",
+        "definition": "EHDS refined base model for patient (subject of care) information",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,8 +70,8 @@
       {
         "id": "EHDSPatient.personalIdentifier",
         "path": "EHDSPatient.personalIdentifier",
-        "short": "C.1.1 - Personal identifier",
-        "definition": "An identifier of the patient that is unique within a defined scope. Example: National ID (birth number) or National patient identifier for the Czech patient. Multiple identifiers could be provided. ",
+        "short": "An identifier of the patient that is unique within a defined scope (typically a national patient identifier, but it can also be a temporary identifier issued by the EHR).",
+        "definition": "An identifier of the patient that is unique within a defined scope (typically a national patient identifier, but it can also be a temporary identifier issued by the EHR).",
         "min": 1,
         "max": "*",
         "base": {
@@ -88,8 +88,8 @@
       {
         "id": "EHDSPatient.name",
         "path": "EHDSPatient.name",
-        "short": "C.1.2 - Name",
-        "definition": "Name associated with the patient/subject. Name might consist of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
+        "short": "Name associated with the patient/subject.",
+        "definition": "Name might consist of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
         "min": 0,
         "max": "*",
         "base": {
@@ -106,7 +106,7 @@
       {
         "id": "EHDSPatient.dateOfBirth",
         "path": "EHDSPatient.dateOfBirth",
-        "short": "C.1.3 - Date of birth",
+        "short": "Date of birth",
         "definition": "The date of birth of the patient [ISO TS 22220]. As age of the patient might be important for correct interpretation of the test result values, complete date of birth should be provided.",
         "min": 0,
         "max": "1",
@@ -124,8 +124,8 @@
       {
         "id": "EHDSPatient.administrativeGender",
         "path": "EHDSPatient.administrativeGender",
-        "short": "C.1.4 - Administrative gender",
-        "definition": "This field must contain a recognized valid value for \"administrative gender\". If different, \"physiological gender\" should be communicated elsewhere. ",
+        "short": "Administrative gender",
+        "definition": "This field must contain a recognized valid value for \"administrative gender\". If different, \"physiological gender\" should be communicated elsewhere.",
         "min": 0,
         "max": "1",
         "base": {
@@ -146,8 +146,8 @@
       {
         "id": "EHDSPatient.address",
         "path": "EHDSPatient.address",
-        "short": "C.1.5 - Address",
-        "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, ZIP code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "short": "Mailing and home or office addresses.",
+        "definition": "The addresses are always sequences of address parts (e.g. street address line, country, postal code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
         "min": 0,
         "max": "*",
         "base": {
@@ -164,8 +164,8 @@
       {
         "id": "EHDSPatient.telecom",
         "path": "EHDSPatient.telecom",
-        "short": "C.1.6 - Telecom",
-        "definition": "Telecommunication contact information (addresses) associated to a person. Multiple telecommunication addresses might be provided.",
+        "short": "Telecommunication contact information (addresses) associated to a person.",
+        "definition": "Telecommunication contact information (addresses) associated to a person.",
         "min": 0,
         "max": "*",
         "base": {
@@ -182,7 +182,7 @@
       {
         "id": "EHDSPatient.maritalStatus",
         "path": "EHDSPatient.maritalStatus",
-        "short": "C.1.7 - Marital status",
+        "short": "Marital (civil) status of a patient",
         "definition": "Marital (civil) status of a patient",
         "min": 0,
         "max": "1",
@@ -202,31 +202,9 @@
         }
       },
       {
-        "id": "EHDSPatient.citizenship",
-        "path": "EHDSPatient.citizenship",
-        "short": "C.1.8 - Citizenship (nationality)",
-        "definition": "Citizenship/nationality of the patient.",
-        "min": 0,
-        "max": "*",
-        "base": {
-          "path": "EHDSPatient.citizenship",
-          "min": 0,
-          "max": "*"
-        },
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "ISO 3166-1-2"
-        }
-      },
-      {
         "id": "EHDSPatient.communicationLanguage",
         "path": "EHDSPatient.communicationLanguage",
-        "short": "C.1.9 - Communcation language",
+        "short": "The language which can be used to communicate with the patient about his or her health.",
         "definition": "The language which can be used to communicate with the patient about his or her health.",
         "min": 0,
         "max": "*",
@@ -253,13 +231,13 @@
         "id": "EHDSPatient",
         "path": "EHDSPatient",
         "short": "Patient model",
-        "definition": "C.1 - EHDS refined base model for Patient/subject information"
+        "definition": "EHDS refined base model for patient (subject of care) information"
       },
       {
         "id": "EHDSPatient.personalIdentifier",
         "path": "EHDSPatient.personalIdentifier",
-        "short": "C.1.1 - Personal identifier",
-        "definition": "An identifier of the patient that is unique within a defined scope. Example: National ID (birth number) or National patient identifier for the Czech patient. Multiple identifiers could be provided. ",
+        "short": "An identifier of the patient that is unique within a defined scope (typically a national patient identifier, but it can also be a temporary identifier issued by the EHR).",
+        "definition": "An identifier of the patient that is unique within a defined scope (typically a national patient identifier, but it can also be a temporary identifier issued by the EHR).",
         "min": 1,
         "max": "*",
         "type": [
@@ -271,8 +249,8 @@
       {
         "id": "EHDSPatient.name",
         "path": "EHDSPatient.name",
-        "short": "C.1.2 - Name",
-        "definition": "Name associated with the patient/subject. Name might consist of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
+        "short": "Name associated with the patient/subject.",
+        "definition": "Name might consist of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
         "min": 0,
         "max": "*",
         "type": [
@@ -284,7 +262,7 @@
       {
         "id": "EHDSPatient.dateOfBirth",
         "path": "EHDSPatient.dateOfBirth",
-        "short": "C.1.3 - Date of birth",
+        "short": "Date of birth",
         "definition": "The date of birth of the patient [ISO TS 22220]. As age of the patient might be important for correct interpretation of the test result values, complete date of birth should be provided.",
         "min": 0,
         "max": "1",
@@ -297,8 +275,8 @@
       {
         "id": "EHDSPatient.administrativeGender",
         "path": "EHDSPatient.administrativeGender",
-        "short": "C.1.4 - Administrative gender",
-        "definition": "This field must contain a recognized valid value for \"administrative gender\". If different, \"physiological gender\" should be communicated elsewhere. ",
+        "short": "Administrative gender",
+        "definition": "This field must contain a recognized valid value for \"administrative gender\". If different, \"physiological gender\" should be communicated elsewhere.",
         "min": 0,
         "max": "1",
         "type": [
@@ -314,8 +292,8 @@
       {
         "id": "EHDSPatient.address",
         "path": "EHDSPatient.address",
-        "short": "C.1.5 - Address",
-        "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, ZIP code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "short": "Mailing and home or office addresses.",
+        "definition": "The addresses are always sequences of address parts (e.g. street address line, country, postal code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
         "min": 0,
         "max": "*",
         "type": [
@@ -327,8 +305,8 @@
       {
         "id": "EHDSPatient.telecom",
         "path": "EHDSPatient.telecom",
-        "short": "C.1.6 - Telecom",
-        "definition": "Telecommunication contact information (addresses) associated to a person. Multiple telecommunication addresses might be provided.",
+        "short": "Telecommunication contact information (addresses) associated to a person.",
+        "definition": "Telecommunication contact information (addresses) associated to a person.",
         "min": 0,
         "max": "*",
         "type": [
@@ -340,7 +318,7 @@
       {
         "id": "EHDSPatient.maritalStatus",
         "path": "EHDSPatient.maritalStatus",
-        "short": "C.1.7 - Marital status",
+        "short": "Marital (civil) status of a patient",
         "definition": "Marital (civil) status of a patient",
         "min": 0,
         "max": "1",
@@ -355,26 +333,9 @@
         }
       },
       {
-        "id": "EHDSPatient.citizenship",
-        "path": "EHDSPatient.citizenship",
-        "short": "C.1.8 - Citizenship (nationality)",
-        "definition": "Citizenship/nationality of the patient.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "ISO 3166-1-2"
-        }
-      },
-      {
         "id": "EHDSPatient.communicationLanguage",
         "path": "EHDSPatient.communicationLanguage",
-        "short": "C.1.9 - Communcation language",
+        "short": "The language which can be used to communicate with the patient about his or her health.",
         "definition": "The language which can be used to communicate with the patient about his or her health.",
         "min": 0,
         "max": "*",

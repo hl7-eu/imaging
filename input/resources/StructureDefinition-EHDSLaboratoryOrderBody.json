@@ -12,7 +12,7 @@
   "name": "EHDSLaboratoryOrderBody",
   "title": "Laboratory order body model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation",
         "path": "EHDSLaboratoryOrderBody.orderInformation",
-        "short": "B.1.1 - Order information",
+        "short": "Order Information",
         "definition": "Order Information",
         "min": 0,
         "max": "*",
@@ -88,7 +88,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderId",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderId",
-        "short": "B.1.1.1 - Order Id",
+        "short": "An identifier of the laboratory test order.",
         "definition": "An identifier of the laboratory test order.",
         "min": 1,
         "max": "*",
@@ -106,7 +106,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderDateAndTime",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderDateAndTime",
-        "short": "B.1.1.2 - Order date and time",
+        "short": "Date and time of the order placement.",
         "definition": "Date and time of the order placement.",
         "min": 0,
         "max": "1",
@@ -124,7 +124,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderText",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderText",
-        "short": "B.1.1.3 - Order text",
+        "short": "A verbal description of the order or any supplementary requirements specific to each type of order, if they cannot be expressed formally.",
         "definition": "A verbal description of the order or any supplementary requirements specific to each type of order, if they cannot be expressed formally.",
         "min": 0,
         "max": "1",
@@ -140,27 +140,33 @@
         ]
       },
       {
-        "id": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer",
-        "path": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer",
-        "short": "B.1.1.3 - Order placer",
-        "definition": "The health professional identification number. Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number. In case when order placer is not a health professional, e.g. by patients themselves where applicable, appropriate personal identifier should be used. ",
+        "id": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer[x]",
+        "path": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer[x]",
+        "short": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
+        "definition": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer",
+          "path": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer[x]",
           "min": 0,
           "max": "1"
         },
         "type": [
           {
             "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderReasonText",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderReasonText",
-        "short": "B.1.1.4 - Order reason text",
+        "short": "An explanation or justification for why this service is being requested in textual form.",
         "definition": "An explanation or justification for why this service is being requested in textual form.",
         "min": 0,
         "max": "*",
@@ -176,31 +182,55 @@
         ]
       },
       {
-        "id": "EHDSLaboratoryOrderBody.orderInformation.orderReason",
-        "path": "EHDSLaboratoryOrderBody.orderInformation.orderReason",
-        "short": "B.1.1.5 - Order reason",
-        "definition": "An explanation or justification for why this service is being requested in coded form.",
+        "id": "EHDSLaboratoryOrderBody.orderInformation.orderReason[x]",
+        "path": "EHDSLaboratoryOrderBody.orderInformation.orderReason[x]",
+        "short": "An explanation or justification for why this service is being requested in coded or structured form.",
+        "definition": "An explanation or justification for why this service is being requested in coded or structured form.",
         "min": 0,
         "max": "*",
         "base": {
-          "path": "EHDSLaboratoryOrderBody.orderInformation.orderReason",
+          "path": "EHDSLaboratoryOrderBody.orderInformation.orderReason[x]",
           "min": 0,
           "max": "*"
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
-            ]
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryOrderBody.orderInformation.clinicalQuestion",
+        "path": "EHDSLaboratoryOrderBody.orderInformation.clinicalQuestion",
+        "short": "Specification of clinical question (goal of the investigation) to be answered by the laboratory investigation.",
+        "definition": "Specification of clinical question (goal of the investigation) to be answered by the laboratory investigation.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSLaboratoryOrderBody.orderInformation.clinicalQuestion",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.encounter",
         "path": "EHDSLaboratoryOrderBody.encounter",
-        "short": "B.1.2 - Encounter",
+        "short": "An encounter that provides additional information about the healthcare context in which this order is made.",
         "definition": "An encounter that provides additional information about the healthcare context in which this order is made.",
         "min": 0,
         "max": "1",
@@ -221,7 +251,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation",
         "path": "EHDSLaboratoryOrderBody.supportingInformation",
-        "short": "B.1.3 - Supporting information",
+        "short": "Additional clinical information about the patient or specimen that may influence the services or their interpretations. This information includes diagnosis, clinical findings and other observations. In laboratory ordering these are typically referred to as 'ask at order entry questions (AOEs).' This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example, reporting the amount of inspired oxygen for blood gas measurements.",
         "definition": "Additional clinical information about the patient or specimen that may influence the services or their interpretations. This information includes diagnosis, clinical findings and other observations. In laboratory ordering these are typically referred to as 'ask at order entry questions (AOEs).' This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example, reporting the amount of inspired oxygen for blood gas measurements.",
         "min": 0,
         "max": "1",
@@ -239,7 +269,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.observation",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.observation",
-        "short": "B.1.3.1 - Observation",
+        "short": "Clinical findings and other observations.",
         "definition": "Clinical findings and other observations.",
         "min": 0,
         "max": "*",
@@ -257,7 +287,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.condition",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.condition",
-        "short": "B.1.3.2 - Condition",
+        "short": "Condition that may influence the service or result interpretation.",
         "definition": "Condition that may influence the service or result interpretation.",
         "min": 0,
         "max": "*",
@@ -275,8 +305,8 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.medicationAdministration",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.medicationAdministration",
-        "short": "B.1.3.3 - Medication Administration",
-        "definition": "Medication adninistered before ordering the service.",
+        "short": "Medication administered before ordering the service.",
+        "definition": "Medication administered before ordering the service.",
         "min": 0,
         "max": "*",
         "base": {
@@ -293,7 +323,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.sexForClinicalUse",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.sexForClinicalUse",
-        "short": "B.1.3.4 - Sex for clinical use",
+        "short": "A Sex Parameter for Clinical Use is a parameter that provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc.. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population",
         "definition": "A Sex Parameter for Clinical Use is a parameter that provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc.. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population",
         "min": 0,
         "max": "*",
@@ -315,7 +345,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.vaccination",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.vaccination",
-        "short": "B.1.3.5 - Vaccination",
+        "short": "Vaccination history of the patient.",
         "definition": "Vaccination history of the patient.",
         "min": 0,
         "max": "*",
@@ -326,14 +356,14 @@
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImmunization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImmunisation"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.otherSupportingInformation",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.otherSupportingInformation",
-        "short": "B.1.3.6 - Other supporting information",
+        "short": "Any other type of relevant supporting information",
         "definition": "Any other type of relevant supporting information",
         "min": 0,
         "max": "*",
@@ -351,7 +381,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.specimen",
         "path": "EHDSLaboratoryOrderBody.specimen",
-        "short": "B.1.4 - Specimen",
+        "short": "Specimen information",
         "definition": "Specimen information",
         "min": 0,
         "max": "*",
@@ -369,7 +399,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.serviceRequests",
         "path": "EHDSLaboratoryOrderBody.serviceRequests",
-        "short": "B.1.5 - Service requests",
+        "short": "Specification of requested service or services",
         "definition": "Specification of requested service or services",
         "min": 0,
         "max": "*",
@@ -387,7 +417,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.allergy",
         "path": "EHDSLaboratoryOrderBody.allergy",
-        "short": "B.1.6 - Allergy",
+        "short": "Allergies and intolerances that may affect order execution or interpretation of results",
         "definition": "Allergies and intolerances that may affect order execution or interpretation of results",
         "min": 0,
         "max": "*",
@@ -405,7 +435,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.alerts",
         "path": "EHDSLaboratoryOrderBody.alerts",
-        "short": "B.1.7 - Alerts",
+        "short": "Alerts and warnings that may affect order execution or interpretation of results",
         "definition": "Alerts and warnings that may affect order execution or interpretation of results",
         "min": 0,
         "max": "*",
@@ -416,14 +446,14 @@
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAlertFlag"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAlert"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.appointment",
         "path": "EHDSLaboratoryOrderBody.appointment",
-        "short": "B.1.8 - Appointment",
+        "short": "Information about the appointment (if the appointment has been booked)",
         "definition": "Information about the appointment (if the appointment has been booked)",
         "min": 0,
         "max": "1",
@@ -451,7 +481,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation",
         "path": "EHDSLaboratoryOrderBody.orderInformation",
-        "short": "B.1.1 - Order information",
+        "short": "Order Information",
         "definition": "Order Information",
         "min": 0,
         "max": "*",
@@ -464,7 +494,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderId",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderId",
-        "short": "B.1.1.1 - Order Id",
+        "short": "An identifier of the laboratory test order.",
         "definition": "An identifier of the laboratory test order.",
         "min": 1,
         "max": "*",
@@ -477,7 +507,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderDateAndTime",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderDateAndTime",
-        "short": "B.1.1.2 - Order date and time",
+        "short": "Date and time of the order placement.",
         "definition": "Date and time of the order placement.",
         "min": 0,
         "max": "1",
@@ -490,7 +520,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderText",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderText",
-        "short": "B.1.1.3 - Order text",
+        "short": "A verbal description of the order or any supplementary requirements specific to each type of order, if they cannot be expressed formally.",
         "definition": "A verbal description of the order or any supplementary requirements specific to each type of order, if they cannot be expressed formally.",
         "min": 0,
         "max": "1",
@@ -501,22 +531,28 @@
         ]
       },
       {
-        "id": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer",
-        "path": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer",
-        "short": "B.1.1.3 - Order placer",
-        "definition": "The health professional identification number. Either an internal identifier assigned by a healthcare provider institution or (preferably) a national health professional ID such as the license or registration number. In case when order placer is not a health professional, e.g. by patients themselves where applicable, appropriate personal identifier should be used. ",
+        "id": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer[x]",
+        "path": "EHDSLaboratoryOrderBody.orderInformation.orderPlacer[x]",
+        "short": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
+        "definition": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
         "min": 0,
         "max": "1",
         "type": [
           {
             "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.orderInformation.orderReasonText",
         "path": "EHDSLaboratoryOrderBody.orderInformation.orderReasonText",
-        "short": "B.1.1.4 - Order reason text",
+        "short": "An explanation or justification for why this service is being requested in textual form.",
         "definition": "An explanation or justification for why this service is being requested in textual form.",
         "min": 0,
         "max": "*",
@@ -527,26 +563,45 @@
         ]
       },
       {
-        "id": "EHDSLaboratoryOrderBody.orderInformation.orderReason",
-        "path": "EHDSLaboratoryOrderBody.orderInformation.orderReason",
-        "short": "B.1.1.5 - Order reason",
-        "definition": "An explanation or justification for why this service is being requested in coded form. ",
+        "id": "EHDSLaboratoryOrderBody.orderInformation.orderReason[x]",
+        "path": "EHDSLaboratoryOrderBody.orderInformation.orderReason[x]",
+        "short": "An explanation or justification for why this service is being requested in coded or structured form.",
+        "definition": "An explanation or justification for why this service is being requested in coded or structured form.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
-            ]
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryOrderBody.orderInformation.clinicalQuestion",
+        "path": "EHDSLaboratoryOrderBody.orderInformation.clinicalQuestion",
+        "short": "Specification of clinical question (goal of the investigation) to be answered by the laboratory investigation.",
+        "definition": "Specification of clinical question (goal of the investigation) to be answered by the laboratory investigation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.encounter",
         "path": "EHDSLaboratoryOrderBody.encounter",
-        "short": "B.1.2 - Encounter",
+        "short": "An encounter that provides additional information about the healthcare context in which this order is made.",
         "definition": "An encounter that provides additional information about the healthcare context in which this order is made.",
         "min": 0,
         "max": "1",
@@ -562,7 +617,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation",
         "path": "EHDSLaboratoryOrderBody.supportingInformation",
-        "short": "B.1.3 - Supporting information",
+        "short": "Additional clinical information about the patient or specimen that may influence the services or their interpretations. This information includes diagnosis, clinical findings and other observations. In laboratory ordering these are typically referred to as 'ask at order entry questions (AOEs).' This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example, reporting the amount of inspired oxygen for blood gas measurements.",
         "definition": "Additional clinical information about the patient or specimen that may influence the services or their interpretations. This information includes diagnosis, clinical findings and other observations. In laboratory ordering these are typically referred to as 'ask at order entry questions (AOEs).' This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order. For example, reporting the amount of inspired oxygen for blood gas measurements.",
         "min": 0,
         "max": "1",
@@ -575,7 +630,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.observation",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.observation",
-        "short": "B.1.3.1 - Observation",
+        "short": "Clinical findings and other observations.",
         "definition": "Clinical findings and other observations.",
         "min": 0,
         "max": "*",
@@ -588,7 +643,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.condition",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.condition",
-        "short": "B.1.3.2 - Condition",
+        "short": "Condition that may influence the service or result interpretation.",
         "definition": "Condition that may influence the service or result interpretation.",
         "min": 0,
         "max": "*",
@@ -601,8 +656,8 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.medicationAdministration",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.medicationAdministration",
-        "short": "B.1.3.3 - Medication Administration",
-        "definition": "Medication adninistered before ordering the service.",
+        "short": "Medication administered before ordering the service.",
+        "definition": "Medication administered before ordering the service.",
         "min": 0,
         "max": "*",
         "type": [
@@ -614,7 +669,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.sexForClinicalUse",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.sexForClinicalUse",
-        "short": "B.1.3.4 - Sex for clinical use",
+        "short": "A Sex Parameter for Clinical Use is a parameter that provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc.. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population",
         "definition": "A Sex Parameter for Clinical Use is a parameter that provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc.. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population",
         "min": 0,
         "max": "*",
@@ -631,20 +686,20 @@
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.vaccination",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.vaccination",
-        "short": "B.1.3.5 - Vaccination",
-        "definition": "Vaccination history of the patient. ",
+        "short": "Vaccination history of the patient.",
+        "definition": "Vaccination history of the patient.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImmunization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImmunisation"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.supportingInformation.otherSupportingInformation",
         "path": "EHDSLaboratoryOrderBody.supportingInformation.otherSupportingInformation",
-        "short": "B.1.3.6 - Other supporting information",
+        "short": "Any other type of relevant supporting information",
         "definition": "Any other type of relevant supporting information",
         "min": 0,
         "max": "*",
@@ -657,7 +712,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.specimen",
         "path": "EHDSLaboratoryOrderBody.specimen",
-        "short": "B.1.4 - Specimen",
+        "short": "Specimen information",
         "definition": "Specimen information",
         "min": 0,
         "max": "*",
@@ -670,7 +725,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.serviceRequests",
         "path": "EHDSLaboratoryOrderBody.serviceRequests",
-        "short": "B.1.5 - Service requests",
+        "short": "Specification of requested service or services",
         "definition": "Specification of requested service or services",
         "min": 0,
         "max": "*",
@@ -683,7 +738,7 @@
       {
         "id": "EHDSLaboratoryOrderBody.allergy",
         "path": "EHDSLaboratoryOrderBody.allergy",
-        "short": "B.1.6 - Allergy",
+        "short": "Allergies and intolerances that may affect order execution or interpretation of results",
         "definition": "Allergies and intolerances that may affect order execution or interpretation of results",
         "min": 0,
         "max": "*",
@@ -696,20 +751,20 @@
       {
         "id": "EHDSLaboratoryOrderBody.alerts",
         "path": "EHDSLaboratoryOrderBody.alerts",
-        "short": "B.1.7 - Alerts",
+        "short": "Alerts and warnings that may affect order execution or interpretation of results",
         "definition": "Alerts and warnings that may affect order execution or interpretation of results",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAlertFlag"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAlert"
           }
         ]
       },
       {
         "id": "EHDSLaboratoryOrderBody.appointment",
         "path": "EHDSLaboratoryOrderBody.appointment",
-        "short": "B.1.8 - Appointment",
+        "short": "Information about the appointment (if the appointment has been booked)",
         "definition": "Information about the appointment (if the appointment has been booked)",
         "min": 0,
         "max": "1",

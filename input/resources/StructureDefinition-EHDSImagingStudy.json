@@ -5,6 +5,10 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
       "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
     }
   ],
   "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingStudy",
@@ -12,7 +16,7 @@
   "name": "EHDSImagingStudy",
   "title": "Imaging study model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +29,7 @@
       ]
     }
   ],
-  "description": "C.32 - EHDS refined base model for Imaging study",
+  "description": "EHDS refined base model for Imaging study",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -37,13 +41,13 @@
   "kind": "logical",
   "abstract": false,
   "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingStudy",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
   "derivation": "specialization",
   "snapshot": {
     "extension": [
       {
         "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
-        "valueString": "5.0.0"
+        "valueString": "0.1.0"
       }
     ],
     "element": [
@@ -51,7 +55,7 @@
         "id": "EHDSImagingStudy",
         "path": "EHDSImagingStudy",
         "short": "Imaging study model",
-        "definition": "C.32 - EHDS refined base model for Imaging study",
+        "definition": "EHDS refined base model for Imaging study",
         "min": 0,
         "max": "*",
         "base": {
@@ -68,15 +72,52 @@
         ]
       },
       {
-        "id": "EHDSImagingStudy.identifier",
-        "path": "EHDSImagingStudy.identifier",
-        "short": "C.32.1 - Identifier",
-        "definition": "Identifiers for the ImagingStudy such as DICOM Study Instance UID. If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier.",
+        "id": "EHDSImagingStudy.header",
+        "path": "EHDSImagingStudy.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.subject",
+        "path": "EHDSImagingStudy.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.identifier",
+        "path": "EHDSImagingStudy.header.identifier",
+        "short": "Identifiers for the Imaging Study such as DICOM Study Instance UID. If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier.",
+        "definition": "Business identifier for the object",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.1",
         "min": 1,
         "max": "*",
         "base": {
-          "path": "EHDSImagingStudy.identifier",
-          "min": 1,
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
           "max": "*"
         },
         "type": [
@@ -86,9 +127,184 @@
         ]
       },
       {
+        "id": "EHDSImagingStudy.header.authorship",
+        "path": "EHDSImagingStudy.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.authorship.author[x]",
+        "path": "EHDSImagingStudy.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.authorship.datetime",
+        "path": "EHDSImagingStudy.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.lastUpdate",
+        "path": "EHDSImagingStudy.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.status",
+        "path": "EHDSImagingStudy.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.statusReason[x]",
+        "path": "EHDSImagingStudy.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.header.language",
+        "path": "EHDSImagingStudy.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSImagingStudy.header.version",
+        "path": "EHDSImagingStudy.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingStudy.presentedForm",
+        "path": "EHDSImagingStudy.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
         "id": "EHDSImagingStudy.modality",
         "path": "EHDSImagingStudy.modality",
-        "short": "C.32.2 - Modality",
+        "short": "All of the distinct values for series' modalities",
         "definition": "All of the distinct values for series' modalities",
         "min": 0,
         "max": "*",
@@ -108,32 +324,10 @@
         }
       },
       {
-        "id": "EHDSImagingStudy.subject",
-        "path": "EHDSImagingStudy.subject",
-        "short": "C.32.3 - Subject",
-        "definition": "Who or what is the subject of the study",
-        "min": 1,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.subject",
-          "min": 1,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
-            ]
-          }
-        ]
-      },
-      {
         "id": "EHDSImagingStudy.encounter",
         "path": "EHDSImagingStudy.encounter",
-        "short": "C.32.4 - Encounter",
-        "definition": "Encounter with which this imaging study is associated",
+        "short": "Reference to the encounter with which this imaging study is associated",
+        "definition": "Reference to the encounter with which this imaging study is associated",
         "min": 0,
         "max": "1",
         "base": {
@@ -143,17 +337,14 @@
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSEncounter"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSEncounter"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.started",
         "path": "EHDSImagingStudy.started",
-        "short": "C.32.5 - Started",
+        "short": "Date and time the study started.",
         "definition": "Date and time the study started.",
         "min": 0,
         "max": "1",
@@ -171,8 +362,8 @@
       {
         "id": "EHDSImagingStudy.basedOn",
         "path": "EHDSImagingStudy.basedOn",
-        "short": "C.32.6 - Based on",
-        "definition": "A list of the diagnostic requests that resulted in this imaging study being performed.",
+        "short": "References to the diagnostic requests that resulted in this imaging study being performed.",
+        "definition": "References to the diagnostic requests that resulted in this imaging study being performed.",
         "min": 0,
         "max": "*",
         "base": {
@@ -182,17 +373,14 @@
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.numberOfSeries",
         "path": "EHDSImagingStudy.numberOfSeries",
-        "short": "C.32.7 - Number of series",
+        "short": "Number of Series in the Study. This value given may be larger than the number of series elements this Resource contains due to resource availability, security, or other factors. This element should be present if any series elements are present.",
         "definition": "Number of Series in the Study. This value given may be larger than the number of series elements this Resource contains due to resource availability, security, or other factors. This element should be present if any series elements are present.",
         "min": 0,
         "max": "1",
@@ -203,15 +391,15 @@
         },
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.numberOfInstances",
         "path": "EHDSImagingStudy.numberOfInstances",
-        "short": "C.32.8 - Number of instances",
-        "definition": "Number of  Service-Object Pairs (SOP) Instances in Study. This value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.",
+        "short": "Number of Service-Object Pairs (SOP) Instances in Study. This value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.",
+        "definition": "Number of Service-Object Pairs (SOP) Instances in Study. This value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.",
         "min": 0,
         "max": "1",
         "base": {
@@ -221,15 +409,16 @@
         },
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.description",
         "path": "EHDSImagingStudy.description",
-        "short": "C.32.9 - Description",
+        "short": "The Imaging Manager description of the study. Institution-generated description or classification of the Study (component) performed.",
         "definition": "The Imaging Manager description of the study. Institution-generated description or classification of the Study (component) performed.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.2",
         "min": 0,
         "max": "1",
         "base": {
@@ -246,8 +435,9 @@
       {
         "id": "EHDSImagingStudy.studyCustodian",
         "path": "EHDSImagingStudy.studyCustodian",
-        "short": "C.32.10 - Study custodian",
-        "definition": "Organization name, address, contact information.",
+        "short": "Organisation name, address, contact information.",
+        "definition": "Organisation name, address, contact information.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.3",
         "min": 0,
         "max": "1",
         "base": {
@@ -257,15 +447,15 @@
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.studyEndpoint",
         "path": "EHDSImagingStudy.studyEndpoint",
-        "short": "C.32.11 - Study endpoint",
-        "definition": "An endpoint describes the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "short": "Study endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "definition": "Study endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
         "min": 0,
         "max": "1",
         "base": {
@@ -282,8 +472,9 @@
       {
         "id": "EHDSImagingStudy.series",
         "path": "EHDSImagingStudy.series",
-        "short": "C.32.12 - Series",
-        "definition": "Each study has one or more series of instances",
+        "short": "Series. Each study has one or more series of instances, but they may be absent when no series information needs to be conveyed",
+        "definition": "Series. Each study has one or more series of instances, but they may be absent when no series information needs to be conveyed",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4",
         "min": 0,
         "max": "*",
         "base": {
@@ -300,8 +491,9 @@
       {
         "id": "EHDSImagingStudy.series.seriesUid",
         "path": "EHDSImagingStudy.series.seriesUid",
-        "short": "C.32.12.1 - Series UID",
+        "short": "DICOM Series Instance UID for the series",
         "definition": "DICOM Series Instance UID for the series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.2",
         "min": 1,
         "max": "1",
         "base": {
@@ -311,14 +503,14 @@
         },
         "type": [
           {
-            "code": "id"
+            "code": "Identifier"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.number",
         "path": "EHDSImagingStudy.series.number",
-        "short": "C.32.12.2 - Number",
+        "short": "Numeric identifier of this series",
         "definition": "Numeric identifier of this series",
         "min": 0,
         "max": "1",
@@ -329,15 +521,16 @@
         },
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.acquisitionModality",
         "path": "EHDSImagingStudy.series.acquisitionModality",
-        "short": "C.32.12.3 - Acquisition modality",
-        "definition": "The modality used for this series",
+        "short": "Acquisition modality - the modality used for this series",
+        "definition": "Acquisition modality - the modality used for this series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.3",
         "min": 1,
         "max": "1",
         "base": {
@@ -358,8 +551,9 @@
       {
         "id": "EHDSImagingStudy.series.description",
         "path": "EHDSImagingStudy.series.description",
-        "short": "C.32.12.4 - Description",
+        "short": "A short human readable summary of the series",
         "definition": "A short human readable summary of the series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.1",
         "min": 0,
         "max": "1",
         "base": {
@@ -376,7 +570,7 @@
       {
         "id": "EHDSImagingStudy.series.numberOfInstances",
         "path": "EHDSImagingStudy.series.numberOfInstances",
-        "short": "C.32.12.5 - Number of instances",
+        "short": "Number of Series Related Instances",
         "definition": "Number of Series Related Instances",
         "min": 0,
         "max": "1",
@@ -387,15 +581,16 @@
         },
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.seriesEndpoint",
         "path": "EHDSImagingStudy.series.seriesEndpoint",
-        "short": "C.32.12.6 - Series endpoint",
-        "definition": "An endpoint describes the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "short": "Series endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "definition": "Series endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.6",
         "min": 0,
         "max": "1",
         "base": {
@@ -412,8 +607,8 @@
       {
         "id": "EHDSImagingStudy.series.bodySite",
         "path": "EHDSImagingStudy.series.bodySite",
-        "short": "C.32.12.7 - Body site",
-        "definition": "Body part examined",
+        "short": "Body part (with laterality) examined",
+        "definition": "Body part (with laterality) examined",
         "min": 0,
         "max": "1",
         "base": {
@@ -423,40 +618,14 @@
         },
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
-      },
-      {
-        "id": "EHDSImagingStudy.series.laterality",
-        "path": "EHDSImagingStudy.series.laterality",
-        "short": "C.32.12.8 - Laterality",
-        "definition": "Body part laterality",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.series.laterality",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
+        ]
       },
       {
         "id": "EHDSImagingStudy.series.specimen",
         "path": "EHDSImagingStudy.series.specimen",
-        "short": "C.32.12.9 - Specimen",
+        "short": "Specimen imaged",
         "definition": "Specimen imaged",
         "min": 0,
         "max": "*",
@@ -467,17 +636,14 @@
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.started",
         "path": "EHDSImagingStudy.series.started",
-        "short": "C.32.12.10 - Started",
+        "short": "When the series started",
         "definition": "When the series started",
         "min": 0,
         "max": "1",
@@ -495,8 +661,9 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries",
         "path": "EHDSImagingStudy.series.instancesInTheSeries",
-        "short": "C.32.12.11 - Instances in the series",
-        "definition": "A single SOP instance from the series",
+        "short": "Each series has one or more instances, but they may be absent when no instance information needs to be conveyed",
+        "definition": "Each series has one or more instances, but they may be absent when no instance information needs to be conveyed",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.7",
         "min": 0,
         "max": "*",
         "base": {
@@ -513,8 +680,8 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.instanceTitle",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.instanceTitle",
-        "short": "C.32.12.11.1 - Instance title",
-        "definition": "The description of the instance.",
+        "short": "Instance title that is the description of the instance.",
+        "definition": "Instance title that is the description of the instance.",
         "min": 0,
         "max": "1",
         "base": {
@@ -531,8 +698,9 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.instanceUid",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.instanceUid",
-        "short": "C.32.12.11.2 - Instance UID",
+        "short": "DICOM SOP Instance UID",
         "definition": "DICOM SOP Instance UID",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.7.1",
         "min": 1,
         "max": "1",
         "base": {
@@ -542,15 +710,16 @@
         },
         "type": [
           {
-            "code": "id"
+            "code": "Identifier"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.sopClass",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.sopClass",
-        "short": "C.32.12.11.3 - SOP class",
-        "definition": "DICOM class type",
+        "short": "SOP class - DICOM class type",
+        "definition": "SOP class - DICOM class type",
+        "requirements": "DICOM KOS",
         "min": 1,
         "max": "1",
         "base": {
@@ -567,8 +736,9 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.instanceNumber",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.instanceNumber",
-        "short": "C.32.12.11.4 - Instance number",
+        "short": "The number of this instance in the series",
         "definition": "The number of this instance in the series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.7.3",
         "min": 0,
         "max": "1",
         "base": {
@@ -578,173 +748,26 @@
         },
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation",
-        "short": "C.32.12.11.5 - Radiation dose information",
-        "definition": "Kerma area product (KAP), Total KAP, Kerma at the end of tube (dental X-ray), Thickness of breast for the calculation of Average absorbed breast dose.",
+        "id": "EHDSImagingStudy.series.instancesInTheSeries.numberOfFrames",
+        "path": "EHDSImagingStudy.series.instancesInTheSeries.numberOfFrames",
+        "short": "The number of frames in a multiframe instance",
+        "definition": "The number of frames in a multiframe instance",
+        "requirements": "DICOM KOS",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation",
+          "path": "EHDSImagingStudy.series.instancesInTheSeries.numberOfFrames",
           "min": 0,
           "max": "1"
         },
         "type": [
           {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.kap",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.kap",
-        "short": "C.32.12.11.5.1 - KAP",
-        "definition": "Kerma area product (KAP). A method of radiation dose monitoring used in radiographic and fluoroscopic studies.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.kap",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.totalKerma",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.totalKerma",
-        "short": "C.32.12.11.5.2 - Total Kerma",
-        "definition": "Kerma is a measure of energy transferred from radiation to matter and is an acronym for kinetic energy released to matter.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.totalKerma",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.endTubeKerma",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.endTubeKerma",
-        "short": "C.32.12.11.5.3 - End tube Kerma",
-        "definition": "Kerma at the end of tube",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.endTubeKerma",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.breastThickness",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.breastThickness",
-        "short": "C.32.12.11.5.4 - Breast thickness",
-        "definition": "Thickness of breast for the calculation of Average absorbed breast dose.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.breastThickness",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.abd",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.abd",
-        "short": "C.32.12.11.5.5 - 2ABD",
-        "definition": "Average absorbed breast dose.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.abd",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.phase",
-        "path": "EHDSImagingStudy.phase",
-        "short": "C.32.13 - Phase",
-        "definition": "Study phase, e.g., without contrast, arterial phase, venous phase, delayed phase. Only some types of studies have phases.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.phase",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.phase.phaseCode",
-        "path": "EHDSImagingStudy.phase.phaseCode",
-        "short": "C.32.13.1 - Phase code",
-        "definition": "Study phase, e.g., without contrast, arterial phase, venous phase, delayed phase. Only some types of studies have phases.",
-        "min": 1,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.phase.phaseCode",
-          "min": 1,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
-      },
-      {
-        "id": "EHDSImagingStudy.phase.radiationDose",
-        "path": "EHDSImagingStudy.phase.radiationDose",
-        "short": "C.32.13.2 - Radiation dose",
-        "definition": "Dose length product - Computerized Tomography (CT) related.",
-        "min": 0,
-        "max": "1",
-        "base": {
-          "path": "EHDSImagingStudy.phase.radiationDose",
-          "min": 0,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Quantity"
+            "code": "integer"
           }
         ]
       }
@@ -756,25 +779,19 @@
         "id": "EHDSImagingStudy",
         "path": "EHDSImagingStudy",
         "short": "Imaging study model",
-        "definition": "C.32 - EHDS refined base model for Imaging study"
+        "definition": "EHDS refined base model for Imaging study"
       },
       {
-        "id": "EHDSImagingStudy.identifier",
-        "path": "EHDSImagingStudy.identifier",
-        "short": "C.32.1 - Identifier",
-        "definition": "Identifiers for the ImagingStudy such as DICOM Study Instance UID. If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier.",
-        "min": 1,
-        "max": "*",
-        "type": [
-          {
-            "code": "Identifier"
-          }
-        ]
+        "id": "EHDSImagingStudy.header.identifier",
+        "path": "EHDSImagingStudy.header.identifier",
+        "short": "Identifiers for the Imaging Study such as DICOM Study Instance UID. If one or more series elements are present in the ImagingStudy, then there shall be one DICOM Study UID identifier.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.1",
+        "min": 1
       },
       {
         "id": "EHDSImagingStudy.modality",
         "path": "EHDSImagingStudy.modality",
-        "short": "C.32.2 - Modality",
+        "short": "All of the distinct values for series' modalities",
         "definition": "All of the distinct values for series' modalities",
         "min": 0,
         "max": "*",
@@ -789,42 +806,22 @@
         }
       },
       {
-        "id": "EHDSImagingStudy.subject",
-        "path": "EHDSImagingStudy.subject",
-        "short": "C.32.3 - Subject",
-        "definition": "Who or what is the subject of the study",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
-            ]
-          }
-        ]
-      },
-      {
         "id": "EHDSImagingStudy.encounter",
         "path": "EHDSImagingStudy.encounter",
-        "short": "C.32.4 - Encounter",
-        "definition": "Encounter with which this imaging study is associated",
+        "short": "Reference to the encounter with which this imaging study is associated",
+        "definition": "Reference to the encounter with which this imaging study is associated",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSEncounter"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSEncounter"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.started",
         "path": "EHDSImagingStudy.started",
-        "short": "C.32.5 - Started",
+        "short": "Date and time the study started.",
         "definition": "Date and time the study started.",
         "min": 0,
         "max": "1",
@@ -837,50 +834,48 @@
       {
         "id": "EHDSImagingStudy.basedOn",
         "path": "EHDSImagingStudy.basedOn",
-        "short": "C.32.6 - Based on",
-        "definition": "A list of the diagnostic requests that resulted in this imaging study being performed.",
+        "short": "References to the diagnostic requests that resulted in this imaging study being performed.",
+        "definition": "References to the diagnostic requests that resulted in this imaging study being performed.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.numberOfSeries",
         "path": "EHDSImagingStudy.numberOfSeries",
-        "short": "C.32.7 - Number of series",
+        "short": "Number of Series in the Study. This value given may be larger than the number of series elements this Resource contains due to resource availability, security, or other factors. This element should be present if any series elements are present.",
         "definition": "Number of Series in the Study. This value given may be larger than the number of series elements this Resource contains due to resource availability, security, or other factors. This element should be present if any series elements are present.",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.numberOfInstances",
         "path": "EHDSImagingStudy.numberOfInstances",
-        "short": "C.32.8 - Number of instances",
-        "definition": "Number of  Service-Object Pairs (SOP) Instances in Study. This value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.",
+        "short": "Number of Service-Object Pairs (SOP) Instances in Study. This value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.",
+        "definition": "Number of Service-Object Pairs (SOP) Instances in Study. This value given may be larger than the number of instance elements this resource contains due to resource availability, security, or other factors. This element should be present if any instance elements are present.",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.description",
         "path": "EHDSImagingStudy.description",
-        "short": "C.32.9 - Description",
+        "short": "The Imaging Manager description of the study. Institution-generated description or classification of the Study (component) performed.",
         "definition": "The Imaging Manager description of the study. Institution-generated description or classification of the Study (component) performed.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.2",
         "min": 0,
         "max": "1",
         "type": [
@@ -892,21 +887,22 @@
       {
         "id": "EHDSImagingStudy.studyCustodian",
         "path": "EHDSImagingStudy.studyCustodian",
-        "short": "C.32.10 - Study custodian",
-        "definition": "Organization name, address, contact information.",
+        "short": "Organisation name, address, contact information.",
+        "definition": "Organisation name, address, contact information.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.3",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.studyEndpoint",
         "path": "EHDSImagingStudy.studyEndpoint",
-        "short": "C.32.11 - Study endpoint",
-        "definition": "An endpoint describes the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "short": "Study endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "definition": "Study endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
         "min": 0,
         "max": "1",
         "type": [
@@ -918,8 +914,9 @@
       {
         "id": "EHDSImagingStudy.series",
         "path": "EHDSImagingStudy.series",
-        "short": "C.32.12 - Series",
-        "definition": "Each study has one or more series of instances",
+        "short": "Series. Each study has one or more series of instances, but they may be absent when no series information needs to be conveyed",
+        "definition": "Series. Each study has one or more series of instances, but they may be absent when no series information needs to be conveyed",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4",
         "min": 0,
         "max": "*",
         "type": [
@@ -931,34 +928,36 @@
       {
         "id": "EHDSImagingStudy.series.seriesUid",
         "path": "EHDSImagingStudy.series.seriesUid",
-        "short": "C.32.12.1 - Series UID",
+        "short": "DICOM Series Instance UID for the series",
         "definition": "DICOM Series Instance UID for the series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.2",
         "min": 1,
         "max": "1",
         "type": [
           {
-            "code": "id"
+            "code": "Identifier"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.number",
         "path": "EHDSImagingStudy.series.number",
-        "short": "C.32.12.2 - Number",
+        "short": "Numeric identifier of this series",
         "definition": "Numeric identifier of this series",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.acquisitionModality",
         "path": "EHDSImagingStudy.series.acquisitionModality",
-        "short": "C.32.12.3 - Acquisition modality",
-        "definition": "The modality used for this series",
+        "short": "Acquisition modality - the modality used for this series",
+        "definition": "Acquisition modality - the modality used for this series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.3",
         "min": 1,
         "max": "1",
         "type": [
@@ -974,8 +973,9 @@
       {
         "id": "EHDSImagingStudy.series.description",
         "path": "EHDSImagingStudy.series.description",
-        "short": "C.32.12.4 - Description",
+        "short": "A short human readable summary of the series",
         "definition": "A short human readable summary of the series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.1",
         "min": 0,
         "max": "1",
         "type": [
@@ -987,21 +987,22 @@
       {
         "id": "EHDSImagingStudy.series.numberOfInstances",
         "path": "EHDSImagingStudy.series.numberOfInstances",
-        "short": "C.32.12.5 - Number of instances",
+        "short": "Number of Series Related Instances",
         "definition": "Number of Series Related Instances",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.seriesEndpoint",
         "path": "EHDSImagingStudy.series.seriesEndpoint",
-        "short": "C.32.12.6 - Series endpoint",
-        "definition": "An endpoint describes the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "short": "Series endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "definition": "Series endpoint describing the technical details of a location that can be connected to for the delivery/retrieval of information. Sufficient information is required to ensure that a connection can be made securely, and appropriate data transmitted as defined by the endpoint owner. These may be locally hosted services, regional services, or national service.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.6",
         "min": 0,
         "max": "1",
         "type": [
@@ -1013,57 +1014,33 @@
       {
         "id": "EHDSImagingStudy.series.bodySite",
         "path": "EHDSImagingStudy.series.bodySite",
-        "short": "C.32.12.7 - Body site",
-        "definition": "Body part examined",
+        "short": "Body part (with laterality) examined",
+        "definition": "Body part (with laterality) examined",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
-      },
-      {
-        "id": "EHDSImagingStudy.series.laterality",
-        "path": "EHDSImagingStudy.series.laterality",
-        "short": "C.32.12.8 - Laterality",
-        "definition": "Body part laterality",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
+        ]
       },
       {
         "id": "EHDSImagingStudy.series.specimen",
         "path": "EHDSImagingStudy.series.specimen",
-        "short": "C.32.12.9 - Specimen",
+        "short": "Specimen imaged",
         "definition": "Specimen imaged",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.started",
         "path": "EHDSImagingStudy.series.started",
-        "short": "C.32.12.10 - Started",
+        "short": "When the series started",
         "definition": "When the series started",
         "min": 0,
         "max": "1",
@@ -1076,8 +1053,9 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries",
         "path": "EHDSImagingStudy.series.instancesInTheSeries",
-        "short": "C.32.12.11 - Instances in the series",
-        "definition": "A single SOP instance from the series",
+        "short": "Each series has one or more instances, but they may be absent when no instance information needs to be conveyed",
+        "definition": "Each series has one or more instances, but they may be absent when no instance information needs to be conveyed",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.7",
         "min": 0,
         "max": "*",
         "type": [
@@ -1089,8 +1067,8 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.instanceTitle",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.instanceTitle",
-        "short": "C.32.12.11.1 - Instance title",
-        "definition": "The description of the instance.",
+        "short": "Instance title that is the description of the instance.",
+        "definition": "Instance title that is the description of the instance.",
         "min": 0,
         "max": "1",
         "type": [
@@ -1102,21 +1080,23 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.instanceUid",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.instanceUid",
-        "short": "C.32.12.11.2 - Instance UID",
+        "short": "DICOM SOP Instance UID",
         "definition": "DICOM SOP Instance UID",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.7.1",
         "min": 1,
         "max": "1",
         "type": [
           {
-            "code": "id"
+            "code": "Identifier"
           }
         ]
       },
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.sopClass",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.sopClass",
-        "short": "C.32.12.11.3 - SOP class",
-        "definition": "DICOM class type",
+        "short": "SOP class - DICOM class type",
+        "definition": "SOP class - DICOM class type",
+        "requirements": "DICOM KOS",
         "min": 1,
         "max": "1",
         "type": [
@@ -1128,134 +1108,28 @@
       {
         "id": "EHDSImagingStudy.series.instancesInTheSeries.instanceNumber",
         "path": "EHDSImagingStudy.series.instancesInTheSeries.instanceNumber",
-        "short": "C.32.12.11.4 - Instance number",
+        "short": "The number of this instance in the series",
         "definition": "The number of this instance in the series",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.7.3",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "unsignedInt"
+            "code": "integer"
           }
         ]
       },
       {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation",
-        "short": "C.32.12.11.5 - Radiation dose information",
-        "definition": "Kerma area product (KAP), Total KAP, Kerma at the end of tube (dental X-ray), Thickness of breast for the calculation of Average absorbed breast dose.",
+        "id": "EHDSImagingStudy.series.instancesInTheSeries.numberOfFrames",
+        "path": "EHDSImagingStudy.series.instancesInTheSeries.numberOfFrames",
+        "short": "The number of frames in a multiframe instance",
+        "definition": "The number of frames in a multiframe instance",
+        "requirements": "DICOM KOS",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.kap",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.kap",
-        "short": "C.32.12.11.5.1 - KAP",
-        "definition": "Kerma area product (KAP). A method of radiation dose monitoring used in radiographic and fluoroscopic studies.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.totalKerma",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.totalKerma",
-        "short": "C.32.12.11.5.2 - Total Kerma",
-        "definition": "Kerma is a measure of energy transferred from radiation to matter and is an acronym for kinetic energy released to matter.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.endTubeKerma",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.endTubeKerma",
-        "short": "C.32.12.11.5.3 - End tube Kerma",
-        "definition": "Kerma at the end of tube",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.breastThickness",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.breastThickness",
-        "short": "C.32.12.11.5.4 - Breast thickness",
-        "definition": "Thickness of breast for the calculation of Average absorbed breast dose.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.abd",
-        "path": "EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.abd",
-        "short": "C.32.12.11.5.5 - 2ABD",
-        "definition": "Average absorbed breast dose.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Quantity"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.phase",
-        "path": "EHDSImagingStudy.phase",
-        "short": "C.32.13 - Phase",
-        "definition": "Study phase, e.g., without contrast, arterial phase, venous phase, delayed phase. Only some types of studies have phases.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Base"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingStudy.phase.phaseCode",
-        "path": "EHDSImagingStudy.phase.phaseCode",
-        "short": "C.32.13.1 - Phase code",
-        "definition": "Study phase, e.g., without contrast, arterial phase, venous phase, delayed phase. Only some types of studies have phases.",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "CodeableConcept"
-          }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
-      },
-      {
-        "id": "EHDSImagingStudy.phase.radiationDose",
-        "path": "EHDSImagingStudy.phase.radiationDose",
-        "short": "C.32.13.2 - Radiation dose",
-        "definition": "Dose length product - Computerized Tomography (CT) related.",
-        "min": 0,
-        "max": "1",
-        "type": [
-          {
-            "code": "Quantity"
+            "code": "integer"
           }
         ]
       }

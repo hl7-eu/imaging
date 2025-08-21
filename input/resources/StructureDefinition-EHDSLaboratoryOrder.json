@@ -12,7 +12,7 @@
   "name": "EHDSLaboratoryOrder",
   "title": "Laboratory order",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -90,11 +90,11 @@
         "path": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
         "short": "A.2 - Laboratory order structured body",
         "definition": "Laboratory order body",
-        "min": 1,
+        "min": 0,
         "max": "1",
         "base": {
           "path": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
-          "min": 1,
+          "min": 0,
           "max": "1"
         },
         "type": [
@@ -170,7 +170,7 @@
         "path": "EHDSLaboratoryOrder.laboratoryOrderStructuredBody",
         "short": "A.2 - Laboratory order structured body",
         "definition": "Laboratory order body",
-        "min": 1,
+        "min": 0,
         "max": "1",
         "type": [
           {

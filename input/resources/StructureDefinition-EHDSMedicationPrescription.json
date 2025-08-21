@@ -5,6 +5,10 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
       "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
     }
   ],
   "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationPrescription",
@@ -12,7 +16,7 @@
   "name": "EHDSMedicationPrescription",
   "title": "Medication prescription model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +29,7 @@
       ]
     }
   ],
-  "description": "Logical model for medication prescription body. A prescription contains one or more prescription items.",
+  "description": "Logical model for medication prescription. A prescription contains one or more prescription items.",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -37,13 +41,13 @@
   "kind": "logical",
   "abstract": false,
   "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationPrescription",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
   "derivation": "specialization",
   "snapshot": {
     "extension": [
       {
         "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
-        "valueString": "5.0.0"
+        "valueString": "0.1.0"
       }
     ],
     "element": [
@@ -51,7 +55,7 @@
         "id": "EHDSMedicationPrescription",
         "path": "EHDSMedicationPrescription",
         "short": "Medication prescription model",
-        "definition": "Logical model for medication prescription body. A prescription contains one or more prescription items.",
+        "definition": "Logical model for medication prescription. A prescription contains one or more prescription items.",
         "min": 0,
         "max": "*",
         "base": {
@@ -75,31 +79,296 @@
         "min": 1,
         "max": "1",
         "base": {
-          "path": "EHDSMedicationPrescription.header",
+          "path": "EHDSDataSet.header",
           "min": 1,
           "max": "1"
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationPrescriptionHeader"
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.subject",
+        "path": "EHDSMedicationPrescription.header.subject",
+        "short": "The person for whom the medication is prescribed/ordered. [Used for searching]",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.identifier",
+        "path": "EHDSMedicationPrescription.header.identifier",
+        "short": "Business identifier(s) for the prescription. [Used for searching]",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.authorship",
+        "path": "EHDSMedicationPrescription.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.authorship.author[x]",
+        "path": "EHDSMedicationPrescription.header.authorship.author[x]",
+        "short": "The prescriber, the person who made the prescription, and who takes the responsibility of the treatment. [Used for searching]",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.authorship.datetime",
+        "path": "EHDSMedicationPrescription.header.authorship.datetime",
+        "short": "Time of issuing (signing) the prescription by health care professional. [Used for searching]",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.lastUpdate",
+        "path": "EHDSMedicationPrescription.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.status",
+        "path": "EHDSMedicationPrescription.header.status",
+        "short": "Status of the prescription, this should not be status of treatment. For multi-item prescription, the status of prescription is often related to statuses of single lines. In case of single-item prescriptions, the status for line is usually the status of prescription. [Used for searching]",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.statusReason[x]",
+        "path": "EHDSMedicationPrescription.header.statusReason[x]",
+        "short": "Reason for the current status of prescription, for example the reason why the prescription was made invalid or why the prescription was changed from previous",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.language",
+        "path": "EHDSMedicationPrescription.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.version",
+        "path": "EHDSMedicationPrescription.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSMedicationPrescription.presentedForm",
         "path": "EHDSMedicationPrescription.presentedForm",
-        "short": "Presented Form",
-        "definition": "Entire prescription as issued. Various formats could be provided, pdf format is recommended.",
+        "short": "Entire prescription as issued. Various formats could be provided, PDF format is recommended.",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
         "min": 0,
         "max": "*",
         "base": {
-          "path": "EHDSMedicationPrescription.presentedForm",
+          "path": "EHDSDataSet.presentedForm",
           "min": 0,
           "max": "*"
         },
         "type": [
           {
             "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.recorder",
+        "path": "EHDSMedicationPrescription.header.recorder",
+        "short": "The recorder of the prescription/draft in the information system",
+        "definition": "The recorder of the prescription/draft in the information system",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationPrescription.header.recorder",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.recordingDate",
+        "path": "EHDSMedicationPrescription.header.recordingDate",
+        "short": "Time of authoring the prescription/draft in the information system",
+        "definition": "Time of authoring the prescription/draft in the information system",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationPrescription.header.recordingDate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.validFrom",
+        "path": "EHDSMedicationPrescription.header.validFrom",
+        "short": "Effective date of the prescription. The prescription is not dispensable before this date. In most cases this information repeats issueDate. [Used for searching]",
+        "definition": "Effective date of the prescription. The prescription is not dispensable before this date. In most cases this information repeats issueDate. [Used for searching]",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationPrescription.header.validFrom",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.validUntil",
+        "path": "EHDSMedicationPrescription.header.validUntil",
+        "short": "The validity period end date. The prescription is not dispensable after this date. [Used for searching]",
+        "definition": "The validity period end date. The prescription is not dispensable after this date. [Used for searching]",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationPrescription.header.validUntil",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
           }
         ]
       },
@@ -124,8 +393,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem",
         "path": "EHDSMedicationPrescription.prescriptionItem",
-        "short": "Presription line for one medication. In many countries, only one line is allowed. In case multiple medications are allowed, all lines need to be authored together.",
-        "definition": "Presription line for one medication. In many countries, only one line is allowed. In case multiple medications are allowed, all lines need to be authored together.",
+        "short": "Prescription line for one medication. In many countries, only one item is allowed. In case multiple medications are allowed, all lines need to be authored together.",
+        "definition": "Prescription line for one medication. In many countries, only one item is allowed. In case multiple medications are allowed, all lines need to be authored together.",
         "min": 1,
         "max": "*",
         "base": {
@@ -142,8 +411,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.identifier",
         "path": "EHDSMedicationPrescription.prescriptionItem.identifier",
-        "short": "Identifier for a single line on prescription, if exists. In case of single-line prescription, this identifier is typically the same as prescription identifier.",
-        "definition": "Identifier for a single line on prescription, if exists. In case of single-line prescription, this identifier is typically the same as prescription identifier.",
+        "short": "Identifier for a single item on prescription, if exists. In case of single-item prescription, this identifier is typically the same as prescription identifier.",
+        "definition": "Identifier for a single item on prescription, if exists. In case of single-item prescription, this identifier is typically the same as prescription identifier.",
         "min": 0,
         "max": "1",
         "base": {
@@ -158,11 +427,28 @@
         ]
       },
       {
+        "id": "EHDSMedicationPrescription.prescriptionItem.category",
+        "path": "EHDSMedicationPrescription.prescriptionItem.category",
+        "short": "Category or categories of prescription. For example type of reimbursement, or type of prescription (e.g. hospital, private, etc).",
+        "definition": "Category or categories of prescription. For example type of reimbursement, or type of prescription (e.g. hospital, private, etc).",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationPrescription.prescriptionItem.category",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
         "id": "EHDSMedicationPrescription.prescriptionItem.medication",
         "path": "EHDSMedicationPrescription.prescriptionItem.medication",
         "short": "Prescribed product, branded, generic, virtual, extemporal, etc",
         "definition": "Prescribed product, branded, generic, virtual, extemporal, etc",
-        "comment": "Medication model changed - described within that model",
         "min": 1,
         "max": "1",
         "base": {
@@ -177,34 +463,31 @@
         ]
       },
       {
-        "id": "EHDSMedicationPrescription.prescriptionItem.indication",
-        "path": "EHDSMedicationPrescription.prescriptionItem.indication",
+        "id": "EHDSMedicationPrescription.prescriptionItem.indication[x]",
+        "path": "EHDSMedicationPrescription.prescriptionItem.indication[x]",
         "short": "Reason for the prescription (typically diagnosis, or a procedure)",
         "definition": "Reason for the prescription (typically diagnosis, or a procedure)",
-        "comment": "No change (A.1.5.10)",
         "min": 0,
         "max": "*",
         "base": {
-          "path": "EHDSMedicationPrescription.prescriptionItem.indication",
+          "path": "EHDSMedicationPrescription.prescriptionItem.indication[x]",
           "min": 0,
           "max": "*"
         },
         "type": [
           {
             "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "shall we have a preferred binding here?"
-        }
+        ]
       },
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.indicationText",
         "path": "EHDSMedicationPrescription.prescriptionItem.indicationText",
         "short": "Reason for the prescription in textual form. This might not be allowed by some implementations.",
         "definition": "Reason for the prescription in textual form. This might not be allowed by some implementations.",
-        "comment": "No change (code not required) A1.5.10",
         "min": 0,
         "max": "1",
         "base": {
@@ -241,7 +524,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.treatmentPeriod",
         "short": "Period over which the medication is to be taken (in case of multiple dosaging schemes, this would be the overall period of all dosages.)",
         "definition": "Period over which the medication is to be taken (in case of multiple dosaging schemes, this would be the overall period of all dosages.)",
-        "comment": "Starting Date of Therapy A1.5.6. End date added.",
         "min": 0,
         "max": "1",
         "base": {
@@ -260,7 +542,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.quantityPrescribed",
         "short": "Overall quantity of prescribed product (e.g number of packages or number of tablets).",
         "definition": "Overall quantity of prescribed product (e.g number of packages or number of tablets).",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "base": {
@@ -272,14 +553,17 @@
           {
             "code": "Quantity"
           }
-        ]
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM, EDQM Standard Terms"
+        }
       },
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.dosageInstructions",
         "path": "EHDSMedicationPrescription.prescriptionItem.dosageInstructions",
         "short": "Dosaging and administration instructions",
         "definition": "Dosaging and administration instructions",
-        "comment": "Dosage model significantly changed towards more granularity. A.1.5.3-A.1.5.7",
         "min": 0,
         "max": "*",
         "base": {
@@ -298,7 +582,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.preparationInstructions",
         "short": "Additional instructions about preparation or dispense",
         "definition": "Additional instructions about preparation or dispense",
-        "comment": "Added.",
         "min": 0,
         "max": "1",
         "base": {
@@ -315,9 +598,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.substitution",
         "path": "EHDSMedicationPrescription.prescriptionItem.substitution",
-        "short": "Whether and which type of substitution is allowed for this medication treatment line",
-        "definition": "Whether and which type of substitution is allowed for this medication treatment line",
-        "comment": "No change but subelements added. A 1.5.11",
+        "short": "Whether and which type of substitution is allowed for this medication treatment item",
+        "definition": "Whether and which type of substitution is allowed for this medication treatment item",
         "min": 0,
         "max": "1",
         "base": {
@@ -355,8 +637,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.substitution.reason[x]",
         "path": "EHDSMedicationPrescription.prescriptionItem.substitution.reason[x]",
-        "short": "Reason for the substitution requirement",
-        "definition": "Reason for the substitution requirement",
+        "short": "Reason for the substitution requirement (e.g. Biological product, Patient allergic to an excipient in alternative products, etc)",
+        "definition": "Reason for the substitution requirement (e.g. Biological product, Patient allergic to an excipient in alternative products, etc)",
         "min": 0,
         "max": "1",
         "base": {
@@ -376,9 +658,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.status",
         "path": "EHDSMedicationPrescription.prescriptionItem.status",
-        "short": "Status of the prescription, this should not be status of treatment",
-        "definition": "Status of the prescription, this should not be status of treatment",
-        "comment": "Added.",
+        "short": "Status of a single item of a multi-item prescription. In case of single-item prescriptions, the status of prescription has the same meaning as the status of the item.",
+        "definition": "Status of a single item of a multi-item prescription. In case of single-item prescriptions, the status of prescription has the same meaning as the status of the item.",
         "min": 1,
         "max": "1",
         "base": {
@@ -397,7 +678,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.statusReason[x]",
         "short": "Reason for the current status of prescription, for example the reason why the prescription was made invalid or why the prescription was changed from previous",
         "definition": "Reason for the current status of prescription, for example the reason why the prescription was made invalid or why the prescription was changed from previous",
-        "comment": "Added.",
         "min": 0,
         "max": "1",
         "base": {
@@ -419,7 +699,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.repeatsAllowed",
         "short": "Number of refills authorized",
         "definition": "How many times the prescription item can be dispensed in addition to the original dispense.",
-        "comment": "Added. A.1.5.9 Repeats",
         "min": 0,
         "max": "1",
         "base": {
@@ -438,7 +717,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.minimumDispenseInterval",
         "short": "Minimum Dispense Interval",
         "definition": "If a prescription allows for repeated dispensations, the interval between dispensations shall be stated here.",
-        "comment": "Added, based on ISO 17532:2024 A.7.3 Minimum dispensing interval",
         "min": 0,
         "max": "1",
         "base": {
@@ -448,7 +726,7 @@
         },
         "type": [
           {
-            "code": "Duration"
+            "code": "Quantity"
           }
         ]
       },
@@ -514,7 +792,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.comment",
         "short": "Additional information or comments",
         "definition": "Additional information or comments",
-        "comment": "Added.",
         "min": 0,
         "max": "*",
         "base": {
@@ -536,33 +813,100 @@
         "id": "EHDSMedicationPrescription",
         "path": "EHDSMedicationPrescription",
         "short": "Medication prescription model",
-        "definition": "Logical model for medication prescription body. A prescription contains one or more prescription items."
+        "definition": "Logical model for medication prescription. A prescription contains one or more prescription items."
       },
       {
         "id": "EHDSMedicationPrescription.header",
         "path": "EHDSMedicationPrescription.header",
         "short": "Prescription header",
-        "definition": "Prescription header data elements",
-        "min": 1,
+        "definition": "Prescription header data elements"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.subject",
+        "path": "EHDSMedicationPrescription.header.subject",
+        "short": "The person for whom the medication is prescribed/ordered. [Used for searching]"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.identifier",
+        "path": "EHDSMedicationPrescription.header.identifier",
+        "short": "Business identifier(s) for the prescription. [Used for searching]"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.authorship.author[x]",
+        "path": "EHDSMedicationPrescription.header.authorship.author[x]",
+        "short": "The prescriber, the person who made the prescription, and who takes the responsibility of the treatment. [Used for searching]"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.authorship.datetime",
+        "path": "EHDSMedicationPrescription.header.authorship.datetime",
+        "short": "Time of issuing (signing) the prescription by health care professional. [Used for searching]"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.status",
+        "path": "EHDSMedicationPrescription.header.status",
+        "short": "Status of the prescription, this should not be status of treatment. For multi-item prescription, the status of prescription is often related to statuses of single lines. In case of single-item prescriptions, the status for line is usually the status of prescription. [Used for searching]"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.statusReason[x]",
+        "path": "EHDSMedicationPrescription.header.statusReason[x]",
+        "short": "Reason for the current status of prescription, for example the reason why the prescription was made invalid or why the prescription was changed from previous"
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.recorder",
+        "path": "EHDSMedicationPrescription.header.recorder",
+        "short": "The recorder of the prescription/draft in the information system",
+        "definition": "The recorder of the prescription/draft in the information system",
+        "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationPrescriptionHeader"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.recordingDate",
+        "path": "EHDSMedicationPrescription.header.recordingDate",
+        "short": "Time of authoring the prescription/draft in the information system",
+        "definition": "Time of authoring the prescription/draft in the information system",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.validFrom",
+        "path": "EHDSMedicationPrescription.header.validFrom",
+        "short": "Effective date of the prescription. The prescription is not dispensable before this date. In most cases this information repeats issueDate. [Used for searching]",
+        "definition": "Effective date of the prescription. The prescription is not dispensable before this date. In most cases this information repeats issueDate. [Used for searching]",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationPrescription.header.validUntil",
+        "path": "EHDSMedicationPrescription.header.validUntil",
+        "short": "The validity period end date. The prescription is not dispensable after this date. [Used for searching]",
+        "definition": "The validity period end date. The prescription is not dispensable after this date. [Used for searching]",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
           }
         ]
       },
       {
         "id": "EHDSMedicationPrescription.presentedForm",
         "path": "EHDSMedicationPrescription.presentedForm",
-        "short": "Presented Form",
-        "definition": "Entire prescription as issued. Various formats could be provided, pdf format is recommended.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
-          }
-        ]
+        "short": "Entire prescription as issued. Various formats could be provided, PDF format is recommended."
       },
       {
         "id": "EHDSMedicationPrescription.comment",
@@ -580,8 +924,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem",
         "path": "EHDSMedicationPrescription.prescriptionItem",
-        "short": "Presription line for one medication. In many countries, only one line is allowed. In case multiple medications are allowed, all lines need to be authored together.",
-        "definition": "Presription line for one medication. In many countries, only one line is allowed. In case multiple medications are allowed, all lines need to be authored together.",
+        "short": "Prescription line for one medication. In many countries, only one item is allowed. In case multiple medications are allowed, all lines need to be authored together.",
+        "definition": "Prescription line for one medication. In many countries, only one item is allowed. In case multiple medications are allowed, all lines need to be authored together.",
         "min": 1,
         "max": "*",
         "type": [
@@ -593,8 +937,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.identifier",
         "path": "EHDSMedicationPrescription.prescriptionItem.identifier",
-        "short": "Identifier for a single line on prescription, if exists. In case of single-line prescription, this identifier is typically the same as prescription identifier.",
-        "definition": "Identifier for a single line on prescription, if exists. In case of single-line prescription, this identifier is typically the same as prescription identifier.",
+        "short": "Identifier for a single item on prescription, if exists. In case of single-item prescription, this identifier is typically the same as prescription identifier.",
+        "definition": "Identifier for a single item on prescription, if exists. In case of single-item prescription, this identifier is typically the same as prescription identifier.",
         "min": 0,
         "max": "1",
         "type": [
@@ -604,11 +948,23 @@
         ]
       },
       {
+        "id": "EHDSMedicationPrescription.prescriptionItem.category",
+        "path": "EHDSMedicationPrescription.prescriptionItem.category",
+        "short": "Category or categories of prescription. For example type of reimbursement, or type of prescription (e.g. hospital, private, etc).",
+        "definition": "Category or categories of prescription. For example type of reimbursement, or type of prescription (e.g. hospital, private, etc).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
         "id": "EHDSMedicationPrescription.prescriptionItem.medication",
         "path": "EHDSMedicationPrescription.prescriptionItem.medication",
         "short": "Prescribed product, branded, generic, virtual, extemporal, etc",
         "definition": "Prescribed product, branded, generic, virtual, extemporal, etc",
-        "comment": "Medication model changed - described within that model",
         "min": 1,
         "max": "1",
         "type": [
@@ -618,29 +974,26 @@
         ]
       },
       {
-        "id": "EHDSMedicationPrescription.prescriptionItem.indication",
-        "path": "EHDSMedicationPrescription.prescriptionItem.indication",
+        "id": "EHDSMedicationPrescription.prescriptionItem.indication[x]",
+        "path": "EHDSMedicationPrescription.prescriptionItem.indication[x]",
         "short": "Reason for the prescription (typically diagnosis, or a procedure)",
         "definition": "Reason for the prescription (typically diagnosis, or a procedure)",
-        "comment": "No change (A.1.5.10)",
         "min": 0,
         "max": "*",
         "type": [
           {
             "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "shall we have a preferred binding here?"
-        }
+        ]
       },
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.indicationText",
         "path": "EHDSMedicationPrescription.prescriptionItem.indicationText",
         "short": "Reason for the prescription in textual form. This might not be allowed by some implementations.",
         "definition": "Reason for the prescription in textual form. This might not be allowed by some implementations.",
-        "comment": "No change (code not required) A1.5.10",
         "min": 0,
         "max": "1",
         "type": [
@@ -667,7 +1020,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.treatmentPeriod",
         "short": "Period over which the medication is to be taken (in case of multiple dosaging schemes, this would be the overall period of all dosages.)",
         "definition": "Period over which the medication is to be taken (in case of multiple dosaging schemes, this would be the overall period of all dosages.)",
-        "comment": "Starting Date of Therapy A1.5.6. End date added.",
         "min": 0,
         "max": "1",
         "type": [
@@ -681,21 +1033,23 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.quantityPrescribed",
         "short": "Overall quantity of prescribed product (e.g number of packages or number of tablets).",
         "definition": "Overall quantity of prescribed product (e.g number of packages or number of tablets).",
-        "comment": "No change",
         "min": 0,
         "max": "1",
         "type": [
           {
             "code": "Quantity"
           }
-        ]
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM, EDQM Standard Terms"
+        }
       },
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.dosageInstructions",
         "path": "EHDSMedicationPrescription.prescriptionItem.dosageInstructions",
         "short": "Dosaging and administration instructions",
         "definition": "Dosaging and administration instructions",
-        "comment": "Dosage model significantly changed towards more granularity. A.1.5.3-A.1.5.7",
         "min": 0,
         "max": "*",
         "type": [
@@ -709,7 +1063,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.preparationInstructions",
         "short": "Additional instructions about preparation or dispense",
         "definition": "Additional instructions about preparation or dispense",
-        "comment": "Added.",
         "min": 0,
         "max": "1",
         "type": [
@@ -721,9 +1074,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.substitution",
         "path": "EHDSMedicationPrescription.prescriptionItem.substitution",
-        "short": "Whether and which type of substitution is allowed for this medication treatment line",
-        "definition": "Whether and which type of substitution is allowed for this medication treatment line",
-        "comment": "No change but subelements added. A 1.5.11",
+        "short": "Whether and which type of substitution is allowed for this medication treatment item",
+        "definition": "Whether and which type of substitution is allowed for this medication treatment item",
         "min": 0,
         "max": "1",
         "type": [
@@ -751,8 +1103,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.substitution.reason[x]",
         "path": "EHDSMedicationPrescription.prescriptionItem.substitution.reason[x]",
-        "short": "Reason for the substitution requirement",
-        "definition": "Reason for the substitution requirement",
+        "short": "Reason for the substitution requirement (e.g. Biological product, Patient allergic to an excipient in alternative products, etc)",
+        "definition": "Reason for the substitution requirement (e.g. Biological product, Patient allergic to an excipient in alternative products, etc)",
         "min": 0,
         "max": "1",
         "type": [
@@ -767,9 +1119,8 @@
       {
         "id": "EHDSMedicationPrescription.prescriptionItem.status",
         "path": "EHDSMedicationPrescription.prescriptionItem.status",
-        "short": "Status of the prescription, this should not be status of treatment",
-        "definition": "Status of the prescription, this should not be status of treatment",
-        "comment": "Added.",
+        "short": "Status of a single item of a multi-item prescription. In case of single-item prescriptions, the status of prescription has the same meaning as the status of the item.",
+        "definition": "Status of a single item of a multi-item prescription. In case of single-item prescriptions, the status of prescription has the same meaning as the status of the item.",
         "min": 1,
         "max": "1",
         "type": [
@@ -783,7 +1134,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.statusReason[x]",
         "short": "Reason for the current status of prescription, for example the reason why the prescription was made invalid or why the prescription was changed from previous",
         "definition": "Reason for the current status of prescription, for example the reason why the prescription was made invalid or why the prescription was changed from previous",
-        "comment": "Added.",
         "min": 0,
         "max": "1",
         "type": [
@@ -800,7 +1150,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.repeatsAllowed",
         "short": "Number of refills authorized",
         "definition": "How many times the prescription item can be dispensed in addition to the original dispense.",
-        "comment": "Added. A.1.5.9 Repeats",
         "min": 0,
         "max": "1",
         "type": [
@@ -814,12 +1163,11 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.minimumDispenseInterval",
         "short": "Minimum Dispense Interval",
         "definition": "If a prescription allows for repeated dispensations, the interval between dispensations shall be stated here.",
-        "comment": "Added, based on ISO 17532:2024 A.7.3 Minimum dispensing interval",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "Duration"
+            "code": "Quantity"
           }
         ]
       },
@@ -870,7 +1218,6 @@
         "path": "EHDSMedicationPrescription.prescriptionItem.comment",
         "short": "Additional information or comments",
         "definition": "Additional information or comments",
-        "comment": "Added.",
         "min": 0,
         "max": "*",
         "type": [

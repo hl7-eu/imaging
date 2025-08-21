@@ -5,6 +5,10 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
       "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
     }
   ],
   "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest",
@@ -12,7 +16,7 @@
   "name": "EHDSServiceRequest",
   "title": "Service request model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +29,7 @@
       ]
     }
   ],
-  "description": "C.8 - EHDS refined base model for Specification of requested service or services",
+  "description": "EHDS refined base model for Specification of requested service or services",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -37,13 +41,13 @@
   "kind": "logical",
   "abstract": false,
   "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
   "derivation": "specialization",
   "snapshot": {
     "extension": [
       {
         "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
-        "valueString": "5.0.0"
+        "valueString": "0.1.0"
       }
     ],
     "element": [
@@ -51,7 +55,7 @@
         "id": "EHDSServiceRequest",
         "path": "EHDSServiceRequest",
         "short": "Service request model",
-        "definition": "C.8 - EHDS refined base model for Specification of requested service or services",
+        "definition": "EHDS refined base model for Specification of requested service or services",
         "min": 0,
         "max": "*",
         "base": {
@@ -68,9 +72,238 @@
         ]
       },
       {
+        "id": "EHDSServiceRequest.header",
+        "path": "EHDSServiceRequest.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.subject",
+        "path": "EHDSServiceRequest.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.identifier",
+        "path": "EHDSServiceRequest.header.identifier",
+        "short": "Business identifier for the object",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.authorship",
+        "path": "EHDSServiceRequest.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.authorship.author[x]",
+        "path": "EHDSServiceRequest.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.authorship.datetime",
+        "path": "EHDSServiceRequest.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.lastUpdate",
+        "path": "EHDSServiceRequest.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.status",
+        "path": "EHDSServiceRequest.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.statusReason[x]",
+        "path": "EHDSServiceRequest.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.header.language",
+        "path": "EHDSServiceRequest.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSServiceRequest.header.version",
+        "path": "EHDSServiceRequest.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSServiceRequest.presentedForm",
+        "path": "EHDSServiceRequest.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
         "id": "EHDSServiceRequest.serviceText",
         "path": "EHDSServiceRequest.serviceText",
-        "short": "C.8.1 - Service text",
+        "short": "Service text",
         "definition": "Textual description of the requested service",
         "min": 0,
         "max": "1",
@@ -88,7 +321,7 @@
       {
         "id": "EHDSServiceRequest.serviceCode",
         "path": "EHDSServiceRequest.serviceCode",
-        "short": "C.8.2 - Service code",
+        "short": "Service code",
         "definition": "A code that identifies a particular service (i.e., procedure, diagnostic investigation, or panel of investigations) that have been requested.",
         "min": 0,
         "max": "1",
@@ -110,7 +343,7 @@
       {
         "id": "EHDSServiceRequest.reasonCode",
         "path": "EHDSServiceRequest.reasonCode",
-        "short": "C.8.3 - Reason code",
+        "short": "Reason code",
         "definition": "Health conditions affecting the health of the patient and are important to be known for a health professional during a health encounter. Clinical conditions of the subject relevant for the results interpretation.",
         "min": 0,
         "max": "*",
@@ -132,7 +365,7 @@
       {
         "id": "EHDSServiceRequest.quantity",
         "path": "EHDSServiceRequest.quantity",
-        "short": "C.8.4 - Quantity",
+        "short": "Quantity",
         "definition": "Amount of requested services of the same type",
         "min": 0,
         "max": "1",
@@ -150,7 +383,7 @@
       {
         "id": "EHDSServiceRequest.anatomicLocation",
         "path": "EHDSServiceRequest.anatomicLocation",
-        "short": "C.8.5 - Anatomic location",
+        "short": "Anatomic location",
         "definition": "Anatomic location and laterality where the procedure should be performed. This is the target site.",
         "min": 0,
         "max": "*",
@@ -161,43 +394,38 @@
         },
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
+        ]
       },
       {
-        "id": "EHDSServiceRequest.reasonReference",
-        "path": "EHDSServiceRequest.reasonReference",
-        "short": "C.8.6 - Reason reference",
+        "id": "EHDSServiceRequest.reasonReference[x]",
+        "path": "EHDSServiceRequest.reasonReference[x]",
+        "short": "Reason reference",
         "definition": "Indicates another resource that provides a justification for why this service is being requested.",
         "min": 0,
         "max": "*",
         "base": {
-          "path": "EHDSServiceRequest.reasonReference",
+          "path": "EHDSServiceRequest.reasonReference[x]",
           "min": 0,
           "max": "*"
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication",
-              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
-              "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
           }
         ]
       },
       {
         "id": "EHDSServiceRequest.priority",
         "path": "EHDSServiceRequest.priority",
-        "short": "C.8.7 - Priority",
+        "short": "Priority",
         "definition": "Indicates how quickly the ServiceRequest should be addressed with respect to other requests.",
         "min": 0,
         "max": "1",
@@ -217,34 +445,36 @@
         }
       },
       {
-        "id": "EHDSServiceRequest.supportingInformation",
-        "path": "EHDSServiceRequest.supportingInformation",
-        "short": "C.8.8 - Supporting information",
+        "id": "EHDSServiceRequest.supportingInformation[x]",
+        "path": "EHDSServiceRequest.supportingInformation[x]",
+        "short": "Supporting information",
         "definition": "Health conditions relevant for the results interpretation, e.g. fasting status, sex for clinical use, etc.",
         "min": 0,
         "max": "*",
         "base": {
-          "path": "EHDSServiceRequest.supportingInformation",
+          "path": "EHDSServiceRequest.supportingInformation[x]",
           "min": 0,
           "max": "*"
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration",
-              "http://hl7.org/fhir/StructureDefinition/Resource"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration"
           }
         ]
       },
       {
         "id": "EHDSServiceRequest.specimen",
         "path": "EHDSServiceRequest.specimen",
-        "short": "C.8.9 - Specimen",
+        "short": "Specimen",
         "definition": "Specimens to be used by the laboratory procedure",
         "min": 0,
         "max": "*",
@@ -255,41 +485,14 @@
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSServiceRequest.subject",
-        "path": "EHDSServiceRequest.subject",
-        "short": "C.8.10 - Subject",
-        "definition": "Individual or Entity the service is ordered for",
-        "min": 1,
-        "max": "1",
-        "base": {
-          "path": "EHDSServiceRequest.subject",
-          "min": 1,
-          "max": "1"
-        },
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
           }
         ]
       },
       {
         "id": "EHDSServiceRequest.encounter",
         "path": "EHDSServiceRequest.encounter",
-        "short": "C.8.11 - Encounter",
+        "short": "Encounter",
         "definition": "An encounter that provides additional information about the healthcare context in which this request is made.",
         "min": 0,
         "max": "1",
@@ -305,14 +508,14 @@
         ]
       },
       {
-        "id": "EHDSServiceRequest.occurance[x]",
-        "path": "EHDSServiceRequest.occurance[x]",
-        "short": "C.8.12 - Occurance",
+        "id": "EHDSServiceRequest.occurrence[x]",
+        "path": "EHDSServiceRequest.occurrence[x]",
+        "short": "Occurrence",
         "definition": "When service should occur",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSServiceRequest.occurance[x]",
+          "path": "EHDSServiceRequest.occurrence[x]",
           "min": 0,
           "max": "1"
         },
@@ -328,7 +531,7 @@
       {
         "id": "EHDSServiceRequest.patientInstructions",
         "path": "EHDSServiceRequest.patientInstructions",
-        "short": "C.8.13 - Patient instructions",
+        "short": "Patient instructions",
         "definition": "Patient or consumer-oriented instructions",
         "min": 0,
         "max": "1",
@@ -346,7 +549,7 @@
       {
         "id": "EHDSServiceRequest.coverage",
         "path": "EHDSServiceRequest.coverage",
-        "short": "C.8.14 - Coverage",
+        "short": "Coverage",
         "definition": "Insurance or medical plan or a payment agreement.",
         "min": 0,
         "max": "*",
@@ -357,10 +560,7 @@
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCoverage"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCoverage"
           }
         ]
       }
@@ -372,12 +572,12 @@
         "id": "EHDSServiceRequest",
         "path": "EHDSServiceRequest",
         "short": "Service request model",
-        "definition": "C.8 - EHDS refined base model for Specification of requested service or services"
+        "definition": "EHDS refined base model for Specification of requested service or services"
       },
       {
         "id": "EHDSServiceRequest.serviceText",
         "path": "EHDSServiceRequest.serviceText",
-        "short": "C.8.1 - Service text",
+        "short": "Service text",
         "definition": "Textual description of the requested service",
         "min": 0,
         "max": "1",
@@ -390,7 +590,7 @@
       {
         "id": "EHDSServiceRequest.serviceCode",
         "path": "EHDSServiceRequest.serviceCode",
-        "short": "C.8.2 - Service code",
+        "short": "Service code",
         "definition": "A code that identifies a particular service (i.e., procedure, diagnostic investigation, or panel of investigations) that have been requested.",
         "min": 0,
         "max": "1",
@@ -407,7 +607,7 @@
       {
         "id": "EHDSServiceRequest.reasonCode",
         "path": "EHDSServiceRequest.reasonCode",
-        "short": "C.8.3 - Reason code",
+        "short": "Reason code",
         "definition": "Health conditions affecting the health of the patient and are important to be known for a health professional during a health encounter. Clinical conditions of the subject relevant for the results interpretation.",
         "min": 0,
         "max": "*",
@@ -424,7 +624,7 @@
       {
         "id": "EHDSServiceRequest.quantity",
         "path": "EHDSServiceRequest.quantity",
-        "short": "C.8.4 - Quantity",
+        "short": "Quantity",
         "definition": "Amount of requested services of the same type",
         "min": 0,
         "max": "1",
@@ -437,44 +637,39 @@
       {
         "id": "EHDSServiceRequest.anatomicLocation",
         "path": "EHDSServiceRequest.anatomicLocation",
-        "short": "C.8.5 - Anatomic location",
+        "short": "Anatomic location",
         "definition": "Anatomic location and laterality where the procedure should be performed. This is the target site.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
+        ]
       },
       {
-        "id": "EHDSServiceRequest.reasonReference",
-        "path": "EHDSServiceRequest.reasonReference",
-        "short": "C.8.6 - Reason reference",
+        "id": "EHDSServiceRequest.reasonReference[x]",
+        "path": "EHDSServiceRequest.reasonReference[x]",
+        "short": "Reason reference",
         "definition": "Indicates another resource that provides a justification for why this service is being requested.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication",
-              "http://hl7.org/fhir/StructureDefinition/DocumentReference",
-              "http://hl7.org/fhir/StructureDefinition/DiagnosticReport"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
           }
         ]
       },
       {
         "id": "EHDSServiceRequest.priority",
         "path": "EHDSServiceRequest.priority",
-        "short": "C.8.7 - Priority",
+        "short": "Priority",
         "definition": "Indicates how quickly the ServiceRequest should be addressed with respect to other requests.",
         "min": 0,
         "max": "1",
@@ -489,64 +684,44 @@
         }
       },
       {
-        "id": "EHDSServiceRequest.supportingInformation",
-        "path": "EHDSServiceRequest.supportingInformation",
-        "short": "C.8.8 - Supporting information",
+        "id": "EHDSServiceRequest.supportingInformation[x]",
+        "path": "EHDSServiceRequest.supportingInformation[x]",
+        "short": "Supporting information",
         "definition": "Health conditions relevant for the results interpretation, e.g. fasting status, sex for clinical use, etc.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration",
-              "http://hl7.org/fhir/StructureDefinition/Resource"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration"
           }
         ]
       },
       {
         "id": "EHDSServiceRequest.specimen",
         "path": "EHDSServiceRequest.specimen",
-        "short": "C.8.9 - Specimen",
+        "short": "Specimen",
         "definition": "Specimens to be used by the laboratory procedure",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "EHDSServiceRequest.subject",
-        "path": "EHDSServiceRequest.subject",
-        "short": "C.8.10 - Subject",
-        "definition": "Individual or Entity the service is ordered for",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
           }
         ]
       },
       {
         "id": "EHDSServiceRequest.encounter",
         "path": "EHDSServiceRequest.encounter",
-        "short": "C.8.11 - Encounter",
+        "short": "Encounter",
         "definition": "An encounter that provides additional information about the healthcare context in which this request is made.",
         "min": 0,
         "max": "1",
@@ -557,9 +732,9 @@
         ]
       },
       {
-        "id": "EHDSServiceRequest.occurance[x]",
-        "path": "EHDSServiceRequest.occurance[x]",
-        "short": "C.8.12 - Occurance",
+        "id": "EHDSServiceRequest.occurrence[x]",
+        "path": "EHDSServiceRequest.occurrence[x]",
+        "short": "Occurrence",
         "definition": "When service should occur",
         "min": 0,
         "max": "1",
@@ -575,7 +750,7 @@
       {
         "id": "EHDSServiceRequest.patientInstructions",
         "path": "EHDSServiceRequest.patientInstructions",
-        "short": "C.8.13 - Patient instructions",
+        "short": "Patient instructions",
         "definition": "Patient or consumer-oriented instructions",
         "min": 0,
         "max": "1",
@@ -588,16 +763,13 @@
       {
         "id": "EHDSServiceRequest.coverage",
         "path": "EHDSServiceRequest.coverage",
-        "short": "C.8.14 - Coverage",
+        "short": "Coverage",
         "definition": "Insurance or medical plan or a payment agreement.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCoverage"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCoverage"
           }
         ]
       }

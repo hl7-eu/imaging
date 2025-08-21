@@ -12,7 +12,7 @@
   "name": "EHDSCoverage",
   "title": "Coverage model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.31 - EHDS refined base model for Coverage",
+  "description": "EHDS refined base model for Coverage",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSCoverage",
         "path": "EHDSCoverage",
         "short": "Coverage model",
-        "definition": "C.31 - EHDS refined base model for Coverage",
+        "definition": "EHDS refined base model for Coverage",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSCoverage.identifier",
         "path": "EHDSCoverage.identifier",
-        "short": "C.31.1 - Identifier",
+        "short": "Business Identifier for the coverage",
         "definition": "Business Identifier for the coverage",
         "min": 0,
         "max": "*",
@@ -88,8 +88,8 @@
       {
         "id": "EHDSCoverage.type",
         "path": "EHDSCoverage.type",
-        "short": "C.31.2 - Type",
-        "definition": "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.",
+        "short": "Type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organisation.",
+        "definition": "Type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organisation.",
         "min": 0,
         "max": "1",
         "base": {
@@ -110,7 +110,7 @@
       {
         "id": "EHDSCoverage.patient",
         "path": "EHDSCoverage.patient",
-        "short": "C.31.3 - Patient",
+        "short": "Patient who benefits from the insurance coverage when products and/or services are provided.",
         "definition": "Patient who benefits from the insurance coverage when products and/or services are provided.",
         "min": 1,
         "max": "1",
@@ -121,17 +121,14 @@
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
         "id": "EHDSCoverage.payor",
         "path": "EHDSCoverage.payor",
-        "short": "C.31.4 - Payor",
+        "short": "Payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
         "definition": "Payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
         "min": 1,
         "max": "*",
@@ -147,31 +144,30 @@
         ]
       },
       {
-        "id": "EHDSCoverage.payor.payorEntity",
-        "path": "EHDSCoverage.payor.payorEntity",
-        "short": "C.31.4.1 - Payor entity",
+        "id": "EHDSCoverage.payor.payorEntity[x]",
+        "path": "EHDSCoverage.payor.payorEntity[x]",
+        "short": "Payor entity",
         "definition": "Payor entity",
         "min": 1,
         "max": "1",
         "base": {
-          "path": "EHDSCoverage.payor.payorEntity",
+          "path": "EHDSCoverage.payor.payorEntity[x]",
           "min": 1,
           "max": "1"
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
         "id": "EHDSCoverage.payor.subscriberId",
         "path": "EHDSCoverage.payor.subscriberId",
-        "short": "C.31.4.2 - Subscriber Id",
+        "short": "Number or code under which the insured person is registered at the insurance provider.",
         "definition": "Number or code under which the insured person is registered at the insurance provider.",
         "min": 0,
         "max": "1",
@@ -194,12 +190,12 @@
         "id": "EHDSCoverage",
         "path": "EHDSCoverage",
         "short": "Coverage model",
-        "definition": "C.31 - EHDS refined base model for Coverage"
+        "definition": "EHDS refined base model for Coverage"
       },
       {
         "id": "EHDSCoverage.identifier",
         "path": "EHDSCoverage.identifier",
-        "short": "C.31.1 - Identifier",
+        "short": "Business Identifier for the coverage",
         "definition": "Business Identifier for the coverage",
         "min": 0,
         "max": "*",
@@ -212,8 +208,8 @@
       {
         "id": "EHDSCoverage.type",
         "path": "EHDSCoverage.type",
-        "short": "C.31.2 - Type",
-        "definition": "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organization.",
+        "short": "Type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organisation.",
+        "definition": "Type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health or payment by an individual or organisation.",
         "min": 0,
         "max": "1",
         "type": [
@@ -229,23 +225,20 @@
       {
         "id": "EHDSCoverage.patient",
         "path": "EHDSCoverage.patient",
-        "short": "C.31.3 - Patient",
+        "short": "Patient who benefits from the insurance coverage when products and/or services are provided.",
         "definition": "Patient who benefits from the insurance coverage when products and/or services are provided.",
         "min": 1,
         "max": "1",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
         "id": "EHDSCoverage.payor",
         "path": "EHDSCoverage.payor",
-        "short": "C.31.4 - Payor",
+        "short": "Payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
         "definition": "Payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
         "min": 1,
         "max": "*",
@@ -256,26 +249,25 @@
         ]
       },
       {
-        "id": "EHDSCoverage.payor.payorEntity",
-        "path": "EHDSCoverage.payor.payorEntity",
-        "short": "C.31.4.1 - Payor entity",
+        "id": "EHDSCoverage.payor.payorEntity[x]",
+        "path": "EHDSCoverage.payor.payorEntity[x]",
+        "short": "Payor entity",
         "definition": "Payor entity",
         "min": 1,
         "max": "1",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
         "id": "EHDSCoverage.payor.subscriberId",
         "path": "EHDSCoverage.payor.subscriberId",
-        "short": "C.31.4.2 - Subscriber Id",
+        "short": "Number or code under which the insured person is registered at the insurance provider.",
         "definition": "Number or code under which the insured person is registered at the insurance provider.",
         "min": 0,
         "max": "1",

@@ -12,7 +12,7 @@
   "name": "EHDSDosaging",
   "title": "Dosaging model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -88,12 +88,30 @@
       {
         "id": "EHDSDosaging.text",
         "path": "EHDSDosaging.text",
-        "short": "Free text usage/dosage instructions",
-        "definition": "Free text usage/dosage instructions",
+        "short": "Free text usage/dosage instructions when structured dosage information is not fully provided",
+        "definition": "Free text usage/dosage instructions when structured dosage information is not fully provided",
         "min": 0,
         "max": "1",
         "base": {
           "path": "EHDSDosaging.text",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDosaging.renderedDescription",
+        "path": "EHDSDosaging.renderedDescription",
+        "short": "Text representation rendered from all dosaging data elements with a value",
+        "definition": "Text representation rendered from all dosaging data elements with a value",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDosaging.renderedDescription",
           "min": 0,
           "max": "1"
         },
@@ -840,8 +858,21 @@
       {
         "id": "EHDSDosaging.text",
         "path": "EHDSDosaging.text",
-        "short": "Free text usage/dosage instructions",
-        "definition": "Free text usage/dosage instructions",
+        "short": "Free text usage/dosage instructions when structured dosage information is not fully provided",
+        "definition": "Free text usage/dosage instructions when structured dosage information is not fully provided",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDosaging.renderedDescription",
+        "path": "EHDSDosaging.renderedDescription",
+        "short": "Text representation rendered from all dosaging data elements with a value",
+        "definition": "Text representation rendered from all dosaging data elements with a value",
         "min": 0,
         "max": "1",
         "type": [

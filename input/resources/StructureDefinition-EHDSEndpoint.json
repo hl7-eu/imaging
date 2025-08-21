@@ -12,7 +12,7 @@
   "name": "EHDSEndpoint",
   "title": "Endpoint model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.33 - EHDS refined base model for Endpoint",
+  "description": "EHDS refined base model for Endpoint",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSEndpoint",
         "path": "EHDSEndpoint",
         "short": "Endpoint model",
-        "definition": "C.33 - EHDS refined base model for Endpoint",
+        "definition": "EHDS refined base model for Endpoint",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,8 +70,8 @@
       {
         "id": "EHDSEndpoint.identifier",
         "path": "EHDSEndpoint.identifier",
-        "short": "C.33.1 - Identifier",
-        "definition": "Identifier for the organization that is used to identify the endpoint across multiple disparate systems.",
+        "short": "Identifier",
+        "definition": "Identifier for the organisation that is used to identify the endpoint across multiple disparate systems.",
         "min": 1,
         "max": "*",
         "base": {
@@ -88,7 +88,7 @@
       {
         "id": "EHDSEndpoint.status",
         "path": "EHDSEndpoint.status",
-        "short": "C.33.2 - Status",
+        "short": "Status",
         "definition": "Status of the endpoint. The endpoint status represents whether the endpoint can currently be used for connections or why it can't be used.",
         "min": 1,
         "max": "1",
@@ -110,7 +110,7 @@
       {
         "id": "EHDSEndpoint.connectionType",
         "path": "EHDSEndpoint.connectionType",
-        "short": "C.33.3 - Connection type",
+        "short": "Connection type",
         "definition": "A coded value that represents the technical details of the usage of this endpoint, such as what WSDLs should be used in what way. (e.g. XDS.b/DICOM/cds-hook).",
         "min": 1,
         "max": "*",
@@ -132,7 +132,7 @@
       {
         "id": "EHDSEndpoint.name",
         "path": "EHDSEndpoint.name",
-        "short": "C.33.4 - Name",
+        "short": "Name",
         "definition": "A friendly name that this endpoint can be referred to with.",
         "min": 0,
         "max": "1",
@@ -148,27 +148,27 @@
         ]
       },
       {
-        "id": "EHDSEndpoint.managingOrganization",
-        "path": "EHDSEndpoint.managingOrganization",
-        "short": "C.33.5 - Managing organization",
-        "definition": "The organization that provides technical management services for this endpoint.",
+        "id": "EHDSEndpoint.managingOrganisation",
+        "path": "EHDSEndpoint.managingOrganisation",
+        "short": "Managing organisation",
+        "definition": "The organisation that provides technical management services for this endpoint.",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSEndpoint.managingOrganization",
+          "path": "EHDSEndpoint.managingOrganisation",
           "min": 0,
           "max": "1"
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
       {
         "id": "EHDSEndpoint.payload",
         "path": "EHDSEndpoint.payload",
-        "short": "C.33.6 - Payload",
+        "short": "Payload",
         "definition": "The set of payloads that are provided/available at this endpoint.",
         "min": 0,
         "max": "*",
@@ -186,7 +186,7 @@
       {
         "id": "EHDSEndpoint.payload.type",
         "path": "EHDSEndpoint.payload.type",
-        "short": "C.33.6.1 - Type",
+        "short": "Type",
         "definition": "The type of content that may be used at this endpoint (e.g. XDS Discharge summaries).",
         "min": 0,
         "max": "*",
@@ -208,7 +208,7 @@
       {
         "id": "EHDSEndpoint.payload.mimeType",
         "path": "EHDSEndpoint.payload.mimeType",
-        "short": "C.33.6.2 - Mime type",
+        "short": "Mime type",
         "definition": "The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json.",
         "min": 0,
         "max": "*",
@@ -230,7 +230,7 @@
       {
         "id": "EHDSEndpoint.payload.profileCanonical",
         "path": "EHDSEndpoint.payload.profileCanonical",
-        "short": "C.33.6.3 - Profile Canonical",
+        "short": "Profile Canonical",
         "definition": "The FHIR profile that is expected at this endpoint. It describes the resources that are handled, or even simply which resource types.",
         "min": 0,
         "max": "*",
@@ -248,7 +248,7 @@
       {
         "id": "EHDSEndpoint.payload.profileUri",
         "path": "EHDSEndpoint.payload.profileUri",
-        "short": "C.33.6.4 - Profile uri",
+        "short": "Profile uri",
         "definition": "The profile (as a uri) that is expected at this endpoint when not represented using a FHIR profile.",
         "min": 0,
         "max": "*",
@@ -266,7 +266,7 @@
       {
         "id": "EHDSEndpoint.address",
         "path": "EHDSEndpoint.address",
-        "short": "C.33.7 - Address",
+        "short": "Address",
         "definition": "The uri that describes the actual end-point to connect to.",
         "min": 1,
         "max": "1",
@@ -284,7 +284,7 @@
       {
         "id": "EHDSEndpoint.header",
         "path": "EHDSEndpoint.header",
-        "short": "C.33.8 - Header",
+        "short": "Header",
         "definition": "Additional headers / information to send as part of the notification. Usage depends on the channel type.",
         "min": 0,
         "max": "*",
@@ -307,13 +307,13 @@
         "id": "EHDSEndpoint",
         "path": "EHDSEndpoint",
         "short": "Endpoint model",
-        "definition": "C.33 - EHDS refined base model for Endpoint"
+        "definition": "EHDS refined base model for Endpoint"
       },
       {
         "id": "EHDSEndpoint.identifier",
         "path": "EHDSEndpoint.identifier",
-        "short": "C.33.1 - Identifier",
-        "definition": "Identifier for the organization that is used to identify the endpoint across multiple disparate systems.",
+        "short": "Identifier",
+        "definition": "Identifier for the organisation that is used to identify the endpoint across multiple disparate systems.",
         "min": 1,
         "max": "*",
         "type": [
@@ -325,7 +325,7 @@
       {
         "id": "EHDSEndpoint.status",
         "path": "EHDSEndpoint.status",
-        "short": "C.33.2 - Status",
+        "short": "Status",
         "definition": "Status of the endpoint. The endpoint status represents whether the endpoint can currently be used for connections or why it can't be used.",
         "min": 1,
         "max": "1",
@@ -342,7 +342,7 @@
       {
         "id": "EHDSEndpoint.connectionType",
         "path": "EHDSEndpoint.connectionType",
-        "short": "C.33.3 - Connection type",
+        "short": "Connection type",
         "definition": "A coded value that represents the technical details of the usage of this endpoint, such as what WSDLs should be used in what way. (e.g. XDS.b/DICOM/cds-hook).",
         "min": 1,
         "max": "*",
@@ -359,7 +359,7 @@
       {
         "id": "EHDSEndpoint.name",
         "path": "EHDSEndpoint.name",
-        "short": "C.33.4 - Name",
+        "short": "Name",
         "definition": "A friendly name that this endpoint can be referred to with.",
         "min": 0,
         "max": "1",
@@ -370,22 +370,22 @@
         ]
       },
       {
-        "id": "EHDSEndpoint.managingOrganization",
-        "path": "EHDSEndpoint.managingOrganization",
-        "short": "C.33.5 - Managing organization",
-        "definition": "The organization that provides technical management services for this endpoint. ",
+        "id": "EHDSEndpoint.managingOrganisation",
+        "path": "EHDSEndpoint.managingOrganisation",
+        "short": "Managing organisation",
+        "definition": "The organisation that provides technical management services for this endpoint. ",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
       {
         "id": "EHDSEndpoint.payload",
         "path": "EHDSEndpoint.payload",
-        "short": "C.33.6 - Payload",
+        "short": "Payload",
         "definition": "The set of payloads that are provided/available at this endpoint.",
         "min": 0,
         "max": "*",
@@ -398,7 +398,7 @@
       {
         "id": "EHDSEndpoint.payload.type",
         "path": "EHDSEndpoint.payload.type",
-        "short": "C.33.6.1 - Type",
+        "short": "Type",
         "definition": "The type of content that may be used at this endpoint (e.g. XDS Discharge summaries).",
         "min": 0,
         "max": "*",
@@ -415,7 +415,7 @@
       {
         "id": "EHDSEndpoint.payload.mimeType",
         "path": "EHDSEndpoint.payload.mimeType",
-        "short": "C.33.6.2 - Mime type",
+        "short": "Mime type",
         "definition": "The mime type to send the payload in - e.g. application/fhir+xml, application/fhir+json. ",
         "min": 0,
         "max": "*",
@@ -432,7 +432,7 @@
       {
         "id": "EHDSEndpoint.payload.profileCanonical",
         "path": "EHDSEndpoint.payload.profileCanonical",
-        "short": "C.33.6.3 - Profile Canonical",
+        "short": "Profile Canonical",
         "definition": "The FHIR profile that is expected at this endpoint. It describes the resources that are handled, or even simply which resource types.",
         "min": 0,
         "max": "*",
@@ -445,7 +445,7 @@
       {
         "id": "EHDSEndpoint.payload.profileUri",
         "path": "EHDSEndpoint.payload.profileUri",
-        "short": "C.33.6.4 - Profile uri",
+        "short": "Profile uri",
         "definition": "The profile (as a uri) that is expected at this endpoint when not represented using a FHIR profile.",
         "min": 0,
         "max": "*",
@@ -458,7 +458,7 @@
       {
         "id": "EHDSEndpoint.address",
         "path": "EHDSEndpoint.address",
-        "short": "C.33.7 - Address",
+        "short": "Address",
         "definition": "The uri that describes the actual end-point to connect to.",
         "min": 1,
         "max": "1",
@@ -471,7 +471,7 @@
       {
         "id": "EHDSEndpoint.header",
         "path": "EHDSEndpoint.header",
-        "short": "C.33.8 - Header",
+        "short": "Header",
         "definition": "Additional headers / information to send as part of the notification. Usage depends on the channel type.",
         "min": 0,
         "max": "*",

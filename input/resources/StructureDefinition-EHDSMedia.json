@@ -12,7 +12,7 @@
   "name": "EHDSMedia",
   "title": "Media model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.14 - EHDS refined base model for A photo, video, or audio recording acquired or used in healthcare.",
+  "description": "EHDS refined base model for A photo, video, or audio recording acquired or used in healthcare.",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSMedia",
         "path": "EHDSMedia",
         "short": "Media model",
-        "definition": "C.14 - EHDS refined base model for A photo, video, or audio recording acquired or used in healthcare.",
+        "definition": "EHDS refined base model for A photo, video, or audio recording acquired or used in healthcare.",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSMedia.identifier",
         "path": "EHDSMedia.identifier",
-        "short": "C.14.1 - Identifier",
+        "short": "Identifier",
         "definition": "Image identifier",
         "min": 0,
         "max": "*",
@@ -88,7 +88,7 @@
       {
         "id": "EHDSMedia.type",
         "path": "EHDSMedia.type",
-        "short": "C.14.2 - Type",
+        "short": "Type",
         "definition": "Classification of media as image, video, audio recording or other media type",
         "min": 0,
         "max": "1",
@@ -110,7 +110,7 @@
       {
         "id": "EHDSMedia.modality",
         "path": "EHDSMedia.modality",
-        "short": "C.14.3 - Modality",
+        "short": "Modality",
         "definition": "The type of acquisition equipment/process",
         "min": 0,
         "max": "1",
@@ -132,7 +132,7 @@
       {
         "id": "EHDSMedia.view",
         "path": "EHDSMedia.view",
-        "short": "C.14.4 - View",
+        "short": "View",
         "definition": "The name of the imaging view e.g. Lateral or Antero-posterior",
         "min": 0,
         "max": "1",
@@ -154,7 +154,7 @@
       {
         "id": "EHDSMedia.subject[x]",
         "path": "EHDSMedia.subject[x]",
-        "short": "C.14.5 - Subject",
+        "short": "Subject",
         "definition": "Who/What this Media is a record of",
         "min": 0,
         "max": "1",
@@ -176,7 +176,7 @@
       {
         "id": "EHDSMedia.created[x]",
         "path": "EHDSMedia.created[x]",
-        "short": "C.14.6 - Created",
+        "short": "Created",
         "definition": "The date and time(s) at which the media was collected.",
         "min": 0,
         "max": "1",
@@ -197,7 +197,7 @@
       {
         "id": "EHDSMedia.reason",
         "path": "EHDSMedia.reason",
-        "short": "C.14.7 - Reason",
+        "short": "Reason",
         "definition": "Describes why the event occurred in coded or textual form.",
         "min": 0,
         "max": "*",
@@ -219,7 +219,7 @@
       {
         "id": "EHDSMedia.bodysite",
         "path": "EHDSMedia.bodysite",
-        "short": "C.14.8 - BodySite",
+        "short": "BodySite",
         "definition": "Observed body part, i.e. target site",
         "min": 0,
         "max": "1",
@@ -241,7 +241,7 @@
       {
         "id": "EHDSMedia.deviceName",
         "path": "EHDSMedia.deviceName",
-        "short": "C.14.9 - Device name",
+        "short": "Device name",
         "definition": "The name of the device / manufacturer of the device that was used to make the recording.",
         "min": 0,
         "max": "1",
@@ -259,7 +259,7 @@
       {
         "id": "EHDSMedia.device",
         "path": "EHDSMedia.device",
-        "short": "C.14.10 - Device",
+        "short": "Device",
         "definition": "The device used to collect the media.",
         "min": 0,
         "max": "1",
@@ -280,7 +280,7 @@
       {
         "id": "EHDSMedia.content",
         "path": "EHDSMedia.content",
-        "short": "C.14.11 - Content",
+        "short": "Content",
         "definition": "The actual content of the media - inline or by direct reference to the media source file.",
         "min": 1,
         "max": "1",
@@ -298,7 +298,7 @@
       {
         "id": "EHDSMedia.note",
         "path": "EHDSMedia.note",
-        "short": "C.14.12 - Note",
+        "short": "Note",
         "definition": "Comments made about the media by the performer, subject or other participants.",
         "min": 0,
         "max": "*",
@@ -309,14 +309,14 @@
         },
         "type": [
           {
-            "code": "Narrative"
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSMedia.performer",
         "path": "EHDSMedia.performer",
-        "short": "C.14.13 - Performer",
+        "short": "Performer",
         "definition": "Performer of the imaging acquisition process.",
         "min": 0,
         "max": "*",
@@ -330,7 +330,7 @@
             "code": "Reference",
             "targetProfile": [
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
             ]
           }
         ]
@@ -343,12 +343,12 @@
         "id": "EHDSMedia",
         "path": "EHDSMedia",
         "short": "Media model",
-        "definition": "C.14 - EHDS refined base model for A photo, video, or audio recording acquired or used in healthcare."
+        "definition": "EHDS refined base model for A photo, video, or audio recording acquired or used in healthcare."
       },
       {
         "id": "EHDSMedia.identifier",
         "path": "EHDSMedia.identifier",
-        "short": "C.14.1 - Identifier",
+        "short": "Identifier",
         "definition": "Image identifier",
         "min": 0,
         "max": "*",
@@ -361,7 +361,7 @@
       {
         "id": "EHDSMedia.type",
         "path": "EHDSMedia.type",
-        "short": "C.14.2 - Type",
+        "short": "Type",
         "definition": "Classification of media as image, video, audio recording or other media type",
         "min": 0,
         "max": "1",
@@ -378,7 +378,7 @@
       {
         "id": "EHDSMedia.modality",
         "path": "EHDSMedia.modality",
-        "short": "C.14.3 - Modality",
+        "short": "Modality",
         "definition": "The type of acquisition equipment/process",
         "min": 0,
         "max": "1",
@@ -395,7 +395,7 @@
       {
         "id": "EHDSMedia.view",
         "path": "EHDSMedia.view",
-        "short": "C.14.4 - View",
+        "short": "View",
         "definition": "The name of the imaging view e.g. Lateral or Antero-posterior ",
         "min": 0,
         "max": "1",
@@ -412,7 +412,7 @@
       {
         "id": "EHDSMedia.subject[x]",
         "path": "EHDSMedia.subject[x]",
-        "short": "C.14.5 - Subject",
+        "short": "Subject",
         "definition": "Who/What this Media is a record of",
         "min": 0,
         "max": "1",
@@ -429,7 +429,7 @@
       {
         "id": "EHDSMedia.created[x]",
         "path": "EHDSMedia.created[x]",
-        "short": "C.14.6 - Created",
+        "short": "Created",
         "definition": "The date and time(s) at which the media was collected.",
         "min": 0,
         "max": "1",
@@ -445,7 +445,7 @@
       {
         "id": "EHDSMedia.reason",
         "path": "EHDSMedia.reason",
-        "short": "C.14.7 - Reason",
+        "short": "Reason",
         "definition": "Describes why the event occurred in coded or textual form.",
         "min": 0,
         "max": "*",
@@ -462,7 +462,7 @@
       {
         "id": "EHDSMedia.bodysite",
         "path": "EHDSMedia.bodysite",
-        "short": "C.14.8 - BodySite",
+        "short": "BodySite",
         "definition": "Observed body part, i.e. target site",
         "min": 0,
         "max": "1",
@@ -479,7 +479,7 @@
       {
         "id": "EHDSMedia.deviceName",
         "path": "EHDSMedia.deviceName",
-        "short": "C.14.9 - Device name",
+        "short": "Device name",
         "definition": "The name of the device / manufacturer of the device that was used to make the recording.",
         "min": 0,
         "max": "1",
@@ -492,7 +492,7 @@
       {
         "id": "EHDSMedia.device",
         "path": "EHDSMedia.device",
-        "short": "C.14.10 - Device",
+        "short": "Device",
         "definition": "The device used to collect the media.",
         "min": 0,
         "max": "1",
@@ -508,7 +508,7 @@
       {
         "id": "EHDSMedia.content",
         "path": "EHDSMedia.content",
-        "short": "C.14.11 - Content",
+        "short": "Content",
         "definition": "The actual content of the media - inline or by direct reference to the media source file.",
         "min": 1,
         "max": "1",
@@ -521,20 +521,20 @@
       {
         "id": "EHDSMedia.note",
         "path": "EHDSMedia.note",
-        "short": "C.14.12 - Note",
+        "short": "Note",
         "definition": "Comments made about the media by the performer, subject or other participants.",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "Narrative"
+            "code": "string"
           }
         ]
       },
       {
         "id": "EHDSMedia.performer",
         "path": "EHDSMedia.performer",
-        "short": "C.14.13 - Performer",
+        "short": "Performer",
         "definition": "Performer of the imaging acquisition process. ",
         "min": 0,
         "max": "*",
@@ -543,7 +543,7 @@
             "code": "Reference",
             "targetProfile": [
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
             ]
           }
         ]

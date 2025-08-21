@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const obligationsDir = '../input/fsh/obligations';	
-const conceptMapDir = '../input/fsh/xtehr-model-maps';	
+const mappingTablesDir = '../input/pagecontent';	
 const xtehrDir = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';	
 
@@ -26,6 +26,13 @@ const indices = {
 };
 
 const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
+
+// Configuration: Define which models are considered "core" for this IG
+const CORE_MODELS = [
+    'EHDSImagingReport',
+    'EHDSImagingStudy'
+    // Add other core models here as needed
+];
 
 function extractAndCopyResources(parsedData, srcResources ) {
     // Extract unique source resources
@@ -118,216 +125,329 @@ function extractAndCopyResources(parsedData, srcResources ) {
 
 // }
 
-function generateConceptMapFiles(parsedData, srcResources) {
-    srcResources.forEach(srcResource => {
-        const tgtResources = new Set(
-            parsedData.filter(row => row[indices.srcResource] === srcResource)
-                      .filter(row => row[indices.tgtResource].length > 0)
-                      .map(row => row[indices.tgtResource])
-        );
-        const srcFields = new Set( 
-            parsedData.filter(row => row[indices.srcResource] === srcResource)
-                      .filter(row => row[indices.srcField].length > 0)
-                      .map(row => row[indices.srcField])
-        );
-        if (tgtResources.size > 0) {
-            const conceptMapPath = `${conceptMapDir}/ConceptMap_${srcResource}.fsh`;
-            console.log(conceptMapPath);
-            const writable = fs.createWriteStream(conceptMapPath);
-
-            writable.write(`////////////////////////////////////////////////////\n`);
-            writable.write(`// Generated file. Do not edit.\n`);
-            writable.write(`////////////////////////////////////////////////////\n`);
-            writable.write(`\n`);
-            writable.write(`Instance: ${srcResource}Map\n`);
-            writable.write(`InstanceOf: ConceptMap\n`);
-            writable.write(`Usage: #definition\n`);
-            writable.write(`Title: "Map for ${srcResource}"\n`);
-            writable.write(`Description: "Map for ${srcResource}"\n`);
-            writable.write(`* status = #draft\n`);
-            writable.write(`* experimental = true\n`);
-            writable.write(`* title = "${srcResource} Mapping"\n`);
-            writable.write(`* name = "${srcResource}Map"\n`);
-            writable.write(`* sourceScopeUri = "${XtEHRBaseUrl}${srcResource}"\n`);
-
-            tgtResources.forEach(tgtResource => {
-                
-                writable.write(`* group[+]\n`);
-                writable.write(`  * source = "${XtEHRBaseUrl}${srcResource}"\n`);
-                writable.write(`  * target = $${tgtResource}Url\n`);
-
-                const elementCodes = new Set(
-                    parsedData
-                        .filter(row => row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource)
-                        .map(row => row[indices.srcField].trim())
-                        .filter(code => code.length > 0)
-                );
-                elementCodes.forEach(code => srcFields.delete(code));
-
-                if ( elementCodes.size == 0 ) {
-                    writable.write(`  * element[+]\n`);
-                    writable.write(`    * noMap = true\n`);
-                }
-
-                elementCodes.forEach(code => {
-                    writable.write(`  * element[+]\n`);
-                    writable.write(`    * code = #${code}\n`);
-
-                    const targets = new Map();
-                    parsedData
-                        .filter(row => row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource)
-                        .filter(row => row[indices.srcField].trim() === code.trim())
-                        .filter(row => row[indices.srcField].trim().length > 0 )
-                        .filter(row => row[indices.tgtElement].trim().length > 0 )
-                        .forEach(row => {
-                            const comment = row[indices.tgtRationale];
-                            const tgtField = row[indices.tgtElement];
-                            if (code) {
-                                targets.set(
-                                    `${tgtField}-${comment}-${getEquivalence(row[indices.tgtEquivalence])}`,
-                                    row
-                                );
-                            }
-                        });
-
-                    if ( targets.size == 0 ) {
-                        writable.write(`    * noMap = true\n`); // TODO not sure this is correct
-                    }
-        
-                                
-                    targets.forEach((value, key) => {
-                        const comment = value[indices.tgtRationale];
-                        const srcReq  = value[indices.srcReq];
-                        const tgtField = value[indices.tgtElement];
-                        writable.write(`    * target[+]\n`);
-                        writable.write(`      * code = #${tgtField}\n`);
-                        if (comment.length > 0) {
-                            writable.write(`      * comment = "${comment}"\n`);
-                        }
-                        if (srcReq.length > 0) {
-                            writable.write(`      * display = "${srcReq}"\n`);
-                        }
-                        writable.write(`      * relationship = ${getEquivalence(value[indices.tgtEquivalence])}\n`);
-                    });
-                });
-            });
-            // add entries for missed fields
-            if ( srcFields.size > 0 ) {
-                writable.write(`* group[+]\n`);
-                writable.write(`  * source = "${XtEHRBaseUrl}${srcResource}"\n`);
-                srcFields.forEach(code => {
-                    console.log(`No mapping for ${srcResource}.${code}`);
-                    const rows = parsedData
-                        .filter( row => row[indices.srcResource] === srcResource && row[indices.srcField] === code );
-                    const comment = rows.length > 0 ? rows[0][indices.tgtRationale] : undefined;
-                    const display = rows.length > 0 ? rows[0][indices.srcReq] : undefined;
-                    const modelling = rows.length > 0 ? rows[0][indices.tgtModeling] : undefined;
-                    writable.write(`  * element[+]\n`);
-                    writable.write(`    * code = #${code}\n`);
-                    writable.write(`    * noMap = true\n`);
-                    let str = 
-                        `${comment}${comment.length>0?' - '+modelling:modelling} ${display.length>0?"("+display+")":''} `.replace(/\s+/g, ' ').trim();
-                    if (str.length > 0 ) {
-                        writable.write(`    * display = "${str}"\n`);
-                    }
-                });
+function generateMappingTables(parsedData, srcResources) {
+    // Store all generated files for the main index
+    const generatedFiles = [];
+    
+    // First, remove any existing mapping files that we don't want to keep
+    console.log("Removing old mapping files...");
+    fs.readdirSync(mappingTablesDir).forEach(file => {
+        if (file.endsWith('-mapping.md') && file !== 'xtehr-mapping.md') {
+            // Only keep files for core models
+            const resourceName = file.replace('-mapping.md', '');
+            if (!CORE_MODELS.includes(resourceName)) {
+                const filePath = path.join(mappingTablesDir, file);
+                fs.unlinkSync(filePath);
+                console.log(`Removed ${filePath}`);
             }
-            writable.write(`\n`);
-            writable.write(`////////////////////////////////////////////////////\n`);
-            writable.end();
         }
     });
-}
-
-// Generate intro files mermaid
-function generateIntroFiles(parsedData, srcResources) {
+    
+    // We need to categorize resources into:
+    // 1. Core resources (in CORE_MODELS) -> Generate .md files
+    // 2. Resources with actor 'R' but not in CORE_MODELS -> List in separate section, no .md files
+    // 3. Resources without actor 'R' -> List as "not included"
+    const coreResources = [];
+    const nonCoreWithR = [];
+    const resourcesWithoutR = [];
+    
     srcResources.forEach(srcResource => {
-        const tgtResources = new Set();
-        const srcFields = new Set();
-
-        parsedData.forEach(row => {
-            if (row[indices.srcResource] === srcResource) {
-                if (row[indices.tgtResource] && row[indices.tgtResource].length > 0){   
-                    tgtResources
-                        .add(
-                            row[indices.tgtResource]
-                        );
-                }
-                if (row[indices.srcField]){
-                    srcFields.add(row[indices.srcField]);
+        const hasActorWithR = parsedData
+            .filter(row => row[indices.srcResource] === srcResource)
+            .filter(row => row[indices.actors] && row[indices.actors].length > 0)
+            .some(row => row[indices.actors].includes('R'));
+        
+        if (CORE_MODELS.includes(srcResource)) {
+            coreResources.push(srcResource);
+        } else if (hasActorWithR) {
+            nonCoreWithR.push(srcResource);
+        } else {
+            resourcesWithoutR.push(srcResource);
+        }
+    });
+    
+    coreResources.forEach(srcResource => {
+        // Create a hash table to store mappings: srcField -> array of target mappings
+        const mappingTable = new Map();
+        
+        // Get all source fields for this resource in their original order
+        const srcFieldsWithOrder = [];
+        const seenFields = new Set();
+        
+        parsedData.forEach((row, index) => {
+            if (row[indices.srcResource] === srcResource && 
+                row[indices.srcField] && 
+                row[indices.srcField].length > 0) {
+                const srcField = row[indices.srcField].trim();
+                if (!seenFields.has(srcField)) {
+                    srcFieldsWithOrder.push({ field: srcField, originalIndex: index });
+                    seenFields.add(srcField);
                 }
             }
         });
-        if (tgtResources.size > 0) {
-            const conceptMapIntroPath = `${conceptMapIntroDir}/ConceptMap-${srcResource}Map-intro.md`;
-            console.log(conceptMapIntroPath);
-            const writable = fs.createWriteStream(conceptMapIntroPath);
-            writable.write(`{% include variable-definitions.md %}\n\n`);
-            writable.write(`The figure below presents the {{XtEhrImaging}} DataSet representation and the FHIR profiles it maps to. For each FHIR profile the impacted fields are listed.\n`);
-            writable.write(`\n`);
-            // mermaid
-            writable.write('```mermaid\n');
-            writable.write('classDiagram\n');
-            writable.write('direction LR\n');
-            // XtEHR model
-            writable.write(`class ${srcResource} {\n`);
-            writable.write(`  <<XtEHR dataset>>\n`);
-            srcFields.forEach(field => writable.write(`  ${field}\n`));
-            writable.write(`}\n`);
-            writable.write(`link ${srcResource} "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-${srcResource}.html"\n`);
-
-            const linkedClasses = new Set();
-            const linkRows = new Set();
-            tgtResources.forEach(tgtResource => {
-                const tgtFields = new Set(
-                    parsedData
-                        .filter(row => row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource)
-                        .map(row => row[indices.tgtElement].trim())
-                        .filter( field => field.length > 0 )
-                );
-                let tgtResourceClassName = tgtResource.substring(tgtResource.lastIndexOf('/') + 1);	
-
-                writable.write(`class ${tgtResourceClassName}`);
-                if (tgtFields.size > 0) {
-                    writable.write(`{\n`);
-                    writable.write(`  <<FHIR>>\n`);
-                    tgtFields.forEach(field => {
-                        let targetField = field.replace(new RegExp('\:','g'),'\\:')        
-                        
-                        writable.write(`  ${targetField}\n`)
-                    } )
-                    writable.write(`}\n`);
-                }
-                writable.write(`\n`);
-                // writable.write(`link ${tgtResourceClassName} "./StructureDefinition-${tgtResourceClassName.html}"\n`);
-                linkRows.add(`${srcResource} --> ${tgtResourceClassName}\n`);
-
-                parsedData.forEach(row => {
-                    if (row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource && row[indices.tgtRefType]) {
-                    const refResources = row[indices.tgtRefType].split(',');
-                    const referenceName = row[indices.tgtElement];
-                    refResources
-                        .filter(refResource => refResource !== '-' )
-                        .forEach(refResource => {
-                            const refResourceClassName = refResource.substring(refResource.lastIndexOf('/') + 1);
-                            linkedClasses.add(refResourceClassName);
-                            linkRows.add(`${tgtResourceClassName} --> ${refResourceClassName} : ${referenceName}\n`);
-                    });
+        
+        // Initialize the mapping table with all source fields
+        srcFieldsWithOrder.forEach(({ field }) => {
+            mappingTable.set(field, []);
+        });
+        
+        // Populate the mapping table with target mappings and collect source type info
+        const sourceTypeMap = new Map(); // srcField -> array of srcTypes
+        const modelingMap = new Map(); // srcField -> tgtModeling
+        parsedData
+            .filter(row => row[indices.srcResource] === srcResource)
+            .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
+            .forEach(row => {
+                const srcField = row[indices.srcField].trim();
+                const srcType = row[indices.srcType] ? row[indices.srcType].trim() : '';
+                const tgtModeling = row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : '';
+                
+                // Store the source types for hyperlink generation (can be multiple for [x] fields)
+                if (srcType.length > 0) {
+                    if (!sourceTypeMap.has(srcField)) {
+                        sourceTypeMap.set(srcField, []);
                     }
-                });
+                    const existingTypes = sourceTypeMap.get(srcField);
+                    if (!existingTypes.includes(srcType)) {
+                        existingTypes.push(srcType);
+                    }
+                }
+                
+                // Store the tgtModeling value
+                if (tgtModeling.length > 0) {
+                    modelingMap.set(srcField, tgtModeling);
+                }
+                
+                // Process target mappings
+                if (row[indices.tgtResource] && row[indices.tgtResource].length > 0 && 
+                    row[indices.tgtElement] && row[indices.tgtElement].length > 0) {
+                    const tgtResource = row[indices.tgtResource].trim();
+                    const tgtElement = row[indices.tgtElement].trim();
+                    const targetMapping = `${tgtResource}.${tgtElement}`;
+                    
+                    if (mappingTable.has(srcField)) {
+                        // Avoid duplicates
+                        const existingMappings = mappingTable.get(srcField);
+                        if (!existingMappings.includes(targetMapping)) {
+                            existingMappings.push(targetMapping);
+                        }
+                    }
+                }
             });
-            linkedClasses.forEach(linkedClass => {
-                writable.write(`class ${linkedClass} {\n`);
-                writable.write(`  <<FHIR>>\n`);
-                writable.write(`}\n`);
+        
+        // Generate the markdown file
+        const mappingTablePath = `${mappingTablesDir}/${srcResource}-mapping.md`;
+        console.log(mappingTablePath);
+        const writable = fs.createWriteStream(mappingTablePath);
+        
+        writable.write(`<!--\n`);
+        writable.write(`  Generated file. Do not edit.\n`);
+        writable.write(`-->\n\n`);
+        writable.write(`#### ${srcResource}\n\n`);
+        writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
+        writable.write(`{:.grid}\n`);
+        writable.write(`| Element | Target FHIR resource.element | Comments |\n`);
+        writable.write(`| ------- | ---------------------------- | -------- |\n`);
+        
+        // Use source fields in their original order from the TSV file
+        srcFieldsWithOrder.forEach(({ field: srcField }) => {
+            const targetMappings = mappingTable.get(srcField);
+            
+            // Convert target mappings to hyperlinked format
+            const targetMappingsWithLinks = targetMappings.map(mapping => {
+                const [tgtResource, tgtElement] = mapping.split('.');
+                // Only create hyperlinks for resources that start with "Im"
+                if (tgtResource.startsWith('Im')) {
+                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
+                } else {
+                    return mapping; // Return original mapping without hyperlink
+                }
             });
-            linkRows.forEach(link => writable.write(link));
-            writable.write("```\n");
-            writable.write(`\n`);
-            writable.end();
-        }
+            const targetMappingsStr = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(' ; ') : '';
+            
+            // Get the modeling value for this field
+            const modelingValue = modelingMap.get(srcField) || '';
+            
+            // Create hyperlink for source field if it has EHDS srcType(s)
+            // Initialize the display with the source resource and field
+            let sourceFieldDisplay = `${srcResource}.${srcField}`;
+            const srcTypes = sourceTypeMap.get(srcField);
+            if (srcTypes && srcTypes.length > 0) {
+                const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
+                if (ehdsTypes.length > 0) {
+                    if (ehdsTypes.length === 1) {
+                        // Check if the ehdsType is not a core resource
+                        if (!coreResources.includes(ehdsTypes[0])) {
+                            // Single excluded type - link directly to resource page
+                            sourceFieldDisplay = `${srcResource}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
+                        } else {
+                            // Single type - simple link format
+                            sourceFieldDisplay = `${srcResource}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
+                        }
+                    } else {
+                        // Multiple types - format with parentheses and multiple links
+                        const typeLinks = ehdsTypes.map(type => {
+                            if (!coreResources.includes(type)) {
+                                return `[${type}](StructureDefinition-${type}.html)`;
+                            } else {
+                                return `[${type}](#${type.toLowerCase()})`;
+                            }
+                        }).join(', ');
+                        sourceFieldDisplay = `${srcResource}.${srcField} (${typeLinks})`;
+                    }
+                }
+            }
+            
+            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} | ${modelingValue} |\n`);
+        });
+        
+        writable.write(`\n`);
+        writable.end();
+        
+        // Store for index generation
+        generatedFiles.push({
+            filename: `${srcResource}-mapping.md`,
+            resource: srcResource
+        });
     });
+    
+    // Generate the main index file
+    generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR);
 }
+
+function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
+    const indexPath = '../input/pagecontent/xtehr-mapping.md';
+    console.log(`Generating mapping index: ${indexPath}`);
+    const writable = fs.createWriteStream(indexPath);
+    
+    writable.write(`<!--\n`);
+    writable.write(`  Generated file. Do not edit.\n`);
+    writable.write(`-->\n\n`);
+    writable.write('{% include variable-definitions.md %}\n\n');
+    writable.write('The following tables describe the way the [Xt-EHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.\n\n');
+
+    // Sort files alphabetically for consistent output
+    const sortedFiles = generatedFiles.sort((a, b) => a.resource.localeCompare(b.resource));
+    
+    // Core models section - include the .md files
+    if (sortedFiles.length > 0) {
+        writable.write('### Core models of the Imaging Report IG\n\n');
+        sortedFiles.forEach(file => {
+            writable.write(`{% include ${file.filename} %}\n\n`);
+        });
+    }
+    
+    // Section for resources with 'R' but not in CORE_MODELS
+    if (nonCoreWithR && nonCoreWithR.length > 0) {
+        const sortedNonCoreWithR = [...nonCoreWithR].sort();
+        const nonCoreWithRNames = sortedNonCoreWithR.join(', ');
+        writable.write(`### Other logical models that are used by this IG\n\n`);
+        writable.write(`The following logical models describe data that is used in the context of this IG, but the mapping will be defined by another higher level IG, because they are common to many domains:\n\n`);
+        writable.write(`* ${nonCoreWithRNames}\n\n`);
+    }
+    
+    // Section for resources without 'R'
+    if (resourcesWithoutR && resourcesWithoutR.length > 0) {
+        const sortedWithoutR = [...resourcesWithoutR].sort();
+        const withoutRNames = sortedWithoutR.join(', ');
+        writable.write(`### Models not included in this IG\n\n`);
+        writable.write(`The following logical models describe data that is not used in the context of this Imaging Report IG:\n\n`);
+        writable.write(`* ${withoutRNames}\n\n`);
+    }
+    
+    writable.end();
+}
+
+// Generate intro files mermaid
+// Commented out as it is not used in the current context of generating .md files instead of ConceptMap files.
+// function generateIntroFiles(parsedData, srcResources) {
+//     srcResources.forEach(srcResource => {
+//         const tgtResources = new Set();
+//         const srcFields = new Set();
+
+//         parsedData.forEach(row => {
+//             if (row[indices.srcResource] === srcResource) {
+//                 if (row[indices.tgtResource] && row[indices.tgtResource].length > 0){   
+//                     tgtResources
+//                         .add(
+//                             row[indices.tgtResource]
+//                         );
+//                 }
+//                 if (row[indices.srcField]){
+//                     srcFields.add(row[indices.srcField]);
+//                 }
+//             }
+//         });
+//         if (tgtResources.size > 0) {
+//             const conceptMapIntroPath = `${conceptMapIntroDir}/ConceptMap-${srcResource}Map-intro.md`;
+//             console.log(conceptMapIntroPath);
+//             const writable = fs.createWriteStream(conceptMapIntroPath);
+//             writable.write(`{% include variable-definitions.md %}\n\n`);
+//             writable.write(`The figure below presents the {{XtEhrImaging}} DataSet representation and the FHIR profiles it maps to. For each FHIR profile the impacted fields are listed.\n`);
+//             writable.write(`\n`);
+//             // mermaid
+//             writable.write('```mermaid\n');
+//             writable.write('classDiagram\n');
+//             writable.write('direction LR\n');
+//             // XtEHR model
+//             writable.write(`class ${srcResource} {\n`);
+//             writable.write(`  <<XtEHR dataset>>\n`);
+//             srcFields.forEach(field => writable.write(`  ${field}\n`));
+//             writable.write(`}\n`);
+//             writable.write(`link ${srcResource} "https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-${srcResource}.html"\n`);
+
+//             const linkedClasses = new Set();
+//             const linkRows = new Set();
+//             tgtResources.forEach(tgtResource => {
+//                 const tgtFields = new Set(
+//                     parsedData
+//                         .filter(row => row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource)
+//                         .map(row => row[indices.tgtElement].trim())
+//                         .filter( field => field.length > 0 )
+//                 );
+//                 let tgtResourceClassName = tgtResource.substring(tgtResource.lastIndexOf('/') + 1);	
+
+//                 writable.write(`class ${tgtResourceClassName}`);
+//                 if (tgtFields.size > 0) {
+//                     writable.write(`{\n`);
+//                     writable.write(`  <<FHIR>>\n`);
+//                     tgtFields.forEach(field => {
+//                         let targetField = field.replace(new RegExp('\:','g'),'\\:')        
+                        
+//                         writable.write(`  ${targetField}\n`)
+//                     } )
+//                     writable.write(`}\n`);
+//                 }
+//                 writable.write(`\n`);
+//                 // writable.write(`link ${tgtResourceClassName} "./StructureDefinition-${tgtResourceClassName.html}"\n`);
+//                 linkRows.add(`${srcResource} --> ${tgtResourceClassName}\n`);
+
+//                 parsedData.forEach(row => {
+//                     if (row[indices.srcResource] === srcResource && row[indices.tgtResource] === tgtResource && row[indices.tgtRefType]) {
+//                     const refResources = row[indices.tgtRefType].split(',');
+//                     const referenceName = row[indices.tgtElement];
+//                     refResources
+//                         .filter(refResource => refResource !== '-' )
+//                         .forEach(refResource => {
+//                             const refResourceClassName = refResource.substring(refResource.lastIndexOf('/') + 1);
+//                             linkedClasses.add(refResourceClassName);
+//                             linkRows.add(`${tgtResourceClassName} --> ${refResourceClassName} : ${referenceName}\n`);
+//                     });
+//                     }
+//                 });
+//             });
+//             linkedClasses.forEach(linkedClass => {
+//                 writable.write(`class ${linkedClass} {\n`);
+//                 writable.write(`  <<FHIR>>\n`);
+//                 writable.write(`}\n`);
+//             });
+//             linkRows.forEach(link => writable.write(link));
+//             writable.write("```\n");
+//             writable.write(`\n`);
+//             writable.end();
+//         }
+//     });
+// }
 
 function generateObligationFiles(parsedData) {
   // Generate Obligations
@@ -366,6 +486,8 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
             .forEach(row => { 
                 shallPopulateObligations.add(row[indices.tgtElement])
                 // if it has a type that exists in parseData and is not a reference, include sibling elements
+                // COMMENTED OUT: This was causing unwanted sub-element expansion
+                /*
                 if (row[indices.srcType] && row[indices.srcType].length > 0 && row[indices.tgtRefType].length==0 ) {
                     const srcType = row[indices.srcType].trim();
                     let res = parsedData
@@ -377,6 +499,7 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
                             shallPopulateObligations.add(row[indices.tgtElement] + '.' + r[indices.tgtElement]);
                         })
                 }
+                */
         });
         return shallPopulateObligations;
     }
@@ -404,6 +527,9 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
             .filter(row => !row[indices.tgtElement] || row[indices.tgtElement].length == 0)
         ;
 
+        // COMMENTED OUT: includeAsWell logic that was causing cross-resource obligation contamination
+        // This was adding obligations from other resources that reference the current resource in their includeAsWell column
+        /*
         const includeAsWell = new Set( parsedData
             .filter(row => row[indices.tgtResource] === resourceUrl )
             .filter(row => row[indices.includeAsWell] && row[indices.includeAsWell].length > 0)
@@ -421,6 +547,7 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
                 shallPopulateObligations.add(obligation);
             });     
          });
+        */
 
         const allObligations = new Set([...shallPopulateObligations, ...shallHandleCorrectlyObligations]);  
   
@@ -436,7 +563,7 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
             writable.write(`Profile: ${actor}_${resourceName}\n`);
             writable.write(`Parent: ${resourceUrl.startsWith("Im")?resourceUrl:'$'+resourceUrl}\n`);
             writable.write(`Id: ${actor}-${resourceName}\n`);
-            writable.write(`Title: "${actor} obligations for ${resourceName}"\n`);
+            writable.write(`Title: "${resourceName}: obligations"\n`);
             writable.write(`Description: "${actor} obligations for ${resourceName}"\n`);
   
             allObligations.forEach(obligation => {
@@ -638,9 +765,9 @@ function main() {
         
         extractAndCopyResources(parsedData, srcResources);
         
-        generateConceptMapFiles(parsedData, srcResources);
+        generateMappingTables(parsedData, srcResources);
         
-        generateIntroFiles(parsedData, srcResources);
+       // generateIntroFiles(parsedData, srcResources);
                 
         generateObligationFiles(parsedData);  
         

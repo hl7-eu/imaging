@@ -12,7 +12,7 @@
   "name": "EHDSLaboratoryOrderHeader",
   "title": "Laboratory order header model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -122,7 +122,7 @@
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson",
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization",
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation",
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
             ]
           }
@@ -330,7 +330,7 @@
         "id": "EHDSLaboratoryOrderHeader.documentMetadata.documentType",
         "path": "EHDSLaboratoryOrderHeader.documentMetadata.documentType",
         "short": "A.1.9.2 - Document type",
-        "definition": "Identifies the type of document at hand, e.g. Hospital discharge report.",
+        "definition": "Identifies the type of document at hand, e.g. Discharge report.",
         "min": 1,
         "max": "1",
         "base": {
@@ -410,7 +410,7 @@
         "id": "EHDSLaboratoryOrderHeader.documentMetadata.documentTitle",
         "path": "EHDSLaboratoryOrderHeader.documentMetadata.documentTitle",
         "short": "A.1.9.6 - Document title",
-        "definition": "Document title, such as \"Hospital discharge report\", \"Laboratory Result Report\" etc..",
+        "definition": "Document title, such as \"Discharge report\", \"Laboratory Result Report\" etc..",
         "min": 1,
         "max": "1",
         "base": {
@@ -482,7 +482,7 @@
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
@@ -620,7 +620,7 @@
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson",
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization",
+              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation",
               "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
             ]
           }
@@ -773,7 +773,7 @@
         "id": "EHDSLaboratoryOrderHeader.documentMetadata.documentType",
         "path": "EHDSLaboratoryOrderHeader.documentMetadata.documentType",
         "short": "A.1.9.2 - Document type",
-        "definition": "Identifies the type of document at hand, e.g. Hospital discharge report.",
+        "definition": "Identifies the type of document at hand, e.g. Discharge report.",
         "min": 1,
         "max": "1",
         "type": [
@@ -833,7 +833,7 @@
         "id": "EHDSLaboratoryOrderHeader.documentMetadata.documentTitle",
         "path": "EHDSLaboratoryOrderHeader.documentMetadata.documentTitle",
         "short": "A.1.9.6 - Document title",
-        "definition": "Document title, such as \"Hospital discharge report\", \"Laboratory Result Report\" etc.. ",
+        "definition": "Document title, such as \"Discharge report\", \"Laboratory Result Report\" etc.. ",
         "min": 1,
         "max": "1",
         "type": [
@@ -885,7 +885,7 @@
         "max": "1",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },

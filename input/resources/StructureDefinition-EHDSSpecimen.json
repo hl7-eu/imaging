@@ -12,7 +12,7 @@
   "name": "EHDSSpecimen",
   "title": "Specimen model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.9 - EHDS refined base model for Specimen information",
+  "description": "EHDS refined base model for A sample to be used for Analysis",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSSpecimen",
         "path": "EHDSSpecimen",
         "short": "Specimen model",
-        "definition": "C.9 - EHDS refined base model for Specimen information",
+        "definition": "EHDS refined base model for A sample to be used for Analysis",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSSpecimen.identifier",
         "path": "EHDSSpecimen.identifier",
-        "short": "C.9.1 - Identifier",
+        "short": "An identifier of the specimen which is unique within in a defined scope.",
         "definition": "An identifier of the specimen which is unique within in a defined scope. Example: identifier assigned by ordering system, identifier assigned by laboratory etc. Multiple identifiers can be used.",
         "min": 1,
         "max": "*",
@@ -88,7 +88,7 @@
       {
         "id": "EHDSSpecimen.typeOfSpecies",
         "path": "EHDSSpecimen.typeOfSpecies",
-        "short": "C.9.2 - Type of species",
+        "short": "Biologic type of species for laboratory result reports bound to non-human subjects.",
         "definition": "Biologic type of species for laboratory result reports bound to non-human subjects.",
         "min": 0,
         "max": "1",
@@ -110,8 +110,8 @@
       {
         "id": "EHDSSpecimen.material",
         "path": "EHDSSpecimen.material",
-        "short": "C.9.3 - Material",
-        "definition": "Specimen material.",
+        "short": "Material that forms the specimen.",
+        "definition": "Material that forms the specimen.",
         "min": 0,
         "max": "1",
         "base": {
@@ -132,13 +132,13 @@
       {
         "id": "EHDSSpecimen.collectionPeriod",
         "path": "EHDSSpecimen.collectionPeriod",
-        "short": "C.9.4 - Collection period",
-        "definition": "Collection date time or period.",
-        "min": 1,
+        "short": "The period or date and time of specimen collection.",
+        "definition": "The period or date and time of specimen collection.",
+        "min": 0,
         "max": "1",
         "base": {
           "path": "EHDSSpecimen.collectionPeriod",
-          "min": 1,
+          "min": 0,
           "max": "1"
         },
         "type": [
@@ -148,31 +148,27 @@
         ]
       },
       {
-        "id": "EHDSSpecimen.anatomicLocation",
-        "path": "EHDSSpecimen.anatomicLocation",
-        "short": "C.9.5 - Anatomic location",
+        "id": "EHDSSpecimen.bodySite",
+        "path": "EHDSSpecimen.bodySite",
+        "short": "Anatomic location (body location, laterality) where the material is collected, e.g. Elbow, left",
         "definition": "Anatomic location (body location, laterality) where the material is collected, e.g. Elbow, left",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSSpecimen.anatomicLocation",
+          "path": "EHDSSpecimen.bodySite",
           "min": 0,
           "max": "1"
         },
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
+        ]
       },
       {
         "id": "EHDSSpecimen.morphology",
         "path": "EHDSSpecimen.morphology",
-        "short": "C.9.6 - Morphology",
+        "short": "Morphological abnormalities of the anatomical location where the material is taken, for example wound, ulcer.",
         "definition": "Morphological abnormalities of the anatomical location where the material is taken, for example wound, ulcer.",
         "min": 0,
         "max": "1",
@@ -194,8 +190,8 @@
       {
         "id": "EHDSSpecimen.sourceDevice",
         "path": "EHDSSpecimen.sourceDevice",
-        "short": "C.9.7 - Source Device",
-        "definition": "If the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter",
+        "short": "Source device in case the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter",
+        "definition": "Source device in case the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter",
         "min": 0,
         "max": "1",
         "base": {
@@ -214,9 +210,27 @@
         }
       },
       {
+        "id": "EHDSSpecimen.collectionProcedure",
+        "path": "EHDSSpecimen.collectionProcedure",
+        "short": "The procedure that collects the specimen.",
+        "definition": "The procedure that collects the specimen.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSSpecimen.collectionProcedure",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          }
+        ]
+      },
+      {
         "id": "EHDSSpecimen.collectionProcedureMethod",
         "path": "EHDSSpecimen.collectionProcedureMethod",
-        "short": "C.9.8 - Collection procedure method",
+        "short": "Collection procedure method",
         "definition": "If relevant for the results, the method of obtaining the specimen.",
         "min": 0,
         "max": "1",
@@ -238,7 +252,7 @@
       {
         "id": "EHDSSpecimen.receivedDate",
         "path": "EHDSSpecimen.receivedDate",
-        "short": "C.9.9 - Received date",
+        "short": "Date and time that the material is handed over at the laboratory or specimen collection centre.",
         "definition": "Date and time that the material is handed over at the laboratory or specimen collection centre.",
         "min": 0,
         "max": "1",
@@ -254,34 +268,39 @@
         ]
       },
       {
-        "id": "EHDSSpecimen.subject",
-        "path": "EHDSSpecimen.subject",
-        "short": "C.9.10 - Subject",
+        "id": "EHDSSpecimen.subject[x]",
+        "path": "EHDSSpecimen.subject[x]",
+        "short": "Subject",
         "definition": "Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance, a biologically-derived product, or a device.",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSSpecimen.subject",
+          "path": "EHDSSpecimen.subject[x]",
           "min": 0,
           "max": "1"
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSubstance"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatientAnimal"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSubstance"
           }
         ]
       },
       {
         "id": "EHDSSpecimen.container",
         "path": "EHDSSpecimen.container",
-        "short": "C.9.11 - Container",
+        "short": "The container holding the specimen.",
         "definition": "The container holding the specimen.",
         "min": 0,
         "max": "*",
@@ -299,8 +318,8 @@
       {
         "id": "EHDSSpecimen.container.specimenQuantity",
         "path": "EHDSSpecimen.container.specimenQuantity",
-        "short": "C.9.11.1 - Specimen quantity",
-        "definition": "Quantity of specimen within container",
+        "short": "Specimen quantity",
+        "definition": "Quantity of specimen within container.",
         "min": 0,
         "max": "1",
         "base": {
@@ -317,7 +336,7 @@
       {
         "id": "EHDSSpecimen.container.containerDevice",
         "path": "EHDSSpecimen.container.containerDevice",
-        "short": "C.9.11.2 - Container device",
+        "short": "Container device",
         "definition": "The device resource for the the container holding the specimen.",
         "min": 1,
         "max": "1",
@@ -340,12 +359,12 @@
         "id": "EHDSSpecimen",
         "path": "EHDSSpecimen",
         "short": "Specimen model",
-        "definition": "C.9 - EHDS refined base model for Specimen information"
+        "definition": "EHDS refined base model for A sample to be used for Analysis"
       },
       {
         "id": "EHDSSpecimen.identifier",
         "path": "EHDSSpecimen.identifier",
-        "short": "C.9.1 - Identifier",
+        "short": "An identifier of the specimen which is unique within in a defined scope.",
         "definition": "An identifier of the specimen which is unique within in a defined scope. Example: identifier assigned by ordering system, identifier assigned by laboratory etc. Multiple identifiers can be used.",
         "min": 1,
         "max": "*",
@@ -358,7 +377,7 @@
       {
         "id": "EHDSSpecimen.typeOfSpecies",
         "path": "EHDSSpecimen.typeOfSpecies",
-        "short": "C.9.2 - Type of species",
+        "short": "Biologic type of species for laboratory result reports bound to non-human subjects.",
         "definition": "Biologic type of species for laboratory result reports bound to non-human subjects.",
         "min": 0,
         "max": "1",
@@ -375,8 +394,8 @@
       {
         "id": "EHDSSpecimen.material",
         "path": "EHDSSpecimen.material",
-        "short": "C.9.3 - Material",
-        "definition": "Specimen material.",
+        "short": "Material that forms the specimen.",
+        "definition": "Material that forms the specimen.",
         "min": 0,
         "max": "1",
         "type": [
@@ -392,9 +411,9 @@
       {
         "id": "EHDSSpecimen.collectionPeriod",
         "path": "EHDSSpecimen.collectionPeriod",
-        "short": "C.9.4 - Collection period",
-        "definition": "Collection date time or period.",
-        "min": 1,
+        "short": "The period or date and time of specimen collection.",
+        "definition": "The period or date and time of specimen collection.",
+        "min": 0,
         "max": "1",
         "type": [
           {
@@ -403,26 +422,22 @@
         ]
       },
       {
-        "id": "EHDSSpecimen.anatomicLocation",
-        "path": "EHDSSpecimen.anatomicLocation",
-        "short": "C.9.5 - Anatomic location",
+        "id": "EHDSSpecimen.bodySite",
+        "path": "EHDSSpecimen.bodySite",
+        "short": "Anatomic location (body location, laterality) where the material is collected, e.g. Elbow, left",
         "definition": "Anatomic location (body location, laterality) where the material is collected, e.g. Elbow, left",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "CodeableConcept"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
           }
-        ],
-        "binding": {
-          "strength": "preferred",
-          "description": "SNOMED CT"
-        }
+        ]
       },
       {
         "id": "EHDSSpecimen.morphology",
         "path": "EHDSSpecimen.morphology",
-        "short": "C.9.6 - Morphology",
+        "short": "Morphological abnormalities of the anatomical location where the material is taken, for example wound, ulcer.",
         "definition": "Morphological abnormalities of the anatomical location where the material is taken, for example wound, ulcer.",
         "min": 0,
         "max": "1",
@@ -439,8 +454,8 @@
       {
         "id": "EHDSSpecimen.sourceDevice",
         "path": "EHDSSpecimen.sourceDevice",
-        "short": "C.9.7 - Source Device",
-        "definition": "If the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter",
+        "short": "Source device in case the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter",
+        "definition": "Source device in case the material is not collected directly from the patient but comes from a patient-related object, e.g. a catheter",
         "min": 0,
         "max": "1",
         "type": [
@@ -454,9 +469,22 @@
         }
       },
       {
+        "id": "EHDSSpecimen.collectionProcedure",
+        "path": "EHDSSpecimen.collectionProcedure",
+        "short": "The procedure that collects the specimen.",
+        "definition": "The procedure that collects the specimen.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          }
+        ]
+      },
+      {
         "id": "EHDSSpecimen.collectionProcedureMethod",
         "path": "EHDSSpecimen.collectionProcedureMethod",
-        "short": "C.9.8 - Collection procedure method",
+        "short": "Collection procedure method",
         "definition": "If relevant for the results, the method of obtaining the specimen.",
         "min": 0,
         "max": "1",
@@ -473,7 +501,7 @@
       {
         "id": "EHDSSpecimen.receivedDate",
         "path": "EHDSSpecimen.receivedDate",
-        "short": "C.9.9 - Received date",
+        "short": "Date and time that the material is handed over at the laboratory or specimen collection centre.",
         "definition": "Date and time that the material is handed over at the laboratory or specimen collection centre.",
         "min": 0,
         "max": "1",
@@ -484,29 +512,34 @@
         ]
       },
       {
-        "id": "EHDSSpecimen.subject",
-        "path": "EHDSSpecimen.subject",
-        "short": "C.9.10 - Subject",
+        "id": "EHDSSpecimen.subject[x]",
+        "path": "EHDSSpecimen.subject[x]",
+        "short": "Subject",
         "definition": "Where the specimen came from. This may be from patient(s), from a location (e.g., the source of an environmental sample), or a sampling of a substance, a biologically-derived product, or a device.",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSGroup",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice",
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSubstance"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatientAnimal"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSubstance"
           }
         ]
       },
       {
         "id": "EHDSSpecimen.container",
         "path": "EHDSSpecimen.container",
-        "short": "C.9.11 - Container",
+        "short": "The container holding the specimen.",
         "definition": "The container holding the specimen.",
         "min": 0,
         "max": "*",
@@ -519,8 +552,8 @@
       {
         "id": "EHDSSpecimen.container.specimenQuantity",
         "path": "EHDSSpecimen.container.specimenQuantity",
-        "short": "C.9.11.1 - Specimen quantity",
-        "definition": "Quantity of specimen within container",
+        "short": "Specimen quantity",
+        "definition": "Quantity of specimen within container.",
         "min": 0,
         "max": "1",
         "type": [
@@ -532,7 +565,7 @@
       {
         "id": "EHDSSpecimen.container.containerDevice",
         "path": "EHDSSpecimen.container.containerDevice",
-        "short": "C.9.11.2 - Container device",
+        "short": "Container device",
         "definition": "The device resource for the the container holding the specimen.",
         "min": 1,
         "max": "1",

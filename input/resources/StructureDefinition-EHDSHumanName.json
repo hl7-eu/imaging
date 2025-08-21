@@ -12,7 +12,7 @@
   "name": "EHDSHumanName",
   "title": "Human name model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.27 - EHDS refined base model for Human name",
+  "description": "EHDS refined base model for Human name",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSHumanName",
         "path": "EHDSHumanName",
         "short": "Human name model",
-        "definition": "C.27 - EHDS refined base model for Human name",
+        "definition": "EHDS refined base model for Human name",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSHumanName.use",
         "path": "EHDSHumanName.use",
-        "short": "C.27.1 - Use",
+        "short": "Use",
         "definition": "Identifies the purpose for this name.",
         "min": 0,
         "max": "1",
@@ -92,7 +92,7 @@
       {
         "id": "EHDSHumanName.text",
         "path": "EHDSHumanName.text",
-        "short": "C.27.2 - Text",
+        "short": "Text",
         "definition": "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.",
         "min": 0,
         "max": "1",
@@ -110,7 +110,7 @@
       {
         "id": "EHDSHumanName.family",
         "path": "EHDSHumanName.family",
-        "short": "C.27.3 - Family",
+        "short": "Family",
         "definition": "The family name/surname/last name of the patient. This field can contain more than one  element or multiple fields could be present.",
         "min": 0,
         "max": "*",
@@ -128,7 +128,7 @@
       {
         "id": "EHDSHumanName.given",
         "path": "EHDSHumanName.given",
-        "short": "C.27.4 - Given",
+        "short": "Given",
         "definition": "The given name/first name  (also known as forename or first name).",
         "min": 0,
         "max": "*",
@@ -146,7 +146,7 @@
       {
         "id": "EHDSHumanName.prefix",
         "path": "EHDSHumanName.prefix",
-        "short": "C.27.5 - Prefix",
+        "short": "Prefix",
         "definition": "Name parts that come before the name. Prefixes appear in the correct order for presenting the name.",
         "min": 0,
         "max": "*",
@@ -164,7 +164,7 @@
       {
         "id": "EHDSHumanName.suffix",
         "path": "EHDSHumanName.suffix",
-        "short": "C.27.6 - Suffix",
+        "short": "Suffix",
         "definition": "Name parts that come after the name. Suffixes appear in the correct order for presenting the name.",
         "min": 0,
         "max": "*",
@@ -187,12 +187,12 @@
         "id": "EHDSHumanName",
         "path": "EHDSHumanName",
         "short": "Human name model",
-        "definition": "C.27 - EHDS refined base model for Human name"
+        "definition": "EHDS refined base model for Human name"
       },
       {
         "id": "EHDSHumanName.use",
         "path": "EHDSHumanName.use",
-        "short": "C.27.1 - Use",
+        "short": "Use",
         "definition": "Identifies the purpose for this name.",
         "min": 0,
         "max": "1",
@@ -209,7 +209,7 @@
       {
         "id": "EHDSHumanName.text",
         "path": "EHDSHumanName.text",
-        "short": "C.27.2 - Text",
+        "short": "Text",
         "definition": "Specifies the entire name as it should be displayed e.g. on an application UI. This may be provided instead of or as well as the specific parts.",
         "min": 0,
         "max": "1",
@@ -222,7 +222,7 @@
       {
         "id": "EHDSHumanName.family",
         "path": "EHDSHumanName.family",
-        "short": "C.27.3 - Family",
+        "short": "Family",
         "definition": "The family name/surname/last name of the patient. This field can contain more than one  element or multiple fields could be present.",
         "min": 0,
         "max": "*",
@@ -235,7 +235,7 @@
       {
         "id": "EHDSHumanName.given",
         "path": "EHDSHumanName.given",
-        "short": "C.27.4 - Given",
+        "short": "Given",
         "definition": "The given name/first name  (also known as forename or first name).",
         "min": 0,
         "max": "*",
@@ -248,7 +248,7 @@
       {
         "id": "EHDSHumanName.prefix",
         "path": "EHDSHumanName.prefix",
-        "short": "C.27.5 - Prefix",
+        "short": "Prefix",
         "definition": "Name parts that come before the name. Prefixes appear in the correct order for presenting the name.",
         "min": 0,
         "max": "*",
@@ -261,7 +261,7 @@
       {
         "id": "EHDSHumanName.suffix",
         "path": "EHDSHumanName.suffix",
-        "short": "C.27.6 - Suffix",
+        "short": "Suffix",
         "definition": "Name parts that come after the name. Suffixes appear in the correct order for presenting the name.",
         "min": 0,
         "max": "*",

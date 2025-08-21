@@ -15,20 +15,17 @@ The following table lists the elements that should be included in the narrative 
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
 | EuDevice | type |  | EHDSDevice.type |
-| ImImagingStudy | series.specimen | EuSpecimen | EHDSImagingReportBody.specimen |
-| ImImagingStudy | series.modality |  | EHDSImagingReportBody.examinationReport.modality |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReportBody.examinationReport.bodyPart.bodyLocation |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReportBody.examinationReport.bodyPart.laterality |
-| EuBodyStructure | includedStructure.laterality |  | EHDSImagingReportBody.examinationReport.bodyPart.laterality |
-| ImImagingStudy | identifier[studyInstanceUid] |  | EHDSImagingStudy.identifier |
+| ImImagingStudy | series.specimen | EuSpecimen | EHDSImagingReport.body.specimen |
+| ImRadiationDoseObservation | component.value[x] | - | EHDSImagingReport.body.exposureInformation.effectiveDose |
+| ImImagingStudy | series.modality |  | EHDSImagingReport.body.examinationReport.modality |
+| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.bodyLocation |
+| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.laterality |
+| EuBodyStructure | includedStructure.laterality |  | EHDSImagingReport.examinationReport.bodyPart.laterality |
+| ImImagingStudy | series.performer |  | EHDSImagingStudy.header.authorship |
+| ImImagingStudy | status |  | EHDSImagingStudy.header.status |
 | ImImagingStudy | modality |  | EHDSImagingStudy.modality |
-| ImImagingStudy | numberOfSeries |  | EHDSImagingStudy.numberOfSeries |
+| ImImagingStudy | started |  | EHDSImagingStudy.started |
 | ImImagingStudy | description |  | EHDSImagingStudy.description |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingStudy.series.bodySite |
-| ImImagingStudy | series.laterality |  | EHDSImagingStudy.series.laterality |
-| ImImagingStudy | series.specimen | EuSpecimen | EHDSImagingStudy.series.specimen |
-| ImImagingStudy | series.started |  | EHDSImagingStudy.series.started |
-| ImRadiationDoseObservation | component.value[x] | - | EHDSImagingStudy.series.instancesInTheSeries.radiationDoseInformation.kap |
 | EuDevice | name |  | EHDSMedia.deviceName |
 
 ### Order
@@ -38,12 +35,12 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| ImOrder | authoredOn |  | EHDSImagingReportBody.orderInformation.orderDateAndTime |
-| ImOrder | requester | EuPractitionerRole | EHDSImagingReportBody.orderInformation.orderPlacer |
-| ImComposition | section[order].extension[note] |  | EHDSImagingReportBody.orderInformation.orderReasonText |
-| ImOrder | reason.concept |  | EHDSImagingReportBody.orderInformation.orderReason |
-| ImOrder | reason.concept |  | EHDSImagingReportBody.orderInformation.clinicalQuestion |
-| ImOrder | identifier[accessionNumber] |  | EHDSImagingReportHeader.documentMetadata.accessionNumber |
+| ImOrder | identifier[accessionNumber] |  | EHDSImagingReport.header.accessionNumber |
+| ImOrder | authoredOn |  | EHDSImagingReport.body.orderInformation.orderDateAndTime |
+| ImOrder | requester | EuPractitionerRole | EHDSImagingReport.body.orderInformation.orderPlacer |
+| ImComposition | section[order].extension[note] |  | EHDSImagingReport.body.orderInformation.orderReasonText |
+| ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.orderReason |
+| ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.clinicalQuestion |
 
 ### History
 
@@ -52,14 +49,13 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| ImOrder | supportingInfo | EuObservation | EHDSImagingReportBody.orderInformation.supportingInformation.observation |
-| ImOrder | supportingInfo | EuCondition | EHDSImagingReportBody.orderInformation.supportingInformation.condition |
-| ImOrder | reason | EuMedicationAdministration | EHDSImagingReportBody.orderInformation.supportingInformation.medicationAdministration |
-| ImOrder | supportingInfo[pregnancy] |  | EHDSImagingReportBody.orderInformation.supportingInformation.pregnancyStatus |
-| ImGestationalAgeObservation | value[x] | - | EHDSImagingReportBody.orderInformation.supportingInformation.gestationalAge |
-| ImPatient | extension[sex-for-clinical-use] |  | EHDSImagingReportBody.orderInformation.supportingInformation.sexForClinicalUse |
-| ImPatient | extension[sex-for-clinical-use].extension[value].valueCodeableConcept |  | EHDSImagingReportBody.orderInformation.supportingInformation.sexForClinicalUse |
-| ImPatient | extension[sex-for-clinical-use].extension[period].valuePeriod |  | EHDSImagingReportBody.orderInformation.supportingInformation.sexForClinicalUse |
+| ImOrder | supportingInfo | EuObservation | EHDSImagingReport.body.orderInformation.supportingInformation.observation |
+| ImOrder | supportingInfo | EuCondition | EHDSImagingReport.body.orderInformation.supportingInformation.condition |
+| ImOrder | reason | EuMedicationAdministration | EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration |
+| ImOrder | supportingInfo[pregnancy] |  | EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus |
+| ImPatient | extension[sex-for-clinical-use] |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |
+| ImPatient | extension[sex-for-clinical-use].extension[value].valueCodeableConcept |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |
+| ImPatient | extension[sex-for-clinical-use].extension[period].valuePeriod |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |
 
 ### Procedure
 
@@ -68,27 +64,21 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| EuAllergyIntolerance | text |  | EHDSAllergyIntolerance.allergyDescription |
-| EuAllergyIntolerance | reaction |  | EHDSAllergyIntolerance.allergyManifestation |
-| EuAllergyIntolerance | reaction.severity |  | EHDSAllergyIntolerance.allergyManifestation.severity |
-| EuAllergyIntolerance | reaction.description |  | EHDSAllergyIntolerance.allergyManifestation.description |
-| EuAllergyIntolerance | reaction.manifestation |  | EHDSAllergyIntolerance.allergyManifestation.manifestation |
+| EuAllergyIntolerance | text |  | EHDSAllergyIntolerance.description |
 | EuAllergyIntolerance | criticality |  | EHDSAllergyIntolerance.criticality |
 | EuAllergyIntolerance | onsetPeriod |  | EHDSAllergyIntolerance.onsetDate |
 | EuAllergyIntolerance | onsetDateTime |  | EHDSAllergyIntolerance.onsetDate |
+| EuAllergyIntolerance | reaction |  | EHDSAllergyIntolerance.reaction |
+| EuAllergyIntolerance | reaction.manifestation |  | EHDSAllergyIntolerance.reaction.manifestation |
+| EuAllergyIntolerance | reaction.severity |  | EHDSAllergyIntolerance.reaction.severity |
 | EuDevice | type |  | EHDSDevice.type |
-| ImRadiationDoseObservation | component.value[x] | - | EHDSImagingReportBody.exposureInformation.effectiveDose |
-| ImComposition | section[procedure].entry[procedure] | EuProcedure | EHDSImagingReportBody.examinationReport.medication |
-| EuMedicationAdministration | partOf | ImProcedure | EHDSImagingReportBody.examinationReport.medication |
-| ImAdverseEvent | status |  | EHDSImagingReportBody.examinationReport.adverseReaction |
-| ImAdverseEvent | code |  | EHDSImagingReportBody.examinationReport.adverseReaction |
+| ImComposition | section[procedure].entry[procedure] | EuProcedure | EHDSImagingReport.body.examinationReport.medication |
+| EuMedicationAdministration | partOf | ImProcedure | EHDSImagingReport.body.examinationReport.medication |
+| ImAdverseEvent | status |  | EHDSImagingReport.body.examinationReport.adverseReaction |
+| ImAdverseEvent | code |  | EHDSImagingReport.body.examinationReport.adverseReaction |
 | EuDevice | name |  | EHDSMedia.deviceName |
-| EuMedicationAdministration | reason |  | EHDSMedicationAdministration.reason |
+| EuMedicationAdministration | reason |  | EHDSMedicationAdministration.reason[x] |
 | EuMedicationAdministration | note |  | EHDSMedicationAdministration.note |
-| EuMedicationAdministration | dosage.text |  | EHDSMedicationAdministration.dosage.dosageDescription |
-| EuMedicationAdministration | dosage.site |  | EHDSMedicationAdministration.dosage.site |
-| EuMedicationAdministration | dosage.route |  | EHDSMedicationAdministration.dosage.route |
-| EuMedicationAdministration | dosage.dose |  | EHDSMedicationAdministration.dosage.dose |
 
 ### Comparison
 
@@ -97,7 +87,7 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| ImComposition | section[comparison].entry[comparedstudy] | ImImagingStudy | EHDSImagingReportBody.comparisonStudy |
+| ImComposition | section[comparison].entry[comparedstudy] | ImImagingStudy | EHDSImagingReport.body.comparisonStudy |
 
 ### Findings
 
@@ -106,8 +96,8 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| ImComposition | section[findings].extension[note] |  | EHDSImagingReportBody.examinationReport.resultData.resultText |
-| ImDiagnosticReport | result | ImFinding, ImRadiationDoseObservation | EHDSImagingReportBody.examinationReport.resultData.observationResults |
+| ImComposition | section[findings].extension[note] |  | EHDSImagingReport.body.examinationReport.resultData.resultText |
+| ImDiagnosticReport | result | ImFinding, ImRadiationDoseObservation | EHDSImagingReport.body.examinationReport.resultData.observationResults |
 
 ### Impression
 
@@ -116,13 +106,12 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| EuCondition | note |  | EHDSCondition.description |
-| EuCondition | code |  | EHDSCondition.code |
-| EuCondition | clinicalStatus |  | EHDSCondition.clinicalStatus |
+| EuCondition | code |  | EHDSCondition.problem |
+| EuCondition | clinicalStatus |  | EHDSCondition.problemStatus |
 | EuCondition | severity |  | EHDSCondition.severity |
 | EuCondition | bodySite |  | EHDSCondition.anatomicLocation |
-| ImDiagnosticReport | conclusion |  | EHDSImagingReportBody.examinationReport.conclusion.impression |
-| ImComposition | section[impression].entry[ImFinding] | ImFinding | EHDSImagingReportBody.examinationReport.conclusion.conditionOrFinding[x] |
+| ImDiagnosticReport | conclusion |  | EHDSImagingReport.body.examinationReport.conclusion.impression |
+| ImComposition | section[impression].entry[ImFinding] | ImFinding | EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x] |
 
 ### Recommendation
 
@@ -131,11 +120,18 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| EuCarePlan | status |  | EHDSCarePlan.status |
+| EuCarePlan | status |  | EHDSCarePlan.header.status |
 | EuCarePlan | title |  | EHDSCarePlan.title |
 | EuCarePlan | description |  | EHDSCarePlan.description |
-| EuCarePlan | goal | EuGoal | EHDSCarePlan.goal |
-| EuCarePlan | activity |  | EHDSCarePlan.activity |
-| EuCarePlan | note |  | EHDSCarePlan.note |
-| EuCarePlan | description |  | EHDSImagingReportBody.recommendation.description |
+| EuCarePlan | activity |  | EHDSCarePlan.activity[x] |
+| EuCarePlan | description |  | EHDSImagingReport.body.recommendation.description |
+
+### R
+
+The following table lists the elements that should be included in the narrative of the R section.
+
+{:.grid}
+| First order resource | Element | Referenced resource | Logical model resource.field |
+| -------- | ------- | -------------- | --------------------- |
+| EuCoverage | subscriberId |  | EHDSCoverage.payor.subscriberId |
 

@@ -5,6 +5,14 @@
     {
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
       "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
     }
   ],
   "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReport",
@@ -12,7 +20,7 @@
   "name": "EHDSImagingReport",
   "title": "Imaging report model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +33,7 @@
       ]
     }
   ],
-  "description": "A - EHDS refined base model for Imaging Result Report",
+  "description": "EHDS refined base model for Medical Imaging Result Report",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -37,13 +45,13 @@
   "kind": "logical",
   "abstract": false,
   "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReport",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDocument",
   "derivation": "specialization",
   "snapshot": {
     "extension": [
       {
         "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
-        "valueString": "5.0.0"
+        "valueString": "0.1.0"
       }
     ],
     "element": [
@@ -51,7 +59,7 @@
         "id": "EHDSImagingReport",
         "path": "EHDSImagingReport",
         "short": "Imaging report model",
-        "definition": "A - EHDS refined base model for Imaging Result Report",
+        "definition": "EHDS refined base model for Medical Imaging Result Report",
         "min": 0,
         "max": "*",
         "base": {
@@ -68,85 +76,1419 @@
         ]
       },
       {
-        "id": "EHDSImagingReport.imagingReportHeader",
-        "path": "EHDSImagingReport.imagingReportHeader",
-        "short": "A.1 - Imaging Report header",
-        "definition": "Report header data elements",
+        "id": "EHDSImagingReport.header",
+        "path": "EHDSImagingReport.header",
+        "short": "Imaging Report header",
+        "definition": "Common header for all patient-related data",
         "min": 1,
         "max": "1",
         "base": {
-          "path": "EHDSImagingReport.imagingReportHeader",
+          "path": "EHDSDataSet.header",
           "min": 1,
           "max": "1"
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReportHeader"
+            "code": "Base"
           }
         ]
       },
       {
-        "id": "EHDSImagingReport.imagingReportStructuredBody",
-        "path": "EHDSImagingReport.imagingReportStructuredBody",
-        "short": "A.2 - Imaging Report structured body",
-        "definition": "Report body data elements",
+        "id": "EHDSImagingReport.header.subject",
+        "path": "EHDSImagingReport.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
         "min": 1,
         "max": "1",
         "base": {
-          "path": "EHDSImagingReport.imagingReportStructuredBody",
+          "path": "EHDSDataSet.header.subject",
           "min": 1,
           "max": "1"
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReportBody"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
           }
         ]
       },
       {
-        "id": "EHDSImagingReport.presentedForms",
-        "path": "EHDSImagingReport.presentedForms",
-        "short": "A.3 - Presented forms",
-        "definition": "Entire report as issued. Various formats could be provided,  pdf format is recommended.",
-        "min": 0,
+        "id": "EHDSImagingReport.header.identifier",
+        "path": "EHDSImagingReport.header.identifier",
+        "short": "Document ID",
+        "definition": "Unique identifier of the document",
+        "min": 1,
         "max": "*",
         "base": {
-          "path": "EHDSImagingReport.presentedForms",
+          "path": "EHDSDataSet.header.identifier",
           "min": 0,
           "max": "*"
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+            "code": "Identifier"
           }
         ]
       },
       {
-        "id": "EHDSImagingReport.imagingReportAttachments[x]",
-        "path": "EHDSImagingReport.imagingReportAttachments[x]",
-        "short": "A.4 - Attachment, Media",
-        "definition": "Report attachments data elements",
-        "min": 0,
+        "id": "EHDSImagingReport.header.authorship",
+        "path": "EHDSImagingReport.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
         "max": "*",
         "base": {
-          "path": "EHDSImagingReport.imagingReportAttachments[x]",
-          "min": 0,
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
           "max": "*"
         },
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.authorship.author[x]",
+        "path": "EHDSImagingReport.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
           },
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedia"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.authorship.datetime",
+        "path": "EHDSImagingReport.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.lastUpdate",
+        "path": "EHDSImagingReport.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.status",
+        "path": "EHDSImagingReport.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.statusReason[x]",
+        "path": "EHDSImagingReport.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.language",
+        "path": "EHDSImagingReport.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.header.version",
+        "path": "EHDSImagingReport.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.presentedForm",
+        "path": "EHDSImagingReport.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.documentType",
+        "path": "EHDSImagingReport.header.documentType",
+        "short": "Document type",
+        "definition": "Identifies the type of document at hand, e.g. Discharge report.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.documentType",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "LOINC"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.header.documentTitle",
+        "path": "EHDSImagingReport.header.documentTitle",
+        "short": "Document title",
+        "definition": "Document title, such as Discharge Report, Laboratory Result Report, etc.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.documentTitle",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.documentStatus",
+        "path": "EHDSImagingReport.header.documentStatus",
+        "short": "Document status",
+        "definition": "The status of the Discharge report. E.g., preliminary, final.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.documentStatus",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "hl7:CompositionStatus"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.header.period",
+        "path": "EHDSImagingReport.header.period",
+        "short": "Period",
+        "definition": "Time of service that is being documented",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.period",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.attestation",
+        "path": "EHDSImagingReport.header.attestation",
+        "short": "Attestation",
+        "definition": "Document attestation details",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDocument.header.attestation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.attestation.attester",
+        "path": "EHDSImagingReport.header.attestation.attester",
+        "short": "Attester",
+        "definition": "Attester who validated the document. Mulitple attesters could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.attestation.attester",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.attestation.datetime",
+        "path": "EHDSImagingReport.header.attestation.datetime",
+        "short": "DateTime",
+        "definition": "Date and time of the approval of the document by Attester.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.attestation.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.legalAuthentication",
+        "path": "EHDSImagingReport.header.legalAuthentication",
+        "short": "Legal authentication",
+        "definition": "Document legal authentication",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.legalAuthentication",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.legalAuthentication.legalAuthenticator",
+        "path": "EHDSImagingReport.header.legalAuthentication.legalAuthenticator",
+        "short": "Legal authenticator",
+        "definition": "The person taking responsibility for the medical content of the document",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.legalAuthentication.legalAuthenticator",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.legalAuthentication.datetime",
+        "path": "EHDSImagingReport.header.legalAuthentication.datetime",
+        "short": "DateTime",
+        "definition": "Date and time when the document was authorized.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.legalAuthentication.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.eventType",
+        "path": "EHDSImagingReport.header.eventType",
+        "short": "Event type",
+        "definition": "Categorization of the event covered by the document (e.g. laboratory study types, imaging study types including modality, etc.). Selection of such tags or labels depends on the use case and agreement betwen data sharing parties. This meta-data element serves primarily for searching and filtering purpuses.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDocument.header.eventType",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "LOINC, SNOMED CT, dicom-cid-33-Modality"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.header.authorSpecialty",
+        "path": "EHDSImagingReport.header.authorSpecialty",
+        "short": "Specialty",
+        "definition": "Additional details about where the content was created (e.g. clinical specialty)",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDocument.header.authorSpecialty",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.header.custodian",
+        "path": "EHDSImagingReport.header.custodian",
+        "short": "Document custodian",
+        "definition": "Organisation that is in charge of maintaining the document/report.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.custodian",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.documentFormat",
+        "path": "EHDSImagingReport.header.documentFormat",
+        "short": "Document format",
+        "definition": "An identifier of the document constraints, encoding, structure, and template that the document conforms to beyond the base format indicated in the mimeType.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.documentFormat",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 Document Format Codes"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.header.confidentiality",
+        "path": "EHDSImagingReport.header.confidentiality",
+        "short": "Confidentiality",
+        "definition": "Level of confidentiality of the document. Implicit value is normal.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDocument.header.confidentiality",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "hl7:Confidentiality"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.knowledgeResources",
+        "path": "EHDSImagingReport.knowledgeResources",
+        "short": "Related documents and information sources",
+        "definition": "Related documents and information sources",
+        "min": 0,
+        "max": "0",
+        "base": {
+          "path": "EHDSDocument.knowledgeResources",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.knowledgeResources.externalReference",
+        "path": "EHDSImagingReport.knowledgeResources.externalReference",
+        "short": "...",
+        "definition": "...",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDocument.knowledgeResources.externalReference",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "RelatedArtifact"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.knowledgeResources.relatedTo",
+        "path": "EHDSImagingReport.knowledgeResources.relatedTo",
+        "short": "...",
+        "definition": "...",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDocument.knowledgeResources.relatedTo",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Reference"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.accessionNumber",
+        "path": "EHDSImagingReport.header.accessionNumber",
+        "short": "Accession number - an identifier, managed by the RIS at the local level, which usually uniquely identifies an imaging procedure request, and links it to imaging study(ies) and related imaging report(s). As it is prefixed by the registration authority it is a globally unique ID, usable both nationally and cross-border.",
+        "definition": "Accession number - an identifier, managed by the RIS at the local level, which usually uniquely identifies an imaging procedure request, and links it to imaging study(ies) and related imaging report(s). As it is prefixed by the registration authority it is a globally unique ID, usable both nationally and cross-border.",
+        "requirements": "eHN Guideline IMG (v1.1): A.1.8.11",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.header.accessionNumber",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.healthInsuranceAndPaymentInformation",
+        "path": "EHDSImagingReport.header.healthInsuranceAndPaymentInformation",
+        "short": "Health insurance and payment information",
+        "definition": "Health insurance information is not always required, however, in some jurisdictions, the insurance number is also used as the patient identifier. It is necessary not just for identification but also forms access to funding for care.",
+        "requirements": "eHN Guideline IMG (v1.1): A.1.3",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.header.healthInsuranceAndPaymentInformation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCoverage"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.header.intendedRecipient[x]",
+        "path": "EHDSImagingReport.header.intendedRecipient[x]",
+        "short": "Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable",
+        "definition": "Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable",
+        "requirements": "eHN Guideline IMG (v1.1): A.1.4",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.header.intendedRecipient[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body",
+        "path": "EHDSImagingReport.body",
+        "short": "Imaging Report structured body",
+        "definition": "Imaging Report structured body",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation",
+        "path": "EHDSImagingReport.body.orderInformation",
+        "short": "Order Information (Imaging Result Report could respond to multiple orders).",
+        "definition": "Order Information (Imaging Result Report could respond to multiple orders).",
+        "requirements": "eHN Guideline IMG (v1.1): A.2",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderId",
+        "path": "EHDSImagingReport.body.orderInformation.orderId",
+        "short": "Identifier(s) of the imaging service order.",
+        "definition": "Identifier(s) of the imaging service order.",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.orderId",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderDateAndTime",
+        "path": "EHDSImagingReport.body.orderInformation.orderDateAndTime",
+        "short": "Date and time of the order placement.",
+        "definition": "Date and time of the order placement.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.orderDateAndTime",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderPlacer[x]",
+        "path": "EHDSImagingReport.body.orderInformation.orderPlacer[x]",
+        "short": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
+        "definition": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.orderPlacer[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderReasonText",
+        "path": "EHDSImagingReport.body.orderInformation.orderReasonText",
+        "short": "An explanation or justification for why this service is being requested in textual form.",
+        "definition": "An explanation or justification for why this service is being requested in textual form.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.orderReasonText",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderReason[x]",
+        "path": "EHDSImagingReport.body.orderInformation.orderReason[x]",
+        "short": "An explanation or justification for why this service is being requested in coded or structured form.",
+        "definition": "An explanation or justification for why this service is being requested in coded or structured form.",
+        "requirements": "eHN Guideline IMG (v1.1): A.3.1, A3.2",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.orderReason[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.clinicalQuestion",
+        "path": "EHDSImagingReport.body.orderInformation.clinicalQuestion",
+        "short": "Specification of clinical question (goal of the investigation) to be answered by the imaging investigation.",
+        "definition": "Specification of clinical question (goal of the investigation) to be answered by the imaging investigation.",
+        "requirements": "eHN Guideline IMG (v1.1): A.3.3",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.clinicalQuestion",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation",
+        "short": "Additional clinical information about the patient or specimen that may affect service delivery or interpretation.",
+        "definition": "This information includes diagnosis, clinical findings and other observations. This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order.  For example, reporting the metal implants present in patient's body.",
+        "requirements": "eHN Guideline IMG (v1.1): A3.2?",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.observation",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.observation",
+        "short": "Clinical findings and other observations (e.g., height and weights of the patient).",
+        "definition": "Clinical findings and other observations (e.g., height and weights of the patient).",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.observation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.condition",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.condition",
+        "short": "Conditions that may influence the service or result interpretation.",
+        "definition": "Conditions that may influence the service or result interpretation.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.condition",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration",
+        "short": "Medication administered before ordering the service.",
+        "definition": "Medication administered before ordering the service.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.devices",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.devices",
+        "short": "List of implants or devices that affect the course of the examination or its interpretation (e.g. metal implants).",
+        "definition": "List of implants or devices that affect the course of the examination or its interpretation (e.g. metal implants).",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.devices",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus",
+        "short": "Pregnancy status when the imaging examination was performed (e.g., pregnant, not pregnant, unknown).",
+        "definition": "Pregnancy status when the imaging examination was performed (e.g., pregnant, not pregnant, unknown).",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCurrentPregnancy"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse",
+        "short": "Sex parameter for clinical use - provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population.",
+        "definition": "Sex parameter for clinical use - provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 sex-parameter-for-clinical-use"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.otherSupportingInformation",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.otherSupportingInformation",
+        "short": "Any other type of relevant supporting information",
+        "definition": "Any other type of relevant supporting information",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.orderInformation.supportingInformation.otherSupportingInformation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Resource"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.specimen",
+        "path": "EHDSImagingReport.body.specimen",
+        "short": "Specimen information. Note: A specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes.",
+        "definition": "Specimen information. Note: A specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes.",
+        "requirements": "eHN Guideline IMG (v1.1): A.4",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.specimen",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.serviceRequest",
+        "path": "EHDSImagingReport.body.serviceRequest",
+        "short": "Specification of requested service(s).",
+        "definition": "Specification of requested service(s).",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.serviceRequest",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation",
+        "path": "EHDSImagingReport.body.exposureInformation",
+        "short": "Information on total exposure to ionising radiation. This information is required by regulations in several EU countries.",
+        "definition": "Information on total exposure to ionising radiation. This information is required by regulations in several EU countries.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.4, Article 2 Imaging report definition",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.exposureInformation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.effectiveDose",
+        "path": "EHDSImagingReport.body.exposureInformation.effectiveDose",
+        "short": "Effective dose - sum of equivalent doses to all organs, from external and/or internal exposures, each adjusted to account for the sensitivity of the organ to radiation. [mSv]",
+        "definition": "Effective dose - sum of equivalent doses to all organs, from external and/or internal exposures, each adjusted to account for the sensitivity of the organ to radiation. [mSv]",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.exposureInformation.effectiveDose",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM (for units)"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation",
+        "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation",
+        "short": "Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "definition": "Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.equivalentDose",
+        "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.equivalentDose",
+        "short": "Equivalent dose is a measure of the radiation dose to tissue where an attempt has been made to allow for the different relative biological effects of different types of ionizing radiation. Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "definition": "Equivalent dose is a measure of the radiation dose to tissue where an attempt has been made to allow for the different relative biological effects of different types of ionizing radiation. Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.equivalentDose",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM (for units)"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.tissueType",
+        "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.tissueType",
+        "short": "Type of the tissue for which do dosage was enumerated.",
+        "definition": "Type of the tissue for which do dosage was enumerated.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.tissueType",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport",
+        "path": "EHDSImagingReport.body.examinationReport",
+        "short": "Examination report content.",
+        "definition": "Examination report content.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.modality",
+        "path": "EHDSImagingReport.body.examinationReport.modality",
+        "short": "Imaging modality (or modalities) used during imaging investigation (DICOM CID029).",
+        "definition": "Imaging modality (or modalities) used during imaging investigation (DICOM CID029).",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.1.1",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.modality",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "DICOM Modality"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.bodyPart",
+        "path": "EHDSImagingReport.body.examinationReport.bodyPart",
+        "short": "All body parts investigated",
+        "definition": "All body parts investigated",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.1.6",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.bodyPart",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.imagingProcedures",
+        "path": "EHDSImagingReport.body.examinationReport.imagingProcedures",
+        "short": "Imaging procedure performed during imaging study.",
+        "definition": "Imaging procedure performed during imaging study.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.1.2-A.5.1.9",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.imagingProcedures",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.medication",
+        "path": "EHDSImagingReport.body.examinationReport.medication",
+        "short": "Information about medication administered (contrast, sedation, stress agents), etc.",
+        "definition": "Information about medication administered (contrast, sedation, stress agents), etc.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.2",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.medication",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.adverseReaction",
+        "path": "EHDSImagingReport.body.examinationReport.adverseReaction",
+        "short": "Adverse reactions manifested during imaging investigation.",
+        "definition": "Adverse reactions manifested during imaging investigation.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.3",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.adverseReaction",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAllergyIntolerance"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.resultData",
+        "path": "EHDSImagingReport.body.examinationReport.resultData",
+        "short": "Imaging report result data",
+        "definition": "Imaging report result data",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.4",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.resultData",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.resultData.resultText",
+        "path": "EHDSImagingReport.body.examinationReport.resultData.resultText",
+        "short": "Comments and narrative representation of the observation results and findings.",
+        "definition": "Comments and narrative representation of the observation results and findings.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.resultData.resultText",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.resultData.observationResults",
+        "path": "EHDSImagingReport.body.examinationReport.resultData.observationResults",
+        "short": "Observation details (report could consist of multiple observations)",
+        "definition": "Observation details (report could consist of multiple observations)",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.4.1, A.5.4.3",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.resultData.observationResults",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.conclusion",
+        "path": "EHDSImagingReport.body.examinationReport.conclusion",
+        "short": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report.",
+        "definition": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.5",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.conclusion",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.conclusion.impression",
+        "path": "EHDSImagingReport.body.examinationReport.conclusion.impression",
+        "short": "Narrative description of the clinical conclusion (impression).",
+        "definition": "Narrative description of the clinical conclusion (impression).",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.5.1",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.conclusion.impression",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]",
+        "path": "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]",
+        "short": "Condition or finding from imaging investigation.",
+        "definition": "Condition or finding from imaging investigation.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.5.2",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.recommendation",
+        "path": "EHDSImagingReport.body.recommendation",
+        "short": "Recommendations for additional imaging tests or other actions",
+        "definition": "Recommendations for additional imaging tests or other actions",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.6",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.recommendation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.recommendation.description",
+        "path": "EHDSImagingReport.body.recommendation.description",
+        "short": "Narrative description of the recommended activities including additional test, medication etc.",
+        "definition": "Narrative description of the recommended activities including additional test, medication etc.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.6.1",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImagingReport.body.recommendation.description",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.recommendation.carePlan",
+        "path": "EHDSImagingReport.body.recommendation.carePlan",
+        "short": "A complex and structured information about recommended goals, activities and objectives in the form of one or more formal care plan.",
+        "definition": "A complex and structured information about recommended goals, activities and objectives in the form of one or more formal care plan.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.6.2",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.recommendation.carePlan",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCarePlan"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.comparisonStudy",
+        "path": "EHDSImagingReport.body.comparisonStudy",
+        "short": "Documentation (reference) of a prior Imaging Report to which the current images were compared.",
+        "definition": "Documentation (reference) of a prior Imaging Report to which the current images were compared.",
+        "requirements": "eHN Guideline IMG (v1.1): A.7",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.body.comparisonStudy",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReport"
           }
         ]
       },
       {
         "id": "EHDSImagingReport.dicomStudyMetadata",
         "path": "EHDSImagingReport.dicomStudyMetadata",
-        "short": "A.5 - Imaging study",
+        "short": "Metadata of the DICOM study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context. A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.",
         "definition": "Metadata of the DICOM study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context. A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.",
+        "requirements": "eHN Guideline IMG (v1.1): A.6",
         "min": 0,
         "max": "*",
         "base": {
@@ -159,6 +1501,27 @@
             "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingStudy"
           }
         ]
+      },
+      {
+        "id": "EHDSImagingReport.attachments[x]",
+        "path": "EHDSImagingReport.attachments[x]",
+        "short": "Report attachments data elements",
+        "definition": "Report attachments data elements",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImagingReport.attachments[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedia"
+          }
+        ]
       }
     ]
   },
@@ -168,51 +1531,657 @@
         "id": "EHDSImagingReport",
         "path": "EHDSImagingReport",
         "short": "Imaging report model",
-        "definition": "A - EHDS refined base model for Imaging Result Report"
+        "definition": "EHDS refined base model for Medical Imaging Result Report"
       },
       {
-        "id": "EHDSImagingReport.imagingReportHeader",
-        "path": "EHDSImagingReport.imagingReportHeader",
-        "short": "A.1 - Imaging Report header",
-        "definition": "Report header data elements",
-        "min": 1,
+        "id": "EHDSImagingReport.header",
+        "path": "EHDSImagingReport.header",
+        "short": "Imaging Report header"
+      },
+      {
+        "id": "EHDSImagingReport.header.accessionNumber",
+        "path": "EHDSImagingReport.header.accessionNumber",
+        "short": "Accession number - an identifier, managed by the RIS at the local level, which usually uniquely identifies an imaging procedure request, and links it to imaging study(ies) and related imaging report(s). As it is prefixed by the registration authority it is a globally unique ID, usable both nationally and cross-border.",
+        "definition": "Accession number - an identifier, managed by the RIS at the local level, which usually uniquely identifies an imaging procedure request, and links it to imaging study(ies) and related imaging report(s). As it is prefixed by the registration authority it is a globally unique ID, usable both nationally and cross-border.",
+        "requirements": "eHN Guideline IMG (v1.1): A.1.8.11",
+        "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReportHeader"
+            "code": "string"
           }
         ]
       },
       {
-        "id": "EHDSImagingReport.imagingReportStructuredBody",
-        "path": "EHDSImagingReport.imagingReportStructuredBody",
-        "short": "A.2 - Imaging Report structured body",
-        "definition": "Report body data elements",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReportBody"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingReport.presentedForms",
-        "path": "EHDSImagingReport.presentedForms",
-        "short": "A.3 - Presented forms",
-        "definition": "Entire report as issued. Various formats could be provided,  pdf format is recommended.",
+        "id": "EHDSImagingReport.header.healthInsuranceAndPaymentInformation",
+        "path": "EHDSImagingReport.header.healthInsuranceAndPaymentInformation",
+        "short": "Health insurance and payment information",
+        "definition": "Health insurance information is not always required, however, in some jurisdictions, the insurance number is also used as the patient identifier. It is necessary not just for identification but also forms access to funding for care.",
+        "requirements": "eHN Guideline IMG (v1.1): A.1.3",
         "min": 0,
         "max": "*",
         "type": [
           {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCoverage"
           }
         ]
       },
       {
-        "id": "EHDSImagingReport.imagingReportAttachments[x]",
-        "path": "EHDSImagingReport.imagingReportAttachments[x]",
-        "short": "A.4 - Attachment, Media",
+        "id": "EHDSImagingReport.header.intendedRecipient[x]",
+        "path": "EHDSImagingReport.header.intendedRecipient[x]",
+        "short": "Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable",
+        "definition": "Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable",
+        "requirements": "eHN Guideline IMG (v1.1): A.1.4",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.knowledgeResources",
+        "path": "EHDSImagingReport.knowledgeResources",
+        "max": "0"
+      },
+      {
+        "id": "EHDSImagingReport.body",
+        "path": "EHDSImagingReport.body",
+        "short": "Imaging Report structured body",
+        "definition": "Imaging Report structured body",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation",
+        "path": "EHDSImagingReport.body.orderInformation",
+        "short": "Order Information (Imaging Result Report could respond to multiple orders).",
+        "definition": "Order Information (Imaging Result Report could respond to multiple orders).",
+        "requirements": "eHN Guideline IMG (v1.1): A.2",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderId",
+        "path": "EHDSImagingReport.body.orderInformation.orderId",
+        "short": "Identifier(s) of the imaging service order.",
+        "definition": "Identifier(s) of the imaging service order.",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderDateAndTime",
+        "path": "EHDSImagingReport.body.orderInformation.orderDateAndTime",
+        "short": "Date and time of the order placement.",
+        "definition": "Date and time of the order placement.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderPlacer[x]",
+        "path": "EHDSImagingReport.body.orderInformation.orderPlacer[x]",
+        "short": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
+        "definition": "The person/organisation \"authorised\" to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderReasonText",
+        "path": "EHDSImagingReport.body.orderInformation.orderReasonText",
+        "short": "An explanation or justification for why this service is being requested in textual form.",
+        "definition": "An explanation or justification for why this service is being requested in textual form.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.orderReason[x]",
+        "path": "EHDSImagingReport.body.orderInformation.orderReason[x]",
+        "short": "An explanation or justification for why this service is being requested in coded or structured form.",
+        "definition": "An explanation or justification for why this service is being requested in coded or structured form.",
+        "requirements": "eHN Guideline IMG (v1.1): A.3.1, A3.2",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.clinicalQuestion",
+        "path": "EHDSImagingReport.body.orderInformation.clinicalQuestion",
+        "short": "Specification of clinical question (goal of the investigation) to be answered by the imaging investigation.",
+        "definition": "Specification of clinical question (goal of the investigation) to be answered by the imaging investigation.",
+        "requirements": "eHN Guideline IMG (v1.1): A.3.3",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation",
+        "short": "Additional clinical information about the patient or specimen that may affect service delivery or interpretation.",
+        "definition": "This information includes diagnosis, clinical findings and other observations. This includes observations explicitly requested by the producer (filler) to provide context or supporting information needed to complete the order.  For example, reporting the metal implants present in patient's body.",
+        "requirements": "eHN Guideline IMG (v1.1): A3.2?",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.observation",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.observation",
+        "short": "Clinical findings and other observations (e.g., height and weights of the patient).",
+        "definition": "Clinical findings and other observations (e.g., height and weights of the patient).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.condition",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.condition",
+        "short": "Conditions that may influence the service or result interpretation.",
+        "definition": "Conditions that may influence the service or result interpretation.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration",
+        "short": "Medication administered before ordering the service.",
+        "definition": "Medication administered before ordering the service.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.devices",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.devices",
+        "short": "List of implants or devices that affect the course of the examination or its interpretation (e.g. metal implants).",
+        "definition": "List of implants or devices that affect the course of the examination or its interpretation (e.g. metal implants).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus",
+        "short": "Pregnancy status when the imaging examination was performed (e.g., pregnant, not pregnant, unknown).",
+        "definition": "Pregnancy status when the imaging examination was performed (e.g., pregnant, not pregnant, unknown).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCurrentPregnancy"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse",
+        "short": "Sex parameter for clinical use - provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population.",
+        "definition": "Sex parameter for clinical use - provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc. This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 sex-parameter-for-clinical-use"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.orderInformation.supportingInformation.otherSupportingInformation",
+        "path": "EHDSImagingReport.body.orderInformation.supportingInformation.otherSupportingInformation",
+        "short": "Any other type of relevant supporting information",
+        "definition": "Any other type of relevant supporting information",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Resource"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.specimen",
+        "path": "EHDSImagingReport.body.specimen",
+        "short": "Specimen information. Note: A specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes.",
+        "definition": "Specimen information. Note: A specimen (not attached to a body) can be used for diagnostic, forensic and medical research purposes.",
+        "requirements": "eHN Guideline IMG (v1.1): A.4",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSSpecimen"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.serviceRequest",
+        "path": "EHDSImagingReport.body.serviceRequest",
+        "short": "Specification of requested service(s).",
+        "definition": "Specification of requested service(s).",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation",
+        "path": "EHDSImagingReport.body.exposureInformation",
+        "short": "Information on total exposure to ionising radiation. This information is required by regulations in several EU countries.",
+        "definition": "Information on total exposure to ionising radiation. This information is required by regulations in several EU countries.",
+        "requirements": "eHN Guideline IMG (v1.1): B.1.4.4, Article 2 Imaging report definition",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.effectiveDose",
+        "path": "EHDSImagingReport.body.exposureInformation.effectiveDose",
+        "short": "Effective dose - sum of equivalent doses to all organs, from external and/or internal exposures, each adjusted to account for the sensitivity of the organ to radiation. [mSv]",
+        "definition": "Effective dose - sum of equivalent doses to all organs, from external and/or internal exposures, each adjusted to account for the sensitivity of the organ to radiation. [mSv]",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM (for units)"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation",
+        "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation",
+        "short": "Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "definition": "Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.equivalentDose",
+        "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.equivalentDose",
+        "short": "Equivalent dose is a measure of the radiation dose to tissue where an attempt has been made to allow for the different relative biological effects of different types of ionizing radiation. Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "definition": "Equivalent dose is a measure of the radiation dose to tissue where an attempt has been made to allow for the different relative biological effects of different types of ionizing radiation. Equivalent dose is based on the absorbed dose per organ, adjusted to account for the effectiveness of the type of radiation [mSv].",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Quantity"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM (for units)"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.tissueType",
+        "path": "EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.tissueType",
+        "short": "Type of the tissue for which do dosage was enumerated.",
+        "definition": "Type of the tissue for which do dosage was enumerated.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport",
+        "path": "EHDSImagingReport.body.examinationReport",
+        "short": "Examination report content.",
+        "definition": "Examination report content.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.modality",
+        "path": "EHDSImagingReport.body.examinationReport.modality",
+        "short": "Imaging modality (or modalities) used during imaging investigation (DICOM CID029).",
+        "definition": "Imaging modality (or modalities) used during imaging investigation (DICOM CID029).",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.1.1",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "DICOM Modality"
+        }
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.bodyPart",
+        "path": "EHDSImagingReport.body.examinationReport.bodyPart",
+        "short": "All body parts investigated",
+        "definition": "All body parts investigated",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.1.6",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.imagingProcedures",
+        "path": "EHDSImagingReport.body.examinationReport.imagingProcedures",
+        "short": "Imaging procedure performed during imaging study.",
+        "definition": "Imaging procedure performed during imaging study.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.1.2-A.5.1.9",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.medication",
+        "path": "EHDSImagingReport.body.examinationReport.medication",
+        "short": "Information about medication administered (contrast, sedation, stress agents), etc.",
+        "definition": "Information about medication administered (contrast, sedation, stress agents), etc.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.2",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.adverseReaction",
+        "path": "EHDSImagingReport.body.examinationReport.adverseReaction",
+        "short": "Adverse reactions manifested during imaging investigation.",
+        "definition": "Adverse reactions manifested during imaging investigation.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.3",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAllergyIntolerance"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.resultData",
+        "path": "EHDSImagingReport.body.examinationReport.resultData",
+        "short": "Imaging report result data",
+        "definition": "Imaging report result data",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.4",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.resultData.resultText",
+        "path": "EHDSImagingReport.body.examinationReport.resultData.resultText",
+        "short": "Comments and narrative representation of the observation results and findings.",
+        "definition": "Comments and narrative representation of the observation results and findings.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.resultData.observationResults",
+        "path": "EHDSImagingReport.body.examinationReport.resultData.observationResults",
+        "short": "Observation details (report could consist of multiple observations)",
+        "definition": "Observation details (report could consist of multiple observations)",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.4.1, A.5.4.3",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.conclusion",
+        "path": "EHDSImagingReport.body.examinationReport.conclusion",
+        "short": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report.",
+        "definition": "A concise and clinically contextualised summary including interpretation/impression of the diagnostic report.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.5",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.conclusion.impression",
+        "path": "EHDSImagingReport.body.examinationReport.conclusion.impression",
+        "short": "Narrative description of the clinical conclusion (impression).",
+        "definition": "Narrative description of the clinical conclusion (impression).",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.5.1",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]",
+        "path": "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]",
+        "short": "Condition or finding from imaging investigation.",
+        "definition": "Condition or finding from imaging investigation.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.5.2",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.recommendation",
+        "path": "EHDSImagingReport.body.recommendation",
+        "short": "Recommendations for additional imaging tests or other actions",
+        "definition": "Recommendations for additional imaging tests or other actions",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.6",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.recommendation.description",
+        "path": "EHDSImagingReport.body.recommendation.description",
+        "short": "Narrative description of the recommended activities including additional test, medication etc.",
+        "definition": "Narrative description of the recommended activities including additional test, medication etc.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.6.1",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.recommendation.carePlan",
+        "path": "EHDSImagingReport.body.recommendation.carePlan",
+        "short": "A complex and structured information about recommended goals, activities and objectives in the form of one or more formal care plan.",
+        "definition": "A complex and structured information about recommended goals, activities and objectives in the form of one or more formal care plan.",
+        "requirements": "eHN Guideline IMG (v1.1): A.5.6.2",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCarePlan"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.body.comparisonStudy",
+        "path": "EHDSImagingReport.body.comparisonStudy",
+        "short": "Documentation (reference) of a prior Imaging Report to which the current images were compared.",
+        "definition": "Documentation (reference) of a prior Imaging Report to which the current images were compared.",
+        "requirements": "eHN Guideline IMG (v1.1): A.7",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingReport"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.dicomStudyMetadata",
+        "path": "EHDSImagingReport.dicomStudyMetadata",
+        "short": "Metadata of the DICOM study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context. A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.",
+        "definition": "Metadata of the DICOM study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context. A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.",
+        "requirements": "eHN Guideline IMG (v1.1): A.6",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingStudy"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImagingReport.attachments[x]",
+        "path": "EHDSImagingReport.attachments[x]",
+        "short": "Report attachments data elements",
         "definition": "Report attachments data elements",
         "min": 0,
         "max": "*",
@@ -222,19 +2191,6 @@
           },
           {
             "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedia"
-          }
-        ]
-      },
-      {
-        "id": "EHDSImagingReport.dicomStudyMetadata",
-        "path": "EHDSImagingReport.dicomStudyMetadata",
-        "short": "A.5 - Imaging study",
-        "definition": "Metadata of the DICOM study. A study comprises a set of series, each of which includes a set of Service-Object Pair Instances (SOP Instances - images or other data) acquired or produced in a common context. A series is of only one modality (e.g. X-ray, CT, MR, ultrasound), but a study may have multiple series of different modalities.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingStudy"
           }
         ]
       }

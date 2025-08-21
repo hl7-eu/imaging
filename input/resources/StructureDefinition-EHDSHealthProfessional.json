@@ -12,7 +12,7 @@
   "name": "EHDSHealthProfessional",
   "title": "Health professional model",
   "status": "draft",
-  "date": "2025-03-21T08:17:12+00:00",
+  "date": "2025-08-05T08:51:00+00:00",
   "publisher": "Xt-EHR",
   "contact": [
     {
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "description": "C.2 - EHDS refined base model for Health professional (HP) ",
+  "description": "EHDS refined base model for Health professional (HP)",
   "fhirVersion": "5.0.0",
   "mapping": [
     {
@@ -51,7 +51,7 @@
         "id": "EHDSHealthProfessional",
         "path": "EHDSHealthProfessional",
         "short": "Health professional model",
-        "definition": "C.2 - EHDS refined base model for Health professional (HP) ",
+        "definition": "EHDS refined base model for Health professional (HP)",
         "min": 0,
         "max": "*",
         "base": {
@@ -70,7 +70,7 @@
       {
         "id": "EHDSHealthProfessional.identifier",
         "path": "EHDSHealthProfessional.identifier",
-        "short": "C.2.1 - Identifier",
+        "short": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
         "definition": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
         "min": 0,
         "max": "*",
@@ -88,8 +88,8 @@
       {
         "id": "EHDSHealthProfessional.name",
         "path": "EHDSHealthProfessional.name",
-        "short": "C.2.2 - Name",
-        "definition": "Name of the health professional that has been treating or taking responsibility for the patient.[the structure of the name will be the same as for the patient (given name, family name / surname)]",
+        "short": "Name of the health professional that has been treating or taking responsibility for the patient.",
+        "definition": "Name of the health professional that has been treating or taking responsibility for the patient.",
         "min": 0,
         "max": "1",
         "base": {
@@ -106,8 +106,8 @@
       {
         "id": "EHDSHealthProfessional.address",
         "path": "EHDSHealthProfessional.address",
-        "short": "C.2.3 - Address",
-        "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "short": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "definition": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
         "min": 0,
         "max": "1",
         "base": {
@@ -124,7 +124,7 @@
       {
         "id": "EHDSHealthProfessional.telecom",
         "path": "EHDSHealthProfessional.telecom",
-        "short": "C.2.4 - Telecom",
+        "short": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
         "definition": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
         "min": 0,
         "max": "*",
@@ -142,7 +142,7 @@
       {
         "id": "EHDSHealthProfessional.role",
         "path": "EHDSHealthProfessional.role",
-        "short": "C.2.5 - Role",
+        "short": "Health professional role. Multiple roles could be provided.",
         "definition": "Health professional role. Multiple roles could be provided.",
         "min": 0,
         "max": "*",
@@ -162,31 +162,28 @@
         }
       },
       {
-        "id": "EHDSHealthProfessional.organization",
-        "path": "EHDSHealthProfessional.organization",
-        "short": "C.2.6 - Organization",
-        "definition": "The organization where this role is available",
+        "id": "EHDSHealthProfessional.organisation",
+        "path": "EHDSHealthProfessional.organisation",
+        "short": "The organisation where this role is available",
+        "definition": "The organisation where this role is available",
         "min": 0,
         "max": "1",
         "base": {
-          "path": "EHDSHealthProfessional.organization",
+          "path": "EHDSHealthProfessional.organisation",
           "min": 0,
           "max": "1"
         },
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
       {
         "id": "EHDSHealthProfessional.specialty",
         "path": "EHDSHealthProfessional.specialty",
-        "short": "C.2.7 - Specialty",
-        "definition": "The specialty of a practitioner that describes the functional role they are practicing at a given organization",
+        "short": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
+        "definition": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
         "min": 0,
         "max": "*",
         "base": {
@@ -208,12 +205,12 @@
         "id": "EHDSHealthProfessional",
         "path": "EHDSHealthProfessional",
         "short": "Health professional model",
-        "definition": "C.2 - EHDS refined base model for Health professional (HP) "
+        "definition": "EHDS refined base model for Health professional (HP)"
       },
       {
         "id": "EHDSHealthProfessional.identifier",
         "path": "EHDSHealthProfessional.identifier",
-        "short": "C.2.1 - Identifier",
+        "short": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
         "definition": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
         "min": 0,
         "max": "*",
@@ -226,8 +223,8 @@
       {
         "id": "EHDSHealthProfessional.name",
         "path": "EHDSHealthProfessional.name",
-        "short": "C.2.2 - Name",
-        "definition": "Name of the health professional that has been treating or taking responsibility for the patient.[the structure of the name will be the same as for the patient (given name, family name / surname)]",
+        "short": "Name of the health professional that has been treating or taking responsibility for the patient.",
+        "definition": "Name of the health professional that has been treating or taking responsibility for the patient.",
         "min": 0,
         "max": "1",
         "type": [
@@ -239,8 +236,8 @@
       {
         "id": "EHDSHealthProfessional.address",
         "path": "EHDSHealthProfessional.address",
-        "short": "C.2.3 - Address",
-        "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "short": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "definition": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
         "min": 0,
         "max": "1",
         "type": [
@@ -252,7 +249,7 @@
       {
         "id": "EHDSHealthProfessional.telecom",
         "path": "EHDSHealthProfessional.telecom",
-        "short": "C.2.4 - Telecom",
+        "short": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
         "definition": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
         "min": 0,
         "max": "*",
@@ -265,7 +262,7 @@
       {
         "id": "EHDSHealthProfessional.role",
         "path": "EHDSHealthProfessional.role",
-        "short": "C.2.5 - Role",
+        "short": "Health professional role. Multiple roles could be provided.",
         "definition": "Health professional role. Multiple roles could be provided.",
         "min": 0,
         "max": "*",
@@ -280,26 +277,23 @@
         }
       },
       {
-        "id": "EHDSHealthProfessional.organization",
-        "path": "EHDSHealthProfessional.organization",
-        "short": "C.2.6 - Organization",
-        "definition": "The organization where this role is available",
+        "id": "EHDSHealthProfessional.organisation",
+        "path": "EHDSHealthProfessional.organisation",
+        "short": "The organisation where this role is available",
+        "definition": "The organisation where this role is available",
         "min": 0,
         "max": "1",
         "type": [
           {
-            "code": "Reference",
-            "targetProfile": [
-              "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganization"
-            ]
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
           }
         ]
       },
       {
         "id": "EHDSHealthProfessional.specialty",
         "path": "EHDSHealthProfessional.specialty",
-        "short": "C.2.7 - Specialty",
-        "definition": "The specialty of a practitioner that describes the functional role they are practicing at a given organization",
+        "short": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
+        "definition": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
         "min": 0,
         "max": "*",
         "type": [
