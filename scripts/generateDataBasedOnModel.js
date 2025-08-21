@@ -343,7 +343,7 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
         const nonCoreWithRNames = sortedNonCoreWithR.join(', ');
         writable.write(`### Other logical models that are used by this IG\n\n`);
         writable.write(`The following logical models describe data that is used in the context of this IG, but the mapping will be defined by another higher level IG, because they are common to many domains:\n\n`);
-        writable.write(`${nonCoreWithRNames}\n\n`);
+        writable.write(`* ${nonCoreWithRNames}\n\n`);
     }
     
     // Section for resources without 'R'
@@ -352,7 +352,7 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
         const withoutRNames = sortedWithoutR.join(', ');
         writable.write(`### Models not included in this IG\n\n`);
         writable.write(`The following logical models describe data that is not used in the context of this Imaging Report IG:\n\n`);
-        writable.write(`${withoutRNames}\n\n`);
+        writable.write(`* ${withoutRNames}\n\n`);
     }
     
     writable.end();
