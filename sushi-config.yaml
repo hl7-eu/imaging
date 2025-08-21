@@ -52,10 +52,8 @@ pages:
       title: Contributors
   actors-and-transactions.md:
     title: Actors and Transactions
-  xtehr.md:
-    title: Xt-EHR
-    xtehr-mapping.md:
-      title: Mapping to Xt-EHR Logical Model
+  xtehr-mapping.md:
+    title: Mapping to Xt-EHR Logical Model
   imaging-report.md:
     title: Imaging Report
   design-considerations.md:
