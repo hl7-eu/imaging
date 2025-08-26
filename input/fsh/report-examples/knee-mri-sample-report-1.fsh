@@ -86,8 +86,8 @@ Usage: #inline
 // valueset is wrong, keeping the wrong code for vlaidation purposes
 * category[imaging] = http://loinc.org#18748-4 "Diagnostic imaging study"
 
-* event[imagingstudy].detail = Reference(ImagingStudy/1)
-* event[procedure].detail = Reference(Procedure/1)
+// * event[imagingstudy].detail = Reference(ImagingStudy/1)
+// * event[procedure].detail = Reference(Procedure/1)
 
 * date = "2021-01-01T00:00:00Z"
 

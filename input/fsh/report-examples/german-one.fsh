@@ -168,11 +168,11 @@ Description: "DiagnosticReport for the left/right foot study"
 * author[author] = Reference(G1AuthorRole)
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report
 
-* event[imagingstudy][+]
-  * detail.reference = Reference( G1ImImagingStudy1 )
-* event[imagingstudy][+]
-  * detail.reference = Reference( G1ImImagingStudy2 )
-* event[procedure][+].detail = $sct#2134003 "Diffuse pain" // invented - not there in the report
+// * event[imagingstudy][+]
+//   * detail.reference = Reference( G1ImImagingStudy1 )
+// * event[imagingstudy][+]
+//   * detail.reference = Reference( G1ImImagingStudy2 )
+// * event[procedure][+].detail = $sct#2134003 "Diffuse pain" // invented - not there in the report
 
 ///////////////////////////////////////////////////////////////////////
 * section[imagingstudy]
