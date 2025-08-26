@@ -26,7 +26,8 @@ copyright: >-
 #
 dependencies:
   hl7.terminology.r5: 6.3.0
-  hl7.fhir.uv.extensions: 5.2.0
+  # hl7.fhir.uv.extensions: 5.2.0
+  hl7.fhir.uv.extensions: 5.3.0-ballot
   hl7.fhir.uv.ips: 1.1.0
   hl7.fhir.eu.extensions: 0.1.1-ballot
   hl7.fhir.eu.base-r5: 0.1.0-ballot
@@ -51,12 +52,8 @@ pages:
       title: Contributors
   actors-and-transactions.md:
     title: Actors and Transactions
-  xtehr.md:
-    title: XtEHR
-    xtehr-logical-model.md:
-      title: XtEHR Logical Model
-    xtehr-mapping.md:
-      title: Mapping to XtEHR Logical Model
+  xtehr-mapping.md:
+    title: Mapping to Xt-EHR Logical Model
   imaging-report.md:
     title: Imaging Report
   design-considerations.md:
@@ -115,9 +112,7 @@ menu:
     References: index.html#references
     Adapting Guidelines for Country use: adapting.html
   Actors and Transactions: actors-and-transactions.html
-  XtEHR model:
-    XtEHR-model: xtehr-logical-model.html
-    XtEHR-mapping: xtehr-mapping.html
+  Xt-EHR model & mapping: xtehr-mapping.html
   Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
   Imaging Report: imaging-report.html
   Artifacts: 

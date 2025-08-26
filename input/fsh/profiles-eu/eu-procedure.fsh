@@ -1,6 +1,6 @@
 Profile: ProcedureEu
 Parent: Procedure
-Title: "EU Procedure"
+Title: "Procedure: EU Procedure"
 Description: "A procedure profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 

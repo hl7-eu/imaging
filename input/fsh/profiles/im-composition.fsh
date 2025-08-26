@@ -1,6 +1,6 @@
 Profile: ImComposition
 Parent: CompositionEu
-Title: "Imaging Composition"
+Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
 * . ^short = "Imaging Report composition"
 * . ^definition = """
@@ -17,7 +17,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * identifier 1..*
 * extension contains 
-    ImDiagnosticReportReference named diagnosticreport-reference 1..1  
+    ImDiagnosticReportReference named diagnosticreport-reference 0..1  
 * extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
 
 * custodian only Reference( $EuOrganization )
@@ -193,10 +193,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   * extension contains $note-url named note 0..*
   * entry
     * insert SliceElement( #profile, $this )
-  * entry contains 
-      careplan 0..* and servicerequest 0..*
-  * entry[careplan] only Reference($EuCarePlan)
-  * entry[servicerequest] only Reference($EuServiceRequest)
+  * entry contains suggestion 0..*
+  * entry[suggestion] only Reference($EuCarePlan or $EuServiceRequest)
 
 
 // /////////////////// COMMUNICATION SECTION //////////////////////////

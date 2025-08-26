@@ -1,6 +1,6 @@
 Profile: ImImagingSelection
 Parent: ImagingSelection
-Title: "Imaging Selection"
+Title: "ImagingSelection: General"
 Description: "Imaging Selection"
 * insert SetFmmAndStatusRule( 1, draft )
 * subject only Reference( $EuPatient )
@@ -13,7 +13,7 @@ Description: "Imaging Selection"
 
 Profile: ImSrInstanceImagingSelection
 Parent: ImImagingSelection
-Title: "Imaging Selection referring to a DICOM SR instance"
+Title: "ImagingSelection: DICOM SR Instance"
 Description: "Imaging Selection referring to a DICOM SR instance"
 * insert SetFmmAndStatusRule( 1, draft )
 * identifier 1..*

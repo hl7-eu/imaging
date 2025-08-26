@@ -2,7 +2,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Profile:  MedicationEu
 Parent:   Medication
-Title:    "EU Medication"
+Title:    "Medication: EU Medication"
 Description: "A medication profile for the EU."
 //-------------------------------------------------------------------------------------------
 

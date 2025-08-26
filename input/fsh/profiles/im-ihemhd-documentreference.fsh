@@ -1,6 +1,6 @@
 Profile: Report_ImReportDocumentReference
 Id: Report-ImReportDocumentReference
-Parent: ImReportIheMhdDocumentReference
+Parent: ImReportMhdDocumentReference
 Title: "Report Obligations for ImReportIheMhdDocumentReference"
 Description: """Report Obligations for ImReportIheMhdDocumentReference"""
 * insert SetFmmAndStatusRule( 1, draft )
@@ -46,9 +46,9 @@ Description: """Report Obligations for ImReportIheMhdDocumentReference"""
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImReportProvider)
 
-Profile: ImReportIheMhdDocumentReference
-Parent: ImIheMhdDocumentReference
-Title: "Report DocumentReference for MHD deployments"
+Profile: ImReportMhdDocumentReference
+Parent: ImMhdDocumentReference
+Title: "DocumentReference: -MHD Imaging Report"
 Description: """
 A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
 * insert SetFmmAndStatusRule( 1, draft )
@@ -83,8 +83,8 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 Profile: Manifest_ImManifestDocumentReference
 Id: Manifest-ImManifestDocumentReference
 Parent: ImManifestIheMhdDocumentReference
-Title: "Manifest Obligations for ImManifestIheMhdDocumentReference"
-Description: """Manifest Obligations for ImManifestIheMhdDocumentReference"""
+Title: "Manifest Obligations for ImManifestMhdDocumentReference"
+Description: """Manifest Obligations for ImManifestMhdDocumentReference"""
 * insert SetFmmAndStatusRule( 1, draft )
 * identifier[entry-uuid]
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
@@ -126,8 +126,8 @@ Description: """Manifest Obligations for ImManifestIheMhdDocumentReference"""
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImManifestProvider)
 
 Profile: ImManifestIheMhdDocumentReference
-Parent: ImIheMhdDocumentReference
-Title: "Manifest DocumentReference for MHD deployments"
+Parent: ImMhdDocumentReference
+Title: "DocumentReference: IHE-MHD Imaging Manifest"
 Description: """
 A DocumentReference profile for the Manifest DocumentReference used in MHD deployments. """
 * insert SetFmmAndStatusRule( 1, draft )
@@ -160,9 +160,9 @@ A DocumentReference profile for the Manifest DocumentReference used in MHD deplo
 * bodySite 0..*
 * modality 1..* 
 
-Profile: ImIheMhdDocumentReference
+Profile: ImMhdDocumentReference
 Parent: DocumentReference
-Title: "R5 DocumentReference for MHD deployments"
+Title: "DocumentReference: IHE-MHD Document"
 Description: """A placeholder for a DocumentReference profile for the IHE-MHD in R5. """
 * insert SetFmmAndStatusRule( 1, draft )
 * modifierExtension 0..0
@@ -179,7 +179,7 @@ Description: """A placeholder for a DocumentReference profile for the IHE-MHD in
 
 Profile: IheMhdEntryUUIDIdentifier
 Parent: Identifier
-Title: "Placeholder for IHE MHD Entry UUID Identifier in FHIR R5."
+Title: "Identifier: IHE-MHD Entry UUID"
 Description: """entryUUID Identifier holding a UUID, based on [IHE-MHD R4](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.EntryUUID.Identifier.html).
 """
 * insert SetFmmAndStatusRule( 1, draft )

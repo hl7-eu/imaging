@@ -4,6 +4,8 @@ The sections in this chapter elaborate on the design considerations and decision
 
 {% include design-consideration-composition-diagnosticreport.md %}
 
+{% include design-considerations-document-bundle-rules.md %}
+
 {% include design-consideration-data-entrypoints.md %}
 
 {% include design-consideration-healthcareprofessional.md %}

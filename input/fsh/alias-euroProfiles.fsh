@@ -88,8 +88,8 @@ Alias: $EuRangeUrl             = http://hl7.eu/fhir/imaging-r5/StructureDefiniti
 Alias: $EuRelatedPerson        = RelatedPersonEu
 Alias: $EuRelatedPersonUrl     = http://hl7.org/fhir/StructureDefinition/RelatedPerson
 
-Alias: $EuServiceRequest       = ServiceRequest
-Alias: $EuServiceRequestUrl    = http://hl7.org/fhir/StructureDefinition/ServiceRequest
+Alias: $EuServiceRequest       = ServiceRequestEu
+Alias: $EuServiceRequestUrl    = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ServiceRequestEu
 
 Alias: $EuQuantity             = QuantityEu
 Alias: $EuQuantityUrl          = http://hl7.eu/fhir/imaging-r5/StructureDefinition/QuantityEu
