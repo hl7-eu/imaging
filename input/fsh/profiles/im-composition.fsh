@@ -62,23 +62,23 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * status 
 
-* event 2..*
-  * insert SliceElement( #value, detail.concept )
-* event contains 
-    imagingstudy 1..* and 
-    procedure 1..*
-* event[imagingstudy]
-  * ^short = "Modality"
-  * ^definition = "The type of imaging modality used to perform the study."
-  * detail 1..*
-  * detail from https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_33.html (extensible)
-  * detail only CodeableReference ( ImImagingStudy )
-* event[procedure]
-  * ^short = "Study Type"
-  * ^definition = "The type of imaging study performed."
-  * detail 1..*
-  * detail from https://www.hl7.org/fhir/valueset-procedure-reason.html (extensible)
-  * detail only CodeableReference ( ImProcedure )
+// * event 2..*
+//   * insert SliceElement( #value, detail.concept )
+// * event contains 
+//     imagingstudy 1..* and 
+//     procedure 1..*
+// * event[imagingstudy]
+//   * ^short = "Modality"
+//   * ^definition = "The type of imaging modality used to perform the study."
+//   * detail 1..*
+//   * detail from https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_33.html (extensible)
+//   * detail only CodeableReference ( ImImagingStudy )
+// * event[procedure]
+//   * ^short = "Study Type"
+//   * ^definition = "The type of imaging study performed."
+//   * detail 1..*
+//   * detail from https://www.hl7.org/fhir/valueset-procedure-reason.html (extensible)
+//   * detail only CodeableReference ( ImProcedure )
 
 * section.code 1..1 
 * section 
@@ -194,8 +194,9 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry
     * insert SliceElement( #profile, $this )
   * entry contains 
-      careplan 0..*
+      careplan 0..* and servicerequest 0..*
   * entry[careplan] only Reference($EuCarePlan)
+  * entry[servicerequest] only Reference($EuServiceRequest)
 
 
 // /////////////////// COMMUNICATION SECTION //////////////////////////
