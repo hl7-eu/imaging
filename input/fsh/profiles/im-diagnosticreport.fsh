@@ -47,7 +47,7 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 // * issued 1..1  -> we use obligations instead
 
 * note 
-  * extension contains http://hl7.org/fhir/StructureDefinition/annotationType named annotation-type 0..*
+  * extension contains $annotation-type named annotation-type 0..*
   * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
 
 // * composition 0..0 -> we use composition
