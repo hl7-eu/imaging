@@ -24,4 +24,6 @@
 {% assign usCore            = "[US core v7.0.0](https://hl7.org/fhir/us/core/STU7/)" %}
 {% assign dicomSr2fhir      = "[DICOM-SR-2-FHIR](https://build.fhir.org/ig/HL7/dicom-sr/)" %}
 
+{% assign manifest          = "[Imaging Manifest](https://build.fhir.org/ig/hl7-eu/imaging-manifest/) %}
+
 {% include fhir-resources.md %}
