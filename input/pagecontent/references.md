@@ -1,6 +1,6 @@
 {% include fsh-link-references.md %}
 {% include variable-definitions.md %}
-This specification defines the representation of the data sets required by {{ehnImagingFull}}".
+This specification defines the representation of the data sets required by {{ehnImagingFull}}.
 
 Besides the requirements defined in the {{ehnImagingGuidelines}}, it also uses input from other related activities:
 
