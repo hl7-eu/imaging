@@ -86,3 +86,7 @@ The common obligations are specified in:
     { "name" : "Description", "type" : "markdown" , "source" : "Description"}
   ]
 } %}
+
+### Data sharing and deduplication 
+
+Record holders within the EHDS ecosystem may share imaging data that originated at other care organizations but is nevertheless held and integrated—fully or partially—into their patients’ clinical records. While the EHDS ecosystem will ensure mechanisms to prevent duplication of information, these are not yet in place. It is expected that the DiagnosticReport.identifier element will serve as the unique identifier for each imaging report, supporting accurate encoding and future deduplication efforts.
