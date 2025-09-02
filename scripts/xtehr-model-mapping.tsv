@@ -183,7 +183,7 @@ No	ExtEHR resource	ExtEHR field	ExtEHR #	ExtEHR description	ExtEHR type	Ext bind
 182	EHDSCoverage	 payor						EuCoverage	paymentBy.party	SB	When selfpay, include reference to party that will pay	EuPatient, EuRelatedPersion, EuOrganization				R												
 183	EHDSCoverage	 payor.payorEntity[x]	 1..1	 Payor entity	 EHDSOrganisation	   	 Payor entity 	EuCoverage	insurer	SB		EuOrganization				R												
 184	EHDSCoverage	 payor.payorEntity[x]	 1..1	 Payor entity	 EHDSPatient	   	 Payor entity 																					
-185	EHDSCoverage	 payor.subscriberId	 0..1	 Number or code under which the insured person is registered at the insurance provider.	 Identifier	   	 Number or code under which the insured person is registered at the insurance provider. 	EuCoverage	subscriberId	SB						R	R											
+185	EHDSCoverage	 payor.subscriberId	 0..1	 Number or code under which the insured person is registered at the insurance provider.	 Identifier	   	 Number or code under which the insured person is registered at the insurance provider. 	EuCoverage	subscriberId	SB						R												
 186	EHDSCurrentPregnancy	 	 0..*	 Current pregnancy status	 	   	 Current pregnancy status model 																					
 187	EHDSCurrentPregnancy	 header	 1..1	 Common header for all patient-related data	 Base	   	 Common header for all patient-related data 																					
 188	EHDSCurrentPregnancy	 header.subject	 1..1	 Patient/subject information	 EHDSPatient	   	 Subject 																					
