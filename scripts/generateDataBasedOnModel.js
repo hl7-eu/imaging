@@ -725,6 +725,11 @@ function generateSectionTablesMarkdown(parsedData) {
             let strs = new Set( entries.map(entry => `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${entry.srcResource}.${entry.srcField} |\n`));
             strs.forEach( str => { writable.write(str);});
 
+            // Add note for the Order section
+            if (section === 'Order') {
+                writable.write('\n> **Note:** As depicted on the Xt-EHR mapping section, both elements `.orderReason` and `.clinicalQuestion` target the same `reason.concept` element. The rationale behind this modeling is that the concrete definitions of the terms is vague and has a high degree of overlap.\n');
+            }
+
             writable.write('\n');
         });
     } else {
