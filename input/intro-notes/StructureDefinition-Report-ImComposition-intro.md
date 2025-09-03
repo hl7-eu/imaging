@@ -42,6 +42,8 @@ The following table lists the elements that should be included in the narrative 
 | ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.orderReason |
 | ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.clinicalQuestion |
 
+> **Note:** As depicted on the Xt-EHR mapping section, both elements `.orderReason` and `.clinicalQuestion` target the same `reason.concept` element. The rationale behind this modeling is that the concrete definitions of the terms is vague and has a high degree of overlap.
+
 ### History
 
 The following table lists the elements that should be included in the narrative of the History section.
@@ -125,13 +127,4 @@ The following table lists the elements that should be included in the narrative 
 | EuCarePlan | description |  | EHDSCarePlan.description |
 | EuCarePlan | activity |  | EHDSCarePlan.activity[x] |
 | EuCarePlan | description |  | EHDSImagingReport.body.recommendation.description |
-
-### R
-
-The following table lists the elements that should be included in the narrative of the R section.
-
-{:.grid}
-| First order resource | Element | Referenced resource | Logical model resource.field |
-| -------- | ------- | -------------- | --------------------- |
-| EuCoverage | subscriberId |  | EHDSCoverage.payor.subscriberId |
 
