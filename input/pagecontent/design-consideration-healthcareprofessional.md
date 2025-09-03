@@ -1,4 +1,4 @@
-### Representing Healthcare Proffessionals
+### Representing Healthcare Professionals
 
 When referring to healthcare professionals, the {{ehnImagingGuidelines}} include information on the professional as well as on the organization the professional is associated with (e.g. information recipient, author, resultValidator, etc.). In FHIR a healthcare professional is represented as a `Practitioner`. As a healthcare professional can be employed by multiple organizations, a different resource,`PractitionerRole` models the relationship between the healthcare professional and an organization.
 
