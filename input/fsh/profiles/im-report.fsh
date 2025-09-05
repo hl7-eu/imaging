@@ -25,5 +25,5 @@ Description: "Document Bundle for Imaging Report"
 
 Invariant: dr-comp-authorOrg
 Description: "DiagnosticReport and Composition SHALL have the same author Organization"
-Expression: "( (Bundle.entry.resource.ofType(Composition).author.ofType(Organization).empty() and Bundle.entry.resource.ofType(DiagnosticReport).performer.ofType(Organization).empty() ) or Bundle.entry.resource.ofType(Composition).author.ofType(Organization) = Bundle.entry.resource.ofType(DiagnosticReport).performer.ofType(Organization) )"
+Expression: "Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization) = Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization) or (Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization).empty() and Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization).empty())"
 Severity:    #error
