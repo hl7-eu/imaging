@@ -3,6 +3,9 @@ Parent: Bundle
 Title: "Bundle: Imaging Report"
 Description: "Document Bundle for Imaging Report"
 * insert SetFmmAndStatusRule( 1, draft )
+
+* obeys dr-comp-author-org
+
 * type = #document
 * total ..0
 * link ..0
@@ -23,7 +26,7 @@ Description: "Document Bundle for Imaging Report"
   * resource only ImDiagnosticReport
 
 
-Invariant: dr-comp-authorOrg
+Invariant: dr-comp-author-org
 Description: "DiagnosticReport and Composition SHALL have the same author Organization"
 Expression: "Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization) = Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization) or (Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization).empty() and Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization).empty())"
 Severity:    #error
