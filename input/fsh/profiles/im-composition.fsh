@@ -41,9 +41,11 @@ The `text` field of each section SHALL contain a textual representation of all l
   * insert SliceElement( #profile, $this )
 * author contains 
     author 0..* and 
-    authoringDevice 0..*
+    authoringDevice 0..* and
+    organization 0..*
 * author[author] only Reference( $EuPractitionerRole )
 * author[authoringDevice] only Reference( $EuDevice )
+* author[organization] only Reference( $EuOrganization )
 
 // type of the report. Matching DiagnosticReport.code
 // code 
