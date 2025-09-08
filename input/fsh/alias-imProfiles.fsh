@@ -8,7 +8,6 @@ Alias: $ImGestationalAgeObservationUrl  = http://hl7.eu/fhir/imaging-r5/Structur
 Alias: $ImImagingStudyUrl               = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImImagingStudy
 Alias: $ImCompositionUrl                = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImComposition
 Alias: $ImOrderUrl                      = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImOrder
-Alias: $ImPatientUrl                    = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImPatient
 Alias: $ImRadiationDoseObservationUrl   = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImRadiationDoseObservation
 Alias: $ImMedicationAdministrationUrl   = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImMedicationAdministration
 Alias: $ImServiceRequestUrl             = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ImServiceRequest

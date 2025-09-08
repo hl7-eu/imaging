@@ -36,7 +36,7 @@ Description: "Finding during imaging procedure."
 // * code
 
 // * subject
-// * subject only Reference( ImPatient )
+// * subject only Reference( $EuPatient )
 
 // * effective[x]
 //   * insert SetPopulateIfKnown

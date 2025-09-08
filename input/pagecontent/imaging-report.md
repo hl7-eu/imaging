@@ -13,7 +13,7 @@ classDiagram
   }
   ImReport *-- "1" ImComposition
   ImReport *-- "1" ImDiagnosticReport
-  ImReport *-- "1" ImPatient
+  ImReport *-- "1" EuPatient
   ImReport *-- "0..*" ImOrder
   ImReport *-- "0..*" PractitionerRoleEu
   ImReport *-- "0..*" DeviceEu
@@ -38,7 +38,7 @@ classDiagram
   ImComposition --> PractitionerRoleEu: attester[legalAuthenticator]
   ImComposition --> PractitionerRoleEu: attester[resultValidator]
   ImComposition --> OrganizationEu: custodian
-  ImComposition --> ImPatient: subject
+  ImComposition --> EuPatient: subject
   ImComposition --> ImImagingStudy: event[study].detail
   ImComposition --> ImProcedure: event[procedure].detail
   ImComposition --> ImImagingStudy: section[imagingstudy]
