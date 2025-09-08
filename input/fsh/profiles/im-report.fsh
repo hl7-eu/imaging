@@ -19,11 +19,14 @@ Description: "Document Bundle for Imaging Report"
   * response ..0
 * entry contains 
     imComposition 1..1 and
-    imDiagnosticReport 1..1
+    imDiagnosticReport 1..1 and
+    patient 1..1
 * entry[imComposition]
   * resource only ImComposition
 * entry[imDiagnosticReport]
   * resource only ImDiagnosticReport
+* entry[patient]
+  * resource only $EuPatient
 
 
 Invariant: dr-comp-author-org
