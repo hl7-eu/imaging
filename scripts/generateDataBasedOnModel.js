@@ -633,6 +633,7 @@ function generateSectionTablesMarkdown(parsedData) {
         const srcResource = row[indices.srcResource] ? row[indices.srcResource].trim() : "";
         const srcField = row[indices.srcField] ? row[indices.srcField].trim() : "";
         const tgtRefType = row[indices.tgtRefType] ? row[indices.tgtRefType].trim() : "";
+        const tgtModeling = row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : "";
 
         console.log(`Processing resource: ${tgtResource}, element: ${tgtElement} for sections: ${sectionValues.join(', ')}`);
 
@@ -656,7 +657,8 @@ function generateSectionTablesMarkdown(parsedData) {
                         element: tgtElement,
                         srcResource: srcResource,
                         srcField: srcField,
-                        tgtRefType: tgtRefType
+                        tgtRefType: tgtRefType,
+                        tgtModeling: tgtModeling
                     });
                 // }
             }
@@ -718,14 +720,22 @@ function generateSectionTablesMarkdown(parsedData) {
             writable.write(`### ${section}\n\n`);
             writable.write(`The following table lists the elements that should be included in the narrative of the ${section} section.\n\n`);
             writable.write(`{:.grid}\n`);
-            writable.write(`| First order resource | Element | Referenced resource | Logical model resource.field |\n`);
-            writable.write('| -------- | ------- | -------------- | --------------------- |\n');
-
+            
             const entries = sectionMap.get(section);
-            let strs = new Set( entries.map(entry => `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${entry.srcResource}.${entry.srcField} |\n`));
-            strs.forEach( str => { writable.write(str);});
-
-                writable.write('\n> **Note:** As depicted on the Xt-EHR mapping section, both elements `.orderReason` and `.clinicalQuestion` target the same `reason.concept` element. The rationale behind this modeling is that the concrete definitions of the terms are vague and have a high degree of overlap.\n');
+            
+            // Check if this section has any non-empty comments
+            const hasComments = entries.some(entry => entry.tgtModeling && entry.tgtModeling.trim().length > 0);
+            
+            if (hasComments) {
+                writable.write(`| First order resource | Element | Referenced resource | Logical model resource.field | Comments |\n`);
+                writable.write('| -------- | ------- | -------------- | --------------------- | -------- |\n');
+                let strs = new Set( entries.map(entry => `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${entry.srcResource}.${entry.srcField} | ${entry.tgtModeling} |\n`));
+                strs.forEach( str => { writable.write(str);});
+            } else {
+                writable.write(`| First order resource | Element | Referenced resource | Logical model resource.field |\n`);
+                writable.write('| -------- | ------- | -------------- | --------------------- |\n');
+                let strs = new Set( entries.map(entry => `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${entry.srcResource}.${entry.srcField} |\n`));
+                strs.forEach( str => { writable.write(str);});
             }
 
             writable.write('\n');
