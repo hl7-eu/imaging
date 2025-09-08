@@ -12,50 +12,50 @@ NOTE: Structural concerns and rationale on the ImComposition profile can be foun
 The following table lists the elements that should be included in the narrative of the Imaging Study section.
 
 {:.grid}
-| First order resource | Element | Referenced resource | Logical model resource.field |
-| -------- | ------- | -------------- | --------------------- |
-| EuDevice | type |  | EHDSDevice.type |
-| ImImagingStudy | series.specimen | EuSpecimen | EHDSImagingReport.body.specimen |
-| ImRadiationDoseObservation | component.value[x] | - | EHDSImagingReport.body.exposureInformation.effectiveDose |
-| ImImagingStudy | series.modality |  | EHDSImagingReport.body.examinationReport.modality |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.bodyLocation |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.laterality |
-| EuBodyStructure | includedStructure.laterality |  | EHDSImagingReport.examinationReport.bodyPart.laterality |
-| ImImagingStudy | series.performer |  | EHDSImagingStudy.header.authorship |
-| ImImagingStudy | status |  | EHDSImagingStudy.header.status |
-| ImImagingStudy | modality |  | EHDSImagingStudy.modality |
-| ImImagingStudy | started |  | EHDSImagingStudy.started |
-| ImImagingStudy | description |  | EHDSImagingStudy.description |
-| EuDevice | name |  | EHDSMedia.deviceName |
+| First order resource | Element | Referenced resource | Logical model resource.field | Comments |
+| -------- | ------- | -------------- | --------------------- | -------- |
+| EuDevice | type |  | EHDSDevice.type |  |
+| ImImagingStudy | series.specimen | EuSpecimen | EHDSImagingReport.body.specimen |  |
+| ImRadiationDoseObservation | component.value[x] | - | EHDSImagingReport.body.exposureInformation.effectiveDose | Mapping to a defined slice is needed in the future |
+| ImImagingStudy | series.modality |  | EHDSImagingReport.body.examinationReport.modality |  |
+| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.bodyLocation |  |
+| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.laterality |  |
+| EuBodyStructure | includedStructure.laterality |  | EHDSImagingReport.examinationReport.bodyPart.laterality |  |
+| ImImagingStudy | series.performer |  | EHDSImagingStudy.header.authorship |  |
+| ImImagingStudy | status |  | EHDSImagingStudy.header.status |  |
+| ImImagingStudy | modality |  | EHDSImagingStudy.modality |  |
+| ImImagingStudy | started |  | EHDSImagingStudy.started |  |
+| ImImagingStudy | description |  | EHDSImagingStudy.description |  |
+| EuDevice | name |  | EHDSMedia.deviceName |  |
 
 ### Order
 
 The following table lists the elements that should be included in the narrative of the Order section.
 
 {:.grid}
-| First order resource | Element | Referenced resource | Logical model resource.field |
-| -------- | ------- | -------------- | --------------------- |
-| ImOrder | identifier[accessionNumber] |  | EHDSImagingReport.header.accessionNumber |
-| ImOrder | authoredOn |  | EHDSImagingReport.body.orderInformation.orderDateAndTime |
-| ImOrder | requester | EuPractitionerRole | EHDSImagingReport.body.orderInformation.orderPlacer |
-| ImComposition | section[order].extension[note] |  | EHDSImagingReport.body.orderInformation.orderReasonText |
-| ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.orderReason |
-| ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.clinicalQuestion |
+| First order resource | Element | Referenced resource | Logical model resource.field | Comments |
+| -------- | ------- | -------------- | --------------------- | -------- |
+| ImOrder | identifier[accessionNumber] |  | EHDSImagingReport.header.accessionNumber |  |
+| ImOrder | authoredOn |  | EHDSImagingReport.body.orderInformation.orderDateAndTime |  |
+| ImOrder | requester | EuPractitionerRole | EHDSImagingReport.body.orderInformation.orderPlacer |  |
+| ImComposition | section[order].extension[note] |  | EHDSImagingReport.body.orderInformation.orderReasonText |  |
+| ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.orderReason | orderReason and clinicalQuestion map to the same element as a design choice |
+| ImOrder | reason.concept |  | EHDSImagingReport.body.orderInformation.clinicalQuestion |  |
 
 ### History
 
 The following table lists the elements that should be included in the narrative of the History section.
 
 {:.grid}
-| First order resource | Element | Referenced resource | Logical model resource.field |
-| -------- | ------- | -------------- | --------------------- |
-| ImOrder | supportingInfo | EuObservation | EHDSImagingReport.body.orderInformation.supportingInformation.observation |
-| ImOrder | supportingInfo | EuCondition | EHDSImagingReport.body.orderInformation.supportingInformation.condition |
-| ImOrder | reason | EuMedicationAdministration | EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration |
-| ImOrder | supportingInfo[pregnancy] |  | EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus |
-| EuPatient | extension[sex-for-clinical-use] |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |
-| EuPatient | extension[sex-for-clinical-use].extension[value].valueCodeableConcept |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |
-| EuPatient | extension[sex-for-clinical-use].extension[period].valuePeriod |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |
+| First order resource | Element | Referenced resource | Logical model resource.field | Comments |
+| -------- | ------- | -------------- | --------------------- | -------- |
+| ImOrder | supportingInfo | EuObservation | EHDSImagingReport.body.orderInformation.supportingInformation.observation |  |
+| ImOrder | supportingInfo | EuCondition | EHDSImagingReport.body.orderInformation.supportingInformation.condition |  |
+| ImOrder | reason | EuMedicationAdministration | EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration |  |
+| ImOrder | supportingInfo[pregnancy] |  | EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus | Code in supporting info, could be an observation as well |
+| EuPatient | extension[sex-for-clinical-use] |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |  |
+| EuPatient | extension[sex-for-clinical-use].extension[value].valueCodeableConcept |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |  |
+| EuPatient | extension[sex-for-clinical-use].extension[period].valuePeriod |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |  |
 
 ### Procedure
 
@@ -125,13 +125,4 @@ The following table lists the elements that should be included in the narrative 
 | EuCarePlan | description |  | EHDSCarePlan.description |
 | EuCarePlan | activity |  | EHDSCarePlan.activity[x] |
 | EuCarePlan | description |  | EHDSImagingReport.body.recommendation.description |
-
-### R
-
-The following table lists the elements that should be included in the narrative of the R section.
-
-{:.grid}
-| First order resource | Element | Referenced resource | Logical model resource.field |
-| -------- | ------- | -------------- | --------------------- |
-| EuCoverage | subscriberId |  | EHDSCoverage.payor.subscriberId |
 
