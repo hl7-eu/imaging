@@ -32,7 +32,7 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 * category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * category[imaging].coding 1..1
 
-* subject only Reference(ImPatient)
+* subject only Reference($EuPatient)
 
 * study only Reference(ImImagingStudy)
 
