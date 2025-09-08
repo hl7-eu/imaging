@@ -408,7 +408,7 @@ Usage: #inline
 
 // Impresion
 Instance: ImImpression-knee-mri-example
-InstanceOf: ConditionEu
+InstanceOf: Condition
 Usage: #inline
 * clinicalStatus = #active
 * subject = Reference(Patient/1)

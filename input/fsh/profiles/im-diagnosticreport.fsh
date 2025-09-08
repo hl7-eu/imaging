@@ -165,7 +165,7 @@ Title: "HL7IDR Impression"
 Id: HL7IDRImpression
 Description: "Impression in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ImFinding or ConditionEu or ImKeyImageDocumentReference or ImKeyImageImagingSelection or ImKeyImageDocumentReference )
+* value[x] only Reference(ImFinding or Condition or ImKeyImageDocumentReference or ImKeyImageImagingSelection or ImKeyImageDocumentReference )
 
 Extension: HL7IDRRecommendationExt
 Title: "HL7IDR Recommendation"

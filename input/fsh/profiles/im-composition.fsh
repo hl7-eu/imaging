@@ -1,5 +1,5 @@
 Profile: ImComposition
-Parent: CompositionEu
+Parent: Composition
 Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
 * . ^short = "Imaging Report composition"
@@ -16,7 +16,13 @@ The `text` field of each section SHALL contain a textual representation of all l
 * insert SetFmmAndStatusRule( 1, draft )
 
 * identifier 1..*
+  * ^short = "Report identifier"
+  * ^definition = "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions"
+  * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
+
 * extension contains 
+    $event-basedOn-url          named basedOn 0..* and
+    $information-recipient-url  named informationRecipient 0..* and
     ImDiagnosticReportReference named diagnosticreport-reference 0..1  
 * extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
 
