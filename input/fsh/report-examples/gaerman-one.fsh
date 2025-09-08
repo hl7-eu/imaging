@@ -255,7 +255,7 @@ InstanceOf: ImDiagnosticReport
 * subject = Reference( G1Patient)
 * study[+] = Reference( G1ImImagingStudy1 )
 * study[+] = Reference( G1ImImagingStudy2 )
-* performer[author] = Reference(G1AuthorRole)
+* performer[organization] = Reference(G1AuthorOrganization)
 * resultsInterpreter[author] = Reference(G1AuthorRole)
 * composition = Reference(G1Composition)
 * code = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report v0.0.1"
