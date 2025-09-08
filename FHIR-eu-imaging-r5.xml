@@ -15,7 +15,6 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSAttachments" key="StructureDefinition-EHDSAttachments" name="Attachments"/>
 <artifact id="StructureDefinition/BodyStructureEu" key="StructureDefinition-BodyStructureEu" name="BodyStructure: EU BodyStructure"/>
 <artifact id="StructureDefinition/ImReport" key="StructureDefinition-ImReport" name="Bundle: Imaging Report"/>
-<artifact id="StructureDefinition/ImImagingStudyManifest" key="StructureDefinition-ImImagingStudyManifest" name="Bundle: ImagingStudy Manifest"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSCarePlan" key="StructureDefinition-EHDSCarePlan" name="Care plan model"/>
 <artifact id="StructureDefinition/CarePlanEu" key="StructureDefinition-CarePlanEu" name="CarePlan: EU CarePlan"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSClinicalImpression" key="StructureDefinition-EHDSClinicalImpression" name="Clinical impression model"/>
@@ -34,10 +33,8 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSDispenseDecline" key="StructureDefinition-EHDSDispenseDecline" name="Dispense decline"/>
 <artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSDocumentHeader" key="StructureDefinition-EHDSDocumentHeader" name="Document header model"/>
-<artifact id="StructureDefinition/ImReportMhdDocumentReference" key="StructureDefinition-ImReportMhdDocumentReference" name="DocumentReference: -MHD Imaging Report"/>
+<artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: -MHD Imaging Report"/>
 <artifact id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReference: EU DocumentReference"/>
-<artifact id="StructureDefinition/ImMhdDocumentReference" key="StructureDefinition-ImMhdDocumentReference" name="DocumentReference: IHE-MHD Document"/>
-<artifact id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="DocumentReference: IHE-MHD Imaging Manifest"/>
 <artifact id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="DocumentReference: Key Image"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
 <artifact id="ValueSet/im-dose-length-units" key="ValueSet-im-dose-length-units" name="Dose Length Units"/>
@@ -46,8 +43,6 @@
 <artifact id="StructureDefinition/EncounterEu" key="StructureDefinition-EncounterEu" name="Encounter: EU Encounter"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EndpointEu" key="StructureDefinition-EndpointEu" name="Endpoint: EU Endpoint"/>
-<artifact id="StructureDefinition/ImImageIidViewerEndpoint" key="StructureDefinition-ImImageIidViewerEndpoint" name="Endpoint: IHE IID Image Viewer"/>
-<artifact id="StructureDefinition/ImWadoEndpoint" key="StructureDefinition-ImWadoEndpoint" name="Endpoint: WADO-RS"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
 <artifact id="Bundle/ImagingReport-knee-mri-example" key="Bundle-ImagingReport-knee-mri-example" name="Example ImagingStudy Manifest"/>
 <artifact id="Bundle/MHDTransactionBundleKneeMriExample" key="Bundle-MHDTransactionBundleKneeMriExample" name="Example MHD Knee Mri Transaction Bundle"/>
@@ -75,8 +70,11 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSHospitalDischargeReport" key="StructureDefinition-EHDSHospitalDischargeReport" name="Hospital Discharge Report"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSHospitalDischargeReportHeader" key="StructureDefinition-EHDSHospitalDischargeReportHeader" name="Hospital Discharge Report header model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSHumanName" key="StructureDefinition-EHDSHumanName" name="Human name model"/>
+<artifact deprecated="true" id="StructureDefinition/ImImageIidViewerEndpoint" key="StructureDefinition-ImImageIidViewerEndpoint" name="IM Image Viewer Endpoint"/>
+<artifact deprecated="true" id="StructureDefinition/ImImagingStudyManifest" key="StructureDefinition-ImImagingStudyManifest" name="IM ImagingStudy Manifest"/>
+<artifact deprecated="true" id="StructureDefinition/ImWadoEndpoint" key="StructureDefinition-ImWadoEndpoint" name="IM WADO Endpoint"/>
 <artifact id="StructureDefinition/im-accession-number-identifier" key="StructureDefinition-im-accession-number-identifier" name="Identifier: Accession Number"/>
-<artifact id="StructureDefinition/IheMhdEntryUUIDIdentifier" key="StructureDefinition-IheMhdEntryUUIDIdentifier" name="Identifier: IHE-MHD Entry UUID"/>
+<artifact id="StructureDefinition/IheEntryUUIDIdentifier" key="StructureDefinition-IheEntryUUIDIdentifier" name="Identifier: IHE-MHD Entry UUID"/>
 <artifact id="StructureDefinition/im-sop-instance-uid-identifier" key="StructureDefinition-im-sop-instance-uid-identifier" name="Identifier: SOP Instance UID"/>
 <artifact id="StructureDefinition/im-study-instance-uid-identifier" key="StructureDefinition-im-study-instance-uid-identifier" name="Identifier: Study Instance UID"/>
 <artifact id="ValueSet/im-imaging-device-type" key="ValueSet-im-imaging-device-type" name="Imaging Device Type"/>
@@ -104,8 +102,9 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSLaboratoryReportHeader" key="StructureDefinition-EHDSLaboratoryReportHeader" name="Laboratory report header model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSLaboratoryReport" key="StructureDefinition-EHDSLaboratoryReport" name="Laboratory report model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSLocation" key="StructureDefinition-EHDSLocation" name="Location model"/>
-<artifact id="DocumentReference/iheMdhDocumentReference-knee-mri-example" key="DocumentReference-iheMdhDocumentReference-knee-mri-example" name="MHD DocumentReference for knee MRI Imaging Report example"/>
-<artifact id="StructureDefinition/Manifest-ImManifestDocumentReference" key="StructureDefinition-Manifest-ImManifestDocumentReference" name="Manifest Obligations for ImManifestMhdDocumentReference"/>
+<artifact id="DocumentReference/DocumentReference-knee-mri-example" key="DocumentReference-DocumentReference-knee-mri-example" name="MHD DocumentReference for knee MRI Imaging Report example"/>
+<artifact deprecated="true" id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="Manifest DocumentReference for MHD deployments"/>
+<artifact deprecated="true" id="StructureDefinition/Manifest-ImManifestDocumentReference" key="StructureDefinition-Manifest-ImManifestDocumentReference" name="Manifest Obligations for ImManifestIheMhdDocumentReference"/>
 <artifact deprecated="true" id="StructureDefinition/Manifest-EuAddress" key="StructureDefinition-Manifest-EuAddress" name="Manifest obligations for EuAddress"/>
 <artifact deprecated="true" id="StructureDefinition/Manifest-EuBodyStructure" key="StructureDefinition-Manifest-EuBodyStructure" name="Manifest obligations for EuBodyStructure"/>
 <artifact deprecated="true" id="StructureDefinition/Manifest-EuContactPoint" key="StructureDefinition-Manifest-EuContactPoint" name="Manifest obligations for EuContactPoint"/>
@@ -183,6 +182,7 @@
 <artifact id="StructureDefinition/ImPatient" key="StructureDefinition-ImPatient" name="Patient: Imaging"/>
 <artifact id="ValueSet/periods-of-life-value-set" key="ValueSet-periods-of-life-value-set" name="Periods of Life"/>
 <artifact id="StructureDefinition/periods-of-life-extension" key="StructureDefinition-periods-of-life-extension" name="Periods of Life Extension"/>
+<artifact deprecated="true" id="StructureDefinition/IheMhdEntryUUIDIdentifier" key="StructureDefinition-IheMhdEntryUUIDIdentifier" name="Placeholder for IHE MHD Entry UUID Identifier in FHIR R5."/>
 <artifact deprecated="true" id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ProcedureEu" key="StructureDefinition-ProcedureEu" name="Procedure: EU Procedure"/>
 <artifact id="StructureDefinition/ImProcedure" key="StructureDefinition-ImProcedure" name="Procedure: Imaging Acquisition"/>
@@ -194,7 +194,7 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
 <artifact id="StructureDefinition/RelatedPersonEu" key="StructureDefinition-RelatedPersonEu" name="RelatedPerson: EU RelatedPerson"/>
 <artifact deprecated="true" id="StructureDefinition/ImReportIheMhdDocumentReference" key="StructureDefinition-ImReportIheMhdDocumentReference" name="Report DocumentReference for MHD deployments"/>
-<artifact id="StructureDefinition/Report-ImReportDocumentReference" key="StructureDefinition-Report-ImReportDocumentReference" name="Report Obligations for ImReportIheMhdDocumentReference"/>
+<artifact deprecated="true" id="StructureDefinition/Report-ImReportDocumentReference" key="StructureDefinition-Report-ImReportDocumentReference" name="Report Obligations for ImReportIheMhdDocumentReference"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSReportHeader" key="StructureDefinition-EHDSReportHeader" name="Report header model"/>
 <artifact deprecated="true" id="StructureDefinition/Report-EuAddress" key="StructureDefinition-Report-EuAddress" name="Report obligations for EuAddress"/>
 <artifact deprecated="true" id="StructureDefinition/Report-EuAllergyIntolerance" key="StructureDefinition-Report-EuAllergyIntolerance" name="Report obligations for EuAllergyIntolerance"/>
@@ -252,20 +252,23 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSTelecom" key="StructureDefinition-EHDSTelecom" name="Telecom model"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
-<page key="actors-and-transactions" name="Actors and Transactions"/>
 <page key="adapting" name="Adapting Guidelines for Country use"/>
 <page key="artifacts-intro" name="Artifacts"/>
 <page key="artifacts" name="Artifacts Summary"/>
+<page key="contributors" name="Authors and contributors"/>
 <page key="changes" name="Changes"/>
-<page key="contributors" name="Contributors"/>
+<page key="copyright" name="Copyright"/>
+<page key="dependencies" name="Dependencies"/>
 <page deprecated="true" key="profiles" name="Deployment profiles"/>
-<page key="design-considerations" name="Design Considerations"/>
+<page key="design-considerations" name="Design considerations"/>
 <page key="index" name="Home"/>
 <page deprecated="true" key="imaging-manifest" name="Imaging Manifest"/>
 <page key="imaging-report" name="Imaging Report"/>
-<page key="xtehr-mapping" name="Mapping to Xt-EHR Logical Model"/>
+<page key="references" name="References"/>
 <page key="artifacts-structural" name="Structural artifacts"/>
+<page key="actors-and-transactions" name="System actors"/>
 <page key="toc" name="Table of Contents"/>
+<page key="xtehr-mapping" name="Xt-EHR mapping"/>
 <page deprecated="true" key="xtehr" name="XtEHR"/>
 <page deprecated="true" key="xtehr-logical-model" name="XtEHR Logical Model"/>
 </specification>

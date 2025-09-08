@@ -9,7 +9,7 @@ Usage: #example
 * timestamp = 1993-11-29T12:36:56+00:00
 * entry[+]
   * fullUrl = "DocumentReference/1"
-  * resource = iheMdhDocumentReference-knee-mri-example
+  * resource = DocumentReference-knee-mri-example
   * request[+]
     * method = #PUT
     * url = "DocumentReference/1"
@@ -21,8 +21,8 @@ Usage: #example
     * url = "ImagingReport/1"
 // DocumentReference
 
-Instance: iheMdhDocumentReference-knee-mri-example
-InstanceOf: Report_ImReportDocumentReference
+Instance: DocumentReference-knee-mri-example
+InstanceOf: ImReportDocumentReference
 Title: "MHD DocumentReference for knee MRI Imaging Report example"
 * identifier[entry-uuid]
   * system = "urn:ietf:rfc:3986"

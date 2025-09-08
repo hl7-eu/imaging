@@ -24,7 +24,7 @@ This profile represents an imaging study instance.
 * basedOn contains imorderaccession 0..1
 * insert BasedOnImOrderReference( imorderaccession )
 
-* insert EndpointTypes 
+// * insert EndpointTypes 
 
 * series
   * performer.function from ImImagingStudyPerformerTypeVS (extensible)
@@ -44,7 +44,7 @@ This profile represents an imaging study instance.
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
     * actor only Reference( $EuOrganization ) 
 
-  * insert EndpointTypes 
+  // * insert EndpointTypes 
 
   * instance
     * extension contains 

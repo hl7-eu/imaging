@@ -7,7 +7,7 @@ The imaging report represents a report made by a radiologist based on an imaging
 
 The figure below illustrates the structure of the Imaging Report.
 
-{% include img.html img="imaging-report-overview.png" caption="Figure: Imaging report overview" %}
+{% include img.html img="imaging-report-overview.drawio.png" caption="Figure: Imaging report overview" %}
 
 An Imaging Report is a FHIR Clinical Document that contains both a {{DiagnosticReport}} as a {{Composition}} resource.
 The report uses the {{ImDiagnosticReport}} to store the structured data. This resource might also include a rendered version of the document. The {{ImComposition}} resource is used to present a rendered version of the document as a FHIR document.
@@ -84,7 +84,7 @@ Some items in the impression may be clinically significant but were not associat
 
 Some items in the impression may be critical, in that they represent the potential for severe negative clinical impact to the patient if appropriate action is not taken promptly. The presence of such items almost always results in a communication with care staff and/or the patient.
 
-In this specification, impressions are represented by {{ImFinding}} and {{ImImpression}} resources.
+In this specification, impressions are represented by {{ImFinding}} and {{Condition}} resources.
 
 #### Recommendation
 

@@ -21,6 +21,7 @@ The table below shows the way the main content elements in a Radiology report ar
 | comparison       | resources              | extension[comparison]                                    | section[comparison].entry            |
 |                  | notes                  | note.where(extension[annotationType].value → comparison) | section[comparison].extension[note]  |
 | findings         | resources              | result                                                   | section[findings].entry              |
+|                  |                        | (key images are included as references from observations)  |                                      |
 |                  | notes                  | note.where(extension[annotationType].value → findings)   | section[findings].extension[note]    |
 | impressions      | resources              | extension[impression]                                    | section[impression].entry            |
 |                  | notes                  | conclusion                                               | section[impression].extension[note]  |
