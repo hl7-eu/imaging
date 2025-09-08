@@ -49,8 +49,10 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 
 * performer 
   * insert SliceElement( #profile, $this )
-* performer contains author 1..*
-* performer[author] only Reference($EuPractitionerRole)
+* performer contains organization 0..*
+* performer[organization] only Reference($EuOrganization)
+* performer[organization] ^short = "The organization producer of this report"
+* performer[organization] ^definition = "The organization responsible for producing this report. In case practitioners produce them in their private practices, they will be accounted as an organization for this purpose."
 
 // author etc.
 * resultsInterpreter 0..*
