@@ -56,22 +56,12 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 // at least one performer is an Organization, the practitioner must follow the profile in this guide
 * performer 
   * insert SliceElementWithDescription( #profile, $this, [[Organization that delivered the report]] )
-* performer contains organization 0..*  
+* performer contains organization 0..*
 * performer[organization] only Reference($EuOrganization)
+* performer[organization] ^short = "The organization producer of this report"
+* performer[organization] ^definition = "The organization responsible for producing this report. In case practitioners produce them in their private practices, they will be accounted as an organization for this purpose."
 
-* performer
-  * insert SliceElementWithDescription( #value, [[extension( $performer-function-url ).value]], [[Attesters of the report]] )
-* performer contains attester 0..* and legal-authenticator 0..*
-* performer[attester] only Reference($EuPractitionerRole)
-  * extension
-    * url = $performer-function-url 
-    * valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#AUTHEN // authenticator
-* performer[legal-authenticator] only Reference($EuPractitionerRole)
-  * extension
-    * url = $performer-function-url
-    * valueCodeableConcept = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LA // Legal Authenticator
-
-
+// author etc.
 * resultsInterpreter 0..*
   * insert SliceElementWithDescription( #profile, [[resolve()]], [[Primary interpreter of results]] )
 * resultsInterpreter contains author 0..* 

@@ -46,22 +46,28 @@ pages:
     title: Home
     changes.md: 
       title: Changes
+    dependencies.md:
+      title: Dependencies
+    references.md:
+      title: References
     adapting.md: 
-      title: Adapting Guidelines for Country use	
+      title: Adapting Guidelines for Country use
     contributors.md:
-      title: Contributors
+      title: Authors and contributors
+    copyright.md:
+      title: Copyright
   actors-and-transactions.md:
-    title: Actors and Transactions
+    title: System actors
   xtehr-mapping.md:
-    title: Mapping to Xt-EHR Logical Model
-  imaging-report.md:
-    title: Imaging Report
+    title: Xt-EHR mapping
   design-considerations.md:
-    title: Design Considerations
+    title: Design considerations
   artifacts-intro.md:
     title: Artifacts
     artifacts-structural.md:
       title: Structural artifacts
+    imaging-report.md:
+      title: Imaging Report
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide
 # resource), the code is the YAML key. If a parameter allows repeating
@@ -105,21 +111,27 @@ parameters:
 # │ property below.                                                                                │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
-  Home:
-    Introduction: index.html
+  Home: index.html
+  Introduction:
     Changes: changes.html
-    Dependencies: index.html#dependencies
-    References: index.html#references
+    Dependencies: dependencies.html
+    References: references.html
     Adapting Guidelines for Country use: adapting.html
-  Actors and Transactions: actors-and-transactions.html
-  Xt-EHR model & mapping: xtehr-mapping.html
-  Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
-  Imaging Report: imaging-report.html
-  Artifacts: 
+  Functional:
+    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html
+    System actors: actors-and-transactions.html
+  Implementation:
+    Xt-EHR mapping: xtehr-mapping.html
+    Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
+    Design considerations: design-considerations.html
+  About:
+    Authors and contributors: contributors.html
+    Copyright: copyright.html
+  Artifacts:
     All: artifacts.html
     Structural: artifacts-structural.html
-    Mapping: xtehr-mapping.html
-  Design Considerations: design-considerations.html
+    Imaging Report: imaging-report.html
+
   #   Changes: changes.html
   #   Dependencies: index.html#dependencies
   #   References: index.html#references
