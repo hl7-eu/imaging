@@ -52,7 +52,7 @@ The following table lists the elements that should be included in the narrative 
 | ImOrder | supportingInfo | EuObservation | EHDSImagingReport.body.orderInformation.supportingInformation.observation |  |
 | ImOrder | supportingInfo | EuCondition | EHDSImagingReport.body.orderInformation.supportingInformation.condition |  |
 | ImOrder | reason | EuMedicationAdministration | EHDSImagingReport.body.orderInformation.supportingInformation.medicationAdministration |  |
-| ImOrder | supportingInfo[pregnancy] |  | EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus | Code in supporting info, could be a observation as well |
+| ImOrder | supportingInfo[pregnancy] |  | EHDSImagingReport.body.orderInformation.supportingInformation.pregnancyStatus | Code in supporting info, could be an observation as well |
 | ImPatient | extension[sex-for-clinical-use] |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |  |
 | ImPatient | extension[sex-for-clinical-use].extension[value].valueCodeableConcept |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |  |
 | ImPatient | extension[sex-for-clinical-use].extension[period].valuePeriod |  | EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse |  |
