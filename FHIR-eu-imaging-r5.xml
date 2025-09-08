@@ -11,21 +11,16 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSAlertFlag" key="StructureDefinition-EHDSAlertFlag" name="Alert flag model"/>
 <artifact id="StructureDefinition/EHDSAlert" key="StructureDefinition-EHDSAlert" name="Alert model"/>
 <artifact id="StructureDefinition/EHDSAllergyIntolerance" key="StructureDefinition-EHDSAllergyIntolerance" name="Allergy intolerance model"/>
-<artifact id="StructureDefinition/AllergyIntoleranceEu" key="StructureDefinition-AllergyIntoleranceEu" name="AllergyIntolerance: EU AllergyIntolerance"/>
 <artifact id="StructureDefinition/EHDSAppointment" key="StructureDefinition-EHDSAppointment" name="Appointment model"/>
 <artifact id="StructureDefinition/EHDSAttachment" key="StructureDefinition-EHDSAttachment" name="Attachment model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSAttachments" key="StructureDefinition-EHDSAttachments" name="Attachments"/>
 <artifact id="StructureDefinition/EHDSBodyStructure" key="StructureDefinition-EHDSBodyStructure" name="Body structure model"/>
-<artifact id="StructureDefinition/BodyStructureEu" key="StructureDefinition-BodyStructureEu" name="BodyStructure: EU BodyStructure"/>
 <artifact id="StructureDefinition/ImReport" key="StructureDefinition-ImReport" name="Bundle: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSCarePlan" key="StructureDefinition-EHDSCarePlan" name="Care plan model"/>
-<artifact id="StructureDefinition/CarePlanEu" key="StructureDefinition-CarePlanEu" name="CarePlan: EU CarePlan"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSClinicalImpression" key="StructureDefinition-EHDSClinicalImpression" name="Clinical impression model"/>
 <artifact id="CodeSystem/codesystem-endpoint-terminology" key="CodeSystem-codesystem-endpoint-terminology" name="CodeSystem for terminology used in Endpoint resources in the EU Imaging IG."/>
-<artifact id="StructureDefinition/CompositionEu" key="StructureDefinition-CompositionEu" name="Composition: EU Composition"/>
 <artifact id="StructureDefinition/ImComposition" key="StructureDefinition-ImComposition" name="Composition: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSCondition" key="StructureDefinition-EHDSCondition" name="Condition model"/>
-<artifact id="StructureDefinition/ConditionEu" key="StructureDefinition-ConditionEu" name="Condition: EU Condition"/>
 <artifact id="StructureDefinition/EHDSCoverage" key="StructureDefinition-EHDSCoverage" name="Coverage model"/>
 <artifact id="StructureDefinition/EHDSCurrentPregnancy" key="StructureDefinition-EHDSCurrentPregnancy" name="Current pregnancy status model"/>
 <artifact id="StructureDefinition/EHDSDataSet" key="StructureDefinition-EHDSDataSet" name="DataSet model"/>
@@ -40,16 +35,27 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSDocumentHeader" key="StructureDefinition-EHDSDocumentHeader" name="Document header model"/>
 <artifact id="StructureDefinition/EHDSDocument" key="StructureDefinition-EHDSDocument" name="Document model"/>
 <artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: -MHD Imaging Report"/>
-<artifact id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReference: EU DocumentReference"/>
 <artifact id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="DocumentReference: Key Image"/>
+<artifact deprecated="true" id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReferenceEu"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
 <artifact id="ValueSet/im-dose-length-units" key="ValueSet-im-dose-length-units" name="Dose Length Units"/>
+<artifact deprecated="true" id="StructureDefinition/AllergyIntoleranceEu" key="StructureDefinition-AllergyIntoleranceEu" name="EU AllergyIntolerance"/>
+<artifact deprecated="true" id="StructureDefinition/BodyStructureEu" key="StructureDefinition-BodyStructureEu" name="EU BodyStructure"/>
+<artifact deprecated="true" id="StructureDefinition/CarePlanEu" key="StructureDefinition-CarePlanEu" name="EU CarePlan"/>
+<artifact deprecated="true" id="StructureDefinition/CompositionEu" key="StructureDefinition-CompositionEu" name="EU Composition"/>
+<artifact deprecated="true" id="StructureDefinition/ConditionEu" key="StructureDefinition-ConditionEu" name="EU Condition"/>
+<artifact deprecated="true" id="StructureDefinition/EncounterEu" key="StructureDefinition-EncounterEu" name="EU Encounter"/>
+<artifact deprecated="true" id="StructureDefinition/EndpointEu" key="StructureDefinition-EndpointEu" name="EU Endpoint"/>
+<artifact deprecated="true" id="StructureDefinition/MedicationEu" key="StructureDefinition-MedicationEu" name="EU Medication"/>
+<artifact deprecated="true" id="StructureDefinition/ObservationEu" key="StructureDefinition-ObservationEu" name="EU Observation"/>
+<artifact deprecated="true" id="StructureDefinition/ProcedureEu" key="StructureDefinition-ProcedureEu" name="EU Procedure"/>
+<artifact deprecated="true" id="StructureDefinition/quantity-eu" key="StructureDefinition-quantity-eu" name="EU Quantity"/>
+<artifact deprecated="true" id="StructureDefinition/range-eu" key="StructureDefinition-range-eu" name="EU Range"/>
+<artifact deprecated="true" id="StructureDefinition/SimpleQuantityEu" key="StructureDefinition-SimpleQuantityEu" name="EU SimpleQuantity"/>
 <artifact id="ValueSet/im-effective-dose-units" key="ValueSet-im-effective-dose-units" name="Effective Dose Units"/>
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
-<artifact id="StructureDefinition/EncounterEu" key="StructureDefinition-EncounterEu" name="Encounter: EU Encounter"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
-<artifact id="StructureDefinition/EndpointEu" key="StructureDefinition-EndpointEu" name="Endpoint: EU Endpoint"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
 <artifact id="Bundle/ImagingReport-knee-mri-example" key="Bundle-ImagingReport-knee-mri-example" name="Example ImagingStudy Manifest"/>
 <artifact id="Bundle/MHDTransactionBundleKneeMriExample" key="Bundle-MHDTransactionBundleKneeMriExample" name="Example MHD Knee Mri Transaction Bundle"/>
@@ -166,9 +172,9 @@
 <artifact deprecated="true" id="ConceptMap/EHDSSpecimenMap" key="ConceptMap-EHDSSpecimenMap" name="Map for EHDSSpecimen"/>
 <artifact deprecated="true" id="ConceptMap/EHDSSubstanceMap" key="ConceptMap-EHDSSubstanceMap" name="Map for EHDSSubstance"/>
 <artifact deprecated="true" id="ConceptMap/EHDSTelecomMap" key="ConceptMap-EHDSTelecomMap" name="Map for EHDSTelecom"/>
-<artifact id="ValueSet/media-view" key="ValueSet-media-view" name="Media View types - placeholder for cross-version extension"/>
+<artifact deprecated="true" id="ValueSet/media-view" key="ValueSet-media-view" name="Media View types - placeholder for cross-version extension"/>
 <artifact id="StructureDefinition/EHDSMedia" key="StructureDefinition-EHDSMedia" name="Media model"/>
-<artifact id="StructureDefinition/CrossVersionMediaViewExtension" key="StructureDefinition-CrossVersionMediaViewExtension" name="Media.view extension"/>
+<artifact deprecated="true" id="StructureDefinition/CrossVersionMediaViewExtension" key="StructureDefinition-CrossVersionMediaViewExtension" name="Media.view extension"/>
 <artifact id="StructureDefinition/EHDSMedicationAdministration" key="StructureDefinition-EHDSMedicationAdministration" name="Medication administration model"/>
 <artifact id="StructureDefinition/EHDSDispenseDecline" key="StructureDefinition-EHDSDispenseDecline" name="Medication dispense decline model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSMedicationDispenseHeader" key="StructureDefinition-EHDSMedicationDispenseHeader" name="Medication dispense header"/>
@@ -177,11 +183,9 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSMedicationPrescriptionHeader" key="StructureDefinition-EHDSMedicationPrescriptionHeader" name="Medication prescription header model"/>
 <artifact id="StructureDefinition/EHDSMedicationPrescription" key="StructureDefinition-EHDSMedicationPrescription" name="Medication prescription model"/>
 <artifact id="StructureDefinition/EHDSMedicationStatement" key="StructureDefinition-EHDSMedicationStatement" name="Medication statement model"/>
-<artifact id="StructureDefinition/MedicationEu" key="StructureDefinition-MedicationEu" name="Medication: EU Medication"/>
 <artifact id="CodeSystem/codesystem-missing-dicom-terminology" key="CodeSystem-codesystem-missing-dicom-terminology" name="Missing DICOM Terminology"/>
 <artifact id="StructureDefinition/number-of-frames" key="StructureDefinition-number-of-frames" name="Number of Frames"/>
 <artifact id="StructureDefinition/EHDSObservation" key="StructureDefinition-EHDSObservation" name="Observation model"/>
-<artifact id="StructureDefinition/ObservationEu" key="StructureDefinition-ObservationEu" name="Observation: EU Observation"/>
 <artifact id="StructureDefinition/ImGestationalAgeObservation" key="StructureDefinition-ImGestationalAgeObservation" name="Observation: Gestational Age"/>
 <artifact id="StructureDefinition/ImFinding" key="StructureDefinition-ImFinding" name="Observation: Imaging Finding"/>
 <artifact id="StructureDefinition/ImRadiationDoseObservation" key="StructureDefinition-ImRadiationDoseObservation" name="Observation: Radiation Dose"/>
@@ -192,22 +196,19 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSPatientSummaryBody" key="StructureDefinition-EHDSPatientSummaryBody" name="Patient summary body model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSPatientSummaryHeader" key="StructureDefinition-EHDSPatientSummaryHeader" name="Patient summary header model"/>
 <artifact id="StructureDefinition/EHDSPatientSummary" key="StructureDefinition-EHDSPatientSummary" name="Patient summary model"/>
-<artifact id="StructureDefinition/PatientAnimalEu" key="StructureDefinition-PatientAnimalEu" name="Patient: EU Animal"/>
+<artifact deprecated="true" id="StructureDefinition/PatientAnimalEu" key="StructureDefinition-PatientAnimalEu" name="Patient: Animal"/>
 <artifact id="StructureDefinition/ImPatient" key="StructureDefinition-ImPatient" name="Patient: Imaging"/>
-<artifact id="ValueSet/periods-of-life-value-set" key="ValueSet-periods-of-life-value-set" name="Periods of Life"/>
-<artifact id="StructureDefinition/periods-of-life-extension" key="StructureDefinition-periods-of-life-extension" name="Periods of Life Extension"/>
+<artifact deprecated="true" id="ValueSet/periods-of-life-value-set" key="ValueSet-periods-of-life-value-set" name="Periods of Life"/>
+<artifact deprecated="true" id="StructureDefinition/periods-of-life-extension" key="StructureDefinition-periods-of-life-extension" name="Periods of Life Extension"/>
 <artifact deprecated="true" id="StructureDefinition/IheMhdEntryUUIDIdentifier" key="StructureDefinition-IheMhdEntryUUIDIdentifier" name="Placeholder for IHE MHD Entry UUID Identifier in FHIR R5."/>
 <artifact id="StructureDefinition/EHDSPregnancyHistory" key="StructureDefinition-EHDSPregnancyHistory" name="Pregnancy history model"/>
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
-<artifact id="StructureDefinition/ProcedureEu" key="StructureDefinition-ProcedureEu" name="Procedure: EU Procedure"/>
 <artifact id="StructureDefinition/ImProcedure" key="StructureDefinition-ImProcedure" name="Procedure: Imaging Acquisition"/>
-<artifact id="StructureDefinition/quantity-eu" key="StructureDefinition-quantity-eu" name="Quantity: EU Quantity"/>
 <artifact deprecated="true" id="StructureDefinition/ImIheMhdDocumentReference" key="StructureDefinition-ImIheMhdDocumentReference" name="R5 DocumentReference for MHD deployments"/>
 <artifact id="Composition/G1Composition" key="Composition-G1Composition" name="Radiology Report for the left/right foot study"/>
-<artifact id="StructureDefinition/range-eu" key="StructureDefinition-range-eu" name="Range: EU Range"/>
 <artifact id="ValueSet/ImSectionEmptyReason" key="ValueSet-ImSectionEmptyReason" name="Reasons a section in an imaging report is empty."/>
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
-<artifact id="StructureDefinition/RelatedPersonEu" key="StructureDefinition-RelatedPersonEu" name="RelatedPerson: EU RelatedPerson"/>
+<artifact deprecated="true" id="StructureDefinition/RelatedPersonEu" key="StructureDefinition-RelatedPersonEu" name="RelatedPerson Eu"/>
 <artifact deprecated="true" id="StructureDefinition/ImReportIheMhdDocumentReference" key="StructureDefinition-ImReportIheMhdDocumentReference" name="Report DocumentReference for MHD deployments"/>
 <artifact deprecated="true" id="StructureDefinition/Report-ImReportDocumentReference" key="StructureDefinition-Report-ImReportDocumentReference" name="Report Obligations for ImReportIheMhdDocumentReference"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSReportHeader" key="StructureDefinition-EHDSReportHeader" name="Report header model"/>
@@ -255,14 +256,11 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSCommonHeader" key="StructureDefinition-EHDSCommonHeader" name="Resource header model"/>
 <artifact id="ValueSet/valueset-diagnosticreport-notes" key="ValueSet-valueset-diagnosticreport-notes" name="Section codes used to label annotations."/>
 <artifact id="StructureDefinition/EHDSServiceRequest" key="StructureDefinition-EHDSServiceRequest" name="Service request model"/>
-<artifact id="StructureDefinition/ServiceRequestEu" key="StructureDefinition-ServiceRequestEu" name="ServiceRequest EU"/>
 <artifact id="StructureDefinition/ImOrder" key="StructureDefinition-ImOrder" name="ServiceRequest: Imaging Order"/>
-<artifact id="StructureDefinition/SimpleQuantityEu" key="StructureDefinition-SimpleQuantityEu" name="SimpleQuantity: EU SimpleQuantity"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSSlot" key="StructureDefinition-EHDSSlot" name="Slot model"/>
 <artifact id="StructureDefinition/EHDSSocialHistory" key="StructureDefinition-EHDSSocialHistory" name="Social history model"/>
-<artifact id="StructureDefinition/SpecialistContactExtension" key="StructureDefinition-SpecialistContactExtension" name="Specialist Contact Extension"/>
 <artifact id="StructureDefinition/EHDSSpecimen" key="StructureDefinition-EHDSSpecimen" name="Specimen model"/>
-<artifact id="StructureDefinition/SpecimenEu" key="StructureDefinition-SpecimenEu" name="Specimen: EU Specimen"/>
+<artifact deprecated="true" id="StructureDefinition/SpecimenEu" key="StructureDefinition-SpecimenEu" name="Specimen: Laboratory"/>
 <artifact id="StructureDefinition/EHDSSubstance" key="StructureDefinition-EHDSSubstance" name="Substance model"/>
 <artifact id="StructureDefinition/EHDSSubstanceUse" key="StructureDefinition-EHDSSubstanceUse" name="Substance use model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSTask" key="StructureDefinition-EHDSTask" name="Task model"/>
