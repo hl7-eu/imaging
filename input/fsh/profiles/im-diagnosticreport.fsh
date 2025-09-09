@@ -125,7 +125,8 @@ Communications captures what communications have been made with other care provi
 """
 
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
-
+* obeys hl7eu-im-dr-code
+* obeys hl7eu-im-dr-category
 * obeys hl7eu-im-dr-subject
 * obeys hl7eu-im-dr-study
 * obeys hl7eu-im-dr-order
@@ -182,47 +183,57 @@ Context: DiagnosticReport
 
 // ////////////////////////// Invariants ///////////////////////////////////////////////////////////////////
 
+Invariant: hl7eu-im-dr-code
+Description: "Composition.type equal to DiagnosticReport.code"
+* severity = #error
+* expression = "DiagnosticReport.composition.resolve().type = DiagnosticReport.code"
+
+Invariant: hl7eu-im-dr-category
+Description: "Composition.category must contain DiagnosticReport.category"
+* severity = #error
+* expression = "DiagnosticReport.composition.resolve().category = DiagnosticReport.category"
+
 Invariant: hl7eu-im-dr-subject
 Description: "Patient in composition must be the same."
 * severity = #error
-* expression = "composition.patient.reference = DiagnosticReport.subject.reference"
+* expression = "DiagnosticReport.composition.resolve().patient.reference = DiagnosticReport.subject.reference"
 
 Invariant: hl7eu-im-dr-study
 Description: "Study must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(study.reference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(study.reference)"
 
 Invariant: hl7eu-im-dr-order
 Description: "Order must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(basedOn.reference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(basedOn.reference)"
 
 Invariant: hl7eu-im-dr-history
 Description: "History must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRPatientHistory').valueReference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRPatientHistory').valueReference)"
 
 Invariant: hl7eu-im-dr-procedure
 Description: "Procedure must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRPatientProcedure').valueReference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRPatientProcedure').valueReference)"
 
 Invariant: hl7eu-im-dr-impression
 Description: "Impression must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRImpression').valueReference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRImpression').valueReference)"
 
 Invariant: hl7eu-im-dr-recommendation
 Description: "Recommendation must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRRecommendation').valueReference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRRecommendation').valueReference)"
 
 Invariant: hl7eu-im-dr-communication
 Description: "Communication must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRCommunication').valueReference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(extension('http://hl7.eu/fhir/imaging-r5/StructureDefinition/HL7IDRCommunication').valueReference)"
 
 Invariant: hl7eu-im-dr-finding
 Description: "Finding must be present in composition."
 * severity = #error
-* expression = "DiagnosticReport.composition.section.entry.reference.superset(result.reference)"
+* expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(result.reference)"

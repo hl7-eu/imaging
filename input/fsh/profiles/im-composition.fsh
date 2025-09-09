@@ -98,11 +98,12 @@ The `text` field of each section SHALL contain a textual representation of all l
     order 1..1 and
     history 1..1 and 
     procedure 1..1 and
-    comparison 1..1 and 
-    findings 1..1  and 
-    impression 1..1 and 
-    recommendation 1..1  and 
-    communication 0..1 
+    comparison 0..1 and 
+    findings 0..1  and 
+    impression 0..1 and 
+    recommendation 0..1  and 
+    communication 0..1  and
+    report 0..1 
 
 // ///////////////////////////////// IMAGING STUDY SECTION ///////////////////////////////////////
 * section[imagingstudy]
@@ -211,6 +212,14 @@ The `text` field of each section SHALL contain a textual representation of all l
 // a proper code is needed
   * code = $loinc#18783-1 // "Radiology Study recommendation (narrative)"
   * extension contains $note-url named note 0..*
+
+// /////////////////// COMMUNICATION SECTION //////////////////////////
+* section[report]
+  * ^short = "Report - all content in one section"
+// a proper code is needed
+  * code = $loinc#LP173421-1 // "Report"
+  * extension contains $note-url named note 0..*
+
 
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
