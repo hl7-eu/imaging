@@ -1,4 +1,4 @@
-Profile: ImImageIidViewerEndpoint
+Profile: EndpointImageIidViewerEuImaging //ImImageIidViewerEndpoint
 Parent: EndpointEu
 Title: "Endpoint: IHE IID Image Viewer"
 Description: """

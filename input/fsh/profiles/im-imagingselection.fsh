@@ -1,4 +1,4 @@
-Profile: ImImagingSelection
+Profile: ImagingSelectionEuImaging //ImImagingSelection
 Parent: ImagingSelection
 Title: "ImagingSelection: General"
 Description: "Imaging Selection"
@@ -8,18 +8,18 @@ Description: "Imaging Selection"
 * derivedFrom 1..*
   * insert SliceElement( #profile, $this )
 * derivedFrom contains study 1..1
-* derivedFrom[study] only Reference( ImImagingStudy )
+* derivedFrom[study] only Reference( ImagingStudyEuImaging )
 
 
-Profile: ImSrInstanceImagingSelection
-Parent: ImImagingSelection
+Profile: ImagingSelectionSrInstanceEuImaging
+Parent: ImagingSelectionEuImaging
 Title: "ImagingSelection: DICOM SR Instance"
 Description: "Imaging Selection referring to a DICOM SR instance"
 * insert SetFmmAndStatusRule( 1, draft )
 * identifier 1..*
   * insert SliceElement( #value, type )
 * identifier contains sopInstanceUid 1..1
-* identifier[sopInstanceUid] only ImSopInstanceUidIdentifier
+* identifier[sopInstanceUid] only IdentifierSopInstanceUidEuImaging
 
 * studyUid 1..1
 * seriesUid 1..1

@@ -1,4 +1,4 @@
-Profile: ImReport
+Profile: BundleReportEuImaging
 Parent: Bundle
 Title: "Bundle: Imaging Report"
 Description: "Document Bundle for Imaging Report"
@@ -10,6 +10,6 @@ Description: "Document Bundle for Imaging Report"
     imComposition 1..1 and
     imDiagnosticReport 1..1
 * entry[imComposition]
-  * resource only ImComposition
+  * resource only CompositionEuImaging
 * entry[imDiagnosticReport]
-  * resource only ImDiagnosticReport
+  * resource only DiagnosticReportEuImaging

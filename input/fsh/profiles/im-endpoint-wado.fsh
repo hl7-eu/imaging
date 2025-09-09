@@ -1,4 +1,4 @@
-Profile: ImWadoEndpoint
+Profile: EndpointWadoEuImaging //ImWadoEndpoint
 Parent: EndpointEu
 Title: "Endpoint: WADO-RS"
 Description: """

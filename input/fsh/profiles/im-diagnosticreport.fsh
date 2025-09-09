@@ -1,4 +1,4 @@
-Profile: ImDiagnosticReport
+Profile: DiagnosticReportEuImaging //ImDiagnosticReport
 Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report"
 Description: """
@@ -32,9 +32,9 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 * category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
 * category[imaging].coding 1..1
 
-* subject only Reference(ImPatient)
+* subject only Reference(PatientEuImaging)
 
-* study only Reference(ImImagingStudy)
+* study only Reference(ImagingStudyEuImaging)
 
 // supporting info
 * supportingInfo
@@ -44,7 +44,7 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
     procedure 0..*
 * supportingInfo[procedure]
   * type = DiagnosticReportSupportingInfoCodeSystem#imaging-procedure
-  * reference only Reference(ImProcedure)
+  * reference only Reference(ProcedureEuImaging)
 // TODO only main elements or all elements of the eHN dataset?   
 
 * performer 
@@ -62,7 +62,7 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 // refer to the mandatory composition
 * composition 1..1
 * composition ^short = "Imaging Diagnostic Report"
-* composition only Reference(ImComposition)
+* composition only Reference(CompositionEuImaging)
 
 // code 
 * code

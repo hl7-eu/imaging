@@ -1,4 +1,4 @@
-Profile: ImKeyImageDocumentReference
+Profile: DocumentReferenceKeyImageEuImaging
 Parent: $EuDocumentReference
 Title: "DocumentReference: Key Image"
 Description: """A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n
@@ -39,7 +39,7 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
 * modality 1..1
   
 * subject 1..1
-* subject only Reference( ImPatient )
+* subject only Reference( PatientEuImaging )
 
 * author
   * insert SliceElement( #profile, $this )

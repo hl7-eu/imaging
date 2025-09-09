@@ -1,4 +1,4 @@
-Profile: ImAccessionNumberIdentifier
+Profile: IdentifierAccessionNumberEuImaging
 Parent: Identifier
 Id: im-accession-number-identifier
 Title: "Identifier: Accession Number"
@@ -10,11 +10,11 @@ Description: "This profile on Identifier represents the Accession Number for the
 * type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
 
 RuleSet: BasedOnImOrderReference( slicename )
-* basedOn[{slicename}] only Reference( ImOrder )
+* basedOn[{slicename}] only Reference( ServiceRequestOrderEuImaging )
   * identifier 1..1
-  * identifier only ImAccessionNumberIdentifier
+  * identifier only IdentifierAccessionNumberEuImaging
 
-Profile: ImStudyInstanceUidIdentifier
+Profile: IdentifierStudyInstanceUidEuImaging
 Parent: Identifier
 Id: im-study-instance-uid-identifier
 Title: "Identifier: Study Instance UID"
@@ -25,7 +25,7 @@ Description: "This profile on Identifier represents the Study Instance UID (0020
 * type 0..1
 * type = MissingDicomTerminology#0020000D "Study Instance UID" 
 
-Profile: ImSopInstanceUidIdentifier
+Profile: IdentifierSopInstanceUidEuImaging
 Parent: Identifier
 Id: im-sop-instance-uid-identifier
 Title: "Identifier: SOP Instance UID"

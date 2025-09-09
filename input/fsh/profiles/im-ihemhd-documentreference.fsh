@@ -1,6 +1,6 @@
-Profile: Report_ImReportDocumentReference
+Profile: DocumentReferenceReportEuImaging
 Id: Report-ImReportDocumentReference
-Parent: ImReportIheMhdDocumentReference
+Parent: DocumentReferenceReportIheMhdEuImaging
 Title: "Report Obligations for ImReportIheMhdDocumentReference"
 Description: """Report Obligations for ImReportIheMhdDocumentReference"""
 * insert SetFmmAndStatusRule( 1, draft )
@@ -46,8 +46,8 @@ Description: """Report Obligations for ImReportIheMhdDocumentReference"""
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImReportProvider)
 
-Profile: ImReportIheMhdDocumentReference
-Parent: ImIheMhdDocumentReference
+Profile: DocumentReferenceReportIheMhdEuImaging
+Parent: DocumentReferenceIheMhdEuImaging
 Title: "DocumentReference: IHE-MHD Imaging Report"
 Description: """
 A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
@@ -76,15 +76,15 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
   * profile 1..*
     * insert SliceElement( #value, value )
   * profile contains hl7eu-imaging-report 1..1 
-  * profile[hl7eu-imaging-report].valueCanonical = Canonical( ImReport )
+  * profile[hl7eu-imaging-report].valueCanonical = Canonical( BundleReportEuImaging )
 * bodySite 0..*
 * modality 1..* 
 
-Profile: Manifest_ImManifestDocumentReference
+Profile: DocumentReferenceManifestEuImaging
 Id: Manifest-ImManifestDocumentReference
-Parent: ImManifestIheMhdDocumentReference
-Title: "Manifest Obligations for ImManifestIheMhdDocumentReference"
-Description: """Manifest Obligations for ImManifestIheMhdDocumentReference"""
+Parent: DocumentReferenceManifestIheMhdEuImaging
+Title: "Manifest Obligations for DocumentReferenceManifestIheMhdEuImaging"
+Description: """Manifest Obligations for DocumentReferenceManifestIheMhdEuImaging"""
 * insert SetFmmAndStatusRule( 1, draft )
 * identifier[entry-uuid]
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
@@ -125,8 +125,8 @@ Description: """Manifest Obligations for ImManifestIheMhdDocumentReference"""
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImManifestProvider)
 
-Profile: ImManifestIheMhdDocumentReference
-Parent: ImIheMhdDocumentReference
+Profile: DocumentReferenceManifestIheMhdEuImaging
+Parent: DocumentReferenceIheMhdEuImaging
 Title: "DocumentReference: IHEMHD Imaging Manifest"
 Description: """
 A DocumentReference profile for the Manifest DocumentReference used in MHD deployments. """
@@ -156,11 +156,11 @@ A DocumentReference profile for the Manifest DocumentReference used in MHD deplo
   * profile 1..*
     * insert SliceElement( #value, value )
   * profile contains hl7eu-imaging-manifest 1..1 
-  * profile[hl7eu-imaging-manifest].valueCanonical = Canonical( ImImagingStudyManifest )
+  * profile[hl7eu-imaging-manifest].valueCanonical = Canonical( BundleImagingStudyManifestEuImaging )
 * bodySite 0..*
 * modality 1..* 
 
-Profile: ImIheMhdDocumentReference
+Profile: DocumentReferenceIheMhdEuImaging
 Parent: DocumentReference
 Title: "DocumentReference: IHE-MHD Document"
 Description: """A placeholder for a DocumentReference profile for the IHE-MHD in R5. """
@@ -169,7 +169,7 @@ Description: """A placeholder for a DocumentReference profile for the IHE-MHD in
 * identifier
   * insert SliceElement( #value, system )
 * identifier contains entry-uuid 1..1
-* identifier[entry-uuid] only IheMhdEntryUUIDIdentifier
+* identifier[entry-uuid] only IdentifierIheMhdEntryUUIDEuImaging
 * status 1..1 
 * content 1..1
   * attachment 1..1
@@ -177,7 +177,7 @@ Description: """A placeholder for a DocumentReference profile for the IHE-MHD in
 
 
 
-Profile: IheMhdEntryUUIDIdentifier
+Profile: IdentifierIheMhdEntryUUIDEuImaging
 Parent: Identifier
 Title: "Identifier: IHE MHD Entry UUID"
 Description: """entryUUID Identifier holding a UUID, based on [IHE-MHD R4](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.EntryUUID.Identifier.html).

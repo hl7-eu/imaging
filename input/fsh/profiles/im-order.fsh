@@ -1,4 +1,4 @@
-Profile: ImOrder
+Profile: ServiceRequestOrderEuImaging
 Parent: $EuServiceRequest
 Title: "ServiceRequest: Imaging Order"
 Description: "This profile on ServiceRequest represents the order for the Imaging Study and report."
@@ -12,7 +12,7 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 * identifier
   * insert SliceElement( #value, type )
 * identifier contains accessionNumber 0..1
-* identifier[accessionNumber] only ImAccessionNumberIdentifier
+* identifier[accessionNumber] only IdentifierAccessionNumberEuImaging
 
 * supportingInfo 0..*
   * insert SliceElement( #value, $this )
@@ -46,8 +46,8 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 
 
 
-Mapping: DicomToImOrder
-Source: ImOrder
+Mapping: DicomToImOrder //CHECK, do we need to change the name?
+Source: ServiceRequestOrderEuImaging
 Target: "http://nema.org/dicom"
 Id: dicom-2-im-order-mapping
 Title: "Mapping from DICOM to Imaging Order"

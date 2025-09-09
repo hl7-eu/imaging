@@ -1,4 +1,4 @@
-Profile: ImProcedure
+Profile: ProcedureEuImaging
 Parent: $EuProcedure
 Title: "Procedure: Imaging Acquisition"
 Description: "This profile on Procedure represents the imaging procedure."
@@ -30,4 +30,4 @@ Description: "This profile on Procedure represents the imaging procedure."
       * insert SliceElement( #value, "$this" )
     * coding contains imaging-equipment 0..1
     * coding[imaging-equipment] = $sct#314789007 "Diagnostic imaging equipment" // TODO check this code
-  * actor only Reference(ImImagingDevice)
+  * actor only Reference(DeviceImagingEuImaging)

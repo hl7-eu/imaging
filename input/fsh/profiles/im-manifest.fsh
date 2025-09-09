@@ -1,4 +1,4 @@
-Profile: ImImagingStudyManifest
+Profile: BundleImagingStudyManifestEuImaging
 Parent: Bundle
 Title: "Bundle: ImagingStudy Manifest"
 Description: """
@@ -17,7 +17,7 @@ This profile represents a manifest of an imaging study. It holds the ImagingStud
 * entry[imagingstudy]
   * fullUrl 1..1
   * resource 1..1
-  * resource only ImImagingStudy
+  * resource only ImagingStudyEuImaging
 * entry[patient]
   * fullUrl 1..1
   * resource 1..1
@@ -25,15 +25,15 @@ This profile represents a manifest of an imaging study. It holds the ImagingStud
 * entry[order]
   * fullUrl 1..1
   * resource 1..1
-  * resource only ImOrder
+  * resource only ServiceRequestOrderEuImaging
 * entry[endpoint]
   * fullUrl 1..1
   * resource 1..1
-  * resource only ImWadoEndpoint or ImImageIidViewerEndpoint
+  * resource only EndpointWadoEuImaging or EndpointImageIidViewerEuImaging
 * entry[imagingdevice]
   * fullUrl 1..1
   * resource 1..1
-  * resource only ImImagingDevice
+  * resource only DeviceImagingEuImaging  
 * entry[practitioner]
   * fullUrl 1..1
   * resource 1..1

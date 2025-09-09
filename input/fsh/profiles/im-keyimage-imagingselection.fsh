@@ -1,5 +1,5 @@
-Profile: ImKeyImageImagingSelection
-Parent: ImImagingSelection
+Profile: ImagingSelectionKeyImageEuImaging
+Parent: ImagingSelectionEuImaging
 Title: "ImagingSelection: Key Image"
 Description: "Key images represented as an ImagingSelection"
 * insert SetFmmAndStatusRule( 1, draft )
@@ -14,4 +14,4 @@ Description: "Key images represented as an ImagingSelection"
 * performer[performer]
   * actor only Reference( $EuPractitionerRole )
 * performer[device]
-  * actor only Reference( ImImagingDevice )
+  * actor only Reference( DeviceImagingEuImaging )

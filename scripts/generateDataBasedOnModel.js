@@ -434,7 +434,7 @@ function writeActorObligationFiles( parsedData, obligationResources, actor, acto
             writable.write(`////////////////////////////////////////////////////\n`);
   
             writable.write(`Profile: ${actor}_${resourceName}\n`);
-            writable.write(`Parent: ${resourceUrl.startsWith("Im")?resourceUrl:'$'+resourceUrl}\n`);
+            writable.write(`Parent: ${resourceUrl.startsWith("Eu")?'$'+resourceUrl:resourceUrl}\n`);
             writable.write(`Id: ${actor}-${resourceName}\n`);
             writable.write(`Title: "${actor} obligations for ${resourceName}"\n`);
             writable.write(`Description: "${actor} obligations for ${resourceName}"\n`);

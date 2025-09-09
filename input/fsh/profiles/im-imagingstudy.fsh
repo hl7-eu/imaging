@@ -1,4 +1,4 @@
-Profile: ImImagingStudy
+Profile: ImagingStudyEuImaging
 Parent: ImagingStudy
 Title: "ImagingStudy: General"
 Description: """ 
@@ -10,7 +10,7 @@ This profile represents an imaging study instance.
 * identifier
   * insert SliceElement( #value, system )
 * identifier contains studyInstanceUid 1..1
-* identifier[studyInstanceUid] only ImStudyInstanceUidIdentifier
+* identifier[studyInstanceUid] only IdentifierStudyInstanceUidEuImaging
 
 * subject 1..1
 * subject only Reference( $EuPatient or $EuDevice )
@@ -36,7 +36,7 @@ This profile represents an imaging study instance.
     * actor only Reference( $EuOrganization )
   * performer[device]
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
-    * actor only Reference( ImImagingDevice ) 
+    * actor only Reference( DeviceImagingEuImaging ) 
 
   * insert EndpointTypes 
 
@@ -61,5 +61,5 @@ RuleSet: EndpointTypes
 * endpoint 0..*  
   * insert SliceElement( #profile, $this )
 * endpoint contains wado 0..1 and iid 0..1
-* endpoint[wado] only Reference( ImWadoEndpoint )
-* endpoint[iid] only Reference( ImImageIidViewerEndpoint )
+* endpoint[wado] only Reference( EndpointWadoEuImaging )
+* endpoint[iid] only Reference( EndpointImageIidViewerEuImaging )

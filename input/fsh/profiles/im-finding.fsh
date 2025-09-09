@@ -1,4 +1,4 @@
-Profile: ImFinding
+Profile: ObservationFindingEuImaging //ImFinding
 Parent: $EuObservation
 Title: "Observation: Imaging Finding"
 Description: "Finding during imaging procedure."

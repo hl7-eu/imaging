@@ -1,4 +1,4 @@
-Profile: ImComposition
+Profile: CompositionEuImaging
 Parent: CompositionEu
 Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
@@ -18,7 +18,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * identifier 1..*
 * extension contains 
     ImDiagnosticReportReference named diagnosticreport-reference 1..1  
-* extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
+* extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
 
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
@@ -72,13 +72,13 @@ The `text` field of each section SHALL contain a textual representation of all l
   * ^definition = "The type of imaging modality used to perform the study."
   * detail 1..*
   * detail from https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_33.html (extensible)
-  * detail only CodeableReference ( ImImagingStudy )
+  * detail only CodeableReference ( ImagingStudyEuImaging )
 * event[procedure]
   * ^short = "Study Type"
   * ^definition = "The type of imaging study performed."
   * detail 1..*
   * detail from https://www.hl7.org/fhir/valueset-procedure-reason.html (extensible)
-  * detail only CodeableReference ( ImProcedure )
+  * detail only CodeableReference ( ProcedureEuImaging )
 
 * section.code 1..1 
 * section 
@@ -109,7 +109,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry[imagingstudy]
     * ^short = "Imaging Study Reference"
     * ^definition = "This entry holds a reference to the Imaging Study instance that is associated with this Composition."
-  * entry[imagingstudy] only Reference(ImImagingStudy)  
+  * entry[imagingstudy] only Reference(ImagingStudyEuImaging)  
 
 // ///////////////////////////////// ORDER SECTION ///////////////////////////////////////
 * section[order]
@@ -126,7 +126,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry[order]
     * ^short = "Order reference"
     * ^definition = "This entry holds a reference to the order for the Imaging Study and report."
-  * entry[order] only Reference(ImOrder)  
+  * entry[order] only Reference(ServiceRequestOrderEuImaging)  
   
 
 // // ///////////////////////////////// HISTORY SECTION ///////////////////////////////////////
@@ -144,7 +144,7 @@ The `text` field of each section SHALL contain a textual representation of all l
     * insert SliceElement( #profile, $this )
   * entry contains 
       procedure 0..*
-  * entry[procedure] only Reference(ImProcedure)
+  * entry[procedure] only Reference(ProcedureEuImaging)
 
 
 // ////////////////// COMPARISON SECTION //////////////////////////
@@ -156,7 +156,7 @@ The `text` field of each section SHALL contain a textual representation of all l
     * insert SliceElement( #profile, $this )
   * entry contains 
       comparedstudy 0..*
-  * entry[comparedstudy] only Reference( ImImagingStudy or ImImagingSelection )
+  * entry[comparedstudy] only Reference( ImagingStudyEuImaging or ImagingSelectionEuImaging )
 
 // /////////////////// FINDINGS SECTION //////////////////////////
 * section[findings]
@@ -168,8 +168,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry contains 
       finding 0..* and
       keyimage 0..*
-  * entry[finding] only Reference(ImFinding)
-  * entry[keyimage] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection)
+  * entry[finding] only Reference(ObservationFindingEuImaging)
+  * entry[keyimage] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging)
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
@@ -182,9 +182,9 @@ The `text` field of each section SHALL contain a textual representation of all l
       finding 0..* and
       impression 0..* and
       keyimage 0..*
-  * entry[finding] only Reference(ImFinding)
+  * entry[finding] only Reference(ObservationFindingEuImaging)
   * entry[impression] only Reference( $EuCondition )
-  * entry[keyimage] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection)
+  * entry[keyimage] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging)
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
@@ -220,4 +220,4 @@ Context: Composition
 // publisher, contact, and other metadata here using caret (^) syntax (omitted)
 * insert ExtensionContext(Composition)
 * insert SetFmmAndStatusRule ( 2, draft )
-* value[x] only Reference (ImDiagnosticReport)
+* value[x] only Reference (DiagnosticReportEuImaging)
