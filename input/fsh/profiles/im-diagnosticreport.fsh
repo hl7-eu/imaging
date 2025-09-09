@@ -41,8 +41,7 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * category[imaging].coding 1..1
 
-* subject only Reference(ImPatient)
-* subject ^short = "Patient for whom the imaging report is generated"
+* subject only Reference($EuPatient)
 
 // * issued 1..1  -> we use obligations instead
 

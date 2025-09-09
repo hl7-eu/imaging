@@ -39,7 +39,7 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
 * modality 1..1
   
 * subject 1..1
-* subject only Reference( ImPatient )
+* subject only Reference( $EuPatient )
 
 * author
   * insert SliceElement( #profile, $this )

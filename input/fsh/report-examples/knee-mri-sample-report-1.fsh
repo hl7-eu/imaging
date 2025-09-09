@@ -289,7 +289,7 @@ None.
 
 // PATIENT
 Instance: Patient-knee-mri-example
-InstanceOf: ImPatient
+InstanceOf: $EuPatient
 Title: "Example Patient"
 Usage: #inline
 * identifier[0].use = #usual

@@ -22,7 +22,7 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 // * status 1..1
 
 // * subject 1..1
-// * subject only Reference(ImPatient)
+// * subject only Reference($EuPatient)
 
 // // TODO obligation for client?
 // * intent 1..1
@@ -33,7 +33,7 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 
 // * requester 0..1
 //   * insert SetPopulateIfKnown
-// * requester only Reference(ImOrderPlacer or ImPatient)
+// * requester only Reference(ImOrderPlacer or $EuPatient)
 
 // * authoredOn 0..1
 //   * insert SetPopulateIfKnown
