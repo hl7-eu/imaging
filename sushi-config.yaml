@@ -128,9 +128,9 @@ menu:
     Authors and contributors: contributors.html
     Copyright: copyright.html
   Artifacts:
-    All: artifacts.html
-    Structural: artifacts-structural.html
     Imaging Report: imaging-report.html
+    Structural: artifacts-structural.html
+    All: artifacts.html
 
   #   Changes: changes.html
   #   Dependencies: index.html#dependencies

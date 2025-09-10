@@ -34,11 +34,9 @@
 <artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSDocumentHeader" key="StructureDefinition-EHDSDocumentHeader" name="Document header model"/>
 <artifact id="StructureDefinition/EHDSDocument" key="StructureDefinition-EHDSDocument" name="Document model"/>
-<artifact id="StructureDefinition/ImReportMhdDocumentReference" key="StructureDefinition-ImReportMhdDocumentReference" name="DocumentReference: -MHD Imaging Report"/>
-<artifact id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReference: EU DocumentReference"/>
-<artifact id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="DocumentReference: IHE-MHD Imaging Manifest"/>
+<artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: -MHD Imaging Report"/>
 <artifact id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="DocumentReference: Key Image"/>
-<artifact id="StructureDefinition/ImDocumentReference" key="StructureDefinition-ImDocumentReference" name="DocumentReference: R5 IHE-MHD Document"/>
+<artifact deprecated="true" id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReferenceEu"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
 <artifact id="ValueSet/im-dose-length-units" key="ValueSet-im-dose-length-units" name="Dose Length Units"/>
@@ -86,19 +84,14 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSHospitalDischargeReport" key="StructureDefinition-EHDSHospitalDischargeReport" name="Hospital Discharge Report"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSHospitalDischargeReportHeader" key="StructureDefinition-EHDSHospitalDischargeReportHeader" name="Hospital Discharge Report header model"/>
 <artifact id="StructureDefinition/EHDSHumanName" key="StructureDefinition-EHDSHumanName" name="Human name model"/>
+<artifact deprecated="true" id="StructureDefinition/ImImageIidViewerEndpoint" key="StructureDefinition-ImImageIidViewerEndpoint" name="IM Image Viewer Endpoint"/>
 <artifact deprecated="true" id="StructureDefinition/ImPatient" key="StructureDefinition-ImPatient" name="IM Imaging Patient"/>
+<artifact deprecated="true" id="StructureDefinition/ImImagingStudyManifest" key="StructureDefinition-ImImagingStudyManifest" name="IM ImagingStudy Manifest"/>
+<artifact deprecated="true" id="StructureDefinition/ImWadoEndpoint" key="StructureDefinition-ImWadoEndpoint" name="IM WADO Endpoint"/>
 <artifact id="StructureDefinition/im-accession-number-identifier" key="StructureDefinition-im-accession-number-identifier" name="Identifier: Accession Number"/>
 <artifact id="StructureDefinition/IheEntryUUIDIdentifier" key="StructureDefinition-IheEntryUUIDIdentifier" name="Identifier: IHE-MHD Entry UUID"/>
 <artifact id="StructureDefinition/im-sop-instance-uid-identifier" key="StructureDefinition-im-sop-instance-uid-identifier" name="Identifier: SOP Instance UID"/>
 <artifact id="StructureDefinition/im-study-instance-uid-identifier" key="StructureDefinition-im-study-instance-uid-identifier" name="Identifier: Study Instance UID"/>
-<artifact id="StructureDefinition/Report-ImAdverseEvent" key="StructureDefinition-Report-ImAdverseEvent" name="ImAdverseEvent: obligations"/>
-<artifact id="StructureDefinition/Report-ImComposition" key="StructureDefinition-Report-ImComposition" name="ImComposition: obligations"/>
-<artifact id="StructureDefinition/Report-ImDiagnosticReport" key="StructureDefinition-Report-ImDiagnosticReport" name="ImDiagnosticReport: obligations"/>
-<artifact id="StructureDefinition/Report-ImFinding" key="StructureDefinition-Report-ImFinding" name="ImFinding: obligations"/>
-<artifact id="StructureDefinition/Report-ImImagingStudy" key="StructureDefinition-Report-ImImagingStudy" name="ImImagingStudy: obligations"/>
-<artifact id="StructureDefinition/Report-ImOrder" key="StructureDefinition-Report-ImOrder" name="ImOrder: obligations"/>
-<artifact id="StructureDefinition/Report-ImProcedure" key="StructureDefinition-Report-ImProcedure" name="ImProcedure: obligations"/>
-<artifact id="StructureDefinition/Report-ImRadiationDoseObservation" key="StructureDefinition-Report-ImRadiationDoseObservation" name="ImRadiationDoseObservation: obligations"/>
 <artifact id="ValueSet/im-imaging-device-type" key="ValueSet-im-imaging-device-type" name="Imaging Device Type"/>
 <artifact id="ActorDefinition/ImManifestProvider" key="ActorDefinition-ImManifestProvider" name="Imaging Manifest Reports Provider/Creator"/>
 <artifact id="ValueSet/im-procedure-type" key="ValueSet-im-procedure-type" name="Imaging Procedure Type"/>
@@ -204,9 +197,10 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSPatientSummaryBody" key="StructureDefinition-EHDSPatientSummaryBody" name="Patient summary body model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSPatientSummaryHeader" key="StructureDefinition-EHDSPatientSummaryHeader" name="Patient summary header model"/>
 <artifact id="StructureDefinition/EHDSPatientSummary" key="StructureDefinition-EHDSPatientSummary" name="Patient summary model"/>
-<artifact id="StructureDefinition/PatientAnimalEu" key="StructureDefinition-PatientAnimalEu" name="Patient: EU Animal"/>
-<artifact id="ValueSet/periods-of-life-value-set" key="ValueSet-periods-of-life-value-set" name="Periods of Life"/>
-<artifact id="StructureDefinition/periods-of-life-extension" key="StructureDefinition-periods-of-life-extension" name="Periods of Life Extension"/>
+<artifact deprecated="true" id="StructureDefinition/PatientAnimalEu" key="StructureDefinition-PatientAnimalEu" name="Patient: Animal"/>
+<artifact deprecated="true" id="ValueSet/periods-of-life-value-set" key="ValueSet-periods-of-life-value-set" name="Periods of Life"/>
+<artifact deprecated="true" id="StructureDefinition/periods-of-life-extension" key="StructureDefinition-periods-of-life-extension" name="Periods of Life Extension"/>
+<artifact deprecated="true" id="StructureDefinition/IheMhdEntryUUIDIdentifier" key="StructureDefinition-IheMhdEntryUUIDIdentifier" name="Placeholder for IHE MHD Entry UUID Identifier in FHIR R5."/>
 <artifact id="StructureDefinition/EHDSPregnancyHistory" key="StructureDefinition-EHDSPregnancyHistory" name="Pregnancy history model"/>
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ImProcedure" key="StructureDefinition-ImProcedure" name="Procedure: Imaging Acquisition"/>
@@ -253,7 +247,11 @@
 <artifact deprecated="true" id="StructureDefinition/Report-ImDiagnosticReport" key="StructureDefinition-Report-ImDiagnosticReport" name="Report obligations for ImDiagnosticReport"/>
 <artifact deprecated="true" id="StructureDefinition/Report-ImFinding" key="StructureDefinition-Report-ImFinding" name="Report obligations for ImFinding"/>
 <artifact deprecated="true" id="StructureDefinition/Report-ImGestationalAgeObservation" key="StructureDefinition-Report-ImGestationalAgeObservation" name="Report obligations for ImGestationalAgeObservation"/>
+<artifact deprecated="true" id="StructureDefinition/Report-ImImagingStudy" key="StructureDefinition-Report-ImImagingStudy" name="Report obligations for ImImagingStudy"/>
+<artifact deprecated="true" id="StructureDefinition/Report-ImOrder" key="StructureDefinition-Report-ImOrder" name="Report obligations for ImOrder"/>
 <artifact deprecated="true" id="StructureDefinition/Report-ImPatient" key="StructureDefinition-Report-ImPatient" name="Report obligations for ImPatient"/>
+<artifact deprecated="true" id="StructureDefinition/Report-ImProcedure" key="StructureDefinition-Report-ImProcedure" name="Report obligations for ImProcedure"/>
+<artifact deprecated="true" id="StructureDefinition/Report-ImRadiationDoseObservation" key="StructureDefinition-Report-ImRadiationDoseObservation" name="Report obligations for ImRadiationDoseObservation"/>
 <artifact deprecated="true" id="StructureDefinition/Report-ImReport" key="StructureDefinition-Report-ImReport" name="Report obligations for ImReport"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSCommonHeader" key="StructureDefinition-EHDSCommonHeader" name="Resource header model"/>
 <artifact id="ValueSet/valueset-diagnosticreport-notes" key="ValueSet-valueset-diagnosticreport-notes" name="Section codes used to label annotations."/>

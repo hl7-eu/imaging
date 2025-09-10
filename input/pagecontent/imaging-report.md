@@ -3,7 +3,7 @@
 
 The imaging report represents a report made by a radiologist based on an imaging study.
 
-### Overview 
+### Overview
 
 The figure below illustrates the structure of the Imaging Report.
 
