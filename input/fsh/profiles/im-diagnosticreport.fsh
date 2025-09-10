@@ -29,17 +29,14 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 
 //* status
 // code  --> TODO will likely change based on composition discussions
-* code
-  * coding 1..*
-    * insert SliceElement( #value, $this )
-  * coding contains eu-template 1..1
-  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 // "Imaging Report V0.0.1"
+* code from ImImagingReportTypesEuVS (preferred) 
+  * ^short = "Type of Imaging Diagnostic Report"
+  * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
 * category 1..*
   * insert SliceElement( #value, $this )
-* category contains imaging 1..1
-* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
-* category[imaging].coding 1..1
+* category contains diagnostic-service 1..1 
+* category[diagnostic-service] from $diagnostic-service-sections (required)
 
 * subject only Reference($EuPatient)
 

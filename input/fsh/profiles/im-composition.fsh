@@ -55,38 +55,17 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 // type of the report. Matching DiagnosticReport.code
 // code 
-* type from ImImagingReportTypesEuVS (extensible) // purposefull versionless
-* type
-  * coding 1..*
-    * insert SliceElement( #value, $this )
-  * coding contains eu-template 1..1
-  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 // "Imaging Report V0.0.1"
+* type from ImImagingReportTypesEuVS (preferred) 
+  * ^short = "Type of Imaging Diagnostic Report"
+  * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
 * category 1..*
   * insert SliceElement( #value, $this )
-* category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
-* category[imaging].coding 1..1
+* category contains diagnostic-service 1..1 
+* category[diagnostic-service] from $diagnostic-service-sections (required)
+
 
 * status 
-
-// * event 2..*
-//   * insert SliceElement( #value, detail.concept )
-// * event contains 
-//     imagingstudy 1..* and 
-//     procedure 1..*
-// * event[imagingstudy]
-//   * ^short = "Modality"
-//   * ^definition = "The type of imaging modality used to perform the study."
-//   * detail 1..*
-//   * detail from https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_33.html (extensible)
-//   * detail only CodeableReference ( ImImagingStudy )
-// * event[procedure]
-//   * ^short = "Study Type"
-//   * ^definition = "The type of imaging study performed."
-//   * detail 1..*
-//   * detail from https://www.hl7.org/fhir/valueset-procedure-reason.html (extensible)
-//   * detail only CodeableReference ( ImProcedure )
 
 * section.code 1..1 
 * section 

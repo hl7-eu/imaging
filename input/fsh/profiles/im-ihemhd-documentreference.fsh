@@ -15,12 +15,18 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 * type 1..1 
 * type from ImImagingReportTypesEuVS (preferred) 
   * ^short = "Type of Imaging Diagnostic Report"
-  * ^definition = "Specifies that it refers to a Imaging Report"
-  * ^comment = "Corresponds to the type of the Imaging resource."
+  * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set. It should correspond with the value on DiagnosticReport.code."
+
 * category 1..* 
   * insert SliceElement( #value, $this )
-* category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
+* category contains class-code 1..1 
+* category[class-code] from XdsClassCodeVs (preferred) 
+  * ^short = "XDS Class Code"
+  * ^definition = "XDS Class Code for the document, see [XDS_classCode_MetaData_Coding_System](https://wiki.ihe.net/index.php/XDS_classCode_Metadata_Coding_System)."
+  * ^comment = "This code identifies the high-level classification of the document, e.g. Report, Summary, Image, Prescription, Dispensation, Plan, Health, Patient or Workflow."
+* category[class-code] = $xds-class-code#REPORTS // "Reports"  
+// * category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
+
 * subject 1..1 
 * custodian 0..1 
 * author 
