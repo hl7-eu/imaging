@@ -8,6 +8,7 @@ Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-cat
 Alias: $data-absent-reason = http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $data-absent-reason-cs =  http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $diagnosis-role = http://terminology.hl7.org/CodeSystem/diagnosis-role
+Alias: $diagnostic-service-sections = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
 Alias: $dicomOntology = http://dicom.nema.org/resources/ontology/DCM
 Alias: $edqm = https://standardterms.edqm.eu
 Alias: $encounter-status = http://hl7.org/fhir/encounter-status
@@ -37,6 +38,7 @@ Alias: $v3-NullFlavor = http://terminology.hl7.org/CodeSystem/v3-NullFlavor
 Alias: $v3-ObservationInterpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
 Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
 Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
+Alias: $xds-class-code = urn:oid:1.3.6.1.4.1.19376.1.2.6.1
 
 // --- SID
 Alias: $oid = urn:ietf:rfc:1155

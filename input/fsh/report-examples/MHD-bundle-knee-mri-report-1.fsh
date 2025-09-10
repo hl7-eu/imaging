@@ -2,8 +2,8 @@
 // Transaction bundle
 Instance: MHDTransactionBundleKneeMriExample
 InstanceOf: Bundle
-Title: "Example MHD Knee Mri Transaction Bundle"
-Description: "Example MHD Knee Mri Transaction Bundle"
+Title: "MHD Knee Mri Transaction Bundle Example"
+Description: "Transaction Bundle illustrating the upload of a knee MRI Imaging Report DocumentReference with embedded PDF report."
 Usage: #example
 * type = #transaction
 * timestamp = 1993-11-29T12:36:56+00:00
@@ -23,15 +23,17 @@ Usage: #example
 
 Instance: DocumentReference-knee-mri-example
 InstanceOf: ImReportDocumentReference
-Title: "MHD DocumentReference for knee MRI Imaging Report example"
+Title: "Imaging Report DocumentReference"
+Description: "MHD DocumentReference for the knee MRI Imaging Report example."
+Usage: #example
 * identifier[entry-uuid]
   * system = "urn:ietf:rfc:3986"
   * use = #official
   * value = "MRIKneeReportexample"
 * status = #current
 * modality = https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_33.html#US
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
-* type = Hl7EuDocumentTypes#imaging-manifest-v0-0-1
+* category[class-code] = $xds-class-code#REPORTS "Reports"
+* type = $loinc#18748-4 "Diagnostic imaging study"
 * subject = Reference(Patient-knee-mri-example)
 * bodySite = $sct#6757004 "Right knee"
 * author = Reference(Practitioner-knee-mri-example)

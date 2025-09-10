@@ -5,8 +5,8 @@
 // Document Bundle
 Instance: ImagingReport-knee-mri-example
 InstanceOf: ImReport
-Title: "Example ImagingStudy Manifest"
-Description: "Example ImagingStudy Manifest"
+Title: "Example Imaging Report"
+Description: "Example of an Imaging Report Bundle for a knee MRI report."
 Usage: #example
 * type = #document
 * timestamp = 1993-11-29T12:36:56+00:00
@@ -41,21 +41,6 @@ Usage: #example
   * fullUrl = "DiagnosticReport/1"
   * resource = DiagnosticReport-knee-mri-example
 
-// Profile: ImReport
-// Parent: Bundle
-// Title: "Document Bundle for Imaging Report"
-// Description: "Document Bundle for Imaging Report"
-// * insert SetFmmAndStatusRule( 1, draft )
-// * type = #document
-// * entry 2..*
-//   * insert SliceElement( #profile, resource )
-// * entry contains 
-//     imComposition 1..1 and
-//     imDiagnosticReport 1..1
-// * entry[imComposition]
-//   * resource only ImComposition
-// * entry[imDiagnosticReport]
-//   * resource only ImDiagnosticReport
 
 Instance: Composition-knee-mri-example
 InstanceOf: ImComposition
@@ -83,10 +68,10 @@ Usage: #inline
 * author[organization] = Reference(Organization/1)
 
 
-* type = Hl7EuDocumentTypes#imaging-report-v0-0-1
+* type = $loinc#18748-4 "Diagnostic imaging study"
 
 // valueset is wrong, keeping the wrong code for vlaidation purposes
-* category[imaging] = http://loinc.org#18748-4 "Diagnostic imaging study"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 
 // * event[imagingstudy].detail = Reference(ImagingStudy/1)
 // * event[procedure].detail = Reference(Procedure/1)
@@ -437,7 +422,8 @@ Usage: #inline
   * system = "http://citymedial-imagecenter.org/"
   * value = "123456"
 * status = #final
-* code = $loinc#example
+* code = $loinc#18748-4 "Diagnostic imaging study"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * subject = Reference(Patient/1)
 * issued = "2021-01-01T00:00:00Z"
 * composition = Reference(Composition/1)

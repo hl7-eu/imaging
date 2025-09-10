@@ -1,5 +1,7 @@
 Instance: G1Patient
 InstanceOf: $EuPatient 
+Title: "Example of a Patient"
+Usage: #inline
 * name
   * use = #official
   * text = "Frau GuteFrage Test-Schusti"
@@ -9,7 +11,9 @@ InstanceOf: $EuPatient
 
 Instance: G1ImImagingStudy1
 InstanceOf: ImImagingStudy
-Description: "ImagingStudy for the left foot"
+Title: "ImagingStudy for the left/right foot"
+Description: "Example ImagingStudy showing an MRI for the left foot"
+Usage: #example
 * identifier[studyInstanceUid]
   * type = MissingDicomTerminology#0020000D "Study Instance UID" 
   * system = "urn:dicom:uid"
@@ -61,6 +65,7 @@ Description: "ImagingStudy for the left foot"
 Instance: G1ImImagingStudy2
 InstanceOf: ImImagingStudy
 Description: "ImagingStudy for the right foot"
+Usage: #inline
 * identifier[studyInstanceUid]
   * type = MissingDicomTerminology#0020000D "Study Instance UID" 
   * system = "urn:dicom:uid"
@@ -111,11 +116,13 @@ Description: "ImagingStudy for the right foot"
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: G1AuthorRole
 InstanceOf: PractitionerRoleEu
+Usage: #inline
 * practitioner = Reference(G1Author)
 * organization = Reference(G1AuthorOrganization)
 
 Instance: G1Author
 InstanceOf: PractitionerEu
+Usage: #inline
 * name
   * use = #official
   * text = "Dr. Lucas Gasenzer"
@@ -124,6 +131,7 @@ InstanceOf: PractitionerEu
 
 Instance: G1AuthorOrganization
 InstanceOf: OrganizationEu
+Usage: #inline
 * name = "Radiology Zentrum Bremen"
 * contact
   * telecom
@@ -146,7 +154,9 @@ InstanceOf: OrganizationEu
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: G1Composition
 InstanceOf: ImComposition
-Description: "DiagnosticReport for the left/right foot study"
+Title: "Composition for the left/right foot study"
+Description: "Example of a ImComposition showing the report for the left/right foot study"
+Usage: #example
 * status = #final
 * subject = Reference( G1Patient)
 * date = "2025-04-29"
@@ -163,8 +173,8 @@ Description: "DiagnosticReport for the left/right foot study"
   * value = "o32u4js8492ff" // invented - not there in the report
 * version = "1.0.0" // invented - not there in the report
 * status = #final
-* type = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report v0.0.1"
-* category = http://hl7.org/fhir/diagnostic-report-category#imaging
+* type = $loinc#18748-4 "Diagnostic imaging study"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * author[author] = Reference(G1AuthorRole)
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report
 
@@ -242,6 +252,9 @@ Rechter Fuß:
 
 Instance: G1DiagnosticReport
 InstanceOf: ImDiagnosticReport
+Title: "DiagnosticReport for the left/right foot study"
+Description: "Example of a ImDiagnosticReport showing the report for the left/right foot study"
+Usage: #example
 * extension[artifactVersion].valueString = "1.0.0" // invented - not there in the report
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
@@ -254,14 +267,14 @@ InstanceOf: ImDiagnosticReport
     * type   = http://terminology.hl7.org/CodeSystem/v3-ActClass#v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "123456789" // invented - not there in the report
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* code = $loinc#18748-4 "Diagnostic imaging study"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * subject = Reference( G1Patient)
 * study[+] = Reference( G1ImImagingStudy1 )
 * study[+] = Reference( G1ImImagingStudy2 )
 * performer[organization] = Reference(G1AuthorOrganization)
 * resultsInterpreter[author] = Reference(G1AuthorRole)
 * composition = Reference(G1Composition)
-* code = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report v0.0.1"
 * note[+].text = """
 Linker Fuß:
   Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte
