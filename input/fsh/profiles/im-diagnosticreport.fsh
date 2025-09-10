@@ -29,10 +29,10 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 * category 1..*
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * category[imaging].coding 1..1
 
-* subject only Reference(PatientEuImaging)
+* subject only Reference($EuPatient)
 
 * study only Reference(ImagingStudyEuImaging)
 
@@ -49,8 +49,10 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
 
 * performer 
   * insert SliceElement( #profile, $this )
-* performer contains author 1..*
-* performer[author] only Reference($EuPractitionerRole)
+* performer contains organization 0..*
+* performer[organization] only Reference($EuOrganization)
+* performer[organization] ^short = "The organization producer of this report"
+* performer[organization] ^definition = "The organization responsible for producing this report. In case practitioners produce them in their private practices, they will be accounted as an organization for this purpose."
 
 // author etc.
 * resultsInterpreter 0..*
@@ -69,4 +71,4 @@ Diagnostic Report profile for Imaging Reports. This document represents the repo
   * coding 1..*
     * insert SliceElement( #value, $this )
   * coding contains eu-template 1..1
-  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 "Imaging Report V0.0.1"
+  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 // "Imaging Report V0.0.1"

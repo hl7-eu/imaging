@@ -41,7 +41,7 @@ This profile represents a manifest of an imaging study. It holds the ImagingStud
 
 
 // Profile: ImManifestImagingStudy
-// Parent: ImImagingStudy
+// Parent: ImagingStudyEuImaging
 // Id: imm-imagingstudy-manifest-imagingstudy
 // Title: "ImagingStudy study present in an ImagingStudy Manifest"
 // Description: """

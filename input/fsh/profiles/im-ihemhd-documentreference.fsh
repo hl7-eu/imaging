@@ -48,7 +48,7 @@ Description: """Report Obligations for ImReportIheMhdDocumentReference"""
 
 Profile: DocumentReferenceReportIheMhdEuImaging
 Parent: DocumentReferenceIheMhdEuImaging
-Title: "DocumentReference: IHE-MHD Imaging Report"
+Title: "DocumentReference: -MHD Imaging Report"
 Description: """
 A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
 * insert SetFmmAndStatusRule( 1, draft )
@@ -61,7 +61,7 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 * category 1..* 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * subject 1..1 
 * custodian 0..1 
 * author 
@@ -80,11 +80,12 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 * bodySite 0..*
 * modality 1..* 
 
+
 Profile: DocumentReferenceManifestEuImaging
 Id: Manifest-ImManifestDocumentReference
 Parent: DocumentReferenceManifestIheMhdEuImaging
-Title: "Manifest Obligations for DocumentReferenceManifestIheMhdEuImaging"
-Description: """Manifest Obligations for DocumentReferenceManifestIheMhdEuImaging"""
+Title: "Manifest Obligations for ImManifestMhdDocumentReference"
+Description: """Manifest Obligations for ImManifestMhdDocumentReference"""
 * insert SetFmmAndStatusRule( 1, draft )
 * identifier[entry-uuid]
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known
@@ -127,7 +128,7 @@ Description: """Manifest Obligations for DocumentReferenceManifestIheMhdEuImagin
 
 Profile: DocumentReferenceManifestIheMhdEuImaging
 Parent: DocumentReferenceIheMhdEuImaging
-Title: "DocumentReference: IHEMHD Imaging Manifest"
+Title: "DocumentReference: IHE-MHD Imaging Manifest"
 Description: """
 A DocumentReference profile for the Manifest DocumentReference used in MHD deployments. """
 * insert SetFmmAndStatusRule( 1, draft )
@@ -137,7 +138,7 @@ A DocumentReference profile for the Manifest DocumentReference used in MHD deplo
 * category 1..* 
   * insert SliceElement( #value, $this )
 * category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 "Diagnostic imaging study"
+* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
 * type from ImImagingManifestTypesEuVS (preferred) 
   * ^short = "Type of Imaging Manifest"
   * ^definition = "Specifies that it refers to a Imaging Manifest"
@@ -162,8 +163,8 @@ A DocumentReference profile for the Manifest DocumentReference used in MHD deplo
 
 Profile: DocumentReferenceIheMhdEuImaging
 Parent: DocumentReference
-Title: "DocumentReference: IHE-MHD Document"
-Description: """A placeholder for a DocumentReference profile for the IHE-MHD in R5. """
+Title: "DocumentReference: R5 IHE-MHD Document"
+Description: """A placeholder for a DocumentReference profile to be used in a future FHIR R5 IHE-MHD environment. """
 * insert SetFmmAndStatusRule( 1, draft )
 * modifierExtension 0..0
 * identifier
@@ -176,10 +177,9 @@ Description: """A placeholder for a DocumentReference profile for the IHE-MHD in
     * contentType 1..1
 
 
-
 Profile: IdentifierIheMhdEntryUUIDEuImaging
 Parent: Identifier
-Title: "Identifier: IHE MHD Entry UUID"
+Title: "Identifier: IHE-MHD Entry UUID"
 Description: """entryUUID Identifier holding a UUID, based on [IHE-MHD R4](https://profiles.ihe.net/ITI/MHD/StructureDefinition-IHE.MHD.EntryUUID.Identifier.html).
 """
 * insert SetFmmAndStatusRule( 1, draft )

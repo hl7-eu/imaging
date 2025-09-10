@@ -4,7 +4,7 @@
 Profile: Report_EuHumanName
 Parent: $EuHumanName
 Id: Report-EuHumanName
-Title: "Report obligations for EuHumanName"
+Title: "EuHumanName: obligations"
 Description: "Report obligations for EuHumanName"
 * use
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known

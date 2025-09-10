@@ -4,7 +4,7 @@
 Profile: Report_EuDevice
 Parent: $EuDevice
 Id: Report-EuDevice
-Title: "Report obligations for EuDevice"
+Title: "EuDevice: obligations"
 Description: "Report obligations for EuDevice"
 * identifier
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known

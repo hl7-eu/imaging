@@ -4,7 +4,7 @@ Title: "AdverseEvent: Imaging Adverse Event"
 Description: """Adverse Event that occurred during an imaging procedure."""
 * insert SetFmmAndStatusRule( 1, draft )
 
-* subject only Reference(PatientEuImaging or Group or $EuPractitioner or $EuRelatedPerson or ResearchSubject )
+* subject only Reference($EuPatient or Group or $EuPractitioner or $EuRelatedPerson or ResearchSubject )
 
 * suspectEntity
   * insert SliceElement( #profile, instance )

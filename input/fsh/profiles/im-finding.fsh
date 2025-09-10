@@ -7,7 +7,7 @@ Description: "Finding during imaging procedure."
 * identifier
   * insert SliceElement( #value, type )
 * identifier contains observationUid 0..1
-* identifier[observationUid].type = MissingDicomTerminology#00080018 "SOP Instance UID"
+* identifier[observationUid].type = MissingDicomTerminology#00080018 // "SOP Instance UID"
 
 * basedOn
   * insert SliceElement( #type, $this )
@@ -19,10 +19,10 @@ Description: "Finding during imaging procedure."
 // * partOf contains 
 //     imagingstudy 0..* and
 //     procedure 0..*
-// * partOf[imagingstudy] only Reference( ImImagingStudy )
+// * partOf[imagingstudy] only Reference( ImagingStudyEuImaging )
 //   * ^short = "Imaging study that produced this observation"
 //   * insert SetPopulateIfKnown
-// * partOf[procedure] only Reference( ImProcedure )
+// * partOf[procedure] only Reference( ProcedureEuImaging )
 //   * ^short = "Procedure that produced this observation"
 //   * insert SetPopulateIfKnown
 
@@ -36,7 +36,7 @@ Description: "Finding during imaging procedure."
 // * code
 
 // * subject
-// * subject only Reference( ImPatient )
+// * subject only Reference( $EuPatient )
 
 // * effective[x]
 //   * insert SetPopulateIfKnown
@@ -59,9 +59,9 @@ Description: "Finding during imaging procedure."
 // * derivedFrom contains 
 //     imagingstudy 0..* and
 //     imagingselection 0..*
-// * derivedFrom[imagingstudy] only Reference( ImImagingStudy )
+// * derivedFrom[imagingstudy] only Reference( ImagingStudyEuImaging )
 //   * ^short = "Imaging study that produced this observation"
 //   * insert SetPopulateIfKnown
-// * derivedFrom[imagingselection] only Reference( ImImagingSelection )
+// * derivedFrom[imagingselection] only Reference( ImagingSelectionEuImaging )
 //   * ^short = "Series or image that produced this observation"
 //   * insert SetPopulateIfKnown   

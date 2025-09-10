@@ -3,6 +3,9 @@ Parent: Observation
 Title: "Observation: EU Observation"
 Description: "A observation profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
+
+* extension contains
+  $workflow-status-reason-url named status-reason 0..1
 * effective[x] 1..1
 
 * code 1..1
@@ -24,7 +27,7 @@ Description: "A observation profile for the EU."
 Profile: QuantityEu
 Parent: Quantity
 Id: quantity-eu
-Title: "Quantity: QuantityEu"
+Title: "Quantity: EU Quantity"
 Description: "A quantity profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * extension contains $iso21090-uncertainty-url named uncertainty 0..1
@@ -32,7 +35,7 @@ Description: "A quantity profile for the EU."
 
 Profile: SimpleQuantityEu
 Parent: SimpleQuantity
-Title: "SimpleQuantity: SimpleQuantityEu"
+Title: "SimpleQuantity: EU SimpleQuantity"
 Description: "A simple quantity profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * extension contains $iso21090-uncertainty-url named uncertainty 0..1
@@ -41,7 +44,7 @@ Description: "A simple quantity profile for the EU."
 Profile: RangeEu
 Parent: Range
 Id: range-eu
-Title: "Range: RangeEu"
+Title: "Range: EU Range"
 Description: "A range profile for the EU."
 * insert SetFmmAndStatusRule( 1, draft )
 * low only SimpleQuantityEu
