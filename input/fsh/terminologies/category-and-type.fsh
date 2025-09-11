@@ -13,10 +13,12 @@ Id:	        im-xds-class-code-valueset
 Title:	    "XDS Class Codes"
 Description:   """
 A list of XDS class codes that can be used for filtering manifests (zie [XDS_classCode_MetaData_Coding_System](https://wiki.ihe.net/index.php/XDS_classCode_Metadata_Coding_System)).
-Note a IHE needs to make a formal FHIR CodeSystem for this,
+**Note**: a IHE needs to make a formal FHIR CodeSystem for this.
 """
 * insert SetFmmAndStatusRule( 1, draft )
-
+* ^identifier[0].system = "urn:ietf:rfc:3986"
+* ^identifier[0].value  = "urn:oid:1.3.6.1.4.1.19376.1.2.6.1.1"
+* ^identifier[0].assigner.display  = "IHE"
 * $xds-class-code#REPORTS	    //"Reports"	"Reports are the result of an inquiry or investigation by a licensed professional"
 * $xds-class-code#SUMMARIES	    //"Summaries"	"A record of the most salient facts known at a point in time by a licenses health professional"
 * $xds-class-code#IMAGES	    //"Images"	"An artifact that depicts or records visual perception for a subject"
