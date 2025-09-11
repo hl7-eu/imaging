@@ -265,7 +265,7 @@ proximal fibula. There is an additional contusion along the inferior pole of the
 // Recommendation Section
 * section[recommendation].title = "Recommendations"
 * section[recommendation].code.coding = http://loinc.org#18783-1 "Recommendation"
-* section[recommendation].emptyReason = http://loinc.org#LA4720-4 "None available"
+* section[recommendation].emptyReason = http://loinc.org#LA4720-4 "Not applicable"
 * section[recommendation].text
   * status = #generated
   * div = """
@@ -277,7 +277,7 @@ None.
 // Communication Section
 * section[communication].title = "Communications"
 * section[communication].code.coding = http://loinc.org#18783-1 "Communication"
-* section[communication].emptyReason = http://loinc.org#LA4720-4 "None available"
+* section[communication].emptyReason = http://loinc.org#LA4720-4 "Not applicable"
 * section[communication].text
   * status = #generated
   * div = """

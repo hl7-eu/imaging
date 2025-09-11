@@ -210,7 +210,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
 Severity: #error 
-Expression: "entry.empty() and emptyReason.exists()"
+Expression: "entry.empty() and entry.extension($note-url).valueAnnotation.text.empty() and emptyReason.exists()"
 
 Extension: ImDiagnosticReportReference
 Id:   im-composition-diagnosticReportReference
