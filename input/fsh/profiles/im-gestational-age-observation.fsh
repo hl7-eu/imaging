@@ -6,7 +6,7 @@ Description: "Gestational Age Observation"
 
 * code 1..1
 * code = $sct#598151000005105 // "Gestational age"
-* value[x] only QuantityEu
+* value[x] only Quantity
 * valueQuantity 1..1 
 * valueQuantity from CommonUCUMCodesForAge (extensible)
   * ^short = "The age of the patient."

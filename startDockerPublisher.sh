@@ -8,4 +8,4 @@ docker run \
     --rm -it \
     -v $(pwd):/home/publisher/ig \
     --tmpfs /home/publisher/ig/.fhir \
-    hl7fhir/ig-publisher-base
+    hl7fhir/ig-publisher-base 
