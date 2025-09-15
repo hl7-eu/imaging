@@ -16,6 +16,7 @@ A list of XDS class codes that can be used for filtering manifests (zie [XDS_cla
 **Note**: a IHE needs to make a formal FHIR CodeSystem for this.
 """
 * insert SetFmmAndStatusRule( 1, draft )
+* ^experimental = false
 * ^identifier[0].system = "urn:ietf:rfc:3986"
 * ^identifier[0].value  = "urn:oid:1.3.6.1.4.1.19376.1.2.6.1.1"
 * ^identifier[0].assigner.display  = "IHE"
