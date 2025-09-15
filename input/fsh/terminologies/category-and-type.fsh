@@ -4,7 +4,8 @@ Description: "The set of radiology types as defined by LOINC."
 * insert SetFmmAndStatusRule( 1, draft )
 * ^experimental = false
 
-* include codes from system $loinc where concept is-a #18726-0
+* include codes from system $loinc where STATUS = "ACTIVE" and SCALE_TYP = "Doc" and CLASS = "RAD"
+// * include codes from system $loinc where concept is-a #18726-0
 
 
 // TODO refer to manifest?
