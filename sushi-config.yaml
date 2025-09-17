@@ -5,11 +5,11 @@ title: HL7 Europe Imaging Study Report
 description: This guide describes how a Imaging Study Report can be represented in the European REALM.
 status: draft # draft | active | retired | unknown
 experimental: false
-version: 0.1.0-build
+version: 0.1.0-snapshot1
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
-releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: 	http://unstats.un.org/unsd/methods/m49/m49.htm#150 "Europe" # urn:iso:std:iso:3166#EU
 publisher:
@@ -17,8 +17,8 @@ publisher:
   url: http://hl7.eu
   # email: test@example.org
 copyright: >-
-  Used by permission of HL7 Europe, all rights reserved Creative Commons License
-# license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+  Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0).
+license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -58,6 +58,8 @@ pages:
       title: Copyright
   actors-and-transactions.md:
     title: System actors
+  examples.md:
+    title: Examples
   xtehr-mapping.md:
     title: Xt-EHR mapping
   design-considerations.md:
@@ -92,8 +94,9 @@ parameters:
   default-version: true
   show-inherited-invariants: true
   usage-stats-opt-out: true
+  path-binary:  input/binaries
   # packages: ./package-cache
-  releaselabel: 0.1.0-ballot
+  releaselabel: 0.1.0-snapshot1
 
   special-url-base: https://www.xt-ehr.eu/specifications/fhir
   # add all fsh results to _data directory
@@ -120,6 +123,7 @@ menu:
   Functional:
     Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html
     System actors: actors-and-transactions.html
+    Examples: examples.html
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
