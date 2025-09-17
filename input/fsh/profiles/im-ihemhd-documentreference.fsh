@@ -1,8 +1,8 @@
-Profile: ImReportDocumentReference
+Profile: ImUnstructuredDocumentReference
 Parent: DocumentReference
-Title: "DocumentReference: -MHD Imaging Report"
+Title: "DocumentReference: Unstructured Imaging Report"
 Description: """
-A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
+A DocumentReference profile for the Report DocumentReference used in MHD deployments for unstructured reports. """
 * insert SetFmmAndStatusRule( 1, draft )
 * modifierExtension 0..0
 
@@ -39,12 +39,21 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
     * contentType 1..1
     * language 
     * creation 
+* bodySite 0..*
+* modality 0..* 
+
+
+Profile: ImReportDocumentReference
+Parent: ImUnstructuredDocumentReference
+Title: "DocumentReference: EU Imaging Report"
+Description: """
+A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
+* insert SetFmmAndStatusRule( 1, draft )
+* content 1..1
   * profile 1..*
     * insert SliceElement( #value, value )
   * profile contains hl7eu-imaging-report 1..1 
   * profile[hl7eu-imaging-report].valueCanonical = Canonical( ImReport )
-* bodySite 0..*
-* modality 1..* 
 
 
 Profile: IheEntryUUIDIdentifier
