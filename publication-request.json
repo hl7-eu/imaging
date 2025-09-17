@@ -1,0 +1,14 @@
+{
+  "package-id" : "hl7.fhir.eu.imaging-r5",
+  "version" : "0.1.0-ballot",
+  "path" : "http://hl7.eu/fhir/imaging-r5/0.1.0-ballot",
+  "ci-build": "https://build.fhir.org/ig/hl7-eu/imaging-r5",
+  "first": true,
+  "desc" : "This is the first ballot of the Imaging Study report STU 1", 
+  "category" : "Imaging",
+  "introduction" : "This implementation guide specifies imaging study data in the European context, as defined in eHN Imaging Studies and Reports and refined by XtEHR Imaging Logical Model, as a FHIR model.",
+  "title" : "HL7 Europe Imaging Study Report",
+  "mode": "milestone",
+  "status" : "ballot",
+  "sequence" : "STU 1"
+}
