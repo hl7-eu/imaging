@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ballotUrl="http://hl7.eu/fhir/imaging-r5/0.1.0-ballot" ciUrl="https://build.fhir.org/ig/hl7-eu/imaging-r5" defaultVersion="0.1.0-ballot" defaultWorkgroup="eu" gitUrl="https://github.com/HL7-eu/imaging-r5" url="http://hl7.eu/fhir/imaging-r5">
 <version code="current" url="https://build.fhir.org/ig/hl7-eu/imaging-r5"/>
-<version code="0.1.0-ballot" url="http://hl7.eu/fhir/imaging-r5/0.1.0-ballot"/>
+<version code="0.1.0-snapshot1" url="http://hl7.eu/fhir/imaging-r5/0.1.0-snapshot1"/>
+<version code="0.1.0-ballot" deprecated="true" url="http://hl7.eu/fhir/imaging-r5/0.1.0-ballot"/>
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
@@ -14,12 +15,12 @@
 <artifact id="StructureDefinition/EHDSAppointment" key="StructureDefinition-EHDSAppointment" name="Appointment model"/>
 <artifact id="StructureDefinition/EHDSAttachment" key="StructureDefinition-EHDSAttachment" name="Attachment model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSAttachments" key="StructureDefinition-EHDSAttachments" name="Attachments"/>
+<artifact id="Binary/unstructured-pdf" key="Binary-unstructured-pdf" name="Binary: Unstructured report pdf"/>
 <artifact id="StructureDefinition/EHDSBodyStructure" key="StructureDefinition-EHDSBodyStructure" name="Body structure model"/>
 <artifact id="StructureDefinition/ImReport" key="StructureDefinition-ImReport" name="Bundle: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSCarePlan" key="StructureDefinition-EHDSCarePlan" name="Care plan model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSClinicalImpression" key="StructureDefinition-EHDSClinicalImpression" name="Clinical impression model"/>
 <artifact deprecated="true" id="CodeSystem/codesystem-endpoint-terminology" key="CodeSystem-codesystem-endpoint-terminology" name="CodeSystem for terminology used in Endpoint resources in the EU Imaging IG."/>
-<artifact id="Composition/G1Composition" key="Composition-G1Composition" name="Composition for the left/right foot study"/>
 <artifact id="StructureDefinition/ImComposition" key="StructureDefinition-ImComposition" name="Composition: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSCondition" key="StructureDefinition-EHDSCondition" name="Condition model"/>
 <artifact id="StructureDefinition/EHDSCoverage" key="StructureDefinition-EHDSCoverage" name="Coverage model"/>
@@ -29,15 +30,15 @@
 <artifact id="StructureDefinition/EHDSDeviceUse" key="StructureDefinition-EHDSDeviceUse" name="Device use model"/>
 <artifact id="StructureDefinition/ImImagingDevice" key="StructureDefinition-ImImagingDevice" name="Device: Imaging Device"/>
 <artifact id="CodeSystem/codesystem-diagnostic-report-support-info" key="CodeSystem-codesystem-diagnostic-report-support-info" name="Diagnostic Report Support Info Code System"/>
-<artifact id="DiagnosticReport/G1DiagnosticReport" key="DiagnosticReport-G1DiagnosticReport" name="DiagnosticReport for the left/right foot study"/>
 <artifact id="ValueSet/valueset-diagnosticreport-report-support-info" key="ValueSet-valueset-diagnosticreport-report-support-info" name="DiagnosticReport supportInfo codes"/>
 <artifact id="StructureDefinition/ImDiagnosticReport" key="StructureDefinition-ImDiagnosticReport" name="DiagnosticReport: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSDischargeReport" key="StructureDefinition-EHDSDischargeReport" name="Discharge Report model"/>
 <artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSDocumentHeader" key="StructureDefinition-EHDSDocumentHeader" name="Document header model"/>
 <artifact id="StructureDefinition/EHDSDocument" key="StructureDefinition-EHDSDocument" name="Document model"/>
-<artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: -MHD Imaging Report"/>
+<artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: EU Imaging Report"/>
 <artifact id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="DocumentReference: Key Image"/>
+<artifact id="StructureDefinition/ImUnstructuredDocumentReference" key="StructureDefinition-ImUnstructuredDocumentReference" name="DocumentReference: Unstructured Imaging Report"/>
 <artifact deprecated="true" id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReferenceEu"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
@@ -59,7 +60,6 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
-<artifact id="Bundle/ImagingReport-knee-mri-example" key="Bundle-ImagingReport-knee-mri-example" name="Example Imaging Report"/>
 <artifact id="StructureDefinition/EHDSFamilyMemberHistory" key="StructureDefinition-EHDSFamilyMemberHistory" name="Family member history model"/>
 <artifact id="StructureDefinition/EHDSFunctionalStatus" key="StructureDefinition-EHDSFunctionalStatus" name="Functional status"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSGoal" key="StructureDefinition-EHDSGoal" name="Goal model"/>
@@ -88,7 +88,6 @@
 <artifact id="ValueSet/im-imaging-device-type" key="ValueSet-im-imaging-device-type" name="Imaging Device Type"/>
 <artifact deprecated="true" id="ActorDefinition/ImManifestProvider" key="ActorDefinition-ImManifestProvider" name="Imaging Manifest Reports Provider/Creator"/>
 <artifact id="ValueSet/im-procedure-type" key="ValueSet-im-procedure-type" name="Imaging Procedure Type"/>
-<artifact id="DocumentReference/DocumentReference-knee-mri-example" key="DocumentReference-DocumentReference-knee-mri-example" name="Imaging Report DocumentReference"/>
 <artifact id="ValueSet/im-imaging-study-performer-type" key="ValueSet-im-imaging-study-performer-type" name="Imaging Study Performer Type Value Set"/>
 <artifact id="ActorDefinition/ImReportCreator" key="ActorDefinition-ImReportCreator" name="Imaging Study Report Creator"/>
 <artifact id="ActorDefinition/ImReportProvider" key="ActorDefinition-ImReportProvider" name="Imaging Study Report Provider"/>
@@ -99,7 +98,6 @@
 <artifact id="StructureDefinition/ImSrInstanceImagingSelection" key="StructureDefinition-ImSrInstanceImagingSelection" name="ImagingSelection: DICOM SR Instance"/>
 <artifact id="StructureDefinition/ImImagingSelection" key="StructureDefinition-ImImagingSelection" name="ImagingSelection: General"/>
 <artifact id="StructureDefinition/ImKeyImageImagingSelection" key="StructureDefinition-ImKeyImageImagingSelection" name="ImagingSelection: Key Image"/>
-<artifact id="ImagingStudy/G1ImImagingStudy1" key="ImagingStudy-G1ImImagingStudy1" name="ImagingStudy for the left/right foot"/>
 <artifact id="StructureDefinition/ImImagingStudy" key="StructureDefinition-ImImagingStudy" name="ImagingStudy: General"/>
 <artifact id="StructureDefinition/EHDSImmunisation" key="StructureDefinition-EHDSImmunisation" name="Immunisation model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSImmunization" key="StructureDefinition-EHDSImmunization" name="Immunization model"/>
@@ -114,7 +112,6 @@
 <artifact id="StructureDefinition/EHDSLaboratoryReportHeader" key="StructureDefinition-EHDSLaboratoryReportHeader" name="Laboratory report header model"/>
 <artifact id="StructureDefinition/EHDSLaboratoryReport" key="StructureDefinition-EHDSLaboratoryReport" name="Laboratory report model"/>
 <artifact id="StructureDefinition/EHDSLocation" key="StructureDefinition-EHDSLocation" name="Location model"/>
-<artifact id="Bundle/MHDTransactionBundleKneeMriExample" key="Bundle-MHDTransactionBundleKneeMriExample" name="MHD Knee Mri Transaction Bundle Example"/>
 <artifact deprecated="true" id="StructureDefinition/ImManifestIheMhdDocumentReference" key="StructureDefinition-ImManifestIheMhdDocumentReference" name="Manifest DocumentReference for MHD deployments"/>
 <artifact deprecated="true" id="StructureDefinition/Manifest-ImManifestDocumentReference" key="StructureDefinition-Manifest-ImManifestDocumentReference" name="Manifest Obligations for ImManifestIheMhdDocumentReference"/>
 <artifact deprecated="true" id="StructureDefinition/Manifest-EuAddress" key="StructureDefinition-Manifest-EuAddress" name="Manifest obligations for EuAddress"/>
@@ -262,6 +259,7 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSTask" key="StructureDefinition-EHDSTask" name="Task model"/>
 <artifact id="StructureDefinition/EHDSTelecom" key="StructureDefinition-EHDSTelecom" name="Telecom model"/>
 <artifact id="StructureDefinition/EHDSTravelHistory" key="StructureDefinition-EHDSTravelHistory" name="Travel history model"/>
+<artifact id="DocumentReference/UnstructuredReportExample" key="DocumentReference-UnstructuredReportExample" name="Unstructured Report"/>
 <artifact id="ValueSet/im-xds-class-code-valueset" key="ValueSet-im-xds-class-code-valueset" name="XDS Class Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
@@ -274,6 +272,7 @@
 <page key="dependencies" name="Dependencies"/>
 <page deprecated="true" key="profiles" name="Deployment profiles"/>
 <page key="design-considerations" name="Design considerations"/>
+<page key="examples" name="Examples"/>
 <page key="index" name="Home"/>
 <page deprecated="true" key="imaging-manifest" name="Imaging Manifest"/>
 <page key="imaging-report" name="Imaging Report"/>
