@@ -8,4 +8,4 @@
 {% assign ImProcedure                 = "[`ImProcedure`](StructureDefinition-ImProcedure.html)" %}
 {% assign ImImagingStudy              = "[`ImImagingStudy`](StructureDefinition-ImImagingStudy.html)" %}
 {% assign ImImpression                = "[`ImImpression`](StructureDefinition-ImImpression.html)" %}
-
+{% assign ImUnstructuredDocumentReference = "[`ImUnstructuredDocumentReference`](StructureDefinition-ImUnstructuredDocumentReference.html)" %}
