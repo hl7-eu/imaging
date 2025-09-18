@@ -8,7 +8,7 @@ Alias: $EuAppointment          = Appointment
 Alias: $EuAppointmentUrl       = http://hl7.org/fhir/StructureDefinition/Appointment
 
 Alias: $EuAllergyIntolerance    = AllergyIntolerance
-Alias: $EuAllergyIntoleranceUrl = http://hl7.org/fhir/StructureDefinition/Appointment/AllergyIntolerance
+Alias: $EuAllergyIntoleranceUrl = http://hl7.org/fhir/StructureDefinition/AllergyIntolerance
 
 Alias: $EuAttachment           = Attachment
 Alias: $EuAttachmentUrl        = http://hl7.org/fhir/StructureDefinition/Attachment
@@ -53,7 +53,7 @@ Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/
 Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
 
 Alias: $EuMedication           = Medication
-Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/ImagingStudy/Medication
+Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/Medication
 
 Alias: $EuObservation          = Observation
 Alias: $EuObservationUrl       = http://hl7.org/fhir/StructureDefinition/Observation
