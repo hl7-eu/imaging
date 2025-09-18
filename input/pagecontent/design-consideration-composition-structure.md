@@ -11,4 +11,4 @@ Linking the structure of the composition of the presented form will cause diffic
 
 Consistency in rendering of radiology reports will make it easier for healthcare professionals to locate and understand the important sections. Based on that rationale, this specification will define a required structure.
 
-Regarding the structure to support, this implementation guide taps into earlier work on that topic, i.e. IHE-IDR, and will adopt the suggested section division defined in the preliminary specification.
+Regarding the structure to support, this implementation guide taps into earlier work on that topic, i.e. IHE-IDR, and will adopt the *suggested* section division defined in the preliminary specification.

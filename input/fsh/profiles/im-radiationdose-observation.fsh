@@ -58,53 +58,53 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 
 * component[doseAreaProductTotal]
   * code = $dcm#113722 // "Dose Area Product Total"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImGraySquareUnits
 * component[fluorDoseAreaProductTotal]
   * code = $dcm#113726 // "Fluoro Dose Area Product Total"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImGraySquareUnits
 * component[doseAreaProduct]
   * code = $dcm#122130 // "Dose Area Product"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImGraySquareUnits
 
 * component[CTDoseLengthProductTotal]
   * code = $dcm#113813 // "CT Dose Length Product Total"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 * component[DLP]
   * code = $dcm#113838 // "DLP"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 * component[DLPAlertValue]
   * code = $dcm#113903 // "DLP Alert Value"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 * component[AccumulatedDLPForwardEstimate]  
   * code = $dcm#113905 // "Accumulated DLP Forward Estimate"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 * component[DLPNotificationValue]
   * code = $dcm#113911 // "DLP Notification Value"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 * component[DLPForwardEstimate]
   * code = $dcm#113913 // "DLP Forward Estimate"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 * component[CRDoseLengthProductSubTotal]
   * code = $dcm#130745 // "CT Dose Length Product Sub-Total"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImDoseLengthUnits
 
 * component[CTEffectiveDoseTotal]
   * code = $dcm#113814 // "CT Effective Dose Total"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImEffectiveDoseUnits
 * component[EffectiveDose]
   * code = $dcm#113839 // "Effective Dose"
-  * value[x] only QuantityEu
+  * value[x] only Quantity
   * valueQuantity from ImEffectiveDoseUnits
 
 ValueSet: ImEffectiveDoseUnits

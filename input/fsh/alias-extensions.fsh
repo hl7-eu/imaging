@@ -1,5 +1,6 @@
 Alias: $allergy-intolerance-certainty-url     = http://hl7.org/fhir/StructureDefinition/allergyintolerance-certainty
 Alias: $allergyintolerance-abatement-url      = http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement
+Alias: $annotation-type                       = http://hl7.org/fhir/StructureDefinition/annotationType
 Alias: $artifact-description-url              = http://hl7.org/fhir/StructureDefinition/artifact-title
 Alias: $artifact-related-artifact-url         = http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact
 Alias: $artifact-title-url                    = http://hl7.org/fhir/StructureDefinition/artifact-description

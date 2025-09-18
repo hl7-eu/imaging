@@ -24,7 +24,7 @@ This profile represents an imaging study instance.
 * basedOn contains imorderaccession 0..1
 * insert BasedOnImOrderReference( imorderaccession )
 
-* insert EndpointTypes 
+// * insert EndpointTypes 
 
 * series
   * performer.function from ImImagingStudyPerformerTypeVS (extensible)
@@ -44,7 +44,7 @@ This profile represents an imaging study instance.
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
     * actor only Reference( $EuOrganization ) 
 
-  * insert EndpointTypes 
+  // * insert EndpointTypes 
 
   * instance
     * extension contains 
@@ -56,6 +56,7 @@ Id: instance-description
 Title: "Instance Description"
 Description: "A description of the instance in an ImagingStudy."
 Context: ImagingStudy.series.instance
+* insert SetFmmAndStatusRule( 1, draft )
 * value[x] only string
 
 Extension: NumberOfFrames
@@ -63,6 +64,7 @@ Id: number-of-frames
 Title: "Number of Frames"
 Description: "The number of frames in an ImagingStudy instance as required by Xt-EHR logical ImagingStudy logical model."
 Context: ImagingStudy.series.instance
+* insert SetFmmAndStatusRule( 1, draft )
 * value[x] only integer
 
 Invariant: im-imagingstudy-01
@@ -70,9 +72,3 @@ Description: "A DICOM instance UID must start with 'urn:oid:'"
 Severity: #warning
 Expression: "identifier.where(system='urn:dicom:uid').value.startsWith('urn:oid:')"
 
-RuleSet: EndpointTypes
-* endpoint 0..*  
-  * insert SliceElement( #profile, $this )
-* endpoint contains wado 0..1 and iid 0..1
-* endpoint[wado] only Reference( ImWadoEndpoint )
-* endpoint[iid] only Reference( ImImageIidViewerEndpoint )

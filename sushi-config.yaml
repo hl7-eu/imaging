@@ -36,10 +36,10 @@ dependencies:
   # eu.ehds.models: current
   # required for medication extensions
   # ihe.pharm.mpd: current
-  # fhir.dicom:
-  #   id: DICOM
-  #   uri: http://fhir.org/packages/fhir.dicom
-  #   version: 2025.2.20250411
+  fhir.dicom:
+    id: DICOM
+    uri: http://fhir.org/packages/fhir.dicom
+    version: 2025.2.20250411
   
 pages:
   index.md:
@@ -128,9 +128,10 @@ menu:
     Authors and contributors: contributors.html
     Copyright: copyright.html
   Artifacts:
-    All: artifacts.html
-    Structural: artifacts-structural.html
     Imaging Report: imaging-report.html
+    Structural: artifacts-structural.html
+    Examples: artifacts.html#example-example-instances
+    All: artifacts.html
 
   #   Changes: changes.html
   #   Dependencies: index.html#dependencies
