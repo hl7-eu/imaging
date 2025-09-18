@@ -1,4 +1,5 @@
-DiagnosticReport --> Composition: composition
+@startuml
+    DiagnosticReport --> Composition: composition
     DiagnosticReport --> PDF: presentedForm
     DiagnosticReport --> Patient: subject
     DiagnosticReport --> LeftKnee: study
@@ -21,41 +22,31 @@ DiagnosticReport --> Composition: composition
     Author --> RadiologyZentrum: organization
     Author --> LucasGassenzer: practitioner
 
-    class Author{
-        <<PractitionerRole>>
-    }
-    class RadiologyZentrum{
-        <<Organization>>
-    }
-    class LucasGassenzer {
-        <<Practitioner>>
-    }
+    class Author <<PractitionerRole>>
+    class RadiologyZentrum <<Organization>>
+    class LucasGassenzer <<Practitioner>>
 
     class Patient{
         * name 
           * family = "Gutefrage"
           * given[+] = Test-Schust
     }
-    class LeftKnee {
-        <<ImagingStudy>> 
+    class LeftKnee <<ImagingStudy>>  [[ImagingStudySemiStructuredReport1]] {
         * series[+] "PD FatSat 3D (1.0mm) sagittal"
         * series[+] "T1 (2.5mm) axial"
         * series[+] "T2 (2.5mm) axial"
         * series[+] "PDW FatSat (2.5mm) axial"
     }
-    class RightKnee {
-        <<ImagingStudy>> 
+    class RightKnee <<ImagingStudy>> [[ImagingStudySemiStructuredReport2]] {
         * series[+] "PD FatSat 3D (1.0mm) sagittal"
         * series[+] "T1 (2.5mm) axial"
         * series[+] "T2 (2.5mm) axial"
         * series[+] "PDW FatSat (2.5mm) axial"    
     }
     
-    class PDF{
-        <<Binary>>
-    }
+    class PDF <<Binary>>
 
-    class Composition {
+    class Composition [[./Composition-CompositionSemiStructured.html]] {
         section[imagingstudy]
         * entry: LeftKnee
         * entry: RightKnee
@@ -71,8 +62,9 @@ DiagnosticReport --> Composition: composition
         * note: "..."
     }
 
-    class DiagnosticReport {
+    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportSemiStructured.html]] {
         note[finding] = "..."
         note[finding] = "..."
         conclusion = "..."
     }
+@enduml

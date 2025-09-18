@@ -280,6 +280,8 @@
 <page key="dependencies" name="Dependencies"/>
 <page deprecated="true" key="profiles" name="Deployment profiles"/>
 <page key="design-considerations" name="Design considerations"/>
+<page key="example-semi-structured" name="Example semi report"/>
+<page key="example-unstructured" name="Example unstructured report"/>
 <page key="examples" name="Examples"/>
 <page key="index" name="Home"/>
 <page deprecated="true" key="imaging-manifest" name="Imaging Manifest"/>

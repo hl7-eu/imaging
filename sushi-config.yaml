@@ -60,6 +60,10 @@ pages:
     title: System actors
   examples.md:
     title: Examples
+    example-unstructured.md:
+      title: Example unstructured report
+    example-semi-structured.md:
+      title: Example semi report
   xtehr-mapping.md:
     title: Xt-EHR mapping
   design-considerations.md:
@@ -126,16 +130,16 @@ menu:
     Examples: examples.html
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
-    Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
+    Imaging Report: imaging-report.html
+    Imaging Report Examples: example.html
     Design considerations: design-considerations.html
   About:
     Authors and contributors: contributors.html
     Copyright: copyright.html
   Artifacts:
-    Imaging Report: imaging-report.html
     Structural: artifacts-structural.html
-    Examples: artifacts.html#example-example-instances
     All: artifacts.html
+    Examples: artifacts.html#example-example-instances
 
   #   Changes: changes.html
   #   Dependencies: index.html#dependencies
