@@ -29,19 +29,23 @@ This profile represents an imaging study instance.
 * series
   * performer.function from ImImagingStudyPerformerTypeVS (extensible)
   * performer
-    * insert SliceElement( #type, actor )
+    * insert SliceElement( #value, function )
   * performer contains performer 0..1 and device 0..1 and custodian 0..1 and organization 0..1
   * performer[performer]
+    * ^short = "The practitioner that did the imaging."
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#PRF
     * actor only Reference( $EuPractitionerRole )
   * performer[custodian]
+    * ^short = "The custodian of the report."
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST
     * actor only Reference( $EuOrganization )
   * performer[device]
+    * ^short = "The device that did the imaging."
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
     * actor only Reference( ImImagingDevice )
   * performer[organization]
-    * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
+    * ^short = "The organization where the imaging was performed."
+    * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LOC
     * actor only Reference( $EuOrganization ) 
 
   // * insert EndpointTypes 

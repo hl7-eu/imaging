@@ -9,4 +9,6 @@ This section illustrates the way imaging reports can be created using these IG's
 
 Please note that these examples illustrate the way this IG can be used to create imaging reports. What approach is valid (and allowed) is not covered by this IG and requires further guidance.
 
+{% include example-semi-structured.md %}
+
 {% include example-unstructured.md %}
