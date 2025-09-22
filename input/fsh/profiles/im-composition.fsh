@@ -44,7 +44,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * time 1..1
 
 * author 1..*
-  * insert SliceElement( #profile, $this )
+  * insert SliceElement( #profile, [[$this.resolve()]] )
 * author contains 
     author 0..* and 
     authoringDevice 0..* and
@@ -189,7 +189,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[communication]
   * ^short = "Communications"
 // a proper code is needed
-  * code = $loinc#18783-1 // "Radiology Study recommendation (narrative)"
+  * code = $loinc#73568-8 // "Communication"
   * extension contains $note-url named note 0..*
 
 // /////////////////// COMMUNICATION SECTION //////////////////////////
@@ -199,11 +199,10 @@ The `text` field of each section SHALL contain a textual representation of all l
   * code = $loinc#LP173421-1 // "Report"
   * extension contains $note-url named note 0..*
 
-
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
 Severity: #error 
-Expression: "entry.empty() and emptyReason.exists()"
+Expression: "entry.empty().not() or emptyReason.exists() or entry.extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
 
 Extension: ImDiagnosticReportReference
 Id:   im-composition-diagnosticReportReference

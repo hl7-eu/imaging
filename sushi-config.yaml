@@ -63,7 +63,9 @@ pages:
     example-unstructured.md:
       title: Example unstructured report
     example-semi-structured.md:
-      title: Example semi report
+      title: Example semi structured report
+    example-structured.md:
+      title: Example structured report
   xtehr-mapping.md:
     title: Xt-EHR mapping
   design-considerations.md:
@@ -131,7 +133,7 @@ menu:
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
-    Imaging Report Examples: example.html
+    Imaging Report Examples: examples.html
     Design considerations: design-considerations.html
   About:
     Authors and contributors: contributors.html

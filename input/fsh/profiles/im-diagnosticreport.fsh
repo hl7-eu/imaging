@@ -102,6 +102,13 @@ automated tools, or by the radiologists themselves.
 Imaging procedure used to acquire the study.
 """
 
+* extension contains HL7IDRFindingExt named finding 0..* MS
+* extension[finding] ^short = "Key image findings"
+* extension[finding] ^definition = """
+Key images in the report
+"""
+* extension[findings]
+
 
 * extension contains HL7IDRImpressionExt named impression 0..* MS
 * extension[impression] ^short = "Impression"
@@ -157,6 +164,13 @@ Description: "Imaging procedure used for the imaging acquisition"
 Context: DiagnosticReport
 * value[x] only Reference(ImProcedure)
 
+Extension: HL7IDRFindingExt
+Title: "HL7IDR Impression"
+Id: HL7IDRFinding
+Description: "KeyImage in the imaging report"
+Context: DiagnosticReport
+* value[x] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection )
+
 Extension: HL7IDRImpressionExt
 Title: "HL7IDR Impression"
 Id: HL7IDRImpression
@@ -193,7 +207,7 @@ Description: "Composition.category must contain DiagnosticReport.category"
 Invariant: hl7eu-im-dr-subject
 Description: "Patient in composition must be the same."
 * severity = #error
-* expression = "DiagnosticReport.composition.resolve().patient.reference = DiagnosticReport.subject.reference"
+* expression = "DiagnosticReport.composition.resolve().subject.reference = DiagnosticReport.subject.reference"
 
 Invariant: hl7eu-im-dr-study
 Description: "Study must be present in composition."

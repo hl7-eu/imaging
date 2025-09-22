@@ -11,7 +11,10 @@ Usage: #example
   * url = "http://hl7.org/fhir/StructureDefinition/event-basedOn"
   * valueReference
     * identifier
-      * type   = http://terminology.hl7.org/CodeSystem/v3-ActClass#v2-0203#ACSN
+      * type
+        * coding
+          * system = "http://terminology.hl7.org/CodeSystem/v3-ActClass#v2-0203"
+          * code   = #ACSN
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "123456789" // invented - not there in the report
 * extension[diagnosticreport-reference].valueReference = Reference ( DiagnosticReportSemiStructured )
@@ -38,24 +41,25 @@ Usage: #example
 * section[order]
   * title = "Order"
   * code = $loinc#55115-0 "Requested imaging studies information Document"
-
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
+  
 ///////////////////////////////////////////////////////////////////////
 * section[history]
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * emptyReason = #nilknown "Nil Known"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
   * title = "Procedure"
   * code = $loinc#55111-9 "Current imaging procedure descriptions Document"
-  * emptyReason = #unavailable "Unavailable"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#unavailable "Unavailable"
 
 ///////////////////////////////////////////////////////////////////////
 * section[comparison]
   * title = "Comparison"
   * code = $loinc#18834-2 "Radiology Comparison study (narrative)"
-  * emptyReason = #nilknown "Nil Known"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
   
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
@@ -89,4 +93,4 @@ Rechter Fuß:
 * section[recommendation]
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
-  * emptyReason = #nilknown "Nil Known"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"

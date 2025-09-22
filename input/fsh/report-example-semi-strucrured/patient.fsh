@@ -1,6 +1,6 @@
 Instance: PatientSemiStructuredReport
 InstanceOf: $EuPatient 
-Title: "Example of a Patient"
+Title: "Patient in Semi-structured report example"
 // Usage: #inline
 * name
   * use = #official

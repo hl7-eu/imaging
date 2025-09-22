@@ -12,7 +12,7 @@ Usage: #example
 * language = #de-DE
 * basedOn // order
   * identifier
-    * type   = http://terminology.hl7.org/CodeSystem/v3-ActClass#v2-0203#ACSN
+    * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "123456789" // invented - not there in the report
 * code = $loinc#24802-1 "MR Knee"
@@ -24,7 +24,7 @@ Usage: #example
 * resultsInterpreter[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
 * composition = Reference(CompositionSemiStructured)
 * note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
   * text = """
 Linker Fuß:
   Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte
@@ -33,7 +33,7 @@ Linker Fuß:
   Veränderungen nach Umstellungsosteotomie. Die Beuge- und Strecksehnen sind intakt.
 """
 * note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
   * text = """
 Rechter Fuß:
   Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige
@@ -49,3 +49,10 @@ Rechter Fuß:
   * pages = 1
   * url = "./Binary/semi-structured-pdf"
 
+Instance: BinarySemiStructuredReport
+InstanceOf: Binary
+Title: "Binary: Semi-structured report pdf"
+* id = "semi-structured-pdf"
+* contentType = #application/pdf
+// * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
