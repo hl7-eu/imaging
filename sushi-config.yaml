@@ -129,7 +129,6 @@ menu:
   Functional:
     Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html
     System actors: actors-and-transactions.html
-    Examples: examples.html
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
