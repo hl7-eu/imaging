@@ -12,21 +12,21 @@ NOTE: Structural concerns and rationale on the ImComposition profile can be foun
 The following table lists the elements that should be included in the narrative of the Imaging Study section.
 
 {:.grid}
-| First order resource | Element | Referenced resource | Logical model resource.field | Comments |
-| -------- | ------- | -------------- | --------------------- | -------- |
-| EuDevice | type |  | EHDSDevice.type |  |
-| ImImagingStudy | series.specimen | EuSpecimen | EHDSImagingReport.body.specimen |  |
-| ImRadiationDoseObservation | component.value[x] | - | EHDSImagingReport.body.exposureInformation.effectiveDose | Mapping to a defined slice is needed in the future |
-| ImImagingStudy | series.modality |  | EHDSImagingReport.body.examinationReport.modality |  |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.bodyLocation |  |
-| ImImagingStudy | series.bodySite | EuBodyStructure | EHDSImagingReport.examinationReport.bodyPart.laterality |  |
-| EuBodyStructure | includedStructure.laterality |  | EHDSImagingReport.examinationReport.bodyPart.laterality |  |
-| ImImagingStudy | series.performer |  | EHDSImagingStudy.header.authorship |  |
-| ImImagingStudy | status |  | EHDSImagingStudy.header.status |  |
-| ImImagingStudy | modality |  | EHDSImagingStudy.modality |  |
-| ImImagingStudy | started |  | EHDSImagingStudy.started |  |
-| ImImagingStudy | description |  | EHDSImagingStudy.description |  |
-| EuDevice | name |  | EHDSMedia.deviceName |  |
+| First order resource       | Element            | Referenced resource |
+| -------------------------- | ------------------ | ------------------- |
+| EuDevice                   | type               |                     |
+| ImImagingStudy             | series.specimen    | EuSpecimen          |
+| ImRadiationDoseObservation | component.value[x] | -                   |
+| ImImagingStudy             | series.modality    |                     |
+| ImImagingStudy             | series.bodySite    | EuBodyStructure     |
+| ImImagingStudy             | series.bodySite    | EuBodyStructure     |
+| EuBodyStructure            | includedStructure.laterality |           |
+| ImImagingStudy             | series.performer   |                     |
+| ImImagingStudy             | status             |                     |
+| ImImagingStudy             | modality           |                     |
+| ImImagingStudy             | started            |                     |
+| ImImagingStudy             | description        |                     |
+| EuDevice                   | name               |                     |
 
 ### Order
 
