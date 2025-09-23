@@ -1,6 +1,16 @@
 {% include fsh-link-references.md %}
 {% include variable-definitions.md %}
 
+<div style="border: 2px solid #003366; border-radius: 8px; padding: 0.8em 1em; margin: 1.2em 0; background-color: #f9f9ff; display: flex; align-items: center;">
+  <img src="xtehr-logo.png" alt="XTEHR Logo" style="height:55px; margin-right:1em;"/>
+  <div style="flex:1;">
+    <strong>Acknowledgment</strong><br/>
+    The development of this Implementation Guide version has been supported by the
+    <strong>Xt-EHR Joint Action</strong>.  
+    Xt-EHR provided expertise, alignment with European health policy priorities, and validation of specifications to ensure consistency with EHDS requirements.
+  </div>
+</div>
+
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
