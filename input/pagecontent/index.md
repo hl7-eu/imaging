@@ -1,10 +1,20 @@
 {% include fsh-link-references.md %}
 {% include variable-definitions.md %}
 
+<div style="border: 2px solid #003366; border-radius: 8px; padding: 0.8em 1em; margin: 1.2em 0; background-color: #f9f9ff; display: flex; align-items: center;">
+  <img src="xtehr-logo.png" alt="XTEHR Logo" style="height:55px; margin-right:1em;"/>
+  <div style="flex:1;">
+    <strong>Acknowledgment</strong><br/>
+    The development of this Implementation Guide version has been supported by the
+    <strong>Xt-EHR Joint Action</strong>.  
+    Xt-EHR provided expertise, alignment with European health policy priorities, and validation of specifications to ensure consistency with EHDS requirements.
+  </div>
+</div>
+
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
-   <p>This is the 0.1.0-ballot version of the specification. 
+   <p>This is the 0.1.0-snapshot1 version of the specification to be used by WP 7.2 of XtEHR for public consultation. Please note that this represents a snapshot of an implementation guide that is still in development.
    </p>
    <p>The source of this IG is stored on github (<a href="https://github.com/hl7-eu/imaging">https://github.com/hl7-eu/imaging</a>).
    </p>

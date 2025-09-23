@@ -7,23 +7,23 @@ Alias: $EuAddressUrl           = http://hl7.eu/fhir/base-r5/StructureDefinition/
 Alias: $EuAppointment          = Appointment
 Alias: $EuAppointmentUrl       = http://hl7.org/fhir/StructureDefinition/Appointment
 
-Alias: $EuAllergyIntolerance    = AllergyIntoleranceEu
-Alias: $EuAllergyIntoleranceUrl = http://hl7.eu/fhir/imaging-r5/StructureDefinition/AllergyIntoleranceEu
+Alias: $EuAllergyIntolerance    = AllergyIntolerance
+Alias: $EuAllergyIntoleranceUrl = http://hl7.org/fhir/StructureDefinition/Appointment/AllergyIntolerance
 
 Alias: $EuAttachment           = Attachment
 Alias: $EuAttachmentUrl        = http://hl7.org/fhir/StructureDefinition/Attachment
 
-Alias: $EuBodyStructure        = BodyStructureEu
-Alias: $EuBodyStructureUrl     = http://hl7.eu/fhir/imaging-r5/StructureDefinition/BodyStructureEu
+Alias: $EuBodyStructure        = BodyStructure
+Alias: $EuBodyStructureUrl     = http://hl7.org/fhir/StructureDefinition/BodyStructure
 
-Alias: $EuCondition            = ConditionEu
-Alias: $EuConditionUrl         = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ConditionEu
+Alias: $EuCondition            = Condition
+Alias: $EuConditionUrl         = http://hl7.org/fhir/StructureDefinition/Condition
 
 Alias: $EuCoverage             = Coverage
 Alias: $EuCoverageUrl          = http://hl7.org/fhir/StructureDefinition/Coverage
 
-Alias: $EuCarePlan             = CarePlanEu
-Alias: $EuCarePlanUrl          = http://hl7.eu/fhir/imaging-r5/StructureDefinition/CarePlanEu
+Alias: $EuCarePlan             = CarePlan
+Alias: $EuCarePlanUrl          = http://hl7.eu/fhir/StructureDefinition/CarePlan
 
 Alias: $EuContactPoint         = ContactPoint
 Alias: $EuContactPointUrl      = http://hl7.org/fhir/StructureDefinition/ContactPoint
@@ -31,14 +31,14 @@ Alias: $EuContactPointUrl      = http://hl7.org/fhir/StructureDefinition/Contact
 Alias: $EuDevice               = Device
 Alias: $EuDeviceUrl            = http://hl7.org/fhir/StructureDefinition/Device
 
-Alias: $EuDocumentReference    = DocumentReferenceEu
+Alias: $EuDocumentReference    = DocumentReference
 Alias: $EuDocumentReferenceUrl = http://hl7.org/fhir/StructureDefinition/DocumentReference
 
-Alias: $EuEncounter            = EncounterEu
-Alias: $EuEncounterUrl         = http://hl7.eu/fhir/imaging-r5/StructureDefinition/EncounterEu
+Alias: $EuEncounter            = Encounter
+Alias: $EuEncounterUrl         = http://hl7.org/fhir/StructureDefinition/Encounter
 
-Alias: $EuEndpoint             = EndpointEu
-Alias: $EuEndpointUrl          = http://hl7.eu/fhir/imaging-r5/StructureDefinition/EndpointEu
+Alias: $EuEndpoint             = Endpoint
+Alias: $EuEndpointUrl          = http://hl7.org/fhir/StructureDefinition/Endpoint
 
 Alias: $EuHumanName            = HumanName
 Alias: $EuHumanNameUrl         = http://hl7.org/fhir/StructureDefinition/HumanName
@@ -52,11 +52,11 @@ Alias: $EuImagingStudyUrl      = http://hl7.org/fhir/StructureDefinition/Imaging
 Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
 Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
 
-Alias: $EuMedication           = MedicationEu
-Alias: $EuMedicationUrl        = http://hl7.eu/fhir/imaging-r5/StructureDefinition/MedicationEu
+Alias: $EuMedication           = Medication
+Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/ImagingStudy/Medication
 
-Alias: $EuObservation          = ObservationEu
-Alias: $EuObservationUrl       = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ObservationEu
+Alias: $EuObservation          = Observation
+Alias: $EuObservationUrl       = http://hl7.org/fhir/StructureDefinition/Observation
 
 Alias: $EuMedicationAdministration = MedicationAdministration
 Alias: $EuMedicationAdministrationUrl = http://hl7.org/fhir/StructureDefinition/MedicationAdministration
@@ -79,26 +79,26 @@ Alias: $EuPractitionerRoleUrl  = http://hl7.eu/fhir/base-r5/StructureDefinition/
 Alias: $EuPractitioner         = http://hl7.eu/fhir/base-r5/StructureDefinition/practitioner-eu-core
 Alias: $EuPractitionerUrl      = http://hl7.eu/fhir/base-r5/StructureDefinition/practitioner-eu-core
 
-Alias: $EuProcedure            = ProcedureEu
-Alias: $EuProcedureUrl         = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ProcedureEu
+Alias: $EuProcedure            = Procedure
+Alias: $EuProcedureUrl         = http://hl7.org/fhir/StructureDefinition/Procedure
 
-Alias: $EuRange                = RangeEu
-Alias: $EuRangeUrl             = http://hl7.eu/fhir/imaging-r5/StructureDefinition/RangeEu
+Alias: $EuRange                = Range
+Alias: $EuRangeUrl             = http://hl7.org/fhir/StructureDefinition/Range
 
-Alias: $EuRelatedPerson        = RelatedPersonEu
+Alias: $EuRelatedPerson        = RelatedPerson
 Alias: $EuRelatedPersonUrl     = http://hl7.org/fhir/StructureDefinition/RelatedPerson
 
-Alias: $EuServiceRequest       = ServiceRequestEu
-Alias: $EuServiceRequestUrl    = http://hl7.eu/fhir/imaging-r5/StructureDefinition/ServiceRequestEu
+Alias: $EuServiceRequest       = ServiceRequest
+Alias: $EuServiceRequestUrl    = http://hl7.org/fhir/StructureDefinition/ServiceRequest
 
-Alias: $EuQuantity             = QuantityEu
-Alias: $EuQuantityUrl          = http://hl7.eu/fhir/imaging-r5/StructureDefinition/QuantityEu
+Alias: $EuQuantity             = Quantity
+Alias: $EuQuantityUrl          = http://hl7.org/fhir/StructureDefinition/Quantity
 
-Alias: $EuSimpleQuantity       = SimpleQuantityEu
-Alias: $EuSimpleQuantityUrl    = http://hl7.eu/fhir/imaging-r5/StructureDefinition/SimpleQuantityEu
+Alias: $EuSimpleQuantity       = SimpleQuantity
+Alias: $EuSimpleQuantityUrl    = http://hl7.org/fhir/StructureDefinition/SimpleQuantity
 
-Alias: $EuSpecimen             = SpecimenEu
-Alias: $EuSpecimenUrl          = http://hl7.eu/fhir/imaging-r5/StructureDefinition/SpecimenEu
+Alias: $EuSpecimen             = Specimen
+Alias: $EuSpecimenUrl          = http://hl7.org/fhir/StructureDefinition/Specimen
 
 Alias: $EuSubstance            = Substance
 Alias: $EuSubstanceUrl         = http://hl7.org/fhir/StructureDefinition/Substance

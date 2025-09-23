@@ -5,11 +5,11 @@ title: HL7 Europe Imaging Study Report
 description: This guide describes how a Imaging Study Report can be represented in the European REALM.
 status: draft # draft | active | retired | unknown
 experimental: false
-version: 0.1.0-build
+version: 0.1.0-snapshot1
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
-releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: draft # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: 	http://unstats.un.org/unsd/methods/m49/m49.htm#150 "Europe" # urn:iso:std:iso:3166#EU
 publisher:
@@ -17,8 +17,8 @@ publisher:
   url: http://hl7.eu
   # email: test@example.org
 copyright: >-
-  Used by permission of HL7 Europe, all rights reserved Creative Commons License
-# license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+  Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0).
+license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
@@ -36,10 +36,10 @@ dependencies:
   # eu.ehds.models: current
   # required for medication extensions
   # ihe.pharm.mpd: current
-  # fhir.dicom:
-  #   id: DICOM
-  #   uri: http://fhir.org/packages/fhir.dicom
-  #   version: 2025.2.20250411
+  fhir.dicom:
+    id: DICOM
+    uri: http://fhir.org/packages/fhir.dicom
+    version: 2025.2.20250411
   
 pages:
   index.md:
@@ -58,6 +58,14 @@ pages:
       title: Copyright
   actors-and-transactions.md:
     title: System actors
+  examples.md:
+    title: Examples
+    example-unstructured.md:
+      title: Example unstructured report
+    example-semi-structured.md:
+      title: Example semi structured report
+    example-structured.md:
+      title: Example structured report
   xtehr-mapping.md:
     title: Xt-EHR mapping
   design-considerations.md:
@@ -92,8 +100,9 @@ parameters:
   default-version: true
   show-inherited-invariants: true
   usage-stats-opt-out: true
+  path-binary:  input/binaries
   # packages: ./package-cache
-  releaselabel: 0.1.0-ballot
+  releaselabel: 0.1.0-snapshot1
 
   special-url-base: https://www.xt-ehr.eu/specifications/fhir
   # add all fsh results to _data directory
@@ -122,15 +131,16 @@ menu:
     System actors: actors-and-transactions.html
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
-    Imaging Manifest: https://build.fhir.org/ig/hl7-eu/imaging-manifest
+    Imaging Report: imaging-report.html
+    Imaging Report Examples: examples.html
     Design considerations: design-considerations.html
   About:
     Authors and contributors: contributors.html
     Copyright: copyright.html
   Artifacts:
-    All: artifacts.html
     Structural: artifacts-structural.html
-    Imaging Report: imaging-report.html
+    All: artifacts.html
+    Examples: artifacts.html#example-example-instances
 
   #   Changes: changes.html
   #   Dependencies: index.html#dependencies

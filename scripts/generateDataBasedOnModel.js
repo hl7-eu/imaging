@@ -1,9 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const obligationsDir = '../input/fsh/obligations';	
-const mappingTablesDir = '../input/pagecontent';	
-const xtehrDir = '../input/resources';	
+const obligationsDir     = '../input/fsh/obligations';	
+const mappingTablesDir   = '../input/pagecontent';	
+const xtehrDir           = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';	
 
 
@@ -270,7 +270,8 @@ function generateMappingTables(parsedData, srcResources) {
             
             // Create hyperlink for source field if it has EHDS srcType(s)
             // Initialize the display with the source resource and field
-            let sourceFieldDisplay = `${srcResource}.${srcField}`;
+            srcResourceDisplay = srcResource.startsWith("EHDS") ? `[${srcResource}](StructureDefinition-${srcResource}.html)` : srcResource;
+            let sourceFieldDisplay = `${srcResourceDisplay}.${srcField}`;
             const srcTypes = sourceTypeMap.get(srcField);
             if (srcTypes && srcTypes.length > 0) {
                 const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
@@ -279,10 +280,10 @@ function generateMappingTables(parsedData, srcResources) {
                         // Check if the ehdsType is not a core resource
                         if (!coreResources.includes(ehdsTypes[0])) {
                             // Single excluded type - link directly to resource page
-                            sourceFieldDisplay = `${srcResource}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
+                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
                         } else {
                             // Single type - simple link format
-                            sourceFieldDisplay = `${srcResource}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
+                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
                         }
                     } else {
                         // Multiple types - format with parentheses and multiple links
@@ -293,7 +294,7 @@ function generateMappingTables(parsedData, srcResources) {
                                 return `[${type}](#${type.toLowerCase()})`;
                             }
                         }).join(', ');
-                        sourceFieldDisplay = `${srcResource}.${srcField} (${typeLinks})`;
+                        sourceFieldDisplay = `${srcResourceDisplay}.${srcField} (${typeLinks})`;
                     }
                 }
             }
@@ -343,13 +344,20 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
         const nonCoreWithRNames = sortedNonCoreWithR.join(', ');
         writable.write(`### Other logical models that are used by this IG\n\n`);
         writable.write(`The following logical models describe data that is used in the context of this IG, but the mapping will be defined by another higher level IG, because they are common to many domains:\n\n`);
-        writable.write(`* ${nonCoreWithRNames}\n\n`);
+        nonCoreWithRNamesWithHyperlinks = sortedNonCoreWithR.map(model => {
+            return model.startsWith("EHDS") ? `[${model}](StructureDefinition-${model}.html)` : model;
+        });
+        writable.write(`* ${nonCoreWithRNamesWithHyperlinks.join(', ')}\n\n`);
     }
     
     // Section for resources without 'R'
     if (resourcesWithoutR && resourcesWithoutR.length > 0) {
         const sortedWithoutR = [...resourcesWithoutR].sort();
-        const withoutRNames = sortedWithoutR.join(', ');
+        withoutRNamesWithHyperlinks = sortedWithoutR.map( model => {
+            return model.startsWith("EHDS") ? `[${model}](StructureDefinition-${model}.html)` : model;
+        });
+        
+        const withoutRNames = withoutRNamesWithHyperlinks.join(', ');
         writable.write(`### Models not included in this IG\n\n`);
         writable.write(`The following logical models describe data that is not used in the context of this Imaging Report IG:\n\n`);
         writable.write(`* ${withoutRNames}\n\n`);
@@ -782,7 +790,7 @@ function main() {
         
        // generateIntroFiles(parsedData, srcResources);
                 
-        generateObligationFiles(parsedData);  
+        // generateObligationFiles(parsedData);  
         
         generateSectionTablesMarkdown(parsedData);
 

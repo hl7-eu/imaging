@@ -1,0 +1,68 @@
+@startuml
+
+    package Findings {
+        class WmsiRest01 <<Observation>> [[./Observation-RestWmsi01.html]]
+        class WmsiRest02 <<Observation>> [[./Observation-RestWmsi02.html]]
+        class WmsiStress01 <<Observation>> [[./Observation-StressWmsi01.html]]
+        class WmsiStress02 <<Observation>> [[./Observation-StressWmsi02.html]]
+    }
+
+    package KeyImages {
+        class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
+        class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
+    }
+    
+    WmsiRest01 --> Patient: subject
+    WmsiRest01 --> WMSIImage: derivedFrom
+    WmsiStress01 --> Patient: subject
+    WmsiStress01 --> WMSIImage: derivedFrom
+    WmsiRest02 --> Patient: subject
+    WmsiRest02 --> WMSIImage: derivedFrom
+    WmsiStress02 --> Patient: subject
+    WmsiStress02 --> WMSIImage: derivedFrom
+
+    class WMSIImage <<DocumentReference>>
+
+    DiagnosticReport --> Composition: composition
+    DiagnosticReport --> WmsiRest01: result
+    DiagnosticReport --> WmsiRest02: result
+    DiagnosticReport --> WmsiStress01: result
+    DiagnosticReport --> WmsiStress02: result
+
+    Composition --> DiagnosticReport: extension[diagnosticreport-reference]
+    Composition --> WmsiRest01: section[finding].entry
+    Composition --> WmsiRest02: section[finding].entry
+    Composition --> WmsiStress01: section[finding].entry
+    Composition --> WmsiStress02: section[finding].entry
+    Composition --> StructuredKeyImageStress: section[finding].entry
+    Composition --> StructuredKeyImageRest: section[finding].entry
+
+    class Patient{
+        * name 
+          * family = "Gutefrage"
+          * given[+] = Test-Schust
+    }
+
+    class Composition [[./Composition-CompositionSemiStructured.html]] {
+        section[findings]
+        -- note: "..."
+        -- note: "..."
+        -- note: "..."
+        -- note: "..."
+        -- entry: WMSI observations
+        -- entry: StructuredKeyimageRest
+        -- entry: StructuredKeyImageStress
+    }
+
+    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportSemiStructured.html]] {
+        note[finding] = "..."
+        note[finding] = "..."
+        note[finding] = "..."
+        note[finding] = "..."
+        extension[finding]: StructuredKeyimageRest
+        extension[finding]: StructuredKeyImageStress
+        result: WMSI observations
+    }
+
+    
+@enduml

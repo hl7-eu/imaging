@@ -1,5 +1,5 @@
 Profile: ImComposition
-Parent: CompositionEu
+Parent: Composition
 Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
 * . ^short = "Imaging Report composition"
@@ -16,7 +16,13 @@ The `text` field of each section SHALL contain a textual representation of all l
 * insert SetFmmAndStatusRule( 1, draft )
 
 * identifier 1..*
+  * ^short = "Report identifier"
+  * ^definition = "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions"
+  * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
+
 * extension contains 
+    $event-basedOn-url          named basedOn 0..* and
+    $information-recipient-url  named informationRecipient 0..* and
     ImDiagnosticReportReference named diagnosticreport-reference 0..1  
 * extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
 
@@ -38,7 +44,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * time 1..1
 
 * author 1..*
-  * insert SliceElement( #profile, $this )
+  * insert SliceElement( #profile, [[$this.resolve()]] )
 * author contains 
     author 0..* and 
     authoringDevice 0..* and
@@ -49,38 +55,17 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 // type of the report. Matching DiagnosticReport.code
 // code 
-* type from ImImagingReportTypesEuVS (extensible) // purposefull versionless
-* type
-  * coding 1..*
-    * insert SliceElement( #value, $this )
-  * coding contains eu-template 1..1
-  * coding[eu-template] = Hl7EuDocumentTypes#imaging-report-v0-0-1 // "Imaging Report V0.0.1"
+* type from ImImagingReportTypesEuVS (preferred) 
+  * ^short = "Type of Imaging Diagnostic Report"
+  * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
 * category 1..*
   * insert SliceElement( #value, $this )
-* category contains imaging 1..1 
-* category[imaging] = $loinc#18748-4 // "Diagnostic imaging study"
-* category[imaging].coding 1..1
+* category contains diagnostic-service 1..1 
+* category[diagnostic-service] from $diagnostic-service-sections (required)
+
 
 * status 
-
-* event 2..*
-  * insert SliceElement( #value, detail.concept )
-* event contains 
-    imagingstudy 1..* and 
-    procedure 1..*
-* event[imagingstudy]
-  * ^short = "Modality"
-  * ^definition = "The type of imaging modality used to perform the study."
-  * detail 1..*
-  * detail from https://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_33.html (extensible)
-  * detail only CodeableReference ( ImImagingStudy )
-* event[procedure]
-  * ^short = "Study Type"
-  * ^definition = "The type of imaging study performed."
-  * detail 1..*
-  * detail from https://www.hl7.org/fhir/valueset-procedure-reason.html (extensible)
-  * detail only CodeableReference ( ImProcedure )
 
 * section.code 1..1 
 * section 
@@ -92,11 +77,12 @@ The `text` field of each section SHALL contain a textual representation of all l
     order 1..1 and
     history 1..1 and 
     procedure 1..1 and
-    comparison 1..1 and 
-    findings 1..1  and 
-    impression 1..1 and 
-    recommendation 1..1  and 
-    communication 0..1 
+    comparison 0..1 and 
+    findings 0..1  and 
+    impression 0..1 and 
+    recommendation 0..1  and 
+    communication 0..1  and
+    report 0..1 
 
 // ///////////////////////////////// IMAGING STUDY SECTION ///////////////////////////////////////
 * section[imagingstudy]
@@ -195,8 +181,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * extension contains $note-url named note 0..*
   * entry
     * insert SliceElement( #profile, $this )
-  * entry contains 
-      suggestion 0..*
+  * entry contains suggestion 0..*
   * entry[suggestion] only Reference($EuCarePlan or $EuServiceRequest)
 
 
@@ -204,13 +189,20 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[communication]
   * ^short = "Communications"
 // a proper code is needed
-  * code = $loinc#18783-1 // "Radiology Study recommendation (narrative)"
+  * code = $loinc#73568-8 // "Communication"
+  * extension contains $note-url named note 0..*
+
+// /////////////////// COMMUNICATION SECTION //////////////////////////
+* section[report]
+  * ^short = "Report - all content in one section"
+// a proper code is needed
+  * code = $loinc#LP173421-1 // "Report"
   * extension contains $note-url named note 0..*
 
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
 Severity: #error 
-Expression: "entry.empty() and emptyReason.exists()"
+Expression: "entry.empty().not() or emptyReason.exists() or entry.extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
 
 Extension: ImDiagnosticReportReference
 Id:   im-composition-diagnosticReportReference
