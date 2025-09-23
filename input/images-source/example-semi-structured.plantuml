@@ -31,13 +31,13 @@
           * family = "Gutefrage"
           * given[+] = Test-Schust
     }
-    class LeftKnee <<ImagingStudy>>  [[ImagingStudySemiStructuredReport1]] {
+    class LeftKnee <<ImagingStudy>>  [[./ImagingStudy-ImagingStudySemiStructuredReport1.html]] {
         * series[+] "PD FatSat 3D (1.0mm) sagittal"
         * series[+] "T1 (2.5mm) axial"
         * series[+] "T2 (2.5mm) axial"
         * series[+] "PDW FatSat (2.5mm) axial"
     }
-    class RightKnee <<ImagingStudy>> [[ImagingStudySemiStructuredReport2]] {
+    class RightKnee <<ImagingStudy>> [[./ImagingStudy-ImagingStudySemiStructuredReport2.html]] {
         * series[+] "PD FatSat 3D (1.0mm) sagittal"
         * series[+] "T1 (2.5mm) axial"
         * series[+] "T2 (2.5mm) axial"

@@ -80,6 +80,6 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
 | EHDSImagingReport.body.recommendation.description | EuCarePlan.description |  |
 | EHDSImagingReport.[body.recommendation.carePlan](StructureDefinition-EHDSCarePlan.html) | [ImComposition](StructureDefinition-ImComposition.html).section[recommendation] |  |
 | EHDSImagingReport.[body.comparisonStudy](#ehdsimagingreport) | [ImComposition](StructureDefinition-ImComposition.html).section[comparison] |  |
-| EHDSImagingReport.[dicomStudyMetadata](#ehdsimagingstudy) | [ImImagingStudyManifest](StructureDefinition-ImImagingStudyManifest.html).entry[imagingstudy] |  |
+| EHDSImagingReport.[dicomStudyMetadata](#ehdsimagingstudy) | [ImImagingStudyManifest](https://build.fhir.org/ig/hl7-eu/imaging-manifest/) |  |
 | EHDSImagingReport.attachments[x] ([EHDSAttachment](StructureDefinition-EHDSAttachment.html), [EHDSMedia](StructureDefinition-EHDSMedia.html)) | [ImComposition](StructureDefinition-ImComposition.html).section[comparison] ; [ImDiagnosticReport](StructureDefinition-ImDiagnosticReport.html).media ; [ImFinding](StructureDefinition-ImFinding.html).derivedFrom |  |
 

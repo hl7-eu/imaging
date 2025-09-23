@@ -129,17 +129,17 @@ Communications captures what communications have been made with other care provi
 """
 
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
-* obeys hl7eu-im-dr-code
-* obeys hl7eu-im-dr-category
-* obeys hl7eu-im-dr-subject
-* obeys hl7eu-im-dr-study
-* obeys hl7eu-im-dr-order
-* obeys hl7eu-im-dr-history
-* obeys hl7eu-im-dr-procedure
-* obeys hl7eu-im-dr-impression
-* obeys hl7eu-im-dr-recommendation
-* obeys hl7eu-im-dr-communication
-* obeys hl7eu-im-dr-finding
+// * obeys hl7eu-im-dr-code
+// * obeys hl7eu-im-dr-category
+// * obeys hl7eu-im-dr-subject
+// * obeys hl7eu-im-dr-study
+// * obeys hl7eu-im-dr-order
+// * obeys hl7eu-im-dr-history
+// * obeys hl7eu-im-dr-procedure
+// * obeys hl7eu-im-dr-impression
+// * obeys hl7eu-im-dr-recommendation
+// * obeys hl7eu-im-dr-communication
+// * obeys hl7eu-im-dr-finding
 
 
 Extension: HL7IDRComparisonStudiesExt

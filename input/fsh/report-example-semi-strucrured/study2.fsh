@@ -1,6 +1,7 @@
 Instance: ImagingStudySemiStructuredReport2
 InstanceOf: ImImagingStudy
-Description: "ImagingStudy for the right foot"
+Title: "ImagingStudy for the right foot"
+Description: "Example ImagingStudy showing an MRI for the right foot"
 // Usage: #inline
 * identifier[studyInstanceUid]
   * type = MissingDicomTerminology#0020000D "Study Instance UID" 

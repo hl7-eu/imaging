@@ -4,6 +4,9 @@
 # (And include comments like this justifying why)
 # See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
 
+# Link used in an examples
+The link 'radiologiezentrum-bremen.de' for "radiologiezentrum-bremen.de" cannot be resolved
+
 # ConceptMaps in this IG also refer to structure definitions
 %refers to a resource that has the wrong type. Found StructureDefinition expecting one of [CodeSystem]
 Reference must be to a ValueSet, but found a StructureDefinition instead
