@@ -10,6 +10,7 @@ Usage: #example
 * effectiveDateTime = "2003-06-01"
 * language = #en-GB
 * basedOn // order
+  * type = #ServiceRequest
   * identifier
     * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"

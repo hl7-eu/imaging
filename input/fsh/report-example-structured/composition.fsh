@@ -13,6 +13,7 @@ Usage: #example
 * extension[basedOn] // order
   * url = "http://hl7.org/fhir/StructureDefinition/event-basedOn"
   * valueReference
+    * type = #ServiceRequest
     * identifier
       * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
       * system = "http://example.org/myhosptital/accessionsystem"
@@ -33,7 +34,7 @@ Usage: #example
 ///////////////////////////////////////////////////////////////////////
 * section[imagingstudy]
   * title = "Imaging Study"
-  * code = $loinc#18726-0
+  * code = $loinc#18726-0 "Radiology studies (set)"
   * entry[+] = Reference(ImagingStudStructuredReport)
 
 ///////////////////////////////////////////////////////////////////////
@@ -41,6 +42,12 @@ Usage: #example
 * section[order]
   * title = "Order"
   * code = $loinc#55115-0 "Requested imaging studies information Document"
+  * entry[+]
+    * type = #ServiceRequest
+    * identifier
+      * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+      * system = "http://example.org/myhosptital/accessionsystem"
+      * value  = "87654321" // invented - not there in the report
 
 ///////////////////////////////////////////////////////////////////////
 * section[history]
@@ -129,6 +136,7 @@ Usage: #example
   * entry[+] = Reference( StressWmsi17 )
   * entry[+] = Reference( StructuredKeyImageStress )
   * entry[+] = Reference( StructuredKeyImageRest )
+  
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
   * title = "Impression"

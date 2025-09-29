@@ -10,6 +10,7 @@ Usage: #example
 * extension[basedOn] // order
   * url = "http://hl7.org/fhir/StructureDefinition/event-basedOn"
   * valueReference
+    * type = #ServiceRequest
     * identifier
       * type
         * coding

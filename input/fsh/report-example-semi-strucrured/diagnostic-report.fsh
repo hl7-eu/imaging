@@ -11,6 +11,7 @@ Usage: #example
 * effectiveDateTime = "2025-05-08"
 * language = #de-DE
 * basedOn // order
+  * type = #ServiceRequest
   * identifier
     * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"

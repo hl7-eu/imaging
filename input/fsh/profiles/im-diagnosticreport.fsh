@@ -165,7 +165,7 @@ Context: DiagnosticReport
 * value[x] only Reference(ImProcedure)
 
 Extension: HL7IDRFindingExt
-Title: "HL7IDR Impression"
+Title: "HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
