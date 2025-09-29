@@ -43,7 +43,7 @@
           * given[+] = Test-Schust
     }
 
-    class Composition [[./Composition-CompositionSemiStructured.html]] {
+    class Composition [[./Composition-CompositionStructured.html]] {
         section[findings]
         -- note: "..."
         -- note: "..."
@@ -54,7 +54,7 @@
         -- entry: StructuredKeyImageStress
     }
 
-    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportSemiStructured.html]] {
+    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportStructured.html]] {
         note[finding] = "..."
         note[finding] = "..."
         note[finding] = "..."

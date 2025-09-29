@@ -70,14 +70,14 @@
           * family = "Gutefrage"
           * given[+] = Test-Schust
     }
-    class Ultrasound <<ImagingStudy>>  [[ImagingStudySemiStructuredReport1]] {
+    class Ultrasound <<ImagingStudy>>  [[ImagingStudyStructuredReport1]] {
         * series[+] "stress"
         * series[+] "rest"
     }
     
     class PDF <<Binary>>
 
-    class Composition [[./Composition-CompositionSemiStructured.html]] {
+    class Composition [[./Composition-CompositionStructured.html]] {
         section[imagingstudy]
         * entry: LeftKnee
         * entry: RightKnee
@@ -93,7 +93,7 @@
         * note: "..."
     }
 
-    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportSemiStructured.html]] {
+    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportStructured.html]] {
         note[finding] = "..."
         note[finding] = "..."
         note[finding] = "..."
