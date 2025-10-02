@@ -2,4 +2,5 @@
 {% include variable-definitions.md %}
 ## IP statements
 
-{% include ip-statements.xhtml %}
+TODO
+<!--  { include ip-statements.xhtml } -->

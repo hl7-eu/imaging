@@ -71,8 +71,8 @@ The development of this implementation guide is promoted by HL7 Europe, but real
 
 ### Cross Version Analysis
 
-{% include cross-version-analysis.xhtml %}
+TODO <!-- { include cross-version-analysis.xhtml } -->
 
 ### Global Profiles
 
-{% include globals-table.xhtml %}
+TODO <!-- { include globals-table.xhtml } -->

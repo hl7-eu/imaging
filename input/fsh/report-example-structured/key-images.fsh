@@ -5,8 +5,7 @@ Usage: #example
 * content
   * attachment
     * id = "ig-loader-structured-keyimage-rest.png"
-    * contentType = #image/png
-
+    
 Instance: StructuredKeyImageStress
 InstanceOf: DocumentReference
 Usage: #example
@@ -14,4 +13,4 @@ Usage: #example
 * content
   * attachment
     * id = "ig-loader-structured-keyimage-stress.png"
-    * contentType = #image/png
+    
