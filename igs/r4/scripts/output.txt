@@ -1,0 +1,47 @@
+info  Running SUSHI v3.15.0 (implements FHIR Shorthand specification v3.0.0)
+info  Arguments:
+info    /home/nly98977/SwArchives/hl7eu/bvdh-hl7eu-imaging
+info  No output path specified. Output to ..
+info  Using configuration file: /home/nly98977/SwArchives/hl7eu/bvdh-hl7eu-imaging/sushi-config.yaml
+info  Importing FSH text...
+info  Preprocessed 137 documents with 142 aliases.
+info  Imported 114 definitions and 32 instances.
+info  Resolved hl7.fhir.uv.tools.r5#latest to concrete version 0.4.1
+info  Loaded hl7.fhir.uv.tools.r5#0.4.1 with 94 resources
+info  Resolved hl7.terminology.r5#latest to concrete version 6.2.0
+info  Loaded hl7.terminology.r5#6.2.0 with 4323 resources
+info  Loaded hl7.fhir.uv.extensions#current with 765 resources
+info  Loaded hl7.fhir.eu.extensions#current with 16 resources
+info  Loaded hl7.fhir.eu.base.r5#current with 23 resources
+info  Loaded eu.ehds.models#current with 67 resources
+info  Loaded ihe.pharm.mpd#current with 40 resources
+info  Loaded fhir.dicom#2024.2.20240331 with 1354 resources
+info  Loaded hl7.fhir.r5.core#5.0.0 with 2968 resources
+info  Loaded virtual package sushi-local#LOCAL with 0 resources
+info  Converting FSH to FHIR resources...
+info  Converted 102 FHIR StructureDefinitions.
+info  Converted 3 FHIR CodeSystems.
+info  Converted 9 FHIR ValueSets.
+info  Converted 32 FHIR instances.
+info  Exporting FHIR resources as JSON...
+info  Exported 146 FHIR resources as JSON.
+info  Assembling Implementation Guide sources...
+info  Generated ImplementationGuide-hl7.fhir.eu.imaging.r5.json
+info  Assembled Implementation Guide sources; ready for IG Publisher.
+
+========================= SUSHI RESULTS ===========================
+|  -------------------------------------------------------------  |
+| |    Profiles   |  Extensions  |   Logicals   |   Resources   | |
+| |-------------------------------------------------------------| |
+| |      98       |      4       |      0       |       0       | |
+|  -------------------------------------------------------------  |
+|  -------------------------------------------------------------  |
+| |      ValueSets     |    CodeSystems    |     Instances      | |
+| |-------------------------------------------------------------| |
+| |         9          |         3         |         32         | |
+|  -------------------------------------------------------------  |
+|                                                                 |
+===================================================================
+| You're making waves now!               0 Errors      0 Warnings |
+===================================================================
+

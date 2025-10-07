@@ -1,0 +1,22 @@
+{% if include.cc.text.exists() %}
+  <p style="margin-bottom: 5px;">{{include.text}}</p>
+{% endif %}
+{% if include.cc.coding.exists() %}
+  {% for coding in include.cc.coding %}
+      <p style="margin-bottom: 5px;">
+        {% if coding.display.exists() %}
+          <span>{{coding.display}}</span>
+        {% endif %}
+        {% if coding.system.exists() or coding.code.exists() %}
+          <span>(</span>
+            {% if coding.system.exists() %}
+              <span>{{coding.system}}:</span>
+            {% endif %}
+            {% if coding.code.exists() %}
+              <span>{{coding.code}}</span>
+            {% endif %}
+          <span>)</span>
+        {% endif %}
+      </p>
+  {% endfor %}
+{% endif %}

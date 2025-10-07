@@ -1,0 +1,284 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSAttachment",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment",
+  "version": "0.1.0",
+  "name": "EHDSAttachment",
+  "title": "Attachment model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "5.0.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSAttachment",
+        "path": "EHDSAttachment",
+        "short": "Attachment model",
+        "definition": "EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.contentType",
+        "path": "EHDSAttachment.contentType",
+        "short": "Mime type of the content, with charset etc.",
+        "definition": "Mime type of the content, with charset etc.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAttachment.contentType",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP-13"
+        }
+      },
+      {
+        "id": "EHDSAttachment.language",
+        "path": "EHDSAttachment.language",
+        "short": "Human language of the content",
+        "definition": "Human language of the content",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAttachment.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSAttachment.data",
+        "path": "EHDSAttachment.data",
+        "short": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
+        "definition": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAttachment.data",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "base64Binary"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.url",
+        "path": "EHDSAttachment.url",
+        "short": "A location where the data can be accessed.",
+        "definition": "A location where the data can be accessed.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAttachment.url",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "uri"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.size",
+        "path": "EHDSAttachment.size",
+        "short": "The number of bytes of data that make up this attachment (before base64 encoding).",
+        "definition": "The number of bytes of data that make up this attachment (before base64 encoding).",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAttachment.size",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "integer64"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.title",
+        "path": "EHDSAttachment.title",
+        "short": "A label or set of text to display in place of the data.",
+        "definition": "A label or set of text to display in place of the data.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSAttachment.title",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSAttachment",
+        "path": "EHDSAttachment",
+        "short": "Attachment model",
+        "definition": "EHDS refined base model for This type is for containing or referencing attachments - additional data content defined in other formats. The most common use of this type is to include images or reports in some report format such as PDF. However, it can be used for any data that has a MIME type."
+      },
+      {
+        "id": "EHDSAttachment.contentType",
+        "path": "EHDSAttachment.contentType",
+        "short": "Mime type of the content, with charset etc.",
+        "definition": "Mime type of the content, with charset etc.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP-13"
+        }
+      },
+      {
+        "id": "EHDSAttachment.language",
+        "path": "EHDSAttachment.language",
+        "short": "Human language of the content",
+        "definition": "Human language of the content",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSAttachment.data",
+        "path": "EHDSAttachment.data",
+        "short": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
+        "definition": "The actual data of the attachment - a sequence of bytes, base64 encoded.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "base64Binary"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.url",
+        "path": "EHDSAttachment.url",
+        "short": "A location where the data can be accessed.",
+        "definition": "A location where the data can be accessed.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "uri"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.size",
+        "path": "EHDSAttachment.size",
+        "short": "The number of bytes of data that make up this attachment (before base64 encoding).",
+        "definition": "The number of bytes of data that make up this attachment (before base64 encoding).",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer64"
+          }
+        ]
+      },
+      {
+        "id": "EHDSAttachment.title",
+        "path": "EHDSAttachment.title",
+        "short": "A label or set of text to display in place of the data.",
+        "definition": "A label or set of text to display in place of the data.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+```mermaid
+classDiagram
+direction LR
+```

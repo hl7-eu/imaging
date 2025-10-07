@@ -1,0 +1,1016 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSLaboratoryObservation",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation",
+  "version": "0.1.0",
+  "name": "EHDSLaboratoryObservation",
+  "title": "Laboratory observation model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for Observation performed by laboratory",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "0.1.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSLaboratoryObservation",
+        "path": "EHDSLaboratoryObservation",
+        "short": "Laboratory observation model",
+        "definition": "EHDS refined base model for Observation performed by laboratory",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header",
+        "path": "EHDSLaboratoryObservation.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.subject",
+        "path": "EHDSLaboratoryObservation.header.subject",
+        "short": "Patient who is receiving health care. This patient might be different from the direct subject of the observation.",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.identifier",
+        "path": "EHDSLaboratoryObservation.header.identifier",
+        "short": "Business identifier for the object",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.authorship",
+        "path": "EHDSLaboratoryObservation.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.authorship.author[x]",
+        "path": "EHDSLaboratoryObservation.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.authorship.datetime",
+        "path": "EHDSLaboratoryObservation.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.lastUpdate",
+        "path": "EHDSLaboratoryObservation.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.status",
+        "path": "EHDSLaboratoryObservation.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 Observation status"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.statusReason[x]",
+        "path": "EHDSLaboratoryObservation.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.language",
+        "path": "EHDSLaboratoryObservation.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.version",
+        "path": "EHDSLaboratoryObservation.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.presentedForm",
+        "path": "EHDSLaboratoryObservation.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.header.directSubject[x]",
+        "path": "EHDSLaboratoryObservation.header.directSubject[x]",
+        "short": "The direct subject of the observation if different from the patient (subject of care), e.g. an observation of an implanted device",
+        "definition": "The direct subject of the observation if different from the patient (subject of care), e.g. an observation of an implanted device",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.header.directSubject[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatientAnimal"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLocation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.observationDate[x]",
+        "path": "EHDSLaboratoryObservation.observationDate[x]",
+        "short": "Clinically relevant time or time period for the observation",
+        "definition": "Clinically relevant time or time period for the observation",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.observationDate[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          },
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.code",
+        "path": "EHDSLaboratoryObservation.code",
+        "short": "Observation code",
+        "definition": "Code representing the observation using the agreed code systems.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.code",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "LOINC, NPU"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.originalName",
+        "path": "EHDSLaboratoryObservation.originalName",
+        "short": "Original (conventional) name of the observation",
+        "definition": "Original (conventional) name of the observation",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.originalName",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.method",
+        "path": "EHDSLaboratoryObservation.method",
+        "short": "Observation method",
+        "definition": "Observation method (measurement principle) to obtain the result.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.method",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.order",
+        "path": "EHDSLaboratoryObservation.order",
+        "short": "Identifies order and order placer this observation belongs to",
+        "definition": "Identifies order and order placer this observation belongs to",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.order",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSServiceRequest"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.performer",
+        "path": "EHDSLaboratoryObservation.performer",
+        "short": "Performer",
+        "definition": "Performer",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.performer",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.anatomicLocation",
+        "path": "EHDSLaboratoryObservation.anatomicLocation",
+        "short": "Anatomic location and laterality where the observation was performed.",
+        "definition": "Anatomic location and laterality where the observation was performed.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.anatomicLocation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSBodyStructure"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.result",
+        "path": "EHDSLaboratoryObservation.result",
+        "short": "Result of the observation including text, numeric and coded results of the measurement and measurement uncertainty. Content of the observation result will vary according to the type of the observation.",
+        "definition": "Result of the observation including text, numeric and coded results of the measurement and measurement uncertainty. Content of the observation result will vary according to the type of the observation.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.result",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.result.value[x]",
+        "path": "EHDSLaboratoryObservation.result.value[x]",
+        "short": "Observation result value according to the type of observation",
+        "definition": "Observation result value according to the type of observation",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.result.value[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          },
+          {
+            "code": "Quantity"
+          },
+          {
+            "code": "Range"
+          },
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "UCUM for units, SNOMED CT for coded results"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.result.uncertainty",
+        "path": "EHDSLaboratoryObservation.result.uncertainty",
+        "short": "Measurement uncertainty type and interval if needed.",
+        "definition": "Measurement uncertainty type and interval if needed.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.result.uncertainty",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.dataAbsentReason",
+        "path": "EHDSLaboratoryObservation.dataAbsentReason",
+        "short": "Provides a reason why the expected value in the element Observation.value[x] is missing.",
+        "definition": "Provides a reason why the expected value in the element Observation.value[x] is missing.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.dataAbsentReason",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 Data absent reason"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.referenceRange",
+        "path": "EHDSLaboratoryObservation.referenceRange",
+        "short": "Reference range, multiple reference ranges of different types culd by provided. Provides guide for interpretation of result.",
+        "definition": "Reference range, multiple reference ranges of different types culd by provided. Provides guide for interpretation of result.",
+        "comment": "Reference ranges are usually implied only for a numeric scale type. Use of the same units for reference range and value is implied.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.referenceRange",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.interpretation",
+        "path": "EHDSLaboratoryObservation.interpretation",
+        "short": "Information about reference intervals and result interpretation.",
+        "definition": "Information about reference intervals and result interpretation.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.interpretation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT, HL7 ObservationInterpretation"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.resultDescription",
+        "path": "EHDSLaboratoryObservation.resultDescription",
+        "short": "Comments and narrative representation of the observation result and findings.",
+        "definition": "Comments and narrative representation of the observation result and findings.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.resultDescription",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component",
+        "path": "EHDSLaboratoryObservation.component",
+        "short": "Component in case the observation consists of multiple sub-observations (e.g. blood pressure).",
+        "definition": "Component in case the observation consists of multiple sub-observations (e.g. blood pressure).",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.component",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.code",
+        "path": "EHDSLaboratoryObservation.component.code",
+        "short": "Code representing the observation using the agreed code systems.",
+        "definition": "Code representing the observation using the agreed code systems.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.component.code",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "LOINC, NPU, SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.result",
+        "path": "EHDSLaboratoryObservation.component.result",
+        "short": "Result of the observation including text, numeric and coded results of the measurement and measurement uncertainty. Content of the observation result will vary according to the type of the observation.",
+        "definition": "Result of the observation including text, numeric and coded results of the measurement and measurement uncertainty. Content of the observation result will vary according to the type of the observation.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.component.result",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.result.value[x]",
+        "path": "EHDSLaboratoryObservation.component.result.value[x]",
+        "short": "Observation result value according to the type of observation",
+        "definition": "Observation result value according to the type of observation",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.component.result.value[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          },
+          {
+            "code": "Quantity"
+          },
+          {
+            "code": "Range"
+          },
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.result.uncertainty",
+        "path": "EHDSLaboratoryObservation.component.result.uncertainty",
+        "short": "Measurement uncertainty type and interval if needed.",
+        "definition": "Measurement uncertainty type and interval if needed.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.component.result.uncertainty",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.dataAbsentReason",
+        "path": "EHDSLaboratoryObservation.component.dataAbsentReason",
+        "short": "Provides a reason why the expected value in the element Observation.value[x] is missing.",
+        "definition": "Provides a reason why the expected value in the element Observation.value[x] is missing.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSObservation.component.dataAbsentReason",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 Data absent reason"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.referenceRange",
+        "path": "EHDSLaboratoryObservation.component.referenceRange",
+        "short": "Reference range, multiple reference ranges of different types culd by provided. Provides guide for interpretation of result.",
+        "definition": "Reference range, multiple reference ranges of different types culd by provided. Provides guide for interpretation of result.",
+        "comment": "Reference ranges are usually implied only for a numeric scale type. Use of the same units for reference range and value is implied.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.component.referenceRange",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.component.interpretation",
+        "path": "EHDSLaboratoryObservation.component.interpretation",
+        "short": "Information about reference intervals and result interpretation.",
+        "definition": "Information about reference intervals and result interpretation.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.component.interpretation",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT, HL7 ObservationInterpretation"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.derivedFrom[x]",
+        "path": "EHDSLaboratoryObservation.derivedFrom[x]",
+        "short": "Reference to the related resource from which the observation has been made. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.",
+        "definition": "Reference to the related resource from which the observation has been made. For example, a calculated anion gap or a fetal measurement based on an ultrasound image.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.derivedFrom[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImagingStudy"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.triggeredBy[x]",
+        "path": "EHDSLaboratoryObservation.triggeredBy[x]",
+        "short": "References to the observation(s) that triggered the performance of this observation.",
+        "definition": "References to the observation(s) that triggered the performance of this observation.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.triggeredBy[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.hasMember[x]",
+        "path": "EHDSLaboratoryObservation.hasMember[x]",
+        "short": "This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.",
+        "definition": "This observation is a group observation (e.g. a battery, a panel of tests, a set of vital sign measurements) that includes the target as a member of the group.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSObservation.hasMember[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.testKit",
+        "path": "EHDSLaboratoryObservation.testKit",
+        "short": "Test kit",
+        "definition": "Laboratory test kit used during measurement.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSLaboratoryObservation.testKit",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.calibrator",
+        "path": "EHDSLaboratoryObservation.calibrator",
+        "short": "Calibrator",
+        "definition": "Information about which end-user calibrator the laboratory used for the measurement to indicate the metrological traceability chain. ",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSLaboratoryObservation.calibrator",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.accreditationStatus",
+        "path": "EHDSLaboratoryObservation.accreditationStatus",
+        "short": "Accreditation status",
+        "definition": "Accreditation status of the laboratory for the particular observation.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSLaboratoryObservation.accreditationStatus",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "Code system to be specified"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.previousResults",
+        "path": "EHDSLaboratoryObservation.previousResults",
+        "short": "Previous results",
+        "definition": "Previous results of the same observation",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSLaboratoryObservation.previousResults",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSLaboratoryObservation",
+        "path": "EHDSLaboratoryObservation",
+        "short": "Laboratory observation model",
+        "definition": "EHDS refined base model for Observation performed by laboratory"
+      },
+      {
+        "id": "EHDSLaboratoryObservation.code",
+        "path": "EHDSLaboratoryObservation.code",
+        "binding": {
+          "strength": "preferred",
+          "description": "LOINC, NPU"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.testKit",
+        "path": "EHDSLaboratoryObservation.testKit",
+        "short": "Test kit",
+        "definition": "Laboratory test kit used during measurement.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.calibrator",
+        "path": "EHDSLaboratoryObservation.calibrator",
+        "short": "Calibrator",
+        "definition": "Information about which end-user calibrator the laboratory used for the measurement to indicate the metrological traceability chain. ",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSLaboratoryObservation.accreditationStatus",
+        "path": "EHDSLaboratoryObservation.accreditationStatus",
+        "short": "Accreditation status",
+        "definition": "Accreditation status of the laboratory for the particular observation.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "Code system to be specified"
+        }
+      },
+      {
+        "id": "EHDSLaboratoryObservation.previousResults",
+        "path": "EHDSLaboratoryObservation.previousResults",
+        "short": "Previous results",
+        "definition": "Previous results of the same observation",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSLaboratoryObservation"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,403 @@
+info  Running SUSHI v3.15.1 (implements FHIR Shorthand specification v3.0.0)
+info  Arguments:
+info    /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4
+info  No output path specified. Output to igs/r4
+info  Using configuration file: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/sushi-config.yaml
+info  Importing FSH text...
+info  Preprocessed 49 documents with 158 aliases.
+info  Imported 42 definitions and 66 instances.
+info  Loaded virtual package sushi-r5forR4#1.0.0 with 7 resources
+info  Resolved hl7.fhir.uv.tools.r4#latest to concrete version 0.8.0
+info  Loaded hl7.fhir.uv.tools.r4#0.8.0 with 110 resources
+info  Loaded hl7.terminology.r5#6.3.0 with 4374 resources
+info  Loaded hl7.fhir.uv.extensions#5.3.0-ballot with 823 resources
+info  Loaded hl7.fhir.uv.ips#1.1.0 with 104 resources
+info  Loaded hl7.fhir.eu.extensions#current with 11 resources
+info  Loaded hl7.fhir.eu.base-r5#current with 25 resources
+info  Loaded fhir.dicom#2025.2.20250411 with 1398 resources
+info  Loaded hl7.fhir.r4.core#4.0.1 with 4581 resources
+info  Loaded virtual package sushi-local#LOCAL with 59 resources
+info  Converting FSH to FHIR resources...
+error No definition for the type "ImImagingSelection" could be found.
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-composition.fsh
+  Line: 148
+error The type "Reference(ImKeyImageImagingSelection)" does not match any of the allowed types: Reference(http://hl7.org/fhir/StructureDefinition/Resource)
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-composition.fsh
+  Line: 161
+error The type "Reference(ImKeyImageImagingSelection)" does not match any of the allowed types: Reference(http://hl7.org/fhir/StructureDefinition/Resource)
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-composition.fsh
+  Line: 176
+error No element found at path note.extension for ContainsRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 46
+error No element found at path note.extension[annotation-type] for CardRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 46
+error No element found at path note.extension[annotation-type].valueCodeableConcept for BindingRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 47
+error No element found at path study for OnlyRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 73 - 74
+error No element found at path study for CaretValueRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 75
+error No element found at path study for CaretValueRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 76
+error No element found at path composition for CardRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 81
+error No element found at path composition for CaretValueRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 82
+error No element found at path composition for OnlyRule in ImDiagnosticReport, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 83
+error No definition for the type "ImagingSelection" could be found.
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-diagnosticreport.fsh
+  Line: 150
+error No element found at path note.extension[annotation-type].extension for CardRule in ImDiagnosticReport, skipping rule
+error The element or path you referenced does not exist: binding.additional[0].purpose
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-gestational-age-observation.fsh
+  Line: 13
+error The element or path you referenced does not exist: binding.additional[0].valueSet
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-gestational-age-observation.fsh
+  Line: 14
+error No element found at path bodySite for CardRule in ImUnstructuredDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Line: 42
+error No element found at path modality for CardRule in ImUnstructuredDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Line: 43
+error No element found at path content.profile for CardRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Line: 53
+error No element found at path content.profile for CaretValueRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 22
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Applied on Line: 54
+error No element found at path content.profile for CaretValueRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 23
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Applied on Line: 54
+error No element found at path content.profile for CaretValueRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 24
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Applied on Line: 54
+error No element found at path content.profile for CaretValueRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 25
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Applied on Line: 54
+error No element found at path content.profile for ContainsRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Line: 55
+error No element found at path content.profile[hl7eu-imaging-report] for CardRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Line: 55
+error No element found at path content.profile[hl7eu-imaging-report].valueCanonical for AssignmentRule in ImReportDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-ihemhd-documentreference.fsh
+  Line: 56
+error No element found at path category for CaretValueRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 22
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Applied on Line: 9
+error No element found at path category for CaretValueRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 23
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Applied on Line: 9
+error No element found at path category for CaretValueRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 24
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Applied on Line: 9
+error No element found at path category for CaretValueRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 25
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Applied on Line: 9
+error No element found at path category for ContainsRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Line: 10
+error No element found at path category[imaging] for CardRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Line: 10
+error No element found at path category[imaging] for AssignmentRule in ImImagingDevice, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-imaging-device..fsh
+  Line: 11
+error No element found at path basedOn for CaretValueRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 22
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 26
+error No element found at path basedOn for CaretValueRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 23
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 26
+error No element found at path basedOn for CaretValueRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 24
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 26
+error No element found at path basedOn for CaretValueRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/rulesets/common_rulesets.fsh
+  Line: 25
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 26
+error No element found at path basedOn for ContainsRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Line: 27
+error No element found at path basedOn[imorderaccession] for CardRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Line: 27
+error No element found at path basedOn[imorderaccession] for OnlyRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-identifiers.fsh
+  Line: 19
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 28
+error No element found at path basedOn[imorderaccession].identifier for CardRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-identifiers.fsh
+  Line: 20
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 28
+error No element found at path basedOn[imorderaccession].identifier for OnlyRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-identifiers.fsh
+  Line: 21
+  Applied in File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Applied on Line: 28
+error No element found at path modality for CardRule in ImKeyImageDocumentReference, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-documentreference.fsh
+  Line: 38 - 39
+error Parent ImImagingSelection not found for ImKeyImageImagingSelection
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-keyimage-imagingselection.fsh
+  Line: 3 - 19
+error Cannot bind value set to Reference; must be coded (code, Coding, CodeableConcept, Quantity, CodeableReference), the data types (string, uri), or a logical model with the #can-bind characteristic.
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-order.fsh
+  Line: 20
+error No definition for the type "ImSrInstanceImagingSelection" could be found.
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-radiationdose-observation.fsh
+  Line: 29
+info  Converted 29 FHIR StructureDefinitions.
+info  Converted 2 FHIR CodeSystems.
+info  Converted 11 FHIR ValueSets.
+warn  http://hl7.org/fhir/StructureDefinition/Practitioner|5.0.0 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/authors-organizatiions.fsh
+  Line: 5
+warn  http://hl7.org/fhir/StructureDefinition/Organization|5.0.0 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/authors-organizatiions.fsh
+  Line: 6
+error The element or path you referenced does not exist: version
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/composition.fsh
+  Line: 25
+error The element or path you referenced does not exist: study
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 22
+error The element or path you referenced does not exist: study[1]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 23
+error The element or path you referenced does not exist: composition
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 26
+error The element or path you referenced does not exist: note
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 27
+error The element or path you referenced does not exist: note.extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 28
+error The element or path you referenced does not exist: note.text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 29
+error The element or path you referenced does not exist: note[1]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 36
+error The element or path you referenced does not exist: note[1].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 37
+error The element or path you referenced does not exist: note[1].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 38
+error The element or path you referenced does not exist: presentedForm.pages
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/diagnostic-report.fsh
+  Line: 50
+error The element or path you referenced does not exist: series.bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study1.fsh
+  Line: 24
+error The element or path you referenced does not exist: series[1].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study1.fsh
+  Line: 33
+error The element or path you referenced does not exist: series[2].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study1.fsh
+  Line: 42
+error The element or path you referenced does not exist: series[3].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study1.fsh
+  Line: 51
+error The element or path you referenced does not exist: series.bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study2.fsh
+  Line: 24
+error The element or path you referenced does not exist: series[1].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study2.fsh
+  Line: 33
+error The element or path you referenced does not exist: series[2].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study2.fsh
+  Line: 42
+error The element or path you referenced does not exist: series[3].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-semi-strucrured/study2.fsh
+  Line: 51
+warn  http://hl7.org/fhir/StructureDefinition/Practitioner|5.0.0 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/Practitioner|4.0.1
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/authors-organizatiions.fsh
+  Line: 5
+warn  http://hl7.org/fhir/StructureDefinition/Organization|5.0.0 was requested, but SUSHI found http://hl7.org/fhir/StructureDefinition/Organization|4.0.1
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/authors-organizatiions.fsh
+  Line: 6
+error The element or path you referenced does not exist: version
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/composition.fsh
+  Line: 22 - 23
+error The element or path you referenced does not exist: study
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 21 - 22
+error The element or path you referenced does not exist: composition
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 26 - 27
+error The element or path you referenced does not exist: note
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 40
+error The element or path you referenced does not exist: note.extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 41
+error The element or path you referenced does not exist: note.text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 42
+error The element or path you referenced does not exist: note[1]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 43
+error The element or path you referenced does not exist: note[1].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 44
+error The element or path you referenced does not exist: note[1].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 45
+error The element or path you referenced does not exist: note[2]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 46
+error The element or path you referenced does not exist: note[2].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 47
+error The element or path you referenced does not exist: note[2].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 48
+error The element or path you referenced does not exist: note[3]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 49
+error The element or path you referenced does not exist: note[3].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 50
+error The element or path you referenced does not exist: note[3].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 51
+error The element or path you referenced does not exist: note[4]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 52
+error The element or path you referenced does not exist: note[4].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 53
+error The element or path you referenced does not exist: note[4].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 54
+error The element or path you referenced does not exist: note[5]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 55
+error The element or path you referenced does not exist: note[5].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 56
+error The element or path you referenced does not exist: note[5].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 57
+error The element or path you referenced does not exist: note[6]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 58
+error The element or path you referenced does not exist: note[6].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 59
+error The element or path you referenced does not exist: note[6].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 60
+error The element or path you referenced does not exist: note[7]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 61
+error The element or path you referenced does not exist: note[7].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 62
+error The element or path you referenced does not exist: note[7].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 63
+error The element or path you referenced does not exist: note[8]
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 64
+error The element or path you referenced does not exist: note[8].extension[annotation-type].valueCodeableConcept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 65
+error The element or path you referenced does not exist: note[8].text
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 66
+error The element or path you referenced does not exist: presentedForm.pages
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/diagnostic-report.fsh
+  Line: 114
+error The element or path you referenced does not exist: series.bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/imagingstudy.fsh
+  Line: 25
+error The element or path you referenced does not exist: series[1].bodySite.concept
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-structured/imagingstudy.fsh
+  Line: 34
+error The element or path you referenced does not exist: modality
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/report-example-unstructured/unstructured-example.fsh
+  Line: 13
+info  Converted 66 FHIR instances.
+error No element found at path extension[reason].valueCodeableConcept.text for DicomToImOrder, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-order.fsh
+  Line: 60
+error No element found at path extension[reason].valueCodeableConcept for DicomToImOrder, skipping rule
+  File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-order.fsh
+  Line: 62
+info  Exporting FHIR resources as JSON...
+info  Exported 105 FHIR resources as JSON.
+info  Assembling Implementation Guide sources...
+warn  
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Your ig.ini file does NOT point to the Implementation Guide resource that SUSHI generates. As a
+result, the IG Publisher will IGNORE the SUSHI-generated ImplementationGuide resource. To fix this,
+please do one of the following:
+- Update your ig.ini file with 'ig = fsh-generated/resources/ImplementationGuide-hl7.fhir.eu.imaging-r4.json' (recommended), or
+- Update your sushi-config.yaml file with 'FSHOnly: true' to tell SUSHI NOT to generate the IG resource
+
+
+info  Generated ImplementationGuide-hl7.fhir.eu.imaging-r4.json
+info  Assembled Implementation Guide sources; ready for IG Publisher.
+
+========================= SUSHI RESULTS ===========================
+|  -------------------------------------------------------------  |
+| |    Profiles   |  Extensions  |   Logicals   |   Resources   | |
+| |-------------------------------------------------------------| |
+| |      18       |      10      |      0       |       0       | |
+|  -------------------------------------------------------------  |
+|  -------------------------------------------------------------  |
+| |      ValueSets     |    CodeSystems    |     Instances      | |
+| |-------------------------------------------------------------| |
+| |         11         |         2         |         66         | |
+|  -------------------------------------------------------------  |
+|                                                                 |
+===================================================================
+| Something went eely wrong there.      101 Errors     5 Warnings |
+===================================================================
+|    You are using SUSHI version 3.15.1, but the latest stable    |
+| release is version 3.16.5. To install the latest release, run:  |
+|                    npm install -g fsh-sushi                     |
+===================================================================
+
