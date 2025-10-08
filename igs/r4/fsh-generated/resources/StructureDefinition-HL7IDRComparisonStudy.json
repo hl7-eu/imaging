@@ -1,0 +1,54 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HL7IDRComparisonStudy",
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRComparisonStudy",
+  "name": "HL7IDRComparisonStudiesExt",
+  "title": "HL7IDR DiagnosticReport Comparison Study",
+  "status": "draft",
+  "description": "Studies used for comparison in part of diagnostic reporting",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "expression": "DiagnosticReport",
+      "type": "element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "HL7IDR DiagnosticReport Comparison Study",
+        "definition": "Studies used for comparison in part of diagnostic reporting"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRComparisonStudy"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy",
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingSelection"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

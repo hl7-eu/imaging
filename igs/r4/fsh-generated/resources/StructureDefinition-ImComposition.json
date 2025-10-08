@@ -1,0 +1,1079 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImComposition",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImComposition",
+  "name": "ImComposition",
+  "title": "Composition: Imaging Report",
+  "status": "draft",
+  "description": "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Composition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Composition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Composition",
+        "path": "Composition",
+        "short": "Imaging Report composition",
+        "definition": "Imaging Study Report composition.\n\nA composition is a set of healthcare-related information that is assembled together into a single logical document that \nprovides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard \nto who is making the statement.\n\nWhile a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, \nof which the Composition is the first resource contained.\n\n\nThe `text` field of each section SHALL contain a textual representation of all listed entries."
+      },
+      {
+        "id": "Composition.extension",
+        "path": "Composition.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.extension:basedOn",
+        "path": "Composition.extension",
+        "sliceName": "basedOn",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/event-basedOn|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.extension:informationRecipient",
+        "path": "Composition.extension",
+        "sliceName": "informationRecipient",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.eu/fhir/StructureDefinition/information-recipient"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.extension:diagnosticreport-reference",
+        "path": "Composition.extension",
+        "sliceName": "diagnosticreport-reference",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/im-composition-diagnosticReportReference"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.identifier",
+        "path": "Composition.identifier",
+        "short": "Report identifier",
+        "definition": "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions",
+        "comment": "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists",
+        "min": 1
+      },
+      {
+        "id": "Composition.type",
+        "path": "Composition.type",
+        "short": "Type of Imaging Diagnostic Report",
+        "definition": "Defines the document type, it is recommended to take this from the suggested LOINC set.",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.eu/fhir/imaging-r4/ValueSet/ImImagingReportTypesEuVS"
+        }
+      },
+      {
+        "id": "Composition.category",
+        "path": "Composition.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "Composition.category:diagnostic-service",
+        "path": "Composition.category",
+        "sliceName": "diagnostic-service",
+        "min": 1,
+        "max": "1",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://hl7.org/fhir/ValueSet/diagnostic-service-sections"
+        }
+      },
+      {
+        "id": "Composition.author",
+        "path": "Composition.author",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this.resolve()"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.author:author",
+        "path": "Composition.author",
+        "sliceName": "author",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.author:authoringDevice",
+        "path": "Composition.author",
+        "sliceName": "authoringDevice",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Device"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.author:organization",
+        "path": "Composition.author",
+        "sliceName": "organization",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.attester",
+        "path": "Composition.attester",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "mode"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.attester:legalAuthenticator",
+        "path": "Composition.attester",
+        "sliceName": "legalAuthenticator",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Composition.attester:legalAuthenticator.mode",
+        "path": "Composition.attester.mode",
+        "patternCode": "legal"
+      },
+      {
+        "id": "Composition.attester:legalAuthenticator.time",
+        "path": "Composition.attester.time",
+        "min": 1
+      },
+      {
+        "id": "Composition.attester:legalAuthenticator.party",
+        "path": "Composition.attester.party",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.attester:resultValidator",
+        "path": "Composition.attester",
+        "sliceName": "resultValidator",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Composition.attester:resultValidator.mode",
+        "path": "Composition.attester.mode",
+        "patternCode": "professional"
+      },
+      {
+        "id": "Composition.attester:resultValidator.time",
+        "path": "Composition.attester.time",
+        "min": 1
+      },
+      {
+        "id": "Composition.attester:resultValidator.party",
+        "path": "Composition.attester.party",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.custodian",
+        "path": "Composition.custodian",
+        "short": "Organization that manages the Imaging Report",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section",
+        "path": "Composition.section",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "code"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 4,
+        "constraint": [
+          {
+            "key": "eu-imaging-composition-1",
+            "severity": "error",
+            "human": "When a section is empty, the emptyReason extension SHALL be present.",
+            "expression": "entry.empty().not() or emptyReason.exists() or entry.extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()",
+            "source": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImComposition"
+          }
+        ]
+      },
+      {
+        "id": "Composition.section.code",
+        "path": "Composition.section.code",
+        "min": 1
+      },
+      {
+        "id": "Composition.section.emptyReason",
+        "path": "Composition.section.emptyReason",
+        "binding": {
+          "strength": "preferred",
+          "valueSet": "http://hl7.eu/fhir/imaging-r4/ValueSet/ImSectionEmptyReason"
+        }
+      },
+      {
+        "id": "Composition.section:imagingstudy",
+        "path": "Composition.section",
+        "sliceName": "imagingstudy",
+        "short": "Imaging Study",
+        "definition": "This section holds information related to the imaging studies covered by this report.",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:imagingstudy.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:imagingstudy.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:imagingstudy.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "18726-0",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:imagingstudy.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "Composition.section:imagingstudy.entry:imagingstudy",
+        "path": "Composition.section.entry",
+        "sliceName": "imagingstudy",
+        "short": "Imaging Study Reference",
+        "definition": "This entry holds a reference to the Imaging Study instance that is associated with this Composition.",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:order",
+        "path": "Composition.section",
+        "sliceName": "order",
+        "short": "Order",
+        "definition": "This section holds information related to the order for the imaging study.",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:order.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:order.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:order.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "55115-0",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:order.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.section:order.entry:order",
+        "path": "Composition.section.entry",
+        "sliceName": "order",
+        "short": "Order reference",
+        "definition": "This entry holds a reference to the order for the Imaging Study and report.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImOrder"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:history",
+        "path": "Composition.section",
+        "sliceName": "history",
+        "short": "History",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:history.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:history.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:history.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "11329-0",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:procedure",
+        "path": "Composition.section",
+        "sliceName": "procedure",
+        "short": "Procedure",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:procedure.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:procedure.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:procedure.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "55111-9",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:procedure.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.section:procedure.entry:procedure",
+        "path": "Composition.section.entry",
+        "sliceName": "procedure",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImProcedure"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:comparison",
+        "path": "Composition.section",
+        "sliceName": "comparison",
+        "short": "History",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:comparison.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:comparison.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:comparison.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "18834-2",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:comparison.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.section:comparison.entry:comparedstudy",
+        "path": "Composition.section.entry",
+        "sliceName": "comparedstudy",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy",
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingSelection"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:findings",
+        "path": "Composition.section",
+        "sliceName": "findings",
+        "short": "Findings",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:findings.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:findings.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:findings.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "59776-5",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:findings.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.section:findings.entry:finding",
+        "path": "Composition.section.entry",
+        "sliceName": "finding",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImFinding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:findings.entry:keyimage",
+        "path": "Composition.section.entry",
+        "sliceName": "keyimage",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageDocumentReference",
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageImagingSelection"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:impression",
+        "path": "Composition.section",
+        "sliceName": "impression",
+        "short": "Impressions",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:impression.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:impression.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:impression.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "19005-8",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:impression.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.section:impression.entry:finding",
+        "path": "Composition.section.entry",
+        "sliceName": "finding",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImFinding"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:impression.entry:impression",
+        "path": "Composition.section.entry",
+        "sliceName": "impression",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/Condition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:impression.entry:keyimage",
+        "path": "Composition.section.entry",
+        "sliceName": "keyimage",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageDocumentReference",
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageImagingSelection"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:recommendation",
+        "path": "Composition.section",
+        "sliceName": "recommendation",
+        "short": "Recommendations",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:recommendation.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:recommendation.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:recommendation.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "18783-1",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:recommendation.entry",
+        "path": "Composition.section.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Composition.section:recommendation.entry:suggestion",
+        "path": "Composition.section.entry",
+        "sliceName": "suggestion",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/CarePlan",
+              "http://hl7.org/fhir/StructureDefinition/ServiceRequest"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:communication",
+        "path": "Composition.section",
+        "sliceName": "communication",
+        "short": "Communications",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:communication.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:communication.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:communication.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "73568-8",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Composition.section:report",
+        "path": "Composition.section",
+        "sliceName": "report",
+        "short": "Report - all content in one section",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "Composition.section:report.extension",
+        "path": "Composition.section.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "Composition.section:report.extension:note",
+        "path": "Composition.section.extension",
+        "sliceName": "note",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/note|5.3.0-ballot"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Composition.section:report.code",
+        "path": "Composition.section.code",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "LP173421-1",
+              "system": "http://loinc.org"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

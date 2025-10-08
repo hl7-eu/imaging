@@ -1,0 +1,56 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HL7IDRImpression",
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRImpression",
+  "name": "HL7IDRImpressionExt",
+  "title": "HL7IDR Impression",
+  "status": "draft",
+  "description": "Impression in the imaging report",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "expression": "DiagnosticReport",
+      "type": "element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "HL7IDR Impression",
+        "definition": "Impression in the imaging report"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRImpression"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImFinding",
+              "http://hl7.org/fhir/StructureDefinition/Condition",
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageDocumentReference",
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageImagingSelection"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

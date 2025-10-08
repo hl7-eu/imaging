@@ -51,11 +51,18 @@ Title: "DocumentReference: EU Imaging Report"
 Description: """
 A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
 * insert SetFmmAndStatusRule( 1, draft )
-* content 1..1
-  * profile 1..*
-    * insert SliceElement( #value, value )
-  * profile contains hl7eu-imaging-report 1..1 
-  * profile[hl7eu-imaging-report].valueCanonical = Canonical( ImReport )
+{{R4}}* content 1..1
+{{R4}}  * extension contains  http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile named profile 1..*
+{{R4}}  * extension[profile]
+{{R4}}  * ^short = "Contains the profile of the referred report"
+// TODO fix this! we had to comment it out as it did not run
+// {{R4}}  * extension[imReportProfile].valueCanonical = Canonical( ImReport )
+  
+{{R5}}* content 1..1
+{{R5}}  * profile 1..*
+{{R5}}    * insert SliceElement( #value, value )
+{{R5}}  * profile contains hl7eu-imaging-report 1..1 
+{{R5}}  * profile[hl7eu-imaging-report].valueCanonical = Canonical( ImReport )
 
 
 Profile: IheEntryUUIDIdentifier

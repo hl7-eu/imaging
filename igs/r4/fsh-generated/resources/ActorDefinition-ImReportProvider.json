@@ -1,0 +1,11 @@
+{
+  "resourceType": "ActorDefinition",
+  "id": "ImReportProvider",
+  "url": "http://hl7.eu/fhir/imaging-r4/ActorDefinition/ImReportProvider",
+  "title": "Imaging study report provider",
+  "description": "Provides the Imaging study report.",
+  "name": "ImReportProvider",
+  "status": "draft",
+  "documentation": "This actor typically represents a system that provides access to radiology reports. Typically this would be systems like a Electronic Health Record (EHR), Radiology Information System (RIS) or a Picture Archiving and Communication System (PACS) that manages and provides access to imaging reports.",
+  "type": "system"
+}

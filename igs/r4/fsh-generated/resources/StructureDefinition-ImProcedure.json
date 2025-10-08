@@ -1,0 +1,157 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImProcedure",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImProcedure",
+  "name": "ImProcedure",
+  "title": "Procedure: Imaging Acquisition",
+  "status": "draft",
+  "description": "This profile on Procedure represents the imaging procedure.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Procedure",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Procedure",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Procedure.code",
+        "path": "Procedure.code",
+        "min": 1,
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.eu/fhir/imaging-r4/ValueSet/im-procedure-type"
+        }
+      },
+      {
+        "id": "Procedure.performer",
+        "path": "Procedure.performer",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "function"
+            }
+          ],
+          "rules": "open",
+          "description": "Different performers can be added to the procedure.",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Procedure.performer.function",
+        "path": "Procedure.performer.function",
+        "min": 1
+      },
+      {
+        "id": "Procedure.performer:performer",
+        "path": "Procedure.performer",
+        "sliceName": "performer",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Procedure.performer:performer.function.coding",
+        "path": "Procedure.performer.function.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "\"\"$this\"\""
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Procedure.performer:performer.function.coding:healthcare-professional",
+        "path": "Procedure.performer.function.coding",
+        "sliceName": "healthcare-professional",
+        "min": 0,
+        "max": "1",
+        "patternCoding": {
+          "code": "223366009",
+          "system": "http://snomed.info/sct"
+        }
+      },
+      {
+        "id": "Procedure.performer:performer.actor",
+        "path": "Procedure.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Procedure.performer:imaging-device",
+        "path": "Procedure.performer",
+        "sliceName": "imaging-device",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "Procedure.performer:imaging-device.function.coding",
+        "path": "Procedure.performer.function.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "\"\"$this\"\""
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "Procedure.performer:imaging-device.function.coding:imaging-equipment",
+        "path": "Procedure.performer.function.coding",
+        "sliceName": "imaging-equipment",
+        "min": 0,
+        "max": "1",
+        "patternCoding": {
+          "code": "314789007",
+          "system": "http://snomed.info/sct"
+        }
+      },
+      {
+        "id": "Procedure.performer:imaging-device.actor",
+        "path": "Procedure.performer.actor",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingDevice"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

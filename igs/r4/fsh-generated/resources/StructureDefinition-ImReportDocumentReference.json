@@ -1,0 +1,86 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImReportDocumentReference",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImReportDocumentReference",
+  "name": "ImReportDocumentReference",
+  "title": "DocumentReference: EU Imaging Report",
+  "status": "draft",
+  "description": "A DocumentReference profile for the Report DocumentReference used in MHD deployments. ",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "DocumentReference",
+  "baseDefinition": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImUnstructuredDocumentReference",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DocumentReference.content.extension",
+        "path": "DocumentReference.content.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 2
+      },
+      {
+        "id": "DocumentReference.content.extension:imReportProfile",
+        "path": "DocumentReference.content.extension",
+        "sliceName": "imReportProfile",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.content.extension:profile",
+        "path": "DocumentReference.content.extension",
+        "sliceName": "profile",
+        "short": "Contains the profile of the referred report",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -20,6 +20,7 @@ RuleSet: BasedOnImOrderReference( slicename )
   * identifier 1..1
   * identifier only ImAccessionNumberIdentifier
 
+
 Profile: ImStudyInstanceUidIdentifier
 Parent: Identifier
 Id: im-study-instance-uid-identifier

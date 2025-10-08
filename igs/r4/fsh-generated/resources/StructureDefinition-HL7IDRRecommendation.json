@@ -1,0 +1,54 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HL7IDRRecommendation",
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRRecommendation",
+  "name": "HL7IDRRecommendationExt",
+  "title": "HL7IDR Recommendation",
+  "status": "draft",
+  "description": "Recommendations for any follow up actions",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "expression": "DiagnosticReport",
+      "type": "element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "HL7IDR Recommendation",
+        "definition": "Recommendations for any follow up actions"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRRecommendation"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.org/fhir/StructureDefinition/CarePlan",
+              "http://hl7.org/fhir/StructureDefinition/ServiceRequest"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

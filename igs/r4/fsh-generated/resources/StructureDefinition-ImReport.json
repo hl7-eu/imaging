@@ -1,0 +1,170 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImReport",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImReport",
+  "name": "ImReport",
+  "title": "Bundle: Imaging Report",
+  "status": "draft",
+  "description": "Document Bundle for Imaging Report",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "Bundle",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Bundle",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Bundle",
+        "path": "Bundle",
+        "constraint": [
+          {
+            "key": "dr-comp-author-org",
+            "severity": "error",
+            "human": "DiagnosticReport and Composition SHALL have the same author Organization",
+            "expression": "Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization) = Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization) or (Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization).empty() and Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization).empty())",
+            "source": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImReport"
+          }
+        ]
+      },
+      {
+        "id": "Bundle.type",
+        "path": "Bundle.type",
+        "patternCode": "document"
+      },
+      {
+        "id": "Bundle.total",
+        "path": "Bundle.total",
+        "max": "0"
+      },
+      {
+        "id": "Bundle.link",
+        "path": "Bundle.link",
+        "max": "0"
+      },
+      {
+        "id": "Bundle.entry",
+        "path": "Bundle.entry",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "resource"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 3
+      },
+      {
+        "id": "Bundle.entry.link",
+        "path": "Bundle.entry.link",
+        "max": "0"
+      },
+      {
+        "id": "Bundle.entry.fullUrl",
+        "path": "Bundle.entry.fullUrl",
+        "min": 1
+      },
+      {
+        "id": "Bundle.entry.resource",
+        "path": "Bundle.entry.resource",
+        "min": 1
+      },
+      {
+        "id": "Bundle.entry.search",
+        "path": "Bundle.entry.search",
+        "max": "0"
+      },
+      {
+        "id": "Bundle.entry.request",
+        "path": "Bundle.entry.request",
+        "max": "0"
+      },
+      {
+        "id": "Bundle.entry.response",
+        "path": "Bundle.entry.response",
+        "max": "0"
+      },
+      {
+        "id": "Bundle.entry:imComposition",
+        "path": "Bundle.entry",
+        "sliceName": "imComposition",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Bundle.entry:imComposition.resource",
+        "path": "Bundle.entry.resource",
+        "type": [
+          {
+            "code": "Composition",
+            "profile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImComposition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Bundle.entry:imDiagnosticReport",
+        "path": "Bundle.entry",
+        "sliceName": "imDiagnosticReport",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Bundle.entry:imDiagnosticReport.resource",
+        "path": "Bundle.entry.resource",
+        "type": [
+          {
+            "code": "DiagnosticReport",
+            "profile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImDiagnosticReport"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Bundle.entry:patient",
+        "path": "Bundle.entry",
+        "sliceName": "patient",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "Bundle.entry:patient.resource",
+        "path": "Bundle.entry.resource",
+        "type": [
+          {
+            "code": "Patient",
+            "profile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

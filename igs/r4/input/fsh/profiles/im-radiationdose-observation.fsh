@@ -23,10 +23,14 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 * partOf contains study 1..1
 * partOf[study] only Reference( ImImagingStudy )
 
-* derivedFrom 1..*
-  * insert SliceElement( #profile, $this )
-* derivedFrom contains dicomInstance 1..1
-* derivedFrom[dicomInstance] only Reference( ImSrInstanceImagingSelection )
+* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
+* extension[derivedFrom] contains srImagingSelection 1..* 
+* extension[derivedFrom][srImagingSelection].value[x] only Reference( ImSrInstanceImagingSelection )
+
+//R5* derivedFrom
+//R5  * insert SliceElement( #profile, $this )
+//R5* derivedFrom contains dicomSrInstance 1..1
+//R5* derivedFrom[dicomSrInstance] only Reference( ImSrInstanceImagingSelection )
 
 * code
   * coding 1..*

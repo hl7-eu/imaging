@@ -1,0 +1,50 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "HL7IDRCommunication",
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRCommunication",
+  "name": "HL7IDRCommunicationExt",
+  "title": "HL7IDR Communication",
+  "status": "draft",
+  "description": "Communications captures what communications have been made with other care providers",
+  "fhirVersion": "4.0.1",
+  "kind": "complex-type",
+  "abstract": false,
+  "context": [
+    {
+      "expression": "DiagnosticReport",
+      "type": "element"
+    }
+  ],
+  "type": "Extension",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Extension",
+        "path": "Extension",
+        "short": "HL7IDR Communication",
+        "definition": "Communications captures what communications have been made with other care providers"
+      },
+      {
+        "id": "Extension.extension",
+        "path": "Extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Extension.url",
+        "path": "Extension.url",
+        "fixedUri": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/HL7IDRCommunication"
+      },
+      {
+        "id": "Extension.value[x]",
+        "path": "Extension.value[x]",
+        "type": [
+          {
+            "code": "Reference"
+          }
+        ]
+      }
+    ]
+  }
+}

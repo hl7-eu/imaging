@@ -1,0 +1,395 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImKeyImageDocumentReference",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImKeyImageDocumentReference",
+  "name": "ImKeyImageDocumentReference",
+  "title": "DocumentReference: Key Image",
+  "status": "draft",
+  "description": "A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n\nWhen the resource represents a DICOM instance it SHALL contain a the SOP Instance UID in the identifier element. When the resource represents a DICOM series it SHALL contain the Series Instance UID in the identifier element. ",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "DocumentReference",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/DocumentReference",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "DocumentReference.extension",
+        "path": "DocumentReference.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            },
+            {
+              "type": "value",
+              "path": "value"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.extension:basedOn",
+        "path": "DocumentReference.extension",
+        "sliceName": "basedOn",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.basedOn"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.extension:basedOn/imorderaccession",
+        "path": "DocumentReference.extension",
+        "sliceName": "basedOn/imorderaccession",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DocumentReference.extension:basedOn/imorderaccession.extension",
+        "path": "DocumentReference.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "DocumentReference.extension:basedOn/imorderaccession.value[x]",
+        "path": "DocumentReference.extension.value[x]",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImOrder"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.extension:basedOn/imorderaccession.value[x].identifier",
+        "path": "DocumentReference.extension.value[x].identifier",
+        "min": 1,
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.extension:modality",
+        "path": "DocumentReference.extension",
+        "sliceName": "modality",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.identifier",
+        "path": "DocumentReference.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid",
+        "path": "DocumentReference.identifier",
+        "sliceName": "seriesInstanceUid",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid.type",
+        "path": "DocumentReference.identifier.type",
+        "min": 1,
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "00080018",
+              "system": "http://hl7.eu/fhir/imaging/codesystem-missing-dicom-terminology"
+            }
+          ]
+        }
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid.system",
+        "path": "DocumentReference.identifier.system",
+        "min": 1,
+        "patternUri": "urn:ietf:rfc:3986"
+      },
+      {
+        "id": "DocumentReference.identifier:seriesInstanceUid.value",
+        "path": "DocumentReference.identifier.value",
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid",
+        "path": "DocumentReference.identifier",
+        "sliceName": "sopClassInstanceUid",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid.type",
+        "path": "DocumentReference.identifier.type",
+        "min": 1,
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "112002",
+              "system": "http://dicom.nema.org/resources/ontology/DCM"
+            }
+          ]
+        }
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid.system",
+        "path": "DocumentReference.identifier.system",
+        "min": 1,
+        "patternUri": "urn:ietf:rfc:3986"
+      },
+      {
+        "id": "DocumentReference.identifier:sopClassInstanceUid.value",
+        "path": "DocumentReference.identifier.value",
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.category",
+        "path": "DocumentReference.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.category:imkeyimages",
+        "path": "DocumentReference.category",
+        "sliceName": "imkeyimages",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "DocumentReference.category:imkeyimages.coding",
+        "path": "DocumentReference.category.coding",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.category:imkeyimages.coding:keyimagecode",
+        "path": "DocumentReference.category.coding",
+        "sliceName": "keyimagecode",
+        "min": 1,
+        "max": "1",
+        "patternCoding": {
+          "code": "55113-5",
+          "system": "http://loinc.org"
+        }
+      },
+      {
+        "id": "DocumentReference.subject",
+        "path": "DocumentReference.subject",
+        "min": 1,
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.author",
+        "path": "DocumentReference.author",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "profile",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "DocumentReference.author:performer",
+        "path": "DocumentReference.author",
+        "sliceName": "performer",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.content",
+        "path": "DocumentReference.content",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "extension.value"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "DocumentReference.content:thumbnail",
+        "path": "DocumentReference.content",
+        "sliceName": "thumbnail",
+        "min": 0,
+        "max": "1"
+      },
+      {
+        "id": "DocumentReference.content:thumbnail.extension",
+        "path": "DocumentReference.content.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.content:thumbnail.extension:thumbnail",
+        "path": "DocumentReference.content.extension",
+        "sliceName": "thumbnail",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/documentreference-thumbnail"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.content:thumbnail.extension:thumbnail.value[x]",
+        "path": "DocumentReference.content.extension.value[x]",
+        "patternBoolean": true
+      },
+      {
+        "id": "DocumentReference.content:content",
+        "path": "DocumentReference.content",
+        "sliceName": "content",
+        "min": 1,
+        "max": "1"
+      },
+      {
+        "id": "DocumentReference.content:content.extension",
+        "path": "DocumentReference.content.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "DocumentReference.content:content.extension:thumbnail",
+        "path": "DocumentReference.content.extension",
+        "sliceName": "thumbnail",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/StructureDefinition/documentreference-thumbnail"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "DocumentReference.content:content.extension:thumbnail.value[x]",
+        "path": "DocumentReference.content.extension.value[x]",
+        "patternBoolean": false
+      },
+      {
+        "id": "DocumentReference.content:content.attachment.url",
+        "path": "DocumentReference.content.attachment.url",
+        "min": 1
+      }
+    ]
+  }
+}

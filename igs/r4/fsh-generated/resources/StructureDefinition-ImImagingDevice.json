@@ -1,0 +1,174 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImImagingDevice",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingDevice",
+  "name": "ImImagingDevice",
+  "title": "Device: Imaging Device",
+  "status": "draft",
+  "description": "The device the made the image.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "dicom-2-im-imaging-device-mapping",
+      "name": "Mapping from DICOM to Imaging Device",
+      "uri": "http://nema.org/dicom",
+      "comment": "Mapping from DICOM to Imaging Device."
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "Device",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Device",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "Device.extension",
+        "path": "Device.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        },
+        "min": 1
+      },
+      {
+        "id": "Device.extension:imagingCategory",
+        "path": "Device.extension",
+        "sliceName": "imagingCategory",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-Device.category"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Device.extension:imagingCategory.extension",
+        "path": "Device.extension.extension",
+        "max": "0"
+      },
+      {
+        "id": "Device.extension:imagingCategory.value[x]",
+        "path": "Device.extension.value[x]",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "314789007",
+              "system": "http://snomed.info/sct"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Device.identifier",
+        "path": "Device.identifier",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "DeviceUID (0018,1002), (0018,1003) Device ID"
+          }
+        ]
+      },
+      {
+        "id": "Device.udiCarrier.deviceIdentifier",
+        "path": "Device.udiCarrier.deviceIdentifier",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "UniqueDeviceIdentifier (0018,1009)"
+          }
+        ]
+      },
+      {
+        "id": "Device.status",
+        "path": "Device.status",
+        "min": 1
+      },
+      {
+        "id": "Device.manufacturer",
+        "path": "Device.manufacturer",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "StationName (0008,1010) | ManufacturerModelName (0008,1090)"
+          }
+        ]
+      },
+      {
+        "id": "Device.serialNumber",
+        "path": "Device.serialNumber",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "(0018,1000) Device Serial Number"
+          }
+        ]
+      },
+      {
+        "id": "Device.deviceName",
+        "path": "Device.deviceName",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "StationName (0008,1010) | ManufacturerModelName (0008,1090)"
+          }
+        ]
+      },
+      {
+        "id": "Device.type",
+        "path": "Device.type",
+        "binding": {
+          "strength": "extensible",
+          "valueSet": "http://hl7.eu/fhir/imaging-r4/ValueSet/im-imaging-device-type"
+        },
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "ManufacturerDeviceClassUID (0018,1008) | Modality (0008,0060)"
+          }
+        ]
+      },
+      {
+        "id": "Device.version",
+        "path": "Device.version",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-imaging-device-mapping",
+            "map": "Software Versions (0018,1020)"
+          }
+        ]
+      }
+    ]
+  }
+}

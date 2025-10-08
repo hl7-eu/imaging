@@ -1,0 +1,378 @@
+[
+  {
+    "outputFile": "ActorDefinition-ImReportCreator.json",
+    "fshName": "ImReportCreator",
+    "fshType": "Instance",
+    "fshFile": "actors/creator.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
+    "outputFile": "ActorDefinition-ImReportProvider.json",
+    "fshName": "ImReportProvider",
+    "fshType": "Instance",
+    "fshFile": "actors/provider.fsh",
+    "startLine": 1,
+    "endLine": 13
+  },
+  {
+    "outputFile": "CodeSystem-codesystem-diagnostic-report-support-info.json",
+    "fshName": "DiagnosticReportSupportingInfoCodeSystem",
+    "fshType": "CodeSystem",
+    "fshFile": "terminologies/DiagnosticReportSupportInfo.fsh",
+    "startLine": 1,
+    "endLine": 12
+  },
+  {
+    "outputFile": "CodeSystem-codesystem-missing-dicom-terminology.json",
+    "fshName": "MissingDicomTerminology",
+    "fshType": "CodeSystem",
+    "fshFile": "terminologies/MissingDicomTerminology.fsh",
+    "startLine": 1,
+    "endLine": 25
+  },
+  {
+    "outputFile": "OperationDefinition-DiagnosticReport-fhir-report.json",
+    "fshName": "DiagnosticReport-fhir-report",
+    "fshType": "Instance",
+    "fshFile": "profiles/Im-operations.fsh",
+    "startLine": 1,
+    "endLine": 25
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRCommunication.json",
+    "fshName": "HL7IDRCommunicationExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 203,
+    "endLine": 208
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRComparisonStudy.json",
+    "fshName": "HL7IDRComparisonStudiesExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 159,
+    "endLine": 165
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRFinding.json",
+    "fshName": "HL7IDRFindingExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 182,
+    "endLine": 187
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRImagingProcedure.json",
+    "fshName": "HL7IDRImagingProcedureExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 175,
+    "endLine": 180
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRImpression.json",
+    "fshName": "HL7IDRImpressionExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 189,
+    "endLine": 194
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRPatientHistory.json",
+    "fshName": "HL7IDRPatientHistoryExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 167,
+    "endLine": 172
+  },
+  {
+    "outputFile": "StructureDefinition-HL7IDRRecommendation.json",
+    "fshName": "HL7IDRRecommendationExt",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 196,
+    "endLine": 201
+  },
+  {
+    "outputFile": "StructureDefinition-IheEntryUUIDIdentifier.json",
+    "fshName": "IheEntryUUIDIdentifier",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-ihemhd-documentreference.fsh",
+    "startLine": 68,
+    "endLine": 77
+  },
+  {
+    "outputFile": "StructureDefinition-ImAdverseEvent.json",
+    "fshName": "ImAdverseEvent",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-adverseevent.fsh",
+    "startLine": 1,
+    "endLine": 17
+  },
+  {
+    "outputFile": "StructureDefinition-ImComposition.json",
+    "fshName": "ImComposition",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-composition.fsh",
+    "startLine": 1,
+    "endLine": 201
+  },
+  {
+    "outputFile": "StructureDefinition-ImDiagnosticReport.json",
+    "fshName": "ImDiagnosticReport",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-diagnosticreport.fsh",
+    "startLine": 1,
+    "endLine": 141
+  },
+  {
+    "outputFile": "StructureDefinition-ImFinding.json",
+    "fshName": "ImFinding",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-finding.fsh",
+    "startLine": 1,
+    "endLine": 15
+  },
+  {
+    "outputFile": "StructureDefinition-ImGestationalAgeObservation.json",
+    "fshName": "ImGestationalAgeObservation",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-gestational-age-observation.fsh",
+    "startLine": 1,
+    "endLine": 17
+  },
+  {
+    "outputFile": "StructureDefinition-ImImagingDevice.json",
+    "fshName": "ImImagingDevice",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-imaging-device..fsh",
+    "startLine": 2,
+    "endLine": 17
+  },
+  {
+    "outputFile": "StructureDefinition-ImImagingSelection.json",
+    "fshName": "ImImagingSelection",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-imagingselection.fsh",
+    "startLine": 6,
+    "endLine": 14
+  },
+  {
+    "outputFile": "StructureDefinition-ImImagingStudy.json",
+    "fshName": "ImImagingStudy",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-imagingstudy.fsh",
+    "startLine": 1,
+    "endLine": 56
+  },
+  {
+    "outputFile": "StructureDefinition-ImKeyImageDocumentReference.json",
+    "fshName": "ImKeyImageDocumentReference",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-keyimage-documentreference.fsh",
+    "startLine": 1,
+    "endLine": 74
+  },
+  {
+    "outputFile": "StructureDefinition-ImKeyImageImagingSelection.json",
+    "fshName": "ImKeyImageImagingSelection",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-keyimage-imagingselection.fsh",
+    "startLine": 21,
+    "endLine": 29
+  },
+  {
+    "outputFile": "StructureDefinition-ImOrder.json",
+    "fshName": "ImOrder",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-order.fsh",
+    "startLine": 1,
+    "endLine": 27
+  },
+  {
+    "outputFile": "StructureDefinition-ImProcedure.json",
+    "fshName": "ImProcedure",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-procedure.fsh",
+    "startLine": 1,
+    "endLine": 33
+  },
+  {
+    "outputFile": "StructureDefinition-ImRadiationDoseObservation.json",
+    "fshName": "ImRadiationDoseObservation",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-radiationdose-observation.fsh",
+    "startLine": 1,
+    "endLine": 112
+  },
+  {
+    "outputFile": "StructureDefinition-ImReport.json",
+    "fshName": "ImReport",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-report.fsh",
+    "startLine": 1,
+    "endLine": 29
+  },
+  {
+    "outputFile": "StructureDefinition-ImReportDocumentReference.json",
+    "fshName": "ImReportDocumentReference",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-ihemhd-documentreference.fsh",
+    "startLine": 48,
+    "endLine": 60
+  },
+  {
+    "outputFile": "StructureDefinition-ImSrInstanceImagingSelection.json",
+    "fshName": "ImSrInstanceImagingSelection",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-imagingselection.fsh",
+    "startLine": 16,
+    "endLine": 33
+  },
+  {
+    "outputFile": "StructureDefinition-ImUnstructuredDocumentReference.json",
+    "fshName": "ImUnstructuredDocumentReference",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-ihemhd-documentreference.fsh",
+    "startLine": 1,
+    "endLine": 42
+  },
+  {
+    "outputFile": "StructureDefinition-im-accession-number-identifier.json",
+    "fshName": "ImAccessionNumberIdentifier",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-identifiers.fsh",
+    "startLine": 1,
+    "endLine": 16
+  },
+  {
+    "outputFile": "StructureDefinition-im-composition-diagnosticReportReference.json",
+    "fshName": "ImDiagnosticReportReference",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-composition.fsh",
+    "startLine": 208,
+    "endLine": 218
+  },
+  {
+    "outputFile": "StructureDefinition-im-sop-instance-uid-identifier.json",
+    "fshName": "ImSopInstanceUidIdentifier",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-identifiers.fsh",
+    "startLine": 35,
+    "endLine": 44
+  },
+  {
+    "outputFile": "StructureDefinition-im-study-instance-uid-identifier.json",
+    "fshName": "ImStudyInstanceUidIdentifier",
+    "fshType": "Profile",
+    "fshFile": "profiles/im-identifiers.fsh",
+    "startLine": 24,
+    "endLine": 33
+  },
+  {
+    "outputFile": "StructureDefinition-instance-description.json",
+    "fshName": "ImImagingStudyInstanceDescription",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-imagingstudy.fsh",
+    "startLine": 58,
+    "endLine": 64
+  },
+  {
+    "outputFile": "StructureDefinition-number-of-frames.json",
+    "fshName": "NumberOfFrames",
+    "fshType": "Extension",
+    "fshFile": "profiles/im-imagingstudy.fsh",
+    "startLine": 66,
+    "endLine": 72
+  },
+  {
+    "outputFile": "ValueSet-ImImagingReportTypesEuVS.json",
+    "fshName": "ImImagingReportTypesEuVS",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/category-and-type.fsh",
+    "startLine": 1,
+    "endLine": 7
+  },
+  {
+    "outputFile": "ValueSet-ImSectionEmptyReason.json",
+    "fshName": "ImSectionEmptyReason",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/ImComposition-terminology.fsh",
+    "startLine": 2,
+    "endLine": 8
+  },
+  {
+    "outputFile": "ValueSet-im-dose-length-units.json",
+    "fshName": "ImDoseLengthUnits",
+    "fshType": "ValueSet",
+    "fshFile": "profiles/im-radiationdose-observation.fsh",
+    "startLine": 123,
+    "endLine": 128
+  },
+  {
+    "outputFile": "ValueSet-im-effective-dose-units.json",
+    "fshName": "ImEffectiveDoseUnits",
+    "fshType": "ValueSet",
+    "fshFile": "profiles/im-radiationdose-observation.fsh",
+    "startLine": 114,
+    "endLine": 121
+  },
+  {
+    "outputFile": "ValueSet-im-gray-square-units.json",
+    "fshName": "ImGraySquareUnits",
+    "fshType": "ValueSet",
+    "fshFile": "profiles/im-radiationdose-observation.fsh",
+    "startLine": 130,
+    "endLine": 136
+  },
+  {
+    "outputFile": "ValueSet-im-imaging-device-type.json",
+    "fshName": "ImImagingDeviceType",
+    "fshType": "ValueSet",
+    "fshFile": "profiles/im-imaging-device..fsh",
+    "startLine": 20,
+    "endLine": 27
+  },
+  {
+    "outputFile": "ValueSet-im-imaging-study-performer-type.json",
+    "fshName": "ImImagingStudyPerformerTypeVS",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/imaging-study-performer-type.fsh",
+    "startLine": 1,
+    "endLine": 8
+  },
+  {
+    "outputFile": "ValueSet-im-procedure-type.json",
+    "fshName": "ImProcedureType",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/ImProcedureType.fsh",
+    "startLine": 1,
+    "endLine": 9
+  },
+  {
+    "outputFile": "ValueSet-im-xds-class-code-valueset.json",
+    "fshName": "XdsClassCodeVs",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/category-and-type.fsh",
+    "startLine": 12,
+    "endLine": 32
+  },
+  {
+    "outputFile": "ValueSet-valueset-diagnosticreport-notes.json",
+    "fshName": "Hl7EuImagingSectionValueSet",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/section-terminology.fsh",
+    "startLine": 1,
+    "endLine": 15
+  },
+  {
+    "outputFile": "ValueSet-valueset-diagnosticreport-report-support-info.json",
+    "fshName": "DiagnosticReportSupportingInfoVCodes",
+    "fshType": "ValueSet",
+    "fshFile": "terminologies/DiagnosticReportSupportInfo.fsh",
+    "startLine": 14,
+    "endLine": 20
+  }
+]

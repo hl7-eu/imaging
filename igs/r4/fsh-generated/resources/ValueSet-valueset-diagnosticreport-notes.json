@@ -1,0 +1,72 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "Hl7EuImagingSectionValueSet",
+  "id": "valueset-diagnosticreport-notes",
+  "title": "Section codes used to label annotations.",
+  "description": "These codes define what an annotation annotates.",
+  "url": "http://hl7.eu/fhir/imaging-r4/ValueSet/valueset-diagnosticreport-notes",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "experimental": false,
+  "compose": {
+    "include": [
+      {
+        "system": "http://loinc.org",
+        "concept": [
+          {
+            "code": "18726-0",
+            "display": "Imaging Study"
+          },
+          {
+            "code": "55115-0",
+            "display": "Order"
+          },
+          {
+            "code": "11329-0",
+            "display": "History"
+          },
+          {
+            "code": "55111-9",
+            "display": "Procedure"
+          },
+          {
+            "code": "18834-2",
+            "display": "Comparison"
+          },
+          {
+            "code": "59776-5",
+            "display": "Findings"
+          },
+          {
+            "code": "18783-1",
+            "display": "Recommendation"
+          },
+          {
+            "code": "73568-8",
+            "display": "Communication"
+          }
+        ]
+      }
+    ]
+  }
+}

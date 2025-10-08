@@ -1,0 +1,229 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "ImOrder",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "url": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImOrder",
+  "name": "ImOrder",
+  "title": "ServiceRequest: Imaging Order",
+  "status": "draft",
+  "description": "This profile on ServiceRequest represents the order for the Imaging Study and report.",
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "fhirVersion": "4.0.1",
+  "mapping": [
+    {
+      "identity": "dicom-2-im-order-mapping",
+      "name": "Mapping from DICOM to Imaging Order",
+      "uri": "http://nema.org/dicom",
+      "comment": "Mapping from DICOM to Imaging Order."
+    }
+  ],
+  "kind": "resource",
+  "abstract": false,
+  "type": "ServiceRequest",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/ServiceRequest",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "ServiceRequest.extension",
+        "path": "ServiceRequest.extension",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "url"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "ServiceRequest.extension:reason",
+        "path": "ServiceRequest.extension",
+        "sliceName": "reason",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.extension:reason.value[x]",
+        "path": "ServiceRequest.extension.value[x]",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "type",
+              "path": "$this"
+            }
+          ],
+          "ordered": false,
+          "rules": "open"
+        }
+      },
+      {
+        "id": "ServiceRequest.extension:reason.value[x]:valueCodeableConcept",
+        "path": "ServiceRequest.extension.value[x]",
+        "sliceName": "valueCodeableConcept",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "dicom-2-im-order-mapping",
+            "map": "ReasonForTheRequestedProcedure (0040,100A)"
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.extension:reason.value[x]:valueCodeableConcept.text",
+        "path": "ServiceRequest.extension.value[x].text",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-order-mapping",
+            "map": "ReasonForTheRequestedProcedure (0040,1002)"
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.identifier",
+        "path": "ServiceRequest.identifier",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "type"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        }
+      },
+      {
+        "id": "ServiceRequest.identifier:accessionNumber",
+        "path": "ServiceRequest.identifier",
+        "sliceName": "accessionNumber",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Identifier",
+            "profile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/im-accession-number-identifier"
+            ]
+          }
+        ],
+        "mapping": [
+          {
+            "identity": "dicom-2-im-order-mapping",
+            "map": "AccessionNumber (0008,0050)"
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.category",
+        "path": "ServiceRequest.category",
+        "slicing": {
+          "discriminator": [
+            {
+              "type": "value",
+              "path": "$this"
+            }
+          ],
+          "rules": "open",
+          "ordered": false
+        },
+        "min": 1
+      },
+      {
+        "id": "ServiceRequest.category:imaging",
+        "path": "ServiceRequest.category",
+        "sliceName": "imaging",
+        "min": 1,
+        "max": "1",
+        "patternCodeableConcept": {
+          "coding": [
+            {
+              "code": "363679005",
+              "system": "http://snomed.info/sct"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ServiceRequest.code",
+        "path": "ServiceRequest.code",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-order-mapping",
+            "map": "RequestedProcedureCodeSequence (0040,1001)"
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.subject",
+        "path": "ServiceRequest.subject",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-order-mapping",
+            "map": "(0010/*)"
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.supportingInfo.extension:codeableConcept",
+        "path": "ServiceRequest.supportingInfo.extension",
+        "sliceName": "codeableConcept",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ServiceRequest.note",
+        "path": "ServiceRequest.note",
+        "mapping": [
+          {
+            "identity": "dicom-2-im-order-mapping",
+            "map": "RequestedProcedureDescription (0040,0100)"
+          }
+        ]
+      }
+    ]
+  }
+}

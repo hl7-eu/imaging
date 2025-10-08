@@ -51,7 +51,7 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 //R5  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
 
 // * composition 0..0 -> we use composition
-* media 0..0 // not in not in keyimages section
+// * media 0..0 // not in not in keyimages section
 
 // at least one performer is an Organization, the practitioner must follow the profile in this guide
 * performer 

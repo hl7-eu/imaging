@@ -14,10 +14,17 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 * identifier contains accessionNumber 0..1
 * identifier[accessionNumber] only ImAccessionNumberIdentifier
 
-* supportingInfo 0..*
-  * insert SliceElement( #value, $this )
-* supportingInfo contains pregnancy 0..1
-* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+* supportingInfo.extension contains 
+    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
+// * supportingInfo.extension[codeableConcept]
+//   * valueCodeableConcept from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+
+//R5* supportingInfo 0..*
+//R5  * insert SliceElement( #value, $this )
+//R5* supportingInfo contains pregnancy 0..1
+//R5* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+
+* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
 
 // * status 1..1
 
@@ -56,7 +63,7 @@ Description: "Mapping from DICOM to Imaging Order."
 * subject -> "(0010/*)"
 * note -> "RequestedProcedureDescription (0040,0100)"
 * code -> "RequestedProcedureCodeSequence (0040,1001)"
-//R5* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
 * extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
-//R5* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
+//R5* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
 * extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
+//R5* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"

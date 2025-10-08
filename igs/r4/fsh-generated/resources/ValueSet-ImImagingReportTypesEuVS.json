@@ -1,0 +1,55 @@
+{
+  "resourceType": "ValueSet",
+  "status": "draft",
+  "name": "ImImagingReportTypesEuVS",
+  "id": "ImImagingReportTypesEuVS",
+  "title": "Radiology Report Types",
+  "description": "The set of radiology types as defined by LOINC.",
+  "url": "http://hl7.eu/fhir/imaging-r4/ValueSet/ImImagingReportTypesEuVS",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+      "valueInteger": 1
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status",
+      "valueCode": "draft"
+    }
+  ],
+  "jurisdiction": [
+    {
+      "coding": [
+        {
+          "code": "EU",
+          "system": "http://unstats.un.org/unsd/methods/m49/m49.html",
+          "display": "Europe"
+        }
+      ]
+    }
+  ],
+  "experimental": false,
+  "compose": {
+    "include": [
+      {
+        "system": "http://loinc.org",
+        "filter": [
+          {
+            "property": "STATUS",
+            "op": "=",
+            "value": "ACTIVE"
+          },
+          {
+            "property": "SCALE_TYP",
+            "op": "=",
+            "value": "Doc"
+          },
+          {
+            "property": "CLASS",
+            "op": "=",
+            "value": "RAD"
+          }
+        ]
+      }
+    ]
+  }
+}

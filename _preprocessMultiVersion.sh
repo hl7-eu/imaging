@@ -15,10 +15,12 @@ for version in "${versions[@]}"; do
     fi
 
     echo remove all files from $build_dir
-    rm -Rf $build_dir 
+    # rm -Rf $build_dir/*
+    find $build_dir -name "*" -maxdepth 1 -exec rm -f {} \;
+    rm -Rf $build_dir/input
     
     echo copy all files to  $build_dir
-    cp -R ig-src $build_dir 
+    cp -R ig-src/* $build_dir 
     
     # Process all liquid files
     echo Processing liquid files

@@ -22,10 +22,22 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
   * system = "urn:ietf:rfc:3986"
   * value 1..1
 
-* basedOn
-  * insert SliceElement( #type, $this )
-* basedOn contains imorderaccession 0..1
-* insert BasedOnImOrderReference( imorderaccession )
+* extension contains 	
+     http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.basedOn named basedOn 0..* and
+     http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality named modality 1..1 
+* extension
+  * ^slicing.discriminator[1].type = #value
+  * ^slicing.discriminator[=].path = "value"
+* extension[basedOn] contains imorderaccession 0..1
+* extension[basedOn][imorderaccession].value[x] only Reference(ImOrder)
+  * identifier 1..1
+  * identifier only ImAccessionNumberIdentifier
+
+//R5* basedOn
+//R5  * insert SliceElement( #type, $this )
+//R5* basedOn contains imorderaccession 0..1
+//R5* insert BasedOnImOrderReference( imorderaccession )
+//R5* modality 1..1
 
 * category 1..*
   * insert SliceElement( #profile, $this )
@@ -36,7 +48,6 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
   * coding contains keyimagecode 1..1
   * coding[keyimagecode] = $loinc#55113-5 // "Key images Document Radiology"
 
-* modality 1..1
   
 * subject 1..1
 * subject only Reference( $EuPatient )
