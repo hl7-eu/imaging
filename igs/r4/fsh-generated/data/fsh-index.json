@@ -16,6 +16,22 @@
     "endLine": 13
   },
   {
+    "outputFile": "Binary-semi-structured-pdf.json",
+    "fshName": "BinarySemiStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/diagnostic-report.fsh",
+    "startLine": 60,
+    "endLine": 66
+  },
+  {
+    "outputFile": "Binary-unstructured-pdf.json",
+    "fshName": "BinaryUnstructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-unstructured/unstructured-example.fsh",
+    "startLine": 61,
+    "endLine": 66
+  },
+  {
     "outputFile": "CodeSystem-codesystem-diagnostic-report-support-info.json",
     "fshName": "DiagnosticReportSupportingInfoCodeSystem",
     "fshType": "CodeSystem",
@@ -32,6 +48,46 @@
     "endLine": 25
   },
   {
+    "outputFile": "Composition-CompositionSemiStructured.json",
+    "fshName": "CompositionSemiStructured",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/composition.fsh",
+    "startLine": 1,
+    "endLine": 98
+  },
+  {
+    "outputFile": "DiagnosticReport-DiagnosticReportSemiStructured.json",
+    "fshName": "DiagnosticReportSemiStructured",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/diagnostic-report.fsh",
+    "startLine": 1,
+    "endLine": 58
+  },
+  {
+    "outputFile": "DocumentReference-UnstructuredReportExample.json",
+    "fshName": "UnstructuredReportExample",
+    "fshType": "Instance",
+    "fshFile": "report-example-unstructured/unstructured-example.fsh",
+    "startLine": 1,
+    "endLine": 24
+  },
+  {
+    "outputFile": "ImagingStudy-ImagingStudySemiStructuredReport1.json",
+    "fshName": "ImagingStudySemiStructuredReport1",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/study1.fsh",
+    "startLine": 1,
+    "endLine": 61
+  },
+  {
+    "outputFile": "ImagingStudy-ImagingStudySemiStructuredReport2.json",
+    "fshName": "ImagingStudySemiStructuredReport2",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/study2.fsh",
+    "startLine": 1,
+    "endLine": 62
+  },
+  {
     "outputFile": "OperationDefinition-DiagnosticReport-fhir-report.json",
     "fshName": "DiagnosticReport-fhir-report",
     "fshType": "Instance",
@@ -40,60 +96,92 @@
     "endLine": 25
   },
   {
+    "outputFile": "Organization-OrganizationSemiStructuredReport.json",
+    "fshName": "OrganizationSemiStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/authors-organizatiions.fsh",
+    "startLine": 18,
+    "endLine": 38
+  },
+  {
+    "outputFile": "Patient-PatientSemiStructuredReport.json",
+    "fshName": "PatientSemiStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/patient.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
+    "outputFile": "Practitioner-PractitionerSemiStructuredReportAuthor.json",
+    "fshName": "PractitionerSemiStructuredReportAuthor",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/authors-organizatiions.fsh",
+    "startLine": 9,
+    "endLine": 16
+  },
+  {
+    "outputFile": "PractitionerRole-PractitionerRoleSemiStructuredReportAuthor.json",
+    "fshName": "PractitionerRoleSemiStructuredReportAuthor",
+    "fshType": "Instance",
+    "fshFile": "report-example-semi-strucrured/authors-organizatiions.fsh",
+    "startLine": 2,
+    "endLine": 7
+  },
+  {
     "outputFile": "StructureDefinition-HL7IDRCommunication.json",
     "fshName": "HL7IDRCommunicationExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 203,
-    "endLine": 208
+    "startLine": 202,
+    "endLine": 207
   },
   {
     "outputFile": "StructureDefinition-HL7IDRComparisonStudy.json",
     "fshName": "HL7IDRComparisonStudiesExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 159,
-    "endLine": 165
+    "startLine": 158,
+    "endLine": 164
   },
   {
     "outputFile": "StructureDefinition-HL7IDRFinding.json",
     "fshName": "HL7IDRFindingExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 182,
-    "endLine": 187
+    "startLine": 181,
+    "endLine": 186
   },
   {
     "outputFile": "StructureDefinition-HL7IDRImagingProcedure.json",
     "fshName": "HL7IDRImagingProcedureExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 175,
-    "endLine": 180
+    "startLine": 174,
+    "endLine": 179
   },
   {
     "outputFile": "StructureDefinition-HL7IDRImpression.json",
     "fshName": "HL7IDRImpressionExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 189,
-    "endLine": 194
+    "startLine": 188,
+    "endLine": 193
   },
   {
     "outputFile": "StructureDefinition-HL7IDRPatientHistory.json",
     "fshName": "HL7IDRPatientHistoryExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 167,
-    "endLine": 172
+    "startLine": 166,
+    "endLine": 171
   },
   {
     "outputFile": "StructureDefinition-HL7IDRRecommendation.json",
     "fshName": "HL7IDRRecommendationExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 196,
-    "endLine": 201
+    "startLine": 195,
+    "endLine": 200
   },
   {
     "outputFile": "StructureDefinition-IheEntryUUIDIdentifier.json",
@@ -117,7 +205,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/im-composition.fsh",
     "startLine": 1,
-    "endLine": 201
+    "endLine": 202
   },
   {
     "outputFile": "StructureDefinition-ImDiagnosticReport.json",
@@ -125,7 +213,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/im-diagnosticreport.fsh",
     "startLine": 1,
-    "endLine": 141
+    "endLine": 140
   },
   {
     "outputFile": "StructureDefinition-ImFinding.json",
@@ -252,8 +340,8 @@
     "fshName": "ImDiagnosticReportReference",
     "fshType": "Extension",
     "fshFile": "profiles/im-composition.fsh",
-    "startLine": 208,
-    "endLine": 218
+    "startLine": 209,
+    "endLine": 219
   },
   {
     "outputFile": "StructureDefinition-im-sop-instance-uid-identifier.json",

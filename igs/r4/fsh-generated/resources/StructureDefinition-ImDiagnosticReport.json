@@ -109,40 +109,6 @@
         }
       },
       {
-        "id": "DiagnosticReport.extension:study",
-        "path": "DiagnosticReport.extension",
-        "sliceName": "study",
-        "short": "Study subject to this report",
-        "definition": "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension.",
-        "min": 0,
-        "max": "*",
-        "type": [
-          {
-            "code": "Extension",
-            "profile": [
-              "http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "DiagnosticReport.extension:study.extension",
-        "path": "DiagnosticReport.extension.extension",
-        "max": "0"
-      },
-      {
-        "id": "DiagnosticReport.extension:study.value[x]",
-        "path": "DiagnosticReport.extension.value[x]",
-        "type": [
-          {
-            "code": "Reference",
-            "targetProfile": [
-              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy"
-            ]
-          }
-        ]
-      },
-      {
         "id": "DiagnosticReport.extension:composition",
         "path": "DiagnosticReport.extension",
         "sliceName": "composition",
@@ -400,7 +366,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
             ]
           }
         ]
@@ -432,7 +398,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/organization-eu-core"
             ]
           }
         ]
@@ -462,7 +428,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core"
             ]
           }
         ]
@@ -481,6 +447,20 @@
           }
         ],
         "mustSupport": true
+      },
+      {
+        "id": "DiagnosticReport.imagingStudy",
+        "path": "DiagnosticReport.imagingStudy",
+        "short": "Study subject to this report",
+        "definition": "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension.",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy"
+            ]
+          }
+        ]
       }
     ]
   }

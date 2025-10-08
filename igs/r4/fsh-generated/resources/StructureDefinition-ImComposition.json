@@ -101,6 +101,21 @@
         ]
       },
       {
+        "id": "Composition.extension:version",
+        "path": "Composition.extension",
+        "sliceName": "version",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Extension",
+            "profile": [
+              "http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version"
+            ]
+          }
+        ]
+      },
+      {
         "id": "Composition.identifier",
         "path": "Composition.identifier",
         "short": "Report identifier",
@@ -168,7 +183,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core"
             ]
           }
         ]
@@ -198,7 +213,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/organization-eu-core"
             ]
           }
         ]
@@ -241,7 +256,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core"
             ]
           }
         ]
@@ -270,7 +285,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core"
             ]
           }
         ]
@@ -283,7 +298,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/organization-eu-core"
             ]
           }
         ]

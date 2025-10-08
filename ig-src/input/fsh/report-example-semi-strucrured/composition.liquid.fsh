@@ -22,7 +22,8 @@ Usage: #example
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "o32u4js8492ff" // invented - not there in the report
-* version = "1.0.0" // invented - not there in the report
+{{R4}}* extension[version].valueString = "1.0.0" // invented - not there in the report
+{{R5}}* version = "1.0.0" // invented - not there in the report
 * status = #final
 * type = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"

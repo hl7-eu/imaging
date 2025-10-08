@@ -21,7 +21,9 @@ Description: "Example ImagingStudy showing an MRI for the right foot"
   * number = 1
   * description = "PD FatSat 3D (1.0mm) sagittal"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-  * bodySite.concept = $sct#239919000 "Entire left foot (body structure)"	
+{{R4}}  * bodySite = 
+{{R5}}  * bodySite.concept = 
+            $sct#239919000 "Entire left foot (body structure)"	
   * laterality = $sct#7771000 "Left lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
@@ -30,7 +32,9 @@ Description: "Example ImagingStudy showing an MRI for the right foot"
   * number = 2
   * description = "T1 (2.5mm) axial"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-  * bodySite.concept = $sct#239919000 "Entire left foot (body structure)"	
+{{R4}}  * bodySite = 
+{{R5}}  * bodySite.concept = 
+        $sct#239919000 "Entire left foot (body structure)"	
   * laterality = $sct#7771000 "Left lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
@@ -39,7 +43,9 @@ Description: "Example ImagingStudy showing an MRI for the right foot"
   * number = 3
   * description = "T2 (2.5mm) axial"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-  * bodySite.concept = $sct#239919000 "Entire left foot (body structure)"	
+{{R4}}  * bodySite = 
+{{R5}}  * bodySite.concept = 
+        $sct#239919000 "Entire left foot (body structure)"	
   * laterality = $sct#7771000 "Left lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
@@ -48,7 +54,9 @@ Description: "Example ImagingStudy showing an MRI for the right foot"
   * number = 4
   * description = "PDW FatSat (2.5mm) axial"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-  * bodySite.concept = $sct#239919000 "Entire left foot (body structure)"	
+{{R4}}  * bodySite = 
+{{R5}}  * bodySite.concept = 
+        $sct#239919000 "Entire left foot (body structure)"	
   * laterality = $sct#7771000 "Left lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )

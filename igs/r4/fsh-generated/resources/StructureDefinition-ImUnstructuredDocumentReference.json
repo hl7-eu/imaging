@@ -175,7 +175,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu"
+              "http://hl7.eu/fhir/base/StructureDefinition/organization-eu"
             ]
           }
         ]

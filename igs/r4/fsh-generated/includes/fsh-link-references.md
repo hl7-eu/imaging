@@ -6,9 +6,12 @@
 [EHDSAppointment]: StructureDefinition-EHDSAppointment.html
 [EHDSAttachment]: StructureDefinition-EHDSAttachment.html
 [ImImagingSelection]: StructureDefinition-ImImagingSelection.html
+[semi-structured-pdf]: Binary-semi-structured-pdf.html
+[unstructured-pdf]: Binary-unstructured-pdf.html
 [EHDSBodyStructure]: StructureDefinition-EHDSBodyStructure.html
 [ImReport]: StructureDefinition-ImReport.html
 [EHDSCarePlan]: StructureDefinition-EHDSCarePlan.html
+[CompositionSemiStructured]: Composition-CompositionSemiStructured.html
 [ImComposition]: StructureDefinition-ImComposition.html
 [EHDSCondition]: StructureDefinition-EHDSCondition.html
 [EHDSCoverage]: StructureDefinition-EHDSCoverage.html
@@ -18,6 +21,7 @@
 [EHDSDeviceUse]: StructureDefinition-EHDSDeviceUse.html
 [ImImagingDevice]: StructureDefinition-ImImagingDevice.html
 [DiagnosticReportSupportingInfoCodeSystem]: CodeSystem-codesystem-diagnostic-report-support-info.html
+[DiagnosticReportSemiStructured]: DiagnosticReport-DiagnosticReportSemiStructured.html
 [DiagnosticReportSupportingInfoVCodes]: ValueSet-valueset-diagnosticreport-report-support-info.html
 [ImDiagnosticReport]: StructureDefinition-ImDiagnosticReport.html
 [EHDSDischargeReport]: StructureDefinition-EHDSDischargeReport.html
@@ -57,6 +61,8 @@
 [ImReportCreator]: ActorDefinition-ImReportCreator.html
 [ImReportProvider]: ActorDefinition-ImReportProvider.html
 [ImSrInstanceImagingSelection]: StructureDefinition-ImSrInstanceImagingSelection.html
+[ImagingStudySemiStructuredReport1]: ImagingStudy-ImagingStudySemiStructuredReport1.html
+[ImagingStudySemiStructuredReport2]: ImagingStudy-ImagingStudySemiStructuredReport2.html
 [ImImagingStudy]: StructureDefinition-ImImagingStudy.html
 [EHDSImmunisation]: StructureDefinition-EHDSImmunisation.html
 [EHDSInfectiousContact]: StructureDefinition-EHDSInfectiousContact.html
@@ -85,9 +91,13 @@
 [ImRadiationDoseObservation]: StructureDefinition-ImRadiationDoseObservation.html
 [DiagnosticReport-fhir-report]: OperationDefinition-DiagnosticReport-fhir-report.html
 [EHDSOrganisation]: StructureDefinition-EHDSOrganisation.html
+[OrganizationSemiStructuredReport]: Organization-OrganizationSemiStructuredReport.html
 [EHDSPatientAnimal]: StructureDefinition-EHDSPatientAnimal.html
+[PatientSemiStructuredReport]: Patient-PatientSemiStructuredReport.html
 [EHDSPatient]: StructureDefinition-EHDSPatient.html
 [EHDSPatientSummary]: StructureDefinition-EHDSPatientSummary.html
+[PractitionerRoleSemiStructuredReportAuthor]: PractitionerRole-PractitionerRoleSemiStructuredReportAuthor.html
+[PractitionerSemiStructuredReportAuthor]: Practitioner-PractitionerSemiStructuredReportAuthor.html
 [EHDSPregnancyHistory]: StructureDefinition-EHDSPregnancyHistory.html
 [EHDSProcedure]: StructureDefinition-EHDSProcedure.html
 [ImProcedure]: StructureDefinition-ImProcedure.html
@@ -103,4 +113,5 @@
 [EHDSSubstanceUse]: StructureDefinition-EHDSSubstanceUse.html
 [EHDSTelecom]: StructureDefinition-EHDSTelecom.html
 [EHDSTravelHistory]: StructureDefinition-EHDSTravelHistory.html
+[UnstructuredReportExample]: DocumentReference-UnstructuredReportExample.html
 [XdsClassCodeVs]: ValueSet-im-xds-class-code-valueset.html

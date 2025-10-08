@@ -63,10 +63,10 @@
       "id": "hl7_fhir_eu_extensions"
     },
     {
-      "packageId": "hl7.fhir.eu.base-r5",
+      "packageId": "hl7.fhir.eu.base",
       "version": "current",
-      "uri": "http://hl7.eu/fhir/base-r5/ImplementationGuide/hl7.fhir.eu.base-r5",
-      "id": "hl7_fhir_eu_base_r5"
+      "uri": "http://hl7.eu/fhir/base/ImplementationGuide/hl7.fhir.eu.base",
+      "id": "hl7_fhir_eu_base"
     },
     {
       "packageId": "hl7.fhir.uv.xver-r5.r4",
@@ -149,6 +149,20 @@
       },
       {
         "reference": {
+          "reference": "Binary/semi-structured-pdf"
+        },
+        "name": "Binary: Semi-structured report pdf",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Binary/unstructured-pdf"
+        },
+        "name": "Binary: Unstructured report pdf",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/EHDSBodyStructure"
         },
         "description": "EHDS refined base model for Body structure",
@@ -170,6 +184,14 @@
         "description": "EHDS simplified model for care plan. The model includes very minimal information and is not designed to cover the full functionality of care plans.",
         "exampleBoolean": false,
         "name": "Care plan model"
+      },
+      {
+        "reference": {
+          "reference": "Composition/CompositionSemiStructured"
+        },
+        "name": "Composition for the left/right foot study",
+        "description": "Example of a ImComposition showing the report for the left/right foot study",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImComposition"
       },
       {
         "reference": {
@@ -242,6 +264,14 @@
         "name": "Diagnostic Report Support Info Code System",
         "description": "Code system for codes to be used in `DiagnosticReport.supportInfo` for imaging reports.",
         "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "DiagnosticReport/DiagnosticReportSemiStructured"
+        },
+        "name": "DiagnosticReport for the left/right foot study",
+        "description": "Example of a ImDiagnosticReport showing the report for the left/right foot study",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImDiagnosticReport"
       },
       {
         "reference": {
@@ -557,6 +587,22 @@
       },
       {
         "reference": {
+          "reference": "ImagingStudy/ImagingStudySemiStructuredReport1"
+        },
+        "name": "ImagingStudy for the left foot",
+        "description": "Example ImagingStudy showing an MRI for the left foot",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy"
+      },
+      {
+        "reference": {
+          "reference": "ImagingStudy/ImagingStudySemiStructuredReport2"
+        },
+        "name": "ImagingStudy for the right foot",
+        "description": "Example ImagingStudy showing an MRI for the right foot",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy"
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/ImImagingStudy"
         },
         "name": "ImagingStudy: General",
@@ -781,11 +827,25 @@
       },
       {
         "reference": {
+          "reference": "Organization/OrganizationSemiStructuredReport"
+        },
+        "name": "OrganizationSemiStructuredReport",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/EHDSPatientAnimal"
         },
         "description": "EHDS refined base model for Patient:Animal",
         "exampleBoolean": false,
         "name": "Patient Animal model"
+      },
+      {
+        "reference": {
+          "reference": "Patient/PatientSemiStructuredReport"
+        },
+        "name": "Patient in Semi-structured report example",
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -802,6 +862,20 @@
         "description": "EHDS refined base model for Patient Summary",
         "exampleBoolean": false,
         "name": "Patient summary model"
+      },
+      {
+        "reference": {
+          "reference": "PractitionerRole/PractitionerRoleSemiStructuredReportAuthor"
+        },
+        "name": "PractitionerRoleSemiStructuredReportAuthor",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/PractitionerSemiStructuredReportAuthor"
+        },
+        "name": "PractitionerSemiStructuredReportAuthor",
+        "exampleBoolean": true
       },
       {
         "reference": {
@@ -922,6 +996,14 @@
         "description": "Relevant information about the patient's recent travel history, for one visit",
         "exampleBoolean": false,
         "name": "Travel history model"
+      },
+      {
+        "reference": {
+          "reference": "DocumentReference/UnstructuredReportExample"
+        },
+        "name": "Unstructured Report",
+        "description": "MHD DocumentReference for unstructured report.",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImUnstructuredDocumentReference"
       },
       {
         "reference": {

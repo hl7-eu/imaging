@@ -76,10 +76,9 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 """
 
 // http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study
-{{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study named study 0..*
-{{R4}}* extension[study].valueReference only Reference(ImImagingStudy)
-{{R4}}* extension[study] ^short = "Study subject to this report"
-{{R4}}* extension[study] ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+{{R4}}* imagingStudy only Reference(ImImagingStudy)
+{{R4}}* imagingStudy ^short = "Study subject to this report"
+{{R4}}* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
 {{R5}}* study only Reference(ImImagingStudy)
 {{R5}}* study ^short = "Study subject to this report"

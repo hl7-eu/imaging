@@ -253,7 +253,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core"
             ]
           }
         ]
@@ -282,7 +282,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core"
             ]
           }
         ]

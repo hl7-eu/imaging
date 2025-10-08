@@ -4,6 +4,7 @@
     "fhirVersion": "5.0.0",
     "r-code": "r5",
     "R-code": "R5",
+    "eu-core-r-code": "-r5",
     "R4": "//R4",
     "R5": "",
     "R4-yaml": "# R4"

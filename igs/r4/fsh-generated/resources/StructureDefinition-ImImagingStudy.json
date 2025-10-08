@@ -114,7 +114,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core",
+              "http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core",
               "http://hl7.org/fhir/StructureDefinition/Device"
             ]
           }
@@ -212,7 +212,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu-core"
             ]
           }
         ]
@@ -278,7 +278,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/organization-eu-core"
             ]
           }
         ]
@@ -311,7 +311,7 @@
           {
             "code": "Reference",
             "targetProfile": [
-              "http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core"
+              "http://hl7.eu/fhir/base/StructureDefinition/organization-eu-core"
             ]
           }
         ]

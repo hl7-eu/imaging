@@ -49,8 +49,10 @@ Alias: $EuEpisodeOfCareUrl     = http://hl7.org/fhir/StructureDefinition/Episode
 Alias: $EuImagingStudy         = ImagingStudy
 Alias: $EuImagingStudyUrl      = http://hl7.org/fhir/StructureDefinition/ImagingStudy
 
-Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
-Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
+{{R4}}Alias: $EuLocation             = http://hl7.eu/fhir/base/StructureDefinition/location-eu
+{{R4}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base/StructureDefinition/location-eu
+{{R5}}Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
+{{R5}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
 
 Alias: $EuMedication           = Medication
 Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/ImagingStudy/Medication
@@ -61,23 +63,23 @@ Alias: $EuObservationUrl       = http://hl7.org/fhir/StructureDefinition/Observa
 Alias: $EuMedicationAdministration = MedicationAdministration
 Alias: $EuMedicationAdministrationUrl = http://hl7.org/fhir/StructureDefinition/MedicationAdministration
 
-Alias: $EuOrganization         = http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core
-Alias: $EuOrganizationUrl      = http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu-core
+Alias: $EuOrganization         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/organization-eu-core
+Alias: $EuOrganizationUrl      = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/organization-eu-core
 
-Alias: $EuPatient              = http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core
-Alias: $EuPatientUrl           = http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu-core
+Alias: $EuPatient              = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/patient-eu-core
+Alias: $EuPatientUrl           = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/patient-eu-core
 
-Alias: $EuPatientCore          = http://hl7.eu/fhir/base-r5/StructureDefinition/patient-core-eu
-Alias: $EuPatientCoreUrl       = http://hl7.eu/fhir/base-r5/StructureDefinition/patient-core-eu
+Alias: $EuPatientCore          = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/patient-core-eu
+Alias: $EuPatientCoreUrl       = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/patient-core-eu
 
 Alias: $EuPatientAnimal        = PatientAnimalEu
 Alias: $EuPatientAnimalUrl     = http://hl7.eu/fhir/base-r5/StructureDefinition/Patient-animal-eu
 
-Alias: $EuPractitionerRole     = http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core
-Alias: $EuPractitionerRoleUrl  = http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu-core
+Alias: $EuPractitionerRole     = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/practitionerRole-eu-core
+Alias: $EuPractitionerRoleUrl  = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/practitionerRole-eu-core
 
-Alias: $EuPractitioner         = http://hl7.eu/fhir/base-r5/StructureDefinition/practitioner-eu-core
-Alias: $EuPractitionerUrl      = http://hl7.eu/fhir/base-r5/StructureDefinition/practitioner-eu-core
+Alias: $EuPractitioner         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/practitioner-eu-core
+Alias: $EuPractitionerUrl      = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/practitioner-eu-core
 
 Alias: $EuProcedure            = Procedure
 Alias: $EuProcedureUrl         = http://hl7.org/fhir/StructureDefinition/Procedure
