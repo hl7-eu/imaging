@@ -221,7 +221,7 @@
     "fshType": "Profile",
     "fshFile": "profiles/im-ihemhd-documentreference.fsh",
     "startLine": 48,
-    "endLine": 60
+    "endLine": 57
   },
   {
     "outputFile": "StructureDefinition-ImSrInstanceImagingSelection.json",

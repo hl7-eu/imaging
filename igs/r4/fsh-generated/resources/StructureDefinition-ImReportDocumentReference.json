@@ -36,6 +36,11 @@
   "differential": {
     "element": [
       {
+        "id": "DocumentReference.content",
+        "path": "DocumentReference.content",
+        "short": "Contains the profile of the referred report"
+      },
+      {
         "id": "DocumentReference.content.extension",
         "path": "DocumentReference.content.extension",
         "slicing": {
@@ -48,28 +53,12 @@
           "ordered": false,
           "rules": "open"
         },
-        "min": 2
-      },
-      {
-        "id": "DocumentReference.content.extension:imReportProfile",
-        "path": "DocumentReference.content.extension",
-        "sliceName": "imReportProfile",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "Extension",
-            "profile": [
-              "http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile"
-            ]
-          }
-        ]
+        "min": 1
       },
       {
         "id": "DocumentReference.content.extension:profile",
         "path": "DocumentReference.content.extension",
         "sliceName": "profile",
-        "short": "Contains the profile of the referred report",
         "min": 1,
         "max": "*",
         "type": [

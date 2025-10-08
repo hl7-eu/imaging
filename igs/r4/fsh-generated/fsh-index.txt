@@ -26,7 +26,7 @@ StructureDefinition-ImOrder.json                                   ImOrder      
 StructureDefinition-ImProcedure.json                               ImProcedure                               Profile     profiles/im-procedure.fsh                       1 - 33
 StructureDefinition-ImRadiationDoseObservation.json                ImRadiationDoseObservation                Profile     profiles/im-radiationdose-observation.fsh       1 - 112
 StructureDefinition-ImReport.json                                  ImReport                                  Profile     profiles/im-report.fsh                          1 - 29
-StructureDefinition-ImReportDocumentReference.json                 ImReportDocumentReference                 Profile     profiles/im-ihemhd-documentreference.fsh        48 - 60
+StructureDefinition-ImReportDocumentReference.json                 ImReportDocumentReference                 Profile     profiles/im-ihemhd-documentreference.fsh        48 - 57
 StructureDefinition-ImSrInstanceImagingSelection.json              ImSrInstanceImagingSelection              Profile     profiles/im-imagingselection.fsh                16 - 33
 StructureDefinition-ImUnstructuredDocumentReference.json           ImUnstructuredDocumentReference           Profile     profiles/im-ihemhd-documentreference.fsh        1 - 42
 StructureDefinition-im-accession-number-identifier.json            ImAccessionNumberIdentifier               Profile     profiles/im-identifiers.fsh                     1 - 16
