@@ -1,4 +1,4 @@
-Profile: ImReport
+Profile: BundleReportEuImaging
 Parent: Bundle
 Title: "Bundle: Imaging Report"
 Description: "Document Bundle for Imaging Report"
@@ -18,13 +18,13 @@ Description: "Document Bundle for Imaging Report"
   * request ..0
   * response ..0
 * entry contains 
-    imComposition 1..1 and
-    imDiagnosticReport 1..1 and
+    CompositionEuImaging 1..1 and
+    DiagnosticReportEuImaging 1..1 and
     patient 1..1
-* entry[imComposition]
-  * resource only ImComposition
-* entry[imDiagnosticReport]
-  * resource only ImDiagnosticReport
+* entry[CompositionEuImaging]
+  * resource only CompositionEuImaging
+* entry[DiagnosticReportEuImaging]
+  * resource only DiagnosticReportEuImaging
 * entry[patient]
   * resource only $EuPatient
 

@@ -1,7 +1,7 @@
 Instance: CompositionStructured
-InstanceOf: ImComposition
+InstanceOf: CompositionEuImaging
 Title: "Composition: structured report"
-Description: "Example of a ImComposition showing the report with structured data."
+Description: "Example of a CompositionEuImaging showing the report with structured data."
 Usage: #example
 * status = #final
 * subject = Reference( PatientStructuredReport )

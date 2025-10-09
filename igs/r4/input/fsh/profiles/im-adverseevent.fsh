@@ -1,4 +1,4 @@
-Profile: ImAdverseEvent
+Profile: AdverseEventEuImaging
 Parent: AdverseEvent
 Title: "AdverseEvent: Imaging Adverse Event"
 Description: """Adverse Event that occurred during an imaging procedure."""
@@ -7,8 +7,8 @@ Description: """Adverse Event that occurred during an imaging procedure."""
 * suspectEntity
   * insert SliceElement( #profile, instance )
 * suspectEntity contains procedure 0..*
-* suspectEntity[procedure].instance only Reference(ImProcedure)
-//R5* suspectEntity[procedure].instanceReference only Reference(ImProcedure)
+* suspectEntity[procedure].instance only Reference(ProcedureEuImaging)
+//R5* suspectEntity[procedure].instanceReference only Reference(ProcedureEuImaging)
 
 * subjectMedicalHistory
   * insert SliceElement( #profile, $this )

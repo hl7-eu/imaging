@@ -35,11 +35,11 @@ classDiagram
     note MS
   }
 
-  class ImProcedure{
+  class ProcedureEuImaging{
     <<Procedure>>
   }
 
-  ImAdverseReaction --> ImProcedure: suspectEntity.instance
+  ImAdverseReaction --> ProcedureEuImaging: suspectEntity.instance
   ImAdverseReaction --> AllergicReaction: contributingFactor.item
 ```
 
@@ -55,7 +55,7 @@ The decided modeling choice in this IG to represent an adverse reaction.
 * Cons:
   * it lacks some of the allergy-specific elements required (i.e. `criticality`, `verification status`).
   * The resource focuses mainly is on the registration and monitoring of adverse events.
-  * The link to the rest of the model is done through AdverseEvent.SuspectedEntity.ImProcedure, which is probably not the best way of referencing it, as it needs a reverse include to query adverse events happened in a given procedure.
+  * The link to the rest of the model is done through AdverseEvent.SuspectedEntity.ProcedureEuImaging, which is probably not the best way of referencing it, as it needs a reverse include to query adverse events happened in a given procedure.
   * A custom extension is required to encode the `criticality` data point.
 
 #### AllergyIntolerance resource

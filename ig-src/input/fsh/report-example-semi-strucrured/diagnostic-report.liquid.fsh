@@ -1,7 +1,7 @@
 Instance: DiagnosticReportSemiStructured
-InstanceOf: ImDiagnosticReport
+InstanceOf: DiagnosticReportEuImaging
 Title: "DiagnosticReport: semi-structured report"
-Description: "Example of a ImDiagnosticReport showing the report for the left/right foot study"
+Description: "Example of a DiagnosticReportEuImaging showing the report for the left/right foot study"
 Usage: #example
 // * extension[artifactVersion].valueString = "1.0.0" // invented - not there in the report
 * identifier

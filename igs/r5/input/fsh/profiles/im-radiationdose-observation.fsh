@@ -1,4 +1,4 @@
-Profile: ImRadiationDoseObservation
+Profile: ObservationRadiationDoseEuImaging
 Parent: $EuObservation
 Title: "Observation: Radiation Dose"
 Description: """
@@ -9,8 +9,8 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 
 * basedOn
   * insert SliceElement( #type, $this )
-* basedOn contains imorderaccession 0..1
-* insert BasedOnImOrderReference( imorderaccession )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 * identifier 0..*
   * insert SliceElement( #value, type )
@@ -21,16 +21,16 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 * partOf 1..*
   * insert SliceElement( #profile, $this )
 * partOf contains study 1..1
-* partOf[study] only Reference( ImImagingStudy )
+* partOf[study] only Reference( ImagingStudyEuImaging )
 
 //R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
 //R4* extension[derivedFrom] contains srImagingSelection 1..* 
-//R4* extension[derivedFrom][srImagingSelection].value[x] only Reference( ImSrInstanceImagingSelection )
+//R4* extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
 
 * derivedFrom
   * insert SliceElement( #profile, $this )
 * derivedFrom contains dicomSrInstance 1..1
-* derivedFrom[dicomSrInstance] only Reference( ImSrInstanceImagingSelection )
+* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
 
 * code
   * coding 1..*
@@ -49,7 +49,7 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 
 // Performing irradiation device
 * device 
-* device only Reference(ImImagingDevice)
+* device only Reference(DeviceEuImaging)
 * device ^short = "Irradiating modality"
 
 // dose measurements
@@ -63,55 +63,55 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 * component[doseAreaProductTotal]
   * code = $dcm#113722 // "Dose Area Product Total"
   * value[x] only Quantity
-  * valueQuantity from ImGraySquareUnits
+  * valueQuantity from GraySquareUnitsEuImaging
 * component[fluorDoseAreaProductTotal]
   * code = $dcm#113726 // "Fluoro Dose Area Product Total"
   * value[x] only Quantity
-  * valueQuantity from ImGraySquareUnits
+  * valueQuantity from GraySquareUnitsEuImaging
 * component[doseAreaProduct]
   * code = $dcm#122130 // "Dose Area Product"
   * value[x] only Quantity
-  * valueQuantity from ImGraySquareUnits
+  * valueQuantity from GraySquareUnitsEuImaging
 
 * component[CTDoseLengthProductTotal]
   * code = $dcm#113813 // "CT Dose Length Product Total"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 * component[DLP]
   * code = $dcm#113838 // "DLP"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 * component[DLPAlertValue]
   * code = $dcm#113903 // "DLP Alert Value"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 * component[AccumulatedDLPForwardEstimate]  
   * code = $dcm#113905 // "Accumulated DLP Forward Estimate"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 * component[DLPNotificationValue]
   * code = $dcm#113911 // "DLP Notification Value"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 * component[DLPForwardEstimate]
   * code = $dcm#113913 // "DLP Forward Estimate"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 * component[CRDoseLengthProductSubTotal]
   * code = $dcm#130745 // "CT Dose Length Product Sub-Total"
   * value[x] only Quantity
-  * valueQuantity from ImDoseLengthUnits
+  * valueQuantity from DoseLengthUnitsEuImaging
 
 * component[CTEffectiveDoseTotal]
   * code = $dcm#113814 // "CT Effective Dose Total"
   * value[x] only Quantity
-  * valueQuantity from ImEffectiveDoseUnits
+  * valueQuantity from EffectiveDoseUnitsEuImaging
 * component[EffectiveDose]
   * code = $dcm#113839 // "Effective Dose"
   * value[x] only Quantity
-  * valueQuantity from ImEffectiveDoseUnits
+  * valueQuantity from EffectiveDoseUnitsEuImaging
 
-ValueSet: ImEffectiveDoseUnits
+ValueSet: EffectiveDoseUnitsEuImaging
 Id: im-effective-dose-units
 Title: "ValueSet: Effective Dose Units"
 Description: "Units for Effective Dose."
@@ -120,14 +120,14 @@ Description: "Units for Effective Dose."
 * $ucum#Sv        // Effective Dose
 * $ucum#mSv       // Effective Dose
 
-ValueSet: ImDoseLengthUnits
+ValueSet: DoseLengthUnitsEuImaging
 Id: im-dose-length-units
 Title: "ValueSet: Dose Length Units"
 Description: "Units for Dose Length."
 * ^experimental = false
 * $ucum#mGy.cm // Dose length product
 
-ValueSet: ImGraySquareUnits
+ValueSet: GraySquareUnitsEuImaging
 Id: im-gray-square-units
 Title: "ValueSet: Gray Square Units"
 Description: "Units for Gray Square."

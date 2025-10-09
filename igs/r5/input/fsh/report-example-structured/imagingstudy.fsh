@@ -1,5 +1,5 @@
 Instance: ImagingStudStructuredReport
-InstanceOf: ImImagingStudy
+InstanceOf: ImagingStudyEuImaging
 Title: "ImagingStudy: structured-report study"
 Description: "Transthoracic echocardiogram for 3D TEE 2D"
 Usage: #example
@@ -7,7 +7,7 @@ Usage: #example
   * type = MissingDicomTerminology#0020000D "Study Instance UID" 
   * system = "urn:dicom:uid"
   * value = "urn:oid:1.3.46.670589.58.10.10562925256214266678.11674839624289915183" // invented - not there in the report
-* basedOn[imorderaccession]
+* basedOn[ServiceRequestOrderEuImagingaccession]
   * identifier
     * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"

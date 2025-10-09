@@ -1,4 +1,4 @@
-ValueSet: ImProcedureType
+ValueSet: ProcedureEuImagingType
 Id: im-procedure-type
 Title: "Imaging Procedure Type"
 Description: "This value set includes all imaging procedure types."

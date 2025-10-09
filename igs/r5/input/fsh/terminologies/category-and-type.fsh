@@ -1,4 +1,4 @@
-ValueSet: ImImagingReportTypesEuVS
+ValueSet: ImagingReportTypesEuVSEuImaging
 Title: "Radiology Report Types"
 Description: "The set of radiology types as defined by LOINC."
 * insert SetFmmAndStatusRule( 1, draft )

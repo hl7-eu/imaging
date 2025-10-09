@@ -1,4 +1,4 @@
-Profile: ImFinding
+Profile: ObservationFindingEuImaging
 Parent: $EuObservation
 Title: "Observation: Imaging Finding"
 Description: "Finding during imaging procedure."
@@ -11,6 +11,6 @@ Description: "Finding during imaging procedure."
 
 * basedOn
   * insert SliceElement( #type, $this )
-* basedOn contains imorderaccession 0..*
-* insert BasedOnImOrderReference( imorderaccession )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
   

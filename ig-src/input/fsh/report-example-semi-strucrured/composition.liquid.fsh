@@ -1,7 +1,7 @@
 Instance: CompositionSemiStructured
-InstanceOf: ImComposition
+InstanceOf: CompositionEuImaging
 Title: "Composition: semi-structured"
-Description: "Example of a ImComposition showing the report for the left/right foot study"
+Description: "Example of a CompositionEuImaging showing the report for the left/right foot study"
 Usage: #example
 * status = #final
 * subject = Reference( PatientSemiStructuredReport )

@@ -16,8 +16,8 @@ Related to document bundles, the following guidelines are taken over:
 
 ``` mermaid
 classDiagram
-    class ImDiagnosticReport
-    class ImComposition
-    ImDiagnosticReport --> ImComposition: composition
-    ImComposition --> ImDiagnosticReport: extension[diagnosticReport-reference]
+    class DiagnosticReportEuImaging
+    class CompositionEuImaging
+    DiagnosticReportEuImaging --> CompositionEuImaging: composition
+    CompositionEuImaging --> DiagnosticReportEuImaging: extension[diagnosticReport-reference]
 ```

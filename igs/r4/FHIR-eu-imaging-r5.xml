@@ -45,7 +45,7 @@
 <artifact id="StructureDefinition/EHDSDocument" key="StructureDefinition-EHDSDocument" name="Document model"/>
 <artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: EU Imaging Report"/>
 <artifact id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="DocumentReference: Key Image"/>
-<artifact id="StructureDefinition/ImUnstructuredDocumentReference" key="StructureDefinition-ImUnstructuredDocumentReference" name="DocumentReference: Unstructured Imaging Report"/>
+<artifact id="StructureDefinition/UnstructuredDocumentReferenceEuImaging" key="StructureDefinition-UnstructuredDocumentReferenceEuImaging" name="DocumentReference: Unstructured Imaging Report"/>
 <artifact deprecated="true" id="StructureDefinition/DocumentReferenceEu" key="StructureDefinition-DocumentReferenceEu" name="DocumentReferenceEu"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
@@ -103,7 +103,7 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSImagingReportHeader" key="StructureDefinition-EHDSImagingReportHeader" name="Imaging report header model"/>
 <artifact id="StructureDefinition/EHDSImagingReport" key="StructureDefinition-EHDSImagingReport" name="Imaging report model"/>
 <artifact id="StructureDefinition/EHDSImagingStudy" key="StructureDefinition-EHDSImagingStudy" name="Imaging study model"/>
-<artifact id="StructureDefinition/ImSrInstanceImagingSelection" key="StructureDefinition-ImSrInstanceImagingSelection" name="ImagingSelection: DICOM SR Instance"/>
+<artifact id="StructureDefinition/SrInstanceImagingSelectionEuImaging" key="StructureDefinition-SrInstanceImagingSelectionEuImaging" name="ImagingSelection: DICOM SR Instance"/>
 <artifact id="StructureDefinition/ImImagingSelection" key="StructureDefinition-ImImagingSelection" name="ImagingSelection: General"/>
 <artifact id="StructureDefinition/ImKeyImageImagingSelection" key="StructureDefinition-ImKeyImageImagingSelection" name="ImagingSelection: Key Image"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy for the left foot"/>
@@ -220,8 +220,8 @@
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ImProcedure" key="StructureDefinition-ImProcedure" name="Procedure: Imaging Acquisition"/>
 <artifact deprecated="true" id="StructureDefinition/ImIheMhdDocumentReference" key="StructureDefinition-ImIheMhdDocumentReference" name="R5 DocumentReference for MHD deployments"/>
-<artifact id="ValueSet/ImImagingReportTypesEuVS" key="ValueSet-ImImagingReportTypesEuVS" name="Radiology Report Types"/>
-<artifact id="ValueSet/ImSectionEmptyReason" key="ValueSet-ImSectionEmptyReason" name="Reasons a section in an imaging report is empty."/>
+<artifact id="ValueSet/ImagingReportTypesEuVSEuImaging" key="ValueSet-ImagingReportTypesEuVSEuImaging" name="Radiology Report Types"/>
+<artifact id="ValueSet/SectionEmptyReasonEuImaging" key="ValueSet-SectionEmptyReasonEuImaging" name="Reasons a section in an imaging report is empty."/>
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
 <artifact deprecated="true" id="StructureDefinition/RelatedPersonEu" key="StructureDefinition-RelatedPersonEu" name="RelatedPerson Eu"/>
 <artifact deprecated="true" id="StructureDefinition/ImReportIheMhdDocumentReference" key="StructureDefinition-ImReportIheMhdDocumentReference" name="Report DocumentReference for MHD deployments"/>

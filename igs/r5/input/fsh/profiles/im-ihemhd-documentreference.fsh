@@ -1,4 +1,4 @@
-Profile: ImUnstructuredDocumentReference
+Profile: UnstructuredDocumentReferenceEuImaging
 Parent: DocumentReference
 Title: "DocumentReference: Unstructured Imaging Report"
 Description: """
@@ -13,7 +13,7 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 
 * status 1..1 
 * type 1..1 
-* type from ImImagingReportTypesEuVS (preferred) 
+* type from ImagingReportTypesEuVSEuImaging (preferred) 
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set. It should correspond with the value on DiagnosticReport.code."
 
@@ -45,8 +45,8 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 * modality 0..* 
 
 
-Profile: ImReportDocumentReference
-Parent: ImUnstructuredDocumentReference
+Profile: BundleReportEuImagingDocumentReference
+Parent: UnstructuredDocumentReferenceEuImaging
 Title: "DocumentReference: EU Imaging Report"
 Description: """
 A DocumentReference profile for the Report DocumentReference used in MHD deployments. """
@@ -56,13 +56,13 @@ A DocumentReference profile for the Report DocumentReference used in MHD deploym
 //R4  * extension[profile]
 //R4  * ^short = "Contains the profile of the referred report"
 // TODO fix this! we had to comment it out as it did not run
-// //R4  * extension[imReportProfile].valueCanonical = Canonical( ImReport )
+// //R4  * extension[BundleReportEuImagingProfile].valueCanonical = Canonical( BundleReportEuImaging )
   
 * content 1..1
   * profile 1..*
     * insert SliceElement( #value, value )
   * profile contains hl7eu-imaging-report 1..1 
-  * profile[hl7eu-imaging-report].valueCanonical = Canonical( ImReport )
+  * profile[hl7eu-imaging-report].valueCanonical = Canonical( BundleReportEuImaging )
 
 
 Profile: IheEntryUUIDIdentifier

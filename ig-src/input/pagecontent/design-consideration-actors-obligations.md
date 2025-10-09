@@ -6,7 +6,7 @@ This section describes the approach taken in the specification related to obliga
 The specification recognizes the following actors:
 
 * ImManifestProvider - provides the imaging studies manifest.
-* ImReportProvider - provides the imaging studies report.
+* BundleReportEuImagingProvider - provides the imaging studies report.
 
 #### Provider obligations
 The ImProvider provides the information. In this case this means that it has to provide the information defined in the eHN Guidelines that are further refined by Xt-EHR in the Xt-EHR logical model. 
@@ -15,7 +15,7 @@ All data elements in the Xt-EHR model are mapped onto one or more FHIR elements 
 
 The obligation used has the following fields:
 | code	| SHALL:populate-if-known |
-| actor |	ImManifestProvider or ImReportProvider |
+| actor |	ImManifestProvider or BundleReportEuImagingProvider |
 | documentation | list of XtEHR paths that map on this obligation |
 
 This means that the provider SHALL populate these fields it has the information.

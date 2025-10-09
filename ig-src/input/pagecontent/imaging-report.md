@@ -10,9 +10,9 @@ The figure below illustrates the structure of the Imaging Report.
 {% include img.html img="imaging-report-overview.drawio.png" caption="Figure: Imaging report overview" %}
 
 An Imaging Report is a FHIR Clinical Document that contains both a {{DiagnosticReport}} as a {{Composition}} resource.
-The report uses the {{ImDiagnosticReport}} to store the structured data. This resource might also include a rendered version of the document. The {{ImComposition}} resource is used to present a rendered version of the document as a FHIR document.
+The report uses the {{DiagnosticReportEuImaging}} to store the structured data. This resource might also include a rendered version of the document. The {{CompositionEuImaging}} resource is used to present a rendered version of the document as a FHIR document.
 
-As described by {{iheIDR}}, the all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{ImDiagnosticReport}} and recommends it as the structure for sections defined in the {{ImComposition}}).
+As described by {{iheIDR}}, the all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{DiagnosticReportEuImaging}} and recommends it as the structure for sections defined in the {{CompositionEuImaging}}).
 
 #### Header
 
@@ -20,7 +20,7 @@ General information on the report. Most of the information elements in this part
 
 #### Imaging Study
 
-Information on the studies that this report is reporting on. It includes such as the study identifiers, date and time the exam was done, the modalities used in the exam and the different series. In this implementation guide this is represented by the {{ImImagingStudy}} profile.
+Information on the studies that this report is reporting on. It includes such as the study identifiers, date and time the exam was done, the modalities used in the exam and the different series. In this implementation guide this is represented by the {{ImagingStudyEuImaging}} profile.
 
 #### Order
 
@@ -28,7 +28,7 @@ The order section contains information on the orders that resulted in the studie
 
 > Note: “Rule out X”, while somewhat helpful for the imaging clinician, can be problematic for billing since the symptoms that suggest the possible presence of the condition and establish the medical necessity of the imaging exam are implied, but not captured. Site practices increasingly deprecate such wording.
 
-In this specification, the order is represented by the {{ImOrder}} profile.
+In this specification, the order is represented by the {{ServiceRequestOrderEuImaging}} profile.
 
 #### History
 
@@ -52,13 +52,13 @@ While the actual instructions given to the patient are not typically listed in t
 
 Procedure details that may be required for billing are sometimes included here as well.
 
-In this specification, this information is represented by the {{ImProcedure}} profile.
+In this specification, this information is represented by the {{ProcedureEuImaging}} profile.
 
 #### Comparison
 
 This section is a list of other studies that were considered relevant by the imaging clinician. They are typically identified by type (modality, anatomy, exam type) and date. Findings from these studies and comparisons with the current study are typically woven into the next section (e.g. indicating no change, differentiating descriptions and/or measurements), although some of these studies may not be specifically mentioned in the findings. It is typically presumed that both the images and the report for each comparison study were available to the imaging clinician, however in some cases, such as for external priors, only the report or only the images were available, in which case that may be noted here.
 
-In this specification a comparison study can be represented as an {{ImImagingStudy}} describing the full study or an {{ImagingSelection}} resource representing part of a study.
+In this specification a comparison study can be represented as an {{ImagingStudyEuImaging}} describing the full study or an {{ImagingSelection}} resource representing part of a study.
 
 #### Findings
 
@@ -68,7 +68,7 @@ When there are significant numbers of findings, the imaging clinician will typic
 
 An important distinction between Findings and Impressions is that Findings capture what the imaging clinician saw in the image, while Impressions capture what they inferred/concluded. The findings might record a radiolucency, while the impression records a fracture. There are some cases where the two overlap, but generally imaging clinicians try to capture in the Findings what the significant image features are and strive in the Impressions to communicate to the referring physician what they think those represent in clinical terms.
 
-In this specification, findings are represented as resources following the {{ImFinding}} profile. Optionally, this section can also hold one or more key image resource represented by either {{ImKeyImageImagingSelection}} or {{ImKeyImageDocumentReference}}.
+In this specification, findings are represented as resources following the {{ObservationFindingEuImaging}} profile. Optionally, this section can also hold one or more key image resource represented by either {{ImagingSelectionKeyImageEuImaging}} or {{DocumentReferenceKeyImageEuImaging}}.
 
 #### Impression
 
@@ -84,7 +84,7 @@ Some items in the impression may be clinically significant but were not associat
 
 Some items in the impression may be critical, in that they represent the potential for severe negative clinical impact to the patient if appropriate action is not taken promptly. The presence of such items almost always results in a communication with care staff and/or the patient.
 
-In this specification, impressions are represented by {{ImFinding}} and {{Condition}} resources.
+In this specification, impressions are represented by {{ObservationFindingEuImaging}} and {{Condition}} resources.
 
 #### Recommendation
 
@@ -109,7 +109,7 @@ Typically a {{Communication}} resources is used to represent such event.
 These define the FHIR resources for systems conforming to this implementation guide:
 
 {% sql {
-  "query" : "SELECT name AS Name, title AS Title, Type, Description, Web FROM Resources WHERE Type='StructureDefinition' AND Name LIKE 'Im%' ORDER BY CASE WHEN Name IN ('ImReport', 'ImDiagnosticReport', 'ImComposition') THEN 1 ELSE 2 END, Name ASC",
+  "query" : "SELECT name AS Name, title AS Title, Type, Description, Web FROM Resources WHERE Type='StructureDefinition' AND Name LIKE 'Im%' ORDER BY CASE WHEN Name IN ('BundleReportEuImaging', 'DiagnosticReportEuImaging', 'CompositionEuImaging') THEN 1 ELSE 2 END, Name ASC",
   "class" : "lines",
   "columns" : [
     { "name" : "Title"      , "type" : "link"     , "source" : "Name", "target" : "Web"},

@@ -1,4 +1,4 @@
-Profile: ImOrder
+Profile: ServiceRequestOrderEuImaging
 Parent: $EuServiceRequest
 Title: "ServiceRequest: Imaging Order"
 Description: "This profile on ServiceRequest represents the order for the Imaging Study and report."
@@ -12,7 +12,7 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 * identifier
   * insert SliceElement( #value, type )
 * identifier contains accessionNumber 0..1
-* identifier[accessionNumber] only ImAccessionNumberIdentifier
+* identifier[accessionNumber] only AccessionNumberIdentifierEuImaging
 
 * supportingInfo.extension contains 
     http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
@@ -40,7 +40,7 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 
 // * requester 0..1
 //   * insert SetPopulateIfKnown
-// * requester only Reference(ImOrderPlacer or $EuPatient)
+// * requester only Reference(ServiceRequestOrderEuImagingPlacer or $EuPatient)
 
 // * authoredOn 0..1
 //   * insert SetPopulateIfKnown
@@ -53,10 +53,9 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 
 
 
-Mapping: DicomToImOrder
-Source: ImOrder
+Mapping: DicomToServiceRequestOrderEuImaging
+Source: ServiceRequestOrderEuImaging
 Target: "http://nema.org/dicom"
-Id: dicom-2-im-order-mapping
 Title: "Mapping from DICOM to Imaging Order"
 Description: "Mapping from DICOM to Imaging Order."
 * identifier[accessionNumber] -> "AccessionNumber (0008,0050)"

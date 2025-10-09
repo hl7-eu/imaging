@@ -1,7 +1,7 @@
 // https://hl7.org/fhir/uv/xver-r5.r4/0.0.1-snapshot-2/Lookup-R5-ImagingSelection-R4.html
 
-{{R5}}Profile: ImKeyImageImagingSelection
-{{R5}}Parent: ImImagingSelection
+{{R5}}Profile: ImagingSelectionKeyImageEuImaging
+{{R5}}Parent: ImagingSelectionEuImaging
 {{R5}}Title: "ImagingSelection: Key Image"
 {{R5}}Description: "Key images represented as an ImagingSelection"
 {{R5}}* insert SetFmmAndStatusRule( 1, draft )
@@ -16,10 +16,10 @@
 {{R5}}* performer[performer]
 {{R5}}  * actor only Reference( $EuPractitionerRole )
 {{R5}}* performer[device]
-{{R5}}  * actor only Reference( ImImagingDevice )
+{{R5}}  * actor only Reference( DeviceEuImaging )
 
-{{R4}}Profile: ImKeyImageImagingSelection
-{{R4}}Parent: ImImagingSelection
+{{R4}}Profile: ImagingSelectionKeyImageEuImaging
+{{R4}}Parent: ImagingSelectionEuImaging
 {{R4}}Title: "Key images represented as an ImagingSelection for R4"
 {{R4}}Description: "Key images represented as an ImagingSelection for R4"
 {{R4}}* insert SetFmmAndStatusRule( 1, draft )

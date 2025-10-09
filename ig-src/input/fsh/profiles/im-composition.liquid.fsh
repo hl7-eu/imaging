@@ -1,4 +1,4 @@
-Profile: ImComposition
+Profile: CompositionEuImaging
 Parent: Composition
 Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
@@ -24,9 +24,9 @@ The `text` field of each section SHALL contain a textual representation of all l
 * extension contains 
     $event-basedOn-url          named basedOn 0..* and
     $information-recipient-url  named informationRecipient 0..* and
-    ImDiagnosticReportReference named diagnosticreport-reference 0..1
+    DiagnosticReportEuImagingReferenceExtensionEuImaging named diagnosticreport-reference 0..1
 {{R4}}* extension contains $CrossVersion-Composition.version named version 0..1
-* extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
+* extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
 
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
@@ -57,7 +57,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 // type of the report. Matching DiagnosticReport.code
 // code 
-* type from ImImagingReportTypesEuVS (preferred) 
+* type from ImagingReportTypesEuVSEuImaging (preferred) 
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
@@ -72,7 +72,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section.code 1..1 
 * section 
   * insert SliceElement( #value, code )
-* section.emptyReason from ImSectionEmptyReason (preferred)  
+* section.emptyReason from SectionEmptyReasonEuImaging (preferred)  
 * section obeys eu-imaging-composition-1
 * section contains 
     imagingstudy 1..1  and
@@ -99,7 +99,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry[imagingstudy]
     * ^short = "Imaging Study Reference"
     * ^definition = "This entry holds a reference to the Imaging Study instance that is associated with this Composition."
-  * entry[imagingstudy] only Reference(ImImagingStudy)  
+  * entry[imagingstudy] only Reference(ImagingStudyEuImaging)  
 
 // ///////////////////////////////// ORDER SECTION ///////////////////////////////////////
 * section[order]
@@ -116,7 +116,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry[order]
     * ^short = "Order reference"
     * ^definition = "This entry holds a reference to the order for the Imaging Study and report."
-  * entry[order] only Reference(ImOrder)  
+  * entry[order] only Reference(ServiceRequestOrderEuImaging)  
   
 
 // // ///////////////////////////////// HISTORY SECTION ///////////////////////////////////////
@@ -134,7 +134,7 @@ The `text` field of each section SHALL contain a textual representation of all l
     * insert SliceElement( #profile, $this )
   * entry contains 
       procedure 0..*
-  * entry[procedure] only Reference(ImProcedure)
+  * entry[procedure] only Reference(ProcedureEuImaging)
 
 
 // ////////////////// COMPARISON SECTION //////////////////////////
@@ -146,7 +146,7 @@ The `text` field of each section SHALL contain a textual representation of all l
     * insert SliceElement( #profile, $this )
   * entry contains 
       comparedstudy 0..*
-  * entry[comparedstudy] only Reference( ImImagingStudy or ImImagingSelection )
+  * entry[comparedstudy] only Reference( ImagingStudyEuImaging or ImagingSelectionEuImaging )
 
 // /////////////////// FINDINGS SECTION //////////////////////////
 * section[findings]
@@ -158,8 +158,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry contains 
       finding 0..* and
       keyimage 0..*
-  * entry[finding] only Reference(ImFinding)
-  * entry[keyimage] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection)
+  * entry[finding] only Reference(ObservationFindingEuImaging)
+  * entry[keyimage] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging)
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
@@ -172,9 +172,9 @@ The `text` field of each section SHALL contain a textual representation of all l
       finding 0..* and
       impression 0..* and
       keyimage 0..*
-  * entry[finding] only Reference(ImFinding)
+  * entry[finding] only Reference(ObservationFindingEuImaging)
   * entry[impression] only Reference( $EuCondition )
-  * entry[keyimage] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection)
+  * entry[keyimage] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging)
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
@@ -206,8 +206,7 @@ Description: "When a section is empty, the emptyReason extension SHALL be presen
 Severity: #error 
 Expression: "entry.empty().not() or emptyReason.exists() or entry.extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
 
-Extension: ImDiagnosticReportReference
-Id:   im-composition-diagnosticReportReference
+Extension: DiagnosticReportEuImagingReferenceExtensionEuImaging
 Title:  "Extension: Document DiagnosticReport Reference"
 Description: """
     This extension provides a reference to the DiagnosticReport instance that is associated with this Composition.
@@ -216,4 +215,4 @@ Context: Composition
 // publisher, contact, and other metadata here using caret (^) syntax (omitted)
 * insert ExtensionContext(Composition)
 * insert SetFmmAndStatusRule ( 2, draft )
-* value[x] only Reference (ImDiagnosticReport)
+* value[x] only Reference (DiagnosticReportEuImaging)

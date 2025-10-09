@@ -9,22 +9,22 @@ Each imaging report is represented by a {{DiagnosticReport}} resource. There mig
 
 ```mermaid
 classDiagram
-  class ImImagingStudy{ 
+  class ImagingStudyEuImaging{ 
     <<ImagingStudy>> 
     identifier: studyInstanceUid
   }
-  class ImDiagnosticReport{ 
+  class DiagnosticReportEuImaging{ 
     <<DiagnosticReport>> 
     identifier
   }
-  class ImComposition{ <<Composition>>}
+  class CompositionEuImaging{ <<Composition>>}
   
-  ImDiagnosticReport --> ImImagingStudy: study
-  ImDiagnosticReport --> ImComposition: composition
-  ImComposition --> ImDiagnosticReport: extension[diagnosticReport-reference]
+  DiagnosticReportEuImaging --> ImagingStudyEuImaging: study
+  DiagnosticReportEuImaging --> CompositionEuImaging: composition
+  CompositionEuImaging --> DiagnosticReportEuImaging: extension[diagnosticReport-reference]
 
-  note for ImDiagnosticReport "entry point for report"
-  note for ImImagingStudy "entry point for study"
+  note for DiagnosticReportEuImaging "entry point for report"
+  note for ImagingStudyEuImaging "entry point for study"
 ```
 
 When modelling the IG, it is assumed that information related to the report will be gathered by starting at the {{DiagnosticReport}} and information related to the imaging study from the {{ImagingStudy}}.

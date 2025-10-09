@@ -1,4 +1,4 @@
-Profile: ImDiagnosticReport
+Profile: DiagnosticReportEuImaging
 Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report"
 Description: """
@@ -24,12 +24,12 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 // reference to the order that has the Accession Number and including the Accession Number as identifier
 * basedOn
   * insert SliceElement( #type, $this )
-* basedOn contains imorderaccession 0..*
-* insert BasedOnImOrderReference( imorderaccession )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 //* status
 // code  --> TODO will likely change based on composition discussions
-* code from ImImagingReportTypesEuVS (preferred) 
+* code from ImagingReportTypesEuVSEuImaging (preferred) 
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
@@ -68,7 +68,7 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * resultsInterpreter[author] only Reference($EuPractitionerRole)
 
 * result 0..* MS
-* result only Reference(ImFinding)
+* result only Reference(ObservationFindingEuImaging)
 * result ^short = "Findings"
 * result ^definition = """
 Detailed description of the findings on the imaging study. The findings should be described in a clear and concise manner,
@@ -76,11 +76,11 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 """
 
 // http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study
-{{R4}}* imagingStudy only Reference(ImImagingStudy)
+{{R4}}* imagingStudy only Reference(ImagingStudyEuImaging)
 {{R4}}* imagingStudy ^short = "Study subject to this report"
 {{R4}}* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
-{{R5}}* study only Reference(ImImagingStudy)
+{{R5}}* study only Reference(ImagingStudyEuImaging)
 {{R5}}* study ^short = "Study subject to this report"
 {{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
@@ -89,11 +89,11 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 // refer to the mandatory composition
 {{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
 {{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
-{{R4}}* extension[composition].valueReference only Reference(ImComposition)
+{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
 
 {{R5}}* composition 1..1
 {{R5}}* composition ^short = "Imaging Diagnostic Report"
-{{R5}}* composition only Reference(ImComposition)
+{{R5}}* composition only Reference(CompositionEuImaging)
 
 
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
@@ -160,7 +160,7 @@ Title: "Extension: HL7IDR DiagnosticReport Comparison Study"
 Id: HL7IDRComparisonStudy
 Description: "Studies used for comparison in part of diagnostic reporting"
 Context: DiagnosticReport
-* value[x] only Reference(ImImagingStudy or ImImagingSelection)
+* value[x] only Reference(ImagingStudyEuImaging or ImagingSelectionEuImaging)
 
 Extension: HL7IDRPatientHistoryExt
 Title: "Extension: HL7IDR Patient History"
@@ -175,21 +175,21 @@ Title: "Extension: HL7IDR Imaging Procedure"
 Id: HL7IDRImagingProcedure
 Description: "Imaging procedure used for the imaging acquisition"
 Context: DiagnosticReport
-* value[x] only Reference(ImProcedure)
+* value[x] only Reference(ProcedureEuImaging)
 
 Extension: HL7IDRFindingExt
 Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection )
+* value[x] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"
 Id: HL7IDRImpression
 Description: "Impression in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ImFinding or Condition or ImKeyImageDocumentReference or ImKeyImageImagingSelection or ImKeyImageDocumentReference )
+* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging )
 
 Extension: HL7IDRRecommendationExt
 Title: "Extension: HL7IDR Recommendation"

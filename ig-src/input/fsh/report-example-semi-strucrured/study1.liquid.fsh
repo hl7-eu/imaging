@@ -1,5 +1,5 @@
 Instance: ImagingStudySemiStructuredReport1
-InstanceOf: ImImagingStudy
+InstanceOf: ImagingStudyEuImaging
 Title: "ImagingStudy: semi-structured report"
 Description: "Example ImagingStudy showing an MRI for the left foot"
 Usage: #example
@@ -7,7 +7,7 @@ Usage: #example
   * type = MissingDicomTerminology#0020000D "Study Instance UID" 
   * system = "urn:dicom:uid"
   * value = "urn:oid:1.2.276.2000010.784732" // invented - not there in the report
-* basedOn[imorderaccession]
+* basedOn[ServiceRequestOrderEuImagingaccession]
   * identifier
     * system = "http://example.org/myhosptital/accessionsystem"
     * type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN 

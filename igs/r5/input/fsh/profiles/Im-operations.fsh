@@ -24,4 +24,4 @@ This operation generates a FHIR report from an DiagnosticReport resource that po
   * max = "1"
   * type = #Bundle
   * documentation = "The generated FHIR report."
-  * targetProfile = Canonical(ImReport)
+  * targetProfile = Canonical(BundleReportEuImaging)

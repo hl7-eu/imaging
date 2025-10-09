@@ -22,7 +22,7 @@ The figure below shows the main structure of the report.
   <p></p>
 </figure>
 
-As in the previous example the report consists of a {{ImDiagnoticReport}} and a {{ImComposition}} resource. The study the report is about is represented by an {{ImImagingStudy}} resource. The different resources point to the {{Patient}} and the author. The author is represented by an {{PractitionerRole}}, {{Practitioner}} and {{Organization}} resource. The {{Organization}} is also the custodian of the report.
+As in the previous example the report consists of a {{ImDiagnoticReport}} and a {{CompositionEuImaging}} resource. The study the report is about is represented by an {{ImagingStudyEuImaging}} resource. The different resources point to the {{Patient}} and the author. The author is represented by an {{PractitionerRole}}, {{Practitioner}} and {{Organization}} resource. The {{Organization}} is also the custodian of the report.
 
 This report contains structured data in the patient history section. It points to height, weight, heart rate and blood pressure observations for the patient.
 

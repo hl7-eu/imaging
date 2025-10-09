@@ -1,4 +1,4 @@
-Profile: ImKeyImageDocumentReference
+Profile: DocumentReferenceKeyImageEuImaging
 Parent: $EuDocumentReference
 Title: "DocumentReference: Key Image"
 Description: """A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n
@@ -28,15 +28,15 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
 {{R4}}* extension
 {{R4}}  * ^slicing.discriminator[1].type = #value
 {{R4}}  * ^slicing.discriminator[=].path = "value"
-{{R4}}* extension[basedOn] contains imorderaccession 0..1
-{{R4}}* extension[basedOn][imorderaccession].value[x] only Reference(ImOrder)
+{{R4}}* extension[basedOn] contains ServiceRequestOrderEuImagingaccession 0..1
+{{R4}}* extension[basedOn][ServiceRequestOrderEuImagingaccession].value[x] only Reference(ServiceRequestOrderEuImaging)
 {{R4}}  * identifier 1..1
-{{R4}}  * identifier only ImAccessionNumberIdentifier
+{{R4}}  * identifier only AccessionNumberIdentifierEuImaging
 
 {{R5}}* basedOn
 {{R5}}  * insert SliceElement( #type, $this )
-{{R5}}* basedOn contains imorderaccession 0..1
-{{R5}}* insert BasedOnImOrderReference( imorderaccession )
+{{R5}}* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+{{R5}}* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 {{R5}}* modality 1..1
 
 * category 1..*

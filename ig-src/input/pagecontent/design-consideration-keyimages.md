@@ -44,7 +44,7 @@ classDiagram
         instance.uid
         instance.sopClass
     }
-    class ImKeyImageDocumentReference{ 
+    class DocumentReferenceKeyImageEuImaging{ 
         <<DocumentReference>> 
         modality
     }
@@ -56,16 +56,16 @@ classDiagram
         <<DocumentReference>>
         identifier: SerieInstanceUID
     }
-    class ImComposition{ 
+    class CompositionEuImaging{ 
         <<Composition>>
         section[keyimages]
     }
-    ImComposition --> ImKeyImageDocumentReference: section[keyimages].entry
-    ImComposition --> ImKeyImagingSelection: section[keyimages].entry
+    CompositionEuImaging --> DocumentReferenceKeyImageEuImaging: section[keyimages].entry
+    CompositionEuImaging --> ImKeyImagingSelection: section[keyimages].entry
 
-    ImKeyImageDocumentReference --> ImageData: content.attachment.url
-    ImKeyImageDocumentReference <|-- ImKeyImageInstanceSerieDocumentReference
-    ImKeyImageDocumentReference <|-- ImKeyImageInstanceDocumentReference
+    DocumentReferenceKeyImageEuImaging --> ImageData: content.attachment.url
+    DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceSerieDocumentReference
+    DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceDocumentReference
     ImKeyImagingSelection <|-- ImKeyImagingSerieSelection
     ImKeyImagingSelection <|-- ImKeyImagingInstanceSelection
     

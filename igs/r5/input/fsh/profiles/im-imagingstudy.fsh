@@ -1,4 +1,4 @@
-Profile: ImImagingStudy
+Profile: ImagingStudyEuImaging
 Parent: ImagingStudy
 Title: "ImagingStudy: General"
 Description: """ 
@@ -13,7 +13,7 @@ This profile represents an imaging study instance.
 * identifier
   * insert SliceElement( #value, system )
 * identifier contains studyInstanceUid 1..1
-* identifier[studyInstanceUid] only ImStudyInstanceUidIdentifier
+* identifier[studyInstanceUid] only StudyInstanceUidIdentifierEuImaging
 
 * subject 1..1
 * subject only Reference( $EuPatient or $EuDevice )
@@ -21,13 +21,13 @@ This profile represents an imaging study instance.
 // reference to the order that has the Accession Number and including the Accession Number as identifier
 * basedOn
   * insert SliceElement( #type, $this )
-* basedOn contains imorderaccession 0..1
-* insert BasedOnImOrderReference( imorderaccession )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 // * insert EndpointTypes 
 
 * series
-  * performer.function from ImImagingStudyPerformerTypeVS (extensible)
+  * performer.function from ImagingStudyEuImagingPerformerTypeVS (extensible)
   * performer
     * insert SliceElement( #value, function )
   * performer contains performer 0..1 and device 0..1 and custodian 0..1 and organization 0..1
@@ -42,7 +42,7 @@ This profile represents an imaging study instance.
   * performer[device]
     * ^short = "The device that did the imaging."
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV
-    * actor only Reference( ImImagingDevice )
+    * actor only Reference( DeviceEuImaging )
   * performer[organization]
     * ^short = "The organization where the imaging was performed."
     * function = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LOC
@@ -52,11 +52,10 @@ This profile represents an imaging study instance.
 
   * instance
     * extension contains 
-      ImImagingStudyInstanceDescription named instance-description 0..1 and
+      ImagingStudyEuImagingInstanceDescription named instance-description 0..1 and
       NumberOfFrames named number-of-frames 0..1
 
-Extension: ImImagingStudyInstanceDescription
-Id: instance-description
+Extension: ImagingStudyEuImagingInstanceDescription
 Title: "Extension: Instance Description"
 Description: "A description of the instance in an ImagingStudy."
 Context: ImagingStudy.series.instance
@@ -64,7 +63,6 @@ Context: ImagingStudy.series.instance
 * value[x] only string
 
 Extension: NumberOfFrames
-Id: number-of-frames
 Title: "Extension: Number of Frames"
 Description: "The number of frames in an ImagingStudy instance as required by Xt-EHR logical ImagingStudy logical model."
 Context: ImagingStudy.series.instance

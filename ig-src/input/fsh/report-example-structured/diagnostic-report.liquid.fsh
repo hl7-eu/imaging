@@ -1,7 +1,7 @@
 Instance: DiagnosticReportStructured
-InstanceOf: ImDiagnosticReport
+InstanceOf: DiagnosticReportEuImaging
 Title: "DiagnosticReport: structured report"
-Description: "Example of a ImDiagnosticReport showing the report for a stress echo"
+Description: "Example of a DiagnosticReportEuImaging showing the report for a stress echo"
 Usage: #example
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"

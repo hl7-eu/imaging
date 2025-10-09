@@ -181,7 +181,7 @@ error Parent ImImagingSelection not found for ImKeyImageImagingSelection
 error Cannot bind value set to Reference; must be coded (code, Coding, CodeableConcept, Quantity, CodeableReference), the data types (string, uri), or a logical model with the #can-bind characteristic.
   File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-order.fsh
   Line: 20
-error No definition for the type "ImSrInstanceImagingSelection" could be found.
+error No definition for the type "SrInstanceImagingSelectionEuImaging" could be found.
   File: /home/nly98977/SwArchives/bvdh/bvdh-hl7eu-imaging-multiversion/igs/r4/input/fsh/profiles/im-radiationdose-observation.fsh
   Line: 29
 info  Converted 29 FHIR StructureDefinitions.

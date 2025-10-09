@@ -1,5 +1,5 @@
 Instance: UnstructuredReportExample
-InstanceOf: ImUnstructuredDocumentReference
+InstanceOf: UnstructuredDocumentReferenceEuImaging
 Title: "DocumentReference: Unstructured Report"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example

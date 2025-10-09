@@ -1,4 +1,4 @@
-Profile: ImGestationalAgeObservation
+Profile: ObservationGestationalAgeEuImaging
 Parent: $EuObservation
 Title: "Observation: Gestational Age"
 Description: "Gestational Age Observation"

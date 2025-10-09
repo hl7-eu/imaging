@@ -1,5 +1,5 @@
 
-Profile: ImImagingDevice
+Profile: DeviceEuImaging
 Parent: Device
 Title: "Device: Imaging Device"
 Description: """The device the made the image."""	
@@ -14,11 +14,10 @@ Description: """The device the made the image."""
 //R5* category contains imaging 1..1
 //R5* category[imaging] = $sct#314789007 // "Diagnostic imaging equipment"
 
-* type from ImImagingDeviceType (extensible)
+* type from DeviceEuImagingType (extensible)
 
 
-ValueSet: ImImagingDeviceType
-Id: im-imaging-device-type
+ValueSet: DeviceEuImagingType
 Title: "ValueSet: Imaging Device Type"
 Description: "Imaging Device Type."
 * insert SetFmmAndStatusRule( 1, draft )
@@ -26,10 +25,9 @@ Description: "Imaging Device Type."
 * ^experimental = false
 * include codes from system $sct where concept is-a #314789007 // "Diagnostic imaging equipment"
 
-Mapping: DicomToImImagingDevice
-Source: ImImagingDevice
+Mapping: DicomToDeviceEuImaging
+Source: DeviceEuImaging
 Target: "http://nema.org/dicom"
-Id: dicom-2-im-imaging-device-mapping
 Title: "Mapping from DICOM to Imaging Device"
 Description: "Mapping from DICOM to Imaging Device."
 * identifier -> "DeviceUID (0018,1002), (0018,1003) Device ID"

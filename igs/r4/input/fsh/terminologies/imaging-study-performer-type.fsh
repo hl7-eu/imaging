@@ -1,4 +1,4 @@
-ValueSet:   ImImagingStudyPerformerTypeVS
+ValueSet:   ImagingStudyEuImagingPerformerTypeVS
 Id:	        im-imaging-study-performer-type
 Title:	    "Imaging Study Performer Type Value Set"
 Description:   """Imaging Study series performer type codes, it extends on the base set defined in the FHIR specification."""

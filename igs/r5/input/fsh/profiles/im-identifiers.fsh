@@ -1,6 +1,5 @@
-Profile: ImAccessionNumberIdentifier
+Profile: AccessionNumberIdentifierEuImaging
 Parent: Identifier
-Id: im-accession-number-identifier
 Title: "Identifier: Accession Number"
 Description: """
 This profile on Identifier represents the Accession Number for the Imaging Order.
@@ -15,15 +14,14 @@ In order to ensure uniqueness **across** Hospital Information Systems, accession
 * type 1..1
 * type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
 
-RuleSet: BasedOnImOrderReference( slicename )
-* basedOn[{slicename}] only Reference( ImOrder )
+RuleSet: BasedOnServiceRequestOrderEuImagingReference( slicename )
+* basedOn[{slicename}] only Reference( ServiceRequestOrderEuImaging )
   * identifier 1..1
-  * identifier only ImAccessionNumberIdentifier
+  * identifier only AccessionNumberIdentifierEuImaging
 
 
-Profile: ImStudyInstanceUidIdentifier
+Profile: StudyInstanceUidIdentifierEuImaging
 Parent: Identifier
-Id: im-study-instance-uid-identifier
 Title: "Identifier: Study Instance UID"
 Description: "This profile on Identifier represents the Study Instance UID (0020,000D) for the Imaging Order."
 * insert SetFmmAndStatusRule( 1, draft )
@@ -32,9 +30,8 @@ Description: "This profile on Identifier represents the Study Instance UID (0020
 * type 0..1
 * type = MissingDicomTerminology#0020000D // "Study Instance UID"
 
-Profile: ImSopInstanceUidIdentifier
+Profile: SopInstanceUidIdentifierEuImaging
 Parent: Identifier
-Id: im-sop-instance-uid-identifier
 Title: "Identifier: SOP Instance UID"
 Description: "This profile on Identifier represents the SOP Instance UID	(0008,0018) for the Imaging Order."
 * insert SetFmmAndStatusRule( 1, draft )

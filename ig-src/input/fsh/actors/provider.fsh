@@ -1,9 +1,9 @@
-Instance: ImReportProvider
+Instance: BundleReportEuImagingProvider
 InstanceOf: ActorDefinition
 Title: "ActorDefinition: Imaging Study Report Provider"
 Description: "The actor responsible for providing the Imaging Report resources."
 Usage: #definition
-* name = "ImReportProvider"
+* name = "BundleReportEuImagingProvider"
 * title = "Imaging study report provider"
 * status = #draft
 * description = "Provides the Imaging study report."
@@ -12,18 +12,18 @@ This actor typically represents a system that provides access to radiology repor
 """
 * type = #system
 
-// Instance: ImReportProviderCapabilityStatement
+// Instance: BundleReportEuImagingProviderCapabilityStatement
 // InstanceOf: CapabilityStatement
 // Title: "Imaging Study Report Provider Capability Statement"
 // Description: "Capability Statement for an Imaging Study Report Provider."
 // Usage: #definition
-// * name = "ImReportProviderCapabilityStatement"
+// * name = "BundleReportEuImagingProviderCapabilityStatement"
 // * title = "Imaging Study Report Provider Capability Statement"
 // * status = #draft
 // * description = "Capability Statement for an Imaging Study Report Provider."
 // * date = 2025-09-10 // YYYY-MM-DD
 // * publisher = "HL7 EU"
-// // * actorDefinition = Reference(ImReportProvider)
+// // * actorDefinition = Reference(BundleReportEuImagingProvider)
 // * kind = #requirements
 // * fhirVersion = #5.0.0
 // * format = #json
@@ -31,7 +31,7 @@ This actor typically represents a system that provides access to radiology repor
 //   * mode = #server
 //   * resource[+]
 //     * type = #Composition
-//     * profile = Canonical(ImComposition)
+//     * profile = Canonical(CompositionEuImaging)
 //     * interaction[+]
 //       * code = #read
 //       * code = #search-type
@@ -40,7 +40,7 @@ This actor typically represents a system that provides access to radiology repor
 //       * definition = "https://hl7.org/fhir/composition-operation-document.html"
 //   * resource[+]
 //     * type = #DiagnosticReport
-//     * profile = Canonical(ImDiagnosticReport)
+//     * profile = Canonical(DiagnosticReportEuImaging)
 //     * interaction[+]
 //       * code = #read
 //       * code = #search-type
@@ -49,19 +49,19 @@ This actor typically represents a system that provides access to radiology repor
 //       * definition = Canonical(DiagnosticReport-fhir-report)
 //   * resource[+]
 //     * type = #ImagingStudy
-//     * profile = Canonical(ImImagingStudy)
+//     * profile = Canonical(ImagingStudyEuImaging)
 //     * interaction[+]
 //       * code = #read
 //       * code = #search-type
 //   * resource[+]
 //     * type = #Patient
-//     * profile = Canonical(ImDiagnosticReport)
+//     * profile = Canonical(DiagnosticReportEuImaging)
 //     * interaction[+]
 //       * code = #read
 //       * code = #search-type
 //   * resource[+]
 //     * type = #DocumentReference
-//     * profile = Canonical(ImReportDocumentReference)
+//     * profile = Canonical(BundleReportEuImagingDocumentReference)
 //     * interaction[+]
 //       * code = #read
 //       * code = #search-type
