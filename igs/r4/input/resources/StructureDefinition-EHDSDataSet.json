@@ -1,0 +1,480 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSDataSet",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
+  "version": "0.1.0",
+  "name": "EHDSDataSet",
+  "title": "DataSet model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "Common elements (including header) for all documents and their independently functioning parts, e.g FHIR resources.",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "5.0.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSDataSet",
+        "path": "EHDSDataSet",
+        "short": "DataSet model",
+        "definition": "Common elements (including header) for all documents and their independently functioning parts, e.g FHIR resources.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header",
+        "path": "EHDSDataSet.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.subject",
+        "path": "EHDSDataSet.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.identifier",
+        "path": "EHDSDataSet.header.identifier",
+        "short": "Business identifier for the object",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.authorship",
+        "path": "EHDSDataSet.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.authorship.author[x]",
+        "path": "EHDSDataSet.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.authorship.datetime",
+        "path": "EHDSDataSet.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.lastUpdate",
+        "path": "EHDSDataSet.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.status",
+        "path": "EHDSDataSet.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.statusReason[x]",
+        "path": "EHDSDataSet.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.language",
+        "path": "EHDSDataSet.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSDataSet.header.version",
+        "path": "EHDSDataSet.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.presentedForm",
+        "path": "EHDSDataSet.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSDataSet",
+        "path": "EHDSDataSet",
+        "short": "DataSet model",
+        "definition": "Common elements (including header) for all documents and their independently functioning parts, e.g FHIR resources."
+      },
+      {
+        "id": "EHDSDataSet.header",
+        "path": "EHDSDataSet.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.subject",
+        "path": "EHDSDataSet.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.identifier",
+        "path": "EHDSDataSet.header.identifier",
+        "short": "Business identifier for the object",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.authorship",
+        "path": "EHDSDataSet.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.authorship.author[x]",
+        "path": "EHDSDataSet.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.authorship.datetime",
+        "path": "EHDSDataSet.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.lastUpdate",
+        "path": "EHDSDataSet.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.status",
+        "path": "EHDSDataSet.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.statusReason[x]",
+        "path": "EHDSDataSet.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.header.language",
+        "path": "EHDSDataSet.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSDataSet.header.version",
+        "path": "EHDSDataSet.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSDataSet.presentedForm",
+        "path": "EHDSDataSet.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      }
+    ]
+  }
+}

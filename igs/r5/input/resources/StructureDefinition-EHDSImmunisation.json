@@ -1,0 +1,584 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSImmunisation",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImmunisation",
+  "version": "0.1.0",
+  "name": "EHDSImmunisation",
+  "title": "Immunisation model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for Immunisation",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSImmunisation",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "0.1.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSImmunisation",
+        "path": "EHDSImmunisation",
+        "short": "Immunisation model",
+        "definition": "EHDS refined base model for Immunisation",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header",
+        "path": "EHDSImmunisation.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.subject",
+        "path": "EHDSImmunisation.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.identifier",
+        "path": "EHDSImmunisation.header.identifier",
+        "short": "Business identifier for the object",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.authorship",
+        "path": "EHDSImmunisation.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.authorship.author[x]",
+        "path": "EHDSImmunisation.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.authorship.datetime",
+        "path": "EHDSImmunisation.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.lastUpdate",
+        "path": "EHDSImmunisation.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.status",
+        "path": "EHDSImmunisation.header.status",
+        "short": "Status of the resource",
+        "definition": "Indicates the current status of the immunisation event (completed, not-done).",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.statusReason[x]",
+        "path": "EHDSImmunisation.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.header.language",
+        "path": "EHDSImmunisation.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSImmunisation.header.version",
+        "path": "EHDSImmunisation.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.presentedForm",
+        "path": "EHDSImmunisation.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.diseaseOrAgentTargeted",
+        "path": "EHDSImmunisation.diseaseOrAgentTargeted",
+        "short": "Disease or agent targeted",
+        "definition": "Disease or agent that the vaccination provides protection against.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImmunisation.diseaseOrAgentTargeted",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "ICD-10, SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImmunisation.vaccine",
+        "path": "EHDSImmunisation.vaccine",
+        "short": "Type of vaccine",
+        "definition": "Generic description of the vaccine/prophylaxis or its component(s).",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImmunisation.vaccine",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT, ATC"
+        }
+      },
+      {
+        "id": "EHDSImmunisation.administeredProduct",
+        "path": "EHDSImmunisation.administeredProduct",
+        "short": "Administered medicinal product",
+        "definition": "Administered medicinal product",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImmunisation.administeredProduct",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.doseNumber",
+        "path": "EHDSImmunisation.doseNumber",
+        "short": "Number in a series of vaccinations / doses",
+        "definition": "Order in the vaccination course.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImmunisation.doseNumber",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.dateOfVaccination",
+        "path": "EHDSImmunisation.dateOfVaccination",
+        "short": "Date of vaccination",
+        "definition": "The date and time when the vaccination was administered",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSImmunisation.dateOfVaccination",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.administeringCentre",
+        "path": "EHDSImmunisation.administeringCentre",
+        "short": "Administering centre",
+        "definition": "Name/code of administering centre or a health authority responsible for the vaccination event",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImmunisation.administeringCentre",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.vaccineAdministrator",
+        "path": "EHDSImmunisation.vaccineAdministrator",
+        "short": "Administrator of vaccine",
+        "definition": "Health professional responsible for administering the vaccine or prophylaxis",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSImmunisation.vaccineAdministrator",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.nextVaccinationDate",
+        "path": "EHDSImmunisation.nextVaccinationDate",
+        "short": "Next vaccination date",
+        "definition": "The date when the vaccination is planned to be given/repeated (e.g. next dose)",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSImmunisation.nextVaccinationDate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSImmunisation",
+        "path": "EHDSImmunisation",
+        "short": "Immunisation model",
+        "definition": "EHDS refined base model for Immunisation"
+      },
+      {
+        "id": "EHDSImmunisation.header.status",
+        "path": "EHDSImmunisation.header.status",
+        "definition": "Indicates the current status of the immunisation event (completed, not-done)."
+      },
+      {
+        "id": "EHDSImmunisation.diseaseOrAgentTargeted",
+        "path": "EHDSImmunisation.diseaseOrAgentTargeted",
+        "short": "Disease or agent targeted",
+        "definition": "Disease or agent that the vaccination provides protection against.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "ICD-10, SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSImmunisation.vaccine",
+        "path": "EHDSImmunisation.vaccine",
+        "short": "Type of vaccine",
+        "definition": "Generic description of the vaccine/prophylaxis or its component(s).",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT, ATC"
+        }
+      },
+      {
+        "id": "EHDSImmunisation.administeredProduct",
+        "path": "EHDSImmunisation.administeredProduct",
+        "short": "Administered medicinal product",
+        "definition": "Administered medicinal product",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.doseNumber",
+        "path": "EHDSImmunisation.doseNumber",
+        "short": "Number in a series of vaccinations / doses",
+        "definition": "Order in the vaccination course.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.dateOfVaccination",
+        "path": "EHDSImmunisation.dateOfVaccination",
+        "short": "Date of vaccination",
+        "definition": "The date and time when the vaccination was administered",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.administeringCentre",
+        "path": "EHDSImmunisation.administeringCentre",
+        "short": "Administering centre",
+        "definition": "Name/code of administering centre or a health authority responsible for the vaccination event",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.vaccineAdministrator",
+        "path": "EHDSImmunisation.vaccineAdministrator",
+        "short": "Administrator of vaccine",
+        "definition": "Health professional responsible for administering the vaccine or prophylaxis",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          }
+        ]
+      },
+      {
+        "id": "EHDSImmunisation.nextVaccinationDate",
+        "path": "EHDSImmunisation.nextVaccinationDate",
+        "short": "Next vaccination date",
+        "definition": "The date when the vaccination is planned to be given/repeated (e.g. next dose)",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "date"
+          }
+        ]
+      }
+    ]
+  }
+}

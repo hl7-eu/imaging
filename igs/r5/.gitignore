@@ -8,7 +8,3 @@ fsh-generated/**
 ig-template/**/*.db
 ig-template/**/*index.json
 publisher.jar
-.test/
-.fhir/
-IG-base/fsh-generated/**
-output-stable
