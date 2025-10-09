@@ -1,14 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: PractitionerRoleSemiStructuredReportAuthor
 InstanceOf: PractitionerRoleEu
-// Usage: #inline
+Title: "PractitionerRole: semi-structured"
+Description: "The role the author has in the organization."
+Usage: #example
 * practitioner = Reference(PractitionerSemiStructuredReportAuthor)
 * organization = Reference(OrganizationSemiStructuredReport)
 * code = $sct#66862007 "Radiologist"
 
 Instance: PractitionerSemiStructuredReportAuthor
 InstanceOf: PractitionerEu
-// Usage: #inline
+Title: "Practitioner: semi-structured report."
+Description: "The author details"
+Usage: #example
 * name
   * use = #official
   * text = "Dr. Lucas Gasenzer"
@@ -17,7 +21,9 @@ InstanceOf: PractitionerEu
 
 Instance: OrganizationSemiStructuredReport
 InstanceOf: OrganizationEu
-// Usage: #inline
+Title: "Organization: semi-structured"
+Description: "The organization employing the report author."
+Usage: #example
 * name = "Radiology Zentrum Bremen"
 * contact
   * telecom

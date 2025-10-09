@@ -1,6 +1,6 @@
 Instance: DiagnosticReportSemiStructured
 InstanceOf: ImDiagnosticReport
-Title: "DiagnosticReport for the left/right foot study"
+Title: "DiagnosticReport: semi-structured report"
 Description: "Example of a ImDiagnosticReport showing the report for the left/right foot study"
 Usage: #example
 // * extension[artifactVersion].valueString = "1.0.0" // invented - not there in the report
@@ -59,7 +59,9 @@ Rechter Fuß:
 
 Instance: BinarySemiStructuredReport
 InstanceOf: Binary
-Title: "Binary: Semi-structured report pdf"
+Title: "Binary: semi-structured report"
+Description: "Binary resource holding the report pdf."
+Usage: #example
 * id = "semi-structured-pdf"
 * contentType = #application/pdf
 // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"

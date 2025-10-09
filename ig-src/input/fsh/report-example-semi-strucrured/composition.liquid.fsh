@@ -1,6 +1,6 @@
 Instance: CompositionSemiStructured
 InstanceOf: ImComposition
-Title: "Composition for the left/right foot study"
+Title: "Composition: semi-structured"
 Description: "Example of a ImComposition showing the report for the left/right foot study"
 Usage: #example
 * status = #final
@@ -66,7 +66,7 @@ Usage: #example
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
   * title = "Findings"
-  * code = $loinc#59776-5 "Findings"
+  * code = $loinc#59776-5 "Procedure findings Narrative"
   * extension[note][+]
     * valueAnnotation.text = """
 Linker Fuß:

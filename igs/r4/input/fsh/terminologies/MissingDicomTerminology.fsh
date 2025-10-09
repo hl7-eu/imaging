@@ -7,7 +7,6 @@ Description: "Code system for codes that are defined in DICOM but for which no m
 * ^caseSensitive = true
 * ^hierarchyMeaning = #is-a
 * ^content = #fragment
-* ^url = "http://hl7.eu/fhir/imaging/codesystem-missing-dicom-terminology"
 
 * #elements "DICOM Elements" "DICOM Element definitions"	
   * #00080016 "SOP Class UID" "Uniquely identifies the SOP Class."
