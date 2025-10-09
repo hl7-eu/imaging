@@ -3,6 +3,19 @@
   "id": "ImSrInstanceImagingSelection",
   "extension": [
     {
+      "extension": [
+        {
+          "url": "packageId",
+          "valueId": "hl7.fhir.uv.xver-r5.r4"
+        },
+        {
+          "url": "version",
+          "valueString": "0.0.1-snapshot-2"
+        }
+      ],
+      "url": "http://hl7.org/fhir/StructureDefinition/package-source"
+    },
+    {
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
       "valueInteger": 1
     },
@@ -31,101 +44,101 @@
   "kind": "resource",
   "abstract": false,
   "type": "Basic",
-  "baseDefinition": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingSelection",
+  "baseDefinition": "http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4",
   "derivation": "constraint",
   "differential": {
     "element": [
       {
-        "id": "Basic.extension:imagingSelection",
+        "id": "Basic.extension:ImagingSelection",
         "path": "Basic.extension",
-        "sliceName": "imagingSelection"
+        "sliceName": "ImagingSelection"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension",
+        "id": "Basic.extension:ImagingSelection.extension",
         "path": "Basic.extension.extension",
         "min": 2
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:studyUid",
+        "id": "Basic.extension:ImagingSelection.extension:studyUid",
         "path": "Basic.extension.extension",
         "sliceName": "studyUid"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:studyUid.extension",
+        "id": "Basic.extension:ImagingSelection.extension:studyUid.extension",
         "path": "Basic.extension.extension.extension",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:studyUid.value[x]",
+        "id": "Basic.extension:ImagingSelection.extension:studyUid.value[x]",
         "path": "Basic.extension.extension.value[x]",
         "min": 1
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:seriesUid",
+        "id": "Basic.extension:ImagingSelection.extension:seriesUid",
         "path": "Basic.extension.extension",
         "sliceName": "seriesUid"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:seriesUid.extension",
+        "id": "Basic.extension:ImagingSelection.extension:seriesUid.extension",
         "path": "Basic.extension.extension.extension",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:seriesUid.value[x]",
+        "id": "Basic.extension:ImagingSelection.extension:seriesUid.value[x]",
         "path": "Basic.extension.extension.value[x]",
         "min": 1
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance",
+        "id": "Basic.extension:ImagingSelection.extension:instance",
         "path": "Basic.extension.extension",
         "sliceName": "instance",
         "min": 1,
         "max": "1"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:uid",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:uid",
         "path": "Basic.extension.extension.extension",
         "sliceName": "uid"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:uid.extension",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:uid.extension",
         "path": "Basic.extension.extension.extension.extension",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:uid.value[x]",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:uid.value[x]",
         "path": "Basic.extension.extension.extension.value[x]",
         "min": 1
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:subset",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:subset",
         "path": "Basic.extension.extension.extension",
         "sliceName": "subset"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:subset.value[x]",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:subset.value[x]",
         "path": "Basic.extension.extension.extension.value[x]",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:imageRegion2D",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:imageRegion2D",
         "path": "Basic.extension.extension.extension",
         "sliceName": "imageRegion2D",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.extension:imageRegion3D",
+        "id": "Basic.extension:ImagingSelection.extension:instance.extension:imageRegion3D",
         "path": "Basic.extension.extension.extension",
         "sliceName": "imageRegion3D",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.extension:instance.value[x]",
+        "id": "Basic.extension:ImagingSelection.extension:instance.value[x]",
         "path": "Basic.extension.extension.value[x]",
         "max": "0"
       },
       {
-        "id": "Basic.extension:imagingSelection.value[x]",
+        "id": "Basic.extension:ImagingSelection.value[x]",
         "path": "Basic.extension.value[x]",
         "max": "0"
       },

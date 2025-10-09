@@ -160,8 +160,7 @@ Title: "HL7IDR DiagnosticReport Comparison Study"
 Id: HL7IDRComparisonStudy
 Description: "Studies used for comparison in part of diagnostic reporting"
 Context: DiagnosticReport
-{{R5}}* value[x] only Reference(ImImagingStudy or ImagingSelection)
-{{R4}}* value[x] only Reference(ImImagingStudy or ImImagingSelection)
+* value[x] only Reference(ImImagingStudy or ImImagingSelection)
 
 Extension: HL7IDRPatientHistoryExt
 Title: "HL7IDR Patient History"

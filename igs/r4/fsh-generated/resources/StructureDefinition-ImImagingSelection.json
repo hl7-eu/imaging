@@ -3,6 +3,19 @@
   "id": "ImImagingSelection",
   "extension": [
     {
+      "extension": [
+        {
+          "url": "packageId",
+          "valueId": "hl7.fhir.uv.xver-r5.r4"
+        },
+        {
+          "url": "version",
+          "valueString": "0.0.1-snapshot-2"
+        }
+      ],
+      "url": "http://hl7.org/fhir/StructureDefinition/package-source"
+    },
+    {
       "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
       "valueInteger": 1
     },
@@ -31,51 +44,10 @@
   "kind": "resource",
   "abstract": false,
   "type": "Basic",
-  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Basic",
+  "baseDefinition": "http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4",
   "derivation": "constraint",
   "differential": {
     "element": [
-      {
-        "id": "Basic.extension",
-        "path": "Basic.extension",
-        "slicing": {
-          "discriminator": [
-            {
-              "type": "value",
-              "path": "url"
-            }
-          ],
-          "ordered": false,
-          "rules": "open"
-        },
-        "min": 1
-      },
-      {
-        "id": "Basic.extension:imagingSelection",
-        "path": "Basic.extension",
-        "sliceName": "imagingSelection",
-        "min": 1,
-        "max": "1",
-        "type": [
-          {
-            "code": "Extension",
-            "profile": [
-              "http://hl7.org/fhir/5.0/StructureDefinition/extension-ImagingSelection"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Basic.code",
-        "path": "Basic.code",
-        "patternCodeableConcept": {
-          "coding": [
-            {
-              "code": "ImagingSelection"
-            }
-          ]
-        }
-      },
       {
         "id": "Basic.subject",
         "path": "Basic.subject",

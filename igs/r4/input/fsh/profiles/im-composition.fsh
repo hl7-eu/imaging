@@ -25,7 +25,7 @@ The `text` field of each section SHALL contain a textual representation of all l
     $event-basedOn-url          named basedOn 0..* and
     $information-recipient-url  named informationRecipient 0..* and
     ImDiagnosticReportReference named diagnosticreport-reference 0..1  and
-    http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version named version 0..1
+    $CrossVersion-Composition.version named version 0..1
 * extension[diagnosticreport-reference].valueReference only Reference ( ImDiagnosticReport )
 
 * custodian only Reference( $EuOrganization )

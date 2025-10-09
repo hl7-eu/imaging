@@ -24,6 +24,14 @@
     "endLine": 66
   },
   {
+    "outputFile": "Binary-structured-pdf.json",
+    "fshName": "BinaryStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/diagnostic-report.fsh",
+    "startLine": 131,
+    "endLine": 137
+  },
+  {
     "outputFile": "Binary-unstructured-pdf.json",
     "fshName": "BinaryUnstructuredReport",
     "fshType": "Instance",
@@ -56,6 +64,14 @@
     "endLine": 98
   },
   {
+    "outputFile": "Composition-CompositionStructured.json",
+    "fshName": "CompositionStructured",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/composition.fsh",
+    "startLine": 1,
+    "endLine": 158
+  },
+  {
     "outputFile": "DiagnosticReport-DiagnosticReportSemiStructured.json",
     "fshName": "DiagnosticReportSemiStructured",
     "fshType": "Instance",
@@ -64,12 +80,52 @@
     "endLine": 58
   },
   {
+    "outputFile": "DiagnosticReport-DiagnosticReportStructured.json",
+    "fshName": "DiagnosticReportStructured",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/diagnostic-report.fsh",
+    "startLine": 1,
+    "endLine": 128
+  },
+  {
+    "outputFile": "DocumentReference-StructuredKeyImageRest.json",
+    "fshName": "StructuredKeyImageRest",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/key-images.fsh",
+    "startLine": 1,
+    "endLine": 7
+  },
+  {
+    "outputFile": "DocumentReference-StructuredKeyImageStress.json",
+    "fshName": "StructuredKeyImageStress",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/key-images.fsh",
+    "startLine": 9,
+    "endLine": 15
+  },
+  {
     "outputFile": "DocumentReference-UnstructuredReportExample.json",
     "fshName": "UnstructuredReportExample",
     "fshType": "Instance",
     "fshFile": "report-example-unstructured/unstructured-example.fsh",
     "startLine": 1,
     "endLine": 24
+  },
+  {
+    "outputFile": "DocumentReference-WMSIImage.json",
+    "fshName": "WMSIImage",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 10,
+    "endLine": 16
+  },
+  {
+    "outputFile": "ImagingStudy-ImagingStudStructuredReport.json",
+    "fshName": "ImagingStudStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/imagingstudy.fsh",
+    "startLine": 1,
+    "endLine": 40
   },
   {
     "outputFile": "ImagingStudy-ImagingStudySemiStructuredReport1.json",
@@ -88,6 +144,310 @@
     "endLine": 62
   },
   {
+    "outputFile": "Observation-BPObservation.json",
+    "fshName": "BPObservation",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/history.fsh",
+    "startLine": 49,
+    "endLine": 72
+  },
+  {
+    "outputFile": "Observation-HRObservation.json",
+    "fshName": "HRObservation",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/history.fsh",
+    "startLine": 33,
+    "endLine": 47
+  },
+  {
+    "outputFile": "Observation-HeightObservation.json",
+    "fshName": "HeightObservation",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/history.fsh",
+    "startLine": 17,
+    "endLine": 31
+  },
+  {
+    "outputFile": "Observation-RestWmsi01.json",
+    "fshName": "RestWmsi01",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 18,
+    "endLine": 21
+  },
+  {
+    "outputFile": "Observation-RestWmsi02.json",
+    "fshName": "RestWmsi02",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 23,
+    "endLine": 26
+  },
+  {
+    "outputFile": "Observation-RestWmsi03.json",
+    "fshName": "RestWmsi03",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 28,
+    "endLine": 31
+  },
+  {
+    "outputFile": "Observation-RestWmsi04.json",
+    "fshName": "RestWmsi04",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 33,
+    "endLine": 36
+  },
+  {
+    "outputFile": "Observation-RestWmsi05.json",
+    "fshName": "RestWmsi05",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 38,
+    "endLine": 41
+  },
+  {
+    "outputFile": "Observation-RestWmsi06.json",
+    "fshName": "RestWmsi06",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 43,
+    "endLine": 46
+  },
+  {
+    "outputFile": "Observation-RestWmsi07.json",
+    "fshName": "RestWmsi07",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 48,
+    "endLine": 51
+  },
+  {
+    "outputFile": "Observation-RestWmsi08.json",
+    "fshName": "RestWmsi08",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 53,
+    "endLine": 56
+  },
+  {
+    "outputFile": "Observation-RestWmsi09.json",
+    "fshName": "RestWmsi09",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 58,
+    "endLine": 61
+  },
+  {
+    "outputFile": "Observation-RestWmsi10.json",
+    "fshName": "RestWmsi10",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 63,
+    "endLine": 66
+  },
+  {
+    "outputFile": "Observation-RestWmsi11.json",
+    "fshName": "RestWmsi11",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 68,
+    "endLine": 71
+  },
+  {
+    "outputFile": "Observation-RestWmsi12.json",
+    "fshName": "RestWmsi12",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 73,
+    "endLine": 76
+  },
+  {
+    "outputFile": "Observation-RestWmsi13.json",
+    "fshName": "RestWmsi13",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 78,
+    "endLine": 81
+  },
+  {
+    "outputFile": "Observation-RestWmsi14.json",
+    "fshName": "RestWmsi14",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 83,
+    "endLine": 86
+  },
+  {
+    "outputFile": "Observation-RestWmsi15.json",
+    "fshName": "RestWmsi15",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 88,
+    "endLine": 91
+  },
+  {
+    "outputFile": "Observation-RestWmsi16.json",
+    "fshName": "RestWmsi16",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 93,
+    "endLine": 96
+  },
+  {
+    "outputFile": "Observation-RestWmsi17.json",
+    "fshName": "RestWmsi17",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 98,
+    "endLine": 101
+  },
+  {
+    "outputFile": "Observation-StressWmsi01.json",
+    "fshName": "StressWmsi01",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 104,
+    "endLine": 107
+  },
+  {
+    "outputFile": "Observation-StressWmsi02.json",
+    "fshName": "StressWmsi02",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 109,
+    "endLine": 112
+  },
+  {
+    "outputFile": "Observation-StressWmsi03.json",
+    "fshName": "StressWmsi03",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 114,
+    "endLine": 117
+  },
+  {
+    "outputFile": "Observation-StressWmsi04.json",
+    "fshName": "StressWmsi04",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 119,
+    "endLine": 122
+  },
+  {
+    "outputFile": "Observation-StressWmsi05.json",
+    "fshName": "StressWmsi05",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 124,
+    "endLine": 127
+  },
+  {
+    "outputFile": "Observation-StressWmsi06.json",
+    "fshName": "StressWmsi06",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 129,
+    "endLine": 132
+  },
+  {
+    "outputFile": "Observation-StressWmsi07.json",
+    "fshName": "StressWmsi07",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 134,
+    "endLine": 137
+  },
+  {
+    "outputFile": "Observation-StressWmsi08.json",
+    "fshName": "StressWmsi08",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 139,
+    "endLine": 142
+  },
+  {
+    "outputFile": "Observation-StressWmsi09.json",
+    "fshName": "StressWmsi09",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 144,
+    "endLine": 147
+  },
+  {
+    "outputFile": "Observation-StressWmsi10.json",
+    "fshName": "StressWmsi10",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 149,
+    "endLine": 152
+  },
+  {
+    "outputFile": "Observation-StressWmsi11.json",
+    "fshName": "StressWmsi11",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 154,
+    "endLine": 157
+  },
+  {
+    "outputFile": "Observation-StressWmsi12.json",
+    "fshName": "StressWmsi12",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 159,
+    "endLine": 162
+  },
+  {
+    "outputFile": "Observation-StressWmsi13.json",
+    "fshName": "StressWmsi13",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 164,
+    "endLine": 167
+  },
+  {
+    "outputFile": "Observation-StressWmsi14.json",
+    "fshName": "StressWmsi14",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 169,
+    "endLine": 172
+  },
+  {
+    "outputFile": "Observation-StressWmsi15.json",
+    "fshName": "StressWmsi15",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 174,
+    "endLine": 177
+  },
+  {
+    "outputFile": "Observation-StressWmsi16.json",
+    "fshName": "StressWmsi16",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 179,
+    "endLine": 182
+  },
+  {
+    "outputFile": "Observation-StressWmsi17.json",
+    "fshName": "StressWmsi17",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/finding.fsh",
+    "startLine": 184,
+    "endLine": 187
+  },
+  {
+    "outputFile": "Observation-WeightObservation.json",
+    "fshName": "WeightObservation",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/history.fsh",
+    "startLine": 1,
+    "endLine": 15
+  },
+  {
     "outputFile": "OperationDefinition-DiagnosticReport-fhir-report.json",
     "fshName": "DiagnosticReport-fhir-report",
     "fshType": "Instance",
@@ -104,12 +464,28 @@
     "endLine": 38
   },
   {
+    "outputFile": "Organization-OrganizationStructuredReport.json",
+    "fshName": "OrganizationStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/authors-organizatiions.fsh",
+    "startLine": 20,
+    "endLine": 36
+  },
+  {
     "outputFile": "Patient-PatientSemiStructuredReport.json",
     "fshName": "PatientSemiStructuredReport",
     "fshType": "Instance",
     "fshFile": "report-example-semi-strucrured/patient.fsh",
     "startLine": 1,
     "endLine": 10
+  },
+  {
+    "outputFile": "Patient-PatientStructuredReport.json",
+    "fshName": "PatientStructuredReport",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/patient.fsh",
+    "startLine": 1,
+    "endLine": 12
   },
   {
     "outputFile": "Practitioner-PractitionerSemiStructuredReportAuthor.json",
@@ -120,6 +496,14 @@
     "endLine": 16
   },
   {
+    "outputFile": "Practitioner-PractitionerStructuredReportAuthor.json",
+    "fshName": "PractitionerStructuredReportAuthor",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/authors-organizatiions.fsh",
+    "startLine": 9,
+    "endLine": 18
+  },
+  {
     "outputFile": "PractitionerRole-PractitionerRoleSemiStructuredReportAuthor.json",
     "fshName": "PractitionerRoleSemiStructuredReportAuthor",
     "fshType": "Instance",
@@ -128,12 +512,28 @@
     "endLine": 7
   },
   {
+    "outputFile": "PractitionerRole-PractitionerRoleStructuredReportAuthor.json",
+    "fshName": "PractitionerRoleStructuredReportAuthor",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/authors-organizatiions.fsh",
+    "startLine": 2,
+    "endLine": 7
+  },
+  {
+    "outputFile": "ServiceRequest-ComeBackNextYearServiceRequest.json",
+    "fshName": "ComeBackNextYearServiceRequest",
+    "fshType": "Instance",
+    "fshFile": "report-example-structured/recommendation.fsh",
+    "startLine": 1,
+    "endLine": 10
+  },
+  {
     "outputFile": "StructureDefinition-HL7IDRCommunication.json",
     "fshName": "HL7IDRCommunicationExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 202,
-    "endLine": 207
+    "startLine": 201,
+    "endLine": 206
   },
   {
     "outputFile": "StructureDefinition-HL7IDRComparisonStudy.json",
@@ -141,47 +541,47 @@
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
     "startLine": 158,
-    "endLine": 164
+    "endLine": 163
   },
   {
     "outputFile": "StructureDefinition-HL7IDRFinding.json",
     "fshName": "HL7IDRFindingExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 181,
-    "endLine": 186
+    "startLine": 180,
+    "endLine": 185
   },
   {
     "outputFile": "StructureDefinition-HL7IDRImagingProcedure.json",
     "fshName": "HL7IDRImagingProcedureExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 174,
-    "endLine": 179
+    "startLine": 173,
+    "endLine": 178
   },
   {
     "outputFile": "StructureDefinition-HL7IDRImpression.json",
     "fshName": "HL7IDRImpressionExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 188,
-    "endLine": 193
+    "startLine": 187,
+    "endLine": 192
   },
   {
     "outputFile": "StructureDefinition-HL7IDRPatientHistory.json",
     "fshName": "HL7IDRPatientHistoryExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 166,
-    "endLine": 171
+    "startLine": 165,
+    "endLine": 170
   },
   {
     "outputFile": "StructureDefinition-HL7IDRRecommendation.json",
     "fshName": "HL7IDRRecommendationExt",
     "fshType": "Extension",
     "fshFile": "profiles/im-diagnosticreport.fsh",
-    "startLine": 195,
-    "endLine": 200
+    "startLine": 194,
+    "endLine": 199
   },
   {
     "outputFile": "StructureDefinition-IheEntryUUIDIdentifier.json",
@@ -244,8 +644,8 @@
     "fshName": "ImImagingSelection",
     "fshType": "Profile",
     "fshFile": "profiles/im-imagingselection.fsh",
-    "startLine": 6,
-    "endLine": 14
+    "startLine": 5,
+    "endLine": 10
   },
   {
     "outputFile": "StructureDefinition-ImImagingStudy.json",
@@ -316,8 +716,8 @@
     "fshName": "ImSrInstanceImagingSelection",
     "fshType": "Profile",
     "fshFile": "profiles/im-imagingselection.fsh",
-    "startLine": 16,
-    "endLine": 33
+    "startLine": 12,
+    "endLine": 29
   },
   {
     "outputFile": "StructureDefinition-ImUnstructuredDocumentReference.json",

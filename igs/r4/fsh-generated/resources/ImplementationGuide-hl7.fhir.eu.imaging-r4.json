@@ -156,6 +156,13 @@
       },
       {
         "reference": {
+          "reference": "Binary/structured-pdf"
+        },
+        "name": "Binary: Structured report pdf",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Binary/unstructured-pdf"
         },
         "name": "Binary: Unstructured report pdf",
@@ -184,6 +191,21 @@
         "description": "EHDS simplified model for care plan. The model includes very minimal information and is not designed to cover the full functionality of care plans.",
         "exampleBoolean": false,
         "name": "Care plan model"
+      },
+      {
+        "reference": {
+          "reference": "ServiceRequest/ComeBackNextYearServiceRequest"
+        },
+        "name": "ComeBackNextYearServiceRequest",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Composition/CompositionStructured"
+        },
+        "name": "Composition for stress test ultrasound",
+        "description": "Example of a ImComposition showing the report with structured data.",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImComposition"
       },
       {
         "reference": {
@@ -264,6 +286,14 @@
         "name": "Diagnostic Report Support Info Code System",
         "description": "Code system for codes to be used in `DiagnosticReport.supportInfo` for imaging reports.",
         "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "DiagnosticReport/DiagnosticReportStructured"
+        },
+        "name": "DiagnosticReport for stress echo",
+        "description": "Example of a ImDiagnosticReport showing the report for a stress echo",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImDiagnosticReport"
       },
       {
         "reference": {
@@ -834,6 +864,13 @@
       },
       {
         "reference": {
+          "reference": "Organization/OrganizationStructuredReport"
+        },
+        "name": "OrganizationStructuredReport",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/EHDSPatientAnimal"
         },
         "description": "EHDS refined base model for Patient:Animal",
@@ -842,9 +879,40 @@
       },
       {
         "reference": {
+          "reference": "Observation/BPObservation"
+        },
+        "name": "Patient blood pressure",
+        "description": "Patient blood pressure in echo report history section",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/HRObservation"
+        },
+        "name": "Patient heart rate",
+        "description": "Patient height in echo report history section",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/HeightObservation"
+        },
+        "name": "Patient height",
+        "description": "Patient height in echo report history section",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Patient/PatientSemiStructuredReport"
         },
         "name": "Patient in Semi-structured report example",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Patient/PatientStructuredReport"
+        },
+        "name": "Patient in structured report example",
         "exampleBoolean": true
       },
       {
@@ -865,6 +933,14 @@
       },
       {
         "reference": {
+          "reference": "Observation/WeightObservation"
+        },
+        "name": "Patient weight",
+        "description": "Patient weight in echo report history section",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "PractitionerRole/PractitionerRoleSemiStructuredReportAuthor"
         },
         "name": "PractitionerRoleSemiStructuredReportAuthor",
@@ -872,9 +948,23 @@
       },
       {
         "reference": {
+          "reference": "PractitionerRole/PractitionerRoleStructuredReportAuthor"
+        },
+        "name": "PractitionerRoleStructuredReportAuthor",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "Practitioner/PractitionerSemiStructuredReportAuthor"
         },
         "name": "PractitionerSemiStructuredReportAuthor",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Practitioner/PractitionerStructuredReportAuthor"
+        },
+        "name": "PractitionerStructuredReportAuthor",
         "exampleBoolean": true
       },
       {
@@ -927,6 +1017,125 @@
       },
       {
         "reference": {
+          "reference": "Observation/RestWmsi01"
+        },
+        "name": "RestWmsi01",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi02"
+        },
+        "name": "RestWmsi02",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi03"
+        },
+        "name": "RestWmsi03",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi04"
+        },
+        "name": "RestWmsi04",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi05"
+        },
+        "name": "RestWmsi05",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi06"
+        },
+        "name": "RestWmsi06",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi07"
+        },
+        "name": "RestWmsi07",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi08"
+        },
+        "name": "RestWmsi08",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi09"
+        },
+        "name": "RestWmsi09",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi10"
+        },
+        "name": "RestWmsi10",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi11"
+        },
+        "name": "RestWmsi11",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi12"
+        },
+        "name": "RestWmsi12",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi13"
+        },
+        "name": "RestWmsi13",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi14"
+        },
+        "name": "RestWmsi14",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi15"
+        },
+        "name": "RestWmsi15",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi16"
+        },
+        "name": "RestWmsi16",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/RestWmsi17"
+        },
+        "name": "RestWmsi17",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "ValueSet/valueset-diagnosticreport-notes"
         },
         "name": "Section codes used to label annotations.",
@@ -967,6 +1176,139 @@
       },
       {
         "reference": {
+          "reference": "Observation/StressWmsi01"
+        },
+        "name": "StressWmsi01",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi02"
+        },
+        "name": "StressWmsi02",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi03"
+        },
+        "name": "StressWmsi03",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi04"
+        },
+        "name": "StressWmsi04",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi05"
+        },
+        "name": "StressWmsi05",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi06"
+        },
+        "name": "StressWmsi06",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi07"
+        },
+        "name": "StressWmsi07",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi08"
+        },
+        "name": "StressWmsi08",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi09"
+        },
+        "name": "StressWmsi09",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi10"
+        },
+        "name": "StressWmsi10",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi11"
+        },
+        "name": "StressWmsi11",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi12"
+        },
+        "name": "StressWmsi12",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi13"
+        },
+        "name": "StressWmsi13",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi14"
+        },
+        "name": "StressWmsi14",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi15"
+        },
+        "name": "StressWmsi15",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi16"
+        },
+        "name": "StressWmsi16",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "Observation/StressWmsi17"
+        },
+        "name": "StressWmsi17",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "DocumentReference/StructuredKeyImageRest"
+        },
+        "name": "StructuredKeyImageRest",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "DocumentReference/StructuredKeyImageStress"
+        },
+        "name": "StructuredKeyImageStress",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/EHDSSubstance"
         },
         "description": "EHDS refined base model for Substance",
@@ -991,6 +1333,14 @@
       },
       {
         "reference": {
+          "reference": "ImagingStudy/ImagingStudStructuredReport"
+        },
+        "name": "Transthoracic echocardiogram",
+        "description": "Transthoracic echocardiogram for 3D TEE 2D",
+        "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImImagingStudy"
+      },
+      {
+        "reference": {
           "reference": "StructureDefinition/EHDSTravelHistory"
         },
         "description": "Relevant information about the patient's recent travel history, for one visit",
@@ -1004,6 +1354,13 @@
         "name": "Unstructured Report",
         "description": "MHD DocumentReference for unstructured report.",
         "exampleCanonical": "http://hl7.eu/fhir/imaging-r4/StructureDefinition/ImUnstructuredDocumentReference"
+      },
+      {
+        "reference": {
+          "reference": "DocumentReference/WMSIImage"
+        },
+        "name": "WMSIImage",
+        "exampleBoolean": true
       },
       {
         "reference": {
