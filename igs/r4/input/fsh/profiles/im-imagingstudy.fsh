@@ -57,7 +57,7 @@ This profile represents an imaging study instance.
 
 Extension: ImImagingStudyInstanceDescription
 Id: instance-description
-Title: "Instance Description"
+Title: "Extension: Instance Description"
 Description: "A description of the instance in an ImagingStudy."
 Context: ImagingStudy.series.instance
 * insert SetFmmAndStatusRule( 1, draft )
@@ -65,7 +65,7 @@ Context: ImagingStudy.series.instance
 
 Extension: NumberOfFrames
 Id: number-of-frames
-Title: "Number of Frames"
+Title: "Extension: Number of Frames"
 Description: "The number of frames in an ImagingStudy instance as required by Xt-EHR logical ImagingStudy logical model."
 Context: ImagingStudy.series.instance
 * insert SetFmmAndStatusRule( 1, draft )

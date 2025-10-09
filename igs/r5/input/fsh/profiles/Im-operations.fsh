@@ -1,5 +1,7 @@
 Instance: DiagnosticReport-fhir-report
 InstanceOf: OperationDefinition
+Title: "OperationDefinition: $document on DiagnosticReport"
+Description: "OperationDefinition for creating a document Bundle based on a DiagnosticReport."
 Usage: #definition
 * name = "document"
 * title = "OperationDefinition: create a FHIR report from a DiagnosticReport"

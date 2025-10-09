@@ -1,6 +1,6 @@
 Instance: CompositionStructured
 InstanceOf: ImComposition
-Title: "Composition for stress test ultrasound"
+Title: "Composition: structured report"
 Description: "Example of a ImComposition showing the report with structured data."
 Usage: #example
 * status = #final

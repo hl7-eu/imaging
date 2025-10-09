@@ -208,7 +208,7 @@ Expression: "entry.empty().not() or emptyReason.exists() or entry.extension('htt
 
 Extension: ImDiagnosticReportReference
 Id:   im-composition-diagnosticReportReference
-Title:  "Document DiagnosticReport Reference"
+Title:  "Extension: Document DiagnosticReport Reference"
 Description: """
     This extension provides a reference to the DiagnosticReport instance that is associated with this Composition.
     """

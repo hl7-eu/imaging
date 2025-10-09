@@ -1,6 +1,6 @@
 Instance: UnstructuredReportExample
 InstanceOf: ImUnstructuredDocumentReference
-Title: "Unstructured Report"
+Title: "DocumentReference: Unstructured Report"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example
 * contained[+] = PatientUnstructuredReport
@@ -25,8 +25,9 @@ Usage: #example
   
 Instance: PatientUnstructuredReport
 InstanceOf: $EuPatient 
-Title: "Patient used in the unstructured report"
-Usage: #inline
+Title: "Patient: unstructured report"
+Description: "Patient used in the unstructured report"
+Usage: #example
 * name
   * use = #official
   * text = "Jane Doe"
@@ -36,8 +37,9 @@ Usage: #inline
 
 Instance: OrganizationUnstructuredReport
 InstanceOf: $EuOrganization 
-Title: "Organization used in the unstructured report"
-Usage: #inline
+Title: "Organization: unstructured report"
+Description: "Organization used in the unstructured report"
+Usage: #example
 * name = "Rediologie Zentrum Bremen"
 * contact
   * telecom[+]
@@ -61,6 +63,8 @@ Usage: #inline
 Instance: BinaryUnstructuredReport
 InstanceOf: Binary
 Title: "Binary: Unstructured report pdf"
+Description: "Binary resource holding the unstructured report pdf."
+Usage: #example
 * id = "unstructured-pdf"
 * contentType = #application/pdf
 * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"

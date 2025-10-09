@@ -1,14 +1,18 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: PractitionerRoleStructuredReportAuthor
 InstanceOf: PractitionerRoleEu
-// Usage: #inline
+Title: "PractitionerRole: structured report"
+Description: "Role of the report author."
+Usage: #example
 * practitioner = Reference(PractitionerSemiStructuredReportAuthor)
 * organization = Reference(OrganizationSemiStructuredReport)
 * code = $sct#394579002 "Cardiology"
 
 Instance: PractitionerStructuredReportAuthor
 InstanceOf: PractitionerEu
-// Usage: #inline
+Title: "Practitioner: structured report"
+Description: "The report author."
+Usage: #example
 * name
   * use = #official
   * text = "Ph.D. Philips van de JOCHEMSEN, Prof."
@@ -19,7 +23,9 @@ InstanceOf: PractitionerEu
 
 Instance: OrganizationStructuredReport
 InstanceOf: OrganizationEu
-// Usage: #inline
+Title: "Organization: structured report"
+Description: "Organization of the report author."
+Usage: #example
 * name = "Ultrasound centrum"
 * contact
   * address

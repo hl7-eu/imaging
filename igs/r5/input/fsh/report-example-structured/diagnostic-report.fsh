@@ -1,6 +1,6 @@
 Instance: DiagnosticReportStructured
 InstanceOf: ImDiagnosticReport
-Title: "DiagnosticReport for stress echo"
+Title: "DiagnosticReport: structured report"
 Description: "Example of a ImDiagnosticReport showing the report for a stress echo"
 Usage: #example
 * identifier
@@ -130,7 +130,9 @@ See you next year.
 
 Instance: BinaryStructuredReport
 InstanceOf: Binary
-Title: "Binary: Structured report pdf"
+Title: "Binary: Structured report"
+Description: "Binary resource holding the report pdf."
+Usage: #example
 * id = "structured-pdf"
 * contentType = #application/pdf
 // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"

@@ -12,3 +12,4 @@ publisher.jar
 .fhir/
 IG-base/fsh-generated/**
 output-stable
+subigs/**

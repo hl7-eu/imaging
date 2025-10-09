@@ -156,14 +156,14 @@ Communications captures what communications have been made with other care provi
 
 
 Extension: HL7IDRComparisonStudiesExt
-Title: "HL7IDR DiagnosticReport Comparison Study"
+Title: "Extension: HL7IDR DiagnosticReport Comparison Study"
 Id: HL7IDRComparisonStudy
 Description: "Studies used for comparison in part of diagnostic reporting"
 Context: DiagnosticReport
 * value[x] only Reference(ImImagingStudy or ImImagingSelection)
 
 Extension: HL7IDRPatientHistoryExt
-Title: "HL7IDR Patient History"
+Title: "Extension: HL7IDR Patient History"
 Id: HL7IDRPatientHistory
 Description: "Patient history that are relevant for the report"
 Context: DiagnosticReport
@@ -171,35 +171,35 @@ Context: DiagnosticReport
 // * value[x] only Reference(HL7IDRPatientHistoryCondition or HL7IDRPatientHistoryObservation or HL7IDRPatientHistoryProcedure or HL7IDRPatientHistoryFamilyMemberHistory)
 
 Extension: HL7IDRImagingProcedureExt
-Title: "HL7IDR Imaging Procedure"
+Title: "Extension: HL7IDR Imaging Procedure"
 Id: HL7IDRImagingProcedure
 Description: "Imaging procedure used for the imaging acquisition"
 Context: DiagnosticReport
 * value[x] only Reference(ImProcedure)
 
 Extension: HL7IDRFindingExt
-Title: "HL7IDR KeyImage Finding"
+Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
 * value[x] only Reference(ImKeyImageDocumentReference or ImKeyImageImagingSelection )
 
 Extension: HL7IDRImpressionExt
-Title: "HL7IDR Impression"
+Title: "Extension: HL7IDR Impression"
 Id: HL7IDRImpression
 Description: "Impression in the imaging report"
 Context: DiagnosticReport
 * value[x] only Reference(ImFinding or Condition or ImKeyImageDocumentReference or ImKeyImageImagingSelection or ImKeyImageDocumentReference )
 
 Extension: HL7IDRRecommendationExt
-Title: "HL7IDR Recommendation"
+Title: "Extension: HL7IDR Recommendation"
 Id: HL7IDRRecommendation
 Description: "Recommendations for any follow up actions"
 Context: DiagnosticReport
 * value[x] only Reference($EuCarePlan or $EuServiceRequest )
 
 Extension: HL7IDRCommunicationExt
-Title: "HL7IDR Communication"
+Title: "Extension: HL7IDR Communication"
 Id: HL7IDRCommunication
 Description: "Communications captures what communications have been made with other care providers"
 Context: DiagnosticReport

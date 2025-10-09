@@ -1,6 +1,6 @@
 Instance: ImagingStudStructuredReport
 InstanceOf: ImImagingStudy
-Title: "Transthoracic echocardiogram"
+Title: "ImagingStudy: structured-report study"
 Description: "Transthoracic echocardiogram for 3D TEE 2D"
 Usage: #example
 * identifier[studyInstanceUid]

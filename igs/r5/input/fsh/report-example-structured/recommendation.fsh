@@ -1,5 +1,8 @@
 Instance: ComeBackNextYearServiceRequest
 InstanceOf: ServiceRequest
+Title: "ServiceRequest: structured report recommendation"
+Description: "Order to come back next year"
+Usage: #example
 * status = #active
 * intent = #proposal
 * subject =  Reference( PatientStructuredReport )

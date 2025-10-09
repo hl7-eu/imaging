@@ -1,6 +1,6 @@
 Instance: WeightObservation
 InstanceOf: Observation
-Title: "Patient weight"
+Title: "Observation: patient weight"
 Description: "Patient weight in echo report history section"
 Usage: #example
 * status = #final
@@ -16,7 +16,7 @@ Usage: #example
 
 Instance: HeightObservation
 InstanceOf: Observation
-Title: "Patient height"
+Title: "Observation: patient height"
 Description: "Patient height in echo report history section"
 Usage: #example
 * status = #final
@@ -32,7 +32,7 @@ Usage: #example
 
 Instance: HRObservation
 InstanceOf: Observation
-Title: "Patient heart rate"
+Title: "Observation: patient heart rate"
 Description: "Patient height in echo report history section"
 Usage: #example
 * status = #final
@@ -48,7 +48,7 @@ Usage: #example
 
 Instance: BPObservation
 InstanceOf: Observation
-Title: "Patient blood pressure"
+Title: "Observation: patient blood pressure"
 Description: "Patient blood pressure in echo report history section"
 Usage: #example
 * status = #final

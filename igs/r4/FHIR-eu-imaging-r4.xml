@@ -6,6 +6,8 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
+<artifact id="ActorDefinition/ImReportCreator" key="ActorDefinition-ImReportCreator" name="ActorDefinition: Imaging Study Report Creator"/>
+<artifact id="ActorDefinition/ImReportProvider" key="ActorDefinition-ImReportProvider" name="ActorDefinition: Imaging Study Report Provider"/>
 <artifact id="StructureDefinition/EHDSAddress" key="StructureDefinition-EHDSAddress" name="Address model"/>
 <artifact id="StructureDefinition/EHDSAdvanceDirective" key="StructureDefinition-EHDSAdvanceDirective" name="Advance directive model"/>
 <artifact id="StructureDefinition/ImAdverseEvent" key="StructureDefinition-ImAdverseEvent" name="AdverseEvent: Imaging Adverse Event"/>
@@ -15,16 +17,15 @@
 <artifact id="StructureDefinition/EHDSAttachment" key="StructureDefinition-EHDSAttachment" name="Attachment model"/>
 <artifact id="StructureDefinition/ImSrInstanceImagingSelection" key="StructureDefinition-ImSrInstanceImagingSelection" name="Basic-ImagingSelection: DICOM SR Instance"/>
 <artifact id="StructureDefinition/ImImagingSelection" key="StructureDefinition-ImImagingSelection" name="Basic-ImagingSelection: General"/>
-<artifact id="Binary/structured-pdf" key="Binary-structured-pdf" name="Binary: Structured report pdf"/>
+<artifact id="Binary/structured-pdf" key="Binary-structured-pdf" name="Binary: Structured report"/>
 <artifact id="Binary/unstructured-pdf" key="Binary-unstructured-pdf" name="Binary: Unstructured report pdf"/>
 <artifact id="Binary/semi-structured-pdf" key="Binary-semi-structured-pdf" name="Binary: semi-structured report"/>
 <artifact id="StructureDefinition/EHDSBodyStructure" key="StructureDefinition-EHDSBodyStructure" name="Body structure model"/>
 <artifact id="StructureDefinition/ImReport" key="StructureDefinition-ImReport" name="Bundle: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSCarePlan" key="StructureDefinition-EHDSCarePlan" name="Care plan model"/>
-<artifact id="ServiceRequest/ComeBackNextYearServiceRequest" key="ServiceRequest-ComeBackNextYearServiceRequest" name="ComeBackNextYearServiceRequest"/>
-<artifact id="Composition/CompositionStructured" key="Composition-CompositionStructured" name="Composition for stress test ultrasound"/>
 <artifact id="StructureDefinition/ImComposition" key="StructureDefinition-ImComposition" name="Composition: Imaging Report"/>
 <artifact id="Composition/CompositionSemiStructured" key="Composition-CompositionSemiStructured" name="Composition: semi-structured"/>
+<artifact id="Composition/CompositionStructured" key="Composition-CompositionStructured" name="Composition: structured report"/>
 <artifact id="StructureDefinition/EHDSCondition" key="StructureDefinition-EHDSCondition" name="Condition model"/>
 <artifact id="StructureDefinition/EHDSCoverage" key="StructureDefinition-EHDSCoverage" name="Coverage model"/>
 <artifact id="StructureDefinition/EHDSCurrentPregnancy" key="StructureDefinition-EHDSCurrentPregnancy" name="Current pregnancy status model"/>
@@ -33,52 +34,52 @@
 <artifact id="StructureDefinition/EHDSDeviceUse" key="StructureDefinition-EHDSDeviceUse" name="Device use model"/>
 <artifact id="StructureDefinition/ImImagingDevice" key="StructureDefinition-ImImagingDevice" name="Device: Imaging Device"/>
 <artifact id="CodeSystem/codesystem-diagnostic-report-support-info" key="CodeSystem-codesystem-diagnostic-report-support-info" name="Diagnostic Report Support Info Code System"/>
-<artifact id="DiagnosticReport/DiagnosticReportStructured" key="DiagnosticReport-DiagnosticReportStructured" name="DiagnosticReport for stress echo"/>
 <artifact id="ValueSet/valueset-diagnosticreport-report-support-info" key="ValueSet-valueset-diagnosticreport-report-support-info" name="DiagnosticReport supportInfo codes"/>
 <artifact id="StructureDefinition/ImDiagnosticReport" key="StructureDefinition-ImDiagnosticReport" name="DiagnosticReport: Imaging Report"/>
 <artifact id="DiagnosticReport/DiagnosticReportSemiStructured" key="DiagnosticReport-DiagnosticReportSemiStructured" name="DiagnosticReport: semi-structured report"/>
+<artifact id="DiagnosticReport/DiagnosticReportStructured" key="DiagnosticReport-DiagnosticReportStructured" name="DiagnosticReport: structured report"/>
 <artifact id="StructureDefinition/EHDSDischargeReport" key="StructureDefinition-EHDSDischargeReport" name="Discharge Report model"/>
-<artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
 <artifact id="StructureDefinition/EHDSDocument" key="StructureDefinition-EHDSDocument" name="Document model"/>
 <artifact id="StructureDefinition/ImReportDocumentReference" key="StructureDefinition-ImReportDocumentReference" name="DocumentReference: EU Imaging Report"/>
 <artifact id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="DocumentReference: Key Image"/>
 <artifact id="StructureDefinition/ImUnstructuredDocumentReference" key="StructureDefinition-ImUnstructuredDocumentReference" name="DocumentReference: Unstructured Imaging Report"/>
+<artifact id="DocumentReference/UnstructuredReportExample" key="DocumentReference-UnstructuredReportExample" name="DocumentReference: Unstructured Report"/>
+<artifact id="DocumentReference/StructuredKeyImageRest" key="DocumentReference-StructuredKeyImageRest" name="DocumentReference: key image rest"/>
+<artifact id="DocumentReference/StructuredKeyImageStress" key="DocumentReference-StructuredKeyImageStress" name="DocumentReference: key image stress"/>
+<artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="DocumentReference: structured report WMSI image"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
-<artifact id="ValueSet/im-dose-length-units" key="ValueSet-im-dose-length-units" name="Dose Length Units"/>
-<artifact id="ValueSet/im-effective-dose-units" key="ValueSet-im-effective-dose-units" name="Effective Dose Units"/>
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
+<artifact id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Extension: Document DiagnosticReport Reference"/>
+<artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="Extension: HL7IDR Communication"/>
+<artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="Extension: HL7IDR DiagnosticReport Comparison Study"/>
+<artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="Extension: HL7IDR Imaging Procedure"/>
+<artifact id="StructureDefinition/HL7IDRImpression" key="StructureDefinition-HL7IDRImpression" name="Extension: HL7IDR Impression"/>
+<artifact id="StructureDefinition/HL7IDRFinding" key="StructureDefinition-HL7IDRFinding" name="Extension: HL7IDR KeyImage Finding"/>
+<artifact id="StructureDefinition/HL7IDRPatientHistory" key="StructureDefinition-HL7IDRPatientHistory" name="Extension: HL7IDR Patient History"/>
+<artifact id="StructureDefinition/HL7IDRRecommendation" key="StructureDefinition-HL7IDRRecommendation" name="Extension: HL7IDR Recommendation"/>
+<artifact id="StructureDefinition/instance-description" key="StructureDefinition-instance-description" name="Extension: Instance Description"/>
+<artifact id="StructureDefinition/number-of-frames" key="StructureDefinition-number-of-frames" name="Extension: Number of Frames"/>
 <artifact id="StructureDefinition/EHDSFamilyMemberHistory" key="StructureDefinition-EHDSFamilyMemberHistory" name="Family member history model"/>
 <artifact id="StructureDefinition/EHDSFunctionalStatus" key="StructureDefinition-EHDSFunctionalStatus" name="Functional status"/>
-<artifact id="ValueSet/im-gray-square-units" key="ValueSet-im-gray-square-units" name="Gray Square Units"/>
-<artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="HL7IDR Communication"/>
-<artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="HL7IDR DiagnosticReport Comparison Study"/>
-<artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="HL7IDR Imaging Procedure"/>
-<artifact id="StructureDefinition/HL7IDRImpression" key="StructureDefinition-HL7IDRImpression" name="HL7IDR Impression"/>
-<artifact id="StructureDefinition/HL7IDRFinding" key="StructureDefinition-HL7IDRFinding" name="HL7IDR KeyImage Finding"/>
-<artifact id="StructureDefinition/HL7IDRPatientHistory" key="StructureDefinition-HL7IDRPatientHistory" name="HL7IDR Patient History"/>
-<artifact id="StructureDefinition/HL7IDRRecommendation" key="StructureDefinition-HL7IDRRecommendation" name="HL7IDR Recommendation"/>
 <artifact id="StructureDefinition/EHDSHealthProfessional" key="StructureDefinition-EHDSHealthProfessional" name="Health professional model"/>
 <artifact id="StructureDefinition/EHDSHumanName" key="StructureDefinition-EHDSHumanName" name="Human name model"/>
 <artifact id="StructureDefinition/im-accession-number-identifier" key="StructureDefinition-im-accession-number-identifier" name="Identifier: Accession Number"/>
 <artifact id="StructureDefinition/IheEntryUUIDIdentifier" key="StructureDefinition-IheEntryUUIDIdentifier" name="Identifier: IHE-MHD Entry UUID"/>
 <artifact id="StructureDefinition/im-sop-instance-uid-identifier" key="StructureDefinition-im-sop-instance-uid-identifier" name="Identifier: SOP Instance UID"/>
 <artifact id="StructureDefinition/im-study-instance-uid-identifier" key="StructureDefinition-im-study-instance-uid-identifier" name="Identifier: Study Instance UID"/>
-<artifact id="ValueSet/im-imaging-device-type" key="ValueSet-im-imaging-device-type" name="Imaging Device Type"/>
 <artifact id="ValueSet/im-procedure-type" key="ValueSet-im-procedure-type" name="Imaging Procedure Type"/>
 <artifact id="ValueSet/im-imaging-study-performer-type" key="ValueSet-im-imaging-study-performer-type" name="Imaging Study Performer Type Value Set"/>
-<artifact id="ActorDefinition/ImReportCreator" key="ActorDefinition-ImReportCreator" name="Imaging Study Report Creator"/>
-<artifact id="ActorDefinition/ImReportProvider" key="ActorDefinition-ImReportProvider" name="Imaging Study Report Provider"/>
 <artifact id="StructureDefinition/EHDSImagingReport" key="StructureDefinition-EHDSImagingReport" name="Imaging report model"/>
 <artifact id="StructureDefinition/EHDSImagingStudy" key="StructureDefinition-EHDSImagingStudy" name="Imaging study model"/>
 <artifact id="StructureDefinition/ImImagingStudy" key="StructureDefinition-ImImagingStudy" name="ImagingStudy: General"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report"/>
+<artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
 <artifact id="StructureDefinition/EHDSImmunisation" key="StructureDefinition-EHDSImmunisation" name="Immunisation model"/>
 <artifact id="StructureDefinition/EHDSInfectiousContact" key="StructureDefinition-EHDSInfectiousContact" name="Infectious contact model"/>
-<artifact id="StructureDefinition/instance-description" key="StructureDefinition-instance-description" name="Instance Description"/>
 <artifact id="StructureDefinition/ImKeyImageImagingSelection" key="StructureDefinition-ImKeyImageImagingSelection" name="Key images represented as an ImagingSelection for R4"/>
 <artifact id="StructureDefinition/EHDSLaboratoryObservation" key="StructureDefinition-EHDSLaboratoryObservation" name="Laboratory observation model"/>
 <artifact id="StructureDefinition/EHDSLaboratoryOrder" key="StructureDefinition-EHDSLaboratoryOrder" name="Laboratory order"/>
@@ -96,82 +97,83 @@
 <artifact id="StructureDefinition/EHDSMedicationPrescription" key="StructureDefinition-EHDSMedicationPrescription" name="Medication prescription model"/>
 <artifact id="StructureDefinition/EHDSMedicationStatement" key="StructureDefinition-EHDSMedicationStatement" name="Medication statement model"/>
 <artifact id="CodeSystem/codesystem-missing-dicom-terminology" key="CodeSystem-codesystem-missing-dicom-terminology" name="Missing DICOM Terminology"/>
-<artifact id="StructureDefinition/number-of-frames" key="StructureDefinition-number-of-frames" name="Number of Frames"/>
 <artifact id="StructureDefinition/EHDSObservation" key="StructureDefinition-EHDSObservation" name="Observation model"/>
 <artifact id="StructureDefinition/ImGestationalAgeObservation" key="StructureDefinition-ImGestationalAgeObservation" name="Observation: Gestational Age"/>
 <artifact id="StructureDefinition/ImFinding" key="StructureDefinition-ImFinding" name="Observation: Imaging Finding"/>
 <artifact id="StructureDefinition/ImRadiationDoseObservation" key="StructureDefinition-ImRadiationDoseObservation" name="Observation: Radiation Dose"/>
-<artifact id="OperationDefinition/DiagnosticReport-fhir-report" key="OperationDefinition-DiagnosticReport-fhir-report" name="OperationDefinition: create a FHIR report from a DiagnosticReport"/>
+<artifact id="Observation/RestWmsi17" key="Observation-RestWmsi17" name="Observation: WMSI apex at rest - normal"/>
+<artifact id="Observation/StressWmsi17" key="Observation-StressWmsi17" name="Observation: WMSI apex under stress - normal"/>
+<artifact id="Observation/RestWmsi13" key="Observation-RestWmsi13" name="Observation: WMSI apical anterior at rest - normal"/>
+<artifact id="Observation/StressWmsi13" key="Observation-StressWmsi13" name="Observation: WMSI apical anterior under stress - normal"/>
+<artifact id="Observation/RestWmsi15" key="Observation-RestWmsi15" name="Observation: WMSI apical inferior at rest - normal"/>
+<artifact id="Observation/StressWmsi15" key="Observation-StressWmsi15" name="Observation: WMSI apical inferior under stress - normal"/>
+<artifact id="Observation/RestWmsi16" key="Observation-RestWmsi16" name="Observation: WMSI apical lateral at rest - normal"/>
+<artifact id="Observation/StressWmsi16" key="Observation-StressWmsi16" name="Observation: WMSI apical lateral under stress - normal"/>
+<artifact id="Observation/RestWmsi14" key="Observation-RestWmsi14" name="Observation: WMSI apical septum at rest - normal"/>
+<artifact id="Observation/StressWmsi14" key="Observation-StressWmsi14" name="Observation: WMSI apical septum under stress - normal"/>
+<artifact id="Observation/RestWmsi01" key="Observation-RestWmsi01" name="Observation: WMSI basal anterior at rest - hypokinetic"/>
+<artifact id="Observation/RestWmsi06" key="Observation-RestWmsi06" name="Observation: WMSI basal anterior lateral at rest - normal"/>
+<artifact id="Observation/StressWmsi06" key="Observation-StressWmsi06" name="Observation: WMSI basal anterior lateral under stress - normal"/>
+<artifact id="Observation/RestWmsi02" key="Observation-RestWmsi02" name="Observation: WMSI basal anterior septum at rest - normal"/>
+<artifact id="Observation/StressWmsi02" key="Observation-StressWmsi02" name="Observation: WMSI basal anterior septum under stress - normal"/>
+<artifact id="Observation/StressWmsi01" key="Observation-StressWmsi01" name="Observation: WMSI basal anterior under stress - hypokinetic"/>
+<artifact id="Observation/RestWmsi04" key="Observation-RestWmsi04" name="Observation: WMSI basal inferior at rest - normal"/>
+<artifact id="Observation/RestWmsi05" key="Observation-RestWmsi05" name="Observation: WMSI basal inferior lateral at rest - hypokinetic"/>
+<artifact id="Observation/StressWmsi05" key="Observation-StressWmsi05" name="Observation: WMSI basal inferior lateral under stress - mildly hypokinetic"/>
+<artifact id="Observation/RestWmsi03" key="Observation-RestWmsi03" name="Observation: WMSI basal inferior septum at rest - normal"/>
+<artifact id="Observation/StressWmsi03" key="Observation-StressWmsi03" name="Observation: WMSI basal inferior septum under stress - normal"/>
+<artifact id="Observation/StressWmsi04" key="Observation-StressWmsi04" name="Observation: WMSI basal inferior under stress - normal"/>
+<artifact id="Observation/RestWmsi07" key="Observation-RestWmsi07" name="Observation: WMSI mid anterior at rest - normal"/>
+<artifact id="Observation/RestWmsi12" key="Observation-RestWmsi12" name="Observation: WMSI mid anterior lateral at rest - normal"/>
+<artifact id="Observation/StressWmsi12" key="Observation-StressWmsi12" name="Observation: WMSI mid anterior lateral under stress - normal"/>
+<artifact id="Observation/RestWmsi08" key="Observation-RestWmsi08" name="Observation: WMSI mid anterior septum at rest - normal"/>
+<artifact id="Observation/StressWmsi08" key="Observation-StressWmsi08" name="Observation: WMSI mid anterior septum under stress - normal"/>
+<artifact id="Observation/StressWmsi07" key="Observation-StressWmsi07" name="Observation: WMSI mid anterior under stress - normal"/>
+<artifact id="Observation/RestWmsi10" key="Observation-RestWmsi10" name="Observation: WMSI mid inferior at rest - normal"/>
+<artifact id="Observation/RestWmsi11" key="Observation-RestWmsi11" name="Observation: WMSI mid inferior lateral at rest - normal"/>
+<artifact id="Observation/StressWmsi11" key="Observation-StressWmsi11" name="Observation: WMSI mid inferior lateral under stress - normal"/>
+<artifact id="Observation/RestWmsi09" key="Observation-RestWmsi09" name="Observation: WMSI mid inferior septum at rest - normal"/>
+<artifact id="Observation/StressWmsi09" key="Observation-StressWmsi09" name="Observation: WMSI mid inferior septum under stress - normal"/>
+<artifact id="Observation/StressWmsi10" key="Observation-StressWmsi10" name="Observation: WMSI mid inferior under stress - normal"/>
+<artifact id="Observation/BPObservation" key="Observation-BPObservation" name="Observation: patient blood pressure"/>
+<artifact id="Observation/HRObservation" key="Observation-HRObservation" name="Observation: patient heart rate"/>
+<artifact id="Observation/HeightObservation" key="Observation-HeightObservation" name="Observation: patient height"/>
+<artifact id="Observation/WeightObservation" key="Observation-WeightObservation" name="Observation: patient weight"/>
+<artifact id="OperationDefinition/DiagnosticReport-fhir-report" key="OperationDefinition-DiagnosticReport-fhir-report" name="OperationDefinition: $document on DiagnosticReport"/>
 <artifact id="StructureDefinition/EHDSOrganisation" key="StructureDefinition-EHDSOrganisation" name="Organisation model"/>
 <artifact id="Organization/OrganizationSemiStructuredReport" key="Organization-OrganizationSemiStructuredReport" name="Organization: semi-structured"/>
-<artifact id="Organization/OrganizationStructuredReport" key="Organization-OrganizationStructuredReport" name="OrganizationStructuredReport"/>
+<artifact id="Organization/OrganizationStructuredReport" key="Organization-OrganizationStructuredReport" name="Organization: structured report"/>
+<artifact id="Organization/OrganizationUnstructuredReport" key="Organization-OrganizationUnstructuredReport" name="Organization: unstructured report"/>
 <artifact id="StructureDefinition/EHDSPatientAnimal" key="StructureDefinition-EHDSPatientAnimal" name="Patient Animal model"/>
-<artifact id="Observation/BPObservation" key="Observation-BPObservation" name="Patient blood pressure"/>
-<artifact id="Observation/HRObservation" key="Observation-HRObservation" name="Patient heart rate"/>
-<artifact id="Observation/HeightObservation" key="Observation-HeightObservation" name="Patient height"/>
-<artifact id="Patient/PatientStructuredReport" key="Patient-PatientStructuredReport" name="Patient in structured report example"/>
 <artifact id="StructureDefinition/EHDSPatient" key="StructureDefinition-EHDSPatient" name="Patient model"/>
 <artifact id="StructureDefinition/EHDSPatientSummary" key="StructureDefinition-EHDSPatientSummary" name="Patient summary model"/>
-<artifact id="Observation/WeightObservation" key="Observation-WeightObservation" name="Patient weight"/>
 <artifact id="Patient/PatientSemiStructuredReport" key="Patient-PatientSemiStructuredReport" name="Patient: semi-structured report"/>
+<artifact id="Patient/PatientStructuredReport" key="Patient-PatientStructuredReport" name="Patient: structured report"/>
+<artifact id="Patient/PatientUnstructuredReport" key="Patient-PatientUnstructuredReport" name="Patient: unstructured report"/>
 <artifact id="Practitioner/PractitionerSemiStructuredReportAuthor" key="Practitioner-PractitionerSemiStructuredReportAuthor" name="Practitioner: semi-structured report."/>
+<artifact id="Practitioner/PractitionerStructuredReportAuthor" key="Practitioner-PractitionerStructuredReportAuthor" name="Practitioner: structured report"/>
 <artifact id="PractitionerRole/PractitionerRoleSemiStructuredReportAuthor" key="PractitionerRole-PractitionerRoleSemiStructuredReportAuthor" name="PractitionerRole: semi-structured"/>
-<artifact id="PractitionerRole/PractitionerRoleStructuredReportAuthor" key="PractitionerRole-PractitionerRoleStructuredReportAuthor" name="PractitionerRoleStructuredReportAuthor"/>
-<artifact id="Practitioner/PractitionerStructuredReportAuthor" key="Practitioner-PractitionerStructuredReportAuthor" name="PractitionerStructuredReportAuthor"/>
+<artifact id="PractitionerRole/PractitionerRoleStructuredReportAuthor" key="PractitionerRole-PractitionerRoleStructuredReportAuthor" name="PractitionerRole: structured report"/>
 <artifact id="StructureDefinition/EHDSPregnancyHistory" key="StructureDefinition-EHDSPregnancyHistory" name="Pregnancy history model"/>
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ImProcedure" key="StructureDefinition-ImProcedure" name="Procedure: Imaging Acquisition"/>
 <artifact id="ValueSet/ImImagingReportTypesEuVS" key="ValueSet-ImImagingReportTypesEuVS" name="Radiology Report Types"/>
 <artifact id="ValueSet/ImSectionEmptyReason" key="ValueSet-ImSectionEmptyReason" name="Reasons a section in an imaging report is empty."/>
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
-<artifact id="Observation/RestWmsi01" key="Observation-RestWmsi01" name="RestWmsi01"/>
-<artifact id="Observation/RestWmsi02" key="Observation-RestWmsi02" name="RestWmsi02"/>
-<artifact id="Observation/RestWmsi03" key="Observation-RestWmsi03" name="RestWmsi03"/>
-<artifact id="Observation/RestWmsi04" key="Observation-RestWmsi04" name="RestWmsi04"/>
-<artifact id="Observation/RestWmsi05" key="Observation-RestWmsi05" name="RestWmsi05"/>
-<artifact id="Observation/RestWmsi06" key="Observation-RestWmsi06" name="RestWmsi06"/>
-<artifact id="Observation/RestWmsi07" key="Observation-RestWmsi07" name="RestWmsi07"/>
-<artifact id="Observation/RestWmsi08" key="Observation-RestWmsi08" name="RestWmsi08"/>
-<artifact id="Observation/RestWmsi09" key="Observation-RestWmsi09" name="RestWmsi09"/>
-<artifact id="Observation/RestWmsi10" key="Observation-RestWmsi10" name="RestWmsi10"/>
-<artifact id="Observation/RestWmsi11" key="Observation-RestWmsi11" name="RestWmsi11"/>
-<artifact id="Observation/RestWmsi12" key="Observation-RestWmsi12" name="RestWmsi12"/>
-<artifact id="Observation/RestWmsi13" key="Observation-RestWmsi13" name="RestWmsi13"/>
-<artifact id="Observation/RestWmsi14" key="Observation-RestWmsi14" name="RestWmsi14"/>
-<artifact id="Observation/RestWmsi15" key="Observation-RestWmsi15" name="RestWmsi15"/>
-<artifact id="Observation/RestWmsi16" key="Observation-RestWmsi16" name="RestWmsi16"/>
-<artifact id="Observation/RestWmsi17" key="Observation-RestWmsi17" name="RestWmsi17"/>
 <artifact id="ValueSet/valueset-diagnosticreport-notes" key="ValueSet-valueset-diagnosticreport-notes" name="Section codes used to label annotations."/>
 <artifact id="StructureDefinition/EHDSServiceRequest" key="StructureDefinition-EHDSServiceRequest" name="Service request model"/>
 <artifact id="StructureDefinition/ImOrder" key="StructureDefinition-ImOrder" name="ServiceRequest: Imaging Order"/>
+<artifact id="ServiceRequest/ComeBackNextYearServiceRequest" key="ServiceRequest-ComeBackNextYearServiceRequest" name="ServiceRequest: structured report recommendation"/>
 <artifact id="StructureDefinition/EHDSSocialHistory" key="StructureDefinition-EHDSSocialHistory" name="Social history model"/>
 <artifact id="StructureDefinition/EHDSSpecimen" key="StructureDefinition-EHDSSpecimen" name="Specimen model"/>
-<artifact id="Observation/StressWmsi01" key="Observation-StressWmsi01" name="StressWmsi01"/>
-<artifact id="Observation/StressWmsi02" key="Observation-StressWmsi02" name="StressWmsi02"/>
-<artifact id="Observation/StressWmsi03" key="Observation-StressWmsi03" name="StressWmsi03"/>
-<artifact id="Observation/StressWmsi04" key="Observation-StressWmsi04" name="StressWmsi04"/>
-<artifact id="Observation/StressWmsi05" key="Observation-StressWmsi05" name="StressWmsi05"/>
-<artifact id="Observation/StressWmsi06" key="Observation-StressWmsi06" name="StressWmsi06"/>
-<artifact id="Observation/StressWmsi07" key="Observation-StressWmsi07" name="StressWmsi07"/>
-<artifact id="Observation/StressWmsi08" key="Observation-StressWmsi08" name="StressWmsi08"/>
-<artifact id="Observation/StressWmsi09" key="Observation-StressWmsi09" name="StressWmsi09"/>
-<artifact id="Observation/StressWmsi10" key="Observation-StressWmsi10" name="StressWmsi10"/>
-<artifact id="Observation/StressWmsi11" key="Observation-StressWmsi11" name="StressWmsi11"/>
-<artifact id="Observation/StressWmsi12" key="Observation-StressWmsi12" name="StressWmsi12"/>
-<artifact id="Observation/StressWmsi13" key="Observation-StressWmsi13" name="StressWmsi13"/>
-<artifact id="Observation/StressWmsi14" key="Observation-StressWmsi14" name="StressWmsi14"/>
-<artifact id="Observation/StressWmsi15" key="Observation-StressWmsi15" name="StressWmsi15"/>
-<artifact id="Observation/StressWmsi16" key="Observation-StressWmsi16" name="StressWmsi16"/>
-<artifact id="Observation/StressWmsi17" key="Observation-StressWmsi17" name="StressWmsi17"/>
-<artifact id="DocumentReference/StructuredKeyImageRest" key="DocumentReference-StructuredKeyImageRest" name="StructuredKeyImageRest"/>
-<artifact id="DocumentReference/StructuredKeyImageStress" key="DocumentReference-StructuredKeyImageStress" name="StructuredKeyImageStress"/>
 <artifact id="StructureDefinition/EHDSSubstance" key="StructureDefinition-EHDSSubstance" name="Substance model"/>
 <artifact id="StructureDefinition/EHDSSubstanceUse" key="StructureDefinition-EHDSSubstanceUse" name="Substance use model"/>
 <artifact id="StructureDefinition/EHDSTelecom" key="StructureDefinition-EHDSTelecom" name="Telecom model"/>
-<artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="Transthoracic echocardiogram"/>
 <artifact id="StructureDefinition/EHDSTravelHistory" key="StructureDefinition-EHDSTravelHistory" name="Travel history model"/>
-<artifact id="DocumentReference/UnstructuredReportExample" key="DocumentReference-UnstructuredReportExample" name="Unstructured Report"/>
-<artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="WMSIImage"/>
+<artifact id="ValueSet/im-dose-length-units" key="ValueSet-im-dose-length-units" name="ValueSet: Dose Length Units"/>
+<artifact id="ValueSet/im-effective-dose-units" key="ValueSet-im-effective-dose-units" name="ValueSet: Effective Dose Units"/>
+<artifact id="ValueSet/im-gray-square-units" key="ValueSet-im-gray-square-units" name="ValueSet: Gray Square Units"/>
+<artifact id="ValueSet/im-imaging-device-type" key="ValueSet-im-imaging-device-type" name="ValueSet: Imaging Device Type"/>
 <artifact id="ValueSet/im-xds-class-code-valueset" key="ValueSet-im-xds-class-code-valueset" name="XDS Class Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>

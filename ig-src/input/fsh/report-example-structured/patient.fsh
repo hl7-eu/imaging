@@ -1,7 +1,8 @@
 Instance: PatientStructuredReport
 InstanceOf: $EuPatient 
-Title: "Patient in structured report example"
-// Usage: #inline
+Title: "Patient: structured report"
+Description: "Patient used in the structured report example"
+Usage: #example
 * name
   * use = #official
   * text = "3D TEE 2D"

@@ -113,7 +113,7 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 
 ValueSet: ImEffectiveDoseUnits
 Id: im-effective-dose-units
-Title: "Effective Dose Units"
+Title: "ValueSet: Effective Dose Units"
 Description: "Units for Effective Dose."
 * insert UCUMCopyrightForVS
 * ^experimental = false
@@ -122,14 +122,14 @@ Description: "Units for Effective Dose."
 
 ValueSet: ImDoseLengthUnits
 Id: im-dose-length-units
-Title: "Dose Length Units"
+Title: "ValueSet: Dose Length Units"
 Description: "Units for Dose Length."
 * ^experimental = false
 * $ucum#mGy.cm // Dose length product
 
 ValueSet: ImGraySquareUnits
 Id: im-gray-square-units
-Title: "Gray Square Units"
+Title: "ValueSet: Gray Square Units"
 Description: "Units for Gray Square."
 * ^experimental = false
 * $ucum#Gy.m2   // Dose area product

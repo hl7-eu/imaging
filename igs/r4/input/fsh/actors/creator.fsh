@@ -1,6 +1,6 @@
 Instance: ImReportCreator
 InstanceOf: ActorDefinition
-Title: "Imaging Study Report Creator"
+Title: "ActorDefinition: Imaging Study Report Creator"
 Description: "The actor responsible for creating the Imaging Report resources. Typically this role is combined with the ImReportProvider."
 Usage: #definition
 * name = "ImReportCreator"

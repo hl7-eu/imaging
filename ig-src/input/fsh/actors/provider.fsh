@@ -1,6 +1,6 @@
 Instance: ImReportProvider
 InstanceOf: ActorDefinition
-Title: "Imaging Study Report Provider"
+Title: "ActorDefinition: Imaging Study Report Provider"
 Description: "The actor responsible for providing the Imaging Report resources."
 Usage: #definition
 * name = "ImReportProvider"
