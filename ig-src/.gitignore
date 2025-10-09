@@ -2,7 +2,6 @@
 .vscode/launch.json
 input-cache/
 output/
-output2/
 temp/
 template/
 fsh-generated/**
