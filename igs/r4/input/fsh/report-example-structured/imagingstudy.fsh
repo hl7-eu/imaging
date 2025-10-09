@@ -34,7 +34,7 @@ Usage: #example
 
   * description = "Rest"
   * bodySite 
-//R5  * bodySite.concept 
+  //R5* bodySite.concept 
         = $sct#80891009 "Heart structure (body structure)"	
   * performer[custodian].actor = Reference( OrganizationStructuredReport )
   * performer[organization].actor = Reference( OrganizationStructuredReport )
