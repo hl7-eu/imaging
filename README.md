@@ -2,9 +2,20 @@
 
 This repository contains the source files to build and deploy a multi-FHIR version of the HL7 EU Imaging Studies EHDS Implementation Guide.
 
-- The IG source files are located in the `IG-base` directory.
-- Run `./_preprocessgenerate.sh` to generate FHIR-version-specific IGs under the `igs/Rx` directory.
+- The IG source files are located in the `ig-src` directory.
+- Run `./_preprocessgenerate.sh` to generate FHIR-version-specific IGs under the `igs/<rx>` directory, where the <rx> will be replaced with FHIR version.
 - The `./_preprocessgenerate.sh` process uses **Liquid tags** to insert version-specific content from the source files into the appropriate folders.
+
+## Multi-version process
+
+Each target version is specified in the `_preprocessgenerate.sh` script in the `versions` directory. For each element in the array the script will:
+
+1. Clean the target directory of existing content.
+2. Copy relevant content from the `ig-src` directory to the target directory
+3. Run liquid on each file in the target directory which is named `*.liquid.*`. The liquid file will be removed and replaced with a file that does not have liquid in its name.
+4. The variables used in the liquid process are defined in the context-<Rx>.json files.
+
+The main files on which this process is used is 
 
 ## Compiling Content
 

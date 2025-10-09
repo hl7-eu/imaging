@@ -106,7 +106,7 @@ parameters:
   path-binary:  input/binaries
   # packages: ./package-cache
   releaselabel: 0.1.1-build
-
+  
   special-url-base: https://www.xt-ehr.eu/specifications/fhir
   # add all fsh results to _data directory
   # produce-jekyll-data: true
@@ -144,24 +144,6 @@ menu:
     Structural: artifacts-structural.html
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
-  {% if isR4 %}R5: http://../R5 {% endif %}
-  {% if isR5 %}R4: http://../R4 {% endif %}
-  #   Changes: changes.html
-  #   Dependencies: index.html#dependencies
-  #   References: index.html#references
-  #   Adapting Guidelines for Country use: adapting.html
-  # eHN Guidelines: 
-  #   Summary: ehn-guidelines.html
-  #   Logical Model: ehn-guidelines.html#ehn-imaging-studies-and-reports-guidelines-logical-model
-  #   Concept Maps: ehn-guidelines.html#logical-model-mapping-onto-hl7-fhir
-  # Actors and Transactions:
-  #   System Actors: system-actors.html
-  #   Use Cases: use-cases.html
-  #   Transactions: transactions.html
-  # Domain Model: domain-model.html
-  # Artifacts: artifacts.html
-  # Design Considerations: design-considerations.html
-  # Open Topics: open-topics.html
   
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │

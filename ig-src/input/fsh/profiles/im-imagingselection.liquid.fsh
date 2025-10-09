@@ -17,13 +17,13 @@ Description: "Imaging Selection"
 Profile: ImImagingSelection
 Parent: $CrossVersion-R5-ImagingSelection-for-R4
 Title: "Basic-ImagingSelection: General"
-Description: "Imaging Selection"
+Description: "Basic resource holding cross-version extensions for Imaging Selection allowing ImagingSelection to be used in R4."
 * insert SetFmmAndStatusRule( 1, draft )
 * subject only Reference( $EuPatient )
 
 Profile: ImSrInstanceImagingSelection
 Parent: http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4
-Title: "ImagingSelection: DICOM SR Instance"
+Title: "Basic-ImagingSelection: DICOM SR Instance"
 Description: "Imaging Selection referring to a DICOM SR instance"
 * insert SetFmmAndStatusRule( 1, draft )
 

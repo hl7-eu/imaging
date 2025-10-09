@@ -3,7 +3,6 @@ Id: codesystem-diagnostic-report-support-info
 Title: "Diagnostic Report Support Info Code System"
 Description: "Code system for codes to be used in `DiagnosticReport.supportInfo` for imaging reports."
 * insert SetFmmAndStatusRule( 1, draft )
-* ^url = "http://hl7.eu/fhir/imaging/codesystem-diagnostic-report-support-info"
 * ^experimental = false
 * ^caseSensitive = true
 * ^hierarchyMeaning = #is-a

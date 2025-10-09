@@ -1,7 +1,7 @@
 Instance: DiagnosticReport-fhir-report
 InstanceOf: OperationDefinition
 Usage: #definition
-* name = "create-FHIR-report-from-a-DiagnosticReport"
+* name = "document"
 * title = "OperationDefinition: create a FHIR report from a DiagnosticReport"
 * status = #active
 * kind = #operation

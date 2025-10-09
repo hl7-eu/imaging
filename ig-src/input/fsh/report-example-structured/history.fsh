@@ -5,7 +5,7 @@ Description: "Patient weight in echo report history section"
 Usage: #example
 * status = #final
 * effectiveDateTime = "2023-06-01"
-* code = $loinc#29463-7 "Body weigth"
+* code = $loinc#29463-7 "Body weight"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
 * subject =  Reference( PatientStructuredReport )
 * valueQuantity
@@ -21,7 +21,7 @@ Description: "Patient height in echo report history section"
 Usage: #example
 * status = #final
 * effectiveDateTime = "2023-06-01"
-* code = $loinc#8302-2 "Body heigth"
+* code = $loinc#8302-2 "Body height"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
 * subject =  Reference( PatientStructuredReport )
 * valueQuantity

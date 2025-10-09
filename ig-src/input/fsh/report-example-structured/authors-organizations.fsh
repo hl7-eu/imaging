@@ -31,6 +31,6 @@ InstanceOf: OrganizationEu
       * extension[+]
         * url = $house-number-url 
         * valueString = "2"
-    * postalCode = "999XS "
+    * postalCode = "999XS"
     * city = "VeelGeluid"
     * country = "Nederland"
