@@ -5,19 +5,17 @@ versions=("4.0.1" "5.0.0" )
 for version in "${versions[@]}"; do
     if [ "$version" = "4.0.1" ]; then
         context_version="R4"
-        build_dir="igs/r4"
+        build_dir="igs/imaging-r4"
     elif [ "$version" = "5.0.0" ]; then
         context_version="R5"
-        build_dir="igs/r5"
-    elif [ "$version" = "base" ]; then
-        context_version="base"
-        build_dir="igs/base"
+        build_dir="igs/imaging-r5"
     fi
 
     echo remove all files from $build_dir
     # rm -Rf $build_dir/*
     find $build_dir -maxdepth 1 -type f -exec rm -f {} +
     rm -Rf $build_dir/input
+    rm -Rf $build_dir/ig-template
     
     echo copy all files to  $build_dir
     find ig-src/ -maxdepth 1 -type f -exec cp {} $build_dir \;

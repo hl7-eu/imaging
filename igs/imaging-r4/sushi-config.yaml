@@ -144,6 +144,10 @@ menu:
     Structural: artifacts-structural.html
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
+
+  R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
+
+
   
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │

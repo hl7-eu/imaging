@@ -58,7 +58,8 @@ The specification is being designed in such a way that it can be used in all of 
    <li>Feb 2025, kick-off during HL7-EU WGM.</li>
    <li>May 2025, first planned ballot to be tested during May 2025 HL7 WGM in Madrid.</li>
    <li>June 2025, testing in IHE-EU plug-a-thon in Vienna/</li>
-   <li>August 2025, first version</li>
+   <li>August 2025, snapshot for XtEHR 7.2 consultation</li>
+   <li>October/November 2025, R4 ballot</li>
    </ul>
  </blockquote>
 </div>

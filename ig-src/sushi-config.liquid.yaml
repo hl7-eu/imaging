@@ -144,6 +144,12 @@ menu:
     Structural: artifacts-structural.html
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
+{% if isR4 %}
+  R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
+{% endif %}
+{% if isR5 %}
+  R4: https://build.fhir.org/ig/hl7-eu/imaging-r4/
+{% endif %}
   
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │
