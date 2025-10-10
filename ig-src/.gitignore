@@ -8,3 +8,4 @@ fsh-generated/**
 ig-template/**/*.db
 ig-template/**/*index.json
 publisher.jar
+translations/**
