@@ -58,13 +58,16 @@ for version in "${versions[@]}"; do
   main_repo_commit=$(git rev-parse HEAD)
   echo "Current commit hash of main repo: $main_repo_commit"
 
+  main_repo_url=$(git config --get remote.origin.url)
+  echo "Main repo URL: $main_repo_url"
+
   # Commit content
   pushd "$subrepo_dir$version" > /dev/null
   git add .
   if git diff --cached --quiet; then
     echo "No changes to commit in $subrepo_dir$version."
   else
-    git commit -m "Sync from https://github.com/hl7-eu/imaging for commit  $main_repo_commit"
+    git commit -m "Sync from https://github.com/hl7-eu/imaging for commit $main_repo_commit from $main_repo_url."
     git push origin "$current_branch"
     echo "Committed and pushed changes in $subrepo_dir$version."
   fi
