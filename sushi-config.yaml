@@ -1,0 +1,75 @@
+id: hl7.fhir.eu.imaging
+canonical: http://hl7.eu/fhir/imaging
+name: HL7EuImagingStudyReport
+title: HL7 Europe Imaging Study Report
+description: This guide describes how a Imaging Study Report can be represented in the European REALM using FHIR.
+status: draft # draft | active | retired | unknown
+experimental: false
+version: 0.1.1-build
+fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
+#fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
+copyrightYear: 2025+
+releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+# license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+jurisdiction: 	http://unstats.un.org/unsd/methods/m49/m49.htm#150 "Europe" # urn:iso:std:iso:3166#EU
+publisher:
+  name: HL7 Europe
+  url: http://hl7.eu
+  # email: test@example.org
+copyright: >-
+  Copyright HL7 Europe. Licensed under Creative Commons public domain (CC0 1.0).
+license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
+
+# The dependencies property corresponds to IG.dependsOn. The key is the
+# package id and the value is the version (or dev/current). For advanced
+# use cases, the value can be an object with keys for id, uri, and version.
+#
+dependencies:
+  
+pages:
+  index.md:
+    title: Home
+
+parameters:
+  apply-contact: false
+  default-contact: true
+  default-copyright: true
+  apply-copyright: false
+  apply-jurisdiction: true
+  apply-license: false
+  default-license: true
+  apply-publisher: true
+  apply-version: false
+  default-version: true
+  show-inherited-invariants: true
+  usage-stats-opt-out: true
+  # packages: ./package-cache
+  releaselabel: 0.1.1-build
+  
+#
+# ╭────────────────────────────────────────────menu.xml────────────────────────────────────────────╮
+# │ The menu property will be used to generate the input/menu.xml file. The menu is represented    │
+# │ as a simple structure where the YAML key is the menu item name and the value is the URL.       │
+# │ The IG publisher currently only supports one level deep on sub-menus. To provide a             │
+# │ custom menu.xml file, do not include this property and include a `menu.xml` file in            │
+# │ input/includes. To use a provided input/includes/menu.xml file, delete the "menu"              │
+# │ property below.                                                                                │
+# ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+menu:
+  Home: index.html
+  
+instanceOptions:
+  # When set to true, slices must be referred to by name and not only by a numeric index in order to be used
+  # in an Instance's assignment rule. All slices appear in the order in which they are specified in FSH rules.
+  # While SUSHI defaults to false for legacy reasons, manualSliceOrding is recommended for new projects.
+  manualSliceOrdering: true # true | false
+  # Determines for which types of Instances SUSHI will automatically set meta.profile
+  # if InstanceOf references a profile:
+  #
+  setMetaProfile: always # always | never | inline-only | standalone-only
+  #
+  #
+  # Determines for which types of Instances SUSHI will automatically set id
+  # if InstanceOf references a profile:
+  #
+  # setId: always # always | standalone-only
