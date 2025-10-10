@@ -31,7 +31,7 @@ Usage: #example
 
 //R4* extension[note][+].valueAnnotation
 * note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
   * text = """
 Linker Fuß:
   Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte
@@ -41,7 +41,7 @@ Linker Fuß:
 """
 //R4* extension[note][+].valueAnnotation
 * note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
   * text = """
 Rechter Fuß:
   Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige

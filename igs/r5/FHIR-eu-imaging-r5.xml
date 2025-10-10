@@ -127,8 +127,8 @@
 <artifact id="StructureDefinition/ImagingSelectionEuImaging" key="StructureDefinition-ImagingSelectionEuImaging" name="ImagingSelection: General"/>
 <artifact id="StructureDefinition/ImagingSelectionKeyImageEuImaging" key="StructureDefinition-ImagingSelectionKeyImageEuImaging" name="ImagingSelection: Key Image"/>
 <artifact id="StructureDefinition/ImagingStudyEuImaging" key="StructureDefinition-ImagingStudyEuImaging" name="ImagingStudy: General"/>
-<artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report"/>
-<artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report"/>
+<artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report 1"/>
+<artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report 2"/>
 <artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
 <artifact id="StructureDefinition/EHDSImmunisation" key="StructureDefinition-EHDSImmunisation" name="Immunisation model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSImmunization" key="StructureDefinition-EHDSImmunization" name="Immunization model"/>

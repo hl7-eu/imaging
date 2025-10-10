@@ -19,19 +19,19 @@ Usage: #example
 * code = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * subject = Reference( PatientSemiStructuredReport)
-* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport1 )
-//R5* study[+] = Reference( ImagingStudySemiStructuredReport1 )
-* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport2 )
-//R5* study[+] = Reference( ImagingStudySemiStructuredReport2 )
+{{R4}}* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport1 )
+{{R5}}* study[+] = Reference( ImagingStudySemiStructuredReport1 )
+{{R4}}* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport2 )
+{{R5}}* study[+] = Reference( ImagingStudySemiStructuredReport2 )
 * performer[organization] = Reference(OrganizationSemiStructuredReport)
 * resultsInterpreter[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
 
-* extension[composition].valueReference = Reference(CompositionSemiStructured)
-//R5* composition = Reference(CompositionSemiStructured)
+{{R4}}* extension[composition].valueReference = Reference(CompositionSemiStructured)
+{{R5}}* composition = Reference(CompositionSemiStructured)
 
-* extension[note][+].valueAnnotation
-//R5* note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
+{{R4}}* extension[note][+].valueAnnotation
+{{R5}}* note[+]
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
   * text = """
 Linker Fuß:
   Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte
@@ -39,9 +39,9 @@ Linker Fuß:
   Gelenkspaltes und Ausbildung von subchondralen Geröllzysten sowie deutliche postoperative
   Veränderungen nach Umstellungsosteotomie. Die Beuge- und Strecksehnen sind intakt.
 """
-* extension[note][+].valueAnnotation
-//R5* note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
+{{R4}}* extension[note][+].valueAnnotation
+{{R5}}* note[+]
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
   * text = """
 Rechter Fuß:
   Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige
@@ -54,7 +54,7 @@ Rechter Fuß:
 * presentedForm
   * contentType = #application/pdf
   * language = #de-DE
-//R5  * pages = 1
+{{R5}}  * pages = 1
   * url = "./Binary/semi-structured-pdf"
 
 Instance: BinarySemiStructuredReport

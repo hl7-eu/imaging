@@ -75,8 +75,8 @@
 <artifact id="StructureDefinition/EHDSImagingReport" key="StructureDefinition-EHDSImagingReport" name="Imaging report model"/>
 <artifact id="StructureDefinition/EHDSImagingStudy" key="StructureDefinition-EHDSImagingStudy" name="Imaging study model"/>
 <artifact id="StructureDefinition/ImagingStudyEuImaging" key="StructureDefinition-ImagingStudyEuImaging" name="ImagingStudy: General"/>
-<artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report"/>
-<artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report"/>
+<artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report 1"/>
+<artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report 2"/>
 <artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
 <artifact id="StructureDefinition/EHDSImmunisation" key="StructureDefinition-EHDSImmunisation" name="Immunisation model"/>
 <artifact id="StructureDefinition/EHDSInfectiousContact" key="StructureDefinition-EHDSInfectiousContact" name="Infectious contact model"/>

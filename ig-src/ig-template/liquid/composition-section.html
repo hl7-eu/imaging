@@ -10,7 +10,12 @@
 {% endif %}
 
 {% if section.text.exists() %}
-  <p>T: {{section.text}}</p>
+  {% if section.text.status.exists() %}
+  <p><b>Status:</b> {{section.text.status}}</p>
+  {% endif %}
+  {% if section.text.div.exists() %}
+  <p><b>div:</b> {{""+section.text.div}}</p>
+  {% endif %}
 {% endif %}
 
 {% if section.focus.exists() %}

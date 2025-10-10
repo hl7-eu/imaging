@@ -143,7 +143,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * code = $loinc#18834-2 // "Radiology Comparison study (narrative)"
   * extension contains $note-url named note 0..*
   * entry
-    * insert SliceElement( #profile, $this )
+    * insert SliceElement( #profile, [[resolve()]] )
   * entry contains 
       comparedstudy 0..*
   * entry[comparedstudy] only Reference( ImagingStudyEuImaging or ImagingSelectionEuImaging )
@@ -154,7 +154,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * code = $loinc#59776-5 // "Findings"
   * extension contains $note-url named note 0..*
   * entry
-    * insert SliceElement( #profile, $this )
+    * insert SliceElement( #profile, [[resolve()]] )
   * entry contains 
       finding 0..* and
       keyimage 0..*
@@ -204,7 +204,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
 Severity: #error 
-Expression: "entry.empty().not() or emptyReason.exists() or entry.extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
+Expression: "entry.empty().not() or emptyReason.exists() or extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
 
 Extension: DiagnosticReportEuImagingReferenceExtensionEuImaging
 Title:  "Extension: Document DiagnosticReport Reference"

@@ -1,6 +1,6 @@
 Instance: ImagingStudySemiStructuredReport2
 InstanceOf: ImagingStudyEuImaging
-Title: "ImagingStudy: semi-structured report"
+Title: "ImagingStudy: semi-structured report 2"
 Description: "Example ImagingStudy showing an MRI for the right foot"
 Usage: #example
 * identifier[studyInstanceUid]
