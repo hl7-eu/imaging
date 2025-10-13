@@ -2,13 +2,34 @@
 
 This repository contains the source files to build and deploy a multi-FHIR version of the HL7 EU Imaging Studies EHDS Implementation Guide.
 
+```text
+┌───────────────────────────┐                 
+│                           │     ┌──────────────────────────────┐ 
+│ github.com/hl7eu/imaging  ┼─────► github.com/hl7eu/imaging-r4  │ 
+│                           │     └──────────────────────────────┘  │                              │ 
+└────────────┬──────────────┘               
+             │                    ┌──────────────────────────────┐
+             └────────────────────► github.com/hl7eu/imaging-r5  │
+                                  └──────────────────────────────┘
+```
+
+The content of this repository is processed and generates the content of the imaging-r4 and imaging-r5 repositories. The content of these repositories is not edited directly but generated based on the content of this repository.
+
+This approach has been chosen as it allows both versions of the specification to be generated from a single codebase and still allows the R4 and R5 versions to be build using the FHIR autobuilder.
+
+Structure of this repository
 - The IG source files are located in the `ig-src` directory.
-- Run `./_preprocessgenerate.sh` to generate FHIR-version-specific IGs under the `igs/<rx>` directory, where the <rx> will be replaced with FHIR version.
+- Run `./_preprocessgenerate.sh` to generate FHIR-version-specific IGs under the `igs/imaging-<rx>` directory, where the <rx> will be replaced with FHIR version.
 - The `./_preprocessgenerate.sh` process uses **Liquid tags** to insert version-specific content from the source files into the appropriate folders.
+- The repository also has a mock FHIR-IG that contains one page that forwards to the imaging-r5 version of the specification. This ensures that people that have older versions of the IG are still seeing the current build.
+
+The versions in the igs/imaging-r4 and igs/imaging-r5 directory can be used to check the R4 and R5 versions during editing.
+
+Once the changes have checked and results can be committed, the script `_commitToMainRepos.sh` should be run. This will checkout the corresponding branch on the imaging-r4 and imaging-r5 repositories, copy the contents of the igs/imaging-r4 and igs/imaging-r5 directories and check in the changes. 
 
 ## Multi-version process
 
-Each target version is specified in the `_preprocessgenerate.sh` script in the `versions` directory. For each element in the array the script will:
+Each target version is specified in the `_preprocessgenerate.sh` script in the `versions` variable. For each element in the array the script will:
 
 1. Clean the target directory of existing content.
 2. Copy relevant content from the `ig-src` directory to the target directory
