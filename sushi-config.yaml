@@ -1,8 +1,8 @@
 id: hl7.fhir.eu.imaging
 canonical: http://hl7.eu/fhir/imaging
 name: HL7EuImagingStudyReport
-title: HL7 Europe Imaging Study Report
-description: This guide describes how a Imaging Study Report can be represented in the European REALM using FHIR.
+title: HL7 Europe Imaging Report
+description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR.
 status: draft # draft | active | retired | unknown
 experimental: false
 version: 0.1.1-build
