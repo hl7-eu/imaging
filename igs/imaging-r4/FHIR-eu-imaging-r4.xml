@@ -6,8 +6,8 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
-<artifact id="ActorDefinition/BundleReportEuImagingCreator" key="ActorDefinition-BundleReportEuImagingCreator" name="ActorDefinition: Imaging Study Report Creator"/>
-<artifact id="ActorDefinition/BundleReportEuImagingProvider" key="ActorDefinition-BundleReportEuImagingProvider" name="ActorDefinition: Imaging Study Report Provider"/>
+<artifact id="ActorDefinition/BundleReportEuImagingCreator" key="ActorDefinition-BundleReportEuImagingCreator" name="ActorDefinition: Imaging Report Creator"/>
+<artifact id="ActorDefinition/BundleReportEuImagingProvider" key="ActorDefinition-BundleReportEuImagingProvider" name="ActorDefinition: Imaging Report Provider"/>
 <artifact id="StructureDefinition/EHDSAddress" key="StructureDefinition-EHDSAddress" name="Address model"/>
 <artifact id="StructureDefinition/EHDSAdvanceDirective" key="StructureDefinition-EHDSAdvanceDirective" name="Advance directive model"/>
 <artifact id="StructureDefinition/AdverseEventEuImaging" key="StructureDefinition-AdverseEventEuImaging" name="AdverseEvent: Imaging Adverse Event"/>
@@ -44,8 +44,8 @@
 <artifact id="StructureDefinition/DocumentReferenceKeyImageEuImaging" key="StructureDefinition-DocumentReferenceKeyImageEuImaging" name="DocumentReference: Key Image"/>
 <artifact id="StructureDefinition/UnstructuredDocumentReferenceEuImaging" key="StructureDefinition-UnstructuredDocumentReferenceEuImaging" name="DocumentReference: Unstructured Imaging Report"/>
 <artifact id="DocumentReference/UnstructuredReportExample" key="DocumentReference-UnstructuredReportExample" name="DocumentReference: Unstructured Report"/>
-<artifact id="DocumentReference/StructuredKeyImageRest" key="DocumentReference-StructuredKeyImageRest" name="DocumentReference: key image rest"/>
-<artifact id="DocumentReference/StructuredKeyImageStress" key="DocumentReference-StructuredKeyImageStress" name="DocumentReference: key image stress"/>
+<artifact id="Media/StructuredKeyImageRest" key="Media-StructuredKeyImageRest" name="DocumentReference: key image rest"/>
+<artifact id="Media/StructuredKeyImageStress" key="Media-StructuredKeyImageStress" name="DocumentReference: key image stress"/>
 <artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="DocumentReference: structured report WMSI image"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>

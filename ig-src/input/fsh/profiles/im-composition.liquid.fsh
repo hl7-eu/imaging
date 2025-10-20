@@ -1,10 +1,10 @@
 Profile: CompositionEuImaging
 Parent: Composition
 Title: "Composition: Imaging Report"
-Description: "Clinical document used to represent a Imaging Study Report for the scope of the HL7 Europe project."
+Description: "Clinical document used to represent a Imaging Report for the scope of the HL7 Europe project."
 * . ^short = "Imaging Report composition"
 * . ^definition = """
-Imaging Study Report composition.\n
+Imaging Report composition.\n
 A composition is a set of healthcare-related information that is assembled together into a single logical document that 
 provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard 
 to who is making the statement.\n

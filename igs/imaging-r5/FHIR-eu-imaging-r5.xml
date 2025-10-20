@@ -6,8 +6,8 @@
 <artifactPageExtension value="-definitions"/>
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
-<artifact id="ActorDefinition/BundleReportEuImagingCreator" key="ActorDefinition-BundleReportEuImagingCreator" name="ActorDefinition: Imaging Study Report Creator"/>
-<artifact id="ActorDefinition/BundleReportEuImagingProvider" key="ActorDefinition-BundleReportEuImagingProvider" name="ActorDefinition: Imaging Study Report Provider"/>
+<artifact id="ActorDefinition/BundleReportEuImagingCreator" key="ActorDefinition-BundleReportEuImagingCreator" name="ActorDefinition: Imaging Report Creator"/>
+<artifact id="ActorDefinition/BundleReportEuImagingProvider" key="ActorDefinition-BundleReportEuImagingProvider" name="ActorDefinition: Imaging Report Provider"/>
 <artifact id="StructureDefinition/EHDSAddress" key="StructureDefinition-EHDSAddress" name="Address model"/>
 <artifact id="StructureDefinition/EHDSAdvanceDirective" key="StructureDefinition-EHDSAdvanceDirective" name="Advance directive model"/>
 <artifact id="StructureDefinition/AdverseEventEuImaging" key="StructureDefinition-AdverseEventEuImaging" name="AdverseEvent: Imaging Adverse Event"/>

@@ -29,3 +29,65 @@ jobs:
         run: |
           chmod +x ./_genonce.sh
           ./_genonce.sh
+                
+  ig-publisher-r4:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Preprocess
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: update IG publisher
+        working-directory: ./igs/imaging-r4
+        run: |
+          pwd
+          chmod +x ./_updatePublisher.sh
+          ./_updatePublisher.sh -y
+      
+      - name: Validate R4 IG
+        working-directory: ./igs/imaging-r4
+        run: |
+          pwd
+          ./_genonce.sh
+
+
+  ig-publisher-r5:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Preprocess
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: update IG publisher
+        working-directory: ./igs/imaging-r5
+        run: |
+          pwd
+          chmod +x ./_updatePublisher.sh
+          ./_updatePublisher.sh -y
+      
+      - name: Validate R5 IG
+        working-directory: ./igs/imaging-r5
+        run: |
+          pwd
+          ./_genonce.sh
+
