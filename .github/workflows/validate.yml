@@ -75,16 +75,15 @@ jobs:
           chmod u+x *.sh
           ./_preprocessMultiVersion.sh
 
-      - name: change directory
-        run: cd igs/imaging-r5
-
-      - name: Install IG publisher
+      - name: update IG publisher
+        working-directory: ./igs/imaging-r4
         run: |
           pwd
           chmod +x ./_updatePublisher.sh
           ./_updatePublisher.sh -y
       
       - name: Validate R5 IG
+        working-directory: ./igs/imaging-r4
         run: |
           pwd
           ./_genonce.sh
