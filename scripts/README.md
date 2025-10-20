@@ -23,6 +23,9 @@ Enter source directory:
 Download model files:
 > wget  http://build.fhir.org/ig/Xt-EHR/xt-ehr-common/definitions.json.zip
 
+Or for the 0.2.0 release:
+> wget https://github.com/Xt-EHR/xt-ehr-common/archive/refs/tags/0.2.0.zip
+
 Unzip file
 > unzip definitions.json.zip
 

@@ -81,7 +81,7 @@ function readStructureDefinitions(directory) {
 // Main execution
 function main( ) {
     // Directory containing XtEHR-models   
-    const modelsDir = path.join(__dirname, process.argv[2]?process.argv[2]:'XtEHR-models');
+    const modelsDir = path.join(__dirname, process.argv[2]?process.argv[2]:'XtEHR-models/xt-ehr-common-0.2.0/fsh-generated/resources');
     const tgtFile = path.join(__dirname, process.argv[3]?process.argv[3]:'xtehr-model.csv');
 
     console.log( `Reading XtEHR-models from ${modelsDir} and writing to ${tgtFile}` );

@@ -1,0 +1,107 @@
+== Suppressed Messages ==
+
+# Add warning and/or information messages here after you've confirmed that they aren't really a problem
+# (And include comments like this justifying why)
+# See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
+
+# Link used in an examples
+The link 'radiologiezentrum-bremen.de' for "radiologiezentrum-bremen.de" cannot be resolved
+
+# ConceptMaps in this IG also refer to structure definitions
+%refers to a resource that has the wrong type. Found StructureDefinition expecting one of [CodeSystem]
+Reference must be to a ValueSet, but found a StructureDefinition instead
+
+# ConceptMaps in this IG refer to StructureDefinition that can not be resolved
+Canonical URL 'http://hl7.eu/fhir/imaging/r5/StructureDefinition/%
+
+# ConceptMaps in this IG refer to StructureDefinition that can not be resolved
+%is not fully defined and populated, and no targetScope is specified, so the target code checking will not be performed
+No Target Code System, so the target codes cannot be checked
+
+# Broken link in R5
+%The link 'http://hl7.org/fhir/R5/valueset-diagnostic-requests.html' for "here" cannot be resolved%
+# IG's are not available for R5, dependencies are compatible
+This IG is version 5.0.0, while the IG 'hl7.fhir.uv.ips' is from version 4.0.1
+
+# IG's are not available for R5, dependencies are compatible
+This IG is version 5.0.0, while the IG 'fhir.dicom' is from version 4.0.1
+
+# Artifact of the R5 specification
+The extension http://hl7.org/fhir/StructureDefinition/regex|5.2.0 is deprecated with the note This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex
+Canonical URL 'https://www.hl7.org/fhir/valueset-procedure-reason.html' does not resolve
+
+# Error likely caused by missing or incorrect CodeSystem at the FHIR side
+%Error converting output stream to byte array%
+
+# XtEHR logical model Artifact
+%The element EHDSLaboratoryObservation.observationDevice has a binding, but no bindable types are present [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice]
+%The element EHDSLaboratoryObservation.observationResult has a binding, but no bindable types are present [Base]
+%The element EHDSObservation.observationDevice has a binding, but no bindable types are present [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice]
+%The element EHDSObservation.observationResult has a binding, but no bindable types are present [Base]
+%The element EHDSPatientSummaryBody.socialHistory.socialHistoryObservationsRelatedToHealth.observationDevice has a binding, but no bindable types are present [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice]
+%The element EHDSPatientSummaryBody.socialHistory.socialHistoryObservationsRelatedToHealth.observationResult has a binding, but no bindable types are present [Base]
+%This element has a Binding but the types [Base] do not make this kind of constraint relevant
+%This element has a Binding but the types [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice] do not make this kind of constraint relevant
+%Constraint failed: eld-20: 'The first component of the path should be UpperCamelCase. Additional components (following a '.') should be lowerCamelCase. If this syntax is not adhered to, code generation tools may be broken. Logical models may be less concerned about this implication.' (defined in http://hl7.org/fhir/StructureDefinition/ElementDefinition)
+
+# Due to time constraints, examples could not generated for all resources
+%The Implementation Guide contains no explicitly linked examples for this profile
+%The Implementation Guide contains no examples for this profile
+%The Implementation Guide contains no examples for this data type profile
+%The Implementation Guide contains no examples for this extension
+
+# Error in the extension pack, see https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Sub-extension.20url.20'source'.20is.20not.20defined.20by.20Extension.20error
+%Sub-extension url 'source' is not defined by the Extension http://hl7.org/fhir/StructureDefinition/obligation|5.2.0%
+%This element does not match any known slice defined in the profile http://hl7.org/fhir/StructureDefinition/obligation|5.2.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# Comes out of the base spec - ignore
+%which is experimental, but this structure is not labeled as experimental
+
+# XtEHR comes with Narrative - this is ok
+Resource has provided narrative, but the narrative indicates that it is generated - remove the narrative or fix it up
+
+# XtEHR logical models use a different canonical
+% does not match the URL (https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDS%
+%vs https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/%
+
+# ConceptMaps can have no mappings
+Constraint failed: cmd-5: 'Either code or valueSet SHALL be present but not both.' (defined in http://hl7.org/fhir/StructureDefinition/ConceptMap)
+
+# EU profiles are beyond the scope of this IG
+There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ActCode%
+
+# The IG is draft and so will have draft codesystems.
+%Reference to draft CodeSystem%
+
+# Caused by inclusion of both R5 and R5 resources. The valuesets are not mandated in this specification.
+There are multiple different potential matches for the url%
+
+# DICOM valuesets do not resolve - that is expected.
+%Canonical URL 'http://dicom.nema.org/medical/dicom/current/output/chtml/part%
+%The link '#DCM%
+The link '??' for "Modality%
+The link '??' for "Laterality%
+The link '??' for "KeyObjectSelectionDocumentTitle%
+
+# DICOM ValueSets are not available using download
+ValueSet 'http://dicom.nema.org/medical/dicom/current/output/chtml/part04%
+Canonical URL 'https://dicom.nema.org/medical/dicom/current/output/chtml/part16%
+
+# No code system exists for DICOM SOPclass
+%in the CodeSystem 'urn:ietf:rfc:3986' version 'null'
+
+# Remove warnings related to R5 use of R4 packages
+%based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
+
+
+# Reference to deprecated ValueSet
+%Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction%
+
+# SCT edition
+The IG is not for the international realm, and it uses SNOMED CT, so it should fix the SCT edition in the expansion parameters
+
+# Duplicates anchor Ids
+%The html source has duplicate anchor Ids%
+
+# 	The repeating element pattern.
+The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)

@@ -1,0 +1,27 @@
+@startuml
+    
+    DiagnosticReport --> Composition: composition
+    DiagnosticReport --> ComeBackNextYearServiceRequest: extension[recommendation]
+    
+    Composition --> Patient: subject
+    Composition --> DiagnosticReport: extension[diagnosticreport-reference]
+    Composition --> ComeBackNextYearServiceRequest: section[recommendation].entry
+    
+
+    class Composition [[./Composition-CompositionStructured.html]] {
+        section[impressions]
+        -- note: "..."
+        section[recommendation]
+        -- entry: ServiceRequest
+    }
+
+    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportStructured.html]] {
+        conclusion = "..."
+        extension[recommendation]: ComeBackNextYearServiceRequest
+    }
+    
+    class ComeBackNextYearServiceRequest <<ServiceRequest>> [[./ServiceRequest-ComeBackNextYearServiceRequest.html]]{
+        intent = #proposal
+    }
+
+@enduml

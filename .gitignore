@@ -2,10 +2,12 @@
 .vscode/launch.json
 input-cache/
 output/
-output2/
 temp/
 template/
 fsh-generated/**
 ig-template/**/*.db
 ig-template/**/*index.json
 publisher.jar
+translations/**
+
+subigs/**

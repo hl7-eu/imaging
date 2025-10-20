@@ -1,0 +1,10 @@
+{ 
+    "isR4": false,
+    "isR5": false,
+    "isBase": true,
+    "fhirVersion": "4.0.1",
+    "r-code": "r4",
+    "R4": "",
+    "R5": "//R5",
+    "R5-yaml": "# R5"
+}

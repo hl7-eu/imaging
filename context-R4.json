@@ -1,0 +1,11 @@
+{ 
+    "isR4": true,
+    "isR5": false,
+    "fhirVersion": "4.0.1",
+    "r-code": "r4",
+    "R-code": "R4",
+    "eu-core-r-code": "",
+    "R4": "",
+    "R5": "//R5",
+    "R5-yaml": "# R5"
+}

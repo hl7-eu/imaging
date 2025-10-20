@@ -1,0 +1,21 @@
+{% if include.annotation.author.exists() %}
+  <p><b>Author: </b>{{include.annotation.author}}</p>
+{% endif %}
+
+{% if include.annotation.time.exists() %}
+  <p><b>Recorded: </b>{{include.annotation.time}}</p>
+{% endif %}
+
+{% for extension in include.annotation.extension %}
+  {% if extension.url.exists() %}
+    {% if extension.url='http://hl7.org/fhir/StructureDefinition/annotationType' %}
+      {% include codeable-concept.html cc=extension.valueCodeableConcept %}
+    {% else %}
+      <p>Extension: {{extension.url}}</p>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if include.annotation.text.exists() %}
+  {{include.annotation.text}}
+{% endif %}
