@@ -6,6 +6,9 @@ In FHIR R5, the rules for including resources in a document Bundle are as follow
 
 This means that all resources which are part of the reference graph—whether they reference the Composition or are referenced by it, directly or through chains of references—should be included in the Bundle. This approach ensures that all relevant clinical context and supporting data are present for the document consumer.
 
+
+
+
 ## Design Considerations
 
 - There is broad consensus in the HL7 FHIR community for supporting this inclusive approach in R5.
