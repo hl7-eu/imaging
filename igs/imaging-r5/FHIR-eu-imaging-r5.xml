@@ -364,6 +364,7 @@
 <page key="index" name="Home"/>
 <page deprecated="true" key="imaging-manifest" name="Imaging Manifest"/>
 <page key="imaging-report" name="Imaging Report"/>
+<page key="patterns-and-guidelines" name="Patterns and Guidelines"/>
 <page key="references" name="References"/>
 <page key="artifacts-structural" name="Structural artifacts"/>
 <page key="actors-and-transactions" name="System actors"/>
