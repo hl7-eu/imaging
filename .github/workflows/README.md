@@ -1,6 +1,9 @@
-# Repository Deployment Setup
+# Repository Validation and Deployment Setup
 
-This document explains how to configure the automatic deployment workflow that syncs the content of `igs/imaging-r4` and `igs/imaging-r5` folders to separate repositories.
+This document explains how to configure the automatic validation and deployment workflow that:
+1. Validates R4 and R5 IGs using the FHIR IG Publisher
+2. Only deploys to child repositories if validation passes successfully
+3. Syncs the content of `igs/imaging-r4` and `igs/imaging-r5` folders to separate repositories
 
 ## Required Setup
 
@@ -38,19 +41,36 @@ Make sure the target repositories (`ehdsimaging-r4` and `ehdsimaging-r5`) exist 
 
 ## How It Works
 
-The workflow (`deploy-to-repos.yml`) triggers on any push to any branch and:
+The workflow (`deploy-to-repos.yml`) triggers on any push to any branch and follows this sequence:
 
-1. **Preprocessing**: Runs `_preprocessMultiVersion.sh` to prepare the files
-2. **R4 Deployment**:
-   - Clones the target R4 repository
-   - Creates or switches to the same branch name as the source
-   - Syncs the content from `igs/imaging-r4/` to the root of the target repository
-   - Commits and pushes changes if any exist
-3. **R5 Deployment**:
-   - Clones the target R5 repository
-   - Creates or switches to the same branch name as the source
-   - Syncs the content from `igs/imaging-r5/` to the root of the target repository
-   - Commits and pushes changes if any exist
+### **Step 1: Validation (Parallel)**
+- **validate-r4**: Validates the R4 IG
+  - Runs preprocessing (`_preprocessMultiVersion.sh`)
+  - Updates IG Publisher
+  - Runs full validation (`_genonce.sh`)
+- **validate-r5**: Validates the R5 IG
+  - Runs preprocessing (`_preprocessMultiVersion.sh`)
+  - Updates IG Publisher
+  - Runs full validation (`_genonce.sh`)
+
+### **Step 2: Deployment (Only if validation passes)**
+If both validations succeed:
+- **deploy-r4**: Deploys to R4 repository
+  - Runs preprocessing
+  - Clones target R4 repository
+  - Creates or switches to the same branch name as the source
+  - Syncs content from `igs/imaging-r4/` to repository root
+  - Commits and pushes changes
+  - Creates build trigger for auto-ig-builder
+- **deploy-r5**: Deploys to R5 repository
+  - Runs preprocessing
+  - Clones target R5 repository
+  - Creates or switches to the same branch name as the source
+  - Syncs content from `igs/imaging-r5/` to repository root
+  - Commits and pushes changes
+  - Creates build trigger for auto-ig-builder
+
+**If validation fails**: Deployment is skipped and the workflow stops with an error.
 
 ## Branch Handling
 

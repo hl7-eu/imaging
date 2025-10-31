@@ -1,4 +1,4 @@
-name: Deploy to Separate Repositories
+name: Validate and Deploy to Separate Repositories
 
 on:
   push:
@@ -6,8 +6,73 @@ on:
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
+  # Validation jobs run first
+  validate-r4:
+    runs-on: ubuntu-latest
+    name: Validate R4 IG
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Preprocess
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: Update IG publisher
+        working-directory: ./igs/imaging-r4
+        run: |
+          pwd
+          chmod +x ./_updatePublisher.sh
+          ./_updatePublisher.sh -y
+      
+      - name: Validate R4 IG
+        working-directory: ./igs/imaging-r4
+        run: |
+          pwd
+          ./_genonce.sh
+
+  validate-r5:
+    runs-on: ubuntu-latest
+    name: Validate R5 IG
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Preprocess
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: Update IG publisher
+        working-directory: ./igs/imaging-r5
+        run: |
+          pwd
+          chmod +x ./_updatePublisher.sh
+          ./_updatePublisher.sh -y
+      
+      - name: Validate R5 IG
+        working-directory: ./igs/imaging-r5
+        run: |
+          pwd
+          ./_genonce.sh
+
+  # Deployment jobs only run if validation passes
   deploy-r4:
     runs-on: ubuntu-latest
+    needs: [validate-r4, validate-r5]  # Wait for both validations to pass
     if: github.event_name == 'push'
     
     steps:
@@ -84,6 +149,7 @@ jobs:
 
   deploy-r5:
     runs-on: ubuntu-latest
+    needs: [validate-r4, validate-r5]  # Wait for both validations to pass
     if: github.event_name == 'push'
     
     steps:
