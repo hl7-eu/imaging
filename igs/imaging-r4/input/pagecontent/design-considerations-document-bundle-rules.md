@@ -1,4 +1,4 @@
-# Document Bundle Resource Inclusion Rules (FHIR R5)
+### Document Bundle Resource Inclusion Rules (FHIR R5)
 
 
 
@@ -11,7 +11,7 @@ In opposition to the R4 rules requiring that, with the exception of the Provenan
 This means that all resources which are part of the reference graph—whether they reference the Composition or are referenced by it, directly or through chains of references—should be included in the Bundle. This approach ensures that all relevant clinical context and supporting data are present for the document consumer.
 
 
-## Design Considerations
+#### Rationale for this design decision
 
 - There is broad consensus in the HL7 FHIR community for supporting this inclusive approach in R5.
 - In R5, the link between the `DiagnosticReport` and the `Composition` is established via a `Reference` from the `DiagnosticReport` to the `Composition`. This design pattern was chosen to facilitate clarity and consistency in resource relationships.

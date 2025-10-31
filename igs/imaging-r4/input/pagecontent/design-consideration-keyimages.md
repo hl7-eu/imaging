@@ -2,14 +2,14 @@
 
 Key images can be represented in two ways:
 
-* ImagingSelection
+
+* ImagingSelection (Implemented in this R4 IG by the [ImagingSelectionEuImaging](StructureDefinition-ImagingSelectionEuImaging.html) profile on top of a `Basic` resource with a cross-version extension backporting the R5 ImagingSelection structure)
 * DocumentReference
 
-ImagingSelection if more DICOM oriented and only relates to DICOM identifiers. DocumentReference is more image oriented and also contains information on the size, duration, etc. aspects of the image.
-
+ImagingSelection is more DICOM oriented and only relates to DICOM identifiers. DocumentReference is more image oriented and also contains information on the size, duration, etc. aspects of the image.
 The {{ehnImagingGuidelines}} requires information on the size, format, duration etc., data elements that are provided on the `Attachment` field on `DocumentReference`. If these fields are critical, DocumentReference fits more closely. In US Core the R4 `Media` resource is used to represent key images. This resource later merged into the FHIR R5 `DocumentReference`.
 
-As this IG has an FHIR R5 and R4 representation, `DocumentReference` is an easy fit but in other sections of this specification, ImagingSelection is used (e.g. to state that an image can from a Procedure Phase).
+As this IG has an FHIR R5 and R4 representation, `DocumentReference` is an easy fit but in other sections of this specification, `ImagingSelection` is used (e.g. to state that an image can from a Procedure Phase).
 
 The `ImagingSelection` resource points to a DICOM data. The DICOM instance data also holds the data required by the {{ehnImaging}}. So the client can retrieve the information from the DICOM source data.
 
@@ -30,20 +30,15 @@ That leaves the question in what way are these resources linked into the overall
 ```mermaid
 classDiagram
     direction TD
-    class ImKeyImagingSelection{ 
-        <<ImagingSelection>>
-        studyUid
-    }
-    class ImKeyImagingInstanceSelection{ 
-        <<ImagingSelection>>
-        studyUid
-    }
-    class ImKeyImagingSerieSelection{ 
-        <<ImagingSelection>>
-        studyUid
-        instance.uid
+
+
+    class ImagingSelectionKeyImageEuImaging{ 
+        <<Basic as ImagingSelection>>
+        extension[ImagingSelection].extension[studyUid].value
+        extension[ImagingSelection].extension[instance].extension[uid].value
         instance.sopClass
     }
+
     class DocumentReferenceKeyImageEuImaging{ 
         <<DocumentReference>> 
         modality
@@ -60,13 +55,15 @@ classDiagram
         <<Composition>>
         section[keyimages]
     }
-    CompositionEuImaging --> DocumentReferenceKeyImageEuImaging: section[keyimages].entry
-    CompositionEuImaging --> ImKeyImagingSelection: section[keyimages].entry
+    class DiagnosticReportEuImaging{
+        <<DiagnosticReport>>
+    }
+    CompositionEuImaging --> DocumentReferenceKeyImageEuImaging: section[findings].entry[keyimages]
+    CompositionEuImaging --> ImagingSelectionKeyImageEuImaging: section[findings].entry[keyimages]
+    DiagnosticReportEuImaging --> DocumentReferenceKeyImageEuImaging: extension[finding]
+    DiagnosticReportEuImaging --> ImagingSelectionKeyImageEuImaging: extension[finding]
 
     DocumentReferenceKeyImageEuImaging --> ImageData: content.attachment.url
     DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceSerieDocumentReference
     DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceDocumentReference
-    ImKeyImagingSelection <|-- ImKeyImagingSerieSelection
-    ImKeyImagingSelection <|-- ImKeyImagingInstanceSelection
-    
 ```
