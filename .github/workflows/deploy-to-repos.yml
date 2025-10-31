@@ -64,16 +64,23 @@ jobs:
       - name: Commit and push R4 changes
         working-directory: ./r4-repo
         run: |
+          # Create a build trigger file to ensure there's always a commit for auto-ig-builder
+          echo "Build triggered at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" > .build-trigger
+          echo "Source commit: ${{ github.sha }}" >> .build-trigger
+          echo "Source branch: ${{ github.ref_name }}" >> .build-trigger
+          
           git add -A
           
-          # Check if there are changes to commit
+          # Always commit to ensure auto-ig-builder triggers
           if git diff --staged --quiet; then
-            echo "No changes to commit for R4"
+            echo "No content changes, but creating trigger commit for auto-ig-builder"
+            git commit -m "Trigger auto-ig-builder - no content changes - source: ${{ github.sha }}"
           else
             git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
-            git push origin ${{ github.ref_name }}
-            echo "R4 repository updated successfully"
           fi
+          
+          git push origin ${{ github.ref_name }}
+          echo "R4 repository updated successfully - auto-ig-builder should trigger"
 
   deploy-r5:
     runs-on: ubuntu-latest
@@ -133,13 +140,20 @@ jobs:
       - name: Commit and push R5 changes
         working-directory: ./r5-repo
         run: |
+          # Create a build trigger file to ensure there's always a commit for auto-ig-builder
+          echo "Build triggered at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" > .build-trigger
+          echo "Source commit: ${{ github.sha }}" >> .build-trigger
+          echo "Source branch: ${{ github.ref_name }}" >> .build-trigger
+          
           git add -A
           
-          # Check if there are changes to commit
+          # Always commit to ensure auto-ig-builder triggers
           if git diff --staged --quiet; then
-            echo "No changes to commit for R5"
+            echo "No content changes, but creating trigger commit for auto-ig-builder"
+            git commit -m "Trigger auto-ig-builder - no content changes - source: ${{ github.sha }}"
           else
             git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
-            git push origin ${{ github.ref_name }}
-            echo "R5 repository updated successfully"
           fi
+          
+          git push origin ${{ github.ref_name }}
+          echo "R5 repository updated successfully - auto-ig-builder should trigger"
