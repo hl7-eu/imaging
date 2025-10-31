@@ -40,7 +40,9 @@ The main files on which this process is typically used are `sushi-config.yaml`, 
 
 ## Multi-FHIR shorthand files
 
-Using the variables defined in the context files FHIR version variations can be added in multiple ways. The two main approaches are shown below.
+Using the variables defined in the context files FHIR version variations can be added in multiple ways. The main approaches are shown below, with specific considerations for different file types.
+
+### For FSH (.fsh) files
 
 The first pattern uses the  `{% if isR4 % }` and `{% endif}` statements as is depicted in the example below.
 
@@ -66,7 +68,46 @@ This approach has the advantage that the identation remains in place but the dis
 ```
 
 In the R4 version, `{%R4%}` will be replaced by "" and `{%R4%}` by "//R5". In the R5 version `{%R4%}` will be replaced by "//R4" and `{%R4%}` by "".
-The different sections are clearly marked and the line numbering is not compromised at the expense of loosing indent alignment. 
+The different sections are clearly marked and the line numbering is not compromised at the expense of loosing indent alignment.
+
+### For Markdown (.md) files with Jekyll/Liquid content
+
+When working with markdown files that contain Jekyll/Liquid assignment statements or other Liquid syntax that should appear in the final processed files, use these approaches:
+
+#### Using `{% raw %}` blocks
+
+For content that should never be processed by the preprocessing step but should be passed through unchanged to the final IG build:
+
+```liquid
+{% raw %}
+{% assign someVariable = "[Link](https://example.com)" %}
+{% assign otherVariable = "Some value" %}
+{% endraw %}
+```
+
+The content inside `{% raw %}...{% endraw %}` is ignored by the preprocessing liquid processor and passed through literally.
+
+#### Using quoted output for conditional content
+
+For version-specific Jekyll/Liquid assignments that need to be conditionally included based on FHIR version:
+
+```liquid
+{% if isR4 %}{{ "{% assign hl7EuBase = \"[HL7 EU Base](https://hl7.eu/fhir/base/)\" %}" }}
+{{ "{% assign hl7EuMpd = \"[HL7 EU MPD](https://hl7.eu/fhir/mpd/)\" %}" }}
+{% endif %}{% if isR5 %}{{ "{% assign hl7EuBase = \"[HL7 EU Base](https://build.fhir.org/ig/hl7-eu/base-r5/)\" %}" }}
+{{ "{% assign hl7EuMpd = \"[HL7 EU MPD](https://hl7.eu/fhir/mpd-r5/)\" %}" }}
+{% endif %}
+```
+
+This approach:
+- Uses `{{ "..." }}` to output literal Jekyll/Liquid syntax based on conditions
+- The preprocessing step evaluates the conditionals and outputs the appropriate assignment statements
+- The resulting files contain the correct version-specific Jekyll/Liquid code for the final IG build
+
+**When to use each approach:**
+- Use `{% raw %}` for content that should be the same across all FHIR versions
+- Use `{{ "..." }}` with conditionals for content that needs to be different per FHIR version
+- Especially important for `.md` files in `input/includes/` that define variables used throughout the IG 
 
 ## Compiling Content
 
