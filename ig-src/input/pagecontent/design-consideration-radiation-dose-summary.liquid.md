@@ -20,6 +20,6 @@ In this process, also some changes where made in line with FHIR R5, these includ
 {% endif %}
 {% if isR4 %}
 In this process, also some changes where made in line with FHIR R4, these include:
-* The observation identifier referred to the SOPInstanceUID, this is replaced with a reference to ImagingSelection through an `derivedFrom` extension, replicating R5 functionality by backporting that `Observation` element to R4 .
+* The observation identifier referred to the SOPInstanceUID, this is replaced with a reference to ImagingSelection through an `derivedFrom` extension, replicating R5 functionality by backporting that `Observation` R5 element to R4.
 * Adding slices on Observation.component for the different numeric values.
 {% endif %}

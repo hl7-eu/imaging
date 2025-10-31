@@ -1,6 +1,6 @@
 ### FHIR representation of the report
 
-This guide is part of the HL7 EU suite of report related implementation guides that also includes {{hl7EuLabs}}, {{hl7EuHdr}} and {{hl7EuEps}}.
+This guide is part of the HL7 EU suite of report related implementation guides that also includes {% raw %}{{hl7EuLabs}}{% endraw %}, {% raw %}{{hl7EuHdr}}{% endraw %} and {% raw %}{{hl7EuEps}}{% endraw %}.
 {% if isR5 %}
 This implementation guide follows the approach taken by those specifications in that a Imaging Report is:
 * represented by one `DiagnosticReport` and and `Composition` resource.
