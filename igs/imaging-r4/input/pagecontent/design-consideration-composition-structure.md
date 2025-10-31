@@ -4,7 +4,7 @@ One of the choices made in the IG is the structure of the Composition resource. 
 
 * Leave it open for users of the implementation guide.
 * Follow the structure of the presented form (rendered document).
-* Follow the structure of the {{ehnImagingGuidelines}}.
+* Follow the structure of the {% raw %}{{ehnImagingGuidelines}}{% endraw %}.
 * Adopt the structure defined in IHE-IDR.
 
 Linking the structure of the composition of the presented form will cause difficulties as it requires importers of such documents to understand and properly represent such structure which might place undue burden on such import process.
