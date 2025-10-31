@@ -85,3 +85,4 @@ The development of this implementation guide is promoted by HL7 Europe, but real
 ### IP statements
 
 {% include ip-statements-en.xhtml %}
+<- Started fresh from upstream master ( not based on Build trigger: 2025-10-31 14:10:19 UTC -->

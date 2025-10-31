@@ -1,5 +1,6 @@
 
 
+
 {% assign hl7EuBase         = "[HL7 EU Base](https://hl7.eu/fhir/base/)" %}
 {% assign hl7EuMpd          = "[HL7 EU MPD](https://hl7.eu/fhir/mpd/)" %}
 
