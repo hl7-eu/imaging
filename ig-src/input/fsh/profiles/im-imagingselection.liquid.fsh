@@ -19,7 +19,7 @@ Parent: $CrossVersion-R5-ImagingSelection-for-R4
 Title: "Basic-ImagingSelection: General"
 Description: "Basic resource holding cross-version extensions for Imaging Selection allowing ImagingSelection to be used in R4."
 * insert SetFmmAndStatusRule( 1, draft )
-* subject only Reference( $EuPatient )
+// * subject only Reference( $EuPatient )
 
 Profile: SrInstanceImagingSelectionEuImaging
 Parent: http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4
