@@ -24,9 +24,11 @@ The `text` field of each section SHALL contain a textual representation of all l
 * extension contains 
     $event-basedOn-url          named basedOn 0..* and
     $information-recipient-url  named informationRecipient 0..* and
-    DiagnosticReportEuImagingReferenceExtensionEuImaging named diagnosticreport-reference 0..1
-* extension contains $CrossVersion-Composition.version named version 0..1
+    $hl7euDiagnosticReferenceReference named diagnosticreport-reference 0..1
+
 * extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
+
+* extension contains $CrossVersion-Composition.version named version 0..1
 
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
@@ -205,14 +207,3 @@ Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
 Severity: #error 
 Expression: "entry.empty().not() or emptyReason.exists() or extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
-
-Extension: DiagnosticReportEuImagingReferenceExtensionEuImaging
-Title:  "Extension: Document DiagnosticReport Reference"
-Description: """
-    This extension provides a reference to the DiagnosticReport instance that is associated with this Composition.
-    """
-Context: Composition
-// publisher, contact, and other metadata here using caret (^) syntax (omitted)
-* insert ExtensionContext(Composition)
-* insert SetFmmAndStatusRule ( 2, draft )
-* value[x] only Reference (DiagnosticReportEuImaging)

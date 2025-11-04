@@ -52,7 +52,6 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
-<artifact id="StructureDefinition/DiagnosticReportEuImagingReferenceExtensionEuImaging" key="StructureDefinition-DiagnosticReportEuImagingReferenceExtensionEuImaging" name="Extension: Document DiagnosticReport Reference"/>
 <artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="Extension: HL7IDR Communication"/>
 <artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="Extension: HL7IDR DiagnosticReport Comparison Study"/>
 <artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="Extension: HL7IDR Imaging Procedure"/>
