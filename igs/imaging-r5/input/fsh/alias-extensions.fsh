@@ -32,3 +32,5 @@ Alias: $workflow-reason-url                   = http://hl7.org/fhir/StructureDef
 Alias: $birth-time-url                        = http://hl7.org/fhir/StructureDefinition/patient-birthTime
 Alias: $workflow-status-reason-url            = http://hl7.org/fhir/StructureDefinition/workflow-statusReason
 Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
+
+Alias: $hl7euDiagnosticReferenceReference =  http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference

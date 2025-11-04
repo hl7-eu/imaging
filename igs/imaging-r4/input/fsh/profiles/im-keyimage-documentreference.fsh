@@ -9,13 +9,13 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
 * identifier 
   * insert SliceElement( #value, $this )
 * identifier contains seriesInstanceUid 0..1 and sopClassInstanceUid 0..1
-* identifier[seriesInstanceUid] 
+* identifier[sopClassInstanceUid]
   * type 1..1 
   * type = MissingDicomTerminology#00080018
   * system 1..1 
   * system = "urn:ietf:rfc:3986"
   * value 1..1
-* identifier[sopClassInstanceUid] 
+* identifier[seriesInstanceUid] 
   * type 1..1
   * type = http://dicom.nema.org/resources/ontology/DCM#112002
   * system 1..1 
