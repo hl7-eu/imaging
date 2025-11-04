@@ -1,0 +1,276 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSRelatedPerson",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson",
+  "version": "0.1.0",
+  "name": "EHDSRelatedPerson",
+  "title": "Related person model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for Patient/subject guardian and other related person information",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSRelatedPerson",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "5.0.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSRelatedPerson",
+        "path": "EHDSRelatedPerson",
+        "short": "Related person model",
+        "definition": "EHDS refined base model for Patient/subject guardian and other related person information",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.personalIdentifier",
+        "path": "EHDSRelatedPerson.personalIdentifier",
+        "short": "Personal identifier",
+        "definition": "An identifier of the related person that is unique within a defined scope. Example: National ID (birth number) for the Czech citizen. Multiple identifiers could be provided. ",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSRelatedPerson.personalIdentifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.name",
+        "path": "EHDSRelatedPerson.name",
+        "short": "Name",
+        "definition": "Name associated with the person. Name might consists of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSRelatedPerson.name",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHumanName"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.subject",
+        "path": "EHDSRelatedPerson.subject",
+        "short": "The patient in relation to whom the related person is defined.",
+        "definition": "The patient in relation to whom the related person is defined.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSRelatedPerson.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.relationship",
+        "path": "EHDSRelatedPerson.relationship",
+        "short": "Relationship",
+        "definition": "Relationship between a patient and a contact person for that patient. This includes relatives, guardians, caring persons etc.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSRelatedPerson.relationship",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 RoleCode"
+        }
+      },
+      {
+        "id": "EHDSRelatedPerson.address",
+        "path": "EHDSRelatedPerson.address",
+        "short": "Address",
+        "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, ZIP code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSRelatedPerson.address",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAddress"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.telecom",
+        "path": "EHDSRelatedPerson.telecom",
+        "short": "Telecom",
+        "definition": "Telecommunication contact information (addresses) associated to a person. Multiple telecommunication addresses might be provided.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSRelatedPerson.telecom",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSTelecom"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSRelatedPerson",
+        "path": "EHDSRelatedPerson",
+        "short": "Related person model",
+        "definition": "EHDS refined base model for Patient/subject guardian and other related person information"
+      },
+      {
+        "id": "EHDSRelatedPerson.personalIdentifier",
+        "path": "EHDSRelatedPerson.personalIdentifier",
+        "short": "Personal identifier",
+        "definition": "An identifier of the related person that is unique within a defined scope. Example: National ID (birth number) for the Czech citizen. Multiple identifiers could be provided. ",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.name",
+        "path": "EHDSRelatedPerson.name",
+        "short": "Name",
+        "definition": "Name associated with the person. Name might consists of name parts, e.g. Given name or names, family name/surname, name prefix etc.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHumanName"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.subject",
+        "path": "EHDSRelatedPerson.subject",
+        "short": "The patient in relation to whom the related person is defined.",
+        "definition": "The patient in relation to whom the related person is defined.",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.relationship",
+        "path": "EHDSRelatedPerson.relationship",
+        "short": "Relationship",
+        "definition": "Relationship between a patient and a contact person for that patient. This includes relatives, guardians, caring persons etc.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 RoleCode"
+        }
+      },
+      {
+        "id": "EHDSRelatedPerson.address",
+        "path": "EHDSRelatedPerson.address",
+        "short": "Address",
+        "definition": "Mailing and home or office addresses. The addresses are always sequences of address parts (e.g. street address line, country, ZIP code, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAddress"
+          }
+        ]
+      },
+      {
+        "id": "EHDSRelatedPerson.telecom",
+        "path": "EHDSRelatedPerson.telecom",
+        "short": "Telecom",
+        "definition": "Telecommunication contact information (addresses) associated to a person. Multiple telecommunication addresses might be provided.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSTelecom"
+          }
+        ]
+      }
+    ]
+  }
+}

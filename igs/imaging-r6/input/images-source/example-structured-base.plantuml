@@ -1,0 +1,86 @@
+@startuml
+    
+    package "Author and Organization" {
+        class Author <<PractitionerRole>>
+        class UltrasoundCentrum <<Organization>>
+        class DvdJochemsen <<Practitioner>>
+    }
+
+    Author --> UltrasoundCentrum: organization
+    Author --> DvdJochemsen: practitioner
+
+    DiagnosticReport --> Composition: composition
+    DiagnosticReport --> PDF: presentedForm
+    DiagnosticReport --> Patient: subject
+    DiagnosticReport --> Ultrasound: study
+    DiagnosticReport --> Author: resultsInterpreter[author]
+    DiagnosticReport --> UltrasoundCentrum: performer[organization]
+    DiagnosticReport --> ComeBackNextYearServiceRequest: extension[recommendation]
+    
+
+    Ultrasound --> Patient: subject
+    Ultrasound --> UltrasoundCentrum: series.performer
+
+    Composition --> Patient: subject
+    Composition --> DiagnosticReport: extension[diagnosticreport-reference]
+    Composition --> Author: author[author]
+    Composition --> UltrasoundCentrum: author[organization]
+    Composition --> Ultrasound : entry[study].entry
+    Composition --> ComeBackNextYearServiceRequest: section[recommendation].entry
+    
+
+    class Patient{
+        * name 
+          * family = "Gutefrage"
+          * given[+] = Test-Schust
+    }
+    class Ultrasound <<ImagingStudy>>  [[./ImagingStudy-ImagingStudStructuredReport.html]] {
+        * series[+] "stress"
+        * series[+] "rest"
+    }
+    
+    class PDF <<Binary>>
+
+    class Composition [[./Composition-CompositionStructured.html]] {
+        section[imagingstudy]
+        -- entry: Ultrasound
+        section[order]
+        section[history]
+        -- entry: weight
+        -- entry: height
+        -- entry: bp
+        -- entry: heartRate
+        section[procedure]
+        section[comparison]
+        section[findings]
+        -- note: "..."
+        -- note: "..."
+        -- note: "..."
+        -- note: "..."
+        -- entry: WMSI observations
+        section[impressions]
+        -- note: "..."
+        section[recommendation]
+        -- entry: ServiceRequest
+    }
+
+    class DiagnosticReport [[./DiagnosticReport-DiagnosticReportStructured.html]] {
+        study: Ultrasound
+        extension[history]: weight
+        extension[history]: height
+        extension[history]: bp
+        extension[history]: heartRate
+        note[finding] = "..."
+        note[finding] = "..."
+        note[finding] = "..."
+        note[finding] = "..."
+        result: WMSI observations
+        conclusion = "..."
+        extension[recommendation]: ComeBackNextYearServiceRequest
+    }
+    
+    class ComeBackNextYearServiceRequest <<ServiceRequest>> [[./ServiceRequest-ComeBackNextYearServiceRequest.html]]{
+        intent = #proposal
+    }
+
+@enduml

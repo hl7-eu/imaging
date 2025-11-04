@@ -1,6 +1,6 @@
 #!/bin/bash
 
-versions=("4.0.1" "5.0.0" )
+versions=("4.0.1" "5.0.0" "6.0.0-ballot3" )
 
 for version in "${versions[@]}"; do
     if [ "$version" = "4.0.1" ]; then
@@ -9,6 +9,9 @@ for version in "${versions[@]}"; do
     elif [ "$version" = "5.0.0" ]; then
         context_version="R5"
         build_dir="igs/imaging-r5"
+    elif [ "$version" = "6.0.0-ballot3" ]; then
+        context_version="R6"
+        build_dir="igs/imaging-r6"
     fi
 
     echo remove all files from $build_dir

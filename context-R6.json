@@ -1,0 +1,14 @@
+{ 
+    "isR4": false,
+    "isR5": false,
+    "isR6": true,
+    "fhirVersion": "6.0.0-ballot3",
+    "r-code": "r6",
+    "R-code": "R6",
+    "eu-core-r-code": "-r6",
+    "R":"",
+    "R4": "//R4",
+    "R5": "",
+    "R6": "",
+    "R4-yaml": "# R4"
+}

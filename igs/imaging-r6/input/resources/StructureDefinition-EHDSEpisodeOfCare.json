@@ -1,0 +1,530 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSEpisodeOfCare",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSEpisodeOfCare",
+  "version": "0.1.0",
+  "name": "EHDSEpisodeOfCare",
+  "title": "Episode of care model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for Episode of care",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSEpisodeOfCare",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "0.1.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSEpisodeOfCare",
+        "path": "EHDSEpisodeOfCare",
+        "short": "Episode of care model",
+        "definition": "EHDS refined base model for Episode of care",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header",
+        "path": "EHDSEpisodeOfCare.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.subject",
+        "path": "EHDSEpisodeOfCare.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.identifier",
+        "path": "EHDSEpisodeOfCare.header.identifier",
+        "short": "Business identifiers assigned to this episode of care.",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.authorship",
+        "path": "EHDSEpisodeOfCare.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.authorship.author[x]",
+        "path": "EHDSEpisodeOfCare.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.authorship.datetime",
+        "path": "EHDSEpisodeOfCare.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.lastUpdate",
+        "path": "EHDSEpisodeOfCare.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.status",
+        "path": "EHDSEpisodeOfCare.header.status",
+        "short": "Status of the resource",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.statusReason[x]",
+        "path": "EHDSEpisodeOfCare.header.statusReason[x]",
+        "short": "Reason for the current status of the resource.",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.language",
+        "path": "EHDSEpisodeOfCare.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.version",
+        "path": "EHDSEpisodeOfCare.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.presentedForm",
+        "path": "EHDSEpisodeOfCare.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.type",
+        "path": "EHDSEpisodeOfCare.type",
+        "short": "A classification of the type of episode of care; e.g. specialist referral, disease management.",
+        "definition": "A classification of the type of episode of care; e.g. specialist referral, disease management.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSEpisodeOfCare.type",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.reasonText",
+        "path": "EHDSEpisodeOfCare.reasonText",
+        "short": "Textual descriptions of the medical reasons that are expected to be addressed during the episode of care.",
+        "definition": "Textual descriptions of the medical reasons that are expected to be addressed during the episode of care.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSEpisodeOfCare.reasonText",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.reason[x]",
+        "path": "EHDSEpisodeOfCare.reason[x]",
+        "short": "Coded list of medical reasons that are expected to be addressed during the episode of care.",
+        "definition": "Coded list of medical reasons that are expected to be addressed during the episode of care.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSEpisodeOfCare.reason[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.diagnosis",
+        "path": "EHDSEpisodeOfCare.diagnosis",
+        "short": "List of medical conditions that were addressed during the episode of care",
+        "definition": "List of medical conditions that were addressed during the episode of care",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSEpisodeOfCare.diagnosis",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.diagnosis.description",
+        "path": "EHDSEpisodeOfCare.diagnosis.description",
+        "short": "Textual description of the medical condition that was addressed during the episode of care",
+        "definition": "Textual description of the medical condition that was addressed during the episode of care",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSEpisodeOfCare.diagnosis.description",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.diagnosis.condition[x]",
+        "path": "EHDSEpisodeOfCare.diagnosis.condition[x]",
+        "short": "The medical condition that was addressed during the episode of care",
+        "definition": "The medical condition that was addressed during the episode of care",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSEpisodeOfCare.diagnosis.condition[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSEpisodeOfCare",
+        "path": "EHDSEpisodeOfCare",
+        "short": "Episode of care model",
+        "definition": "EHDS refined base model for Episode of care"
+      },
+      {
+        "id": "EHDSEpisodeOfCare.header.identifier",
+        "path": "EHDSEpisodeOfCare.header.identifier",
+        "short": "Business identifiers assigned to this episode of care."
+      },
+      {
+        "id": "EHDSEpisodeOfCare.type",
+        "path": "EHDSEpisodeOfCare.type",
+        "short": "A classification of the type of episode of care; e.g. specialist referral, disease management.",
+        "definition": "A classification of the type of episode of care; e.g. specialist referral, disease management.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.reasonText",
+        "path": "EHDSEpisodeOfCare.reasonText",
+        "short": "Textual descriptions of the medical reasons that are expected to be addressed during the episode of care.",
+        "definition": "Textual descriptions of the medical reasons that are expected to be addressed during the episode of care.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.reason[x]",
+        "path": "EHDSEpisodeOfCare.reason[x]",
+        "short": "Coded list of medical reasons that are expected to be addressed during the episode of care.",
+        "definition": "Coded list of medical reasons that are expected to be addressed during the episode of care.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSProcedure"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.diagnosis",
+        "path": "EHDSEpisodeOfCare.diagnosis",
+        "short": "List of medical conditions that were addressed during the episode of care",
+        "definition": "List of medical conditions that were addressed during the episode of care",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.diagnosis.description",
+        "path": "EHDSEpisodeOfCare.diagnosis.description",
+        "short": "Textual description of the medical condition that was addressed during the episode of care",
+        "definition": "Textual description of the medical condition that was addressed during the episode of care",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSEpisodeOfCare.diagnosis.condition[x]",
+        "path": "EHDSEpisodeOfCare.diagnosis.condition[x]",
+        "short": "The medical condition that was addressed during the episode of care",
+        "definition": "The medical condition that was addressed during the episode of care",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          }
+        ]
+      }
+    ]
+  }
+}

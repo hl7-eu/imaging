@@ -1,0 +1,11 @@
+{% assign CompositionEuImaging               = "[`CompositionEuImaging`](StructureDefinition-CompositionEuImaging.html)" %}
+{% assign DiagnosticReportEuImaging          = "[`DiagnosticReportEuImaging`](StructureDefinition-DiagnosticReportEuImaging.html)" %}
+{% assign ImagingStudyEuImaging              = "[`ImagingStudyEuImaging`](StructureDefinition-ImagingStudyEuImaging.html)" %}
+{% assign ObservationFindingEuImaging                   = "[`ObservationFindingEuImaging`](StructureDefinition-ObservationFindingEuImaging.html)" %}
+{% assign DocumentReferenceKeyImageEuImaging = "[`DocumentReferenceKeyImageEuImaging`](StructureDefinition-DocumentReferenceKeyImageEuImaging.html)" %}
+{% assign ImagingSelectionKeyImageEuImaging  = "[`ImagingSelectionKeyImageEuImaging`](StructureDefinition-ImagingSelectionKeyImageEuImaging.html)" %}
+{% assign ServiceRequestOrderEuImaging                     = "[`ServiceRequestOrderEuImaging`](StructureDefinition-ServiceRequestOrderEuImaging.html)" %}
+{% assign ProcedureEuImaging                 = "[`ProcedureEuImaging`](StructureDefinition-ProcedureEuImaging.html)" %}
+{% assign ImagingStudyEuImaging              = "[`ImagingStudyEuImaging`](StructureDefinition-ImagingStudyEuImaging.html)" %}
+{% assign ImImpression                = "[`ImImpression`](StructureDefinition-ImImpression.html)" %}
+{% assign UnstructuredDocumentReferenceEuImaging = "[`UnstructuredDocumentReferenceEuImaging`](StructureDefinition-UnstructuredDocumentReferenceEuImaging.html)" %}

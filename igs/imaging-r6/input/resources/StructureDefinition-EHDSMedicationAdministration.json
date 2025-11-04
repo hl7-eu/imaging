@@ -1,0 +1,514 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSMedicationAdministration",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    },
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration",
+  "version": "0.1.0",
+  "name": "EHDSMedicationAdministration",
+  "title": "Medication administration model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for a single medication administration",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedicationAdministration",
+  "baseDefinition": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDataSet",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "0.1.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSMedicationAdministration",
+        "path": "EHDSMedicationAdministration",
+        "short": "Medication administration model",
+        "definition": "EHDS refined base model for a single medication administration",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header",
+        "path": "EHDSMedicationAdministration.header",
+        "short": "Common header for all patient-related data",
+        "definition": "Common header for all patient-related data",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.subject",
+        "path": "EHDSMedicationAdministration.header.subject",
+        "short": "Subject",
+        "definition": "Patient/subject information",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.subject",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSPatient"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.identifier",
+        "path": "EHDSMedicationAdministration.header.identifier",
+        "short": "Business identifier for the object",
+        "definition": "Business identifier for the object",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.authorship",
+        "path": "EHDSMedicationAdministration.header.authorship",
+        "short": "Authorship",
+        "definition": "Resource authoring details",
+        "min": 1,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.header.authorship",
+          "min": 1,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Base"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.authorship.author[x]",
+        "path": "EHDSMedicationAdministration.header.authorship.author[x]",
+        "short": "Author",
+        "definition": "Author(s) by whom the resource was/were authored. Multiple authors could be provided.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.author[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.authorship.datetime",
+        "path": "EHDSMedicationAdministration.header.authorship.datetime",
+        "short": "Date and time of authoring/issuing",
+        "definition": "Date and time of the issuing the document/resource by its author.",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.authorship.datetime",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.lastUpdate",
+        "path": "EHDSMedicationAdministration.header.lastUpdate",
+        "short": "Date and time of the last update to the resource",
+        "definition": "Date and time of the last update to the document/information",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.lastUpdate",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.status",
+        "path": "EHDSMedicationAdministration.header.status",
+        "short": "Status of the administration (e.g. completed, not-done, on-hold, in-progress, unknown)",
+        "definition": "Status of the resource",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.status",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 MedicationAdimnistrationStatusCodes"
+        }
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.statusReason[x]",
+        "path": "EHDSMedicationAdministration.header.statusReason[x]",
+        "short": "Reason administration was not performed",
+        "definition": "Reason for the current status of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.statusReason[x]",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "string"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.language",
+        "path": "EHDSMedicationAdministration.header.language",
+        "short": "Language",
+        "definition": "Language in which the resource is written. Language is expressed by the IETF language tag.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.language",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "BCP 47"
+        }
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.version",
+        "path": "EHDSMedicationAdministration.header.version",
+        "short": "Version",
+        "definition": "Business version of the resource.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSDataSet.header.version",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.presentedForm",
+        "path": "EHDSMedicationAdministration.presentedForm",
+        "short": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "definition": "A narrative easy-to-read representation of the full data set, e.g. PDF-version of a document",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSDataSet.presentedForm",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAttachment"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.medication",
+        "path": "EHDSMedicationAdministration.medication",
+        "short": "Administered medication",
+        "definition": "Administered medication",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationAdministration.medication",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.occurrence[x]",
+        "path": "EHDSMedicationAdministration.occurrence[x]",
+        "short": "Specific date/time or interval of time during which the administration took place (or did not take place)",
+        "definition": "Specific date/time or interval of time during which the administration took place (or did not take place)",
+        "min": 1,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationAdministration.occurrence[x]",
+          "min": 1,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "dateTime"
+          },
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.reason[x]",
+        "path": "EHDSMedicationAdministration.reason[x]",
+        "short": "Condition or observation that supports why the medication was administered",
+        "definition": "Condition or observation that supports why the medication was administered",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSMedicationAdministration.reason[x]",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.note",
+        "path": "EHDSMedicationAdministration.note",
+        "short": "Textual information about the administration",
+        "definition": "Textual information about the administration",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationAdministration.note",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.dosage",
+        "path": "EHDSMedicationAdministration.dosage",
+        "short": "Details of how medication was taken",
+        "definition": "Details of how medication was taken",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSMedicationAdministration.dosage",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDosage"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSMedicationAdministration",
+        "path": "EHDSMedicationAdministration",
+        "short": "Medication administration model",
+        "definition": "EHDS refined base model for a single medication administration"
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.status",
+        "path": "EHDSMedicationAdministration.header.status",
+        "short": "Status of the administration (e.g. completed, not-done, on-hold, in-progress, unknown)",
+        "binding": {
+          "strength": "preferred",
+          "description": "HL7 MedicationAdimnistrationStatusCodes"
+        }
+      },
+      {
+        "id": "EHDSMedicationAdministration.header.statusReason[x]",
+        "path": "EHDSMedicationAdministration.header.statusReason[x]",
+        "short": "Reason administration was not performed",
+        "binding": {
+          "strength": "preferred",
+          "description": "SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSMedicationAdministration.medication",
+        "path": "EHDSMedicationAdministration.medication",
+        "short": "Administered medication",
+        "definition": "Administered medication",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSMedication"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.occurrence[x]",
+        "path": "EHDSMedicationAdministration.occurrence[x]",
+        "short": "Specific date/time or interval of time during which the administration took place (or did not take place)",
+        "definition": "Specific date/time or interval of time during which the administration took place (or did not take place)",
+        "min": 1,
+        "max": "1",
+        "type": [
+          {
+            "code": "dateTime"
+          },
+          {
+            "code": "Period"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.reason[x]",
+        "path": "EHDSMedicationAdministration.reason[x]",
+        "short": "Condition or observation that supports why the medication was administered",
+        "definition": "Condition or observation that supports why the medication was administered",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSCondition"
+          },
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSObservation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.note",
+        "path": "EHDSMedicationAdministration.note",
+        "short": "Textual information about the administration",
+        "definition": "Textual information about the administration",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "id": "EHDSMedicationAdministration.dosage",
+        "path": "EHDSMedicationAdministration.dosage",
+        "short": "Details of how medication was taken",
+        "definition": "Details of how medication was taken",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDosage"
+          }
+        ]
+      }
+    ]
+  }
+}

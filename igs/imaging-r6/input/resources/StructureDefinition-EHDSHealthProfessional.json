@@ -1,0 +1,307 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "EHDSHealthProfessional",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics",
+      "valueCode": "can-be-target"
+    }
+  ],
+  "url": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
+  "version": "0.1.0",
+  "name": "EHDSHealthProfessional",
+  "title": "Health professional model",
+  "status": "draft",
+  "date": "2025-08-05T08:51:00+00:00",
+  "publisher": "Xt-EHR",
+  "contact": [
+    {
+      "name": "Xt-EHR",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://Xt-EHR.eu"
+        }
+      ]
+    }
+  ],
+  "description": "EHDS refined base model for Health professional (HP)",
+  "fhirVersion": "5.0.0",
+  "mapping": [
+    {
+      "identity": "rim",
+      "uri": "http://hl7.org/v3",
+      "name": "RIM Mapping"
+    }
+  ],
+  "kind": "logical",
+  "abstract": false,
+  "type": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHealthProfessional",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Base",
+  "derivation": "specialization",
+  "snapshot": {
+    "extension": [
+      {
+        "url": "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version",
+        "valueString": "5.0.0"
+      }
+    ],
+    "element": [
+      {
+        "id": "EHDSHealthProfessional",
+        "path": "EHDSHealthProfessional",
+        "short": "Health professional model",
+        "definition": "EHDS refined base model for Health professional (HP)",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "Base",
+          "min": 0,
+          "max": "*"
+        },
+        "isModifier": false,
+        "mapping": [
+          {
+            "identity": "rim",
+            "map": "n/a"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.identifier",
+        "path": "EHDSHealthProfessional.identifier",
+        "short": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
+        "definition": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSHealthProfessional.identifier",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.name",
+        "path": "EHDSHealthProfessional.name",
+        "short": "Name of the health professional that has been treating or taking responsibility for the patient.",
+        "definition": "Name of the health professional that has been treating or taking responsibility for the patient.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSHealthProfessional.name",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHumanName"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.address",
+        "path": "EHDSHealthProfessional.address",
+        "short": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "definition": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSHealthProfessional.address",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAddress"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.telecom",
+        "path": "EHDSHealthProfessional.telecom",
+        "short": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
+        "definition": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSHealthProfessional.telecom",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSTelecom"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.role",
+        "path": "EHDSHealthProfessional.role",
+        "short": "Health professional role. Multiple roles could be provided.",
+        "definition": "Health professional role. Multiple roles could be provided.",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSHealthProfessional.role",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "ISCO, SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSHealthProfessional.organisation",
+        "path": "EHDSHealthProfessional.organisation",
+        "short": "The organisation where this role is available",
+        "definition": "The organisation where this role is available",
+        "min": 0,
+        "max": "1",
+        "base": {
+          "path": "EHDSHealthProfessional.organisation",
+          "min": 0,
+          "max": "1"
+        },
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.specialty",
+        "path": "EHDSHealthProfessional.specialty",
+        "short": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
+        "definition": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
+        "min": 0,
+        "max": "*",
+        "base": {
+          "path": "EHDSHealthProfessional.specialty",
+          "min": 0,
+          "max": "*"
+        },
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      }
+    ]
+  },
+  "differential": {
+    "element": [
+      {
+        "id": "EHDSHealthProfessional",
+        "path": "EHDSHealthProfessional",
+        "short": "Health professional model",
+        "definition": "EHDS refined base model for Health professional (HP)"
+      },
+      {
+        "id": "EHDSHealthProfessional.identifier",
+        "path": "EHDSHealthProfessional.identifier",
+        "short": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
+        "definition": "An identifier of the health professional that is unique within a defined scope. Example: National health professional ID. Multiple identifiers could be provided.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "Identifier"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.name",
+        "path": "EHDSHealthProfessional.name",
+        "short": "Name of the health professional that has been treating or taking responsibility for the patient.",
+        "definition": "Name of the health professional that has been treating or taking responsibility for the patient.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSHumanName"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.address",
+        "path": "EHDSHealthProfessional.address",
+        "short": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "definition": "Mailing and office or home addresses. The addresses are always sequences of address parts (e.g. street address line, country, postcode, city) even if postal address formats may vary depending on the country. An address may or may not include a specific use code; if this attribute is not present it is assumed to be the default address useful for any purpose.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSAddress"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.telecom",
+        "path": "EHDSHealthProfessional.telecom",
+        "short": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
+        "definition": "Telecommunication contact information (addresses) associated with a person, such as phone number, email, or messaging service. Multiple telecommunication addresses might be provided.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSTelecom"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.role",
+        "path": "EHDSHealthProfessional.role",
+        "short": "Health professional role. Multiple roles could be provided.",
+        "definition": "Health professional role. Multiple roles could be provided.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ],
+        "binding": {
+          "strength": "preferred",
+          "description": "ISCO, SNOMED CT"
+        }
+      },
+      {
+        "id": "EHDSHealthProfessional.organisation",
+        "path": "EHDSHealthProfessional.organisation",
+        "short": "The organisation where this role is available",
+        "definition": "The organisation where this role is available",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSOrganisation"
+          }
+        ]
+      },
+      {
+        "id": "EHDSHealthProfessional.specialty",
+        "path": "EHDSHealthProfessional.specialty",
+        "short": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
+        "definition": "The specialty of a practitioner that describes the functional role they are practicing at a given organisation",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "CodeableConcept"
+          }
+        ]
+      }
+    ]
+  }
+}
