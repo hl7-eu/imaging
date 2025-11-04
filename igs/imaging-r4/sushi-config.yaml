@@ -71,6 +71,8 @@ pages:
       title: Example structured report
   xtehr-mapping.md:
     title: Xt-EHR mapping
+  patterns-and-guidelines.md:
+    title: Patterns and Guidelines
   design-considerations.md:
     title: Design considerations
   artifacts-intro.md:
@@ -136,6 +138,7 @@ menu:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
     Imaging Report Examples: examples.html
+    Patterns and Guidelines: patterns-and-guidelines.html
     Design considerations: design-considerations.html
   About:
     Authors and contributors: contributors.html
