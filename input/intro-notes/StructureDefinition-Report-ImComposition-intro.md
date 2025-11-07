@@ -23,7 +23,7 @@ The following table lists the elements that should be included in the narrative 
 | EuBodyStructure | includedStructure.laterality |  | EHDSImagingReport.examinationReport.bodyPart.laterality |  |
 | ImagingStudyEuImaging | series.performer |  | EHDSImagingStudy.header.authorship |  |
 | ImagingStudyEuImaging | status |  | EHDSImagingStudy.header.status |  |
-| ImagingStudyEuImaging | modality |  | EHDSImagingStudy.modality |  |
+| ImagingStudyEuImaging | series.modality |  | EHDSImagingStudy.modality |  |
 | ImagingStudyEuImaging | started |  | EHDSImagingStudy.started |  |
 | ImagingStudyEuImaging | description |  | EHDSImagingStudy.description |  |
 | EuDevice | name |  | EHDSMedia.deviceName |  |
@@ -110,7 +110,7 @@ The following table lists the elements that should be included in the narrative 
 | EuCondition | clinicalStatus |  | EHDSCondition.problemStatus |
 | EuCondition | severity |  | EHDSCondition.severity |
 | EuCondition | bodySite |  | EHDSCondition.anatomicLocation |
-| DiagnosticReportEuImaging | conclusion |  | EHDSImagingReport.body.examinationReport.conclusion.impression |
+| DiagnosticReportEuImaging | .extension[impression] |  | EHDSImagingReport.body.examinationReport.conclusion.impression |
 | CompositionEuImaging | section[impression].entry[ObservationFindingEuImaging] | ObservationFindingEuImaging | EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x] |
 
 ### Recommendation
