@@ -38,7 +38,7 @@ This will store the data of the source model in xtehr-model.csv.
 
 ### Edit mapping
 
-The content of `xtehr-mode.csv` is copied into a [Google spreadsheet](https://docs.google.com/spreadsheets/d/1r7f3w-IaaoJR80CqtPz-ZwB5cfJ3mPe73HvJT9j7Js4/edit?usp=sharing) (authorization is required and can be requested). If this an update, copy it into a new tab and align the existing content with the new model, remove the old tab.
+The content of `xtehr-mode.csv` is copied into a [Google spreadsheet](https://docs.google.com/spreadsheets/d/1-Eo2eh8iEj5PgzoiWoJdifhlkvXJDXdn5RwaS4-iq-Y/edit?usp=sharing) (authorization is required and can be requested). If this an update, copy it into a new tab and align the existing content with the new model, remove the old tab.
 This is the master file for the mapping and is read when generating the result files.
 
 ## Update the mapping related fields in the IG
