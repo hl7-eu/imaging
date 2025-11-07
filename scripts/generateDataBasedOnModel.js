@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const obligationsDir     = '../input/fsh/obligations';	
-const mappingTablesDir   = '../input/pagecontent';	
+const mappingTablesDir   = '../ig-src/input/pagecontent/';	
 const xtehrDir           = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';	
 
@@ -23,6 +23,8 @@ const indices = {
     tgtModeling: 14,
     actors: 16,
     section: 17,
+    tgtResourceR4: 18,
+    tgtElementR4: 19,
 };
 
 const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
@@ -194,6 +196,13 @@ function generateMappingTables(parsedData, srcResources) {
         // Populate the mapping table with target mappings and collect source type info
         const sourceTypeMap = new Map(); // srcField -> array of srcTypes
         const modelingMap = new Map(); // srcField -> tgtModeling
+        const mappingTableR4 = new Map(); // srcField -> array of R4 target mappings
+        
+        // Initialize R4 mapping table
+        srcFieldsWithOrder.forEach(({ field }) => {
+            mappingTableR4.set(field, []);
+        });
+        
         parsedData
             .filter(row => row[indices.srcResource] === srcResource)
             .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
@@ -218,7 +227,7 @@ function generateMappingTables(parsedData, srcResources) {
                     modelingMap.set(srcField, tgtModeling);
                 }
                 
-                // Process target mappings
+                // Process target mappings (R5)
                 if (row[indices.tgtResource] && row[indices.tgtResource].length > 0 && 
                     row[indices.tgtElement] && row[indices.tgtElement].length > 0) {
                     const tgtResource = row[indices.tgtResource].trim();
@@ -230,6 +239,22 @@ function generateMappingTables(parsedData, srcResources) {
                         const existingMappings = mappingTable.get(srcField);
                         if (!existingMappings.includes(targetMapping)) {
                             existingMappings.push(targetMapping);
+                        }
+                    }
+                }
+                
+                // Process R4 target mappings
+                if (row[indices.tgtResourceR4] && row[indices.tgtResourceR4].length > 0 && 
+                    row[indices.tgtElementR4] && row[indices.tgtElementR4].length > 0) {
+                    const tgtResourceR4 = row[indices.tgtResourceR4].trim();
+                    const tgtElementR4 = row[indices.tgtElementR4].trim();
+                    const targetMappingR4 = `${tgtResourceR4}.${tgtElementR4}`;
+                    
+                    if (mappingTableR4.has(srcField)) {
+                        // Avoid duplicates
+                        const existingMappingsR4 = mappingTableR4.get(srcField);
+                        if (!existingMappingsR4.includes(targetMappingR4)) {
+                            existingMappingsR4.push(targetMappingR4);
                         }
                     }
                 }
@@ -246,24 +271,52 @@ function generateMappingTables(parsedData, srcResources) {
         writable.write(`#### ${srcResource}\n\n`);
         writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
         writable.write(`{:.grid}\n`);
-        writable.write(`| Element | Target FHIR resource.element | Comments |\n`);
-        writable.write(`| ------- | ---------------------------- | -------- |\n`);
+        writable.write(`| Element | FHIR R4 || FHIR R5 || Comments |\n`);
+        writable.write(`| ------- | ------- | ------- | ------- | ------- | -------- |\n`);
+        writable.write(`| | Target resource | Target element | Target resource | Target element | |\n`);
         
         // Use source fields in their original order from the TSV file
         srcFieldsWithOrder.forEach(({ field: srcField }) => {
             const targetMappings = mappingTable.get(srcField);
+            const targetMappingsR4 = mappingTableR4.get(srcField);
             
-            // Convert target mappings to hyperlinked format
+            // Convert target mappings to hyperlinked format for R5
             const targetMappingsWithLinks = targetMappings.map(mapping => {
                 const [tgtResource, tgtElement] = mapping.split('.');
                 // Only create hyperlinks for resources that start with "Im"
                 if (tgtResource.startsWith('Im')) {
-                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
+                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html)`;
                 } else {
-                    return mapping; // Return original mapping without hyperlink
+                    return tgtResource; // Return just resource name without hyperlink
                 }
             });
-            const targetMappingsStr = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(' ; ') : '';
+            const targetResourceStrR5 = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(' ; ') : '';
+            
+            // Get the target elements for R5
+            const targetElementsR5 = targetMappings.map(mapping => {
+                const [tgtResource, tgtElement] = mapping.split('.');
+                return tgtElement;
+            });
+            const targetElementStrR5 = targetElementsR5.length > 0 ? targetElementsR5.join(' ; ') : '';
+            
+            // Convert target mappings to hyperlinked format for R4
+            const targetMappingsWithLinksR4 = targetMappingsR4.map(mapping => {
+                const [tgtResource, tgtElement] = mapping.split('.');
+                // Only create hyperlinks for resources that start with "Im"
+                if (tgtResource.startsWith('Im')) {
+                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html)`;
+                } else {
+                    return tgtResource; // Return just resource name without hyperlink
+                }
+            });
+            const targetResourceStrR4 = targetMappingsWithLinksR4.length > 0 ? targetMappingsWithLinksR4.join(' ; ') : '';
+            
+            // Get the target elements for R4
+            const targetElementsR4 = targetMappingsR4.map(mapping => {
+                const [tgtResource, tgtElement] = mapping.split('.');
+                return tgtElement;
+            });
+            const targetElementStrR4 = targetElementsR4.length > 0 ? targetElementsR4.join(' ; ') : '';
             
             // Get the modeling value for this field
             const modelingValue = modelingMap.get(srcField) || '';
@@ -299,7 +352,7 @@ function generateMappingTables(parsedData, srcResources) {
                 }
             }
             
-            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} | ${modelingValue} |\n`);
+            writable.write(`| ${sourceFieldDisplay} | ${targetResourceStrR4} | ${targetElementStrR4} | ${targetResourceStrR5} | ${targetElementStrR5} | ${modelingValue} |\n`);
         });
         
         writable.write(`\n`);
@@ -317,7 +370,7 @@ function generateMappingTables(parsedData, srcResources) {
 }
 
 function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
-    const indexPath = '../input/pagecontent/xtehr-mapping.md';
+    const indexPath = '../ig-src/input/pagecontent/xtehr-mapping.md';
     console.log(`Generating mapping index: ${indexPath}`);
     const writable = fs.createWriteStream(indexPath);
     
