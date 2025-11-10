@@ -6,7 +6,7 @@
 
 The following table shows the mapping from EHDSImagingReport logical model elements to FHIR profiles.
 
-The source data for the mapping to other FHIR versions of this Implementation Guide can be found in the [Google spreadsheet](https://docs.google.com/spreadsheets/d/1-Eo2eh8iEj5PgzoiWoJdifhlkvXJDXdn5RwaS4-iq-Y/edit?usp=sharing).
+The source data for the mapping to other FHIR versions of this Implementation Guide can be found in the [xtehr-model-mapping.tsv](xtehr-model-mapping.tsv) file.
 
 {% if isR4 %}
 
