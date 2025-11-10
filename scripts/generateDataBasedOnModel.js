@@ -270,7 +270,7 @@ function generateMappingTables(parsedData, srcResources) {
         writable.write(`-->\n\n`);
         writable.write(`#### ${srcResource}\n\n`);
         writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
-        writable.write(`The source data for the mapping to other FHIR versions of this Implementation Guide can be found in the [Google spreadsheet](https://docs.google.com/spreadsheets/d/1-Eo2eh8iEj5PgzoiWoJdifhlkvXJDXdn5RwaS4-iq-Y/edit?usp=sharing).\n\n`);
+        writable.write(`The source data for the mapping to other FHIR versions of this Implementation Guide can be found in the [xtehr-model-mapping.tsv](xtehr-model-mapping.tsv) file.\n\n`);
         
         // R4 Table
         writable.write(`{% if isR4 %}\n\n`);
