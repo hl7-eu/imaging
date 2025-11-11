@@ -12,3 +12,29 @@ The actors defined in this specification are:
   ]
 }
 %}
+
+### Actors
+
+* **Creator**: creates and updates Imaging Report and publishes them in the format defined in this specification.
+* **Displayer**: displays an imaging report to the user.
+* **Processor**: accesses and processes the content of an imaging Report without changing it.
+
+### Use cases
+
+#### Display exisitng imaging reports for clinical analyses
+
+This is a core A clinician has retrieved a copy of an Imaging Report and displays it for analysis. The viewer renders the ....
+Summary
+Show rendered document/source document
+If available delve into details of the study.
+
+
+
+
+#### Analyze imaging reports
+
+#### Display exisitng imaging reports for clinical analyses
+
+
+
+### Security considerations
