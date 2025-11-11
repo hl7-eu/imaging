@@ -7,7 +7,8 @@ THe {{ehnImagingGuidelines}} requires that information is added that defines the
 
 In FHIR body locations can be represented in two ways: as a coded value or as a reference to a `BodyStructure` resource. The coded value is used when a code is sufficient. The `BodyStructure` is used when more information is needed such as laterality or to indicate morphology. Additionally, as is specified in {{dicomSr2fhir}} the information such as the DICOM tracking id (see [DICOM-SR-2-FHIR body structure](https://hl7.org/fhir/uv/dicom-sr/2024Sep/StructureDefinition-dicom-sr-tracking-identifiers.html)). The DICOM tracking id is used to track similar features across DICOM studies and reports.
 
-References to a body site are used in `ServiceRequestOrderEuImaging` (what part of the body is to be studied), `ProcedureEuImaging` (the body site the procedure is performed on) and `ImagingStudy.series` (the body site the series is imaging). In FHIR R5 both `ServiceRequestOrderEuImaging` and `ImagingStudy` allow references to `BodyStructure`. `Procedure` only supports a coded value.
+
+References to a body site are used in `ServiceRequestOrderEuImaging` (what part of the body is to be studied), `ProcedureEuImaging` (the body site the procedure is performed on) and `ImagingStudy.series` (the body site the series is imaging). In FHIR R4 all three `ServiceRequestOrderEuImaging`, `ImagingStudy`, and `Procedure` resources support only coded values, and not a reference to a BodyStructure.
 
 In the specification there are different approaches that can be taken towards representing body sites:
 

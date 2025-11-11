@@ -27,6 +27,8 @@ classDiagram
   note for ImagingStudyEuImaging "entry point for study"
 ```
 
+
+
 When modelling the IG, it is assumed that information related to the report will be gathered by starting at the {{DiagnosticReport}} and information related to the imaging study from the {{ImagingStudy}}.
 
 All information related to the report will referred to from the {{Composition}}. All important structured information used for searching will be referred to from the {{DiagnosticReport}}. The structure of the {{Composition}} is subject to change and less formal on the meaning on referred to resources. When possible, such references will be made from the {{DiagnosticReport}}.

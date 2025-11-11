@@ -48,7 +48,7 @@ In order to access the data, the URL's of the WADO/viewer endpoints are needed t
 
 #### Conclusion
 
-**Decision:** There will be a imaging-manifest documenting the information typically stored in a PACS that holds the Endpoint resources with the URL's that allow access to the content, this manifest is defined in {{manifest}}.
+**Decision:** There will be a imaging-manifest documenting the information typically stored in a PACS that holds the Endpoint resources with the URL's that allow access to the content, this manifest is defined in {% raw %}{{manifest}}{% endraw %}.
 
 **Decision:** There will be a imaging report documenting the radiology report which is not required to include the URL's to access the content.
 
