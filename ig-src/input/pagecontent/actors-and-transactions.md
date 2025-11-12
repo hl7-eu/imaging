@@ -35,3 +35,10 @@ If available delve into details of the study.
 
 
 ### Security considerations
+
+### Open issue
+ 
+ * Is translation and signing of the document in scope?
+   * Translation -> multiligual div https://build.fhir.org/languages.html
+   * Singing - use cannonical that excludes text
+   * 
