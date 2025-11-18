@@ -15,9 +15,9 @@ The actors defined in this specification are:
 
 ### Actors
 
-* **Creator**: creates and updates Imaging Report and publishes them in the format defined in this specification.
-* **Displayer**: displays an imaging report to the user.
-* **Processor**: accesses and processes the content of an imaging Report without changing it.
+* **Imaging-Report Content Creator**: creates and updates Imaging Report and publishes them in the format defined in this specification.
+* **Imaging-Report Content Displayer**: displays an imaging report to the user.
+* **Imaging-Report Content Processor**: accesses and processes the content of an imaging Report without changing it.
 
 ### Use cases
 
@@ -28,9 +28,6 @@ Summary
 Show rendered document/source document
 If available delve into details of the study.
 
-
-
-
 #### Analyze imaging reports
 
 #### Display exisitng imaging reports for clinical analyses
@@ -38,3 +35,10 @@ If available delve into details of the study.
 
 
 ### Security considerations
+
+### Open issue
+ 
+ * Is translation and signing of the document in scope?
+   * Translation -> multiligual div https://build.fhir.org/languages.html
+   * Singing - use cannonical that excludes text
+   * 
