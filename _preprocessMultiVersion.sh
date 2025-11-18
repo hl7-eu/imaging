@@ -14,7 +14,7 @@ for version in "${versions[@]}"; do
     echo remove all files from $build_dir
     # rm -Rf $build_dir/*
     echo Setting read-only permissions on $build_dir
-    chmod -R a+w $build_dir
+    # chmod -R a+w $build_dir./st   
     find $build_dir -maxdepth 1 -type f -exec rm -f {} +
     rm -Rf $build_dir/input
     rm -Rf $build_dir/ig-template
