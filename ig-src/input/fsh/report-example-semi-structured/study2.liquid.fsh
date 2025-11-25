@@ -23,8 +23,8 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 {{R4}}  * bodySite = 
 {{R5}}  * bodySite.concept = 
-            $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
+            $sct#239919000 "Entire Right foot (body structure)"	
+  * laterality = $sct#24028007 "Right lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
 * series[+]
@@ -34,8 +34,8 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 {{R4}}  * bodySite = 
 {{R5}}  * bodySite.concept = 
-        $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
+        $sct#239919000 "Entire right foot (body structure)"	
+  * laterality = $sct#24028007 "Right lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
 * series[+]
@@ -45,8 +45,8 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 {{R4}}  * bodySite = 
 {{R5}}  * bodySite.concept = 
-        $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
+        $sct#239919000 "Entire right foot (body structure)"	
+  * laterality = $sct#7771000 "Right lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
 * series[+]
@@ -56,7 +56,7 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 {{R4}}  * bodySite = 
 {{R5}}  * bodySite.concept = 
-        $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
+        $sct#239919000 "Entire right foot (body structure)"	
+  * laterality = $sct#7771000 "Right lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )

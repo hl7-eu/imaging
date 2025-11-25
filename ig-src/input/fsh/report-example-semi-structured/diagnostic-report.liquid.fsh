@@ -52,17 +52,14 @@ Rechter Fuß:
 * conclusion = "Beginnende Großzehengrundgelenksarthrose, links mehr als rechts. Z.n. Umstellungsosteotomie des MFK1 links."
 
 * presentedForm
-  * contentType = #application/pdf
-  * language = #de-DE
-{{R5}}  * pages = 1
-  * url = "./Binary/semi-structured-pdf"
+  * id = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
 
-Instance: BinarySemiStructuredReport
-InstanceOf: Binary
-Title: "Binary: semi-structured report"
-Description: "Binary resource holding the report pdf."
-Usage: #example
-* id = "semi-structured-pdf"
-* contentType = #application/pdf
+// Instance: BinarySemiStructuredReport
+// InstanceOf: Binary
+// Title: "Binary: semi-structured report"
+// Description: "Binary resource holding the report pdf."
+// Usage: #example
+// * id = "semi-structured-pdf"
+// * contentType = #application/pdf
+// // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
 // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
-* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
