@@ -76,6 +76,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * insert SliceElement( #value, code )
 * section.emptyReason from SectionEmptyReasonEuImaging (preferred)  
 * section obeys eu-imaging-composition-1
+* section obeys eu-imaging-composition-2
 * section contains 
     imagingstudy 1..1  and
     order 1..1 and
@@ -211,4 +212,9 @@ The `text` field of each section SHALL contain a textual representation of all l
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
 Severity: #error 
-Expression: "entry.empty().not() or emptyReason.exists() or extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
+Expression: "entry.empty().not() or emptyReason.exists() or section.exists() or extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
+
+Invariant: eu-imaging-composition-2
+Description: "A section must contain at least one of text, entries, or sub-sections."
+Severity: #error 
+Expression: "text.exists() or entry.exists() or section.exists()"
