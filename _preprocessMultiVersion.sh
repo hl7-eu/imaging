@@ -5,10 +5,10 @@ versions=("4.0.1" "5.0.0" )
 for version in "${versions[@]}"; do
     if [ "$version" = "4.0.1" ]; then
         context_version="R4"
-        build_dir="igs/imaging-r4"
+        build_dir="igs/r4"
     elif [ "$version" = "5.0.0" ]; then
         context_version="R5"
-        build_dir="igs/imaging-r5"
+        build_dir="igs/r5"
     fi
 
     echo remove all files from $build_dir

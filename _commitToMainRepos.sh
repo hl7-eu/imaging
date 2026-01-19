@@ -72,7 +72,9 @@ for version in "${versions[@]}"; do
   if git diff --cached --quiet; then
     echo "No changes to commit in $full_tgt_dir."
   else
-    git commit -m "Sync from https://github.com/hl7-eu/imaging for commit $main_repo_commit from $main_repo_url."
+    last_commit_message=$(git log -1 --pretty=%B)
+
+    git commit -m "$last_commit_message" -m "Sync from https://github.com/hl7-eu/imaging for commit $main_repo_commit from $main_repo_url."
     git push origin "$current_branch"
     echo "Committed and pushed changes in $full_tgt_dir."
   fi

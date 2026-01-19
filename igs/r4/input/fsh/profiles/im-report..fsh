@@ -6,6 +6,7 @@ Description: "Document Bundle for Imaging Report"
 
 * obeys dr-comp-author-org
 
+* identifier 1..1
 * type = #document
 * total ..0
 * link ..0
