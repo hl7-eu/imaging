@@ -6,6 +6,13 @@ Description: "Document Bundle for Imaging Report"
 
 * obeys dr-comp-author-org
 
+// Require indication of the profile of bundle and imaging report
+* meta
+  * profile 1..*
+    * insert SliceElement( #value, $this )
+  * profile contains imaging_report 1..1
+  * profile[imaging_report] = Canonical( BundleReportEuImaging )
+
 * type = #document
 * total ..0
 * link ..0

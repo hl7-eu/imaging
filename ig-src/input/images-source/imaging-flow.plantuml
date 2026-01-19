@@ -1,0 +1,19 @@
+Actor Clinician
+
+Clinician -> Registry++: search imaging reports
+Clinician <-- Registry--: <report summaries>
+
+note over Clinician: inspect report summary
+
+Clinician -> DocumentSource++: retrieve report
+Clinician <-- DocumentSource--: <report>
+
+note over Clinician: Inspect Report,\ndecide to see images
+
+Clinician -> Registry++: search for manifest
+Clinician <-- Registry--: <manifest>
+
+note over Clinician: inspect manifest,\ndecide images to view
+
+Clinician -> ImagingSource++: WADO-RS call
+Clinician <-- ImagingSource--: <image>
