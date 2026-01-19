@@ -135,8 +135,13 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry 
     * insert SliceElement( #profile, $this )
   * entry contains 
-      procedure 0..*
+      procedure 0..* and adverse-event 0..*
   * entry[procedure] only Reference(ProcedureEuImaging)
+    * ^short = "The imaging Procedure(s)"
+    * ^definition = "A reference the the procedure(s) in which the imaging study was performed."
+  * entry[adverse-event] only Reference(AdverseEvent)
+    * ^short = "AdverseEvent(s)"
+    * ^definition = "Possible AdverseEvents that occurred during the procedure."
 
 
 // ////////////////// COMPARISON SECTION //////////////////////////
