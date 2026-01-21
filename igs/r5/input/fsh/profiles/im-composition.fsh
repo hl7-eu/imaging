@@ -125,8 +125,21 @@ The `text` field of each section SHALL contain a textual representation of all l
 // // ///////////////////////////////// HISTORY SECTION ///////////////////////////////////////
 * section[history]
   * ^short = "History"
+  * ^definition = """
+  Additional clinical information about the patient or specimen that may affect service delivery or interpretation 
+  with information specific for imaging (i.e. Observation, Condition, Device, Medication Administration).
+  """
   * code = $loinc#11329-0 // "History general Narrative - Reported"
   * extension contains $note-url named note 0..*
+  * entry 
+    * insert SliceElement( #profile, [[$this.resolve()]] )
+  * entry contains vitals 0..* and problemlist 0..* and implants 0..* and medication 0..* 
+  * entry[vitals] only Reference(Observation)
+  * entry[problemlist] only Reference(Condition)
+  * entry[implants] only Reference(Device)
+  * entry[medication] only Reference(MedicationAdministration or MedicationRequest)
+
+  
 
 // // ///////////////////////////////// PROCEDURE SECTION ///////////////////////////////////////
 * section[procedure]
