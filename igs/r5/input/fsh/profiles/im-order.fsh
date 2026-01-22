@@ -1,7 +1,12 @@
 Profile: ServiceRequestOrderEuImaging
 Parent: $EuServiceRequest
 Title: "ServiceRequest: Imaging Order"
-Description: "This profile on ServiceRequest represents the order for the Imaging Study and report."
+Description: """
+This profile on ServiceRequest represents the order for the Imaging Study and report. In DICOM this is referred
+to as the *Requested Procedure*. The `code` element represents the requested imaging procedure type which includes
+the requested modality.
+"""
+
 * insert SetFmmAndStatusRule( 1, draft )
 
 * category 1..*
@@ -13,6 +18,10 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
   * insert SliceElement( #value, type )
 * identifier contains accessionNumber 0..1
 * identifier[accessionNumber] only AccessionNumberIdentifierEuImaging
+
+* code
+  * ^short = "Requested procedure"
+* code from ProcedureEuImagingType (example)
 
 //R4* supportingInfo.extension contains 
 //R4    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
@@ -49,7 +58,6 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 //   * insert SetPopulateIfKnown
 //   * ^short = "Clinical question/reason for the order"
 //   * ^definition = "The reason for the order. Can be coded, textual or a reference to a structured element."
-
 
 
 

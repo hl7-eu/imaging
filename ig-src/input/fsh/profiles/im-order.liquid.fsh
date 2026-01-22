@@ -1,7 +1,12 @@
 Profile: ServiceRequestOrderEuImaging
 Parent: $EuServiceRequest
 Title: "ServiceRequest: Imaging Order"
-Description: "This profile on ServiceRequest represents the order for the Imaging Study and report."
+Description: """
+This profile on ServiceRequest represents the order for the Imaging Study and report. In DICOM this is referred
+to as the *Requested Procedure*. The `code` element represents the requested imaging procedure type which includes
+the requested modality.
+"""
+
 * insert SetFmmAndStatusRule( 1, draft )
 
 * category 1..*
@@ -13,6 +18,10 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
   * insert SliceElement( #value, type )
 * identifier contains accessionNumber 0..1
 * identifier[accessionNumber] only AccessionNumberIdentifierEuImaging
+
+* code
+  * ^short = "Requested procedure"
+* code from ProcedureEuImagingType (example)
 
 {{R4}}* supportingInfo.extension contains 
 {{R4}}    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
@@ -52,16 +61,15 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 
 
 
-
 Mapping: DicomToServiceRequestOrderEuImaging
 Source: ServiceRequestOrderEuImaging
 Target: "http://nema.org/dicom"
 Title: "Mapping from DICOM to Imaging Order"
 Description: "Mapping from DICOM to Imaging Order."
-* identifier[accessionNumber] -> "AccessionNumber (0008,0050)"
-* subject -> "(0010/*)"
-* note -> "RequestedProcedureDescription (0040,0100)"
-* code -> "RequestedProcedureCodeSequence (0040,1001)"
+{{R }}* identifier[accessionNumber] -> "AccessionNumber (0008,0050)"
+{{R }}* subject -> "(0010/*)"
+{{R }}* note -> "RequestedProcedureDescription (0040,0100)"
+{{R }}* code -> "RequestedProcedureCodeSequence (0040,1001)"
 {{R4}}* extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
 {{R5}}* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
 {{R4}}* extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
