@@ -131,18 +131,22 @@ The `text` field of each section SHALL contain a textual representation of all l
 // // ///////////////////////////////// PROCEDURE SECTION ///////////////////////////////////////
 * section[procedure]
   * ^short = "Procedure"
+  * ^definition = "This section holds information related to the (performed) procedure(s) the generated the imaging study."
   * code = $loinc#55111-9 // "Current imaging procedure descriptions Document"
   * extension contains $note-url named note 0..*
   * entry 
     * insert SliceElement( #profile, $this )
   * entry contains 
-      procedure 0..* and adverse-event 0..*
+      procedure 0..* and adverse-event 0..* and radiation-dose 0..*
   * entry[procedure] only Reference(ProcedureEuImaging)
     * ^short = "The imaging Procedure(s)"
     * ^definition = "A reference the the procedure(s) in which the imaging study was performed."
   * entry[adverse-event] only Reference(AdverseEvent)
     * ^short = "AdverseEvent(s)"
     * ^definition = "Possible AdverseEvents that occurred during the procedure."
+  * entry[radiation-dose] only Reference(ObservationRadiationDoseEuImaging)
+    * ^short = "Radiation-dose information"
+    * ^definition = "Information on radiation the patient was exposed to during the procedure."
 
 
 // ////////////////// COMPARISON SECTION //////////////////////////

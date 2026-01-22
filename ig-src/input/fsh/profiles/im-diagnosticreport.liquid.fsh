@@ -173,9 +173,9 @@ Context: DiagnosticReport
 Extension: HL7IDRImagingProcedureExt
 Title: "Extension: HL7IDR Imaging Procedure"
 Id: HL7IDRImagingProcedure
-Description: "Imaging procedure used for the imaging acquisition"
+Description: "Imaging procedure used for the imaging acquisition and procedure specific information."
 Context: DiagnosticReport
-* value[x] only Reference(ProcedureEuImaging)
+* value[x] only Reference(ProcedureEuImaging or AdverseEvent or ObservationRadiationDoseEuImaging)
 
 Extension: HL7IDRFindingExt
 Title: "Extension: HL7IDR KeyImage Finding"
