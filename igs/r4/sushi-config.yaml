@@ -34,7 +34,6 @@ dependencies:
   
   hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
   
-  
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions
@@ -42,7 +41,7 @@ dependencies:
   fhir.dicom:
     id: DICOM
     uri: http://fhir.org/packages/fhir.dicom
-    version: 2025.2.20250411
+    version: 2025.3.20250714
   
 pages:
   index.md:
