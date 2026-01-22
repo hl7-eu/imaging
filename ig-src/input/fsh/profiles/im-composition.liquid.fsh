@@ -63,9 +63,9 @@ The `text` field of each section SHALL contain a textual representation of all l
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
-* category 1..*
+* category 0..*
   * insert SliceElement( #value, $this )
-* category contains diagnostic-service 1..1 
+* category contains diagnostic-service 0..1 
 * category[diagnostic-service] from $diagnostic-service-sections (required)
 
 
