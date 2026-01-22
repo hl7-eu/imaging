@@ -165,9 +165,11 @@ The `text` field of each section SHALL contain a textual representation of all l
     * insert SliceElement( #profile, [[resolve()]] )
   * entry contains 
       finding 0..* and
-      keyimage 0..*
+      keyimage 0..* and
+      image 0..*
   * entry[finding] only Reference(ObservationFindingEuImaging)
-  * entry[keyimage] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging)
+  * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
+  * entry[image] only Reference( DocumentReference )
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]

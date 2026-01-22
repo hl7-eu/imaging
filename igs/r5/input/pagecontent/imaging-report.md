@@ -68,7 +68,7 @@ When there are significant numbers of findings, the imaging clinician will typic
 
 An important distinction between Findings and Impressions is that Findings capture what the imaging clinician saw in the image, while Impressions capture what they inferred/concluded. The findings might record a radiolucency, while the impression records a fracture. There are some cases where the two overlap, but generally imaging clinicians try to capture in the Findings what the significant image features are and strive in the Impressions to communicate to the referring physician what they think those represent in clinical terms.
 
-In this specification, findings are represented as resources following the {{ObservationFindingEuImaging}} profile. Optionally, this section can also hold one or more key image resource represented by either {{ImagingSelectionKeyImageEuImaging}} or {{DocumentReferenceKeyImageEuImaging}}.
+In this specification, findings are represented as resources following the {{ObservationFindingEuImaging}} profile. Optionally, this section can also hold one or more key image resources represented by either {{ImagingSelectionKeyImageEuImaging}} or {{DocumentReferenceKeyImageEuImaging}} or other relevant images represented by a {{DocumentReference}}.
 
 #### Impression
 

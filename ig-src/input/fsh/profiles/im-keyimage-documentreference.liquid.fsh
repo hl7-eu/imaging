@@ -1,8 +1,11 @@
 Profile: DocumentReferenceKeyImageEuImaging
 Parent: $EuDocumentReference
 Title: "DocumentReference: Key Image"
-Description: """A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n
-When the resource represents a DICOM instance it SHALL contain a the SOP Instance UID in the identifier element. When the resource represents a DICOM series it SHALL contain the Series Instance UID in the identifier element. 
+Description: """A document containing key images for a patient. It can refer to a DICOM or non-DICOM image. 
+When referring to a DICOM image, the DocumentReference.content.attachment.url should be a WADO-URI. When referring 
+to a non-DICOM image, the DocumentReference.content.attachment.url should be a direct URL to the image.\n
+When the resource represents a DICOM instance it SHALL contain a the SOP Instance UID in the identifier element. 
+When the resource represents a DICOM series it SHALL contain the Series Instance UID in the identifier element. 
 """
 * insert SetFmmAndStatusRule( 1, draft )
 
@@ -38,6 +41,9 @@ When the resource represents a DICOM instance it SHALL contain a the SOP Instanc
 {{R5}}* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
 {{R5}}* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 {{R5}}* modality 1..1
+
+// type of image reference
+* type from http://terminology.hl7.org/ValueSet/image-reference-type (preferred)
 
 * category 1..*
   * insert SliceElement( #profile, $this )
