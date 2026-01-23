@@ -182,14 +182,14 @@ Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
+* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference {% if isR4 %} or Media {% endif %}  )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"
 Id: HL7IDRImpression
 Description: "Impression in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging )
+* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
 
 Extension: HL7IDRRecommendationExt
 Title: "Extension: HL7IDR Recommendation"

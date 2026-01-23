@@ -33,9 +33,9 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
-* category 1..*
+* category 0..*
   * insert SliceElement( #value, $this )
-* category contains diagnostic-service 1..1 
+* category contains diagnostic-service 0..1 
 * category[diagnostic-service] from $diagnostic-service-sections (required)
 
 * subject only Reference($EuPatient)
@@ -175,21 +175,21 @@ Title: "Extension: HL7IDR Imaging Procedure"
 Id: HL7IDRImagingProcedure
 Description: "Imaging procedure used for the imaging acquisition and procedure specific information."
 Context: DiagnosticReport
-* value[x] only Reference(ProcedureEuImaging or AdverseEvent or ProcedureEuImaging)
+* value[x] only Reference(ProcedureEuImaging or AdverseEvent or ObservationRadiationDoseEuImaging)
 
 Extension: HL7IDRFindingExt
 Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
+* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference   )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"
 Id: HL7IDRImpression
 Description: "Impression in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging )
+* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
 
 Extension: HL7IDRRecommendationExt
 Title: "Extension: HL7IDR Recommendation"

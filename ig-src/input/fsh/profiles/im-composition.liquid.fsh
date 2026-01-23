@@ -173,7 +173,8 @@ The `text` field of each section SHALL contain a textual representation of all l
       image 0..*
   * entry[finding] only Reference(ObservationFindingEuImaging)
   * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
-  * entry[image] only Reference( DocumentReference )
+  * entry[image] only Reference( DocumentReference {% if isR4 %} or Media {% endif %} )
+
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
