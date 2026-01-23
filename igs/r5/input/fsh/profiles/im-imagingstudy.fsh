@@ -27,6 +27,12 @@ This profile represents an imaging study instance.
 // * insert EndpointTypes 
 
 * series
+
+// bodySite profiling to require one or more AnatomicalRegion code
+  * bodySite only BodysiteCodeableReferenceEuImaging
+//R4  * bodySite
+//R4    * extension contains AnatomicalRegion named anatomical-region 1..1
+   
   * performer.function from ImagingStudyEuImagingPerformerTypeVS (extensible)
   * performer
     * insert SliceElement( #value, function )
@@ -70,8 +76,34 @@ Context: ImagingStudy.series.instance
 * insert SetFmmAndStatusRule( 1, draft )
 * value[x] only integer
 
+Extension: AnatomicalRegion
+Title: "Extension: Anatomical Region"
+Description: "The anatomical region in an ImagingStudy instance. This is additional information next to ImagingStudy.series.bodySite."
+Context: Coding
+* insert SetFmmAndStatusRule( 1, draft )
+* value[x] only BodysiteCodeableConceptEuImaging
+
+Profile: BodysiteCodeableConceptEuImaging
+Parent: CodeableConcept
+Title: "CodeableConcept: ImagingStudy body site"
+Description: "This profile represents a `CodeableConcept` requirement for ImagingStudy body sites. "
+* insert SetFmmAndStatusRule( 1, draft )
+* coding
+  * insert SliceElement( #value, $this )
+* coding contains anatomical-region 1..*
+* coding[anatomical-region] from AnatomicalRegionVs (required)
+  
+
+Profile: BodysiteCodeableReferenceEuImaging
+Parent: CodeableReference
+Title: "ImagingStudy: General"
+Description: "This profile represents an imaging study instance."
+* insert SetFmmAndStatusRule( 1, draft )
+* concept 1..1
+* concept only BodysiteCodeableConceptEuImaging
+
+
 Invariant: im-imagingstudy-01
 Description: "A DICOM instance UID must start with 'urn:oid:'"
 Severity: #warning
 Expression: "identifier.where(system='urn:dicom:uid').value.startsWith('urn:oid:')"
-

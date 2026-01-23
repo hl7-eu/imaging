@@ -27,6 +27,12 @@ This profile represents an imaging study instance.
 // * insert EndpointTypes 
 
 * series
+
+// bodySite profiling to require one or more AnatomicalRegion code
+{{R5}}  * bodySite only BodysiteCodeableReferenceEuImaging
+{{R4}}  * bodySite
+{{R4}}    * extension contains AnatomicalRegion named anatomical-region 1..1
+   
   * performer.function from ImagingStudyEuImagingPerformerTypeVS (extensible)
   * performer
     * insert SliceElement( #value, function )
@@ -69,6 +75,33 @@ Description: "The number of frames in an ImagingStudy instance as required by Xt
 Context: ImagingStudy.series.instance
 * insert SetFmmAndStatusRule( 1, draft )
 * value[x] only integer
+
+Extension: AnatomicalRegion
+Title: "Extension: Anatomical Region"
+Description: "The anatomical region in an ImagingStudy instance. This is additional information next to ImagingStudy.series.bodySite."
+Context: Coding
+* insert SetFmmAndStatusRule( 1, draft )
+* value[x] only BodysiteCodeableConceptEuImaging
+
+Profile: BodysiteCodeableConceptEuImaging
+Parent: CodeableConcept
+Title: "CodeableConcept: ImagingStudy body site"
+Description: "This profile represents a `CodeableConcept` requirement for ImagingStudy body sites. "
+* insert SetFmmAndStatusRule( 1, draft )
+* coding
+  * insert SliceElement( #value, $this )
+* coding contains anatomical-region 1..*
+* coding[anatomical-region] from AnatomicalRegionVs (required)
+  
+
+{{R5}}Profile: BodysiteCodeableReferenceEuImaging
+{{R5}}Parent: CodeableReference
+{{R5}}Title: "ImagingStudy: General"
+{{R5}}Description: "This profile represents an imaging study instance."
+{{R5}}* insert SetFmmAndStatusRule( 1, draft )
+{{R5}}* concept 1..1
+{{R5}}* concept only BodysiteCodeableConceptEuImaging
+
 
 Invariant: im-imagingstudy-01
 Description: "A DICOM instance UID must start with 'urn:oid:'"

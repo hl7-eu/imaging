@@ -21,9 +21,12 @@ Usage: #example
   * number = 1
   * description = "PD FatSat 3D (1.0mm) sagittal"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-//R4  * bodySite = 
-  * bodySite.concept = 
-            $sct#239919000 "Entire left foot (body structure)"	
+//R4  * bodySite = $sct#239830003 "Entire right foot (body structure)"	
+//R4    * extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
+  * bodySite
+    * concept
+      * coding[+] = $sct#239830003 "Entire right foot (body structure)"	
+      * coding[+] = $sct#61685007 "Leg Lower limb structure"
   * laterality = $sct#7771000 "Left lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
@@ -32,31 +35,13 @@ Usage: #example
   * number = 2
   * description = "T1 (2.5mm) axial"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-//R4  * bodySite = 
-  * bodySite.concept = 
-        $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
+//R4  * bodySite = $sct#239830003 "Entire right foot (body structure)"	
+//R4    * extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
+  * bodySite
+    * concept
+      * coding[+] = $sct#239830003 "Entire right foot (body structure)"	
+      * coding[+] = $sct#61685007 "Lower extremity"
+  * laterality = $sct#24028007 "Right lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
-* series[+]
-  * uid = "1.2.276.2000010.784733.3" // invented - not there in the report
-  * number = 3
-  * description = "T2 (2.5mm) axial"
-  * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-//R4  * bodySite = 
-  * bodySite.concept = 
-        $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
-  * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
-  * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
-* series[+]
-  * uid = "1.2.276.2000010.784733.4" // invented - not there in the report
-  * number = 4
-  * description = "PDW FatSat (2.5mm) axial"
-  * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
-//R4  * bodySite = 
-  * bodySite.concept = 
-        $sct#239919000 "Entire left foot (body structure)"	
-  * laterality = $sct#7771000 "Left lateral"
-  * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
-  * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
+  
