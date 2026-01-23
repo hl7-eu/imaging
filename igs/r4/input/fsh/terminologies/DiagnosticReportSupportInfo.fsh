@@ -1,6 +1,6 @@
 CodeSystem: DiagnosticReportSupportingInfoCodeSystem
 Id: codesystem-diagnostic-report-support-info
-Title: "Diagnostic Report Support Info Code System"
+Title: "ValueSet: Diagnostic Report Support Info Code System"
 Description: "Code system for codes to be used in `DiagnosticReport.supportInfo` for imaging reports."
 * insert SetFmmAndStatusRule( 1, draft )
 * ^experimental = false
@@ -12,7 +12,7 @@ Description: "Code system for codes to be used in `DiagnosticReport.supportInfo`
 
 ValueSet: DiagnosticReportSupportingInfoVCodes
 Id: valueset-diagnosticreport-report-support-info
-Title: "DiagnosticReport supportInfo codes"
+Title: "ValueSet: DiagnosticReport supportInfo codes"
 Description: "Codes to be used in `DiagnosticReport.supportInfo` for imaging reports."
 * insert SetFmmAndStatusRule( 1, draft )
 * ^experimental = false

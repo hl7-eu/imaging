@@ -1,6 +1,6 @@
 CodeSystem: MissingDicomTerminology
 Id: codesystem-missing-dicom-terminology
-Title: "Missing DICOM Terminology"
+Title: "ValueSet: Missing DICOM Terminology"
 Description: "Code system for codes that are defined in DICOM but for which no matching code system is available in FHIR."
 * insert SetFmmAndStatusRule( 1, draft )
 * ^experimental = false

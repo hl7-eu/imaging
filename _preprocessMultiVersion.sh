@@ -17,6 +17,7 @@ for version in "${versions[@]}"; do
     chmod -R a+w $build_dir
     find $build_dir -maxdepth 1 -type f -exec rm -f {} +
     rm -Rf $build_dir/input
+    rm -Rf $build_dir/output
     rm -Rf $build_dir/ig-template
     
     echo copy all files to  $build_dir
