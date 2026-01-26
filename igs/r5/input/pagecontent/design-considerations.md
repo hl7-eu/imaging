@@ -24,4 +24,6 @@ The sections in this chapter elaborate on the design considerations and decision
 
 {% include design-consideration-keyimages.md %}
 
+{% include design-consideration-legacy-data.md %}
+
 
