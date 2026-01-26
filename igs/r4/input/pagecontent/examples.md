@@ -8,3 +8,7 @@ This section illustrates the way imaging reports can be created using these IG's
 4. An imaging report exploring many of the structured data elements ([link](./example-structured.html))
 
 Please note that these examples illustrate the way this IG can be used to create imaging reports. No claim or guarantee is made about the clinical validity of the choices.
+
+### Legacy Data Considerations
+
+The examples in this section demonstrate the creation of imaging reports that conform to this implementation guide. However, implementers should be aware that historical imaging data may not conform to these profiles.
