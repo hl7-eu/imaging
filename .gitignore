@@ -10,4 +10,7 @@ ig-template/**/*index.json
 publisher.jar
 translations/**
 
-subigs/**
+subigs/**.github/workflows/deploy-to-repos.yml
+.github/workflows/copilot-instructions.md
+.vscode/.env.mcp-atlassian
+.vscode/mcp.json
