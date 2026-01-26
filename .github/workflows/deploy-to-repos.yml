@@ -26,14 +26,14 @@ jobs:
           ./_preprocessMultiVersion.sh
 
       - name: Update IG publisher
-        working-directory: ./igs/imaging-r4
+        working-directory: ./igs/r4
         run: |
           pwd
           chmod +x ./_updatePublisher.sh
           ./_updatePublisher.sh -y
       
       - name: Validate R4 IG
-        working-directory: ./igs/imaging-r4
+        working-directory: ./igs/r4
         run: |
           pwd
           ./_genonce.sh
@@ -57,14 +57,14 @@ jobs:
           ./_preprocessMultiVersion.sh
 
       - name: Update IG publisher
-        working-directory: ./igs/imaging-r5
+        working-directory: ./igs/r5
         run: |
           pwd
           chmod +x ./_updatePublisher.sh
           ./_updatePublisher.sh -y
       
       - name: Validate R5 IG
-        working-directory: ./igs/imaging-r5
+        working-directory: ./igs/r5
         run: |
           pwd
           ./_genonce.sh
@@ -120,11 +120,11 @@ jobs:
           # Remove all content from target repo except .git
           find ./r4-repo -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-          # Copy imaging-r4 content to root of target repository
-          cp -r ./igs/imaging-r4/* ./r4-repo/
+          # Copy r4 content to root of target repository
+          cp -r ./igs/r4/* ./r4-repo/
           
           # Ensure hidden files are copied too (excluding .git)
-          find ./igs/imaging-r4 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
+          find ./igs/r4 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
 
       - name: Commit and push R4 changes
         working-directory: ./r4-repo
@@ -197,11 +197,11 @@ jobs:
           # Remove all content from target repo except .git
           find ./r5-repo -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-          # Copy imaging-r5 content to root of target repository
-          cp -r ./igs/imaging-r5/* ./r5-repo/
+          # Copy r5 content to root of target repository
+          cp -r ./igs/r5/* ./r5-repo/
           
           # Ensure hidden files are copied too (excluding .git)
-          find ./igs/imaging-r5 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
+          find ./igs/r5 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
 
       - name: Commit and push R5 changes
         working-directory: ./r5-repo
