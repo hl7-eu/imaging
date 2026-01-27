@@ -25,22 +25,22 @@ When the resource represents a DICOM series it SHALL contain the Series Instance
   * system = "urn:ietf:rfc:3986"
   * value 1..1
 
-{{R4}}* extension contains 	
-{{R4}}     http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.basedOn named basedOn 0..* and
-{{R4}}     http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality named modality 1..1 
-{{R4}}* extension
-{{R4}}  * ^slicing.discriminator[1].type = #value
-{{R4}}  * ^slicing.discriminator[=].path = "value"
-{{R4}}* extension[basedOn] contains ServiceRequestOrderEuImagingaccession 0..1
-{{R4}}* extension[basedOn][ServiceRequestOrderEuImagingaccession].value[x] only Reference(ServiceRequestOrderEuImaging)
-{{R4}}  * identifier 1..1
-{{R4}}  * identifier only AccessionNumberIdentifierEuImaging
+//R4* extension contains 	
+//R4     http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.basedOn named basedOn 0..* and
+//R4     http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality named modality 1..1 
+//R4* extension
+//R4  * ^slicing.discriminator[1].type = #value
+//R4  * ^slicing.discriminator[=].path = "value"
+//R4* extension[basedOn] contains ServiceRequestOrderEuImagingaccession 0..1
+//R4* extension[basedOn][ServiceRequestOrderEuImagingaccession].value[x] only Reference(ServiceRequestOrderEuImaging)
+//R4  * identifier 1..1
+//R4  * identifier only AccessionNumberIdentifierEuImaging
 
-{{R5}}* basedOn
-{{R5}}  * insert SliceElement( #type, $this )
-{{R5}}* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
-{{R5}}* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
-{{R5}}* modality 1..1
+* basedOn
+  * insert SliceElement( #type, $this )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
+* modality 1..1
 
 // type of image reference
 * type from http://terminology.hl7.org/ValueSet/image-reference-type (preferred)

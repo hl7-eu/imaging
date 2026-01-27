@@ -1,14 +1,15 @@
 #!/bin/bash
 
 versions=("4.0.1" "5.0.0" )
+ig_base="imaging"
 
 for version in "${versions[@]}"; do
     if [ "$version" = "4.0.1" ]; then
         context_version="R4"
-        build_dir="igs/r4"
+        build_dir="igs/${ig_base}-r4"
     elif [ "$version" = "5.0.0" ]; then
         context_version="R5"
-        build_dir="igs/r5"
+        build_dir="igs/${ig_base}-r5"
     fi
 
     echo remove all files from $build_dir
@@ -17,6 +18,7 @@ for version in "${versions[@]}"; do
     chmod -R a+w $build_dir
     find $build_dir -maxdepth 1 -type f -exec rm -f {} +
     rm -Rf $build_dir/input
+    rm -Rf $build_dir/output
     rm -Rf $build_dir/ig-template
     
     echo copy all files to  $build_dir

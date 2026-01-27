@@ -1,12 +1,12 @@
-id: hl7.fhir.eu.imaging-{{r-code}}
-canonical: http://hl7.eu/fhir/imaging-{{r-code}}
+id: hl7.fhir.eu.imaging-r5
+canonical: http://hl7.eu/fhir/imaging-r5
 name: HL7EuImagingStudyReport
-title: HL7 Europe Imaging Report {{R-code}}
-description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR {{R-code}}.
+title: HL7 Europe Imaging Report R5
+description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR R5.
 status: draft # draft | active | retired | unknown
 experimental: false
 version: 0.1.1-build
-fhirVersion: {{fhirVersion}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
+fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -30,10 +30,8 @@ dependencies:
   hl7.fhir.uv.extensions: 5.3.0-ballot
   hl7.fhir.uv.ips: 1.1.0
   hl7.fhir.eu.extensions: current
-  hl7.fhir.eu.base{{eu-core-r-code}}: current
-  {% if isR4 %}
-  hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
-  {% endif %}
+  hl7.fhir.eu.base-r5: current
+  
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions
@@ -146,12 +144,10 @@ menu:
     Structural: artifacts-structural.html
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
-{% if isR4 %}
-  R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
-{% endif %}
-{% if isR5 %}
+
+
   R4: https://build.fhir.org/ig/hl7-eu/imaging-r4/
-{% endif %}
+
   
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
 # │  Uncomment the properties below to configure additional properties on the ImplementationGuide  │

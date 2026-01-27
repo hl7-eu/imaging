@@ -42,13 +42,13 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 
 // * issued 1..1  -> we use obligations instead
 
-{{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
-{{R4}}* extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
-{{R4}}* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
+* extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
+* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
 
-{{R5}}* note 
-{{R5}}  * extension contains $annotation-type named annotation-type 0..*
-{{R5}}  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+//R5* note 
+//R5  * extension contains $annotation-type named annotation-type 0..*
+//R5  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
 
 // * composition 0..0 -> we use composition
 // * media 0..0 // not in not in keyimages section
@@ -76,24 +76,24 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 """
 
 // http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study
-{{R4}}* imagingStudy only Reference(ImagingStudyEuImaging)
-{{R4}}* imagingStudy ^short = "Study subject to this report"
-{{R4}}* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+* imagingStudy only Reference(ImagingStudyEuImaging)
+* imagingStudy ^short = "Study subject to this report"
+* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
-{{R5}}* study only Reference(ImagingStudyEuImaging)
-{{R5}}* study ^short = "Study subject to this report"
-{{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+//R5* study only Reference(ImagingStudyEuImaging)
+//R5* study ^short = "Study subject to this report"
+//R5* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
 
 
 // refer to the mandatory composition
-{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
-{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
-{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
+* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
+* extension[composition] ^short = "Imaging Diagnostic Report"
+* extension[composition].valueReference only Reference(CompositionEuImaging)
 
-{{R5}}* composition 1..1
-{{R5}}* composition ^short = "Imaging Diagnostic Report"
-{{R5}}* composition only Reference(CompositionEuImaging)
+//R5* composition 1..1
+//R5* composition ^short = "Imaging Diagnostic Report"
+//R5* composition only Reference(CompositionEuImaging)
 
 
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
@@ -182,7 +182,7 @@ Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference {% if isR4 %} or Media {% endif %}  )
+* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference  or Media   )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"
