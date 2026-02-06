@@ -1,0 +1,225 @@
+name: Validate and Deploy to Separate Repositories
+
+on:
+  push:
+    branches: ['**']  # Trigger on any branch push
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  # Validation jobs run first
+  validate-r4:
+    runs-on: ubuntu-latest
+    name: Validate R4 IG
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Preprocess
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: Update IG publisher
+        working-directory: ./igs/imaging-r4
+        run: |
+          pwd
+          chmod +x ./_updatePublisher.sh
+          ./_updatePublisher.sh -y
+      
+      - name: Validate R4 IG
+        working-directory: ./igs/imaging-r4
+        run: |
+          pwd
+          ./_genonce.sh
+
+  validate-r5:
+    runs-on: ubuntu-latest
+    name: Validate R5 IG
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Preprocess
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: Update IG publisher
+        working-directory: ./igs/imaging-r5
+        run: |
+          pwd
+          chmod +x ./_updatePublisher.sh
+          ./_updatePublisher.sh -y
+      
+      - name: Validate R5 IG
+        working-directory: ./igs/imaging-r5
+        run: |
+          pwd
+          ./_genonce.sh
+
+  # Deployment jobs only run if validation passes
+  deploy-r4:
+    runs-on: ubuntu-latest
+    needs: [validate-r4, validate-r5]  # Wait for both validations to pass
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for proper branch handling
+          token: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Setup Git configuration
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Preprocess files
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: Clone R4 target repository
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          R4_REPO_URL: ${{ vars.R4_REPO_URL || 'oijauregui/ehdsimaging-r4' }}
+        run: |
+          git clone https://$DEPLOY_TOKEN@github.com/$R4_REPO_URL.git r4-repo
+
+      - name: Prepare R4 repository branch
+        working-directory: ./r4-repo
+        run: |
+          # Get current branch name
+          BRANCH_NAME="${{ github.ref_name }}"
+          echo "Working with branch: $BRANCH_NAME"
+          
+          # Check if branch exists remotely
+          if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME exists remotely, checking out"
+            git checkout $BRANCH_NAME
+          else
+            echo "Branch $BRANCH_NAME doesn't exist, creating new branch"
+            git checkout -b $BRANCH_NAME
+          fi
+
+      - name: Sync R4 content
+        run: |
+          # Remove all content from target repo except .git
+          find ./r4-repo -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+
+          # Copy imaging-r4 content to root of target repository
+          cp -r ./igs/imaging-r4/* ./r4-repo/
+          
+          # Ensure hidden files are copied too (excluding .git)
+          find ./igs/imaging-r4 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
+
+      - name: Commit and push R4 changes
+        working-directory: ./r4-repo
+        run: |
+          # Create a build trigger file to ensure there's always a commit for auto-ig-builder
+          echo "Build triggered at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" > .build-trigger
+          echo "Source commit: ${{ github.sha }}" >> .build-trigger
+          echo "Source branch: ${{ github.ref_name }}" >> .build-trigger
+          
+          git add -A
+          
+          # Always commit to ensure auto-ig-builder triggers
+          if git diff --staged --quiet; then
+            echo "No content changes, but creating trigger commit for auto-ig-builder"
+            git commit -m "Trigger auto-ig-builder - no content changes - source: ${{ github.sha }}"
+          else
+            git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
+          fi
+          
+          git push origin ${{ github.ref_name }}
+          echo "R4 repository updated successfully - auto-ig-builder should trigger"
+
+  deploy-r5:
+    runs-on: ubuntu-latest
+    needs: [validate-r4, validate-r5]  # Wait for both validations to pass
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for proper branch handling
+          token: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Setup Git configuration
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Preprocess files
+        run: |
+          chmod u+x *.sh
+          ./_preprocessMultiVersion.sh
+
+      - name: Clone R5 target repository
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          R5_REPO_URL: ${{ vars.R5_REPO_URL || 'oijauregui/ehdsimaging-r5' }}
+        run: |
+          git clone https://$DEPLOY_TOKEN@github.com/$R5_REPO_URL.git r5-repo
+
+      - name: Prepare R5 repository branch
+        working-directory: ./r5-repo
+        run: |
+          # Get current branch name
+          BRANCH_NAME="${{ github.ref_name }}"
+          echo "Working with branch: $BRANCH_NAME"
+          
+          # Check if branch exists remotely
+          if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME exists remotely, checking out"
+            git checkout $BRANCH_NAME
+          else
+            echo "Branch $BRANCH_NAME doesn't exist, creating new branch"
+            git checkout -b $BRANCH_NAME
+          fi
+
+      - name: Sync R5 content
+        run: |
+          # Remove all content from target repo except .git
+          find ./r5-repo -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+
+          # Copy imaging-r5 content to root of target repository
+          cp -r ./igs/imaging-r5/* ./r5-repo/
+          
+          # Ensure hidden files are copied too (excluding .git)
+          find ./igs/imaging-r5 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
+
+      - name: Commit and push R5 changes
+        working-directory: ./r5-repo
+        run: |
+          # Create a build trigger file to ensure there's always a commit for auto-ig-builder
+          echo "Build triggered at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" > .build-trigger
+          echo "Source commit: ${{ github.sha }}" >> .build-trigger
+          echo "Source branch: ${{ github.ref_name }}" >> .build-trigger
+          
+          git add -A
+          
+          # Always commit to ensure auto-ig-builder triggers
+          if git diff --staged --quiet; then
+            echo "No content changes, but creating trigger commit for auto-ig-builder"
+            git commit -m "Trigger auto-ig-builder - no content changes - source: ${{ github.sha }}"
+          else
+            git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
+          fi
+          
+          git push origin ${{ github.ref_name }}
+          echo "R5 repository updated successfully - auto-ig-builder should trigger"
