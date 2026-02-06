@@ -4,6 +4,9 @@ There are a number of angles to look at the use cases. One is based on the diffe
 
 ## Use Cases based on Actors and Obligations
 A number of actors and use cases have been identified as a minimal set of functionalities that are needed to support the use of the EHDS Imaging Report specification. These use cases are described in the following figure.
+
+TBD: harmonize with the actors and transactions page and add obligations
+
 <figure>
   {% include ehds-actors-usecases.svg %}
   <figcaption>Figure: EHDS Imaging Report Functional Use Cases</figcaption>
@@ -138,3 +141,6 @@ This case builds on top of the previous one, but in this case the findings and i
 It is expected that most systems will not be able to produce this level of structure in the short term, but it is important to have it as a long term goal, as it allows to fully leverage the potential of the FHIR format for imaging reports.
 
 ## Alignment between IHE IDR and EHDS Imaging Report IG
+This Specification is being aligned with the {{iheIDR}}, as detailed in [Imaging Report](imaging-report.html), and it is expected that implementations of this IG can be conformant with the IHE IDR profile. An IDR resource might not be valid against this is specification, as this is model includes further Europe-specific contrainst. 
+The main difference between the two specifications are that the IHE IDR profile is focused on the exchange of imaging reports with a resource-level acces, while this IG also enables the exchange of imaging reports with a document-level access, through the use of the `DocumentReference` resource as a wrapper for the `Bundle` containing the report. The second difference is that this IG has a tigher integration between the imaging report and imaging study, achievend through the [IHE MADO (Manifest-based Access to DICOM Objects) profile](https://euridice.org/mado/), while the IHE IDR profile is more agnostic in this regard. 
+The alignment between the two specifications is being achieved through a close collaboration between the teams working on both specifications, and through the use of common resources and data structures where possible.
