@@ -60,6 +60,8 @@ pages:
       title: Copyright
   actors-and-transactions.md:
     title: System actors
+  use-cases.md:
+    title: Use Cases
   examples.md:
     title: Examples
     example-unstructured.md:

@@ -1,0 +1,108 @@
+@startuml ihe-actors-usecases
+
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam defaultFontSize 10
+skinparam wrapWidth 200
+
+skinparam actor {
+  BorderColor #333333
+  FontStyle bold
+}
+
+skinparam usecase {
+  BorderThickness 2
+  FontSize 9
+}
+
+skinparam note {
+  FontSize 9
+}
+
+left to right direction
+
+rectangle "EHDS Imaging Report functional use cases diagram" {
+  
+  ' ==================== ACCESSOR USE CASES ====================
+  usecase "**Search**\n(Health Professional)\n--\n//Identify patient by://\nid, name, birthday, country\n//Seek studies/reports by://\nbody part, date/time, modality,\ninstitution, country" as UC_SearchHP #DAE8FC
+  
+  usecase "**Search**\n(Patient)\n--\n//Patient searches own studies by://\ninstitution, country, anatomical\nregion, modality, date/time" as UC_SearchPatient #DAE8FC
+  
+  usecase "**Access**\n--\nClick on selected imaging\nstudy(ies) and/or report(s)" as UC_Access #DAE8FC
+  
+  ' Out of scope extension
+  usecase "**Load/Store/Export** *\n--\n//Out of Scope://\nLoading into PACS viewer,\nstoring in PACS, saving on media,\nrouting to postprocessing system" as UC_PACSLoad #F5F5F5
+  
+  ' ==================== PROCESSOR USE CASES ====================
+  usecase "**Processing**\n--\nSystem processes Imaging Report\n(Registries, AI tools, IHE AIR\ncompatible systems)\n--\n**Safety fields required:**\nPatient ID, Status, Modifier fields" as UC_Processing #D5E8D4
+  
+  ' ==================== DISPLAYER USE CASES ====================
+  usecase "**Display for Reporting /\nMedical Decision Making**\n--\nVerify correct patient, date/time,\nacquisition parameters,\nadverse reactions/drug intolerances" as UC_DisplayReporting #FFE6CC
+  
+  usecase "**Display for Patient Review**\n--\nPatient confirms correct name,\nchecks date/time and\nissuing facility name" as UC_DisplayPatient #FFE6CC
+  
+  usecase "**Display Representation #1**\n--\nReport in readable form\n(PDF, HTML, ASCII)\nStructured info not required\n--\n**Required:** Source & Displayer" as UC_DisplayRep1 #FFE6CC
+  
+  usecase "**Display Representation #2**\n--\nCopy text, hyperlinks for\nimages, findings, patient/study/\nprocedure/clinical info\nStructured data required\n--\n**Optional:** Source\n**Required:** Displayer" as UC_DisplayRep2 #FFE6CC
+  
+  usecase "**Translation**\n(Display Representation #3)\n--\nTranslation into local language:\n- Unstructured text (out of scope)\n- Coded values translation\n- Local/country-specific mapping\n--\n**Required for all Display use cases**" as UC_Translation #FFE6CC
+  
+  ' ==================== CREATOR USE CASES ====================
+  usecase "**Reporting**\n--\nVerify correct patient, date/time,\naccess DICOM header info,\nconsider clinical question/reason,\nwrite report in assigned system\n--\n**Must group with Displayer**\n//(Rep #1+#3 or Rep #2+#3)//" as UC_Reporting #F8CECC
+}
+
+' ==================== ACTORS ====================
+actor "Accessor" as Accessor #DAE8FC
+actor "Processor" as Processor #D5E8D4
+actor "Displayer" as Displayer #FFE6CC
+actor "Creator" as Creator #F8CECC
+
+' ==================== ACTOR ASSOCIATIONS ====================
+Accessor --> UC_SearchHP
+Accessor --> UC_SearchPatient
+Accessor --> UC_Access
+
+Processor --> UC_Processing
+
+Displayer --> UC_DisplayReporting
+Displayer --> UC_DisplayPatient
+
+Creator --> UC_Reporting
+
+' ==================== INCLUDE RELATIONSHIPS ====================
+' Search includes Access
+UC_SearchHP ..> UC_Access : <<include>>
+UC_SearchPatient ..> UC_Access : <<include>>
+
+' All Display use cases include Translation
+UC_DisplayReporting ..> UC_Translation : <<include>>
+UC_DisplayPatient ..> UC_Translation : <<include>>
+
+' ==================== GENERALIZATION RELATIONSHIPS ====================
+' Rep1 and Rep2 are sub-use cases of Display for Reporting
+UC_DisplayRep1 --|> UC_DisplayReporting
+UC_DisplayRep2 --|> UC_DisplayReporting
+
+' Rep1 and Rep2 are also sub-use cases of Display for Patient
+UC_DisplayRep1 --|> UC_DisplayPatient
+UC_DisplayRep2 --|> UC_DisplayPatient
+
+' ==================== EXTEND RELATIONSHIPS (OUT OF SCOPE) ====================
+UC_PACSLoad ..> UC_Access : <<extend>>
+
+' ==================== NOTES ====================
+note bottom of UC_PACSLoad
+  * **Out of Scope** for this IG
+  Shown for context only
+end note
+
+legend right
+  |= Symbol |= Meaning |
+  | //solid arrow// | Actor association |
+  | //hollow triangle// | Generalization (sub use case) |
+  | //dashed arrow// <<include>> | Required behavior |
+  | //dashed arrow// <<extend>> | Optional / out of scope |
+  |<#F5F5F5> * | Out of Scope for this IG |
+endlegend
+
+@enduml
