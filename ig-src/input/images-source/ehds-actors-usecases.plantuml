@@ -1,4 +1,4 @@
-@startuml ihe-actors-usecases
+@startuml ehds-actors-usecases
 
 skinparam backgroundColor white
 skinparam handwritten false
