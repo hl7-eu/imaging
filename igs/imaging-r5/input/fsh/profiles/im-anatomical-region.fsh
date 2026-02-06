@@ -1,6 +1,15 @@
+Extension: AnatomicalRegion
+Title: "Extension: Anatomical Region"
+Description: "The anatomical region in an ImagingStudy instance. This is additional information next to ImagingStudy.series.bodySite."
+Context: DiagnosticReport, ImagingStudy
+* insert SetFmmAndStatusRule( 1, draft )
+* value[x] only CodeableConcept
+* valueCodeableConcept from AnatomicalRegionVs (required)
+  * coding 1..*
+
 ValueSet:   AnatomicalRegionVs
 Id:	        im-anatomical-region-valueset
-Title:	    "Anatomical Region"
+Title:	    "ValueSet: Anatomical Region"
 Description:   """A shortlist of anatomical regions that can be used for searching reports and manifests. When the MADO manifest is implemented, this ValueSet can be replaced with a reference to that ValueSet."""
 * ^experimental = false
 * $sct#63337009  // Lower trunk Abdominopelvic segment of trunk

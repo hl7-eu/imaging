@@ -8,8 +8,14 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
 
-* extension contains
-  $artifact-version-url named artifactVersion 0..1
+* extension contains $artifact-version-url named artifactVersion 0..1
+* extension contains AnatomicalRegion named anatomical-region 0..*
+* extension[anatomical-region] ^short = "The anatomical regions covered by the study this report reports on."
+* extension[anatomical-region] ^definition = """
+The anatomical regions covered by the report, depending on the study there can be zero, one or more regions. 
+The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.bodysite`, if present.
+"""
+* extension[anatomical-region] ^requirements = "This field is present in order to be able to populate the MHD DocumentReference field."
 
 //business identifier and relation with the composition resource
 * identifier 1..*

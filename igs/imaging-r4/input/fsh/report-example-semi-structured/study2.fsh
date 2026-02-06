@@ -12,6 +12,7 @@ Usage: #example
     * system = "http://example.org/myhosptital/accessionsystem"
     * type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN 
     * value = "123456789" // invented - not there in the report
+* extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
 * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 * status = #available
 * subject = Reference( PatientSemiStructuredReport)
@@ -22,11 +23,6 @@ Usage: #example
   * description = "PD FatSat 3D (1.0mm) sagittal"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
   * bodySite = $sct#239830003 "Entire right foot (body structure)"	
-    * extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
-//R5  * bodySite
-//R5    * concept
-//R5      * coding[+] = $sct#239830003 "Entire right foot (body structure)"	
-//R5      * coding[+] = $sct#61685007 "Leg Lower limb structure"
   * laterality = $sct#7771000 "Left lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
@@ -36,11 +32,6 @@ Usage: #example
   * description = "T1 (2.5mm) axial"
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
   * bodySite = $sct#239830003 "Entire right foot (body structure)"	
-    * extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
-//R5  * bodySite
-//R5    * concept
-//R5      * coding[+] = $sct#239830003 "Entire right foot (body structure)"	
-//R5      * coding[+] = $sct#61685007 "Lower extremity"
   * laterality = $sct#24028007 "Right lateral"
   * performer[custodian].actor = Reference( OrganizationSemiStructuredReport )
   * performer[organization].actor = Reference( OrganizationSemiStructuredReport )
