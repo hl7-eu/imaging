@@ -1,8 +1,8 @@
 {% include variable-definitions.md %}
-
-# Use Cases
-This page explains the types use cases that are supported by the specification by different angles.
-One is based on the different actors involved functinoaly and their obligations. Another is based on the different data formats that are supported and can be used to encode imaging reports. Also, the way how this specification is connected with the IHE MADO profile, and with the EHDS API specification are explained from a functional perspective.
+This page explains the use cases supported by this specification from different perspectives:
+- **Actors and Obligations**: The different actors involved in Imaging Report workflows and their functional obligations (the oblicgations are still TBD and will need to be harmonized with the XtEHR 8.2 deliverable)
+- **Data Formats**: The different data formats that can be used to encode imaging reports according to this specification.
+- **Integration**: How this specification connects with the IHE MADO profile and the EHDS API specification.
 
 {% include use-case-actors-obligations.md %}
 
