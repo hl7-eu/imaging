@@ -25,7 +25,8 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  
+  xtehr.eu.ehds.models: 0.3.0
+
 pages:
   index.md:
     title: Home

@@ -1,0 +1,1568 @@
+================================================================================
+XtEHR MODEL MIGRATION LOG
+Migration from version 0.2.0 to 0.3.0
+Generated: 2026-02-09T15:06:43.486Z
+================================================================================
+
+SUMMARY
+--------------------------------------------------------------------------------
+Total rows in new CSV:        1169
+Total rows in old TSV:        1659 (excluding header)
+Total rows in migrated TSV:   1511 (excluding header)
+
+Migrated (unchanged):         138
+Migrated (data modified):     826
+New elements:                 547
+Removed elements:             805
+
+================================================================================
+
+NEW ELEMENTS (547)
+--------------------------------------------------------------------------------
+
+Adverse Reaction event. Note: the substance for a specific reaction may be different from the substance identified  as the cause of the risk, but it must be consistent with it. (1 new elements)
+  - (root)                                                       [] 
+
+EHDSAdministeredDosage (24 new elements)
+  - (root)                                                       [0..*] 
+  - renderedDosageInstruction                                    [0..1] string
+  - dosageDetails                                                [0..1] Base
+  - dosageDetails.sequence                                       [0..0] integer
+  - dosageDetails.note                                           [0..1] string
+  - dosageDetails.doseAndRate                                    [0..*] Base
+  - dosageDetails.doseAndRate.dose[x]                            [0..1] Quantity
+  - dosageDetails.doseAndRate.dose[x]                            [0..1] Range
+  - dosageDetails.doseAndRate.rate[x]                            [0..1] Quantity
+  - dosageDetails.doseAndRate.rate[x]                            [0..1] Ratio
+  - dosageDetails.repeat                                         [0..0] Base
+  - dosageDetails.repeat.bounds                                  [0..1] Base
+  - dosageDetails.repeat.bounds.duration                         [0..1] Quantity
+  - dosageDetails.repeat.bounds.period                           [0..1] Period
+  - dosageDetails.repeat.duration                                [0..1] Quantity
+  - dosageDetails.repeat.frequency                               [0..1] Base
+  - dosageDetails.repeat.frequency.numberOfTimes                 [0..1] integer
+  - dosageDetails.repeat.frequency.period                        [0..1] Quantity
+  - dosageDetails.repeat.dayOfWeek                               [0..*] CodeableConcept
+  - dosageDetails.repeat.timeOfDay                               [0..*] time
+  - dosageDetails.repeat.eventTime                               [0..*] CodeableConcept
+  - dosageDetails.asNeeded                                       [0..0] boolean
+  - dosageDetails.bodySite                                       [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - dosageDetails.routeOfAdministration                          [0..1] CodeableConcept
+
+EHDSAdvanceDirective (7 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - note                                                         [0..1] string
+  - attachment                                                   [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSAttachment
+
+EHDSAlert (7 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - description                                                  [0..1] string
+  - sourceReference                                              [0..*] Resource
+
+EHDSAllergyIntolerance (8 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - note                                                         [0..1] string
+  - reaction.agentOrAllergen                                     [0..1] 
+  - reaction.onset                                               [0..1] dateTime
+
+EHDSCarePlan (8 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - addresses[x]                                                 [0..*] CodeableConcept
+  - addresses[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - goal                                                         [0..*] CodeableConcept
+
+EHDSCondition (6 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - bodySite                                                     [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+
+EHDSCurrentPregnancy (6 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - note                                                         [0..1] string
+
+EHDSDataSet (5 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+
+EHDSDevice (4 new elements)
+  - instanceIdentifier                                           [0..*] Identifier
+  - udiCarrier                                                   [0..*] Identifier
+  - name.value                                                   [1..1] string
+  - name.type                                                    [1..1] CodeableConcept
+
+EHDSDeviceUse (6 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - periodOfUse                                                  [0..1] Period
+
+EHDSDischargeReport (38 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.serviceSpecialty                                      [0..*] CodeableConcept
+  - body.alerts.generatedNarrative                               [0..1] string
+  - body.encounterInformation.generatedNarrative                 [0..1] string
+  - body.encounterInformation.note                               [0..1] string
+  - body.admissionEvaluation.generatedNarrative                  [0..1] string
+  - body.admissionEvaluation.functionalStatus[x]                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - body.admissionEvaluation.functionalStatus[x]                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.admissionEvaluation.note                                [0..1] string
+  - body.patientHistory.generatedNarrative                       [0..1] string
+  - body.patientHistory.note                                     [0..1] string
+  - body.courseOfEncounter.generatedNarrative                    [0..1] string
+  - body.courseOfEncounter.procedures                            [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSProcedure
+  - body.courseOfEncounter.objectiveFindings                     [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.courseOfEncounter.testResults                           [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.courseOfEncounter.note                                  [0..1] string
+  - body.dischargeDetails.generatedNarrative                     [0..1] string
+  - body.dischargeDetails.functionalStatus[x]                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - body.dischargeDetails.functionalStatus[x]                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.dischargeDetails.note                                   [0..1] string
+  - body.medicationSummary                                       [0..1] Base
+  - body.medicationSummary.generatedNarrative                    [0..1] string
+  - body.medicationSummary.medicationUse                         [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationUse
+  - body.medicationSummary.note                                  [0..1] string
+  - body.carePlan                                                [0..1] Base
+  - body.carePlan.generatedNarrative                             [0..1] string
+  - body.carePlan.carePlan                                       [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCarePlan
+  - body.carePlan.otherRecommendations                           [0..1] string
+  - body.synthesis                                               [0..1] string
+  - attachments                                                  [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSAttachment
+
+EHDSDocument (10 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.serviceSpecialty                                      [0..*] CodeableConcept
+
+EHDSDosage (23 new elements)
+  - renderedDosageInstruction                                    [0..1] string
+  - dosageDetails                                                [0..*] Base
+  - dosageDetails.sequence                                       [0..1] integer
+  - dosageDetails.note                                           [0..1] string
+  - dosageDetails.doseAndRate                                    [0..*] Base
+  - dosageDetails.doseAndRate.dose[x]                            [0..1] Quantity
+  - dosageDetails.doseAndRate.dose[x]                            [0..1] Range
+  - dosageDetails.doseAndRate.rate[x]                            [0..1] Quantity
+  - dosageDetails.doseAndRate.rate[x]                            [0..1] Ratio
+  - dosageDetails.repeat                                         [0..1] Base
+  - dosageDetails.repeat.bounds                                  [0..1] Base
+  - dosageDetails.repeat.bounds.duration                         [0..1] Quantity
+  - dosageDetails.repeat.bounds.period                           [0..1] Period
+  - dosageDetails.repeat.duration                                [0..1] Quantity
+  - dosageDetails.repeat.frequency                               [0..1] Base
+  - dosageDetails.repeat.frequency.numberOfTimes                 [0..1] integer
+  - dosageDetails.repeat.frequency.period                        [0..1] Quantity
+  - dosageDetails.repeat.dayOfWeek                               [0..*] CodeableConcept
+  - dosageDetails.repeat.timeOfDay                               [0..*] time
+  - dosageDetails.repeat.eventTime                               [0..*] CodeableConcept
+  - dosageDetails.asNeeded                                       [0..1] boolean
+  - dosageDetails.bodySite                                       [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - dosageDetails.routeOfAdministration                          [0..1] CodeableConcept
+
+EHDSEncounter (23 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - period                                                       [1..1] Period
+  - referringProfessional                                        [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - reason[x]                                                    [0..*] CodeableConcept
+  - reason[x]                                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - reason[x]                                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSProcedure
+  - reason[x]                                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - reason[x]                                                    [0..*] string
+  - dischargeDiagnosis[x]                                        [0..*] CodeableConcept
+  - dischargeDiagnosis[x]                                        [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - dischargeDestination                                         [0..1] Base
+  - dischargeDestination.type                                    [0..1] CodeableConcept
+  - dischargeDestination.location[x]                             [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - dischargeDestination.location[x]                             [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSLocation
+  - serviceLocation                                              [0..*] Base
+  - serviceLocation.period                                       [0..1] Period
+  - serviceLocation.organisationPart[x]                          [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - serviceLocation.organisationPart[x]                          [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSLocation
+  - subEncounter                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSEncounter
+
+EHDSHealthProfessional (4 new elements)
+  - professionalRole                                             [0..*] Base
+  - professionalRole.role                                        [0..*] CodeableConcept
+  - professionalRole.organisation                                [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - professionalRole.specialty                                   [0..*] CodeableConcept
+
+EHDSImagingReport (29 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.serviceSpecialty                                      [0..*] CodeableConcept
+  - body.orderInformation.orderPlacer[x]                         [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - body.orderInformation.orderPlacer[x]                         [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - body.orderInformation.orderPlacer[x]                         [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - body.orderInformation.orderReason[x]                         [0..*] CodeableConcept
+  - body.orderInformation.orderReason[x]                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - body.orderInformation.orderReason[x]                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.orderInformation.orderReason[x]                         [0..*] string
+  - body.supportingInformation                                   [0..1] Base
+  - body.supportingInformation.observation                       [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.supportingInformation.condition                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - body.supportingInformation.priorMedicationAdministration     [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationAdministration
+  - body.supportingInformation.device                            [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDeviceUse
+  - body.supportingInformation.pregnancyStatus                   [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCurrentPregnancy
+  - body.supportingInformation.sexForClinicalUse                 [0..1] CodeableConcept
+  - body.examinationReport.bodySite                              [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - body.examinationReport.medicationAdministration              [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationAdministration
+  - body.examinationReport.results[x]                            [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.examinationReport.results[x]                            [0..*] string
+  - attachments                                                  [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSAttachment
+
+EHDSImagingStudy (12 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - bodySite                                                     [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - series.seriesModality                                        [1..1] CodeableConcept
+  - series.instancesInTheSeries.keyImage                         [0..*] Base
+  - series.instancesInTheSeries.keyImage.flag                    [1..1] CodeableConcept
+  - series.instancesInTheSeries.keyImage.reason                  [0..1] string
+  - series.instancesInTheSeries.keyImage.seriesUID               [1..*] Identifier
+  - series.instancesInTheSeries.keyImage.instanceUID             [1..*] Identifier
+
+EHDSImmunisation (8 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - administrationTime                                           [1..1] dateTime
+  - administrator                                                [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - note                                                         [0..1] string
+
+EHDSLaboratoryObservation (35 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - type                                                         [1..1] CodeableConcept
+  - specimen                                                     [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSSpecimen
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSRelatedPerson
+  - bodySite                                                     [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - result.uncertainty.value                                     [1..1] decimal
+  - result.uncertainty.type                                      [0..1] Coding
+  - result.dataAbsentReason                                      [0..1] CodeableConcept
+  - referenceRange.low                                           [0..1] Quantity
+  - referenceRange.high                                          [0..1] Quantity
+  - referenceRange.normalValue                                   [0..1] CodeableConcept
+  - referenceRange.type                                          [0..1] CodeableConcept
+  - referenceRange.appliesTo                                     [0..*] CodeableConcept
+  - referenceRange.age                                           [0..1] Range
+  - referenceRange.text                                          [0..1] string
+  - note                                                         [0..1] string
+  - component.originalName                                       [0..1] string
+  - component.result.uncertainty.value                           [1..1] decimal
+  - component.result.uncertainty.type                            [0..1] Coding
+  - component.result.dataAbsentReason                            [0..1] CodeableConcept
+  - component.referenceRange.low                                 [0..1] Quantity
+  - component.referenceRange.high                                [0..1] Quantity
+  - component.referenceRange.normalValue                         [0..1] CodeableConcept
+  - component.referenceRange.type                                [0..1] CodeableConcept
+  - component.referenceRange.appliesTo                           [0..*] CodeableConcept
+  - component.referenceRange.age                                 [0..1] Range
+  - component.referenceRange.text                                [0..1] string
+  - pointOfCareTest                                              [0..1] boolean
+
+EHDSLaboratoryReport (55 new elements)
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - header.identifier                                            [1..*] Identifier
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.source                                                [0..0] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.documentType                                          [1..1] CodeableConcept
+  - header.documentTitle                                         [1..1] string
+  - header.period                                                [0..1] Period
+  - header.version                                               [0..1] string
+  - header.attestation                                           [0..*] Base
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.attestation.datetime                                  [1..1] dateTime
+  - header.legalAuthentication                                   [0..*] Base
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.legalAuthentication.datetime                          [1..1] dateTime
+  - header.eventType                                             [0..*] CodeableConcept
+  - header.serviceSpecialty                                      [0..*] CodeableConcept
+  - header.custodian                                             [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - intendedRecipient[x]                                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - intendedRecipient[x]                                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSRelatedPerson
+  - intendedRecipient[x]                                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - intendedRecipient[x]                                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - intendedRecipient[x]                                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - body                                                         [0..1] Base
+  - body.orderInformation                                        [0..*] Base
+  - body.orderInformation.orderId                                [1..*] Identifier
+  - body.orderInformation.orderDateAndTime                       [0..1] dateTime
+  - body.orderInformation.orderPlacer[x]                         [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - body.orderInformation.orderPlacer[x]                         [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - body.orderInformation.orderPlacer[x]                         [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - body.orderInformation.orderReason[x]                         [0..*] CodeableConcept
+  - body.orderInformation.orderReason[x]                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - body.orderInformation.orderReason[x]                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.orderInformation.orderReason[x]                         [0..*] string
+  - body.orderInformation.clinicalQuestion                       [0..1] string
+  - body.supportingInformation                                   [0..1] Base
+  - body.supportingInformation.observation                       [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - body.supportingInformation.condition                         [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - body.supportingInformation.medicationAdministration          [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationAdministration
+  - body.supportingInformation.sexForClinicalUse                 [0..1] CodeableConcept
+  - body.supportingInformation.vaccination                       [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSImmunisation
+  - body.supportingInformation.otherSupportingInformation        [0..*] Resource
+  - body.specimen                                                [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSSpecimen
+  - body.serviceRequest                                          [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSServiceRequest
+  - body.resultData                                              [1..1] Base
+  - body.resultData.commentsInterpretationAndRecommendations     [0..*] Narrative
+  - body.resultData.laboratoryTestResults                        [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSLaboratoryObservation
+  - attachments                                                  [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSAttachment
+
+EHDSMedication (1 new elements)
+  - description                                                  [0..1] string
+
+EHDSMedicationAdministration (6 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - dosageInstructions                                           [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSAdministeredDosage
+
+EHDSMedicationDispense (7 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - substitutionOccurred                                         [0..1] boolean
+  - note                                                         [0..1] string
+
+EHDSMedicationPrescription (9 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - prescriptionItem.intendedUseType                             [0..1] CodeableConcept
+  - prescriptionItem.periodOfUse                                 [0..1] Period
+  - prescriptionItem.validityPeriod                              [0..1] Period
+  - prescriptionItem.numberOfRepeats                             [0..1] integer
+  - prescriptionItem.note                                        [0..1] string
+
+EHDSMedicationUse (21 new elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.source                                                [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - treatmentStatus                                              [0..1] CodeableConcept
+  - medication                                                   [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedication
+  - reason[x]                                                    [0..*] CodeableConcept
+  - reason[x]                                                    [0..*] string
+  - dosageInstructions                                           [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDosage
+  - periodOfUse                                                  [0..1] Period
+  - derivedFrom[x]                                               [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationPrescription
+  - derivedFrom[x]                                               [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationDispense
+  - derivedFrom[x]                                               [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationAdministration
+  - note                                                         [0..1] string
+
+EHDSObservation (34 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - type                                                         [1..1] CodeableConcept
+  - specimen                                                     [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSSpecimen
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - performer[x]                                                 [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSRelatedPerson
+  - bodySite                                                     [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - result.uncertainty.value                                     [1..1] decimal
+  - result.uncertainty.type                                      [0..1] Coding
+  - result.dataAbsentReason                                      [0..1] CodeableConcept
+  - referenceRange.low                                           [0..1] Quantity
+  - referenceRange.high                                          [0..1] Quantity
+  - referenceRange.normalValue                                   [0..1] CodeableConcept
+  - referenceRange.type                                          [0..1] CodeableConcept
+  - referenceRange.appliesTo                                     [0..*] CodeableConcept
+  - referenceRange.age                                           [0..1] Range
+  - referenceRange.text                                          [0..1] string
+  - note                                                         [0..1] string
+  - component.originalName                                       [0..1] string
+  - component.result.uncertainty.value                           [1..1] decimal
+  - component.result.uncertainty.type                            [0..1] Coding
+  - component.result.dataAbsentReason                            [0..1] CodeableConcept
+  - component.referenceRange.low                                 [0..1] Quantity
+  - component.referenceRange.high                                [0..1] Quantity
+  - component.referenceRange.normalValue                         [0..1] CodeableConcept
+  - component.referenceRange.type                                [0..1] CodeableConcept
+  - component.referenceRange.appliesTo                           [0..*] CodeableConcept
+  - component.referenceRange.age                                 [0..1] Range
+  - component.referenceRange.text                                [0..1] string
+
+EHDSPatient (3 new elements)
+  - identifier                                                   [1..*] Identifier
+  - deceased[x]                                                  [0..1] boolean
+  - deceased[x]                                                  [0..1] dateTime
+
+EHDSPatientSummary (50 new elements)
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [1..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [1..1] dateTime
+  - header.source                                                [0..0] CodeableConcept
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.attestation.attester[x]                               [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator[x]             [1..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.serviceSpecialty                                      [0..*] CodeableConcept
+  - alerts.generatedNarrative                                    [0..1] string
+  - alerts.note                                                  [0..1] string
+  - allergiesAndIntolerances.generatedNarrative                  [0..1] string
+  - allergiesAndIntolerances.note                                [0..1] string
+  - problems.generatedNarrative                                  [0..1] string
+  - problems.problem                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - problems.note                                                [0..1] string
+  - medicationSummary.generatedNarrative                         [0..1] string
+  - medicationSummary.medicationUse                              [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedicationUse
+  - medicationSummary.note                                       [0..1] string
+  - medicalDevicesAndImplants.generatedNarrative                 [0..1] string
+  - medicalDevicesAndImplants.deviceUse                          [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDeviceUse
+  - medicalDevicesAndImplants.note                               [0..1] string
+  - procedures.generatedNarrative                                [0..1] string
+  - procedures.note                                              [0..1] string
+  - immunisations                                                [0..1] Base
+  - immunisations.generatedNarrative                             [0..1] string
+  - immunisations.immunisation                                   [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSImmunisation
+  - immunisations.note                                           [0..1] string
+  - functionalStatus.generatedNarrative                          [0..1] string
+  - functionalStatus.condition                                   [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - functionalStatus.assessment                                  [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - functionalStatus.note                                        [0..1] string
+  - socialHistory.generatedNarrative                             [0..1] string
+  - socialHistory.observation                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - socialHistory.note                                           [0..1] string
+  - pregnancyHistory.note                                        [0..1] string
+  - travelHistory.generatedNarrative                             [0..1] string
+  - travelHistory.note                                           [0..1] string
+  - patientStory.note                                            [0..1] string
+  - advanceDirectives.generatedNarrative                         [0..1] string
+  - advanceDirectives.note                                       [0..1] string
+  - observationResults                                           [0..1] Base
+  - observationResults.generatedNarrative                        [0..1] string
+  - observationResults.result                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - observationResults.note                                      [0..1] string
+  - carePlans                                                    [0..1] Base
+  - carePlans.generatedNarrative                                 [0..1] string
+  - carePlans.carePlan                                           [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCarePlan
+  - carePlans.note                                               [0..1] string
+
+EHDSPregnancyHistory (8 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - endDate                                                      [0..1] dateTime
+  - numberOfFetuses                                              [0..1] integer
+  - note                                                         [0..1] string
+
+EHDSProcedure (7 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - procedureDate[x]                                             [0..1] dateTime
+  - procedureDate[x]                                             [0..1] Period
+
+EHDSServiceRequest (12 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+  - description                                                  [0..1] string
+  - code                                                         [0..1] CodeableConcept
+  - bodySite                                                     [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - reason[x]                                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation
+  - reason[x]                                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition
+  - reason[x]                                                    [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSMedication
+  - reason[x]                                                    [0..*] string
+
+EHDSSpecimen (21 new elements)
+  - status                                                       [0..1] CodeableConcept
+  - type                                                         [0..1] CodeableConcept
+  - specimenSource[x]                                            [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - specimenSource[x]                                            [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSLocation
+  - specimenSource[x]                                            [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - parentSpecimen                                               [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSSpecimen
+  - request                                                      [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSServiceRequest
+  - combined                                                     [0..1] CodeableConcept
+  - collection                                                   [0..*] Base
+  - collection.performer[x]                                      [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - collection.performer[x]                                      [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - collection.performer[x]                                      [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient
+  - collection.performer[x]                                      [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSRelatedPerson
+  - collection.collected[x]                                      [1..1] Period
+  - collection.collected[x]                                      [1..1] dateTime
+  - collection.quantity                                          [0..1] Quantity
+  - collection.method                                            [0..1] CodeableConcept
+  - collection.device                                            [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - collection.bodySite                                          [0..1] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSBodyStructure
+  - condition                                                    [0..*] CodeableConcept
+  - note                                                         [0..1] string
+
+EHDSTravelHistory (5 new elements)
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation
+  - header.author[x]                                             [0..*] http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice
+  - header.date                                                  [0..1] dateTime
+  - header.source                                                [0..1] CodeableConcept
+
+Example 7: participation in a clinical trial that has to be taken into account in a healthcare contact. (1 new elements)
+  - (root)                                                       [] 
+
+It must be clinically safe to only process the 'code' and ignore the 'reaction.substance'. (2 new elements)
+  - CodeableConcept                                              [ATC, EMA SPOR SMS, SNOMED CT (preferred)] 
+  - CodeableConcept                                              [] 
+
+Text result value should be used only if coded result value is not expected otherwise use valueCodeableConcept.text. For Quantity, Range and Ratio, result units of the measurement should be provided. (40 new elements)
+  - string                                                       [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Quantity                                                     [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Range                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Ratio                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - CodeableConcept                                              [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - string                                                       [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Quantity                                                     [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Range                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Ratio                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - CodeableConcept                                              [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - string                                                       [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Quantity                                                     [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Range                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Ratio                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - CodeableConcept                                              [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - string                                                       [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Quantity                                                     [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Range                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - Ratio                                                        [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+  - CodeableConcept                                              [UCUM for units, SNOMED CT for coded results (preferred)] 
+  - (root)                                                       [] 
+
+status depends on. (1 new elements)
+  - Base                                                         [] 
+
+================================================================================
+
+REMOVED ELEMENTS (805)
+--------------------------------------------------------------------------------
+
+EHDSAdvanceDirective (12 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - narrative                                                    [0..1] string
+  - effectivePeriod                                              [0..1] Period
+  - authorisingEntity[x]                                         [0..1] EHDSPatient
+  - relatedConditions[x]                                         [0..*] CodeableConcept
+  - advanceDirectiveDocument                                     [0..1] EHDSAttachment
+
+EHDSAlert (9 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - text                                                         [0..1] 
+  - status                                                       [0..1] CodeableConcept
+
+EHDSAllergyIntolerance (15 removed elements)
+  - header.authorship                                            [1..*] Base
+  - authorEHDSHealthProfessional                                 [1..1] EHDSHealthProfessional
+  - authorEHDSOrganisation                                       [1..1] EHDSOrganisation
+  - authorEHDSDevice                                             [1..1] EHDSDevice
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReasonCodeableConcept                           [0..1] CodeableConcept
+  - header.statusReasonString                                    [0..1] string
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - typeOfPropensity                                             [0..1] CodeableConcept
+  - description                                                  [0..1] string
+  - status                                                       [0..1] CodeableConcept
+  - reaction.date                                                [0..1] dateTime
+  - reaction.onsetDate                                           [0..1] dateTime
+
+EHDSAppointment (10 removed elements)
+  - (root)                                                       [0..*] 
+  - identifier                                                   [0..*] Identifier
+  - subject                                                      [0..1] EHDSPatient
+  - status                                                       [1..1] CodeableConcept
+  - class                                                        [0..*] CodeableConcept
+  - serviceType                                                  [0..*] CodeableConcept
+  - specialty                                                    [0..*] CodeableConcept
+  - start                                                        [0..1] dateTime
+  - end                                                          [0..1] dateTime
+  - note                                                         [0..*] string
+
+EHDSBodyStructure (1 removed elements)
+  - identifier                                                   [0..*] Identifier
+
+EHDSCarePlan (8 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - addresses                                                    [0..*] CodeableConcept
+
+EHDSCondition (11 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - problemStatus                                                [0..1] CodeableConcept
+  - anatomicLocation                                             [0..*] EHDSBodyStructure
+  - asserter                                                     [0..1] EHDSHealthProfessional
+  - assertedDate                                                 [0..1] dateTime
+
+EHDSCoverage (7 removed elements)
+  - (root)                                                       [0..*] 
+  - identifier                                                   [0..*] Identifier
+  - type                                                         [0..1] CodeableConcept
+  - patient                                                      [1..1] EHDSPatient
+  - payor                                                        [1..*] Base
+  - payor.payorEntity[x]                                         [1..1] EHDSOrganisation
+  - payor.subscriberId                                           [0..1] Identifier
+
+EHDSCurrentPregnancy (8 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - narrative                                                    [0..1] string
+
+EHDSDataSet (7 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+
+EHDSDevice (1 removed elements)
+  - identifier                                                   [1..*] Identifier
+
+EHDSDeviceUse (10 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - startDate                                                    [0..1] dateTime
+  - endDate                                                      [0..1] dateTime
+  - source[x]                                                    [0..1] EHDSPatient
+
+EHDSDischargeReport (113 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.documentStatus                                        [1..1] CodeableConcept
+  - header.attestation.attester                                  [1..1] EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator                [1..1] EHDSHealthProfessional
+  - header.authorSpecialty                                       [0..*] CodeableConcept
+  - header.documentFormat                                        [0..1] CodeableConcept
+  - header.confidentiality                                       [0..1] CodeableConcept
+  - knowledgeResources                                           [0..0] Base
+  - knowledgeResources.externalReference                         [0..*] RelatedArtifact
+  - knowledgeResources.relatedTo                                 [0..*] Reference
+  - header.healthInsuranceAndPaymentInformation                  [0..*] EHDSCoverage
+  - body.advanceDirectives                                       [0..1] Base
+  - body.advanceDirectives.narrative                             [0..1] string
+  - body.advanceDirectives.advanceDirective                      [0..*] EHDSAdvanceDirective
+  - body.alerts.narrative                                        [0..1] string
+  - body.alerts.allergyAndIntolerance                            [0..*] EHDSAllergyIntolerance
+  - body.encounterInformation.narrative                          [1..1] string
+  - body.admissionEvaluation.narrative                           [0..1] string
+  - body.admissionEvaluation.objectiveFindings.narrative         [0..1] string
+  - body.admissionEvaluation.objectiveFindings.time              [0..1] dateTime
+  - body.admissionEvaluation.objectiveFindings.performer         [0..*] EHDSHealthProfessional
+  - body.admissionEvaluation.objectiveFindings.anthropometricObservations [0..*] EHDSObservation
+  - body.admissionEvaluation.objectiveFindings.vitalSigns        [0..*] EHDSObservation
+  - body.admissionEvaluation.objectiveFindings.physicalExamination [0..*] EHDSObservation
+  - body.admissionEvaluation.functionalStatus                    [0..1] Base
+  - body.admissionEvaluation.functionalStatus.narrative          [0..1] string
+  - body.admissionEvaluation.functionalStatus.functionalStatusAssessment [0..*] EHDSFunctionalStatus
+  - body.patientHistory.narrative                                [0..1] string
+  - body.patientHistory.medicalHistory                           [1..1] Base
+  - body.patientHistory.medicalHistory.narrative                 [0..1] string
+  - body.patientHistory.medicalHistory.pastProblems              [1..*] EHDSCondition
+  - body.patientHistory.medicalHistory.devicesAndImplants        [1..*] EHDSDeviceUse
+  - body.patientHistory.medicalHistory.historyOfProcedures       [0..*] EHDSProcedure
+  - body.patientHistory.medicalHistory.vaccination               [0..*] EHDSImmunisation
+  - body.patientHistory.medicalHistory.epidemiologicalHistory    [0..1] Base
+  - body.patientHistory.medicalHistory.epidemiologicalHistory.infectiousContacts [0..*] EHDSInfectiousContact
+  - body.patientHistory.medicalHistory.epidemiologicalHistory.travelHistory [0..*] EHDSTravelHistory
+  - body.patientHistory.medicalHistory.pregnancyHistory          [0..1] Base
+  - body.patientHistory.medicalHistory.pregnancyHistory.currentPregnancyStatus [0..1] EHDSCurrentPregnancy
+  - body.patientHistory.medicalHistory.pregnancyHistory.previousPregnanciesStatus [0..1] 
+  - body.patientHistory.medicalHistory.pregnancyHistory.previousPregnancies [0..*] EHDSPregnancyHistory
+  - body.patientHistory.familyHistorySection                     [0..1] Base
+  - body.patientHistory.familyHistorySection.narrative           [0..1] string
+  - body.patientHistory.familyHistorySection.familyHistory       [0..*] EHDSFamilyMemberHistory
+  - body.patientHistory.socialDeterminantsOfHealth               [0..1] Base
+  - body.patientHistory.socialDeterminantsOfHealth.narrative     [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.participationInSociety [0..1] Base
+  - body.patientHistory.socialDeterminantsOfHealth.participationInSociety.workSituation [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.participationInSociety.hobby [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.participationInSociety.socialNetwork [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.educationSection [0..1] Base
+  - body.patientHistory.socialDeterminantsOfHealth.educationSection.educationLevel [0..1] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.educationSection.comment [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.livingSituation [0..1] Base
+  - body.patientHistory.socialDeterminantsOfHealth.livingSituation.houseType [0..1] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.livingSituation.homeAdaption [0..*] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.livingSituation.livingConditions [0..*] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation [0..1] Base
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.comment [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.familyComposition [0..1] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.maritalStatus [0..1] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.numberOfChildren [0..1] Quantity
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.numberOfChildrenAtHome [0..1] Quantity
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.childDetails [0..*] Base
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.childDetails.livingAtHome [0..1] boolean
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.childDetails.dateOfBirth [0..1] date
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.childDetails.comment [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.familySituation.careResponsibility [0..*] CodeableConcept
+  - body.patientHistory.socialDeterminantsOfHealth.useOfSubstances [0..1] Base
+  - body.patientHistory.socialDeterminantsOfHealth.useOfSubstances.narrative [0..1] string
+  - body.patientHistory.socialDeterminantsOfHealth.useOfSubstances.alcoholUse [0..*] EHDSSubstanceUse
+  - body.patientHistory.socialDeterminantsOfHealth.useOfSubstances.tobaccoUse [0..*] EHDSSubstanceUse
+  - body.patientHistory.socialDeterminantsOfHealth.useOfSubstances.drugConsumption [0..*] EHDSSubstanceUse
+  - body.courseOfEncounter.diagnosticSummary.narrative           [0..1] string
+  - body.courseOfEncounter.diagnosticSummary.problemDetails      [0..*] Base
+  - body.courseOfEncounter.diagnosticSummary.problemDetails.presentOnAdmission [1..1] CodeableConcept
+  - body.courseOfEncounter.diagnosticSummary.problemDetails.treatmentClass [1..1] CodeableConcept
+  - body.courseOfEncounter.diagnosticSummary.problemDetails.problem [1..1] EHDSCondition
+  - body.courseOfEncounter.significantProcedures                 [0..1] Base
+  - body.courseOfEncounter.significantProcedures.narrative       [0..1] string
+  - body.courseOfEncounter.significantProcedures.procedureEntry  [0..*] EHDSProcedure
+  - body.courseOfEncounter.medicalDevicesAndImplants.narrative   [0..1] string
+  - body.courseOfEncounter.medicalDevicesAndImplants.medicalDevicesAndImplants [1..*] EHDSDeviceUse
+  - body.courseOfEncounter.pharmacotherapy.narrative             [0..1] string
+  - body.courseOfEncounter.pharmacotherapy.pharmacotherapy       [0..*] EHDSMedicationStatement
+  - body.courseOfEncounter.significantObservationResults         [0..1] Base
+  - body.courseOfEncounter.significantObservationResults.narrative [0..1] string
+  - body.courseOfEncounter.significantObservationResults.significantObservationResult[x] [0..*] EHDSObservation
+  - body.courseOfEncounter.synthesis                             [1..1] Base
+  - body.courseOfEncounter.synthesis.problemSynthesis            [1..*] string
+  - body.courseOfEncounter.synthesis.clinicalReasoning           [0..1] string
+  - body.dischargeDetails.narrative                              [0..1] string
+  - body.dischargeDetails.objectiveFindings.narrative            [0..1] string
+  - body.dischargeDetails.objectiveFindings.anthropometricObservations [0..*] EHDSObservation
+  - body.dischargeDetails.objectiveFindings.vitalSigns           [0..*] EHDSObservation
+  - body.dischargeDetails.objectiveFindings.physicalExamination  [0..*] EHDSObservation
+  - body.dischargeDetails.functionalStatus                       [0..1] Base
+  - body.dischargeDetails.functionalStatus.narrative             [0..1] string
+  - body.dischargeDetails.functionalStatus.functionalStatusAssessment [0..*] EHDSFunctionalStatus
+  - body.dischargeDetails.medicationSummary                      [0..1] Base
+  - body.dischargeDetails.medicationSummary.narrative            [0..1] string
+  - body.dischargeDetails.medicationSummary.entry                [0..*] Base
+  - body.dischargeDetails.medicationSummary.entry.medicationUse  [1..1] EHDSMedicationStatement
+  - body.dischargeDetails.medicationSummary.entry.daysSupplied   [0..1] Quantity
+  - body.dischargeDetails.carePlan                               [0..*] Base
+  - body.dischargeDetails.carePlan.narrative                     [0..1] string
+  - body.dischargeDetails.carePlan.carePlan                      [0..*] EHDSCarePlan
+  - body.dischargeDetails.carePlan.otherRecommendations          [0..1] string
+  - attachments[x]                                               [0..*] EHDSAttachment
+
+EHDSDispenseDecline (15 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [1..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - relatedRequest                                               [1..*] EHDSMedicationPrescription
+  - comment                                                      [0..1] string
+
+EHDSDocument (14 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.documentStatus                                        [1..1] CodeableConcept
+  - header.attestation.attester                                  [1..1] EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator                [1..1] EHDSHealthProfessional
+  - header.authorSpecialty                                       [0..*] CodeableConcept
+  - header.documentFormat                                        [0..1] CodeableConcept
+  - header.confidentiality                                       [0..1] CodeableConcept
+  - knowledgeResources                                           [0..*] Base
+  - knowledgeResources.externalReference                         [0..*] RelatedArtifact
+  - knowledgeResources.relatedTo                                 [0..*] Reference
+
+EHDSDosage (6 removed elements)
+  - dosageDescription                                            [0..1] string
+  - site                                                         [0..1] CodeableConcept
+  - route                                                        [0..1] CodeableConcept
+  - method                                                       [0..1] CodeableConcept
+  - dose                                                         [0..1] Quantity
+  - rate[x]                                                      [0..1] Ratio
+
+EHDSDosaging (43 removed elements)
+  - (root)                                                       [0..*] 
+  - sequence                                                     [0..1] integer
+  - text                                                         [0..1] string
+  - renderedDescription                                          [0..1] string
+  - additionalInstruction                                        [0..*] CodeableConcept
+  - patientInstruction                                           [0..1] string
+  - doseAndRate                                                  [0..*] Base
+  - doseAndRate.type                                             [0..1] CodeableConcept
+  - doseAndRate.dose[x]                                          [0..1] Quantity
+  - doseAndRate.rate[x]                                          [0..1] Ratio
+  - timing                                                       [0..1] Base
+  - timing.event                                                 [0..*] dateTime
+  - timing.code                                                  [0..1] CodeableConcept
+  - timing.repeat                                                [0..1] Base
+  - timing.repeat.bounds                                         [0..1] Base
+  - timing.repeat.bounds.duration                                [0..1] Quantity
+  - timing.repeat.bounds.range                                   [0..1] Range
+  - timing.repeat.bounds.period                                  [0..1] Period
+  - timing.repeat.count                                          [0..1] Base
+  - timing.repeat.count.count                                    [0..1] integer
+  - timing.repeat.count.countMax                                 [0..1] integer
+  - timing.repeat.duration                                       [0..1] Base
+  - timing.repeat.duration.duration                              [0..1] Quantity
+  - timing.repeat.duration.durationMax                           [0..1] Quantity
+  - timing.repeat.frequency                                      [0..1] Base
+  - timing.repeat.frequency.numberOfTimes                        [0..1] integer
+  - timing.repeat.frequency.maxNumberOfTimes                     [0..1] integer
+  - timing.repeat.frequency.period                               [0..1] Quantity
+  - timing.repeat.frequency.periodMax                            [0..1] Quantity
+  - timing.repeat.dayOfWeek                                      [0..*] CodeableConcept
+  - timing.repeat.timeOfDay                                      [0..*] time
+  - timing.repeat.eventTime                                      [0..*] Base
+  - timing.repeat.eventTime.when                                 [0..*] CodeableConcept
+  - timing.repeat.eventTime.offset                               [0..1] integer
+  - asNeeded                                                     [0..1] boolean
+  - asNeededFor                                                  [0..*] CodeableConcept
+  - bodySite                                                     [0..1] CodeableConcept
+  - routeOfAdministration                                        [0..1] CodeableConcept
+  - methodOfAdministration                                       [0..1] CodeableConcept
+  - maxDose                                                      [0..*] Base
+  - maxDose.maxDosePerPeriod                                     [0..*] Ratio
+  - maxDose.maxDosePerAdministration                             [0..1] Quantity
+  - maxDose.maxDosePerLifetime                                   [0..1] Quantity
+
+EHDSEncounter (22 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - episodeOfCare                                                [0..*] EHDSEpisodeOfCare
+  - partOf                                                       [0..1] EHDSEncounter
+  - actualPeriod                                                 [0..1] Period
+  - plannedStartDate                                             [0..1] dateTime
+  - plannedEndDate                                               [0..1] dateTime
+  - admission.referringProfessional                              [0..1] EHDSHealthProfessional
+  - admission.reason[x]                                          [0..*] CodeableConcept
+  - admission.reasonComment                                      [0..1] string
+  - admission.legalStatus                                        [0..1] CodeableConcept
+  - discharge                                                    [0..1] Base
+  - discharge.destinationType                                    [0..1] CodeableConcept
+  - discharge.destinationLocation[x]                             [0..1] EHDSOrganisation
+  - location                                                     [0..*] Base
+  - location.period                                              [0..1] Period
+  - location.organisationPart[x]                                 [1..1] EHDSOrganisation
+
+EHDSEpisodeOfCare (19 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - type                                                         [0..*] CodeableConcept
+  - reasonText                                                   [0..1] string
+  - reason[x]                                                    [0..*] CodeableConcept
+  - diagnosis                                                    [0..*] Base
+  - diagnosis.description                                        [1..1] string
+  - diagnosis.condition[x]                                       [0..1] CodeableConcept
+
+EHDSFamilyMemberHistory (18 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - patientRelationship                                          [0..1] CodeableConcept
+  - dateOfBirth                                                  [0..1] date
+  - ageOrDateOfDeath[x]                                          [0..1] date
+  - condition                                                    [0..*] CodeableConcept
+  - causeOfDeath                                                 [0..1] CodeableConcept
+
+EHDSFunctionalStatus (23 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - description                                                  [0..1] string
+  - relatedConditions                                            [0..*] Base
+  - relatedConditions.condition                                  [0..1] CodeableConcept
+  - relatedConditions.conditionText                              [0..1] string
+  - relatedConditions.onsetDate                                  [0..1] dateTime
+  - functionalStatusAssessment                                   [0..*] Base
+  - functionalStatusAssessment.functionalAssessmentDescription   [0..1] string
+  - functionalStatusAssessment.functionalAssessmentCode          [0..1] CodeableConcept
+  - functionalStatusAssessment.functionalAssessmentDateTime      [0..1] dateTime
+  - functionalStatusAssessment.functionalAssessmentResult[x]     [0..1] string
+
+EHDSHealthProfessional (3 removed elements)
+  - role                                                         [0..*] CodeableConcept
+  - organisation                                                 [0..1] EHDSOrganisation
+  - specialty                                                    [0..*] CodeableConcept
+
+EHDSImagingReport (35 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.documentStatus                                        [1..1] CodeableConcept
+  - header.attestation.attester                                  [1..1] EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator                [1..1] EHDSHealthProfessional
+  - header.authorSpecialty                                       [0..*] CodeableConcept
+  - header.documentFormat                                        [0..1] CodeableConcept
+  - header.confidentiality                                       [0..1] CodeableConcept
+  - header.healthInsuranceAndPaymentInformation                  [0..*] EHDSCoverage
+  - body.orderInformation.orderPlacer                            [0..1] EHDSHealthProfessional
+  - body.orderInformation.orderReasonText                        [0..*] string
+  - body.orderInformation.orderReason                            [0..*] CodeableConcept
+  - body.orderInformation.supportingInformation                  [0..1] Base
+  - body.orderInformation.supportingInformation.observation      [0..*] EHDSObservation
+  - body.orderInformation.supportingInformation.condition        [0..*] EHDSCondition
+  - body.orderInformation.supportingInformation.medicationAdministration [0..*] EHDSMedicationAdministration
+  - body.orderInformation.supportingInformation.devices          [0..*] EHDSDevice
+  - body.orderInformation.supportingInformation.pregnancyStatus  [0..1] EHDSCurrentPregnancy
+  - body.orderInformation.supportingInformation.sexForClinicalUse [0..*] CodeableConcept
+  - body.orderInformation.supportingInformation.otherSupportingInformation [0..*] Resource
+  - body.exposureInformation.effectiveDose                       [0..*] Quantity
+  - body.exposureInformation.equivalentDoseInformation           [1..1] Base
+  - body.exposureInformation.equivalentDoseInformation.equivalentDose [1..1] Quantity
+  - body.exposureInformation.equivalentDoseInformation.tissueType [1..1] CodeableConcept
+  - body.examinationReport.bodyPart                              [0..*] EHDSBodyStructure
+  - examinationReport.bodyPart.bodyLocation                      [] 
+  - examinationReport.bodyPart.laterality                        [] 
+  - body.examinationReport.medication                            [0..*] EHDSMedicationAdministration
+  - body.examinationReport.resultData                            [0..1] Base
+  - body.examinationReport.resultData.resultText                 [1..1] string
+  - body.examinationReport.resultData.observationResults         [0..*] EHDSObservation
+  - attachments[x]                                               [0..*] EHDSAttachment
+
+EHDSImagingStudy (8 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - series.acquisitionModality                                   [1..1] CodeableConcept
+
+EHDSImmunisation (11 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - doseNumber                                                   [0..1] integer
+  - dateOfVaccination                                            [1..1] date
+  - vaccineAdministrator                                         [0..*] EHDSHealthProfessional
+  - nextVaccinationDate                                          [0..1] date
+
+EHDSInfectiousContact (18 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - infectiousAgent                                              [0..*] CodeableConcept
+  - timePeriod[x]                                                [0..1] dateTime
+  - proximity[x]                                                 [0..1] CodeableConcept
+  - country                                                      [0..1] CodeableConcept
+  - note                                                         [0..1] string
+
+EHDSLaboratoryObservation (13 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - code                                                         [1..1] CodeableConcept
+  - performer                                                    [0..1] EHDSHealthProfessional
+  - anatomicLocation                                             [0..1] EHDSBodyStructure
+  - dataAbsentReason                                             [0..1] CodeableConcept
+  - resultDescription                                            [0..1] string
+  - component.dataAbsentReason                                   [0..1] CodeableConcept
+
+EHDSLaboratoryOrder (5 removed elements)
+  - (root)                                                       [0..*] 
+  - laboratoryOrderHeader                                        [1..1] EHDSLaboratoryOrderHeader
+  - laboratoryOrderStructuredBody                                [0..1] EHDSLaboratoryOrderBody
+  - presentedForms                                               [0..*] EHDSAttachment
+  - laboratoryOrderAttachments[x]                                [0..*] EHDSAttachment
+
+EHDSLaboratoryOrderBody (22 removed elements)
+  - (root)                                                       [0..*] 
+  - orderInformation                                             [0..*] Base
+  - orderInformation.orderId                                     [1..*] Identifier
+  - orderInformation.orderDateAndTime                            [0..1] dateTime
+  - orderInformation.orderText                                   [0..1] string
+  - orderInformation.orderPlacer[x]                              [0..1] EHDSHealthProfessional
+  - orderInformation.orderReasonText                             [0..*] string
+  - orderInformation.orderReason[x]                              [0..*] CodeableConcept
+  - orderInformation.clinicalQuestion                            [0..1] string
+  - encounter                                                    [0..1] Reference
+  - supportingInformation                                        [0..1] Base
+  - supportingInformation.observation                            [0..*] EHDSObservation
+  - supportingInformation.condition                              [0..*] EHDSCondition
+  - supportingInformation.medicationAdministration               [0..*] EHDSMedicationAdministration
+  - supportingInformation.sexForClinicalUse                      [0..*] CodeableConcept
+  - supportingInformation.vaccination                            [0..*] EHDSImmunisation
+  - supportingInformation.otherSupportingInformation             [0..*] Resource
+  - specimen                                                     [0..*] EHDSSpecimen
+  - serviceRequests                                              [0..*] EHDSServiceRequest
+  - allergy                                                      [0..*] EHDSAllergyIntolerance
+  - alerts                                                       [0..*] EHDSAlert
+  - appointment                                                  [0..1] EHDSAppointment
+
+EHDSLaboratoryOrderHeader (27 removed elements)
+  - (root)                                                       [0..*] 
+  - subject                                                      [1..1] EHDSPatient
+  - healthInsuranceAndPaymentInformation                         [0..*] EHDSCoverage
+  - intendedRecipient                                            [0..*] Reference
+  - authorship                                                   [1..*] Base
+  - authorship.author                                            [1..1] EHDSHealthProfessional
+  - authorship.datetime                                          [1..1] dateTime
+  - attestation                                                  [0..*] Base
+  - attestation.attester                                         [1..1] EHDSHealthProfessional
+  - attestation.datetime                                         [1..1] dateTime
+  - legalAuthentication                                          [0..1] Base
+  - legalAuthentication.legalAuthenticator                       [1..1] EHDSHealthProfessional
+  - legalAuthentication.datetime                                 [1..1] dateTime
+  - documentMetadata                                             [1..1] Base
+  - documentMetadata.documentId                                  [1..1] Identifier
+  - documentMetadata.documentType                                [1..1] CodeableConcept
+  - documentMetadata.documentStatus                              [1..1] CodeableConcept
+  - documentMetadata.period                                      [0..1] Period
+  - documentMetadata.reportDateAndTime                           [1..1] dateTime
+  - documentMetadata.documentTitle                               [1..1] string
+  - documentMetadata.eventType                                   [0..*] CodeableConcept
+  - documentMetadata.specialty                                   [0..*] CodeableConcept
+  - documentMetadata.reportCustodian                             [1..1] EHDSOrganisation
+  - documentMetadata.documentFormat                              [0..1] CodeableConcept
+  - documentMetadata.confidentiality                             [0..1] CodeableConcept
+  - documentMetadata.language                                    [0..1] CodeableConcept
+  - documentMetadata.version                                     [0..1] string
+
+EHDSLaboratoryReport (3 removed elements)
+  - laboratoryReportHeader                                       [1..1] EHDSLaboratoryReportHeader
+  - laboratoryReportStructuredBody                               [0..1] EHDSLaboratoryReportBody
+  - laboratoryReportAttachments[x]                               [0..*] EHDSAttachment
+
+EHDSLaboratoryReportBody (20 removed elements)
+  - (root)                                                       [0..*] 
+  - orderInformation                                             [0..*] Base
+  - orderInformation.orderId                                     [1..*] Identifier
+  - orderInformation.orderDateAndTime                            [0..1] dateTime
+  - orderInformation.orderPlacer[x]                              [0..1] EHDSHealthProfessional
+  - orderInformation.orderReasonText                             [0..*] string
+  - orderInformation.orderReason[x]                              [0..*] CodeableConcept
+  - supportingInformation                                        [0..1] Base
+  - supportingInformation.observation                            [0..*] EHDSObservation
+  - supportingInformation.condition                              [0..*] EHDSCondition
+  - supportingInformation.medicationAdministration               [0..*] EHDSMedicationAdministration
+  - supportingInformation.sexForClinicalUse                      [0..*] CodeableConcept
+  - supportingInformation.vaccination                            [0..*] EHDSImmunisation
+  - supportingInformation.otherSupportingInformation             [0..*] Resource
+  - specimen                                                     [0..*] EHDSSpecimen
+  - serviceRequest                                               [0..*] EHDSServiceRequest
+  - resultData                                                   [1..1] Base
+  - resultData.narrativeReport                                   [0..1] Narrative
+  - resultData.commentsInterpretationAndRecommendations          [0..*] Narrative
+  - resultData.laboratoryTestResults                             [0..*] EHDSLaboratoryObservation
+
+EHDSLaboratoryReportHeader (33 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [1..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - header.documentType                                          [1..1] CodeableConcept
+  - header.documentTitle                                         [1..1] string
+  - header.documentStatus                                        [1..1] CodeableConcept
+  - header.period                                                [0..1] Period
+  - header.attestation                                           [0..*] Base
+  - header.attestation.attester                                  [1..1] EHDSHealthProfessional
+  - header.attestation.datetime                                  [1..1] dateTime
+  - header.legalAuthentication                                   [0..1] Base
+  - header.legalAuthentication.legalAuthenticator                [1..1] EHDSHealthProfessional
+  - header.legalAuthentication.datetime                          [1..1] dateTime
+  - header.eventType                                             [0..*] CodeableConcept
+  - header.authorSpecialty                                       [0..*] CodeableConcept
+  - header.custodian                                             [1..1] EHDSOrganisation
+  - header.documentFormat                                        [0..1] CodeableConcept
+  - header.confidentiality                                       [0..1] CodeableConcept
+  - knowledgeResources                                           [0..0] Base
+  - knowledgeResources.externalReference                         [0..*] RelatedArtifact
+  - knowledgeResources.relatedTo                                 [0..*] Reference
+  - healthInsuranceAndPaymentInformation                         [0..*] EHDSCoverage
+  - intendedRecipient[x]                                         [0..*] EHDSPatient
+
+EHDSMedia (14 removed elements)
+  - (root)                                                       [0..*] 
+  - identifier                                                   [0..*] Identifier
+  - type                                                         [0..1] CodeableConcept
+  - modality                                                     [0..1] CodeableConcept
+  - view                                                         [0..1] CodeableConcept
+  - subject[x]                                                   [0..1] Reference
+  - created[x]                                                   [0..1] dateTime
+  - reason                                                       [0..*] CodeableConcept
+  - bodysite                                                     [0..1] CodeableConcept
+  - deviceName                                                   [0..1] string
+  - device                                                       [0..1] Reference
+  - content                                                      [1..1] EHDSAttachment
+  - note                                                         [0..*] string
+  - performer                                                    [0..*] Reference
+
+EHDSMedication (1 removed elements)
+  - packSize                                                     [0..*] Quantity
+
+EHDSMedicationAdministration (8 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - dosage                                                       [0..1] EHDSDosage
+
+EHDSMedicationDispense (12 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - substitution                                                 [0..1] Base
+  - substitution.substitutionOccurred                            [1..1] boolean
+  - substitution.type                                            [0..1] CodeableConcept
+  - substitution.reason                                          [0..*] CodeableConcept
+  - comment                                                      [0..*] string
+
+EHDSMedicationPrescription (17 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.version                                               [0..1] string
+  - header.recorder                                              [0..1] EHDSHealthProfessional
+  - header.recordingDate                                         [0..1] dateTime
+  - header.validFrom                                             [0..1] dateTime
+  - header.validUntil                                            [0..1] dateTime
+  - comment                                                      [0..*] string
+  - prescriptionItem.category                                    [0..*] CodeableConcept
+  - prescriptionItem.indicationText                              [0..1] string
+  - prescriptionItem.prescriptionIntent                          [0..1] CodeableConcept
+  - prescriptionItem.treatmentPeriod                             [0..1] Period
+  - prescriptionItem.preparationInstructions                     [0..1] string
+  - prescriptionItem.repeatsAllowed                              [0..1] integer
+  - prescriptionItem.comment                                     [0..*] string
+
+EHDSMedicationStatement (20 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - medicationTreatmentStatus                                    [0..1] CodeableConcept
+  - medication                                                   [1..1] EHDSMedication
+  - medicationReason                                             [0..*] CodeableConcept
+  - medicationReasonText                                         [0..1] string
+  - intendedUseType                                              [0..1] CodeableConcept
+  - dosageInstructions                                           [1..*] EHDSDosaging
+  - periodOfUse                                                  [0..1] Period
+
+EHDSObservation (14 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - code                                                         [1..1] CodeableConcept
+  - performer                                                    [0..1] EHDSHealthProfessional
+  - anatomicLocation                                             [0..1] EHDSBodyStructure
+  - dataAbsentReason                                             [0..1] CodeableConcept
+  - resultDescription                                            [0..1] string
+  - component.dataAbsentReason                                   [0..1] CodeableConcept
+  - triggeredBy[x]                                               [0..*] EHDSLaboratoryObservation
+
+EHDSPatient (3 removed elements)
+  - personalIdentifier                                           [1..*] Identifier
+  - maritalStatus                                                [0..1] CodeableConcept
+  - communicationLanguage                                        [0..*] CodeableConcept
+
+EHDSPatientAnimal (10 removed elements)
+  - (root)                                                       [0..*] 
+  - animalIdentifier                                             [1..*] Identifier
+  - species                                                      [1..1] CodeableConcept
+  - breed                                                        [0..1] CodeableConcept
+  - genderStatus                                                 [0..1] CodeableConcept
+  - name                                                         [0..*] EHDSHumanName
+  - dateOfBirth                                                  [0..1] date
+  - gender                                                       [0..1] CodeableConcept
+  - address                                                      [0..*] EHDSAddress
+  - deceased[x]                                                  [0..1] boolean
+
+EHDSPatientSummary (40 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.documentStatus                                        [1..1] CodeableConcept
+  - header.attestation.attester                                  [1..1] EHDSHealthProfessional
+  - header.legalAuthentication.legalAuthenticator                [1..1] EHDSHealthProfessional
+  - header.authorSpecialty                                       [0..*] CodeableConcept
+  - header.documentFormat                                        [0..1] CodeableConcept
+  - header.confidentiality                                       [0..1] CodeableConcept
+  - knowledgeResources                                           [0..*] Base
+  - knowledgeResources.externalReference                         [0..*] RelatedArtifact
+  - knowledgeResources.relatedTo                                 [0..*] Reference
+  - alerts.narrative                                             [0..1] string
+  - allergiesAndIntolerances.narrative                           [1..1] string
+  - problems.narrative                                           [0..1] string
+  - problems.problems                                            [0..*] EHDSCondition
+  - medicationSummary.narrative                                  [0..1] string
+  - medicationSummary.medicationTreatment                        [0..*] EHDSMedicationStatement
+  - medicalDevicesAndImplants.narrative                          [0..1] string
+  - medicalDevicesAndImplants.medicalDevice                      [0..*] EHDSDeviceUse
+  - procedures.narrative                                         [0..1] string
+  - vaccination                                                  [0..1] Base
+  - vaccination.narrative                                        [0..1] string
+  - vaccination.vaccination                                      [0..*] EHDSImmunisation
+  - functionalStatus.narrative                                   [0..1] string
+  - functionalStatus.functionalStatusAssessment                  [0..*] EHDSFunctionalStatus
+  - socialHistory.narrative                                      [0..1] string
+  - socialHistory.socialHistoryObservation                       [0..*] EHDSSocialHistory
+  - pregnancyHistory.previousPregnanciesStatus                   [0..1] 
+  - travelHistory.narrative                                      [0..1] string
+  - patientStory.narrative                                       [0..1] string
+  - advanceDirectives.narrative                                  [0..1] string
+  - results                                                      [0..1] Base
+  - results.narrative                                            [0..1] string
+  - results.resultObservation[x]                                 [0..*] EHDSObservation
+  - carePlan                                                     [0..1] Base
+  - carePlan.narrative                                           [0..1] string
+  - carePlan.carePlanEntry                                       [0..*] EHDSCarePlan
+
+EHDSPregnancyHistory (10 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - narrative                                                    [0..1] string
+  - outcomeDate                                                  [0..1] dateTime
+  - numberOfChildren                                             [0..1] integer
+
+EHDSProcedure (8 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - date[x]                                                      [0..1] dateTime
+
+EHDSServiceRequest (13 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - serviceText                                                  [0..1] string
+  - serviceCode                                                  [0..1] CodeableConcept
+  - reasonCode                                                   [0..*] CodeableConcept
+  - anatomicLocation                                             [0..*] EHDSBodyStructure
+  - reasonReference[x]                                           [0..*] EHDSObservation
+  - coverage                                                     [0..*] EHDSCoverage
+
+EHDSSocialHistory (16 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - description                                                  [0..1] string
+  - observation                                                  [0..1] EHDSObservation
+  - referencePeriod                                              [0..1] Period
+
+EHDSSpecimen (9 removed elements)
+  - typeOfSpecies                                                [0..1] CodeableConcept
+  - material                                                     [0..1] CodeableConcept
+  - collectionPeriod                                             [0..1] Period
+  - bodySite                                                     [0..1] EHDSBodyStructure
+  - morphology                                                   [0..1] CodeableConcept
+  - sourceDevice                                                 [0..1] CodeableConcept
+  - collectionProcedure                                          [0..1] EHDSProcedure
+  - collectionProcedureMethod                                    [0..1] CodeableConcept
+  - subject[x]                                                   [0..1] EHDSPatient
+
+EHDSSubstance (9 removed elements)
+  - (root)                                                       [0..*] 
+  - identifier                                                   [0..*] Identifier
+  - code                                                         [0..*] CodeableConcept
+  - description                                                  [0..1] string
+  - expiry                                                       [0..1] dateTime
+  - quantity                                                     [0..1] Quantity
+  - ingredients                                                  [0..*] Base
+  - ingredients.quantity                                         [0..1] Ratio
+  - ingredients.substance                                        [1..1] Reference
+
+EHDSSubstanceUse (20 removed elements)
+  - (root)                                                       [0..*] 
+  - header                                                       [1..1] Base
+  - header.subject                                               [1..1] EHDSPatient
+  - header.identifier                                            [0..*] Identifier
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.status                                                [1..1] CodeableConcept
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.language                                              [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+  - period                                                       [0..1] Period
+  - frequencyAndQuantity                                         [0..1] Base
+  - frequencyAndQuantity.quantity                                [1..1] Quantity
+  - frequencyAndQuantity.period                                  [0..1] Period
+  - substanceType                                                [0..1] CodeableConcept
+  - routeOfAdministration                                        [0..*] CodeableConcept
+  - note                                                         [0..1] string
+
+EHDSTravelHistory (7 removed elements)
+  - header.authorship                                            [1..*] Base
+  - header.authorship.author[x]                                  [1..1] EHDSHealthProfessional
+  - header.authorship.datetime                                   [1..1] dateTime
+  - header.lastUpdate                                            [0..1] dateTime
+  - header.statusReason[x]                                       [0..1] CodeableConcept
+  - header.version                                               [0..1] string
+  - presentedForm                                                [0..*] EHDSAttachment
+
+Example 7: participation in a clinical trial that has to be taken into account in a healthcare contact. (1 removed elements)
+  - string                                                       [] 
+
+— No, previous pregnancies (1 removed elements)
+  - (root)                                                       [] 
+
+— Unknown (1 removed elements)
+  - CodeableConcept                                              [] 
+
+— Yes, previous pregnancies (1 removed elements)
+  - (root)                                                       [] 
+
+================================================================================
+END OF LOG
+================================================================================
