@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const obligationsDir     = '../input/fsh/obligations';	
-const mappingTablesDir   = '../input/pagecontent';	
+const mappingTablesDir   = '../ig-src/input/pagecontent/';	
 const xtehrDir           = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';	
 
@@ -23,6 +23,8 @@ const indices = {
     tgtModeling: 14,
     actors: 16,
     section: 17,
+    tgtResourceR4: 18,
+    tgtElementR4: 19,
 };
 
 const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
@@ -132,9 +134,9 @@ function generateMappingTables(parsedData, srcResources) {
     // First, remove any existing mapping files that we don't want to keep
     console.log("Removing old mapping files...");
     fs.readdirSync(mappingTablesDir).forEach(file => {
-        if (file.endsWith('-mapping.md') && file !== 'xtehr-mapping.md') {
+        if ((file.endsWith('-mapping.md') || file.endsWith('-mapping.liquid.md')) && file !== 'xtehr-mapping.md') {
             // Only keep files for core models
-            const resourceName = file.replace('-mapping.md', '');
+            const resourceName = file.replace('-mapping.liquid.md', '').replace('-mapping.md', '');
             if (!CORE_MODELS.includes(resourceName)) {
                 const filePath = path.join(mappingTablesDir, file);
                 fs.unlinkSync(filePath);
@@ -194,6 +196,13 @@ function generateMappingTables(parsedData, srcResources) {
         // Populate the mapping table with target mappings and collect source type info
         const sourceTypeMap = new Map(); // srcField -> array of srcTypes
         const modelingMap = new Map(); // srcField -> tgtModeling
+        const mappingTableR4 = new Map(); // srcField -> array of R4 target mappings
+        
+        // Initialize R4 mapping table
+        srcFieldsWithOrder.forEach(({ field }) => {
+            mappingTableR4.set(field, []);
+        });
+        
         parsedData
             .filter(row => row[indices.srcResource] === srcResource)
             .filter(row => row[indices.srcField] && row[indices.srcField].length > 0)
@@ -218,7 +227,7 @@ function generateMappingTables(parsedData, srcResources) {
                     modelingMap.set(srcField, tgtModeling);
                 }
                 
-                // Process target mappings
+                // Process target mappings (R5)
                 if (row[indices.tgtResource] && row[indices.tgtResource].length > 0 && 
                     row[indices.tgtElement] && row[indices.tgtElement].length > 0) {
                     const tgtResource = row[indices.tgtResource].trim();
@@ -233,10 +242,26 @@ function generateMappingTables(parsedData, srcResources) {
                         }
                     }
                 }
+                
+                // Process R4 target mappings
+                if (row[indices.tgtResourceR4] && row[indices.tgtResourceR4].length > 0 && 
+                    row[indices.tgtElementR4] && row[indices.tgtElementR4].length > 0) {
+                    const tgtResourceR4 = row[indices.tgtResourceR4].trim();
+                    const tgtElementR4 = row[indices.tgtElementR4].trim();
+                    const targetMappingR4 = `${tgtResourceR4}.${tgtElementR4}`;
+                    
+                    if (mappingTableR4.has(srcField)) {
+                        // Avoid duplicates
+                        const existingMappingsR4 = mappingTableR4.get(srcField);
+                        if (!existingMappingsR4.includes(targetMappingR4)) {
+                            existingMappingsR4.push(targetMappingR4);
+                        }
+                    }
+                }
             });
         
         // Generate the markdown file
-        const mappingTablePath = `${mappingTablesDir}/${srcResource}-mapping.md`;
+        const mappingTablePath = `${mappingTablesDir}/${srcResource}-mapping.liquid.md`;
         console.log(mappingTablePath);
         const writable = fs.createWriteStream(mappingTablePath);
         
@@ -245,25 +270,29 @@ function generateMappingTables(parsedData, srcResources) {
         writable.write(`-->\n\n`);
         writable.write(`#### ${srcResource}\n\n`);
         writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
-        writable.write(`{:.grid}\n`);
-        writable.write(`| Element | Target FHIR resource.element | Comments |\n`);
-        writable.write(`| ------- | ---------------------------- | -------- |\n`);
+        writable.write(`The source data for the mapping to other FHIR versions of this Implementation Guide can be found in the [xtehr-model-mapping.tsv](xtehr-model-mapping.tsv) file.\n\n`);
         
-        // Use source fields in their original order from the TSV file
+        // R4 Table
+        writable.write(`{% if isR4 %}\n\n`);
+        writable.write(`| Element | Target | Comments |\n`);
+        writable.write(`| ------- | ------ | -------- |\n`);
+        
+        // Use source fields in their original order from the TSV file for R4
         srcFieldsWithOrder.forEach(({ field: srcField }) => {
-            const targetMappings = mappingTable.get(srcField);
+            const targetMappingsR4 = mappingTableR4.get(srcField);
             
-            // Convert target mappings to hyperlinked format
-            const targetMappingsWithLinks = targetMappings.map(mapping => {
+            // Convert target mappings to combined format for R4 (resource.element)
+            const targetMappingsWithLinksR4 = targetMappingsR4.map(mapping => {
                 const [tgtResource, tgtElement] = mapping.split('.');
                 // Only create hyperlinks for resources that start with "Im"
                 if (tgtResource.startsWith('Im')) {
                     return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
                 } else {
-                    return mapping; // Return original mapping without hyperlink
+                    return mapping; // Return original mapping (resource.element)
                 }
             });
-            const targetMappingsStr = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(' ; ') : '';
+            // Join with semicolon and line break, remove spaces after semicolon
+            const targetMappingsStrR4 = targetMappingsWithLinksR4.length > 0 ? targetMappingsWithLinksR4.join(';<br/>') : '';
             
             // Get the modeling value for this field
             const modelingValue = modelingMap.get(srcField) || '';
@@ -285,24 +314,70 @@ function generateMappingTables(parsedData, srcResources) {
                             // Single type - simple link format
                             sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
                         }
-                    } else {
-                        // Multiple types - format with parentheses and multiple links
-                        const typeLinks = ehdsTypes.map(type => {
-                            if (!coreResources.includes(type)) {
-                                return `[${type}](StructureDefinition-${type}.html)`;
-                            } else {
-                                return `[${type}](#${type.toLowerCase()})`;
-                            }
-                        }).join(', ');
-                        sourceFieldDisplay = `${srcResourceDisplay}.${srcField} (${typeLinks})`;
                     }
+                    // Removed the else clause that added parentheses with multiple type links
                 }
             }
             
-            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStr} | ${modelingValue} |\n`);
+            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStrR4} | ${modelingValue} |\n`);
         });
         
-        writable.write(`\n`);
+        writable.write(`{:.table-bordered .table-striped .thead-light}\n\n`);
+        writable.write(`{% endif %}\n\n`);
+        
+        // R5 Table
+        writable.write(`{% if isR5 %}\n\n`);
+        writable.write(`| Element | Target | Comments |\n`);
+        writable.write(`| ------- | ------ | -------- |\n`);
+        
+        // Use source fields in their original order from the TSV file for R5
+        srcFieldsWithOrder.forEach(({ field: srcField }) => {
+            const targetMappings = mappingTable.get(srcField);
+            
+            // Convert target mappings to combined format for R5 (resource.element)
+            const targetMappingsWithLinks = targetMappings.map(mapping => {
+                const [tgtResource, tgtElement] = mapping.split('.');
+                // Only create hyperlinks for resources that start with "Im"
+                if (tgtResource.startsWith('Im')) {
+                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
+                } else {
+                    return mapping; // Return original mapping (resource.element)
+                }
+            });
+            // Join with semicolon and line break, remove spaces after semicolon
+            const targetMappingsStrR5 = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(';<br/>') : '';
+            
+            // Get the modeling value for this field
+            const modelingValue = modelingMap.get(srcField) || '';
+            
+            // Create hyperlink for source field if it has EHDS srcType(s)
+            // Initialize the display with the source resource and field
+            srcResourceDisplay = srcResource.startsWith("EHDS") ? `[${srcResource}](StructureDefinition-${srcResource}.html)` : srcResource;
+            let sourceFieldDisplay = `${srcResourceDisplay}.${srcField}`;
+            const srcTypes = sourceTypeMap.get(srcField);
+            if (srcTypes && srcTypes.length > 0) {
+                const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
+                if (ehdsTypes.length > 0) {
+                    if (ehdsTypes.length === 1) {
+                        // Check if the ehdsType is not a core resource
+                        if (!coreResources.includes(ehdsTypes[0])) {
+                            // Single excluded type - link directly to resource page
+                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
+                        } else {
+                            // Single type - simple link format
+                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
+                        }
+                    }
+                    // Removed the else clause that added parentheses with multiple type links
+                }
+            }
+            
+            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStrR5} | ${modelingValue} |\n`);
+        });
+        
+        writable.write(`{:.table-bordered .table-striped .thead-light}\n\n`);
+        writable.write(`{% endif %}\n\n`);
+        
         writable.end();
         
         // Store for index generation
@@ -317,7 +392,7 @@ function generateMappingTables(parsedData, srcResources) {
 }
 
 function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
-    const indexPath = '../input/pagecontent/xtehr-mapping.md';
+    const indexPath = '../ig-src/input/pagecontent/xtehr-mapping.md';
     console.log(`Generating mapping index: ${indexPath}`);
     const writable = fs.createWriteStream(indexPath);
     
