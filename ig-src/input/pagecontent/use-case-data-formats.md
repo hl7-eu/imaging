@@ -12,56 +12,11 @@ This level of structure allows for a human-readable report (the PDF) that can fu
 
 An example of this type of report format can be found [here](example-unstructured.html).
 
-```mermaid
-classDiagram
-    class DocumentReference {
-        +subject : Reference~Patient~
-        +date : dateTime
-        +type : CodeableConcept
-        +category : CodeableConcept
-        +content: Bundle
-        ...
-    }
-    
-    class Bundle {
-        <<type: collection>>
-
-    }
-    
-    class DiagnosticReport {
-        <<main resource>>
-        +presentedForm : Attachment~PDF~
-        +imagingStudy : Reference~ImagingStudy~
-        +basedOn : Reference~ServiceRequest~
-        ...
-    }
-    
-    class ImagingStudy {
-        <<optional in Bundle>>
-        +identifier : StudyInstanceUidIdentifierEuImaging
-        ...
-    }
-    
-    class ServiceRequest {
-        <<optional in Bundle>>
-        +identifier : AccessionNumberIdentifierEuImaging
-        ...
-    }
-    
-    class PDF {
-        <<attachment>>
-        +contentType : "application/pdf"
-        +data : base64Binary
-    }
-
-    DocumentReference --> Bundle : content
-    Bundle --> DiagnosticReport : entry
-    Bundle --> ImagingStudy : entry (optional)
-    Bundle --> ServiceRequest : entry (optional)
-    DiagnosticReport --> PDF : presentedForm
-    DiagnosticReport --> ImagingStudy : imagingStudy
-    DiagnosticReport --> ServiceRequest : basedOn
-```
+<figure>
+  {% include data-format-basic-metadata.svg %}
+  <figcaption>Figure: Renderable format with basic metadata</figcaption>
+</figure>
+<br clear="all"/>
 
 ### Section-structured report with processable narrative
 Building on top of the previous data format, the `DiagnosticReport` is exchanged alongside a `Composition` as entries of a `Bundle` of type `document`. Both `DiagnosticReport` and `Composition` encode the same information, but the `Composition` can be used for display purposes, especially the narrative sections of the report, while the `DiagnosticReport` can be used for the interpretation of the structured data. The `DocumentReference` resource wrapper, as in the previous case, serves as an interface layer to surface search parameters that allow finding and retrieving the report.
@@ -74,64 +29,11 @@ This level of structure allows the PROCESSOR actor to interpret the structured d
 
 An example of this type of report format can be found [here](example-section-structured.html).
 
-```mermaid
-classDiagram
-    class DocumentReference {
-        +subject : Reference~Patient~
-        +date : dateTime
-        +type : CodeableConcept
-        +category : CodeableConcept
-        +content : Bundle
-        ...
-    }
-    
-    class Bundle {
-        <<type: document>>
-    }
-    
-    class Composition {
-        <<first entry - for display purposes>>
-        +section : BackboneElement[]
-        +section.text : Narrative
-        ...
-    }
-    
-    class DiagnosticReport {
-        <<for structured data>>
-        +presentedForm : Attachment~PDF~ (optional)
-        ...
-    }
-    
-    class ImagingStudy {
-        ...
-    }
-    
-    class ServiceRequest {
-        ...
-    }
-    
-    class Observation {
-        <<findings / measurements>>
-        ...
-    }
-    
-    class PDF {
-        <<optional attachment>>
-
-    }
-
-    DocumentReference --> Bundle : content
-    Bundle --> Composition : entry[0]
-    Bundle --> DiagnosticReport : entry
-    Bundle --> ImagingStudy : entry
-    Bundle --> ServiceRequest : entry
-    Bundle --> Observation : entry
-    DiagnosticReport --> ImagingStudy : imagingStudy
-    DiagnosticReport --> ServiceRequest : basedOn
-    DiagnosticReport --> Observation : result
-    DiagnosticReport --> PDF : presentedForm (optional)
-    DiagnosticReport --> Composition : composition
-``` 
+<figure>
+  {% include data-format-section-structured.svg %}
+  <figcaption>Figure: Section-structured report with processable narrative</figcaption>
+</figure>
+<br clear="all"/> 
 
 ### Fully structured report
 This case utilizes the data structures of the previous case and adds a fully coded (ideally with standard clinical or radiology domain terminology) representation of the report's findings and impressions, encoded in FHIR `Observation` and `Condition` resources.
@@ -139,3 +41,5 @@ This case utilizes the data structures of the previous case and adds a fully cod
 This format allows for a fully computable report that can be easily integrated with other data sources and used for advanced use cases such as clinical decision support, research, etc. The `Composition` resource is still used for display purposes, but the narrative of the sections can be generated dynamically based on the coded data, and the PDF loses relevance in this case.
 
 It is expected that most systems will not be able to produce this level of structure in the short term, but it is important to have it as a long-term goal, as it allows full leverage of the FHIR format's potential for imaging reports.
+
+An example of this type of report format can be found [here](example-structured.html).
