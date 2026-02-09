@@ -32,7 +32,7 @@ usecase "**Access**\n--\nAccess selected imaging\nreport(s)" as UC_Access #DAE8F
 usecase "**Access Imaging Study** *\n--\n//Out of Scope://\nAccessing referenced imaging\nstudy from report.\nThis is tackled in the MADO profile." as UC_AccessStudy #F5F5F5
 
 ' ==================== PROCESSOR USE CASES ====================
-usecase "**Extract & Process Coded Data**\n--\nExtract structured/coded findings,\nmeasurements, impressions\n(Registries, AI tools, Clinical\nDecision Support)\n--\n**Requires coded Observations/Conditions**" as UC_Processing #D5E8D4
+usecase "**Extract & Process Data**\n--\nProcesses structured findings,\nimpressions and other coded data;\n an/ord analyses narrative text\n(E.g. Registries, AI tools, Clinical\nDecision Support)\n--\n**Requires not to display in a UI**" as UC_Processing #D5E8D4
 
 ' ==================== DISPLAYER USE CASES ====================
 usecase "**Render Static Report**\n--\nDisplay pre-rendered report\n(PDF, HTML, or other static format)\n--\nNo dynamic UI population needed" as UC_RenderStatic #FFE6CC
@@ -41,19 +41,21 @@ usecase "**Dynamically Populate UI**\n--\nExtract and display narrative sections
 
 usecase "**Translate to Local Language**\n--\nTranslate coded values and\nterminology to local language" as UC_Translation #FFE6CC
 
+usecase "**Translate Narrative** *\n--\n//Out of Scope://\nTranslate narrative (not coded data)\nof the report to local language" as UC_TranslateNarrative #F5F5F5
+
 ' ==================== CREATOR USE CASES ====================
 usecase "**Reporting**\n--\nVerify correct patient, date/time,\naccess DICOM header info,\nconsider clinical question/reason,\nwrite report in assigned system" as UC_Reporting #F8CECC
 
 ' ==================== ACTORS ====================
 actor "Accessor" as Accessor #DAE8FC
-actor "Processor" as Processor #D5E8D4
+actor "Processor\n(Patient or Healthcare Professional)" as Processor #D5E8D4
 actor "Displayer\n(Patient or Healthcare Professional)" as Displayer #FFE6CC
 actor "Creator" as Creator #F8CECC
 
 ' ==================== ACTOR ASSOCIATIONS ====================
 Accessor --> UC_SearchHP
 Accessor --> UC_SearchPatient
-Accessor --> UC_Access
+Accessor --> UC_Access : direct access\n(e.g., unique identifier)
 
 Processor --> UC_Processing
 
@@ -74,11 +76,17 @@ UC_AccessStudy ..> UC_Processing : <<extend>>
 UC_AccessStudy ..> UC_RenderStatic : <<extend>>
 UC_AccessStudy ..> UC_DynamicDisplay : <<extend>>
 UC_Translation ..> UC_DynamicDisplay : <<extend>>
+UC_TranslateNarrative ..> UC_RenderStatic : <<extend>>
+UC_TranslateNarrative ..> UC_DynamicDisplay : <<extend>>
 
 ' ==================== NOTES ====================
 note bottom of UC_AccessStudy
   * **Out of Scope** for this IG
-  This is addressed in the MADO profile
+  This is addressed in the IHE MADO profile
+end note
+
+note bottom of UC_TranslateNarrative
+  * **Out of Scope** for this IG
 end note
 
 @enduml
