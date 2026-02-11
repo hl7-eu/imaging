@@ -1,9 +1,9 @@
 Alias: $allergy-intolerance-certainty-url     = http://hl7.org/fhir/StructureDefinition/allergyintolerance-certainty
 Alias: $allergyintolerance-abatement-url      = http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement
 Alias: $annotation-type                       = http://hl7.org/fhir/StructureDefinition/annotationType
-Alias: $artifact-description-url              = http://hl7.org/fhir/StructureDefinition/artifact-description
+Alias: $artifact-description-url              = http://hl7.org/fhir/StructureDefinition/artifact-title
 Alias: $artifact-related-artifact-url         = http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact
-Alias: $artifact-title-url                    = http://hl7.org/fhir/StructureDefinition/artifact-title
+Alias: $artifact-title-url                    = http://hl7.org/fhir/StructureDefinition/artifact-description
 Alias: $artifact-version-url                  = http://hl7.org/fhir/StructureDefinition/artifact-version|5.3.0-ballot
 Alias: $body-site-url                         = http://hl7.org/fhir/StructureDefinition/bodySite
 Alias: $data-absent-reason-url                = http://hl7.org/fhir/StructureDefinition/data-absent-reason
@@ -33,8 +33,9 @@ Alias: $birth-time-url                        = http://hl7.org/fhir/StructureDef
 Alias: $workflow-status-reason-url            = http://hl7.org/fhir/StructureDefinition/workflow-statusReason
 Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
 
-Alias: $CrossVersion-Attachment.pages           = http://hl7.org/fhir/5.0/StructureDefinition/extension-Attachment.pages
-Alias: $CrossVersion-Composition.version        = http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version
-Alias: $CrossVersion-R5-ImagingSelection-for-R4 = http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4
+Alias: $CrossVersion-Attachment.pages                     = http://hl7.org/fhir/5.0/StructureDefinition/extension-Attachment.pages
+Alias: $CrossVersion-Composition.version                  = http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version
+Alias: $CrossVersion-R5-ImagingSelection-for-R4           = http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4
+Alias: $CrossVersion-R5-DocumentReference.bodySite-for-R4 = http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.bodySite
 
 Alias: $hl7euDiagnosticReferenceReference     =  http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference

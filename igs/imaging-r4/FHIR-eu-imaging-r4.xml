@@ -46,6 +46,9 @@
 <artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="DocumentReference: structured report WMSI image"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
+<artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider" key="CapabilityStatement-EEHRxF-DocumentAccessProvider" name="EEHRxF Imaging Report Document Access Provider CapabilityStatement"/>
+<artifact id="CapabilityStatement/EEHRxF-ImagingReport-DocumentConsumer" key="CapabilityStatement-EEHRxF-ImagingReport-DocumentConsumer" name="EEHRxF Imaging Report Document Consumer CapabilityStatement"/>
+<artifact id="StructureDefinition/ImManifestDocumentReference" key="StructureDefinition-ImManifestDocumentReference" name="EEHRxF MHD DocumentReference Profile"/>
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
@@ -151,6 +154,8 @@
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ProcedureEuImaging" key="StructureDefinition-ProcedureEuImaging" name="Procedure: Imaging Acquisition"/>
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
+<artifact id="SearchParameter/SearchParameterDocumentReferenceBodySite" key="SearchParameter-SearchParameterDocumentReferenceBodySite" name="SearchParameterDocumentReferenceBodySite"/>
+<artifact id="SearchParameter/SearchParameterDocumentReferenceModality" key="SearchParameter-SearchParameterDocumentReferenceModality" name="SearchParameterDocumentReferenceModality"/>
 <artifact id="StructureDefinition/EHDSServiceRequest" key="StructureDefinition-EHDSServiceRequest" name="Service request model"/>
 <artifact id="StructureDefinition/ServiceRequestOrderEuImaging" key="StructureDefinition-ServiceRequestOrderEuImaging" name="ServiceRequest: Imaging Order"/>
 <artifact id="ServiceRequest/ComeBackNextYearServiceRequest" key="ServiceRequest-ComeBackNextYearServiceRequest" name="ServiceRequest: structured report recommendation"/>

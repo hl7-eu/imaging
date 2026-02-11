@@ -34,6 +34,8 @@ dependencies:
   
   hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
   
+  hl7.fhir.eu.eu-health-data-api: current
+  ihe.iti.mhd: current
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions
