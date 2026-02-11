@@ -1,4 +1,3 @@
-# EURIDICE HL7eu IHEeu Imaging report IG status
 
 The HL7eu and IHEeu imaging report group is currently finishing processing the ballot comments of the [0.1.0 ballot](https://hl7.eu/fhir/imaging-r5/0.1.0-ballot/).
 
