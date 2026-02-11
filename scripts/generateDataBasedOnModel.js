@@ -4,8 +4,7 @@ const path = require('path');
 const obligationsDir     = '../input/fsh/obligations';	
 const mappingTablesDir   = '../ig-src/input/pagecontent/';	
 const xtehrDir           = '../input/resources';	
-const conceptMapIntroDir = '../input/intro-notes';	
-
+const conceptMapIntroDir = '../input/intro-notes';
 
 // Indices for relevant columns
 const indices = {
@@ -25,6 +24,7 @@ const indices = {
     section: 17,
     tgtResourceR4: 18,
     tgtElementR4: 19,
+    tgtEquivalenceR4: 20,
 };
 
 const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
@@ -127,6 +127,293 @@ function extractAndCopyResources(parsedData, srcResources ) {
 
 // }
 
+// Helper function to escape XML special characters
+function escapeXml(unsafe) {
+    if (!unsafe) return '';
+    return unsafe.toString()
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+}
+
+// Helper function to map equivalence codes to display text
+function getEquivalenceDisplay(code) {
+    const map = {
+        "EQ": "equivalent",
+        "SB": "source-is-broader-than-target",
+        "TB": "source-is-narrower-than-target",
+        "RT": "related-to",
+        "": ""
+    };
+    return map[code] || code || "";
+}
+
+// Generate XML mapping table for a single resource
+function generateXmlMappingTable(parsedData, srcResource, isR4) {
+    const rows = parsedData
+        .filter(row => row[indices.srcResource] === srcResource)
+        .filter(row => row[indices.srcField] && row[indices.srcField].length > 0);
+    
+    const fileExt = isR4 ? '.r4.xml' : '.r5.xml';
+    const mappingTablePath = `${mappingTablesDir}/map-${srcResource.toLowerCase()}${fileExt}`;
+    console.log(mappingTablePath);
+    
+    const writable = fs.createWriteStream(mappingTablePath);
+    
+    // Write XML header
+    writable.write(`<?xml version="1.0" encoding="UTF-8"?>\n`);
+    writable.write(`<div xmlns="http://www.w3.org/1999/xhtml">\n`);
+    writable.write(`  <head>\n`);
+    writable.write(`    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />\n`);
+    writable.write(`    <title>${escapeXml(srcResource)} → FHIR Profiles</title>\n`);
+    writable.write(`  </head>\n`);
+    writable.write(`  <body>\n`);
+    
+    // Callout boxes
+    writable.write(`    <div class="model-map-block">\n`);
+    writable.write(`      <div class="callout-wrapper">\n`);
+    writable.write(`        <div class="callout-box">\n`);
+    writable.write(`          <strong>Ongoing alignment:</strong>\n`);
+    writable.write(`              The Xt-EHR logical models are under active revision and continuous refinement.\n`);
+    writable.write(`              Updates from Xt-EHR will be progressively incorporated into this Implementation\n`);
+    writable.write(`              Guide to maintain alignment with the evolving EHDS specifications.\n`);
+    writable.write(`        </div>\n`);
+    writable.write(`      </div>\n`);
+    writable.write(`    </div>\n`);
+    
+    writable.write(`    <h3>${escapeXml(srcResource)} → FHIR Profiles</h3>\n`);
+    writable.write(`    <a> </a>\n`);
+    writable.write(`    <p></p>\n`);
+    writable.write(`    <p>\n`);
+    writable.write(`  This page explains how conceptual elements from the EHDS logical model are expressed\n`);
+    writable.write(`  in the corresponding FHIR profiles used by this Implementation Guide.\n`);
+    writable.write(`    </p>\n`);
+    writable.write(`    <p></p>\n`);
+    
+    // Mapping context
+    writable.write(`    <div class="table-wrap">\n`);
+    writable.write(`      <strong>Mapping Context</strong>\n`);
+    writable.write(`      <ul>\n`);
+    writable.write(`        <li>\n`);
+    writable.write(`          <strong>Source logical model:</strong>\n`);
+    writable.write(`          <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/${escapeXml(srcResource)}" target="_blank">\n`);
+    writable.write(`        ${escapeXml(srcResource)}\n`);
+    writable.write(`          </a>\n`);
+    writable.write(`        </li>\n`);
+    writable.write(`        <li>\n`);
+    writable.write(`          <strong>Target FHIR version:</strong> ${isR4 ? 'R4' : 'R5'}\n`);
+    writable.write(`        </li>\n`);
+    writable.write(`      </ul>\n`);
+    writable.write(`    </div>\n`);
+    writable.write(`    <p></p>\n`);
+    
+    // Table
+    writable.write(`    <div class="table-wrap">\n`);
+    writable.write(`      <table summary="${escapeXml(srcResource)} → FHIR Profiles">\n`);
+    writable.write(`        <caption>${escapeXml(srcResource)} → FHIR Profiles</caption>\n`);
+    writable.write(`        <thead>\n`);
+    
+    // Header row 1
+    writable.write(`          <tr>\n`);
+    writable.write(`            <th colspan="2" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
+    writable.write(`            <th class="relhead">Relationship</th>\n`);
+    writable.write(`            <th colspan="4" class="tgt-head">Target FHIR Resource</th>\n`);
+    writable.write(`          </tr>\n`);
+    
+    // Header row 2
+    writable.write(`          <tr>\n`);
+    writable.write(`            <th class="src-sub">Element</th>\n`);
+    writable.write(`            <th class="src-sub">Description</th>\n`);
+    writable.write(`            <th class="relsub">Relation</th>\n`);
+    writable.write(`            <th class="tgt-sub">Resource</th>\n`);
+    writable.write(`            <th class="tgt-sub">Element</th>\n`);
+    writable.write(`            <th class="tgt-sub">Notes</th>\n`);
+    writable.write(`          </tr>\n`);
+    writable.write(`        </thead>\n`);
+    writable.write(`        <tbody>\n`);
+    
+    // Data rows
+    rows.forEach(row => {
+        const srcField = escapeXml(row[indices.srcField].trim());
+        const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
+        const equivalence = isR4 
+            ? getEquivalenceDisplay(row[indices.tgtEquivalenceR4] ? row[indices.tgtEquivalenceR4].trim() : '')
+            : getEquivalenceDisplay(row[indices.tgtEquivalence] ? row[indices.tgtEquivalence].trim() : '');
+        const tgtResource = isR4 
+            ? escapeXml(row[indices.tgtResourceR4] ? row[indices.tgtResourceR4].trim() : '')
+            : escapeXml(row[indices.tgtResource] ? row[indices.tgtResource].trim() : '');
+        const tgtElement = isR4 
+            ? escapeXml(row[indices.tgtElementR4] ? row[indices.tgtElementR4].trim() : '')
+            : escapeXml(row[indices.tgtElement] ? row[indices.tgtElement].trim() : '');
+        const notes = escapeXml(row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : '');
+        
+        writable.write(`          <tr>\n`);
+        writable.write(`            <td>${srcField}</td>\n`);
+        writable.write(`            <td>${srcDescription}</td>\n`);
+        writable.write(`            <td>${equivalence}</td>\n`);
+        writable.write(`            <td>${tgtResource}</td><td>${tgtElement}</td>\n`);
+        writable.write(`            <td>${notes}</td>\n`);
+        writable.write(`          </tr>\n`);
+    });
+    
+    writable.write(`        </tbody>\n`);
+    writable.write(`      </table>\n`);
+    writable.write(`    </div>\n`);
+    
+    // Footer
+    writable.write(`    <p style="margin-top:2rem;color:#555;">\n`);
+    writable.write(`      Return to overview: <a href="xtehr-mapping.html">EHDS Logical Models → FHIR Profiles</a>\n`);
+    writable.write(`    </p>\n`);
+    writable.write(`  </body>\n`);
+    writable.write(`</div>\n`);
+    
+    writable.end();
+    
+    return `map-${srcResource.toLowerCase()}${fileExt}`;
+}
+
+// Generate styled HTML table within markdown for a single resource
+function generateStyledMarkdownTable(parsedData, srcResource) {
+    const rows = parsedData
+        .filter(row => row[indices.srcResource] === srcResource)
+        .filter(row => row[indices.srcField] && row[indices.srcField].length > 0);
+    
+    const mappingTablePath = `${mappingTablesDir}/${srcResource}-mapping.liquid.md`;
+    console.log(mappingTablePath);
+    
+    const writable = fs.createWriteStream(mappingTablePath);
+    
+    // Write markdown header
+    writable.write(`<!--\n`);
+    writable.write(`  Generated file. Do not edit.\n`);
+    writable.write(`-->\n\n`);
+    
+    writable.write(`#### ${srcResource}\n\n`);
+    
+    // Callout boxes
+    writable.write(`<div class="model-map-block">\n`);
+    writable.write(`  <div class="callout-wrapper">\n`);
+    writable.write(`    <div class="callout-box">\n`);
+    writable.write(`      <strong>Ongoing alignment:</strong>\n`);
+    writable.write(`      The Xt-EHR logical models are under active revision and continuous refinement.\n`);
+    writable.write(`      Updates from Xt-EHR will be progressively incorporated into this Implementation\n`);
+    writable.write(`      Guide to maintain alignment with the evolving EHDS specifications.\n`);
+    writable.write(`    </div>\n`);
+    writable.write(`  </div>\n`);
+    writable.write(`</div>\n\n`);
+    
+    writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
+    
+    // Mapping context
+    writable.write(`<div class="table-wrap">\n`);
+    writable.write(`  <strong>Mapping Context</strong>\n`);
+    writable.write(`  <ul>\n`);
+    writable.write(`    <li>\n`);
+    writable.write(`      <strong>Source logical model:</strong>\n`);
+    writable.write(`      <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/${escapeXml(srcResource)}" target="_blank">${escapeXml(srcResource)}</a>\n`);
+    writable.write(`    </li>\n`);
+    writable.write(`  </ul>\n`);
+    writable.write(`</div>\n\n`);
+    
+    // R4 Table
+    writable.write(`{% if isR4 %}\n\n`);
+    writable.write(`<div class="table-wrap">\n`);
+    writable.write(`  <table summary="${escapeXml(srcResource)} → FHIR Profiles (R4)">\n`);
+    writable.write(`    <caption>${escapeXml(srcResource)} → FHIR Profiles (R4)</caption>\n`);
+    writable.write(`    <thead>\n`);
+    writable.write(`      <tr>\n`);
+    writable.write(`        <th colspan="2" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
+    writable.write(`        <th class="relhead">Relationship</th>\n`);
+    writable.write(`        <th colspan="3" class="tgt-head">Target FHIR Resource</th>\n`);
+    writable.write(`      </tr>\n`);
+    writable.write(`      <tr>\n`);
+    writable.write(`        <th class="src-sub">Element</th>\n`);
+    writable.write(`        <th class="src-sub">Description</th>\n`);
+    writable.write(`        <th class="relsub">Relation</th>\n`);
+    writable.write(`        <th class="tgt-sub">Resource</th>\n`);
+    writable.write(`        <th class="tgt-sub">Element</th>\n`);
+    writable.write(`        <th class="tgt-sub">Notes</th>\n`);
+    writable.write(`      </tr>\n`);
+    writable.write(`    </thead>\n`);
+    writable.write(`    <tbody>\n`);
+    
+    // R4 Data rows
+    rows.forEach(row => {
+        const srcField = escapeXml(row[indices.srcField].trim());
+        const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
+        const equivalence = getEquivalenceDisplay(row[indices.tgtEquivalenceR4] ? row[indices.tgtEquivalenceR4].trim() : '');
+        const tgtResource = escapeXml(row[indices.tgtResourceR4] ? row[indices.tgtResourceR4].trim() : '');
+        const tgtElement = escapeXml(row[indices.tgtElementR4] ? row[indices.tgtElementR4].trim() : '');
+        const notes = escapeXml(row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : '');
+        
+        writable.write(`      <tr>\n`);
+        writable.write(`        <td>${srcField}</td>\n`);
+        writable.write(`        <td>${srcDescription}</td>\n`);
+        writable.write(`        <td>${equivalence}</td>\n`);
+        writable.write(`        <td>${tgtResource}</td>\n`);
+        writable.write(`        <td>${tgtElement}</td>\n`);
+        writable.write(`        <td>${notes}</td>\n`);
+        writable.write(`      </tr>\n`);
+    });
+    
+    writable.write(`    </tbody>\n`);
+    writable.write(`  </table>\n`);
+    writable.write(`</div>\n\n`);
+    writable.write(`{% endif %}\n\n`);
+    
+    // R5 Table
+    writable.write(`{% if isR5 %}\n\n`);
+    writable.write(`<div class="table-wrap">\n`);
+    writable.write(`  <table summary="${escapeXml(srcResource)} → FHIR Profiles (R5)">\n`);
+    writable.write(`    <caption>${escapeXml(srcResource)} → FHIR Profiles (R5)</caption>\n`);
+    writable.write(`    <thead>\n`);
+    writable.write(`      <tr>\n`);
+    writable.write(`        <th colspan="2" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
+    writable.write(`        <th class="relhead">Relationship</th>\n`);
+    writable.write(`        <th colspan="3" class="tgt-head">Target FHIR Resource</th>\n`);
+    writable.write(`      </tr>\n`);
+    writable.write(`      <tr>\n`);
+    writable.write(`        <th class="src-sub">Element</th>\n`);
+    writable.write(`        <th class="src-sub">Description</th>\n`);
+    writable.write(`        <th class="relsub">Relation</th>\n`);
+    writable.write(`        <th class="tgt-sub">Resource</th>\n`);
+    writable.write(`        <th class="tgt-sub">Element</th>\n`);
+    writable.write(`        <th class="tgt-sub">Notes</th>\n`);
+    writable.write(`      </tr>\n`);
+    writable.write(`    </thead>\n`);
+    writable.write(`    <tbody>\n`);
+    
+    // R5 Data rows
+    rows.forEach(row => {
+        const srcField = escapeXml(row[indices.srcField].trim());
+        const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
+        const equivalence = getEquivalenceDisplay(row[indices.tgtEquivalence] ? row[indices.tgtEquivalence].trim() : '');
+        const tgtResource = escapeXml(row[indices.tgtResource] ? row[indices.tgtResource].trim() : '');
+        const tgtElement = escapeXml(row[indices.tgtElement] ? row[indices.tgtElement].trim() : '');
+        const notes = escapeXml(row[indices.tgtModeling] ? row[indices.tgtModeling].trim() : '');
+        
+        writable.write(`      <tr>\n`);
+        writable.write(`        <td>${srcField}</td>\n`);
+        writable.write(`        <td>${srcDescription}</td>\n`);
+        writable.write(`        <td>${equivalence}</td>\n`);
+        writable.write(`        <td>${tgtResource}</td>\n`);
+        writable.write(`        <td>${tgtElement}</td>\n`);
+        writable.write(`        <td>${notes}</td>\n`);
+        writable.write(`      </tr>\n`);
+    });
+    
+    writable.write(`    </tbody>\n`);
+    writable.write(`  </table>\n`);
+    writable.write(`</div>\n\n`);
+    writable.write(`{% endif %}\n\n`);
+    
+    writable.end();
+    
+    return `${srcResource}-mapping.md`;
+}
+
 function generateMappingTables(parsedData, srcResources) {
     // Store all generated files for the main index
     const generatedFiles = [];
@@ -134,10 +421,24 @@ function generateMappingTables(parsedData, srcResources) {
     // First, remove any existing mapping files that we don't want to keep
     console.log("Removing old mapping files...");
     fs.readdirSync(mappingTablesDir).forEach(file => {
-        if ((file.endsWith('-mapping.md') || file.endsWith('-mapping.liquid.md')) && file !== 'xtehr-mapping.md') {
+        const isMappingFile = (file.endsWith('-mapping.md') || file.endsWith('-mapping.liquid.md') || 
+                               file.startsWith('map-') && file.endsWith('.xml'));
+        if (isMappingFile && file !== 'xtehr-mapping.md') {
             // Only keep files for core models
-            const resourceName = file.replace('-mapping.liquid.md', '').replace('-mapping.md', '');
-            if (!CORE_MODELS.includes(resourceName)) {
+            const resourceName = file
+                .replace('-mapping.liquid.md', '')
+                .replace('-mapping.md', '')
+                .replace('map-', '')
+                .replace('.r4.xml', '')
+                .replace('.r5.xml', '')
+                .replace('.xml', '');
+            
+            // Convert to proper case for comparison
+            const matchesCore = CORE_MODELS.some(core => 
+                core.toLowerCase() === resourceName.toLowerCase()
+            );
+            
+            if (!matchesCore) {
                 const filePath = path.join(mappingTablesDir, file);
                 fs.unlinkSync(filePath);
                 console.log(`Removed ${filePath}`);
@@ -260,125 +561,8 @@ function generateMappingTables(parsedData, srcResources) {
                 }
             });
         
-        // Generate the markdown file
-        const mappingTablePath = `${mappingTablesDir}/${srcResource}-mapping.liquid.md`;
-        console.log(mappingTablePath);
-        const writable = fs.createWriteStream(mappingTablePath);
-        
-        writable.write(`<!--\n`);
-        writable.write(`  Generated file. Do not edit.\n`);
-        writable.write(`-->\n\n`);
-        writable.write(`#### ${srcResource}\n\n`);
-        writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
-        writable.write(`The source data for the mapping to other FHIR versions of this Implementation Guide can be found in the [xtehr-model-mapping.tsv](xtehr-model-mapping.tsv) file.\n\n`);
-        
-        // R4 Table
-        writable.write(`{% if isR4 %}\n\n`);
-        writable.write(`| Element | Target | Comments |\n`);
-        writable.write(`| ------- | ------ | -------- |\n`);
-        
-        // Use source fields in their original order from the TSV file for R4
-        srcFieldsWithOrder.forEach(({ field: srcField }) => {
-            const targetMappingsR4 = mappingTableR4.get(srcField);
-            
-            // Convert target mappings to combined format for R4 (resource.element)
-            const targetMappingsWithLinksR4 = targetMappingsR4.map(mapping => {
-                const [tgtResource, tgtElement] = mapping.split('.');
-                // Only create hyperlinks for resources that start with "Im"
-                if (tgtResource.startsWith('Im')) {
-                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
-                } else {
-                    return mapping; // Return original mapping (resource.element)
-                }
-            });
-            // Join with semicolon and line break, remove spaces after semicolon
-            const targetMappingsStrR4 = targetMappingsWithLinksR4.length > 0 ? targetMappingsWithLinksR4.join(';<br/>') : '';
-            
-            // Get the modeling value for this field
-            const modelingValue = modelingMap.get(srcField) || '';
-            
-            // Create hyperlink for source field if it has EHDS srcType(s)
-            // Initialize the display with the source resource and field
-            srcResourceDisplay = srcResource.startsWith("EHDS") ? `[${srcResource}](StructureDefinition-${srcResource}.html)` : srcResource;
-            let sourceFieldDisplay = `${srcResourceDisplay}.${srcField}`;
-            const srcTypes = sourceTypeMap.get(srcField);
-            if (srcTypes && srcTypes.length > 0) {
-                const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
-                if (ehdsTypes.length > 0) {
-                    if (ehdsTypes.length === 1) {
-                        // Check if the ehdsType is not a core resource
-                        if (!coreResources.includes(ehdsTypes[0])) {
-                            // Single excluded type - link directly to resource page
-                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
-                        } else {
-                            // Single type - simple link format
-                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
-                        }
-                    }
-                    // Removed the else clause that added parentheses with multiple type links
-                }
-            }
-            
-            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStrR4} | ${modelingValue} |\n`);
-        });
-        
-        writable.write(`{:.table-bordered .table-striped .thead-light}\n\n`);
-        writable.write(`{% endif %}\n\n`);
-        
-        // R5 Table
-        writable.write(`{% if isR5 %}\n\n`);
-        writable.write(`| Element | Target | Comments |\n`);
-        writable.write(`| ------- | ------ | -------- |\n`);
-        
-        // Use source fields in their original order from the TSV file for R5
-        srcFieldsWithOrder.forEach(({ field: srcField }) => {
-            const targetMappings = mappingTable.get(srcField);
-            
-            // Convert target mappings to combined format for R5 (resource.element)
-            const targetMappingsWithLinks = targetMappings.map(mapping => {
-                const [tgtResource, tgtElement] = mapping.split('.');
-                // Only create hyperlinks for resources that start with "Im"
-                if (tgtResource.startsWith('Im')) {
-                    return `[${tgtResource}](StructureDefinition-${tgtResource}.html).${tgtElement}`;
-                } else {
-                    return mapping; // Return original mapping (resource.element)
-                }
-            });
-            // Join with semicolon and line break, remove spaces after semicolon
-            const targetMappingsStrR5 = targetMappingsWithLinks.length > 0 ? targetMappingsWithLinks.join(';<br/>') : '';
-            
-            // Get the modeling value for this field
-            const modelingValue = modelingMap.get(srcField) || '';
-            
-            // Create hyperlink for source field if it has EHDS srcType(s)
-            // Initialize the display with the source resource and field
-            srcResourceDisplay = srcResource.startsWith("EHDS") ? `[${srcResource}](StructureDefinition-${srcResource}.html)` : srcResource;
-            let sourceFieldDisplay = `${srcResourceDisplay}.${srcField}`;
-            const srcTypes = sourceTypeMap.get(srcField);
-            if (srcTypes && srcTypes.length > 0) {
-                const ehdsTypes = srcTypes.filter(type => type.startsWith('EHDS'));
-                if (ehdsTypes.length > 0) {
-                    if (ehdsTypes.length === 1) {
-                        // Check if the ehdsType is not a core resource
-                        if (!coreResources.includes(ehdsTypes[0])) {
-                            // Single excluded type - link directly to resource page
-                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](StructureDefinition-${ehdsTypes[0]}.html)`;
-                        } else {
-                            // Single type - simple link format
-                            sourceFieldDisplay = `${srcResourceDisplay}.[${srcField}](#${ehdsTypes[0].toLowerCase()})`;
-                        }
-                    }
-                    // Removed the else clause that added parentheses with multiple type links
-                }
-            }
-            
-            writable.write(`| ${sourceFieldDisplay} | ${targetMappingsStrR5} | ${modelingValue} |\n`);
-        });
-        
-        writable.write(`{:.table-bordered .table-striped .thead-light}\n\n`);
-        writable.write(`{% endif %}\n\n`);
-        
-        writable.end();
+        // Generate the styled markdown file with HTML tables
+        const filename = generateStyledMarkdownTable(parsedData, srcResource);
         
         // Store for index generation
         generatedFiles.push({
@@ -408,6 +592,7 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
     // Core models section - include the .md files
     if (sortedFiles.length > 0) {
         writable.write('### Core models of the Imaging Report IG\n\n');
+        // For Markdown files with embedded HTML, use includes
         sortedFiles.forEach(file => {
             writable.write(`{% include ${file.filename} %}\n\n`);
         });
