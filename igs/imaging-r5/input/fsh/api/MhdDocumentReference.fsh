@@ -1,6 +1,6 @@
 Profile: ImManifestDocumentReference
-Parent: EehrxfMhdDocumentReference
-//R4Parent: https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference
+//R4Parent: EehrxfMhdDocumentReference
+Parent: DocumentReference
 Title: "EEHRxF MHD DocumentReference Profile"
 Description: """
 Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile.
@@ -15,32 +15,46 @@ See [Document Exchange](document-exchange.html) for query examples.
 * insert SetFmmAndStatusRule( 1, draft )
 * category = $loinc#18748-4 // TODO replace with correct version from API
 * type from ImagingReportTypesEuVSEuImaging (preferred)  // TODO align with API
-* context.practiceSetting MS
-* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+
+// practice setting
+//R4* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+
+// subject
 * subject 1..1
-* subject only Reference( http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core )
+* subject only Reference( $EuPatient )
+
+// date
 * date 1..1
 
 // bodysite
 * bodySite
-* bodySite
+// * bodySite only CodeableReferenceAnatomicalRegion
+  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
   * concept 1..1
-    * valueCoding
+    * coding
       * insert SliceElement( #value, concept )
-    * valueCoding contains anatomical-region 1..*
-    * valueCoding[anatomical-region] from AnatomicalRegionVs (extensible)
-    * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
-    * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
-
+    * coding contains anatomical-region 1..*
+    * coding[anatomical-region] from ValueSetAnatomicalRegion (extensible)
+// * bodySite
+//   * concept 1..1
+//     * valueCoding
+//       * insert SliceElement( #value, concept )
+//     * valueCoding contains anatomical-region 1..*
+//     * valueCoding[anatomical-region] from AnatomicalRegionVs (extensible)
+//     * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+//     * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 //R4* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 //R4* extension[bodysite].extension[concept] 1..1
 //R4* extension[bodysite].extension[concept]
-  * valueCodeableConcept from AnatomicalRegionVs (extensible)
-  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
-  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+//R4  * valueCodeableConcept from ValueSetAnatomicalRegion (extensible)
+//R4  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+//R4  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 
 // modality
 //R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality named modality 1..1 
+
 
 
 //    * ^comment = "This element corresponds to ImagingStudy anatomical"

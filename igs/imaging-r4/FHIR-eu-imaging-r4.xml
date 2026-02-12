@@ -12,6 +12,7 @@
 <artifact id="StructureDefinition/AdverseEventEuImaging" key="StructureDefinition-AdverseEventEuImaging" name="AdverseEvent: Imaging Adverse Event"/>
 <artifact id="StructureDefinition/EHDSAlert" key="StructureDefinition-EHDSAlert" name="Alert model"/>
 <artifact id="StructureDefinition/EHDSAllergyIntolerance" key="StructureDefinition-EHDSAllergyIntolerance" name="Allergy intolerance model"/>
+<artifact id="ValueSet/im-anatomical-region-valueset" key="ValueSet-im-anatomical-region-valueset" name="Anatomical Region"/>
 <artifact id="StructureDefinition/EHDSAppointment" key="StructureDefinition-EHDSAppointment" name="Appointment model"/>
 <artifact id="StructureDefinition/EHDSAttachment" key="StructureDefinition-EHDSAttachment" name="Attachment model"/>
 <artifact id="StructureDefinition/SrInstanceImagingSelectionEuImaging" key="StructureDefinition-SrInstanceImagingSelectionEuImaging" name="Basic-ImagingSelection: DICOM SR Instance"/>
@@ -46,8 +47,8 @@
 <artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="DocumentReference: structured report WMSI image"/>
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
-<artifact id="CapabilityStatement/EEHRxF-DocumentAccessProvider" key="CapabilityStatement-EEHRxF-DocumentAccessProvider" name="EEHRxF Imaging Report Document Access Provider CapabilityStatement"/>
-<artifact id="CapabilityStatement/EEHRxF-ImagingReport-DocumentConsumer" key="CapabilityStatement-EEHRxF-ImagingReport-DocumentConsumer" name="EEHRxF Imaging Report Document Consumer CapabilityStatement"/>
+<artifact id="CapabilityStatement/EehrxfImagingDocumentAccessProvider" key="CapabilityStatement-EehrxfImagingDocumentAccessProvider" name="EEHRxF Imaging Report Document Access Provider CapabilityStatement"/>
+<artifact id="CapabilityStatement/EehrxfImagingReportDocumentConsumer" key="CapabilityStatement-EehrxfImagingReportDocumentConsumer" name="EEHRxF Imaging Report Document Consumer CapabilityStatement"/>
 <artifact id="StructureDefinition/ImManifestDocumentReference" key="StructureDefinition-ImManifestDocumentReference" name="EEHRxF MHD DocumentReference Profile"/>
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>

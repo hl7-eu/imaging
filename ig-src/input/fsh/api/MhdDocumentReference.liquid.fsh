@@ -1,6 +1,6 @@
 Profile: ImManifestDocumentReference
-{{R5}}Parent: EehrxfMhdDocumentReference
-{{R4}}Parent: https://profiles.ihe.net/ITI/MHD/StructureDefinition/IHE.MHD.Minimal.DocumentReference
+{{R4}}Parent: EehrxfMhdDocumentReference
+{{R5}}Parent: DocumentReference
 Title: "EEHRxF MHD DocumentReference Profile"
 Description: """
 Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile.
@@ -15,32 +15,46 @@ See [Document Exchange](document-exchange.html) for query examples.
 * insert SetFmmAndStatusRule( 1, draft )
 * category = $loinc#18748-4 // TODO replace with correct version from API
 * type from ImagingReportTypesEuVSEuImaging (preferred)  // TODO align with API
-* context.practiceSetting MS
-* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+
+// practice setting
+{{R4}}* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+{{R5}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+
+// subject
 * subject 1..1
-* subject only Reference( http://hl7.eu/fhir/base/StructureDefinition/patient-eu-core )
+{{R5}}* subject only Reference( $EuPatient )
+
+// date
 * date 1..1
 
 // bodysite
 {{R5}}* bodySite
-{{R5}}* bodySite
+// {{R5}}* bodySite only CodeableReferenceAnatomicalRegion
+{{R5}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+{{R5}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 {{R5}}  * concept 1..1
-{{R5}}    * valueCoding
+{{R5}}    * coding
 {{R5}}      * insert SliceElement( #value, concept )
-{{R5}}    * valueCoding contains anatomical-region 1..*
-{{R5}}    * valueCoding[anatomical-region] from AnatomicalRegionVs (extensible)
-{{R5}}    * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
-{{R5}}    * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
-
+{{R5}}    * coding contains anatomical-region 1..*
+{{R5}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (extensible)
+// {{R5}}* bodySite
+// {{R5}}  * concept 1..1
+// {{R5}}    * valueCoding
+// {{R5}}      * insert SliceElement( #value, concept )
+// {{R5}}    * valueCoding contains anatomical-region 1..*
+// {{R5}}    * valueCoding[anatomical-region] from AnatomicalRegionVs (extensible)
+// {{R5}}    * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+// {{R5}}    * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 {{R4}}* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 {{R4}}* extension[bodysite].extension[concept] 1..1
 {{R4}}* extension[bodysite].extension[concept]
-{{R5}}  * valueCodeableConcept from AnatomicalRegionVs (extensible)
-{{R5}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
-{{R5}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+{{R4}}  * valueCodeableConcept from ValueSetAnatomicalRegion (extensible)
+{{R4}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+{{R4}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 
 // modality
 {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality named modality 1..1 
+
 
 
 //{{R5}}    * ^comment = "This element corresponds to ImagingStudy anatomical"
