@@ -16,6 +16,8 @@
 {% assign hl7EuHdr          = "[HL7 EU Hospital Discharge Reports](https://build.fhir.org/ig/hl7-eu/hdr/index.html)" %}
 {% assign hl7EuEps          = "[HL7 Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/)" %}
 
+{% assign EuridiceHealthDataAPI = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/eu-health-data-api/en/)" %}
+
 {% assign ArgImg            = "[Argonaut Imaging](https://github.com/sync-for-science/imaging)" %}
 
 {% assign DICOMwebWado      = "[DICOMweb-WADO](https://www.dicomstandard.org/using/dicomweb/retrieve-wado-rs-and-wado-uri/)" %}

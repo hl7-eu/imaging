@@ -1,3 +1,18 @@
+```mermaid
+
+flowchart TD
+  Consumer["`Imaging Report 
+    Document Consumer`"]
+  Producer["`Imaging Report
+    Document Access Provider`"]
+  Consumer ---|
+ITI-67 Find Document References
+ITI-68 Retrieve Document
+ITI-78 Patient Demographics Query
+Get Access Token
+  | Producer
+
+```
 
 ### Actor Grouping
 

@@ -72,6 +72,8 @@ pages:
       title: Example semi structured report
     example-structured.md:
       title: Example structured report
+  api.md: 
+    title: EU Health Data API for Imaging Reports
   xtehr-mapping.md:
     title: Xt-EHR mapping
   patterns-and-guidelines.md:
@@ -140,6 +142,7 @@ menu:
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
+    EU Health Data API for Imaging Reports: api.html
     Imaging Report Examples: examples.html
     Patterns and Guidelines: patterns-and-guidelines.html
     Design considerations: design-considerations.html

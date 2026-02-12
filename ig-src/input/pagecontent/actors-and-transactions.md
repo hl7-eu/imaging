@@ -1,6 +1,6 @@
 {% include variable-definitions.md %}
 
-The actors defined in this specification are: 
+The actors defined in this specification are:
 
 {% sql {
   "query" : "SELECT name AS Name, title AS Title, Type, Description, Web, Url FROM Resources WHERE Type='ActorDefinition' ORDER BY Name",

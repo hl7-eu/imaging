@@ -4,7 +4,6 @@
 ---
 config:
   flowchart:
-     htmlLabels:false
      wrappingWidth:4000
 ---
 flowchart TD
@@ -20,7 +19,6 @@ Get Access Token
   | Producer
 
 ```
-
 
 ### Actor Grouping
 

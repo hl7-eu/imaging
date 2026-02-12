@@ -1,4 +1,4 @@
-Profile: ImManifestDocumentReference
+Profile: DocumentReferenceImagingReport
 {{R4}}Parent: EehrxfMhdDocumentReference
 {{R5}}Parent: DocumentReference
 Title: "EEHRxF MHD DocumentReference Profile"

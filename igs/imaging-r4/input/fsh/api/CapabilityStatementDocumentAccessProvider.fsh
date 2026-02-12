@@ -98,22 +98,22 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-type"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD   // Change specific for imaging
 * rest[=].resource[=].searchParam[=].documentation = "Kind of document (LOINC code) - SHALL support for clinical precision filtering"
 
 * rest[=].resource[=].searchParam[+].name = "_id"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/Resource-id"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL  // Change specific for imaging
 * rest[=].resource[=].searchParam[=].documentation = "Logical id of this artifact"
 
-// Search parameters for DocumentReference - SHOULD support
+// Search parameters for DocumentReference - SHALL support
 * rest[=].resource[=].searchParam[+].name = "category"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-category"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
-* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].searchParam[=].documentation = "Categorization of document (XDS ClassCode) - SHOULD support for coarse filtering"
 
 * rest[=].resource[=].searchParam[+].name = "date"
