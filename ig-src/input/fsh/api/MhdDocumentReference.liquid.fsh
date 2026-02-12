@@ -4,13 +4,6 @@ Profile: ImManifestDocumentReference
 Title: "EEHRxF MHD DocumentReference Profile"
 Description: """
 Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile.
-
-**Search Strategy**:
-- `category`: Use [ValueSet EEHRxF Document Priority Category ValueSet](ValueSet-eehrxf-document-priority-category-vs.html) (EHDS Priority Categories) for coarse document filtering (Patient Summaries, Discharge Reports, etc.)
-- `type`: Use EEHRxFDocumentTypeVS (LOINC) for clinical precision (specific document types)
-- `context.practiceSetting`: SHOULD be used to differentiate lab vs imaging reports when category=REPORTS
-
-See [Document Exchange](document-exchange.html) for query examples.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 * category = $loinc#18748-4 // TODO replace with correct version from API
@@ -26,6 +19,15 @@ See [Document Exchange](document-exchange.html) for query examples.
 
 // date
 * date 1..1
+
+* category 1..1
+  * coding
+    * insert SliceElement( #value, $this )
+  * coding contains imaging 1..1 and report 1..1
+  * coding[imaging] = $loinc#18748-4	// Diagnostic imaging study
+  * coding[report] =  $xds-class-code#REPORTS // TODO - get a better code here
+
+* type from ImagingReportTypesEuVSEuImaging (preferred)
 
 // bodysite
 {{R5}}* bodySite
