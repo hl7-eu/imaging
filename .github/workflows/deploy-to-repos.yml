@@ -36,7 +36,7 @@ jobs:
         working-directory: ./igs/imaging-r4
         run: |
           pwd
-          ./_genonce.sh -generation-off
+          ./_genonce.sh
 
   validate-r5:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
         working-directory: ./igs/imaging-r5
         run: |
           pwd
-          ./_genonce.sh -generation-off
+          ./_genonce.sh
 
   # Deployment jobs only run if validation passes
   deploy-r4:
