@@ -75,7 +75,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
       <tr>
         <td>header.author[x]</td>
         <td>Author(s) responsible for the provided information. The exact role of the responsible author varies across use cases and is specific to individual models.</td>
-        <td></td>
+        <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
         <td>series.performer[performer]</td>
         <td></td>
@@ -91,7 +91,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
       <tr>
         <td>header.author[x]</td>
         <td>Author(s) responsible for the provided information. The exact role of the responsible author varies across use cases and is specific to individual models.</td>
-        <td></td>
+        <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
         <td>series.performer[device]</td>
         <td></td>
@@ -99,7 +99,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
       <tr>
         <td>header.date</td>
         <td>Date and optionally time of authoring/issuing</td>
-        <td></td>
+        <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
         <td>started</td>
         <td>No core element to map the issuing of the Study. An extension might be needed to be defined as part of the Imaging-manifest IG</td>
@@ -139,7 +139,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
       <tr>
         <td>bodySite</td>
         <td>All of the distinct values for series&apos; examined body parts.</td>
-        <td></td>
+        <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
         <td>series.bodySite</td>
         <td></td>
@@ -235,7 +235,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
       <tr>
         <td>series.seriesModality</td>
         <td>Acquisition modality - the modality used for this series</td>
-        <td></td>
+        <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
         <td>series.modality</td>
         <td></td>
