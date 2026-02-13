@@ -43,8 +43,10 @@ RuleSet: ImagingStudyResource( strength1, strength2 )
     * code = #search-type
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Search for ImagingStudy resources."
-  * insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-based-on]], #reference, {strength1}, [[The order that lead to the imaging study.]])
-  * insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-body-site]], #token, {strength1}, [[The body-site the study examined.]])
+  {{R4}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-basedon]], #reference, {strength1}, [[The order that lead to the imaging study.]])
+  {{R5}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-based-on]], #reference, {strength1}, [[The order that lead to the imaging study.]])
+  {{R4}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-bodysite]], #token, {strength1}, [[The body-site the study examined.]])
+  {{R5}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-body-site]], #token, {strength1}, [[The body-site the study examined.]])
   * insert CapabilityStatementSearchParameter( dicom-class, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-dicom-class]], #token, {strength2}, [[The type of the instances.]])
   * insert CapabilityStatementSearchParameter( modality, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-modality]], #token, {strength1}, [[The modality of the imaging study.]])
   * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the imaging study.]] )
@@ -55,8 +57,8 @@ RuleSet: ImagingStudyResource( strength1, strength2 )
   * insert CapabilityStatementSearchParameter( referrer, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-referrer]], #reference, {strength2}, [[The referring physician.]] )
   * insert CapabilityStatementSearchParameter( series, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-series]], #token, {strength2}, [[The the UID of a series in the study.]] )
   * insert CapabilityStatementSearchParameter( started, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-started]], #date, {strength1}, [[The date the study was started.]] )
-  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-subject]], #token, {strength1}, [[The status of the study.]] )
-  * insert CapabilityStatementSearchParameter( status, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-status]], #reference, {strength1}, [[The subject the study is about.]] )
+  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-subject]], #reference, {strength1}, [[The status of the study.]] )
+  * insert CapabilityStatementSearchParameter( status, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-status]], #token, {strength1}, [[The subject the study is about.]] )
 
 //////////////////////////////////////////////////////////////////////////////
 // Device
@@ -84,8 +86,8 @@ RuleSet: AdverseEventResource( strength1 )
 // ImagingSelection
 RuleSet: ImagingSelectionResource( strength1 )
 {{R }}* resource[+]
-{{R4}}  * type = #ImagingSelection
-{{R5}}  * type = #Basic
+{{R4}}  * type = #Basic
+{{R5}}  * type = #ImagingSelection
 {{R }}  * insert CapabilityStatementExpectation( {strength1} )
 {{R }}  * documentation = "Represents part of an imaging study."
 {{R }}  * interaction[+]
@@ -115,14 +117,14 @@ RuleSet: ProcedureResource( strength1 )
     * code = #read
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Read Procedure by logical ID"
-  * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #token, {strength1}, [[The patient of the procedure.]] )
-  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/Procedure-subject]], #token, {strength1}, [[The subject of the procedure.]] )
+  * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the procedure.]] )
+  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/Procedure-subject]], #reference, {strength1}, [[The subject of the procedure.]] )
 
 // ServiceRequest
 
 RuleSet: ServiceRequestResource( strength1 )
 * resource[+]
-  * type = #Procedure
+  * type = #ServiceRequest
   * insert CapabilityStatementExpectation( {strength1} )
   * documentation = "Represents the order that generated the study."
   * interaction[+]
@@ -130,8 +132,8 @@ RuleSet: ServiceRequestResource( strength1 )
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Read ServiceRequest by logical ID"
   * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the order (accession number).]] )
-  * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #token, {strength1}, [[The patient of the order.]] )
-  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #token, {strength1}, [[The subject of the order.]] )
+  * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the order.]] )
+  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #reference, {strength1}, [[The subject of the order.]] )
 
 // Provenance
 RuleSet: ProvenanceResource( strength1 )
@@ -143,9 +145,9 @@ RuleSet: ProvenanceResource( strength1 )
     * code = #read
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Read ServiceRequest by logical ID"
-  * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #token, {strength1}, [[The patient of the order.]] )
-  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #token, {strength1}, [[The subject of the order.]] )
-  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/Provenance-target]], #token, {strength1}, [[The target of the provenance.]] )
+  * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the order.]] )
+  * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #reference, {strength1}, [[The subject of the order.]] )
+  * insert CapabilityStatementSearchParameter( target, [[http://hl7.org/fhir/SearchParameter/Provenance-target]], #reference, {strength1}, [[The target of the provenance.]] )
 
 
 // DiagnosticReport 

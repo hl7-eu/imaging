@@ -146,7 +146,8 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].documentation = "Time of service that is being documented"
 
 * rest[=].resource[=].searchParam[+].name = "format"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format"
+{{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format"
+{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format-code"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
@@ -175,7 +176,8 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].documentation = "Kind of facility where patient was seen"
 
 * rest[=].resource[=].searchParam[+].name = "event"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event"
+{{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event"
+{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event-code"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
@@ -189,7 +191,8 @@ indexes document metadata for queries by Document Consumers.
 * rest[=].resource[=].searchParam[=].documentation = "Document security-tags"
 
 * rest[=].resource[=].searchParam[+].name = "related"
-* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-related"
+{{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-related"
+{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto"
 * rest[=].resource[=].searchParam[=].type = #reference
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY

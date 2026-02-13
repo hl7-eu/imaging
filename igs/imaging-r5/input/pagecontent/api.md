@@ -2,8 +2,15 @@
 {% include variable-definitions.md %}
 
 This page illustrates the imaging report specific limitations and extensions required to include imaging reports in the {{EuridiceHealthDataAPI}}.
-{% if site.data.fhir.version == "5.0.0" %}This specification is currently only supports FHIR R4. In this specification the R5 equivalents are presented in line with
-this choices in this specification.
+{% if site.data.fhir.version == "5.0.0" %}
+<div xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <blockquote class="stu-note">  
+   <p>The {{EuridiceHealthDataAPI}} specification currently only supports FHIR R4. In this specification the R5 equivalents are presented in line with
+this choices in this specification. These artifacts will have to be updated when the {{EuridiceHealthDataAPI}} has an R5 equivalent. 
+</p>
+ </blockquote>
+</div>
 {% endif %}
 
 ### Document access

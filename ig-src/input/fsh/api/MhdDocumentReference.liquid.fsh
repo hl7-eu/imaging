@@ -55,7 +55,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 {{R4}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 
 // modality
-{{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality named modality 1..1 
+{{R4}}* extension contains $CrossVersion-R5-DocumentReference.modality-for-R4 named modality 1..1 
 
 
 

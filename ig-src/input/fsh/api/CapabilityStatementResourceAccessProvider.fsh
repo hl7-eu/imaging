@@ -508,11 +508,11 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].searchParam[=].documentation = "Classification of the encounter (e.g., inpatient, outpatient)"
 
 * rest[=]
-  * insert ImagingStudyResource( #SHALL, #SHOULD )
+  * insert ImagingStudyResource( #SHALL, #SHOULD ) //10
   * insert DeviceResource( #SHALL, #SHOULD )
   * insert CompositionResource( #SHALL )
   * insert ProcedureResource( #SHALL )
   * insert ServiceRequestResource( #SHALL )
   * insert AdverseEventResource( #SHALL )
-  * insert ProvenanceResource( #SHALL )
+  * insert ProvenanceResource( #SHALL ) // 16
   * insert ImagingSelectionResource( #SHALL )
