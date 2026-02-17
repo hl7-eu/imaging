@@ -46,8 +46,6 @@ class Observation <<findings / measurements>> {
   ...
 }
 
-class PDF <<optional attachment>> {
-}
 
 DocumentReference --> Bundle : content
 Bundle --> Composition : entry[0]
@@ -58,7 +56,7 @@ Bundle --> Observation : entry
 DiagnosticReport --> ImagingStudy : imagingStudy
 DiagnosticReport --> ServiceRequest : basedOn
 DiagnosticReport --> Observation : result
-DiagnosticReport --> PDF : presentedForm (optional)
+
 DiagnosticReport --> Composition : composition
 
 @enduml
