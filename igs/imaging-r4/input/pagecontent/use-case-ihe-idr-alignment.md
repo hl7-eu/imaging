@@ -1,6 +1,0 @@
-## Alignment between IHE IDR and EHDS Imaging Report IG
-This specification is being aligned with the {{iheIDR}}, as detailed in [Imaging Report](imaging-report.html), and it is expected that implementations of this IG can be conformant with the IHE IDR profile. An IDR resource might not be valid against this specification, as this model includes further Europe-specific constraints.
-
-The main differences between the two specifications are that the IHE IDR profile is focused on the exchange of imaging reports with resource-level access, while this IG also enables the exchange of imaging reports with document-level access through the use of the `DocumentReference` resource as a wrapper for the `Bundle` containing the report. The second difference is that this IG has tighter integration between the imaging report and imaging study, achieved through the [IHE MADO (Manifest-based Access to DICOM Objects) profile](https://euridice.org/mado/), while the IHE IDR profile is more agnostic in this regard.
-
-The alignment between the two specifications is being achieved through close collaboration between the teams working on both specifications and through the use of common resources and data structures where possible.

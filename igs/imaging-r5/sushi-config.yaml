@@ -60,6 +60,8 @@ pages:
     title: System actors
   use-cases.md:
     title: Use Cases
+  data-formats.md:
+    title: Data formats
   examples.md:
     title: Examples
     example-unstructured.md:
@@ -137,6 +139,7 @@ menu:
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
+    Data formats: data-formats.html
     Imaging Report Examples: examples.html
     Patterns and Guidelines: patterns-and-guidelines.html
     Design considerations: design-considerations.html
