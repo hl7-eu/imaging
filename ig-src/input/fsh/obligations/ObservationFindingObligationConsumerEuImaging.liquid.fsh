@@ -2,14 +2,14 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_ObservationFindingEuImaging
+Profile: ObservationFindingObligationConsumerEuImaging
 Parent: ObservationFindingEuImaging
-Id: Producer-ObservationFindingEuImaging
-Title: "ObservationFindingEuImaging: obligations"
-Description: "Producer obligations for ObservationFindingEuImaging"
+Id: observation-finding-obligation-consumer-eu-imaging
+Title: "Observation: Imaging Finding: Obligations Consumer"
+Description: "Consumer obligations for Observation: Imaging Finding"
 * text
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
-  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)
+  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.results[x]"
 {% endif %}
 
@@ -17,14 +17,14 @@ Description: "Producer obligations for ObservationFindingEuImaging"
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_ObservationFindingEuImaging
+Profile: ObservationFindingObligationConsumerEuImaging
 Parent: ObservationFindingEuImaging
-Id: Producer-ObservationFindingEuImaging
-Title: "ObservationFindingEuImaging: obligations"
-Description: "Producer obligations for ObservationFindingEuImaging"
+Id: observation-finding-obligation-consumer-eu-imaging
+Title: "Observation: Imaging Finding: Obligations Consumer"
+Description: "Consumer obligations for Observation: Imaging Finding"
 * text
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
-  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)
+  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.results[x]"
 {% endif %}
 

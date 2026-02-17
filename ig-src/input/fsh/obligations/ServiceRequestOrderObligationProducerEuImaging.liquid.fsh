@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_ServiceRequestOrderEuImaging
+Profile: ServiceRequestOrderObligationProducerEuImaging
 Parent: ServiceRequestOrderEuImaging
-Id: Producer-ServiceRequestOrderEuImaging
-Title: "ServiceRequestOrderEuImaging: obligations"
-Description: "Producer obligations for ServiceRequestOrderEuImaging"
+Id: service-request-order-obligation-producer-eu-imaging
+Title: "ServiceRequest: Imaging Order: Obligations Producer"
+Description: "Producer obligations for ServiceRequest: Imaging Order"
 * reason.concept
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)
@@ -17,11 +17,11 @@ Description: "Producer obligations for ServiceRequestOrderEuImaging"
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_ServiceRequestOrderEuImaging
+Profile: ServiceRequestOrderObligationProducerEuImaging
 Parent: ServiceRequestOrderEuImaging
-Id: Producer-ServiceRequestOrderEuImaging
-Title: "ServiceRequestOrderEuImaging: obligations"
-Description: "Producer obligations for ServiceRequestOrderEuImaging"
+Id: service-request-order-obligation-producer-eu-imaging
+Title: "ServiceRequest: Imaging Order: Obligations Producer"
+Description: "Producer obligations for ServiceRequest: Imaging Order"
 * extension[reason].extension[concept].valueCodeableConcept
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)

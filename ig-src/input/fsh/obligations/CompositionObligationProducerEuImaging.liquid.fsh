@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_CompositionEuImaging
+Profile: CompositionObligationProducerEuImaging
 Parent: CompositionEuImaging
-Id: Producer-CompositionEuImaging
-Title: "CompositionEuImaging: obligations"
-Description: "Producer obligations for CompositionEuImaging"
+Id: composition-obligation-producer-eu-imaging
+Title: "Composition: Imaging Report: Obligations Producer"
+Description: "Producer obligations for Composition: Imaging Report"
 * custodian
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)
@@ -56,11 +56,11 @@ Description: "Producer obligations for CompositionEuImaging"
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_CompositionEuImaging
+Profile: CompositionObligationProducerEuImaging
 Parent: CompositionEuImaging
-Id: Producer-CompositionEuImaging
-Title: "CompositionEuImaging: obligations"
-Description: "Producer obligations for CompositionEuImaging"
+Id: composition-obligation-producer-eu-imaging
+Title: "Composition: Imaging Report: Obligations Producer"
+Description: "Producer obligations for Composition: Imaging Report"
 * custodian
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)
