@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Consumer_EuMedicationAdministration
+Profile: MedicationAdministrationObligationConsumerEuImaging
 Parent: $EuMedicationAdministration
-Id: Consumer-EuMedicationAdministration
-Title: "EuMedicationAdministration: obligations"
-Description: "Consumer obligations for EuMedicationAdministration"
+Id: medication-administration-obligation-consumer-eu-imaging
+Title: "MedicationAdministration: Obligations Consumer"
+Description: "Consumer obligations for MedicationAdministration"
 * partOf
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)

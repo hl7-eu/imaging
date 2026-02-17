@@ -78,6 +78,8 @@ pages:
     title: Artifacts
     artifacts-structural.md:
       title: Structural artifacts
+    artifacts-obligations.md:
+      title: Obligations
     imaging-report.md:
       title: Imaging Report
 # The parameters property represents IG.definition.parameter. Rather
@@ -144,8 +146,10 @@ menu:
     Copyright: copyright.html
   Artifacts:
     Structural: artifacts-structural.html
+    Obligations: artifacts-obligations.md
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
+
 
   R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
 

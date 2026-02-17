@@ -1,14 +1,12 @@
 
-
-
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_ObservationFindingEuImaging
+Profile: ObservationFindingObligationProducerEuImaging
 Parent: ObservationFindingEuImaging
-Id: Producer-ObservationFindingEuImaging
-Title: "ObservationFindingEuImaging: obligations"
-Description: "Producer obligations for ObservationFindingEuImaging"
+Id: observation-finding-obligation-producer-eu-imaging
+Title: "Observation: Imaging Finding: Obligations Producer"
+Description: "Producer obligations for Observation: Imaging Finding"
 * text
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)

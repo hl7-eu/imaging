@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_EuMedicationAdministration
+Profile: MedicationAdministrationObligationProducerEuImaging
 Parent: $EuMedicationAdministration
-Id: Producer-EuMedicationAdministration
-Title: "EuMedicationAdministration: obligations"
-Description: "Producer obligations for EuMedicationAdministration"
+Id: medication-administration-obligation-producer-eu-imaging
+Title: "MedicationAdministration: Obligations Producer"
+Description: "Producer obligations for MedicationAdministration"
 * partOf
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)

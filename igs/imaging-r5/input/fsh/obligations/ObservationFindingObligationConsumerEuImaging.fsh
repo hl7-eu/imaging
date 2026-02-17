@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Consumer_ObservationFindingEuImaging
+Profile: ObservationFindingObligationConsumerEuImaging
 Parent: ObservationFindingEuImaging
-Id: Consumer-ObservationFindingEuImaging
-Title: "ObservationFindingEuImaging: obligations"
-Description: "Consumer obligations for ObservationFindingEuImaging"
+Id: observation-finding-obligation-consumer-eu-imaging
+Title: "Observation: Imaging Finding: Obligations Consumer"
+Description: "Consumer obligations for Observation: Imaging Finding"
 * text
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)

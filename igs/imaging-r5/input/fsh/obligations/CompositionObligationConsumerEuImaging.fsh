@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Consumer_CompositionEuImaging
+Profile: CompositionObligationConsumerEuImaging
 Parent: CompositionEuImaging
-Id: Consumer-CompositionEuImaging
-Title: "CompositionEuImaging: obligations"
-Description: "Consumer obligations for CompositionEuImaging"
+Id: composition-obligation-consumer-eu-imaging
+Title: "Composition: Imaging Report: Obligations Consumer"
+Description: "Consumer obligations for Composition: Imaging Report"
 * custodian
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)

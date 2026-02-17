@@ -4,11 +4,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Producer_ImagingStudyEuImaging
+Profile: ImagingStudyObligationProducerEuImaging
 Parent: ImagingStudyEuImaging
-Id: Producer-ImagingStudyEuImaging
-Title: "ImagingStudyEuImaging: obligations"
-Description: "Producer obligations for ImagingStudyEuImaging"
+Id: imaging-study-obligation-producer-eu-imaging
+Title: "ImagingStudy: General: Obligations Producer"
+Description: "Producer obligations for ImagingStudy: General"
 * series.modality
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(BundleReportEuImagingProducer)

@@ -731,6 +731,16 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
 // }
 
 function generateObligationFiles(parsedData) {
+    const IG_NAME_SUFFIX = 'EuImaging';
+    const RESOURCE_TITLES = {
+        CompositionEuImaging: 'Composition: Imaging Report',
+        ServiceRequestOrderEuImaging: 'ServiceRequest: Imaging Order',
+        ImagingStudyEuImaging: 'ImagingStudy: General',
+        DiagnosticReportEuImaging: 'DiagnosticReport: Imaging Report',
+        ObservationFindingEuImaging: 'Observation: Imaging Finding',
+        EuMedicationAdministration: 'MedicationAdministration'
+    };
+
     function getValue(row, idx) {
         return (idx !== undefined && row[idx] !== undefined && row[idx] !== null)
             ? row[idx].trim()
@@ -755,6 +765,58 @@ function generateObligationFiles(parsedData) {
             .split(/[;,|]/)
             .map(code => code.trim())
             .filter(code => code.length > 0);
+    }
+
+    function normalizeResourceNameForIg(resourceName) {
+        if (!resourceName || resourceName.length === 0) {
+            return '';
+        }
+        if (resourceName.endsWith(IG_NAME_SUFFIX)) {
+            return resourceName;
+        }
+        if (resourceName.startsWith('Eu') && resourceName.length > 2) {
+            return `${resourceName.substring(2)}${IG_NAME_SUFFIX}`;
+        }
+        return `${resourceName}${IG_NAME_SUFFIX}`;
+    }
+
+    function splitResourceName(resourceName) {
+        const normalizedName = normalizeResourceNameForIg(resourceName);
+
+        if (normalizedName && normalizedName.endsWith(IG_NAME_SUFFIX)) {
+            return {
+                base: normalizedName.substring(0, normalizedName.length - IG_NAME_SUFFIX.length),
+                suffix: IG_NAME_SUFFIX
+            };
+        }
+        return {
+            base: normalizedName,
+            suffix: ''
+        };
+    }
+
+    function buildObligationProfileName(resourceName, actor) {
+        const parts = splitResourceName(resourceName);
+        if (parts.suffix.length > 0) {
+            return `${parts.base}Obligation${actor}${parts.suffix}`;
+        }
+        return `${resourceName}Obligation${actor}`;
+    }
+
+    function toKebabCase(value) {
+        return value
+            .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+            .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+            .replace(/_/g, '-')
+            .toLowerCase();
+    }
+
+    function buildObligationProfileId(profileName) {
+        return toKebabCase(profileName);
+    }
+
+    function getResourceDisplayTitle(resourceName) {
+        return RESOURCE_TITLES[resourceName] || resourceName;
     }
 
     function formatParent(resourceUrl) {
@@ -815,7 +877,11 @@ function generateObligationFiles(parsedData) {
             return;
         }
 
-        const obligationPath = path.resolve(__dirname, `${outputDir}/${actor}_${resourceName}.liquid.fsh`);
+        const profileName = buildObligationProfileName(resourceName, actor);
+        const profileId = buildObligationProfileId(profileName);
+        const resourceDisplayTitle = getResourceDisplayTitle(resourceName);
+
+        const obligationPath = path.resolve(__dirname, `${outputDir}/${profileName}.liquid.fsh`);
         console.log(obligationPath);
         const writable = fs.createWriteStream(obligationPath);
 
@@ -828,11 +894,11 @@ function generateObligationFiles(parsedData) {
             writable.write(`////////////////////////////////////////////////////\n`);
             writable.write(`// Generated file. Do not edit.\n`);
             writable.write(`////////////////////////////////////////////////////\n`);
-            writable.write(`Profile: ${actor}_${resourceName}\n`);
+            writable.write(`Profile: ${profileName}\n`);
             writable.write(`Parent: ${data.parent}\n`);
-            writable.write(`Id: ${actor}-${resourceName}\n`);
-            writable.write(`Title: "${resourceName}: obligations"\n`);
-            writable.write(`Description: "${actor} obligations for ${resourceName}"\n`);
+            writable.write(`Id: ${profileId}\n`);
+            writable.write(`Title: "${resourceDisplayTitle}: Obligations ${actor}"\n`);
+            writable.write(`Description: "${actor} obligations for ${resourceDisplayTitle}"\n`);
 
             Array.from(data.obligationMap.keys()).forEach(obligation => {
                 const rows = parsedData

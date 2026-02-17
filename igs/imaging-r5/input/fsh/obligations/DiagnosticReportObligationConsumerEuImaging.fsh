@@ -2,11 +2,11 @@
 ////////////////////////////////////////////////////
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
-Profile: Consumer_DiagnosticReportEuImaging
+Profile: DiagnosticReportObligationConsumerEuImaging
 Parent: DiagnosticReportEuImaging
-Id: Consumer-DiagnosticReportEuImaging
-Title: "DiagnosticReportEuImaging: obligations"
-Description: "Consumer obligations for DiagnosticReportEuImaging"
+Id: diagnostic-report-obligation-consumer-eu-imaging
+Title: "DiagnosticReport: Imaging Report: Obligations Consumer"
+Description: "Consumer obligations for DiagnosticReport: Imaging Report"
 * extension[procedure]
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)
