@@ -50,7 +50,7 @@ Bundle --> DiagnosticReport : entry
 Bundle --> ImagingStudy : entry (optional)
 Bundle --> ServiceRequest : entry (optional)
 DiagnosticReport --> PDF : presentedForm
-DiagnosticReport --> ImagingStudy : imagingStudy
+DiagnosticReport --> ImagingStudy : +imagingStudy : Reference~ImagingStudy~
 DiagnosticReport --> ServiceRequest : basedOn
 
 @enduml

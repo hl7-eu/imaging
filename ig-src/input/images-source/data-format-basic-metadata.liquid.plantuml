@@ -25,7 +25,7 @@ class Bundle <<type: collection>> {
 
 class DiagnosticReport <<main resource>> {
   +presentedForm : Attachment~PDF~
-  +study : Reference~ImagingStudy~
+  {% if isR4 %}+imagingStudy : Reference~ImagingStudy~{% endif %}{% if isR5 %}+study : Reference~ImagingStudy~{% endif %}
   +basedOn : Reference~ServiceRequest~
   ...
 }
@@ -50,7 +50,7 @@ Bundle --> DiagnosticReport : entry
 Bundle --> ImagingStudy : entry (optional)
 Bundle --> ServiceRequest : entry (optional)
 DiagnosticReport --> PDF : presentedForm
-DiagnosticReport --> ImagingStudy : +study : Reference~ImagingStudy~
+DiagnosticReport --> ImagingStudy : {% if isR4 %}+imagingStudy : Reference~ImagingStudy~{% endif %}{% if isR5 %}+study : Reference~ImagingStudy~{% endif %}
 DiagnosticReport --> ServiceRequest : basedOn
 
 @enduml

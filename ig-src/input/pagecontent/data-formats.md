@@ -1,6 +1,7 @@
 The EHDS Imaging Report specification supports the use of different data formats for the representation of imaging reports, that introduce increasing level of structure to the data exchanged.
 
-## Renderable format with basic metadata
+### Renderable format with basic metadata
+
 Comprised of a `Bundle` of type collection containing a `DiagnosticReport` with a reference to a PDF (or other renderable format) attachment through .presentedForm, the `ImagingStudy` resource(s) that is the object of the report, the `ServiceRequest` that represented the original order for the study, and the `Patient` to whom the report belongs. Other resources are also allowed to encode additional elements of the report environment, as specified by this IG. Optionally, if the only available information about the study and the order are their identifiers, those can be encoded as `DiagnosticReport.study.identifier` and `DiagnosticReport.basedOn.identifier`, without having to include `ImagingStudy` and `ServiceRequest` resources in the `Bundle`. 
 
 A `DocumentReference` resource wrapper pointing to the `Bundle` is used to encode the elements used as search parameters to fulfill functional requirements of the ACCESSOR actor.
@@ -17,7 +18,8 @@ An example of this type of report format can be found [here](example-unstructure
 </figure>
 <br clear="all"/>
 
-## Section-structured report with processable narrative
+### Section-structured report with processable narrative
+
 Building on top of the previous data format, the `DiagnosticReport` is exchanged alongside a `Composition` as entries of a `Bundle` of type `document`. Both `DiagnosticReport` and `Composition` encode the same information, but the `Composition` can be used for display purposes, especially the narrative sections of the report, while the `DiagnosticReport` can be used for the interpretation of the structured data. The `DocumentReference` resource wrapper, as in the previous case, serves as an interface layer to surface search parameters that allow finding and retrieving the report.
 
 In this case, the PDF loses relevance, as the narrative of the `Composition` can adapt dynamically to different display contexts. However, the PDF can still be included as an attachment in the `DiagnosticReport` for archival purposes, or for use cases where a human-readable report is needed without the requirement for structured data. Creators of this type of report must ensure tight consistency between the narrative of the `Composition` and the PDF, as they are both intended for display purposes.
@@ -34,7 +36,8 @@ An example of this type of report format can be found [here](example-structured.
 </figure>
 <br clear="all"/> 
 
-## Fully structured report
+### Fully structured report
+
 This case utilizes the data structures of the previous case and adds a fully coded (ideally with standard clinical or radiology domain terminology) representation of the report's findings and impressions, encoded in FHIR `Observation` and `Condition` resources.
 
 This format allows for a fully computable report that can be easily integrated with other data sources and used for advanced use cases such as clinical decision support, research, etc. The `Composition` resource is still used for display purposes, but the narrative of the sections can be generated dynamically based on the coded data, and the PDF loses relevance in this case.
