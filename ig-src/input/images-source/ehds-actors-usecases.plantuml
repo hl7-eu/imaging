@@ -22,39 +22,39 @@ skinparam note {
 left to right direction
 
 ' ==================== ACCESSOR USE CASES ====================
-usecase "**Search**\n(Health Professional)\n--\n//Identify patient by://\nid, name, birthday, country\n//Seek reports by://\nbody part, date/time, modality,\ninstitution, country" as UC_SearchHP #DAE8FC
+usecase "**Search reports**" as UC_Search #DAE8FC
 
-usecase "**Search**\n(Patient)\n--\n//Patient searches own reports by://\ninstitution, country, anatomical\nregion, modality, date/time" as UC_SearchPatient #DAE8FC
-
-usecase "**Access**\n--\nAccess selected imaging\nreport(s)" as UC_Access #DAE8FC
+usecase "**Access report**" as UC_Access #DAE8FC
 
 ' Out of scope - imaging study access
-usecase "**Access Imaging Study** *\n--\n//Out of Scope://\nAccessing referenced imaging\nstudy from report.\nThis is tackled in the MADO profile." as UC_AccessStudy #F5F5F5
+usecase "**Access imaging study** *" as UC_AccessStudy #F5F5F5
 
 ' ==================== PROCESSOR USE CASES ====================
-usecase "**Extract & Process Data**\n--\nProcesses structured findings,\nimpressions and other coded data;\n an/ord analyses narrative text\n(E.g. Registries, AI tools, Clinical\nDecision Support)\n--\n**Requires not to display in a UI**" as UC_Processing #D5E8D4
+usecase "**Extract & process data**" as UC_Processing #D5E8D4
 
 ' ==================== DISPLAYER USE CASES ====================
-usecase "**Render Static Report**\n--\nDisplay pre-rendered report\n(PDF, HTML, or other static format)\n--\nNo dynamic UI population needed" as UC_RenderStatic #FFE6CC
+usecase "**Render static report**" as UC_RenderStatic #FFE6CC
 
-usecase "**Dynamically Populate UI**\n--\nExtract and display narrative sections,\nfindings, measurements in\nlocal UI components\n--\n**Requires structured narrative**" as UC_DynamicDisplay #FFE6CC
+usecase "**Populate dynamic UI**" as UC_DynamicDisplay #FFE6CC
 
-usecase "**Translate to Local Language**\n--\nTranslate coded values and\nterminology to local language" as UC_Translation #FFE6CC
+usecase "**Translate language of coded elements**" as UC_Translation #FFE6CC
 
-usecase "**Translate Narrative** *\n--\n//Out of Scope://\nTranslate narrative (not coded data)\nof the report to local language" as UC_TranslateNarrative #F5F5F5
+usecase "**Translate narrative** *" as UC_TranslateNarrative #F5F5F5
 
-' ==================== CREATOR USE CASES ====================
-usecase "**Reporting**\n--\nVerify correct patient, date/time,\naccess DICOM header info,\nconsider clinical question/reason,\nwrite report in assigned system" as UC_Reporting #F8CECC
+' ==================== PRODUCER USE CASES ====================
+usecase "**Create report**" as UC_Reporting #F8CECC
 
 ' ==================== ACTORS ====================
-actor "Accessor" as Accessor #DAE8FC
-actor "Processor\n(Patient or Healthcare Professional)" as Processor #D5E8D4
-actor "Displayer\n(Patient or Healthcare Professional)" as Displayer #FFE6CC
-actor "Creator" as Creator #F8CECC
+rectangle "Consumer actor\n(Patient or Healthcare Professional)" #F9F9F9 {
+  actor "Accessor" as Accessor #DAE8FC
+  actor "Processor" as Processor #D5E8D4
+  actor "Displayer" as Displayer #FFE6CC
+}
+
+actor "Producer" as Producer #F8CECC
 
 ' ==================== ACTOR ASSOCIATIONS ====================
-Accessor --> UC_SearchHP
-Accessor --> UC_SearchPatient
+Accessor --> UC_Search
 Accessor --> UC_Access : direct access\n(e.g., unique identifier)
 
 Processor --> UC_Processing
@@ -62,12 +62,11 @@ Processor --> UC_Processing
 Displayer --> UC_RenderStatic
 Displayer --> UC_DynamicDisplay
 
-Creator --> UC_Reporting
+Producer --> UC_Reporting
 
 ' ==================== INCLUDE RELATIONSHIPS ====================
 ' Search includes Access
-UC_SearchHP ..> UC_Access : <<include>>
-UC_SearchPatient ..> UC_Access : <<include>>
+UC_Search ..> UC_Access : <<include>>
 
 ' ==================== GENERALIZATION RELATIONSHIPS ====================
 
@@ -76,6 +75,7 @@ UC_AccessStudy ..> UC_Processing : <<extend>>
 UC_AccessStudy ..> UC_RenderStatic : <<extend>>
 UC_AccessStudy ..> UC_DynamicDisplay : <<extend>>
 UC_Translation ..> UC_DynamicDisplay : <<extend>>
+UC_Translation ..> UC_Processing : <<extend>>
 UC_TranslateNarrative ..> UC_RenderStatic : <<extend>>
 UC_TranslateNarrative ..> UC_DynamicDisplay : <<extend>>
 
@@ -87,6 +87,12 @@ end note
 
 note bottom of UC_TranslateNarrative
   * **Out of Scope** for this IG
+end note
+
+note right of Accessor
+  Accessor, Processor, and Displayer
+  are grouped as one Consumer actor
+  for obligations in this IG.
 end note
 
 @enduml
