@@ -1,7 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const obligationsDir     = '../input/fsh/obligations';	
+const obligationsDirs = {
+    r5: '../ig-src/input/fsh/obligations',
+    r4: '../ig-src/input/fsh/obligations'
+};
 const mappingTablesDir   = '../ig-src/input/pagecontent/';	
 const xtehrDir           = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';
@@ -20,11 +23,16 @@ const indices = {
     tgtRefType: 12,
     includeAsWell: 13,
     tgtModeling: 14,
-    actors: 16,
-    section: 17,
-    tgtResourceR4: 18,
-    tgtElementR4: 19,
-    tgtEquivalenceR4: 20,
+    obligationProducerR5: 16,
+    obligationConsumerR5: 17,
+    section: 18,
+    tgtResourceR4: 19,
+    tgtElementR4: 20,
+    tgtEquivalenceR4: 21,
+    tgtModelingR4: 25,
+    obligationProducerR4: 27,
+    obligationConsumerR4: 28,
+    sectionR4: 29,
 };
 
 const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
@@ -455,14 +463,19 @@ function generateMappingTables(parsedData, srcResources) {
     const resourcesWithoutR = [];
     
     srcResources.forEach(srcResource => {
-        const hasActorWithR = parsedData
+        const hasAnyObligation = parsedData
             .filter(row => row[indices.srcResource] === srcResource)
-            .filter(row => row[indices.actors] && row[indices.actors].length > 0)
-            .some(row => row[indices.actors].includes('R'));
+            .some(row => {
+                const r5Producer = row[indices.obligationProducerR5] ? row[indices.obligationProducerR5].trim() : '';
+                const r5Consumer = row[indices.obligationConsumerR5] ? row[indices.obligationConsumerR5].trim() : '';
+                const r4Producer = row[indices.obligationProducerR4] ? row[indices.obligationProducerR4].trim() : '';
+                const r4Consumer = row[indices.obligationConsumerR4] ? row[indices.obligationConsumerR4].trim() : '';
+                return r5Producer.length > 0 || r5Consumer.length > 0 || r4Producer.length > 0 || r4Consumer.length > 0;
+            });
         
         if (CORE_MODELS.includes(srcResource)) {
             coreResources.push(srcResource);
-        } else if (hasActorWithR) {
+        } else if (hasAnyObligation) {
             nonCoreWithR.push(srcResource);
         } else {
             resourcesWithoutR.push(srcResource);
@@ -718,163 +731,190 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
 // }
 
 function generateObligationFiles(parsedData) {
-  // Generate Obligations
-  const reportObligationResources = new Map();
-  const manifestObligationResources = new Map();
-  parsedData
-    .filter((row, index) => index > 0)
-    .filter(row => row[indices.actors]) // only rows with actors
-    .filter(row => row[indices.tgtResource]) // tgrResource must be defined
-    .filter(row => row[indices.tgtResource].length > 0)
-    .forEach(row => {
-        if ( row[indices.actors] && row[indices.actors].includes('R') ) {
-            reportObligationResources.set( row[indices.tgtResource], row[indices.tgtResource] );
-        } 
-        if ( row[indices.actors] && row[indices.actors].includes('M') ) {
-            manifestObligationResources.set( row[indices.tgtResource], row[indices.tgtResource] );
+    function getValue(row, idx) {
+        return (idx !== undefined && row[idx] !== undefined && row[idx] !== null)
+            ? row[idx].trim()
+            : '';
+    }
+
+    function ensureOutputDir(relativeDir) {
+        const absoluteDir = path.resolve(__dirname, relativeDir);
+        fs.mkdirSync(absoluteDir, { recursive: true });
+        return absoluteDir;
+    }
+
+    function cleanAllObligationFiles(relativeDir) {
+        const absoluteDir = ensureOutputDir(relativeDir);
+        fs.readdirSync(absoluteDir)
+            .filter(file => file.endsWith('.liquid.fsh'))
+            .forEach(file => fs.unlinkSync(path.join(absoluteDir, file)));
+    }
+
+    function splitObligationCodes(raw) {
+        return raw
+            .split(/[;,|]/)
+            .map(code => code.trim())
+            .filter(code => code.length > 0);
+    }
+
+    function formatParent(resourceUrl) {
+        if (!resourceUrl || resourceUrl.length === 0) {
+            return '';
         }
-    });
-  
-//   writeActorObligationFiles( parsedData, manifestObligationResources, 'Manifest', 'M');  
-  writeActorObligationFiles( parsedData, reportObligationResources, 'Report', 'R');  
-  
-}
+        if (resourceUrl.startsWith('$')) {
+            return resourceUrl;
+        }
+        return resourceUrl.startsWith('Eu') ? `$${resourceUrl}` : resourceUrl;
+    }
 
-function writeActorObligationFiles( parsedData, obligationResources, actor, actorCode ) {
-    function getShallPopulateObligations( parsedData, resourceUrl, actorCode ) {
-        const shallPopulateObligations = new Set();
-  
-        parsedData
-            .filter(row => row[indices.tgtResource] === resourceUrl )
-            .filter(row => row[indices.tgtElement])
-            .filter(row => row[indices.actors] )
-            .filter(row => row[indices.actors].includes( actorCode ) )
-            .filter(row => row[indices.tgtElement].length > 0)
-            .filter(row => row[indices.srcResource].length > 0)
-            .forEach(row => { 
-                shallPopulateObligations.add(row[indices.tgtElement])
-                // if it has a type that exists in parseData and is not a reference, include sibling elements
-                // COMMENTED OUT: This was causing unwanted sub-element expansion
-                /*
-                if (row[indices.srcType] && row[indices.srcType].length > 0 && row[indices.tgtRefType].length==0 ) {
-                    const srcType = row[indices.srcType].trim();
-                    let res = parsedData
-                        .filter(r => r[indices.srcResource] === srcType)
-                    res
-                        .filter(r => r[indices.tgtElement])
-                        .filter(r => r[indices.tgtElement].length > 0)
-                        .forEach(r => {
-                            shallPopulateObligations.add(row[indices.tgtElement] + '.' + r[indices.tgtElement]);
-                        })
-                }
-                */
+    function buildVersionData(resourceName, targetResourceIndex, targetElementIndex, obligationCodeIndex) {
+        const rows = parsedData
+            .filter((row, index) => index > 0)
+            .filter(row => getValue(row, targetResourceIndex) === resourceName)
+            .filter(row => getValue(row, targetElementIndex).length > 0)
+            .filter(row => getValue(row, obligationCodeIndex).length > 0);
+
+        if (rows.length === 0) {
+            return null;
+        }
+
+        const obligationMap = new Map();
+        rows.forEach(row => {
+            const element = getValue(row, targetElementIndex);
+            const codes = splitObligationCodes(getValue(row, obligationCodeIndex));
+            if (!obligationMap.has(element)) {
+                obligationMap.set(element, new Set());
+            }
+            const set = obligationMap.get(element);
+            codes.forEach(code => set.add(code));
         });
-        return shallPopulateObligations;
+
+        return {
+            resourceName,
+            parent: formatParent(resourceName),
+            obligationMap
+        };
     }
 
-    function getShallHandleCorrectlyObligations( parsedData, resourceUrl, actorCode ) {
-        const shallHandleCorrectlyObligations = new Set(parsedData
-            .filter(row => row[indices.tgtResource] === resourceUrl)
-            .filter(row => row[indices.tgtElement])
-            .filter(row => row[indices.tgtElement].length > 0)
-            .filter(row => row[indices.srcResource].length == 0)
-            .filter(r => r[indices.actors] )
-            .filter(r => r[indices.actors].includes( actorCode ) )
-            .map(row => row[indices.tgtElement])
-        );
-        return shallHandleCorrectlyObligations;
-    }
-
-    obligationResources.forEach( (resourceName, resourceUrl, index) => {
-        const shallPopulateObligations = getShallPopulateObligations( parsedData, resourceUrl, actorCode );
-        
-        const shallHandleCorrectlyObligations = getShallHandleCorrectlyObligations( parsedData, resourceUrl,actorCode );
-
-        const onlyMentioned = parsedData
-            .filter(row => row[indices.tgtResource] === resourceUrl )
-            .filter(row => !row[indices.tgtElement] || row[indices.tgtElement].length == 0)
-        ;
-
-        // COMMENTED OUT: includeAsWell logic that was causing cross-resource obligation contamination
-        // This was adding obligations from other resources that reference the current resource in their includeAsWell column
-        /*
-        const includeAsWell = new Set( parsedData
-            .filter(row => row[indices.tgtResource] === resourceUrl )
-            .filter(row => row[indices.includeAsWell] && row[indices.includeAsWell].length > 0)
-            .map(row => row[indices.includeAsWell])
-        );
-        
-        includeAsWell.forEach( asWell => {
-            const shallHandleCorrectlyObligationsAsWell = getShallHandleCorrectlyObligations( parsedData, asWell, actorCode );
-            const shallPopulateObligationsAsWell =    getShallPopulateObligations( parsedData, asWell, actorCode );
-            
-            shallHandleCorrectlyObligationsAsWell.forEach( obligation => {
-                shallHandleCorrectlyObligations.add(obligation);
+    function collectResourceNames(targetResourceIndex, obligationCodeIndex) {
+        const names = new Set();
+        parsedData
+            .filter((row, index) => index > 0)
+            .forEach(row => {
+                const resource = getValue(row, targetResourceIndex);
+                const obligationCode = getValue(row, obligationCodeIndex);
+                if (resource.length > 0 && obligationCode.length > 0) {
+                    names.add(resource);
+                }
             });
-            shallPopulateObligationsAsWell.forEach( obligation => {
-                shallPopulateObligations.add(obligation);
-            });     
-         });
-        */
+        return names;
+    }
 
-        const allObligations = new Set([...shallPopulateObligations, ...shallHandleCorrectlyObligations]);  
-  
-        if ( onlyMentioned.length > 0 || allObligations.size > 0) {  
-            const obligationPath = `${obligationsDir}/${actor}_${resourceName}.fsh`;
-            console.log(obligationPath);
-            const writable = fs.createWriteStream(obligationPath);
-  
+    function writeResourceObligationFile(resourceName, actor, actorCanonical, outputDir, r5Data, r4Data) {
+        if (!r5Data && !r4Data) {
+            return;
+        }
+
+        const obligationPath = path.resolve(__dirname, `${outputDir}/${actor}_${resourceName}.liquid.fsh`);
+        console.log(obligationPath);
+        const writable = fs.createWriteStream(obligationPath);
+
+        function writeVersionBlock(versionLabel, liquidCondition, data) {
+            if (!data) {
+                return;
+            }
+
+            writable.write(`{% if ${liquidCondition} %}\n`);
             writable.write(`////////////////////////////////////////////////////\n`);
             writable.write(`// Generated file. Do not edit.\n`);
             writable.write(`////////////////////////////////////////////////////\n`);
-  
             writable.write(`Profile: ${actor}_${resourceName}\n`);
-            writable.write(`Parent: ${resourceUrl.startsWith("Im")?resourceUrl:'$'+resourceUrl}\n`);
+            writable.write(`Parent: ${data.parent}\n`);
             writable.write(`Id: ${actor}-${resourceName}\n`);
             writable.write(`Title: "${resourceName}: obligations"\n`);
             writable.write(`Description: "${actor} obligations for ${resourceName}"\n`);
-  
-            allObligations.forEach(obligation => {
+
+            Array.from(data.obligationMap.keys()).forEach(obligation => {
                 const rows = parsedData
-                    .filter(row => row[indices.tgtResource] === resourceUrl )
-                    .filter(row => row[indices.tgtElement] === obligation )
-                ;
-                let documentationSet = new Set( rows
-                    .map(row => `${row[indices.srcResource]}.${row[indices.srcField]}`)
-                    .filter(row => row.length > 0) )
-                let documentation = Array.from(documentationSet)
-                    .join(', ')
-                ;
-                documentation = documentation.length > 0 ? documentation : '-';
+                    .filter(row => getValue(row, indices.srcResource).length > 0)
+                    .filter(row => {
+                        const targetElement = liquidCondition === 'isR5'
+                            ? getValue(row, indices.tgtElement)
+                            : getValue(row, indices.tgtElementR4);
+                        const targetResource = liquidCondition === 'isR5'
+                            ? getValue(row, indices.tgtResource)
+                            : getValue(row, indices.tgtResourceR4);
+                        return targetResource === resourceName && targetElement === obligation;
+                    });
+
+                const documentationSet = new Set(
+                    rows
+                        .map(row => `${getValue(row, indices.srcResource)}.${getValue(row, indices.srcField)}`)
+                        .filter(v => v && v !== '.')
+                );
+                const documentation = documentationSet.size > 0 ? Array.from(documentationSet).join(', ') : '-';
+
                 writable.write(`* ${obligation}\n`);
-                if (shallHandleCorrectlyObligations.has(obligation)) {
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:handle\n`);
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(Im${actor}Provider)\n`);
+                Array.from(data.obligationMap.get(obligation)).forEach(code => {
+                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #${code}\n`);
+                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = ${actorCanonical}\n`);
                     writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "${documentation}"\n`);
-                } else if (shallPopulateObligations.has(obligation)) {
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:populate-if-known\n`);
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(Im${actor}Provider)\n`);
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "${documentation}"\n`);
-                }
+                });
             });
-  
-            // if (shallHandleCorrectlyObligations.size > 0) {  
-            // writable.write(`\n`);
-            // writable.write(`Profile: ConsumerObligation${resourceName}\n`);
-            // writable.write(`Parent: ${resourceUrl}\n`);
-            // writable.write(`Title: "Consumer obligation for ${resourceName}"\n`);
-            // writable.write(`Description: "Consumer obligations for ${resourceName}"\n`);
-  
-            // shallHandleCorrectlyObligations.forEach(obligation => {
-            //     writable.write(`* ${obligation}\n`);
-            //     writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:handle-correctly\n`);
-            //     writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(ImConsumer)\n`);
-            // });
-            // }
-            // writable.write(`\n`);
-            // writable.write(`////////////////////////////////////////////////////\n`);
-            // writable.end();
+
+            writable.write(`{% endif %}\n\n`);
         }
+
+        writeVersionBlock('R5', 'isR5', r5Data);
+        writeVersionBlock('R4', 'isR4', r4Data);
+        writable.end();
+    }
+
+    const outputDir = obligationsDirs.r5;
+    cleanAllObligationFiles(outputDir);
+
+    const actorConfigs = [
+        {
+            actor: 'Producer',
+            actorCanonical: 'Canonical(BundleReportEuImagingProducer)',
+            r5: {
+                targetResourceIndex: indices.tgtResource,
+                targetElementIndex: indices.tgtElement,
+                obligationCodeIndex: indices.obligationProducerR5
+            },
+            r4: {
+                targetResourceIndex: indices.tgtResourceR4,
+                targetElementIndex: indices.tgtElementR4,
+                obligationCodeIndex: indices.obligationProducerR4
+            }
+        },
+        {
+            actor: 'Consumer',
+            actorCanonical: 'Canonical(ImConsumer)',
+            r5: {
+                targetResourceIndex: indices.tgtResource,
+                targetElementIndex: indices.tgtElement,
+                obligationCodeIndex: indices.obligationConsumerR5
+            },
+            r4: {
+                targetResourceIndex: indices.tgtResourceR4,
+                targetElementIndex: indices.tgtElementR4,
+                obligationCodeIndex: indices.obligationConsumerR4
+            }
+        }
+    ];
+
+    actorConfigs.forEach(cfg => {
+        const resourceNames = new Set([
+            ...collectResourceNames(cfg.r5.targetResourceIndex, cfg.r5.obligationCodeIndex),
+            ...collectResourceNames(cfg.r4.targetResourceIndex, cfg.r4.obligationCodeIndex)
+        ]);
+
+        resourceNames.forEach(resourceName => {
+            const r5Data = buildVersionData(resourceName, cfg.r5.targetResourceIndex, cfg.r5.targetElementIndex, cfg.r5.obligationCodeIndex);
+            const r4Data = buildVersionData(resourceName, cfg.r4.targetResourceIndex, cfg.r4.targetElementIndex, cfg.r4.obligationCodeIndex);
+            writeResourceObligationFile(resourceName, cfg.actor, cfg.actorCanonical, outputDir, r5Data, r4Data);
+        });
     });
 }
 
@@ -1050,7 +1090,7 @@ function main() {
         
        // generateIntroFiles(parsedData, srcResources);
                 
-        // generateObligationFiles(parsedData);  
+        generateObligationFiles(parsedData);  
         
         generateSectionTablesMarkdown(parsedData);
 

@@ -86,7 +86,7 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| CompositionEuImaging | section[findings]entry[finding] |  | EHDSImagingReport.body.examinationReport.results[x] |
+| CompositionEuImaging | section[findings].entry[finding] |  | EHDSImagingReport.body.examinationReport.results[x] |
 
 ### Impression
 

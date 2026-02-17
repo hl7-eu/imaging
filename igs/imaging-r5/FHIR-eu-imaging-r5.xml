@@ -7,6 +7,7 @@
 <artifactPageExtension value="-examples"/>
 <artifactPageExtension value="-mappings"/>
 <artifact id="ActorDefinition/BundleReportEuImagingCreator" key="ActorDefinition-BundleReportEuImagingCreator" name="ActorDefinition: Imaging Report Creator"/>
+<artifact id="ActorDefinition/BundleReportEuImagingProducer" key="ActorDefinition-BundleReportEuImagingProducer" name="ActorDefinition: Imaging Report Producer"/>
 <artifact id="ActorDefinition/BundleReportEuImagingProvider" key="ActorDefinition-BundleReportEuImagingProvider" name="ActorDefinition: Imaging Report Provider"/>
 <artifact id="StructureDefinition/EHDSAddress" key="StructureDefinition-EHDSAddress" name="Address model"/>
 <artifact id="StructureDefinition/EHDSAdvanceDirective" key="StructureDefinition-EHDSAdvanceDirective" name="Advance directive model"/>
@@ -28,6 +29,8 @@
 <artifact id="StructureDefinition/CompositionEuImaging" key="StructureDefinition-CompositionEuImaging" name="Composition: Imaging Report"/>
 <artifact id="Composition/CompositionSemiStructured" key="Composition-CompositionSemiStructured" name="Composition: semi-structured"/>
 <artifact id="Composition/CompositionStructured" key="Composition-CompositionStructured" name="Composition: structured report"/>
+<artifact id="StructureDefinition/Consumer-CompositionEuImaging" key="StructureDefinition-Consumer-CompositionEuImaging" name="CompositionEuImaging: obligations"/>
+<artifact id="StructureDefinition/Producer-CompositionEuImaging" key="StructureDefinition-Producer-CompositionEuImaging" name="CompositionEuImaging: obligations"/>
 <artifact id="StructureDefinition/EHDSCondition" key="StructureDefinition-EHDSCondition" name="Condition model"/>
 <artifact id="StructureDefinition/EHDSCoverage" key="StructureDefinition-EHDSCoverage" name="Coverage model"/>
 <artifact id="StructureDefinition/EHDSCurrentPregnancy" key="StructureDefinition-EHDSCurrentPregnancy" name="Current pregnancy status model"/>
@@ -38,6 +41,8 @@
 <artifact id="StructureDefinition/DiagnosticReportEuImaging" key="StructureDefinition-DiagnosticReportEuImaging" name="DiagnosticReport: Imaging Report"/>
 <artifact id="DiagnosticReport/DiagnosticReportSemiStructured" key="DiagnosticReport-DiagnosticReportSemiStructured" name="DiagnosticReport: semi-structured report"/>
 <artifact id="DiagnosticReport/DiagnosticReportStructured" key="DiagnosticReport-DiagnosticReportStructured" name="DiagnosticReport: structured report"/>
+<artifact id="StructureDefinition/Consumer-DiagnosticReportEuImaging" key="StructureDefinition-Consumer-DiagnosticReportEuImaging" name="DiagnosticReportEuImaging: obligations"/>
+<artifact id="StructureDefinition/Producer-DiagnosticReportEuImaging" key="StructureDefinition-Producer-DiagnosticReportEuImaging" name="DiagnosticReportEuImaging: obligations"/>
 <artifact id="StructureDefinition/EHDSDischargeReport" key="StructureDefinition-EHDSDischargeReport" name="Discharge Report model"/>
 <artifact deprecated="true" id="StructureDefinition/ImReport" key="StructureDefinition-ImReport" name="Document Bundle for Imaging Report"/>
 <artifact deprecated="true" id="StructureDefinition/im-composition-diagnosticReportReference" key="StructureDefinition-im-composition-diagnosticReportReference" name="Document DiagnosticReport Reference"/>
@@ -114,6 +119,7 @@
 <artifact deprecated="true" id="StructureDefinition/ImDiagnosticReport" key="StructureDefinition-ImDiagnosticReport" name="Imaging Diagnostic Report"/>
 <artifact deprecated="true" id="StructureDefinition/ImKeyImageDocumentReference" key="StructureDefinition-ImKeyImageDocumentReference" name="Imaging Key Image Document Reference"/>
 <artifact deprecated="true" id="ActorDefinition/ImManifestProvider" key="ActorDefinition-ImManifestProvider" name="Imaging Manifest Reports Provider/Creator"/>
+<artifact id="ActorDefinition/ImConsumer" key="ActorDefinition-ImConsumer" name="Imaging Reports Consumer"/>
 <artifact deprecated="true" id="StructureDefinition/im-sop-instance-uid-identifier" key="StructureDefinition-im-sop-instance-uid-identifier" name="Imaging SOP Class UID Identifier"/>
 <artifact deprecated="true" id="StructureDefinition/ImImagingSelection" key="StructureDefinition-ImImagingSelection" name="Imaging Selection"/>
 <artifact deprecated="true" id="StructureDefinition/ImSrInstanceImagingSelection" key="StructureDefinition-ImSrInstanceImagingSelection" name="Imaging Selection referring to a DICOM SR instance"/>
@@ -129,6 +135,8 @@
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report 1"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report 2"/>
 <artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
+<artifact id="StructureDefinition/Consumer-ImagingStudyEuImaging" key="StructureDefinition-Consumer-ImagingStudyEuImaging" name="ImagingStudyEuImaging: obligations"/>
+<artifact id="StructureDefinition/Producer-ImagingStudyEuImaging" key="StructureDefinition-Producer-ImagingStudyEuImaging" name="ImagingStudyEuImaging: obligations"/>
 <artifact id="StructureDefinition/EHDSImmunisation" key="StructureDefinition-EHDSImmunisation" name="Immunisation model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSImmunization" key="StructureDefinition-EHDSImmunization" name="Immunization model"/>
 <artifact id="StructureDefinition/EHDSInfectiousContact" key="StructureDefinition-EHDSInfectiousContact" name="Infectious contact model"/>
@@ -250,6 +258,8 @@
 <artifact id="Observation/HRObservation" key="Observation-HRObservation" name="Observation: patient heart rate"/>
 <artifact id="Observation/HeightObservation" key="Observation-HeightObservation" name="Observation: patient height"/>
 <artifact id="Observation/WeightObservation" key="Observation-WeightObservation" name="Observation: patient weight"/>
+<artifact id="StructureDefinition/Consumer-ObservationFindingEuImaging" key="StructureDefinition-Consumer-ObservationFindingEuImaging" name="ObservationFindingEuImaging: obligations"/>
+<artifact id="StructureDefinition/Producer-ObservationFindingEuImaging" key="StructureDefinition-Producer-ObservationFindingEuImaging" name="ObservationFindingEuImaging: obligations"/>
 <artifact id="OperationDefinition/DiagnosticReport-fhir-report" key="OperationDefinition-DiagnosticReport-fhir-report" name="OperationDefinition: $document on DiagnosticReport"/>
 <artifact id="StructureDefinition/EHDSOrganisation" key="StructureDefinition-EHDSOrganisation" name="Organisation model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSOrganization" key="StructureDefinition-EHDSOrganization" name="Organization model"/>
@@ -328,6 +338,8 @@
 <artifact id="StructureDefinition/EHDSServiceRequest" key="StructureDefinition-EHDSServiceRequest" name="Service request model"/>
 <artifact id="StructureDefinition/ServiceRequestOrderEuImaging" key="StructureDefinition-ServiceRequestOrderEuImaging" name="ServiceRequest: Imaging Order"/>
 <artifact id="ServiceRequest/ComeBackNextYearServiceRequest" key="ServiceRequest-ComeBackNextYearServiceRequest" name="ServiceRequest: structured report recommendation"/>
+<artifact id="StructureDefinition/Consumer-ServiceRequestOrderEuImaging" key="StructureDefinition-Consumer-ServiceRequestOrderEuImaging" name="ServiceRequestOrderEuImaging: obligations"/>
+<artifact id="StructureDefinition/Producer-ServiceRequestOrderEuImaging" key="StructureDefinition-Producer-ServiceRequestOrderEuImaging" name="ServiceRequestOrderEuImaging: obligations"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSSlot" key="StructureDefinition-EHDSSlot" name="Slot model"/>
 <artifact id="StructureDefinition/EHDSSocialHistory" key="StructureDefinition-EHDSSocialHistory" name="Social history model"/>
 <artifact id="StructureDefinition/EHDSSpecimen" key="StructureDefinition-EHDSSpecimen" name="Specimen model"/>

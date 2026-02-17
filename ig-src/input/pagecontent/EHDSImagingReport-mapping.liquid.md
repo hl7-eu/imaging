@@ -653,7 +653,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>section[findings]entry[finding]</td>
+        <td>section[findings].entry[finding]</td>
         <td></td>
       </tr>
       <tr>
@@ -677,7 +677,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>A concise and clinically contextualised summary including interpretation/impression of the diagnostic report.</td>
         <td></td>
         <td></td>
-        <td></td>
+        <td>section[findings].entry[finding]</td>
         <td>N/A</td>
       </tr>
       <tr>
@@ -1432,7 +1432,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>section[findings]entry[finding]</td>
+        <td>section[findings].entry[finding]</td>
         <td></td>
       </tr>
       <tr>
