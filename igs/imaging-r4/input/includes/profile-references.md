@@ -9,3 +9,6 @@
 {% assign ImagingStudyEuImaging              = "[`ImagingStudyEuImaging`](StructureDefinition-ImagingStudyEuImaging.html)" %}
 {% assign ImImpression                = "[`ImImpression`](StructureDefinition-ImImpression.html)" %}
 {% assign UnstructuredDocumentReferenceEuImaging = "[`UnstructuredDocumentReferenceEuImaging`](StructureDefinition-UnstructuredDocumentReferenceEuImaging.html)" %}
+
+{% assign ProducerActor  = [`Producer`](ActorDefinition-EuImagingReportProducer.html) %}
+{% assign ConsumerActor  = [`Consumer`](ActorDefinition-EuImagingReportConsumer.html) %}
