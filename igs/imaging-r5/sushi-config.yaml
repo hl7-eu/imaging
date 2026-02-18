@@ -33,7 +33,7 @@ dependencies:
   hl7.fhir.eu.base-r5: current
   
   hl7.fhir.eu.eu-health-data-api: current
-  ihe.iti.mhd: current
+  ihe.iti.mhd: 4.2.3
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions

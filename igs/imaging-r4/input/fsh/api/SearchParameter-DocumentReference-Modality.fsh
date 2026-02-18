@@ -13,4 +13,3 @@ Usage: #definition
 * base[+] = #DocumentReference
 * type = #token
 * expression = "DocumentReference.extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality').value"
-// TODO test
