@@ -3,3 +3,4 @@ This page explains the use cases supported by this specification, describes the 
 
 {% include use-case-actors.md %}
 {% include obligations.md %}
+{% include use-case-other-specs.md %}

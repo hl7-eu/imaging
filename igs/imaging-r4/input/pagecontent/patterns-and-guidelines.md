@@ -45,10 +45,6 @@ These can be included as Media in R4 and DocumentReference in R5 and are referre
 
 Currently not in scope
 
-#### Link with IHE-RAD-IDR
-
-The team is in regular contact with IHE-RAD and strives for the situation where an IDR report can be an imaging report and vice versa.
-
 #### Link with IHE-RAD-IMR
 
 TBD
