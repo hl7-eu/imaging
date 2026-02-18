@@ -19,7 +19,7 @@ This specification builds on the actors defined in {{EuridiceHealthDataAPI}}. Fo
 
 {% include img.html img="eu-health-data-api-document-actors.drawio.png" caption="Figure: Document Actors" %}
 
-The different actors defined in this specification are presented in the figure below.
+The different actors defined in this specification are presented in the figure below (marked in blue).
 
 {% include img.html img="imaging-report-document-actors.drawio.png" caption="Figure: Imaging Report Document Actors" %}
 
@@ -53,7 +53,7 @@ This specification builds on the actors defined in {{EuridiceHealthDataAPI}}.
 {% include img.html img="eu-health-data-api-resource-actors.drawio.png" caption="Figure: Resource Actors" %}
 
 Note that resource level access requires that document level access is supported as well.
-The different actors defined in this specification are presented in the figure below.
+The different actors defined in this specification are presented in the figure below (marked in blue).
 
 {% include img.html img="imaging-report-resource-actors.drawio.png" caption="Figure: Imaging Report Resource Actors" %}
 
