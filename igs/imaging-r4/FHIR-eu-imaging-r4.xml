@@ -178,6 +178,7 @@
 <page key="contributors" name="Authors and contributors"/>
 <page key="changes" name="Changes"/>
 <page key="copyright" name="Copyright"/>
+<page key="current-status" name="Current status"/>
 <page key="data-formats" name="Data formats"/>
 <page key="dependencies" name="Dependencies"/>
 <page key="design-considerations" name="Design considerations"/>

@@ -135,7 +135,7 @@ menu:
     References: references.html
     Adapting Guidelines for Country use: adapting.html
   Functional:
-    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html
+    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html
     Use Cases: use-cases.html
     System actors: actors-and-transactions.html
   Implementation:
