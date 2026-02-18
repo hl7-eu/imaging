@@ -146,7 +146,7 @@ menu:
     Copyright: copyright.html
   Artifacts:
     Structural: artifacts-structural.html
-    Obligations: artifacts-obligations.md
+    Obligations: artifacts-obligations.html
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
 
