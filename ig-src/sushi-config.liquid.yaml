@@ -58,6 +58,8 @@ pages:
       title: Authors and contributors
     copyright.md:
       title: Copyright
+    current-status.md:
+      title: Current status
   actors-and-transactions.md:
     title: System actors
   use-cases.md:

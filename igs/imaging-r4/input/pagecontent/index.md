@@ -33,7 +33,6 @@
  </blockquote>
 </div>
 
-
 ### Scope
 
 This implementation guide specifies imaging study data in the **European** context, as defined in {{ehnImaging}} and refined by {{XtEhrImaging}}, as a FHIR model. It defines:
