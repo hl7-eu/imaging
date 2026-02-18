@@ -73,14 +73,14 @@ jobs:
   deploy-r4:
     runs-on: ubuntu-latest
     needs: [validate-r4, validate-r5]  # Wait for both validations to pass
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full history for proper branch handling
-          token: ${{ secrets.DEPLOY_TOKEN }}
+          token: ${{ secrets.DEPLOY_TOKEN || github.token }}
 
       - name: Setup Git configuration
         run: |
@@ -95,8 +95,13 @@ jobs:
       - name: Clone R4 target repository
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          R4_REPO_URL: ${{ vars.R4_REPO_URL || 'oijauregui/ehdsimaging-r4' }}
+          R4_REPO_URL: ${{ vars.R4_REPO_URL || format('{0}/{1}-r4', github.repository_owner, github.event.repository.name) }}
         run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "Error: DEPLOY_TOKEN secret not configured."
+            echo "Add secret DEPLOY_TOKEN with write access to $R4_REPO_URL."
+            exit 1
+          fi
           git clone https://$DEPLOY_TOKEN@github.com/$R4_REPO_URL.git r4-repo
 
       - name: Prepare R4 repository branch
@@ -150,14 +155,14 @@ jobs:
   deploy-r5:
     runs-on: ubuntu-latest
     needs: [validate-r4, validate-r5]  # Wait for both validations to pass
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     
     steps:
       - name: Checkout source repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch full history for proper branch handling
-          token: ${{ secrets.DEPLOY_TOKEN }}
+          token: ${{ secrets.DEPLOY_TOKEN || github.token }}
 
       - name: Setup Git configuration
         run: |
@@ -172,8 +177,13 @@ jobs:
       - name: Clone R5 target repository
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          R5_REPO_URL: ${{ vars.R5_REPO_URL || 'oijauregui/ehdsimaging-r5' }}
+          R5_REPO_URL: ${{ vars.R5_REPO_URL || format('{0}/{1}-r5', github.repository_owner, github.event.repository.name) }}
         run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "Error: DEPLOY_TOKEN secret not configured."
+            echo "Add secret DEPLOY_TOKEN with write access to $R5_REPO_URL."
+            exit 1
+          fi
           git clone https://$DEPLOY_TOKEN@github.com/$R5_REPO_URL.git r5-repo
 
       - name: Prepare R5 repository branch
