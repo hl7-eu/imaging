@@ -34,6 +34,8 @@ jobs:
       
       - name: Validate R4 IG
         working-directory: ./igs/imaging-r4
+        env:
+          JAVA_TOOL_OPTIONS: "-Xmx6g"
         run: |
           pwd
           ./_genonce.sh
@@ -65,6 +67,8 @@ jobs:
       
       - name: Validate R5 IG
         working-directory: ./igs/imaging-r5
+        env:
+          JAVA_TOOL_OPTIONS: "-Xmx6g"
         run: |
           pwd
           ./_genonce.sh
