@@ -7,8 +7,15 @@ This profile represents an imaging study instance.
 * insert SetFmmAndStatusRule( 1, draft )
 * obeys im-imagingstudy-01
 
-* extension contains
-  $workflow-status-reason-url named status-reason 0..1
+* extension contains $workflow-status-reason-url named status-reason 0..1 
+
+* extension contains AnatomicalRegion named anatomical-region 0..*
+* extension[anatomical-region] ^short = "The anatomical regions covered by the study."
+* extension[anatomical-region] ^definition = """
+The anatomical regions covered by the study, depending on the study there can be zero, one or more regions. 
+The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.bodysite`.
+"""
+* extension[anatomical-region] ^requirements = "This field may be present to align with a similar field on the Imaging Manifest."
 
 * identifier
   * insert SliceElement( #value, system )

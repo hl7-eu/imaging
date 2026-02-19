@@ -19,6 +19,7 @@ Usage: #example
 * code = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * subject = Reference( PatientSemiStructuredReport)
+* extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
 {{R4}}* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport1 )
 {{R5}}* study[+] = Reference( ImagingStudySemiStructuredReport1 )
 {{R4}}* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport2 )

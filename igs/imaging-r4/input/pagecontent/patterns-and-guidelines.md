@@ -52,3 +52,23 @@ TBD
 #### Link with IHE-AIResults
 
 AI results are stored as DICOM-SR documents which can be accessed as DICOM instances using the manifest. Optionally, the source system has the option to reflect the content of these DICOM-SR documents in FHIR using the DICOM-SR-2-FHIR IG. When elements from the AIR reports are included in the imaging report, it is RECOMMENDED to use the format specified in DICOM-SR-2-FHIR.
+
+#### Inclusion of date-time values for which the time-zone is unknown
+
+Some of the source data for imaging report comes from DICOM. Although DICOM recommends to include time-zone information there will be situations that the timezone is not included in the DICOM data and cannot be derived from the context. In this case the document creator SHALL include the date-time value as is and add the [Uncertain period Extension](https://hl7.org/fhir/extensions/StructureDefinition-uncertainPeriod.html) to indicate the uncertainty period of the datetime value.
+
+```json
+...
+  "started" : "2015-02-07T13:28:17-05:00"
+  "_started" : {
+    "extension" : [
+      { "url": "http://hl7.org/fhir/StructureDefinition/uncertainPeriod",
+        "valuePeriod" : {
+          "start": "2015-02-07T13:28:17-12:00",
+          "end": "2015-02-07T13:28:17+12:00"
+        }
+       }
+    ]
+  }
+...
+```
