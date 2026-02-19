@@ -27,24 +27,7 @@ The main actors Document Access Provider and Document Consumer are refined in th
 
 In this model each imaging report is represented by a {{DocumentReferenceImagingReport}} and a {{BundleReportEuImaging}}.
 
-```mermaid
-
-classDiagram
-  direction LR
-  class DocumentReference{
-    category: imaging + imaging-report
-    modality
-    bodySite: anatomical-region + ...
-    practiceSetting
-
-  }
-  class Bundle{
-    type = #document
-  }
-
-  DocumentReference  --> Bundle : content.attachment.url
-
-```
+{% include img.html img="api-documentreference-bundle.drawio.png" caption="Figure: DocumentReference and Bundle" %}
 
 ### Resource Access
 
