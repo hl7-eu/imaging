@@ -795,12 +795,12 @@ function generateObligationFiles(parsedData) {
         };
     }
 
-    function buildObligationProfileName(resourceName, actor) {
+    function buildObligationProfileName(resourceName) {
         const parts = splitResourceName(resourceName);
         if (parts.suffix.length > 0) {
-            return `${parts.base}Obligation${actor}${parts.suffix}`;
+            return `${parts.base}Obligation${parts.suffix}`;
         }
-        return `${resourceName}Obligation${actor}`;
+        return `${resourceName}Obligation`;
     }
 
     function toKebabCase(value) {
@@ -829,12 +829,12 @@ function generateObligationFiles(parsedData) {
         return resourceUrl.startsWith('Eu') ? `$${resourceUrl}` : resourceUrl;
     }
 
-    function buildVersionData(resourceName, targetResourceIndex, targetElementIndex, obligationCodeIndex) {
+    function buildVersionData(resourceName, targetResourceIndex, targetElementIndex, actorVersionConfigs) {
         const rows = parsedData
             .filter((row, index) => index > 0)
             .filter(row => getValue(row, targetResourceIndex) === resourceName)
             .filter(row => getValue(row, targetElementIndex).length > 0)
-            .filter(row => getValue(row, obligationCodeIndex).length > 0);
+            .filter(row => actorVersionConfigs.some(cfg => getValue(row, cfg.obligationCodeIndex).length > 0));
 
         if (rows.length === 0) {
             return null;
@@ -843,12 +843,25 @@ function generateObligationFiles(parsedData) {
         const obligationMap = new Map();
         rows.forEach(row => {
             const element = getValue(row, targetElementIndex);
-            const codes = splitObligationCodes(getValue(row, obligationCodeIndex));
             if (!obligationMap.has(element)) {
-                obligationMap.set(element, new Set());
+                obligationMap.set(element, new Map());
             }
-            const set = obligationMap.get(element);
-            codes.forEach(code => set.add(code));
+            const codeMap = obligationMap.get(element);
+
+            actorVersionConfigs.forEach(cfg => {
+                const rawCodes = getValue(row, cfg.obligationCodeIndex);
+                if (rawCodes.length === 0) {
+                    return;
+                }
+
+                const codes = splitObligationCodes(rawCodes);
+                codes.forEach(code => {
+                    if (!codeMap.has(code)) {
+                        codeMap.set(code, new Set());
+                    }
+                    codeMap.get(code).add(cfg.actorCanonical);
+                });
+            });
         });
 
         return {
@@ -858,26 +871,26 @@ function generateObligationFiles(parsedData) {
         };
     }
 
-    function collectResourceNames(targetResourceIndex, obligationCodeIndex) {
+    function collectResourceNames(targetResourceIndex, actorVersionConfigs) {
         const names = new Set();
         parsedData
             .filter((row, index) => index > 0)
             .forEach(row => {
                 const resource = getValue(row, targetResourceIndex);
-                const obligationCode = getValue(row, obligationCodeIndex);
-                if (resource.length > 0 && obligationCode.length > 0) {
+                const hasAnyObligation = actorVersionConfigs.some(cfg => getValue(row, cfg.obligationCodeIndex).length > 0);
+                if (resource.length > 0 && hasAnyObligation) {
                     names.add(resource);
                 }
             });
         return names;
     }
 
-    function writeResourceObligationFile(resourceName, actor, actorCanonical, outputDir, r5Data, r4Data) {
+    function writeResourceObligationFile(resourceName, outputDir, r5Data, r4Data, r5ActorConfigs, r4ActorConfigs) {
         if (!r5Data && !r4Data) {
             return;
         }
 
-        const profileName = buildObligationProfileName(resourceName, actor);
+        const profileName = buildObligationProfileName(resourceName);
         const profileId = buildObligationProfileId(profileName);
         const resourceDisplayTitle = getResourceDisplayTitle(resourceName);
 
@@ -885,7 +898,7 @@ function generateObligationFiles(parsedData) {
         console.log(obligationPath);
         const writable = fs.createWriteStream(obligationPath);
 
-        function writeVersionBlock(versionLabel, liquidCondition, data) {
+        function writeVersionBlock(liquidCondition, data, actorConfigsForVersion) {
             if (!data) {
                 return;
             }
@@ -897,8 +910,8 @@ function generateObligationFiles(parsedData) {
             writable.write(`Profile: ${profileName}\n`);
             writable.write(`Parent: ${data.parent}\n`);
             writable.write(`Id: ${profileId}\n`);
-            writable.write(`Title: "${resourceDisplayTitle}: Obligations ${actor}"\n`);
-            writable.write(`Description: "${actor} obligations for ${resourceDisplayTitle}"\n`);
+            writable.write(`Title: "${resourceDisplayTitle}: Obligations"\n`);
+            writable.write(`Description: "Obligations for ${resourceDisplayTitle}"\n`);
 
             Array.from(data.obligationMap.keys()).forEach(obligation => {
                 const rows = parsedData
@@ -921,18 +934,26 @@ function generateObligationFiles(parsedData) {
                 const documentation = documentationSet.size > 0 ? Array.from(documentationSet).join(', ') : '-';
 
                 writable.write(`* ${obligation}\n`);
-                Array.from(data.obligationMap.get(obligation)).forEach(code => {
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #${code}\n`);
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = ${actorCanonical}\n`);
-                    writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "${documentation}"\n`);
+                const codeMap = data.obligationMap.get(obligation);
+                Array.from(codeMap.keys()).forEach(code => {
+                    const actors = codeMap.get(code);
+                    const orderedActors = actorConfigsForVersion
+                        .map(cfg => cfg.actorCanonical)
+                        .filter(actorCanonical => actors.has(actorCanonical));
+
+                    orderedActors.forEach(actorCanonical => {
+                        writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #${code}\n`);
+                        writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = ${actorCanonical}\n`);
+                        writable.write(`  * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "${documentation}"\n`);
+                    });
                 });
             });
 
             writable.write(`{% endif %}\n\n`);
         }
 
-        writeVersionBlock('R5', 'isR5', r5Data);
-        writeVersionBlock('R4', 'isR4', r4Data);
+        writeVersionBlock('isR5', r5Data, r5ActorConfigs);
+        writeVersionBlock('isR4', r4Data, r4ActorConfigs);
         writable.end();
     }
 
@@ -970,17 +991,25 @@ function generateObligationFiles(parsedData) {
         }
     ];
 
-    actorConfigs.forEach(cfg => {
-        const resourceNames = new Set([
-            ...collectResourceNames(cfg.r5.targetResourceIndex, cfg.r5.obligationCodeIndex),
-            ...collectResourceNames(cfg.r4.targetResourceIndex, cfg.r4.obligationCodeIndex)
-        ]);
+    const r5ActorConfigs = actorConfigs.map(cfg => ({
+        actorCanonical: cfg.actorCanonical,
+        obligationCodeIndex: cfg.r5.obligationCodeIndex
+    }));
 
-        resourceNames.forEach(resourceName => {
-            const r5Data = buildVersionData(resourceName, cfg.r5.targetResourceIndex, cfg.r5.targetElementIndex, cfg.r5.obligationCodeIndex);
-            const r4Data = buildVersionData(resourceName, cfg.r4.targetResourceIndex, cfg.r4.targetElementIndex, cfg.r4.obligationCodeIndex);
-            writeResourceObligationFile(resourceName, cfg.actor, cfg.actorCanonical, outputDir, r5Data, r4Data);
-        });
+    const r4ActorConfigs = actorConfigs.map(cfg => ({
+        actorCanonical: cfg.actorCanonical,
+        obligationCodeIndex: cfg.r4.obligationCodeIndex
+    }));
+
+    const resourceNames = new Set([
+        ...collectResourceNames(indices.tgtResource, r5ActorConfigs),
+        ...collectResourceNames(indices.tgtResourceR4, r4ActorConfigs)
+    ]);
+
+    resourceNames.forEach(resourceName => {
+        const r5Data = buildVersionData(resourceName, indices.tgtResource, indices.tgtElement, r5ActorConfigs);
+        const r4Data = buildVersionData(resourceName, indices.tgtResourceR4, indices.tgtElementR4, r4ActorConfigs);
+        writeResourceObligationFile(resourceName, outputDir, r5Data, r4Data, r5ActorConfigs, r4ActorConfigs);
     });
 }
 
