@@ -1,13 +1,13 @@
-Extension: AnatomicalRegion
+Extension: AnatomicalRegionExtension
 Title: "Extension: Anatomical Region"
 Description: "The anatomical region in an ImagingStudy instance. This is additional information next to ImagingStudy.series.bodySite."
 Context: DiagnosticReport, ImagingStudy
 * insert SetFmmAndStatusRule( 1, draft )
 * value[x] only CodeableConcept
-* valueCodeableConcept from AnatomicalRegionVs (required)
+* valueCodeableConcept from ValueSetAnatomicalRegion (required)
   * coding 1..*
 
-ValueSet:   AnatomicalRegionVs
+ValueSet:   ValueSetAnatomicalRegion
 Id:	        im-anatomical-region-valueset
 Title:	    "ValueSet: Anatomical Region"
 Description:   """A shortlist of anatomical regions that can be used for searching reports and manifests. When the MADO manifest is implemented, this ValueSet can be replaced with a reference to that ValueSet."""

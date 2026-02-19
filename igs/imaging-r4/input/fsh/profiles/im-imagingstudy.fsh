@@ -9,7 +9,7 @@ This profile represents an imaging study instance.
 
 * extension contains $workflow-status-reason-url named status-reason 0..1 
 
-* extension contains AnatomicalRegion named anatomical-region 0..*
+* extension contains AnatomicalRegionExtension named anatomical-region 0..*
 * extension[anatomical-region] ^short = "The anatomical regions covered by the study."
 * extension[anatomical-region] ^definition = """
 The anatomical regions covered by the study, depending on the study there can be zero, one or more regions. 

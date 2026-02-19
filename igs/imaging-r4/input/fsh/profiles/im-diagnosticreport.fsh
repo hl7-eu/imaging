@@ -9,7 +9,7 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 // * insert MandateLanguageAndSecurity
 
 * extension contains $artifact-version-url named artifactVersion 0..1
-* extension contains AnatomicalRegion named anatomical-region 0..*
+* extension contains AnatomicalRegionExtension named anatomical-region 0..*
 * extension[anatomical-region] ^short = "The anatomical regions covered by the study this report reports on."
 * extension[anatomical-region] ^definition = """
 The anatomical regions covered by the report, depending on the study there can be zero, one or more regions. 

@@ -14,7 +14,6 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSAlertFlag" key="StructureDefinition-EHDSAlertFlag" name="Alert flag model"/>
 <artifact id="StructureDefinition/EHDSAlert" key="StructureDefinition-EHDSAlert" name="Alert model"/>
 <artifact id="StructureDefinition/EHDSAllergyIntolerance" key="StructureDefinition-EHDSAllergyIntolerance" name="Allergy intolerance model"/>
-<artifact id="ValueSet/im-anatomical-region-valueset" key="ValueSet-im-anatomical-region-valueset" name="Anatomical Region"/>
 <artifact id="StructureDefinition/EHDSAppointment" key="StructureDefinition-EHDSAppointment" name="Appointment model"/>
 <artifact id="StructureDefinition/EHDSAttachment" key="StructureDefinition-EHDSAttachment" name="Attachment model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSAttachments" key="StructureDefinition-EHDSAttachments" name="Attachments"/>
@@ -76,7 +75,7 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
-<artifact id="StructureDefinition/AnatomicalRegion" key="StructureDefinition-AnatomicalRegion" name="Extension: Anatomical Region"/>
+<artifact id="StructureDefinition/AnatomicalRegionExtension" key="StructureDefinition-AnatomicalRegionExtension" name="Extension: Anatomical Region"/>
 <artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="Extension: HL7IDR Communication"/>
 <artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="Extension: HL7IDR DiagnosticReport Comparison Study"/>
 <artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="Extension: HL7IDR Imaging Procedure"/>
