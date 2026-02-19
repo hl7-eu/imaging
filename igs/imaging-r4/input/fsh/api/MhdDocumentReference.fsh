@@ -50,13 +50,17 @@ RuleSet: MhdDocumentReference
 * category 1..1
   * coding
     * insert SliceElement( #value, $this )
-  * coding contains imaging 1..1 and report 1..1
-  * coding[imaging] = $loinc#18748-4	// Diagnostic imaging study
-  * coding[report] =  $xds-class-code#REPORTS // TODO - get a better code here
+  * coding contains priority-area 1..1
+  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 
-* type from ImagingReportTypesEuVSEuImaging (preferred)  
+* type 1..1
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set. It should correspond with the value on DiagnosticReport.code."
+  * coding
+    * insert SliceElement( #value, $this )
+  * coding contains imaging-report 1..1 and imaging-report-type 0..*
+  * coding[imaging-report] = $loinc#85430-7
+  * coding[imaging-report-type] from ImagingReportTypesEuVSEuImaging (preferred)  
 
 * custodian only Reference(OrganizationEu)
   * ^short = "Organization that manages the Imaging Report"

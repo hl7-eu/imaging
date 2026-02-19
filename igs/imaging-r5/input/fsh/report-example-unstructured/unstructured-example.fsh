@@ -14,10 +14,12 @@ Usage: #example
 * date = "2024-01-01T00:00:00Z"
 //R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
 * modality = http://dicom.nema.org/resources/ontology/DCM#CT
+
 * category[+]
-  * coding[imaging] = $loinc#18748-4 "Diagnostic imaging study"
-  * coding[report] = $xds-class-code#REPORTS "Reports"
-* type = $loinc#18748-4 "Diagnostic imaging study"
+  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* type
+  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging study"
+
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
 
