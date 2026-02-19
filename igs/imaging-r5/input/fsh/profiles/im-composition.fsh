@@ -30,6 +30,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 //R4* extension contains $CrossVersion-Composition.version named version 0..1
 
+* subject 1..1
+
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
 

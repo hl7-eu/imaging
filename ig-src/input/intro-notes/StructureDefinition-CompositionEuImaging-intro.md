@@ -31,6 +31,7 @@ The following table lists the elements that should be included in the narrative 
 | First order resource | Element | Referenced resource | Logical model resource.field | Comments |
 | -------- | ------- | -------------- | --------------------- | -------- |
 | ServiceRequestOrderEuImaging | identifier[accessionNumber] |  | EHDSImagingReport.header.accessionNumber |  |
+| CompositionEuImaging | extension[informationRecipient] |  | EHDSImagingReport.header.intendedRecipient[x] |  |
 | ServiceRequestOrderEuImaging | authoredOn |  | EHDSImagingReport.body.orderInformation.orderDateAndTime |  |
 | ServiceRequestOrderEuImaging | requester |  | EHDSImagingReport.body.orderInformation.orderPlacer[x] |  |
 | ServiceRequestOrderEuImaging | reason.concept |  | EHDSImagingReport.body.orderInformation.orderReason[x] |  |
@@ -86,7 +87,8 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
-| CompositionEuImaging | section[findings].entry[finding] |  | EHDSImagingReport.body.examinationReport.results[x] |
+| CompositionEuImaging | section[findings].extension[note] |  | EHDSImagingReport.body.examinationReport.results[x] |
+| DiagnosticReportEuImaging | note |  | EHDSImagingReport.body.examinationReport.results[x] |
 
 ### Impression
 
@@ -97,7 +99,7 @@ The following table lists the elements that should be included in the narrative 
 | -------- | ------- | -------------- | --------------------- |
 | EuCondition | code |  | EHDSCondition.problem |
 | EuCondition | severity |  | EHDSCondition.severity |
-| CompositionEuImaging | section[impression] |  | EHDSImagingReport.body.examinationReport.conclusion.impression |
+| CompositionEuImaging | section[impression].extension[note] |  | EHDSImagingReport.body.examinationReport.conclusion.impression |
 | CompositionEuImaging | section[impression].entry[impression] | ObservationFindingEuImaging | EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x] |
 
 ### Recommendation

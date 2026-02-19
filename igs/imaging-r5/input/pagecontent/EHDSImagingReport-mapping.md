@@ -102,8 +102,8 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>header.author[x]</td>
         <td>The author of the report.</td>
         <td>equivalent</td>
-        <td>CompositionEuImaging</td>
-        <td>author[organization]</td>
+        <td>DiagnosticReportEuImaging</td>
+        <td>resultsInterpreter[author]</td>
         <td></td>
       </tr>
       <tr>
@@ -132,7 +132,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       </tr>
       <tr>
         <td>header.date</td>
-        <td></td>
+        <td>Date and optionally time of authoring/issuing</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
         <td>issued</td>
@@ -423,7 +423,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Identifier(s) of the imaging service order.</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>extension:basedOn</td>
+        <td>extension[basedOn]</td>
         <td></td>
       </tr>
       <tr>
@@ -653,9 +653,17 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       <tr>
         <td>body.examinationReport.results[x]</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
+        <td>TN</td>
+        <td>ObservationFindingEuImaging</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.results[x]</td>
+        <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>section[findings].entry[finding]</td>
+        <td>section[findings].extension[note]</td>
         <td></td>
       </tr>
       <tr>
@@ -663,15 +671,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
-        <td>extension[finding]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>body.examinationReport.results[x]</td>
-        <td>Imaging report result data (report could consist of multiple observations)</td>
-        <td>source-is-narrower-than-target</td>
-        <td>ObservationFindingEuImaging</td>
-        <td>text</td>
+        <td>note</td>
         <td></td>
       </tr>
       <tr>
@@ -687,7 +687,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Narrative description of the clinical conclusion (impression).</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>section[impression]</td>
+        <td>section[impression].extension[note]</td>
         <td></td>
       </tr>
       <tr>
@@ -695,7 +695,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Narrative description of the clinical conclusion (impression).</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
-        <td>extension[impression]</td>
+        <td>note</td>
         <td></td>
       </tr>
       <tr>

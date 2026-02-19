@@ -1,8 +1,6 @@
 {% include variable-definitions.md %}
 This page lists the obligation profiles defined in this specification
 
-### Obligation profiles
-
 {% sql {
   "query" : "SELECT name AS Name, title AS Title, Type, Description, Web FROM Resources WHERE Type='StructureDefinition' AND (Name LIKE '%ProducerEuImaging' OR Name LIKE '%ConsumerEuImaging') ORDER BY Name",
   "class" : "lines",

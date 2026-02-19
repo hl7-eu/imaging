@@ -130,7 +130,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       </tr>
       <tr>
         <td>header.date</td>
-        <td></td>
+        <td>Date and optionally time of authoring/issuing</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
         <td>issued</td>
@@ -421,7 +421,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Identifier(s) of the imaging service order.</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>extension:basedOn</td>
+        <td>extension[basedOn]</td>
         <td></td>
       </tr>
       <tr>
@@ -660,16 +660,16 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>body.examinationReport.results[x]</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
-        <td>DiagnosticReportEuImaging</td>
-        <td>extension[finding]</td>
+        <td>CompositionEuImaging</td>
+        <td>section[findings].extension[note]</td>
         <td></td>
       </tr>
       <tr>
         <td>body.examinationReport.results[x]</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
-        <td>source-is-narrower-than-target</td>
-        <td>ObservationFindingEuImaging</td>
-        <td>text</td>
+        <td>equivalent</td>
+        <td>DiagnosticReportEuImaging</td>
+        <td>extension[note]</td>
         <td></td>
       </tr>
       <tr>
@@ -677,7 +677,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>A concise and clinically contextualised summary including interpretation/impression of the diagnostic report.</td>
         <td></td>
         <td></td>
-        <td>section[findings].entry[finding]</td>
+        <td></td>
         <td>N/A</td>
       </tr>
       <tr>
@@ -685,7 +685,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Narrative description of the clinical conclusion (impression).</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
-        <td>section[impression]</td>
+        <td>section[impression].extension[note]</td>
         <td></td>
       </tr>
       <tr>
@@ -693,7 +693,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Narrative description of the clinical conclusion (impression).</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
-        <td>extension[impression]</td>
+        <td>extension[note]</td>
         <td></td>
       </tr>
       <tr>
