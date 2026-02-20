@@ -555,30 +555,6 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.serviceRequest</td>
-        <td>Specification of requested service(s).</td>
-        <td>equivalent</td>
-        <td>CompositionEuImaging</td>
-        <td>extension[basedOn]</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>body.serviceRequest</td>
-        <td>Specification of requested service(s).</td>
-        <td>equivalent</td>
-        <td>ServiceRequestOrderEuImaging</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>body.serviceRequest</td>
-        <td>Specification of requested service(s).</td>
-        <td>equivalent</td>
-        <td>DiagnosticReportEuImaging</td>
-        <td>basedOn</td>
-        <td></td>
-      </tr>
-      <tr>
         <td>body.exposureInformation</td>
         <td>Information on total exposure to ionising radiation. This information is required by regulations in several EU countries.</td>
         <td>equivalent</td>
