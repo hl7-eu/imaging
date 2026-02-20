@@ -1,0 +1,98 @@
+@startuml ehds-actors-usecases
+
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam defaultFontSize 10
+skinparam wrapWidth 200
+
+skinparam actor {
+  BorderColor #333333
+  FontStyle bold
+}
+
+skinparam usecase {
+  BorderThickness 2
+  FontSize 9
+}
+
+skinparam note {
+  FontSize 9
+}
+
+left to right direction
+
+' ==================== ACCESSOR USE CASES ====================
+usecase "**Search reports**" as UC_Search #DAE8FC
+
+usecase "**Access report**" as UC_Access #DAE8FC
+
+' Out of scope - imaging study access
+usecase "**Access imaging study** *" as UC_AccessStudy #F5F5F5
+
+' ==================== PROCESSOR USE CASES ====================
+usecase "**Extract & process data**" as UC_Processing #D5E8D4
+
+' ==================== DISPLAYER USE CASES ====================
+usecase "**Render static report**" as UC_RenderStatic #FFE6CC
+
+usecase "**Populate dynamic UI**" as UC_DynamicDisplay #FFE6CC
+
+usecase "**Translate language of coded elements**" as UC_Translation #FFE6CC
+
+usecase "**Translate narrative** *" as UC_TranslateNarrative #F5F5F5
+
+' ==================== PRODUCER USE CASES ====================
+usecase "**Create report**" as UC_Reporting #F8CECC
+
+' ==================== ACTORS ====================
+rectangle "Consumer actor\n(Patient or Healthcare Professional)" #F9F9F9 {
+  actor "Accessor" as Accessor #DAE8FC
+  actor "Processor" as Processor #D5E8D4
+  actor "Displayer" as Displayer #FFE6CC
+}
+
+actor "Producer" as Producer #F8CECC
+
+' ==================== ACTOR ASSOCIATIONS ====================
+Accessor --> UC_Search
+Accessor --> UC_Access : direct access\n(e.g., unique identifier)
+
+Processor --> UC_Processing
+
+Displayer --> UC_RenderStatic
+Displayer --> UC_DynamicDisplay
+
+Producer --> UC_Reporting
+
+' ==================== INCLUDE RELATIONSHIPS ====================
+' Search includes Access
+UC_Search ..> UC_Access : <<include>>
+
+' ==================== GENERALIZATION RELATIONSHIPS ====================
+
+' ==================== EXTEND RELATIONSHIPS (OUT OF SCOPE) ====================
+UC_AccessStudy ..> UC_Processing : <<extend>>
+UC_AccessStudy ..> UC_RenderStatic : <<extend>>
+UC_AccessStudy ..> UC_DynamicDisplay : <<extend>>
+UC_Translation ..> UC_DynamicDisplay : <<extend>>
+UC_Translation ..> UC_Processing : <<extend>>
+UC_TranslateNarrative ..> UC_RenderStatic : <<extend>>
+UC_TranslateNarrative ..> UC_DynamicDisplay : <<extend>>
+
+' ==================== NOTES ====================
+note bottom of UC_AccessStudy
+  * **Out of Scope** for this IG
+  This is addressed in the IHE MADO profile
+end note
+
+note bottom of UC_TranslateNarrative
+  * **Out of Scope** for this IG
+end note
+
+note right of Accessor
+  Accessor, Processor, and Displayer
+  are grouped as one Consumer actor
+  for obligations in this IG.
+end note
+
+@enduml

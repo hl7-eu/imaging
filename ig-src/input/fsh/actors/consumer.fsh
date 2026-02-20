@@ -1,10 +1,13 @@
-Instance: ImConsumer
+Instance: EuImagingReportConsumer
 InstanceOf: ActorDefinition
-Title: "Imaging Reports Consumer"
-Description: "Application consumer the imaging reports and uses them in a clinical context."
+Title: "ActorDefinition: Imaging Report Consumer"
+Description: "The actor responsible for consuming the Imaging Report resources."
 Usage: #definition
-* title = "Imaging Reports Consumer"
-* name = "Imaging reports consumer"
+* name = "EUImagingReportReportConsumer"
+* title = "Imaging Report Consumer"
 * status = #draft
-* description = "Application that searches for imaging reports, retrieves them and uses them in a clinical context."
+* description = "Consumes the Imaging Report."
+* documentation = """
+This actor represents a system that consumes/uses an imaging report. This includes a wide variety of different systems that include systems that render the report, render only a report summary, interpreted the report and use the retrieved information in providing clinical decision report, systems generating metrics, prefetching, ...   
+"""
 * type = #system

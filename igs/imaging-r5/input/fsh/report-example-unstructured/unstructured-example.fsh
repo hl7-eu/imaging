@@ -1,21 +1,39 @@
 Instance: UnstructuredReportExample
-InstanceOf: UnstructuredDocumentReferenceEuImaging
+InstanceOf: DocumentReferenceUnstructuredImagingReport
 Title: "DocumentReference: Unstructured Report"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example
 * contained[+] = PatientUnstructuredReport
 * contained[+] = OrganizationUnstructuredReport
-* identifier[entry-uuid]
+//R4* masterIdentifier[+]
+* identifier[+]
   * system = "urn:ietf:rfc:3986"
-  * use = #official
+  * use = #usual
   * value = "http://unstructured-report.example.com"
 * status = #current
+* date = "2024-01-01T00:00:00Z"
 //R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
 * modality = http://dicom.nema.org/resources/ontology/DCM#CT
-* category[class-code] = $xds-class-code#REPORTS "Reports"
-* type = $loinc#18748-4 "Diagnostic imaging study"
+
+* category[+]
+  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* type
+  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging study"
+
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
+
+//R4* extension[bodysite]
+//R4  * extension[concept]
+//R4    * valueCodeableConcept
+//R4      * coding[+] = $sct#774007
+//R4      * coding[+] = $sct#38266002
+* bodySite
+  * concept
+    * coding[+] = $sct#774007 
+    * coding[+] = $sct#38266002
+
+
 * content[+]
   * attachment[0]
     * contentType = #application/pdf

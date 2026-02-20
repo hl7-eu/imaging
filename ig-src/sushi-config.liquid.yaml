@@ -34,6 +34,8 @@ dependencies:
   {% if isR4 %}
   hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
   {% endif %}
+  hl7.fhir.eu.eu-health-data-api: current
+  ihe.iti.mhd: 4.2.3
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions
@@ -58,8 +60,14 @@ pages:
       title: Authors and contributors
     copyright.md:
       title: Copyright
+    current-status.md:
+      title: Current status
   actors-and-transactions.md:
     title: System actors
+  use-cases.md:
+    title: Use Cases
+  data-formats.md:
+    title: Data formats
   examples.md:
     title: Examples
     example-unstructured.md:
@@ -68,6 +76,8 @@ pages:
       title: Example semi structured report
     example-structured.md:
       title: Example structured report
+  api.md: 
+    title: EU Health Data API for Imaging Reports
   xtehr-mapping.md:
     title: Xt-EHR mapping
   patterns-and-guidelines.md:
@@ -133,11 +143,14 @@ menu:
     References: references.html
     Adapting Guidelines for Country use: adapting.html
   Functional:
-    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html
+    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html
+    Use Cases: use-cases.html
     System actors: actors-and-transactions.html
   Implementation:
     Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
+    Data formats: data-formats.html
+    EU Health Data API for Imaging Reports: api.html
     Imaging Report Examples: examples.html
     Patterns and Guidelines: patterns-and-guidelines.html
     Design considerations: design-considerations.html

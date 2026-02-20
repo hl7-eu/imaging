@@ -13,6 +13,7 @@ Usage: #example
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+* extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
 * status = #available
 * subject = Reference( PatientSemiStructuredReport)
 * started = "2025-04-29"
@@ -24,7 +25,7 @@ Usage: #example
   * description = "Stress"
   * bodySite 
   //R5* bodySite.concept 
-        = $sct#80891009 "Heart structure (body structure)"	
+        = $sct#67734004 
   * performer[custodian].actor = Reference( OrganizationStructuredReport )
   * performer[organization].actor = Reference( OrganizationStructuredReport )
 * series[+]

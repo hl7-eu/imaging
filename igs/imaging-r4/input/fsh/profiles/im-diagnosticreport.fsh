@@ -8,16 +8,20 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
 
-* extension contains
-  $artifact-version-url named artifactVersion 0..1
+* extension contains $artifact-version-url named artifactVersion 0..1
+* extension contains AnatomicalRegionExtension named anatomical-region 0..*
+* extension[anatomical-region] ^short = "The anatomical regions covered by the study this report reports on."
+* extension[anatomical-region] ^definition = """
+The anatomical regions covered by the report, depending on the study there can be zero, one or more regions. 
+The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.bodysite`, if present.
+"""
+* extension[anatomical-region] ^requirements = "This field is present in order to be able to populate the MHD DocumentReference field."
 
 //business identifier and relation with the composition resource
 * identifier 1..*
   * ^short = "Report identifier"
   * ^definition = "Identifiers assigned to this Imaging Report by the performer or other systems. It shall be common to several report versions"
   * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
-
-* subject 1..1
 
 * status
   * ^short = "Status of the Report"
@@ -142,7 +146,7 @@ Recommendations a radiologist provides in the report for possible follow up acti
 * extension[communication] ^definition = """
 Communications captures what communications have been made with other care providers.
 """
-* extension contains RadiationDoseExt named radiationDose 0..1 MS
+
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
 // * obeys hl7eu-im-dr-code
 // * obeys hl7eu-im-dr-category

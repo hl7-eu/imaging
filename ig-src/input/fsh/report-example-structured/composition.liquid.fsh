@@ -26,7 +26,7 @@ Usage: #example
 * status = #final
 * type = http://www.ama-assn.org/go/cpt#93351 "transthoracic echocardiogram"
 
-* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasoundy"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasound"
 
 * author[author] = Reference(PractitionerRoleStructuredReportAuthor)
 * author[organization] = Reference(OrganizationStructuredReport)
