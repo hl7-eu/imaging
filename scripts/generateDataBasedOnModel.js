@@ -1071,7 +1071,7 @@ function generateSectionTablesMarkdown(parsedData) {
     console.log(`Section map has ${sectionMap.size} sections`);
 
     // Generate the markdown file
-    const outputPath = '../ig-src/input/intro-notes/StructureDefinition-CompositionEuImaging-intro.md';
+    const outputPath = '../ig-src/input/intro-notes/StructureDefinition-CompositionEuImaging-notes.md';
     const writable = fs.createWriteStream(outputPath);
 
     // Write file header - preserve existing content from the original file
