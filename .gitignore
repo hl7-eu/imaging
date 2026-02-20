@@ -11,3 +11,5 @@ publisher.jar
 translations/**
 
 subigs/**
+
+.vscode/mcp.json
