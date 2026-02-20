@@ -23,6 +23,8 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * ^definition = "Identifiers assigned to this Imaging Report by the performer or other systems. It shall be common to several report versions"
   * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
 
+* subject 1..1
+
 * status
   * ^short = "Status of the Report"
   * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
@@ -146,7 +148,7 @@ Recommendations a radiologist provides in the report for possible follow up acti
 * extension[communication] ^definition = """
 Communications captures what communications have been made with other care providers.
 """
-
+* extension contains RadiationDoseExt named radiationDose 0..1 MS
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
 // * obeys hl7eu-im-dr-code
 // * obeys hl7eu-im-dr-category

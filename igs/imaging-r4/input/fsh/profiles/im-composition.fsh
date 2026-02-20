@@ -30,6 +30,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * extension contains $CrossVersion-Composition.version named version 0..1
 
+* subject 1..1
+
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
 
@@ -39,12 +41,13 @@ The `text` field of each section SHALL contain a textual representation of all l
 * attester[legalAuthenticator]
   * mode 1..1
   * mode = http://hl7.org/fhir/composition-attestation-mode#legal
-  * party only Reference( $EuPractitionerRole )
+  * party only Reference( $EuPractitionerRole or $EuOrganization)
   * time 1..1
 * attester[resultValidator]
   * mode 1..1
   * mode = http://hl7.org/fhir/composition-attestation-mode#professional
   * party only Reference( $EuPractitionerRole )
+    * extension contains DeviceAttesterExt named deviceAttester 0..1
   * time 1..1
 
 * author 1..*
@@ -133,7 +136,9 @@ The `text` field of each section SHALL contain a textual representation of all l
   * ^short = "Procedure"
   * ^definition = "This section holds information related to the (performed) procedure(s) the generated the imaging study."
   * code = $loinc#55111-9 // "Current imaging procedure descriptions Document"
-  * extension contains $note-url named note 0..*
+  * extension contains 
+    $note-url named note 0..* and
+    RadiationDoseExt named radiationDose 0..1
   * entry 
     * insert SliceElement( #profile, $this )
   * entry contains 
@@ -144,9 +149,10 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry[adverse-event] only Reference(AdverseEvent)
     * ^short = "AdverseEvent(s)"
     * ^definition = "Possible AdverseEvents that occurred during the procedure."
-  * entry[radiation-dose] only Reference(ObservationRadiationDoseEuImaging)
-    * ^short = "Radiation-dose information"
-    * ^definition = "Information on radiation the patient was exposed to during the procedure."
+    // Replacing the ObservationRadiationDose by an extension on thi ssection due to XtEHR logical model 0.3.0 requirement change on data type
+  // * entry[radiation-dose] only Reference(ObservationRadiationDoseEuImaging)
+  //   * ^short = "Radiation-dose information"
+  //   * ^definition = "Information on radiation the patient was exposed to during the procedure."
 
 
 // ////////////////// COMPARISON SECTION //////////////////////////
@@ -215,6 +221,25 @@ The `text` field of each section SHALL contain a textual representation of all l
 // a proper code is needed
   * code = $loinc#LP173421-1 // "Report"
   * extension contains $note-url named note 0..*
+
+Extension: RadiationDoseExt
+Title: "Extension: Radiation Dose"
+Id: RadiationDose
+Description: "Radiation dose information in the imaging report"
+* ^context[+].type = #element
+* ^context[=].expression = "Composition.section"
+* ^context[+].type = #element
+* ^context[=].expression = "DiagnosticReport"
+* value[x] only string
+* valueString ^short = "Radiation dose summary text."
+* valueString ^comment = "Information on total exposure to ionising radiation. This information is required by regulations in several EU countries."
+
+Extension: DeviceAttesterExt
+Title: "Extension: Device Attester"
+Description: 	"Attester of type Device who validated the document"
+* ^context[+].type = #element
+* ^context[=].expression = "Composition.attester.party"
+* value[x] only Reference(Device)
 
 Invariant: eu-imaging-composition-1
 Description: "When a section is empty, the emptyReason extension SHALL be present."
