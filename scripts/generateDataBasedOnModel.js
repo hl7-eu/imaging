@@ -963,7 +963,7 @@ function generateObligationFiles(parsedData) {
     const actorConfigs = [
         {
             actor: 'Producer',
-            actorCanonical: 'Canonical(BundleReportEuImagingProducer)',
+            actorCanonical: 'Canonical(EuImagingReportProducer)',
             r5: {
                 targetResourceIndex: indices.tgtResource,
                 targetElementIndex: indices.tgtElement,
@@ -977,7 +977,7 @@ function generateObligationFiles(parsedData) {
         },
         {
             actor: 'Consumer',
-            actorCanonical: 'Canonical(ImConsumer)',
+            actorCanonical: 'Canonical(EuImagingReportConsumer)',
             r5: {
                 targetResourceIndex: indices.tgtResource,
                 targetElementIndex: indices.tgtElement,
