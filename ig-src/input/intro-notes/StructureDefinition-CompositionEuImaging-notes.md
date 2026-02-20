@@ -36,7 +36,6 @@ The following table lists the elements that should be included in the narrative 
 | ServiceRequestOrderEuImaging | requester |  | EHDSImagingReport.body.orderInformation.orderPlacer[x] |  |
 | ServiceRequestOrderEuImaging | reason.concept |  | EHDSImagingReport.body.orderInformation.orderReason[x] |  |
 | ServiceRequestOrderEuImaging | reason.concept |  | EHDSImagingReport.body.orderInformation.clinicalQuestion | Order reason and clinical question map to the same element by design choice |
-| CompositionEuImaging | extension[basedOn] | ServiceRequestOrderEuImaging | EHDSImagingReport.body.serviceRequest |  |
 
 ### History
 
