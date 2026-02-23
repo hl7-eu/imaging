@@ -1,10 +1,8 @@
-Instance: UnstructuredReportExample
-InstanceOf: DocumentReferenceUnstructuredImagingReport
-Title: "DocumentReference: Unstructured Report"
+Instance: RenderableFormatWithBasicMetadata
+InstanceOf: DocumentReferenceImagingReport
+Title: "DocumentReference: Renderable format with basic metadata"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example
-* contained[+] = PatientUnstructuredReport
-* contained[+] = OrganizationUnstructuredReport
 * masterIdentifier[+]
 //R5* identifier[+]
   * system = "urn:ietf:rfc:3986"
@@ -35,9 +33,17 @@ Usage: #example
 
 
 * content[+]
+// using numeric index due to error in profile definitino when using named slice
+  * extension[profile].extension[+]
+    * url = "value"
+    * valueCanonical = Canonical(BundleReportEuImaging)
+  * extension[profile].extension[+]
+    * url = "value"
+    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+//R5  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
-    * contentType = #application/pdf
-    * url = "./Binary/unstructured-pdf"
+    * contentType = #application/fhir+json
+    * url = "./Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
@@ -77,6 +83,52 @@ Usage: #example
       * extension[$house-number-url].valueString = "54"
     * postalCode = "28209"
     * city = "Bremen"
+
+Instance: BundleReportMinimalMetadata
+InstanceOf: BundleReportMinimalMetadataEuImaging
+Title: "Bundle: Imaging Report minimal metadata (unstructured example)"
+Description: "Minimal metadata bundle carrying the report anchor and context resources."
+Usage: #example
+* id = "bundle-report-minimal-metadata-unstructured"
+* entry[+]
+  * fullUrl = "urn:uuid:diagnostic-report-unstructured-minimal-metadata"
+  * resource = DiagnosticReportMinimalMetadata
+* entry[+]
+  * fullUrl = "urn:uuid:patient-unstructured-report"
+  * resource = PatientUnstructuredReport
+* entry[+]
+  * fullUrl = "urn:uuid:organization-unstructured-report"
+  * resource = OrganizationUnstructuredReport
+
+Instance: DiagnosticReportMinimalMetadata
+InstanceOf: DiagnosticReportEuImagingMinimalMetadata
+Title: "DiagnosticReport: unstructured minimal metadata"
+Description: "Minimal metadata DiagnosticReport compliant with DiagnosticReportEuImaging profile."
+Usage: #example
+* identifier[+]
+  * system = "http://example.org/myhospital/reportidentifiers"
+  * value = "unstructured-report-001"
+* status = #final
+* code = $loinc#85430-7 "Diagnostic imaging study"
+* subject = Reference(PatientUnstructuredReport)
+* performer[organization] = Reference(OrganizationUnstructuredReport)
+* basedOn[order-identifier].identifier
+  * system = "http://example.org/myhospital/accessionsystem"
+  * value = "ACC-123456789"
+
+* imagingStudy[study-identifier].identifier
+  * system = "urn:dicom:uid"
+  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+
+//R5* study[study-identifier].identifier
+//R5  * system = "urn:dicom:uid"
+//R5  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+* presentedForm[+]
+  * contentType = #application/pdf
+  * url = "./Binary/unstructured-pdf"
+  * language = #de
+  * creation = "2024-01-01T00:00:00Z"
+
 
 Instance: BinaryUnstructuredReport
 InstanceOf: Binary

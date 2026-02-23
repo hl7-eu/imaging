@@ -48,7 +48,44 @@ Description: "Document Bundle for Imaging Report"
   * ^short = "Key Images referred to from report"
   * resource only ImagingSelectionKeyImageEuImaging
 
+
 Invariant: dr-comp-author-org
 Description: "DiagnosticReport and Composition SHALL have the same author Organization"
 Expression: "Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization) = Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization) or (Bundle.entry.resource.ofType(DiagnosticReport).performer.resolve().ofType(Organization).empty() and Bundle.entry.resource.ofType(Composition).author.resolve().ofType(Organization).empty())"
 Severity:    #error
+
+
+Profile: BundleReportMinimalMetadataEuImaging
+Parent: Bundle
+Title: "Bundle: Imaging Report Minimal Metadata"
+Description: "Collection Bundle with minimal metadata for imaging report exchange"
+* insert SetFmmAndStatusRule( 1, draft )
+
+* type = #collection
+* total ..0
+* link ..0
+* entry 1..*
+  * insert SliceElement( #profile, resource )
+  * link ..0
+  * fullUrl 1..1
+  * resource 1..
+  * search ..0
+  * request ..0
+  * response ..0
+* entry contains
+    CompositionEuImaging 0..0 and
+  DiagnosticReportEuImagingMinimalMetadata 1..1 and
+    Patient 0..1 and
+    ImagingStudy 0..1
+* entry[CompositionEuImaging]
+  * ^short = "Composition is not allowed in this minimal metadata bundle. If composition is present, use the BundleReportEuImaging profile instead."
+  * resource only CompositionEuImaging
+* entry[DiagnosticReportEuImagingMinimalMetadata]
+  * ^short = "The Diagnostic Report containing the imaging report"
+  * resource only DiagnosticReportEuImagingMinimalMetadata
+* entry[Patient]
+  * ^short = "The patient the report is about"
+  * resource only $EuPatient
+* entry[ImagingStudy]
+  * ^short = "The imaging study associated with this report"
+  * resource only ImagingStudyEuImaging
