@@ -71,7 +71,7 @@ pages:
   examples.md:
     title: Examples
     example-unstructured.md:
-      title: Example unstructured report
+      title: Example report with renderable content and minimal metadata
     example-semi-structured.md:
       title: Example semi structured report
     example-structured.md:
