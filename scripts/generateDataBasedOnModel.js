@@ -35,7 +35,7 @@ const indices = {
     sectionR4: 29,
 };
 
-const XtEHRBaseUrl = "https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/";
+const XtEHRBaseUrl = "https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-";
 
 // Configuration: Define which models are considered "core" for this IG
 const CORE_MODELS = [
@@ -206,7 +206,7 @@ function generateXmlMappingTable(parsedData, srcResource, isR4) {
     writable.write(`      <ul>\n`);
     writable.write(`        <li>\n`);
     writable.write(`          <strong>Source logical model:</strong>\n`);
-    writable.write(`          <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/${escapeXml(srcResource)}" target="_blank">\n`);
+    writable.write(`          <a href="${escapeXml(getXtEhrStructureDefinitionUrl(srcResource))}" target="_blank">\n`);
     writable.write(`        ${escapeXml(srcResource)}\n`);
     writable.write(`          </a>\n`);
     writable.write(`        </li>\n`);
@@ -320,7 +320,7 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
     writable.write(`  <ul>\n`);
     writable.write(`    <li>\n`);
     writable.write(`      <strong>Source logical model:</strong>\n`);
-    writable.write(`      <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/${escapeXml(srcResource)}" target="_blank">${escapeXml(srcResource)}</a>\n`);
+    writable.write(`      <a href="${escapeXml(getXtEhrStructureDefinitionUrl(srcResource))}" target="_blank">${escapeXml(srcResource)}</a>\n`);
     writable.write(`    </li>\n`);
     writable.write(`  </ul>\n`);
     writable.write(`</div>\n\n`);
@@ -617,8 +617,8 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
         const nonCoreWithRNames = sortedNonCoreWithR.join(', ');
         writable.write(`### Other logical models that are used by this IG\n\n`);
         writable.write(`The following logical models describe data that is used in the context of this IG, but the mapping will be defined by another higher level IG, because they are common to many domains:\n\n`);
-        nonCoreWithRNamesWithHyperlinks = sortedNonCoreWithR.map(model => {
-            return model.startsWith("EHDS") ? `[${model}](StructureDefinition-${model}.html)` : model;
+        const nonCoreWithRNamesWithHyperlinks = sortedNonCoreWithR.map(model => {
+            return model.startsWith("EHDS") ? `[${model}](${getXtEhrStructureDefinitionUrl(model)})` : model;
         });
         writable.write(`* ${nonCoreWithRNamesWithHyperlinks.join(', ')}\n\n`);
     }
@@ -626,8 +626,8 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
     // Section for resources without 'R'
     if (resourcesWithoutR && resourcesWithoutR.length > 0) {
         const sortedWithoutR = [...resourcesWithoutR].sort();
-        withoutRNamesWithHyperlinks = sortedWithoutR.map( model => {
-            return model.startsWith("EHDS") ? `[${model}](StructureDefinition-${model}.html)` : model;
+        const withoutRNamesWithHyperlinks = sortedWithoutR.map( model => {
+            return model.startsWith("EHDS") ? `[${model}](${getXtEhrStructureDefinitionUrl(model)})` : model;
         });
         
         const withoutRNames = withoutRNamesWithHyperlinks.join(', ');
@@ -1078,7 +1078,7 @@ function generateSectionTablesMarkdown(parsedData) {
     writable.write('{% include variable-definitions.md %}\n');
     writable.write('For report creators, this page provides guidance on how to populate the narrative of each section, which is encoded in the `Composition.section.text` element of each section slice of this profile.\n\n');
     writable.write('The table below suggests the data points that SHOULD be included, and the source of those data. Those data points can be in a first order resource, referenced directly from the Composition (e.g. ImOrder), or they can live in a second,third order resource (e.g. Medication). For the later, a second query or a FHIR path (resolve) expression is required to fetch them.\n\n');
-    writable.write('NOTE: Structural concerns and rationale on the ImComposition profile can be found in the [ImComposition](StructureDefinition-ImComposition.html), which is the parent type of this Report-ImComposition profile.\n\n');
+    writable.write('NOTE: Structural concerns and rationale on the ImComposition profile can be found in the [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html), which is the parent type of this Report-ImComposition profile.\n\n');
 
     // Define custom section order
     const sectionOrder = [
@@ -1132,12 +1132,24 @@ function generateSectionTablesMarkdown(parsedData) {
             if (hasComments) {
                 writable.write(`| First order resource | Element | Referenced resource | Logical model resource.field | Comments |\n`);
                 writable.write('| -------- | ------- | -------------- | --------------------- | -------- |\n');
-                let strs = new Set( entries.map(entry => `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${entry.srcResource}.${entry.srcField} | ${entry.tgtModeling} |\n`));
+                let strs = new Set(entries.map(entry => {
+                    const srcResourceUrl = getXtEhrStructureDefinitionUrl(entry.srcResource);
+                    const srcResourceLink = srcResourceUrl
+                        ? `[${entry.srcResource}](${srcResourceUrl})`
+                        : entry.srcResource;
+                    return `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${srcResourceLink}.${entry.srcField} | ${entry.tgtModeling} |\n`;
+                }));
                 strs.forEach( str => { writable.write(str);});
             } else {
                 writable.write(`| First order resource | Element | Referenced resource | Logical model resource.field |\n`);
                 writable.write('| -------- | ------- | -------------- | --------------------- |\n');
-                let strs = new Set( entries.map(entry => `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${entry.srcResource}.${entry.srcField} |\n`));
+                let strs = new Set(entries.map(entry => {
+                    const srcResourceUrl = getXtEhrStructureDefinitionUrl(entry.srcResource);
+                    const srcResourceLink = srcResourceUrl
+                        ? `[${entry.srcResource}](${srcResourceUrl})`
+                        : entry.srcResource;
+                    return `| ${entry.resource} | ${entry.element} | ${entry.tgtRefType} | ${srcResourceLink}.${entry.srcField} |\n`;
+                }));
                 strs.forEach( str => { writable.write(str);});
             }
 
@@ -1208,4 +1220,11 @@ function getEquivalence(code) {
 // Execute the main function
 if (require.main === module) {
     main();
+}
+
+function getXtEhrStructureDefinitionUrl(resourceName) {
+    if (!resourceName || resourceName.trim().length === 0) {
+        return '';
+    }
+    return `${XtEHRBaseUrl}${resourceName.trim()}.html`;
 }
