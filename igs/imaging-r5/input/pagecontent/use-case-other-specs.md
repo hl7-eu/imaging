@@ -24,3 +24,21 @@ The Clinician searches for documents. Select the document to inspect and downloa
 After inspection of the document, it searches for the manifest related to the report, downloads it and determines which image/serie to view.
 
 Using the {{iheXcWado}} URL, the Clinician download the relevant DICOM images and renders them.
+
+The Clinician searches for documents.
+
+> GET DocumentReference?category=http://loinc.org	85430-7&subject=Patient/1234
+
+Select the document to inspect and downloads it.
+
+> GET &lt;DocumentReference.content.attachment.url&gt;
+
+After inspection of the document, it searches for the manifest related to the report using the StudyInstanceUID identifier of the ImagingStudy.
+
+> GET DocumentReference?category=http://loinc.org	18748-4&subject=Patient/1234&identifier=&lt;StudyInstanceUID&gt;
+
+The manifest is downloaded.
+
+> GET &lt;DocumentReference.content.attachment.url&gt;
+
+After inspecting the information available in the study, the requested DICOM images/series are downloaded and rendered using the URL.
