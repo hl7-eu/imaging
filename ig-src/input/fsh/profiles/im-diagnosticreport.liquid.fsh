@@ -8,6 +8,77 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
 
+* insert DiagnosticReportEuImagingCommonRules
+
+// reference to the order that has the Accession Number and including the Accession Number as identifier
+* basedOn
+  * insert SliceElement( #type, $this )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
+
+{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
+{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
+{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
+
+{{R5}}* composition 1..1
+{{R5}}* composition ^short = "Imaging Diagnostic Report"
+{{R5}}* composition only Reference(CompositionEuImaging)
+
+
+
+Profile: DiagnosticReportEuImagingMinimalMetadata
+Parent: DiagnosticReport
+Title: "DiagnosticReport: Imaging Report Minimal Metadata"
+Description: """
+DiagnosticReport profile for minimal metadata imaging report exchange. 
+This profile shares all common imaging report modeling with DiagnosticReportEuImaging but does not require a matching Composition resource.
+"""
+* insert SetFmmAndStatusRule( 1, draft )
+* insert DiagnosticReportEuImagingCommonRules
+
+// basedOn can either point to a ServiceRequest resource or carry only an accession identifier
+* basedOn
+  * insert SliceElement( #exists, identifier )
+* basedOn contains
+    order-resource 0..* and
+    order-identifier 0..*
+* basedOn[order-resource] only Reference(ServiceRequestOrderEuImaging)
+* basedOn[order-resource].reference 1..1
+* basedOn[order-resource].identifier 0..0
+* basedOn[order-identifier].reference 0..0
+* basedOn[order-identifier].identifier 1..1
+* basedOn[order-identifier].identifier only AccessionNumberIdentifierEuImaging
+
+// study/imagingStudy can either point to an ImagingStudy resource or carry only a Study Instance UID identifier
+{{R4}}* imagingStudy
+{{R4}}  * insert SliceElement( #exists, identifier )
+{{R4}}* imagingStudy contains
+{{R4}}    study-resource 0..* and
+{{R4}}    study-identifier 0..*
+{{R4}}* imagingStudy[study-resource] only Reference(ImagingStudyEuImaging)
+{{R4}}* imagingStudy[study-resource].reference 1..1
+{{R4}}* imagingStudy[study-resource].identifier 0..0
+{{R4}}* imagingStudy[study-identifier].reference 0..0
+{{R4}}* imagingStudy[study-identifier].identifier 1..1
+{{R4}}* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+
+{{R5}}* study
+{{R5}}  * insert SliceElement( #exists, identifier )
+{{R5}}* study contains
+{{R5}}    study-resource 0..* and
+{{R5}}    study-identifier 0..*
+{{R5}}* study[study-resource] only Reference(ImagingStudyEuImaging)
+{{R5}}* study[study-resource].reference 1..1
+{{R5}}* study[study-resource].identifier 0..0
+{{R5}}* study[study-identifier].reference 0..0
+{{R5}}* study[study-identifier].identifier 1..1
+{{R5}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+
+
+{{R5}}* composition 0..0
+{{R5}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
+
+RuleSet: DiagnosticReportEuImagingCommonRules
 * extension contains $artifact-version-url named artifactVersion 0..1
 * extension contains AnatomicalRegionExtension named anatomical-region 0..*
 * extension[anatomical-region] ^short = "The anatomical regions covered by the study this report reports on."
@@ -26,12 +97,6 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 * status
   * ^short = "Status of the Report"
   * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
-
-// reference to the order that has the Accession Number and including the Accession Number as identifier
-* basedOn
-  * insert SliceElement( #type, $this )
-* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
-* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 //* status
 // code  --> TODO will likely change based on composition discussions
@@ -91,17 +156,6 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 {{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
 
-
-// refer to the mandatory composition
-{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
-{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
-{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
-
-{{R5}}* composition 1..1
-{{R5}}* composition ^short = "Imaging Diagnostic Report"
-{{R5}}* composition only Reference(CompositionEuImaging)
-
-
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
 * extension[comparison] ^short = "Comparison studies"
 * extension[comparison] ^definition = """
@@ -159,7 +213,6 @@ Communications captures what communications have been made with other care provi
 // * obeys hl7eu-im-dr-recommendation
 // * obeys hl7eu-im-dr-communication
 // * obeys hl7eu-im-dr-finding
-
 
 Extension: HL7IDRComparisonStudiesExt
 Title: "Extension: HL7IDR DiagnosticReport Comparison Study"
