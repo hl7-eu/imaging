@@ -6,34 +6,6 @@ Description: """
 Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile. This profile is used for the DocumentReference resources that represent imaging reports in the EEHRxF context. It includes additional constraints and extensions specific to imaging reports, such as the type of report, the clinical specialty, the anatomical region of interest and the profile of the imaging report.
 """
 {{R }}* insert SetFmmAndStatusRule( 1, draft )
-{{R }}* insert MhdDocumentReference
-
-// content profile representation
-{{R4}}* content 1..1
-{{R4}}  * extension contains  http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile named profile 1..*
-{{R4}}  * extension[profile]
-{{R4}}  * ^short = "Contains the profile of the referred report"
-// TODO fix this! we had to comment it out as it did not run
-// {{R4}}  * extension[BundleReportEuImagingProfile].valueCanonical = Canonical( BundleReportEuImaging )
-  
-{{R5}}* content 1..1
-{{R5}}  * profile 1..*
-{{R5}}    * insert SliceElement( #value, value )
-{{R5}}  * profile contains hl7eu-imaging-report 1..1 
-{{R5}}  * profile[hl7eu-imaging-report].valueCanonical = Canonical( BundleReportEuImaging )
-
-Profile: DocumentReferenceUnstructuredImagingReport
-{{R4}}Parent: EehrxfMhdDocumentReference
-{{R5}}Parent: DocumentReference
-Title: "EEHRxF MHD DocumentReference Profile for unstructured imaging reports"
-Description: """
-Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile. This profile is used for the DocumentReference resources that represent imaging reports in the EEHRxF context. It includes additional constraints and extensions specific to imaging reports, such as the type of report, the clinical specialty, and the anatomical region of interest. It is intended for unstructured reports needed to support legacy reports, where the content is provided as an attachment without a specific structure or format.
-"""
-* insert SetFmmAndStatusRule( 1, draft )
-* insert MhdDocumentReference
-
-
-RuleSet: MhdDocumentReference
 // practice setting
 {{R4}}* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
 {{R5}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
@@ -65,7 +37,6 @@ RuleSet: MhdDocumentReference
 * custodian only Reference(OrganizationEu)
   * ^short = "Organization that manages the Imaging Report"
 
-
 // bodysite
 {{R5}}* bodySite
 // {{R5}}* bodySite only CodeableReferenceAnatomicalRegion
@@ -84,4 +55,18 @@ RuleSet: MhdDocumentReference
 {{R4}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 
 // modality
-{{R4}}* extension contains $CrossVersion-R5-DocumentReference.modality-for-R4 named modality 1..1 
+{{R4}}* extension contains $CrossVersion-R5-DocumentReference.modality-for-R4 named modality 1..1
+
+// content profile representation
+{{R4}}* content 1..1
+{{R4}}  * extension contains  http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile named profile 1..*
+{{R4}}  * extension[profile]
+{{R4}}  * ^short = "Contains the profile of the referred report"
+
+  
+{{R5}}* content 1..1
+{{R5}}  * profile 1..*
+{{R5}}    * insert SliceElement( #value, value )
+{{R5}}  * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
+{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+{{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
