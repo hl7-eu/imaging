@@ -22,7 +22,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
   <ul>
     <li>
       <strong>Source logical model:</strong>
-      <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSImagingReport" target="_blank">EHDSImagingReport</a>
+      <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html" target="_blank">EHDSImagingReport</a>
     </li>
   </ul>
 </div>
