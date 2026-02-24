@@ -4,8 +4,8 @@ InstanceOf: PractitionerRoleEu
 Title: "PractitionerRole: semi-structured"
 Description: "The role the author has in the organization."
 Usage: #example
-* practitioner = Reference(PractitionerSemiStructuredReportAuthor)
-* organization = Reference(OrganizationSemiStructuredReport)
+* practitioner.reference = "urn:uuid:ef64fa06-f761-4097-9af1-c9f7615f95ce"
+* organization.reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
 * code = $sct#66862007 "Radiologist"
 
 Instance: PractitionerSemiStructuredReportAuthor
