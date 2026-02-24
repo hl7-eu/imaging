@@ -26,8 +26,7 @@ Usage: #example
 //R5  * concept
 //R5    * coding[+] = $sct#61685007
 * content[+]
-  * extension[profile].extension[+]
-    * url = "value"
+  * extension[profile]
     * valueCanonical = Canonical(BundleReportEuImaging)
 //R5  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
   * attachment[0]

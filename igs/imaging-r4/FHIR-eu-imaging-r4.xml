@@ -12,12 +12,13 @@
 <artifact id="StructureDefinition/ImagingSelectionEuImaging" key="StructureDefinition-ImagingSelectionEuImaging" name="Basic-ImagingSelection: General"/>
 <artifact id="Binary/structured-pdf" key="Binary-structured-pdf" name="Binary: Structured report"/>
 <artifact id="Binary/unstructured-pdf" key="Binary-unstructured-pdf" name="Binary: Unstructured report pdf"/>
-<artifact id="Binary/ig-loader-semistructuredReport.pdf" key="Binary-ig-loader-semistructuredReport.pdf" name="Binary: semi-structured report"/>
+<artifact id="Binary/semi-structured-pdf" key="Binary-semi-structured-pdf" name="Binary: semi-structured report"/>
 <artifact id="StructureDefinition/BundleReportEuImaging" key="StructureDefinition-BundleReportEuImaging" name="Bundle: Imaging Report"/>
 <artifact id="StructureDefinition/BundleReportMinimalMetadataEuImaging" key="StructureDefinition-BundleReportMinimalMetadataEuImaging" name="Bundle: Imaging Report Minimal Metadata"/>
 <artifact id="Bundle/bundle-report-minimal-metadata-unstructured" key="Bundle-bundle-report-minimal-metadata-unstructured" name="Bundle: Imaging Report minimal metadata (unstructured example)"/>
 <artifact id="Bundle/bundle-report-semi-structured" key="Bundle-bundle-report-semi-structured" name="Bundle: Imaging Report semi-structured"/>
 <artifact id="Bundle/bundle-report-structured" key="Bundle-bundle-report-structured" name="Bundle: Imaging Report structured"/>
+<artifact id="CodeSystem/im-xds-class-code-cs" key="CodeSystem-im-xds-class-code-cs" name="CodeSystem: XDS Class Codes"/>
 <artifact id="StructureDefinition/CompositionEuImaging" key="StructureDefinition-CompositionEuImaging" name="Composition: Imaging Report"/>
 <artifact id="Composition/CompositionSemiStructured" key="Composition-CompositionSemiStructured" name="Composition: semi-structured"/>
 <artifact id="Composition/CompositionStructured" key="Composition-CompositionStructured" name="Composition: structured report"/>
@@ -40,6 +41,7 @@
 <artifact id="CapabilityStatement/EeehrxfImagingReportResourceConsumer" key="CapabilityStatement-EeehrxfImagingReportResourceConsumer" name="EEHRxF Imaging Report Resource Consumer CapabilityStatement"/>
 <artifact id="StructureDefinition/DocumentReferenceImagingReport" key="StructureDefinition-DocumentReferenceImagingReport" name="EEHRxF MHD DocumentReference Profile for Imaging Reports"/>
 <artifact id="StructureDefinition/AnatomicalRegionExtension" key="StructureDefinition-AnatomicalRegionExtension" name="Extension: Anatomical Region"/>
+<artifact id="StructureDefinition/im-documentreference-content-profile" key="StructureDefinition-im-documentreference-content-profile" name="Extension: DocumentReference content profile"/>
 <artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="Extension: HL7IDR Communication"/>
 <artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="Extension: HL7IDR DiagnosticReport Comparison Study"/>
 <artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="Extension: HL7IDR Imaging Procedure"/>

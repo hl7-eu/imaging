@@ -25,6 +25,7 @@ Description: "Document Bundle for Imaging Report"
     ImagingStudy 1..* and 
     requested-procedure 0..* and
     performed-procedure 0..* and 
+    findings 0..* and
     key-images 0..*
 * entry[CompositionEuImaging]
   * ^short = "The Composition containing the rendering of the imaging report"
@@ -44,6 +45,9 @@ Description: "Document Bundle for Imaging Report"
 * entry[performed-procedure]
   * ^short = "Procedures performed as part of the imaging study"
   * resource only ProcedureEuImaging
+* entry[findings]
+  * ^short = "Findings referred to from report"
+  * resource only ObservationFindingEuImaging
 * entry[key-images]
   * ^short = "Key Images referred to from report"
   * resource only ImagingSelectionKeyImageEuImaging

@@ -16,7 +16,7 @@ Usage: #example
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
-  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging study"
+  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
@@ -33,12 +33,7 @@ Usage: #example
 
 
 * content[+]
-// using numeric index due to error in profile definitino when using named slice
-  * extension[profile].extension[+]
-    * url = "value"
-    * valueCanonical = Canonical(BundleReportEuImaging)
-//R4  * extension[profile].extension[+]
-//R4    * url = "value"
+//R4  * extension[profile]
 //R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
@@ -71,10 +66,7 @@ Usage: #example
     * value = "0421 / 84 13 13 04"   
   * telecom[+]
     * system = #fax
-    * value = "0421 / 84 13 13 84"   
-  * telecom[+]
-    * system = #url
-    * value = "radiologiezentrum-bremen.de"   
+    * value = "0421 / 84 13 13 84"
   * address[+]
     * type = #physical
     * text = "Schwachhauser Heerstr. 54, 28209 Bremen"

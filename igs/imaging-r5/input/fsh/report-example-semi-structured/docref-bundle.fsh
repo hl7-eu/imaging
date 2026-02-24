@@ -26,9 +26,8 @@ Usage: #example
   * concept
     * coding[+] = $sct#61685007
 * content[+]
-  * extension[profile].extension[+]
-    * url = "value"
-    * valueCanonical = Canonical(BundleReportEuImaging)
+//R4  * extension[profile]
+//R4    * valueCanonical = Canonical(BundleReportEuImaging)
   * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json

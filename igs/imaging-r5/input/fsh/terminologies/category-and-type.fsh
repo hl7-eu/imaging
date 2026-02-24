@@ -4,11 +4,30 @@ Description: "The set of radiology types as defined by LOINC."
 * insert SetFmmAndStatusRule( 1, draft )
 * ^experimental = false
 
-* include codes from system $loinc where STATUS = "ACTIVE" and SCALE_TYP = "Doc" and CLASS = "RAD"
-// * include codes from system $loinc where concept is-a #18726-0
+// Commented due to new error in validator * include codes from system $loinc where STATUS = "ACTIVE" and SCALE_TYP = "Doc" and CLASS = "RAD"
+* include codes from system $loinc where concept is-a #18726-0
 
 
 // TODO refer to manifest?
+CodeSystem: XdsClassCodeCs
+Id: im-xds-class-code-cs
+Title: "CodeSystem: XDS Class Codes"
+Description: "Code system for XDS class codes used for filtering manifests."
+* insert SetFmmAndStatusRule( 1, draft )
+* ^experimental = false
+* ^caseSensitive = true
+* ^content = #complete
+* ^url = "urn:oid:1.3.6.1.4.1.19376.1.2.6.1"
+* #REPORTS "Reports"
+* #SUMMARIES "Summaries"
+* #IMAGES "Images"
+* #PRESCRIPTIONS "Prescribed Treatments and Diagnoses"
+* #DISPENSATIONS "Dispensations"
+* #PLANS "Treatment Plan or Protocol"
+* #HEALTH "Health Certificates and Notifications"
+* #PATIENT "Patient Expression and Preferences"
+* #WORKFLOWS "Workflow Management"
+
 ValueSet:   XdsClassCodeVs
 Id:	        im-xds-class-code-valueset
 Title:	    "ValueSet: XDS Class Codes"
