@@ -19,7 +19,6 @@ Usage: #example
 * code = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * subject = Reference( PatientSemiStructuredReport)
-* extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
 //R4* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport1 )
 * study[+] = Reference( ImagingStudySemiStructuredReport1 )
 //R4* imagingStudy[+] = Reference( ImagingStudySemiStructuredReport2 )
@@ -32,7 +31,7 @@ Usage: #example
 
 //R4* extension[note][+].valueAnnotation
 * note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
   * text = """
 Linker Fuß:
   Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte
@@ -42,7 +41,7 @@ Linker Fuß:
 """
 //R4* extension[note][+].valueAnnotation
 * note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Findings"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
   * text = """
 Rechter Fuß:
   Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige

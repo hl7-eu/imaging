@@ -31,8 +31,7 @@ Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report Minimal Metadata"
 Description: """
 DiagnosticReport profile for minimal metadata imaging report exchange. 
-This profile shares all common imaging report modeling with DiagnosticReportEuImaging but does not require composition.
-Optionally, if the only available information about the study and order are their identifiers, those can be encoded as DiagnosticReport.study.identifier and DiagnosticReport.basedOn.identifier, without including ImagingStudy and ServiceRequest resources in the Bundle.
+This profile shares all common imaging report modeling with DiagnosticReportEuImaging but does not require a matching Composition resource.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 * insert DiagnosticReportEuImagingCommonRules

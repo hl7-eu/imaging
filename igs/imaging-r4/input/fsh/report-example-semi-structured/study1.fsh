@@ -12,7 +12,6 @@ Usage: #example
     * system = "http://example.org/myhosptital/accessionsystem"
     * type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN 
     * value = "123456789" // invented - not there in the report
-* extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
 * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 * status = #available
 * subject = Reference( PatientSemiStructuredReport)

@@ -73,13 +73,9 @@ Description: "Collection Bundle with minimal metadata for imaging report exchang
   * request ..0
   * response ..0
 * entry contains
-    CompositionEuImaging 0..0 and
   DiagnosticReportEuImagingMinimalMetadata 1..1 and
     Patient 0..1 and
     ImagingStudy 0..1
-* entry[CompositionEuImaging]
-  * ^short = "Composition is not allowed in this minimal metadata bundle. If composition is present, use the BundleReportEuImaging profile instead."
-  * resource only CompositionEuImaging
 * entry[DiagnosticReportEuImagingMinimalMetadata]
   * ^short = "The Diagnostic Report containing the imaging report"
   * resource only DiagnosticReportEuImagingMinimalMetadata
