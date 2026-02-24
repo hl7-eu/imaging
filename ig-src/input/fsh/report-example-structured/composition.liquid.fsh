@@ -4,7 +4,7 @@ Title: "Composition: structured report"
 Description: "Example of a CompositionEuImaging showing the report with structured data."
 Usage: #example
 * status = #final
-* subject = Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * date = "2025-09-05T02:22:00.000Z" 
 * language = #en-GB
 * identifier
@@ -18,26 +18,29 @@ Usage: #example
       * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "87654321" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference = Reference ( DiagnosticReportStructured )
+* extension[diagnosticreport-reference].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000002"
 
 {{R4}}* extension[version].valueString = "1"
 {{R5}}* version = "1" // invented - not there in the report
 
 * status = #final
-* type = http://www.ama-assn.org/go/cpt#93351 "transthoracic echocardiogram"
+* type = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
 
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasound"
 
-* author[author] = Reference(PractitionerRoleStructuredReportAuthor)
-* author[organization] = Reference(OrganizationStructuredReport)
+* author[author].reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
+* author[organization].reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
 
 * title = "Transthoracic echocardiogram" // invented - not there in the report
+* text
+  * status = #generated
+  * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Stress echocardiography composition narrative. See section narratives below.</div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[imagingstudy]
   * title = "Imaging Study"
   * code = $loinc#18726-0 "Radiology studies (set)"
-  * entry[+] = Reference(ImagingStudStructuredReport)
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -55,22 +58,26 @@ Usage: #example
 * section[history]
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * entry[+] = Reference( WeightObservation )
-  * entry[+] = Reference( HeightObservation )
-  * entry[+] = Reference( BPObservation )
-  * entry[+] = Reference( HRObservation )
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
   * title = "Procedure"
   * code = $loinc#55111-9 "Current imaging procedure descriptions Document"
-  * emptyReason = #unavailable "Unavailable"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#unavailable "Unavailable"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Unavailable</div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[comparison]
   * title = "Comparison"
   * code = $loinc#18834-2 "Radiology Comparison study (narrative)"
-  * emptyReason = #nilknown "Nil Known"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Nil Known</div>"
   
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
@@ -104,40 +111,40 @@ Usage: #example
   * extension[note][+]
     * valueAnnotation.text =
   """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-  * entry[+] = Reference( RestWmsi01 )
-  * entry[+] = Reference( RestWmsi02 )
-  * entry[+] = Reference( RestWmsi03 ) 
-  * entry[+] = Reference( RestWmsi04 )
-  * entry[+] = Reference( RestWmsi05 )
-  * entry[+] = Reference( RestWmsi06 )
-  * entry[+] = Reference( RestWmsi07 )
-  * entry[+] = Reference( RestWmsi08 )
-  * entry[+] = Reference( RestWmsi09 )
-  * entry[+] = Reference( RestWmsi10 )
-  * entry[+] = Reference( RestWmsi12 )
-  * entry[+] = Reference( RestWmsi13 )
-  * entry[+] = Reference( RestWmsi14 )
-  * entry[+] = Reference( RestWmsi15 )
-  * entry[+] = Reference( RestWmsi16 )
-  * entry[+] = Reference( RestWmsi17 )
-  * entry[+] = Reference( StressWmsi01 )
-  * entry[+] = Reference( StressWmsi02 )
-  * entry[+] = Reference( StressWmsi03 ) 
-  * entry[+] = Reference( StressWmsi04 )
-  * entry[+] = Reference( StressWmsi05 )
-  * entry[+] = Reference( StressWmsi06 )
-  * entry[+] = Reference( StressWmsi07 )
-  * entry[+] = Reference( StressWmsi08 )
-  * entry[+] = Reference( StressWmsi09 )
-  * entry[+] = Reference( StressWmsi10 )
-  * entry[+] = Reference( StressWmsi12 )
-  * entry[+] = Reference( StressWmsi13 )
-  * entry[+] = Reference( StressWmsi14 )
-  * entry[+] = Reference( StressWmsi15 )
-  * entry[+] = Reference( StressWmsi16 )
-  * entry[+] = Reference( StressWmsi17 )
-  * entry[+] = Reference( StructuredKeyImageStress )
-  * entry[+] = Reference( StructuredKeyImageRest )
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000011"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000012"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000013"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000014"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000015"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000016"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000018"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000019"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001a"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001b"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001c"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001d"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001e"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001f"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000020"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000021"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000022"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000023"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000024"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000025"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000026"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000027"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000029"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002a"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002b"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002c"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002d"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
   
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
@@ -150,9 +157,11 @@ This was a normal stress echocardiogram.
 Nothing wrong with this patient
 See you next year.
 """
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">This was a normal stress echocardiogram. Nothing wrong with this patient. See you next year.</div>"
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
-  * entry[+] = Reference( ComeBackNextYearServiceRequest )
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000031"

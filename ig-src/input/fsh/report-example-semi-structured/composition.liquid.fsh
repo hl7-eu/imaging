@@ -30,6 +30,9 @@ Usage: #example
 * author[author].reference = "urn:uuid:cc78737c-f9a7-4253-b932-ccdb13f745cd"
 * author[organization].reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report
+* text
+  * status = #generated
+  * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Radiology report composition narrative. See section narratives below.</div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[imagingstudy]
@@ -41,7 +44,7 @@ Usage: #example
   * text.extension[$textLink][+]
     * extension[htmlid].valueString = "study2"
     * extension[data].valueUri = "#study2-ref"
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tr><td><b>ImagingStudy:</b></td><td id=\"study1\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784732; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr><tr><td><b>ImagingStudy:</b></td><td id=\"study2\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784733; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr></table></div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><table><tr><td><b>ImagingStudy:</b></td><td id=\"study1\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784732; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr><tr><td><b>ImagingStudy:</b></td><td id=\"study2\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784733; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr></table></div>"
     // <div xmlns=\"http://www.w3.org/1999/xhtml\">
     //   <table>
     //     <tr><td><b>ImagingStudy:</b></td><td id=\"study1\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784732; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr>
@@ -62,7 +65,7 @@ Usage: #example
   * code = $loinc#55115-0 "Requested imaging studies information Document"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nil known</div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Nil known</div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[history]
@@ -70,7 +73,7 @@ Usage: #example
   * code = $loinc#11329-0 "History general Narrative - Reported"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nil known</div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Nil known</div>"
   
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
@@ -78,7 +81,7 @@ Usage: #example
   * code = $loinc#55111-9 "Current imaging procedure descriptions Document"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#unavailable "Unavailable"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Unavailable</div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Unavailable</div>"
   
 ///////////////////////////////////////////////////////////////////////
 * section[comparison]
@@ -86,7 +89,7 @@ Usage: #example
   * code = $loinc#18834-2 "Radiology Comparison study (narrative)"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
   * text.status = #generated
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Unavailable</div>"
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Unavailable</div>"
   
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
@@ -117,17 +120,7 @@ Rechter Fuß:
   * text.extension[$textLink][+]
     * extension[htmlid].valueString = "note2"
     * extension[data].valueUri = "#finding-note2"
-  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tr><td><b>Note:</b></td><td id=\"note1\">Linker Fuß:<br/>Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte Artikulation im Rückfuß, Mittelfuß und Vorfußes. Im Großzehengrundgelenk deutliche Verschmälerung des Gelenkspaltes und Ausbildung von subchondralen Geröllzysten sowie deutliche postoperative Veränderungen nach Umstellungsosteotomie. Die Beuge- und Strecksehnen sind intakt.</td></tr><tr><td><b>Note:</b></td><td id=\"note2\">Rechter Fuß:<br/>Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige Plantarfaszie. Normale Artikulation im Rückfuß, Mittelfußes und Vorfußes. Im Seitenvergleich rechts geringere degenerative Veränderungen des Großzehengrundgelenkes. Keine Signalauffälligkeiten an den Beuge- und Strecksehnen.</td></tr></table></div>"
-    
-  // <div xmlns=\"http://www.w3.org/1999/xhtml\">
-  //     <table>
-  //       <tr><td><b>Note:</b></td><td id=\"note1\">
-  //         <p>Linker Fuß:</p><p>Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte Artikulation im Rückfuß, Mittelfuß und Vorfußes. Im Großzehengrundgelenk deutliche Verschmälerung des Gelenkspaltes und Ausbildung von subchondralen Geröllzysten sowie deutliche postoperative Veränderungen nach Umstellungsosteotomie. Die Beuge- und Strecksehnen sind intakt.</p>
-  //       </td></tr>
-  //       <tr><td><b>Note:</b></td><td id=\"note2\"><p>Rechter Fuß:</p><p>Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige
-  // Plantarfaszie. Normale Artikulation im Rückfuß, Mittelfußes und Vorfußes. Im Seitenvergleich rechts geringere degenerative Veränderungen des Großzehengrundgelenkes. Keine Signalauffälligkeiten an den   Beuge- und Strecksehnen. </p></td></tr>
-  //     </table>
-  // </div>
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><table><tr><td><b>Note:</b></td><td id=\"note1\">Linker Fuß:<br/>Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte Artikulation im Rückfuß, Mittelfuß und Vorfußes. Im Großzehengrundgelenk deutliche Verschmälerung des Gelenkspaltes und Ausbildung von subchondralen Geröllzysten sowie deutliche postoperative Veränderungen nach Umstellungsosteotomie. Die Beuge- und Strecksehnen sind intakt.</td></tr><tr><td><b>Note:</b></td><td id=\"note2\">Rechter Fuß:<br/>Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige Plantarfaszie. Normale Artikulation im Rückfuß, Mittelfußes und Vorfußes. Im Seitenvergleich rechts geringere degenerative Veränderungen des Großzehengrundgelenkes. Keine Signalauffälligkeiten an den Beuge- und Strecksehnen.</td></tr></table></div>"
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
@@ -143,7 +136,7 @@ Rechter Fuß:
     * extension[$textLink][+]
       * extension[htmlid].valueString = "note"
       * extension[data].valueUri = "#impression-note"
-    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><tr><td><b>Note:</b></td><td id=\"note\">Beginnende Großzehengrundgelenksarthrose, links mehr als rechts. Z.n. Umstellungsosteotomie des MFK1 links.</td></tr></table></div>"
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><table><tr><td><b>Note:</b></td><td id=\"note\">Beginnende Großzehengrundgelenksarthrose, links mehr als rechts. Z.n. Umstellungsosteotomie des MFK1 links.</td></tr></table></div>"
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
@@ -153,4 +146,4 @@ Rechter Fuß:
 
   * text
     * status = #generated
-    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Nil Known</div>"
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Nil Known</div>"

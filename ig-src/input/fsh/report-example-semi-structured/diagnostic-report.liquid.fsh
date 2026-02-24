@@ -16,7 +16,7 @@ Usage: #example
     * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "123456789" // invented - not there in the report
-* code = $loinc#24802-1 "MR Knee"
+* code = $loinc#24802-1
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
 * subject.reference = "urn:uuid:907c9bcf-94b5-4243-88ba-6f85ffec4bc8"
 {{R4}}* imagingStudy[+].reference = "urn:uuid:b710ae7d-c8d7-4861-a01e-b1e34031de4f"
@@ -31,7 +31,7 @@ Usage: #example
 
 {{R4}}* extension[note][+].valueAnnotation
 {{R5}}* note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5
   * text = """
 Linker Fuß:
   Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte
@@ -41,7 +41,7 @@ Linker Fuß:
 """
 {{R4}}* extension[note][+].valueAnnotation
 {{R5}}* note[+]
-  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
+  * extension[annotation-type].valueCodeableConcept = $loinc#59776-5
   * text = """
 Rechter Fuß:
   Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige
@@ -55,8 +55,7 @@ Rechter Fuß:
   * contentType = #application/pdf
   * language = #de-DE
 {{R5}}  * pages = 1
-  * url = "urn:uuid:f7f11c74-2c5b-4d56-b00e-c66f8e56da67"
-
+  * url = "./Binary/semi-structured-pdf"
 
 
 Instance: BinarySemiStructuredReport
@@ -64,5 +63,6 @@ InstanceOf: Binary
 Title: "Binary: semi-structured report"
 Description: "Binary resource holding the report pdf."
 Usage: #example
-* id = "ig-loader-semistructuredReport.pdf"
+* id = "semi-structured-pdf"
 * contentType = #application/pdf
+* data = "ig-loader-semistructuredReport.pdf"
