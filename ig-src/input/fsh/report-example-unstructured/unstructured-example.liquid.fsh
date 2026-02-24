@@ -126,4 +126,5 @@ Description: "Binary resource holding the unstructured report pdf."
 Usage: #example
 * id = "unstructured-pdf"
 * contentType = #application/pdf
-* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+{{R4}}* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+{{R5}}* data = "AA=="

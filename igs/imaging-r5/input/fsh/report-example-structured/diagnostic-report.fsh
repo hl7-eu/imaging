@@ -140,4 +140,5 @@ Usage: #example
 * id = "structured-pdf"
 * contentType = #application/pdf
 // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
-* data = "ig-loader-1.3.46.670589.58.10.10562925256214266678.11674839624289915183.pdf"
+//R4* data = "ig-loader-1.3.46.670589.58.10.10562925256214266678.11674839624289915183.pdf"
+* data = "AA=="
