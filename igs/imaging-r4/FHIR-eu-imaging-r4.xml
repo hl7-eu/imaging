@@ -12,7 +12,7 @@
 <artifact id="StructureDefinition/ImagingSelectionEuImaging" key="StructureDefinition-ImagingSelectionEuImaging" name="Basic-ImagingSelection: General"/>
 <artifact id="Binary/structured-pdf" key="Binary-structured-pdf" name="Binary: Structured report"/>
 <artifact id="Binary/unstructured-pdf" key="Binary-unstructured-pdf" name="Binary: Unstructured report pdf"/>
-<artifact id="Binary/semitrustured-pdf" key="Binary-semitrustured-pdf" name="Binary: semi-structured report"/>
+<artifact id="Binary/ig-loader-semistructuredReport.pdf" key="Binary-ig-loader-semistructuredReport.pdf" name="Binary: semi-structured report"/>
 <artifact id="StructureDefinition/BundleReportEuImaging" key="StructureDefinition-BundleReportEuImaging" name="Bundle: Imaging Report"/>
 <artifact id="StructureDefinition/BundleReportMinimalMetadataEuImaging" key="StructureDefinition-BundleReportMinimalMetadataEuImaging" name="Bundle: Imaging Report Minimal Metadata"/>
 <artifact id="Bundle/bundle-report-minimal-metadata-unstructured" key="Bundle-bundle-report-minimal-metadata-unstructured" name="Bundle: Imaging Report minimal metadata (unstructured example)"/>

@@ -64,7 +64,6 @@ InstanceOf: Binary
 Title: "Binary: semi-structured report"
 Description: "Binary resource holding the report pdf."
 Usage: #example
-* id = "semitrustured-pdf"
+* id = "semi-structured-pdf"
 * contentType = #application/pdf
-// * data = "ig-loader-semitrustured.pdf"
-* data = "ig-loader-semitrustured.pdf"
+* data = "ig-loader-semistructuredReport.pdf"
