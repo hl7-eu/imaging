@@ -90,15 +90,12 @@ Title: "Bundle: Imaging Report minimal metadata (unstructured example)"
 Description: "Minimal metadata bundle carrying the report anchor and context resources."
 Usage: #example
 * id = "bundle-report-minimal-metadata-unstructured"
-* entry[+]
-  * fullUrl = "urn:uuid:diagnostic-report-unstructured-minimal-metadata"
+* entry[DiagnosticReportEuImagingMinimalMetadata]
+  * fullUrl = "urn:uuid:8f6d9c62-1b2a-4f3c-9d0e-7a6b5c4d3e2f"
   * resource = DiagnosticReportMinimalMetadata
-* entry[+]
-  * fullUrl = "urn:uuid:patient-unstructured-report"
+* entry[Patient]
+  * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
   * resource = PatientUnstructuredReport
-* entry[+]
-  * fullUrl = "urn:uuid:organization-unstructured-report"
-  * resource = OrganizationUnstructuredReport
 
 Instance: DiagnosticReportMinimalMetadata
 InstanceOf: DiagnosticReportEuImagingMinimalMetadata
@@ -109,8 +106,8 @@ Usage: #example
   * system = "http://example.org/myhospital/reportidentifiers"
   * value = "unstructured-report-001"
 * status = #final
-* code = $loinc#85430-7 "Diagnostic imaging study"
-* subject = Reference(PatientUnstructuredReport)
+* code = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
+* subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
 * performer[organization] = Reference(OrganizationUnstructuredReport)
 * basedOn[order-identifier].identifier
   * system = "http://example.org/myhospital/accessionsystem"
