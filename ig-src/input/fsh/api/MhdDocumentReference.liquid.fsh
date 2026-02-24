@@ -6,6 +6,8 @@ Description: """
 Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile. This profile is used for the DocumentReference resources that represent imaging reports in the EEHRxF context. It includes additional constraints and extensions specific to imaging reports, such as the type of report, the clinical specialty, the anatomical region of interest and the profile of the imaging report.
 """
 {{R }}* insert SetFmmAndStatusRule( 1, draft )
+
+
 // practice setting
 {{R4}}* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
 {{R5}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
@@ -30,9 +32,9 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set. It should correspond with the value on DiagnosticReport.code."
   * coding
     * insert SliceElement( #value, $this )
-  * coding contains imaging-report 1..1 and imaging-report-type 0..*
+  * coding contains imaging-report 1..1
   * coding[imaging-report] = $loinc#85430-7
-  * coding[imaging-report-type] from ImagingReportTypesEuVSEuImaging (preferred)  
+  // * coding[imaging-report-type] from ImagingReportTypesEuVSEuImaging (preferred)  
 
 * custodian only Reference(OrganizationEu)
   * ^short = "Organization that manages the Imaging Report"
@@ -57,12 +59,14 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 // modality
 {{R4}}* extension contains $CrossVersion-R5-DocumentReference.modality-for-R4 named modality 1..1
 
-// content profile representation
+// content profile representation. Defining a custom extension as the CV spanshot 2 fails. TBD replace with CV snapshot 3 when available.
+// {{R4}}* content 1..1
+// {{R4}}  * extension contains  http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile named profile 1..*
+// {{R4}}  * extension[profile]
+// {{R4}}  * ^short = "Contains the profile of the referred report"
 {{R4}}* content 1..1
-{{R4}}  * extension contains  http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile named profile 1..*
-{{R4}}  * extension[profile]
-{{R4}}  * ^short = "Contains the profile of the referred report"
-
+{{R4}}  * extension contains ImDocumentReferenceContentProfile named profile 1..*
+{{R4}}  * extension[profile] ^short = "Contains the profile of the referred report"
   
 {{R5}}* content 1..1
 {{R5}}  * profile 1..*
@@ -70,3 +74,11 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 {{R5}}  * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
 {{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
 {{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+
+
+{{R4}}Extension: ImDocumentReferenceContentProfile
+{{R4}}Id: im-documentreference-content-profile
+{{R4}}Title: "Extension: DocumentReference content profile"
+{{R4}}Description: "Canonical URL of the profile represented by the {{R4}}referenced content."
+{{R4}}Context: DocumentReference.content
+{{R4}}* value[x] only canonical
