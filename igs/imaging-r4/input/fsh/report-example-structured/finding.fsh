@@ -14,7 +14,7 @@ Description: "Shows the WMSI graphs."
 Usage: #example
 * status = #current
 * content.attachment
-  * contentType = #image/png
+  // * contentType = #image/png
   * id = "ig-loader-structured-wmsi.drawio.png"
 
 Instance: RestWmsi01
