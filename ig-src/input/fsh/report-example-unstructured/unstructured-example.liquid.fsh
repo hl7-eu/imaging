@@ -114,17 +114,16 @@ Usage: #example
 {{R5}}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
 * presentedForm[+]
   * contentType = #application/pdf
-  * url = "./Binary/unstructured-pdf"
+  * url = "./Binary/BinaryUnstructuredReport"
   * language = #de
   * creation = "2024-01-01T00:00:00Z"
 
-
-Instance: BinaryUnstructuredReport
-InstanceOf: Binary
-Title: "Binary: Unstructured report pdf"
-Description: "Binary resource holding the unstructured report pdf."
-Usage: #example
-* id = "unstructured-pdf"
-* contentType = #application/pdf
-{{R4}}* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
-{{R5}}* data = "AA=="
+// Loadin the binary .json from input/resoures
+// Instance: BinaryUnstructuredReport
+// InstanceOf: Binary
+// Title: "Binary: Unstructured report pdf"
+// Description: "Binary resource holding the unstructured report pdf."
+// Usage: #example
+// * id = "unstructured-pdf"
+// * contentType = #application/pdf
+// * data = "ig-loader-unstructured_report.pdf"

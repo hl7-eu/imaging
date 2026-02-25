@@ -71,4 +71,4 @@ Usage: #example
   * resource = OrganizationSemiStructuredReport
 * entry[+]
   * fullUrl = "urn:uuid:f7f11c74-2c5b-4d56-b00e-c66f8e56da67"
-  * resource = BinarySemiStructuredReport
+  * resource = BinarySemistructuredReport
