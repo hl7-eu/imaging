@@ -50,14 +50,14 @@ The `text` field of each section SHALL contain a textual representation of all l
 * author 1..*
   // * insert SliceElement( #profile, [[$this.resolve()]] )
   * ^slicing.discriminator.type = #profile
-  * ^slicing.discriminator.path = "reference.resolve()"
+  * ^slicing.discriminator.path = "$this.resolve()"
   * ^slicing.rules = #open
   * ^slicing.ordered = false
 * author contains 
     author 0..* and 
     authoringDevice 0..* and
     organization 0..*
-* author[author] only Reference( $EuPractitionerRole )
+* author[author] only Reference( $EuPractitioner or $EuPractitionerRole )
 * author[authoringDevice] only Reference( $EuDevice )
 * author[organization] only Reference( $EuOrganization )
 
