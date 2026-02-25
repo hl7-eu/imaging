@@ -7,7 +7,7 @@ This profile represents an imaging study instance.
 * insert SetFmmAndStatusRule( 1, draft )
 * obeys im-imagingstudy-01
 
-* extension contains $workflow-status-reason-url named status-reason 0..1 
+// * extension contains $workflow-status-reason-url named status-reason 0..1 
 
 * extension contains AnatomicalRegionExtension named anatomical-region 0..*
 * extension[anatomical-region] ^short = "The anatomical regions covered by the study."
