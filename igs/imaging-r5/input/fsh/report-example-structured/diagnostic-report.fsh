@@ -131,14 +131,14 @@ See you next year.
   * pages = 3
   * url = "urn:uuid:11111111-2222-4333-8444-000000000032"
 
+// Loading the binary from .json in input/resources
 
-Instance: BinaryStructuredReport
-InstanceOf: Binary
-Title: "Binary: Structured report"
-Description: "Binary resource holding the report pdf."
-Usage: #example
-* id = "structured-pdf"
-* contentType = #application/pdf
-// * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
-//R4* data = "ig-loader-1.3.46.670589.58.10.10562925256214266678.11674839624289915183.pdf"
-* data = "AA=="
+// Instance: BinaryStructuredReport
+// InstanceOf: Binary
+// Title: "Binary: Structured report"
+// Description: "Binary resource holding the report pdf."
+// Usage: #example
+// * id = "structured-pdf"
+// * contentType = #application/pdf
+// // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+// * data = "ig-loader-structured_report.pdf"
