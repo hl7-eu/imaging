@@ -27,7 +27,9 @@ Usage: #example
 * type = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
 
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasound"
-
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+  
 * author[author].reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
 * author[organization].reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
 

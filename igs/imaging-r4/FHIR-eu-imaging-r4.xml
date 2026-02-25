@@ -125,7 +125,6 @@
 <artifact id="ValueSet/ImagingReportTypesEuVSEuImaging" key="ValueSet-ImagingReportTypesEuVSEuImaging" name="ValueSet: Radiology Report Types"/>
 <artifact id="ValueSet/SectionEmptyReasonEuImaging" key="ValueSet-SectionEmptyReasonEuImaging" name="ValueSet: Reasons a section in an imaging report is empty."/>
 <artifact id="ValueSet/valueset-diagnosticreport-notes" key="ValueSet-valueset-diagnosticreport-notes" name="ValueSet: Section codes used to label annotations."/>
-<artifact id="ValueSet/im-xds-class-code-valueset" key="ValueSet-im-xds-class-code-valueset" name="ValueSet: XDS Class Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="adapting" name="Adapting Guidelines for Country use"/>

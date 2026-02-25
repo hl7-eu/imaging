@@ -99,6 +99,9 @@ Usage: #example
   * value = "unstructured-report-001"
 * status = #final
 * code = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+
 * subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
 * performer[organization] = Reference(OrganizationUnstructuredReport)
 * basedOn[order-identifier].identifier
