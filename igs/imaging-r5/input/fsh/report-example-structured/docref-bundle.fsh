@@ -42,6 +42,7 @@ Description: "Document bundle grouping resources in the structured example."
 Usage: #example
 * id = "bundle-report-structured"
 * timestamp = "2025-09-05T00:00:00Z"
+* type = #document
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "dfkjewoieoijwoskdjf"

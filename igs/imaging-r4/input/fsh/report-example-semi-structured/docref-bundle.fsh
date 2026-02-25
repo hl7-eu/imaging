@@ -42,6 +42,7 @@ Description: "Document bundle grouping resources in the semi-structured example.
 Usage: #example
 * id = "bundle-report-semi-structured"
 * timestamp = "2025-05-08T00:00:00Z"
+* type = #document
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "o32u4js8492ff"

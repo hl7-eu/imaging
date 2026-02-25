@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: PractitionerRoleStructuredReportAuthor
-InstanceOf: PractitionerRoleEu
+InstanceOf: $EuPractitionerRole
 Title: "PractitionerRole: structured report"
 Description: "Role of the report author."
 Usage: #example
@@ -22,7 +22,7 @@ Usage: #example
   * suffix = "Prof."
 
 Instance: OrganizationStructuredReport
-InstanceOf: OrganizationEu
+InstanceOf: $EuOrganization
 Title: "Organization: structured report"
 Description: "Organization of the report author."
 Usage: #example

@@ -48,7 +48,11 @@ The `text` field of each section SHALL contain a textual representation of all l
   * time 1..1
 
 * author 1..*
-  * insert SliceElement( #profile, [[$this.resolve()]] )
+  // * insert SliceElement( #profile, [[$this.resolve()]] )
+  * ^slicing.discriminator.type = #profile
+  * ^slicing.discriminator.path = "reference.resolve()"
+  * ^slicing.rules = #open
+  * ^slicing.ordered = false
 * author contains 
     author 0..* and 
     authoringDevice 0..* and
@@ -171,7 +175,7 @@ The `text` field of each section SHALL contain a textual representation of all l
       finding 0..* and
       keyimage 0..* and
       image 0..*
-  * entry[finding] only Reference(ObservationFindingEuImaging)
+  * entry[finding] only Reference(Observation)
   * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
   * entry[image] only Reference( DocumentReference  or Media  )
 

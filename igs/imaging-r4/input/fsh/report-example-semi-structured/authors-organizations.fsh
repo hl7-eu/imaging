@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: PractitionerRoleSemiStructuredReportAuthor
-InstanceOf: PractitionerRoleEu
+InstanceOf: $EuPractitionerRole
 Title: "PractitionerRole: semi-structured"
 Description: "The role the author has in the organization."
 Usage: #example
@@ -20,7 +20,7 @@ Usage: #example
   * given = "Lucas"
 
 Instance: OrganizationSemiStructuredReport
-InstanceOf: OrganizationEu
+InstanceOf: $EuOrganization
 Title: "Organization: semi-structured"
 Description: "The organization employing the report author."
 Usage: #example

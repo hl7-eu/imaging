@@ -38,12 +38,12 @@ Usage: #example
 * section[imagingstudy]
   * title = "Imaging Study"
   * text.status = #generated
-  * text.extension[$textLink][+]
-    * extension[htmlid].valueString = "study1"
-    * extension[data].valueUri = "#study1-ref"
-  * text.extension[$textLink][+]
-    * extension[htmlid].valueString = "study2"
-    * extension[data].valueUri = "#study2-ref"
+  // * text.extension[$textLink][+]
+  //   * extension[htmlid].valueString = "study1"
+  //   * extension[data].valueUri = "#study1-ref"
+  // * text.extension[$textLink][+]
+  //   * extension[htmlid].valueString = "study2"
+  //   * extension[data].valueUri = "#study2-ref"
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><table><tr><td><b>ImagingStudy:</b></td><td id=\"study1\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784732; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr><tr><td><b>ImagingStudy:</b></td><td id=\"study2\">identifier = Study Instance UID: DUI#urn:oid:1.2.276.2000010.784733; status = available; modality = Magnetic Resonance; started = 2025-04-29</td></tr></table></div>"
     // <div xmlns=\"http://www.w3.org/1999/xhtml\">
     //   <table>
@@ -114,12 +114,12 @@ Rechter Fuß:
   Beuge- und Strecksehnen.
 """
   * text.status = #generated
-  * text.extension[$textLink][+]
-    * extension[htmlid].valueString = "note1"
-    * extension[data].valueUri = "#finding-note1"
-  * text.extension[$textLink][+]
-    * extension[htmlid].valueString = "note2"
-    * extension[data].valueUri = "#finding-note2"
+  // * text.extension[$textLink][+]
+  //   * extension[htmlid].valueString = "note1"
+  //   * extension[data].valueUri = "#finding-note1"
+  // * text.extension[$textLink][+]
+  //   * extension[htmlid].valueString = "note2"
+  //   * extension[data].valueUri = "#finding-note2"
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><table><tr><td><b>Note:</b></td><td id=\"note1\">Linker Fuß:<br/>Allenfalls geringe Abflachung des Fußgewölbes und normale Dicke der Plantarfaszie. Regelrechte Artikulation im Rückfuß, Mittelfuß und Vorfußes. Im Großzehengrundgelenk deutliche Verschmälerung des Gelenkspaltes und Ausbildung von subchondralen Geröllzysten sowie deutliche postoperative Veränderungen nach Umstellungsosteotomie. Die Beuge- und Strecksehnen sind intakt.</td></tr><tr><td><b>Note:</b></td><td id=\"note2\">Rechter Fuß:<br/>Analog zur Gegenseite zeigt sich eine allenfalls geringe Abflachung des Fußgewölbes und unauffällige Plantarfaszie. Normale Artikulation im Rückfuß, Mittelfußes und Vorfußes. Im Seitenvergleich rechts geringere degenerative Veränderungen des Großzehengrundgelenkes. Keine Signalauffälligkeiten an den Beuge- und Strecksehnen.</td></tr></table></div>"
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
@@ -133,9 +133,9 @@ Rechter Fuß:
  
   * text
     * status = #generated
-    * extension[$textLink][+]
-      * extension[htmlid].valueString = "note"
-      * extension[data].valueUri = "#impression-note"
+    // * extension[$textLink][+]
+    //   * extension[htmlid].valueString = "note"
+    //   * extension[data].valueUri = "#impression-note"
     * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><table><tr><td><b>Note:</b></td><td id=\"note\">Beginnende Großzehengrundgelenksarthrose, links mehr als rechts. Z.n. Umstellungsosteotomie des MFK1 links.</td></tr></table></div>"
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
