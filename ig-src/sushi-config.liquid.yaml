@@ -25,25 +25,30 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.terminology.r5: 6.3.0
-  # hl7.fhir.uv.extensions: 5.2.0
-  hl7.fhir.uv.extensions: 5.3.0-ballot
-  hl7.fhir.uv.ips: 1.1.0
-  hl7.fhir.eu.extensions: current
+  hl7.fhir.uv.ips: 2.0.0
   hl7.fhir.eu.base{{eu-core-r-code}}: current
   {% if isR4 %}
+  hl7.fhir.uv.extensions.r4: 5.2.0
+  hl7.fhir.eu.extensions.r4: 1.2.0
   hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
+  hl7.terminology.r4: 7.0.1
   {% endif %}
+  {% if isR5 %}
+  hl7.terminology.r5: 6.3.0
+  hl7.fhir.uv.extensions: 5.3.0-ballot
+  hl7.fhir.eu.extensions: 1.2.0
+  {% endif %}  
   hl7.fhir.eu.eu-health-data-api: current
   ihe.iti.mhd: 4.2.3
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current
   # required for medication extensions
   # ihe.pharm.mpd: current
-  fhir.dicom:
+  fhir.dicom: 
     id: DICOM
-    uri: http://fhir.org/packages/fhir.dicom
+    uri: http://fhir.org/packages/fhir.dicom/ImplementationGuide/fhir.dicom
     version: 2025.3.20250714
+  
   
 pages:
   index.md:
