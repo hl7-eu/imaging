@@ -31,7 +31,7 @@ dependencies:
   
   hl7.terminology.r5: 6.3.0
   hl7.fhir.uv.extensions: 5.3.0-ballot
-  hl7.fhir.eu.extensions: 1.2.0
+  hl7.fhir.eu.extensions.r4: 1.2.0
     
   hl7.fhir.eu.eu-health-data-api: current
   ihe.iti.mhd: 4.2.3
