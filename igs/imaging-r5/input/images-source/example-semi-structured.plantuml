@@ -63,7 +63,7 @@
         * series[+] "PDW FatSat (2.5mm) axial"    
     }
     
-    class PDF <<Binary>> [[./Binary-semi-structured-pdf.html]]
+    class PDF <<Binary>> [[./Binary-BinarySemistructuredReport.html]]
 
     class Composition [[./Composition-CompositionSemiStructured.html]] {
         section[imagingstudy]

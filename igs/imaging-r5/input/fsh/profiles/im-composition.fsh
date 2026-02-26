@@ -15,8 +15,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 """
 * insert SetFmmAndStatusRule( 1, draft )
 
-{{R5}}* identifier 1..*
-{{R4}}* identifier 1..1
+* identifier 1..*
+//R4* identifier 1..1
   * ^short = "Report identifier"
   * ^definition = "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions"
   * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
@@ -28,7 +28,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
 
-{{R4}}* extension contains $CrossVersion-Composition.version named version 0..1
+//R4* extension contains $CrossVersion-Composition.version named version 0..1
 
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
@@ -181,7 +181,7 @@ The `text` field of each section SHALL contain a textual representation of all l
       image 0..*
   * entry[finding] only Reference(Observation)
   * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
-  * entry[image] only Reference( DocumentReference {% if isR4 %} or Media {% endif %} )
+  * entry[image] only Reference( DocumentReference  )
 
 
 // /////////////////// IMPRESSION SECTION //////////////////////////

@@ -22,7 +22,7 @@ Resources used in this example:
 - [DiagnosticReport](DiagnosticReport-DiagnosticReportMinimalMetadata.html): main clinical report resource carrying report metadata and references to study/order as identifiers.
 - [Patient](Patient-PatientUnstructuredReport.html): subject of the report.
 - [Organization](Organization-OrganizationUnstructuredReport.html): reporting/custodian organization metadata.
-- [Binary](Binary-unstructured-pdf.html): PDF payload referenced from `DiagnosticReport.presentedForm`.
+- [Binary](Binary-BinaryUnstructuredReport.html): PDF payload referenced from `DiagnosticReport.presentedForm`.
 
 The full `DocumentReference` resource is presented below.
 

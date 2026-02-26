@@ -34,7 +34,8 @@ dependencies:
   # hl7.terminology.r4: 7.0.1
   
     
-  hl7.fhir.eu.eu-health-data-api: current
+  # removed to prevent dependency on unpublished spec
+  # hl7.fhir.eu.eu-health-data-api: current
   ihe.iti.mhd: 4.2.3
   # eu.ehds.models: 0.1.0
   # eu.ehds.models: current

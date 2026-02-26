@@ -23,17 +23,17 @@ the requested modality.
   * ^short = "Requested procedure"
 * code from ProcedureEuImagingType (example)
 
-{{R4}}* supportingInfo.extension contains 
-{{R4}}    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
-// {{R4}}* supportingInfo.extension[codeableConcept]
-// {{R4}}  * valueCodeableConcept from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+//R4* supportingInfo.extension contains 
+//R4    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
+// //R4* supportingInfo.extension[codeableConcept]
+// //R4  * valueCodeableConcept from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
-{{R5}}* supportingInfo 0..*
-{{R5}}  * insert SliceElement( #value, $this )
-{{R5}}* supportingInfo contains pregnancy 0..1
-{{R5}}* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+* supportingInfo 0..*
+  * insert SliceElement( #value, $this )
+* supportingInfo contains pregnancy 0..1
+* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
-{{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
+//R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
 
 // * status 1..1
 
@@ -66,11 +66,11 @@ Source: ServiceRequestOrderEuImaging
 Target: "http://nema.org/dicom"
 Title: "Mapping from DICOM to Imaging Order"
 Description: "Mapping from DICOM to Imaging Order."
-{{R }}* identifier[accessionNumber] -> "AccessionNumber (0008,0050)"
-{{R }}* subject -> "(0010/*)"
-{{R }}* note -> "RequestedProcedureDescription (0040,0100)"
-{{R }}* code -> "RequestedProcedureCodeSequence (0040,1001)"
-{{R4}}* extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
-{{R5}}* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
-{{R4}}* extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
-{{R5}}* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
+* identifier[accessionNumber] -> "AccessionNumber (0008,0050)"
+* subject -> "(0010/*)"
+* note -> "RequestedProcedureDescription (0040,0100)"
+* code -> "RequestedProcedureCodeSequence (0040,1001)"
+//R4* extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
+* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
+//R4* extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
+* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
