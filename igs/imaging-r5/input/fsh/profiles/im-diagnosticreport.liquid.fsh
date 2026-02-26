@@ -16,13 +16,13 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * basedOn contains ServiceRequestOrderEuImagingaccession 0..*
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
-//R4* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
-//R4* extension[composition] ^short = "Imaging Diagnostic Report"
-//R4* extension[composition].valueReference only Reference(CompositionEuImaging)
+{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
+{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
+{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
 
-* composition 1..1
-* composition ^short = "Imaging Diagnostic Report"
-* composition only Reference(CompositionEuImaging)
+{{R5}}* composition 1..1
+{{R5}}* composition ^short = "Imaging Diagnostic Report"
+{{R5}}* composition only Reference(CompositionEuImaging)
 
 
 
@@ -50,33 +50,33 @@ This profile shares all common imaging report modeling with DiagnosticReportEuIm
 * basedOn[order-identifier].identifier only AccessionNumberIdentifierEuImaging
 
 // study/imagingStudy can either point to an ImagingStudy resource or carry only a Study Instance UID identifier
-//R4* imagingStudy
-//R4  * insert SliceElement( #exists, identifier )
-//R4* imagingStudy contains
-//R4    study-resource 0..* and
-//R4    study-identifier 0..*
-//R4* imagingStudy[study-resource] only Reference(ImagingStudyEuImaging)
-//R4* imagingStudy[study-resource].reference 1..1
-//R4* imagingStudy[study-resource].identifier 0..0
-//R4* imagingStudy[study-identifier].reference 0..0
-//R4* imagingStudy[study-identifier].identifier 1..1
-//R4* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+{{R4}}* imagingStudy
+{{R4}}  * insert SliceElement( #exists, identifier )
+{{R4}}* imagingStudy contains
+{{R4}}    study-resource 0..* and
+{{R4}}    study-identifier 0..*
+{{R4}}* imagingStudy[study-resource] only Reference(ImagingStudyEuImaging)
+{{R4}}* imagingStudy[study-resource].reference 1..1
+{{R4}}* imagingStudy[study-resource].identifier 0..0
+{{R4}}* imagingStudy[study-identifier].reference 0..0
+{{R4}}* imagingStudy[study-identifier].identifier 1..1
+{{R4}}* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
 
-* study
-  * insert SliceElement( #exists, identifier )
-* study contains
-    study-resource 0..* and
-    study-identifier 0..*
-* study[study-resource] only Reference(ImagingStudyEuImaging)
-* study[study-resource].reference 1..1
-* study[study-resource].identifier 0..0
-* study[study-identifier].reference 0..0
-* study[study-identifier].identifier 1..1
-* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+{{R5}}* study
+{{R5}}  * insert SliceElement( #exists, identifier )
+{{R5}}* study contains
+{{R5}}    study-resource 0..* and
+{{R5}}    study-identifier 0..*
+{{R5}}* study[study-resource] only Reference(ImagingStudyEuImaging)
+{{R5}}* study[study-resource].reference 1..1
+{{R5}}* study[study-resource].identifier 0..0
+{{R5}}* study[study-identifier].reference 0..0
+{{R5}}* study[study-identifier].identifier 1..1
+{{R5}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
 
 
-* composition 0..0
-* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
+{{R5}}* composition 0..0
+{{R5}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
 
 RuleSet: DiagnosticReportEuImagingCommonRules
 * extension contains $artifact-version-url named artifactVersion 0..1
@@ -119,13 +119,13 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 // * issued 1..1  -> we use obligations instead
 
-//R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
-//R4* extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
-//R4* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+{{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
+{{R4}}* extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
+{{R4}}* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
 
-* note 
-  * extension contains $annotation-type named annotation-type 0..*
-  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+{{R5}}* note 
+{{R5}}  * extension contains $annotation-type named annotation-type 0..*
+{{R5}}  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
 
 // * composition 0..0 -> we use composition
 // * media 0..0 // not in not in keyimages section
@@ -153,13 +153,13 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 """
 
 // http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study
-//R4* imagingStudy only Reference(ImagingStudyEuImaging)
-//R4* imagingStudy ^short = "Study subject to this report"
-//R4* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+{{R4}}* imagingStudy only Reference(ImagingStudyEuImaging)
+{{R4}}* imagingStudy ^short = "Study subject to this report"
+{{R4}}* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
-* study only Reference(ImagingStudyEuImaging)
-* study ^short = "Study subject to this report"
-* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+{{R5}}* study only Reference(ImagingStudyEuImaging)
+{{R5}}* study ^short = "Study subject to this report"
+{{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
 
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
@@ -247,7 +247,7 @@ Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference   )
+* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference {% if isR4 %} or Media {% endif %}  )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"

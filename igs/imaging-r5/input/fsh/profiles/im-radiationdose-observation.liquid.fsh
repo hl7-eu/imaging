@@ -24,14 +24,14 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 * partOf[study] only Reference( ImagingStudyEuImaging )
 
 //TBD use CV extension snapshot 3 as the version 2 throws errors.
-// //R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
-// //R4* extension[derivedFrom] contains srImagingSelection 1..* 
-// //R4* extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
+// {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
+// {{R4}}* extension[derivedFrom] contains srImagingSelection 1..* 
+// {{R4}}* extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
 
-* derivedFrom
-  * insert SliceElement( #profile, $this )
-* derivedFrom contains dicomSrInstance 1..1
-* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
+{{R5}}* derivedFrom
+{{R5}}  * insert SliceElement( #profile, $this )
+{{R5}}* derivedFrom contains dicomSrInstance 1..1
+{{R5}}* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
 
 * code
   * coding 1..*

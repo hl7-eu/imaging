@@ -22,7 +22,7 @@ class "DiagnosticReportMinimalMetadata\n<<DiagnosticReport>>" as DiagnosticRepor
 }
 class "PatientUnstructuredReport\n<<Patient>>" as PatientUnstructuredReport [[./Patient-PatientUnstructuredReport.html]]
 class "OrganizationUnstructuredReport\n<<Organization>>" as OrganizationUnstructuredReport [[./Organization-OrganizationUnstructuredReport.html]]
-class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Binary-unstructured-pdf.html]] {
+class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Binary-BinaryUnstructuredReport.html]] {
   +contentType : application/pdf
 }
 

@@ -81,3 +81,4 @@ Invariant: im-imagingstudy-01
 Description: "A DICOM instance UID must start with 'urn:oid:'"
 Severity: #warning
 Expression: "identifier.where(system='urn:dicom:uid').value.startsWith('urn:oid:')"
+
