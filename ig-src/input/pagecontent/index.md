@@ -22,7 +22,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
-   <p>This is the 0.2.0 ballot version of the specification to be used by WP 7.2 of XtEHR for public consultation.</p>
+   <p>This is the 2.0.0 ballot version of the specification to be used for testing at IHE 2026 Eu Connectathon.</p>
  </blockquote>
 </div>
 
