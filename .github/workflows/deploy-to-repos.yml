@@ -10,6 +10,8 @@ jobs:
   validate-r4:
     runs-on: ubuntu-latest
     name: Validate R4 IG
+    env:
+      JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
     steps:
       - uses: actions/checkout@v4
@@ -41,6 +43,8 @@ jobs:
   validate-r5:
     runs-on: ubuntu-latest
     name: Validate R5 IG
+    env:
+      JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
     steps:
       - uses: actions/checkout@v4

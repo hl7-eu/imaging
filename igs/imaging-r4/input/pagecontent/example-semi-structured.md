@@ -16,7 +16,7 @@ The image shows what part of the report link to different elements in the report
   <p></p>
 </figure>
 
-The figure shows the DiagnosticReport that is the root of the report which refers to the imaging studies (LeftKnee and RightKnee), to the patient and to the author of the report. The resource holds the textual note of the findings in notes and the impression to conclusion.
+The figure shows the `DocumentReference` wrapper pointing to a document `Bundle` that groups the report resources. Inside the bundle, the `DiagnosticReport` refers to the imaging studies (LeftKnee and RightKnee), to the patient and to the author of the report. The resource holds the textual note of the findings in notes and the impression to conclusion.
 
 The DiagnosticReport has a link to the Composition that represents the content in a document format. It holds a section that refers to the imaging studies. The findings sections holds the finding notes and the impression section holds the conclusion.
 

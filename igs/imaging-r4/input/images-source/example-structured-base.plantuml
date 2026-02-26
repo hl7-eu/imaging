@@ -1,10 +1,28 @@
 @startuml
+    DocumentReferenceStructuredReport --> BundleReportStructured: content.attachment.url
+    DocumentReferenceStructuredReport --> Patient: subject
+    DocumentReferenceStructuredReport --> UltrasoundCentrum: custodian
+
+    BundleReportStructured --> Composition: entry
+    BundleReportStructured --> DiagnosticReport: entry
+    BundleReportStructured --> Patient: entry
+    BundleReportStructured --> Ultrasound: entry
+    BundleReportStructured --> Author: entry
+    BundleReportStructured --> UltrasoundCentrum: entry
+    BundleReportStructured --> DvdJochemsen: entry
+    BundleReportStructured --> ComeBackNextYearServiceRequest: entry
+    BundleReportStructured --> PDF: entry
     
     package "Author and Organization" {
         class Author <<PractitionerRole>>
         class UltrasoundCentrum <<Organization>>
         class DvdJochemsen <<Practitioner>>
     }
+
+        class DocumentReferenceStructuredReport <<DocumentReference>> [[./DocumentReference-DocumentReferenceStructuredReport.html]]
+        class BundleReportStructured <<Bundle>> [[./Bundle-bundle-report-structured.html]] {
+            +type : #document
+        }
 
     Author --> UltrasoundCentrum: organization
     Author --> DvdJochemsen: practitioner
@@ -39,7 +57,7 @@
         * series[+] "rest"
     }
     
-    class PDF <<Binary>>
+    class PDF <<Binary>> [[./Binary-structured-pdf.html]]
 
     class Composition [[./Composition-CompositionStructured.html]] {
         section[imagingstudy]
