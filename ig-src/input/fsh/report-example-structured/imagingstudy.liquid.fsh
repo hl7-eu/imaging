@@ -13,7 +13,7 @@ Usage: #example
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
-* extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 "Lower extremity"
+* extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 "Upper trunk"
 * status = #available
 * subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * started = "2025-04-29"
