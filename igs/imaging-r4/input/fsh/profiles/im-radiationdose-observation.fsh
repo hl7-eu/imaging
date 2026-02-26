@@ -23,9 +23,10 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 * partOf contains study 1..1
 * partOf[study] only Reference( ImagingStudyEuImaging )
 
-* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
-* extension[derivedFrom] contains srImagingSelection 1..* 
-* extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
+//TBD use CV extension snapshot 3 as the version 2 throws errors.
+// * extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
+// * extension[derivedFrom] contains srImagingSelection 1..* 
+// * extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
 
 //R5* derivedFrom
 //R5  * insert SliceElement( #profile, $this )

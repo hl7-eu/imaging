@@ -23,7 +23,10 @@
 <artifact id="StructureDefinition/BundleReportEuImaging" key="StructureDefinition-BundleReportEuImaging" name="Bundle: Imaging Report"/>
 <artifact id="StructureDefinition/EHDSCarePlan" key="StructureDefinition-EHDSCarePlan" name="Care plan model"/>
 <artifact id="StructureDefinition/CompositionEuImaging" key="StructureDefinition-CompositionEuImaging" name="Composition: Imaging Report"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/composition-obligation-eu-imaging" key="StructureDefinition-composition-obligation-eu-imaging" name="Composition: Imaging Report: Obligations"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="Composition/CompositionSemiStructured" key="Composition-CompositionSemiStructured" name="Composition: semi-structured"/>
 <artifact id="Composition/CompositionStructured" key="Composition-CompositionStructured" name="Composition: structured report"/>
 <artifact id="StructureDefinition/EHDSCondition" key="StructureDefinition-EHDSCondition" name="Condition model"/>
@@ -34,7 +37,10 @@
 <artifact id="StructureDefinition/EHDSDeviceUse" key="StructureDefinition-EHDSDeviceUse" name="Device use model"/>
 <artifact id="StructureDefinition/DeviceEuImaging" key="StructureDefinition-DeviceEuImaging" name="Device: Imaging Device"/>
 <artifact id="StructureDefinition/DiagnosticReportEuImaging" key="StructureDefinition-DiagnosticReportEuImaging" name="DiagnosticReport: Imaging Report"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/diagnostic-report-obligation-eu-imaging" key="StructureDefinition-diagnostic-report-obligation-eu-imaging" name="DiagnosticReport: Imaging Report: Obligations"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="DiagnosticReport/DiagnosticReportSemiStructured" key="DiagnosticReport-DiagnosticReportSemiStructured" name="DiagnosticReport: semi-structured report"/>
 <artifact id="DiagnosticReport/DiagnosticReportStructured" key="DiagnosticReport-DiagnosticReportStructured" name="DiagnosticReport: structured report"/>
 <artifact id="StructureDefinition/EHDSDischargeReport" key="StructureDefinition-EHDSDischargeReport" name="Discharge Report model"/>
@@ -43,7 +49,11 @@
 <artifact id="DocumentReference/UnstructuredReportExample" key="DocumentReference-UnstructuredReportExample" name="DocumentReference: Unstructured Report"/>
 <artifact id="Media/StructuredKeyImageRest" key="Media-StructuredKeyImageRest" name="DocumentReference: key image rest"/>
 <artifact id="Media/StructuredKeyImageStress" key="Media-StructuredKeyImageStress" name="DocumentReference: key image stress"/>
+<<<<<<< HEAD
 <artifact id="Media/WMSIImage" key="Media-WMSIImage" name="DocumentReference: structured report WMSI image"/>
+=======
+<artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="DocumentReference: structured report WMSI image"/>
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="StructureDefinition/EHDSDosage" key="StructureDefinition-EHDSDosage" name="Dosage model"/>
 <artifact id="StructureDefinition/EHDSDosaging" key="StructureDefinition-EHDSDosaging" name="Dosaging model"/>
 <artifact id="CapabilityStatement/EehrxfImagingDocumentAccessProvider" key="CapabilityStatement-EehrxfImagingDocumentAccessProvider" name="EEHRxF Imaging Report Document Access Provider CapabilityStatement"/>
@@ -55,9 +65,13 @@
 <artifact id="StructureDefinition/EHDSEncounter" key="StructureDefinition-EHDSEncounter" name="Encounter model"/>
 <artifact id="StructureDefinition/EHDSEndpoint" key="StructureDefinition-EHDSEndpoint" name="Endpoint model"/>
 <artifact id="StructureDefinition/EHDSEpisodeOfCare" key="StructureDefinition-EHDSEpisodeOfCare" name="Episode of care model"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/care-plan-obligation-eu-imaging" key="StructureDefinition-care-plan-obligation-eu-imaging" name="EuCarePlan: Obligations"/>
 <artifact id="StructureDefinition/AnatomicalRegionExtension" key="StructureDefinition-AnatomicalRegionExtension" name="Extension: Anatomical Region"/>
 <artifact id="StructureDefinition/DeviceAttesterExt" key="StructureDefinition-DeviceAttesterExt" name="Extension: Device Attester"/>
+=======
+<artifact id="StructureDefinition/AnatomicalRegionExtension" key="StructureDefinition-AnatomicalRegionExtension" name="Extension: Anatomical Region"/>
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="Extension: HL7IDR Communication"/>
 <artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="Extension: HL7IDR DiagnosticReport Comparison Study"/>
 <artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="Extension: HL7IDR Imaging Procedure"/>
@@ -67,7 +81,10 @@
 <artifact id="StructureDefinition/HL7IDRRecommendation" key="StructureDefinition-HL7IDRRecommendation" name="Extension: HL7IDR Recommendation"/>
 <artifact id="StructureDefinition/ImagingStudyEuImagingInstanceDescription" key="StructureDefinition-ImagingStudyEuImagingInstanceDescription" name="Extension: Instance Description"/>
 <artifact id="StructureDefinition/NumberOfFrames" key="StructureDefinition-NumberOfFrames" name="Extension: Number of Frames"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/RadiationDose" key="StructureDefinition-RadiationDose" name="Extension: Radiation Dose"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="StructureDefinition/EHDSFamilyMemberHistory" key="StructureDefinition-EHDSFamilyMemberHistory" name="Family member history model"/>
 <artifact id="StructureDefinition/EHDSFunctionalStatus" key="StructureDefinition-EHDSFunctionalStatus" name="Functional status"/>
 <artifact id="StructureDefinition/EHDSHealthProfessional" key="StructureDefinition-EHDSHealthProfessional" name="Health professional model"/>
@@ -78,7 +95,10 @@
 <artifact id="StructureDefinition/EHDSImagingReport" key="StructureDefinition-EHDSImagingReport" name="Imaging report model"/>
 <artifact id="StructureDefinition/EHDSImagingStudy" key="StructureDefinition-EHDSImagingStudy" name="Imaging study model"/>
 <artifact id="StructureDefinition/ImagingStudyEuImaging" key="StructureDefinition-ImagingStudyEuImaging" name="ImagingStudy: General"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/imaging-study-obligation-eu-imaging" key="StructureDefinition-imaging-study-obligation-eu-imaging" name="ImagingStudy: General: Obligations"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report 1"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report 2"/>
 <artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
@@ -100,11 +120,9 @@
 <artifact id="StructureDefinition/EHDSMedication" key="StructureDefinition-EHDSMedication" name="Medication model"/>
 <artifact id="StructureDefinition/EHDSMedicationPrescription" key="StructureDefinition-EHDSMedicationPrescription" name="Medication prescription model"/>
 <artifact id="StructureDefinition/EHDSMedicationStatement" key="StructureDefinition-EHDSMedicationStatement" name="Medication statement model"/>
-<artifact id="StructureDefinition/medication-administration-obligation-eu-imaging" key="StructureDefinition-medication-administration-obligation-eu-imaging" name="MedicationAdministration: Obligations"/>
 <artifact id="StructureDefinition/EHDSObservation" key="StructureDefinition-EHDSObservation" name="Observation model"/>
 <artifact id="StructureDefinition/ObservationGestationalAgeEuImaging" key="StructureDefinition-ObservationGestationalAgeEuImaging" name="Observation: Gestational Age"/>
 <artifact id="StructureDefinition/ObservationFindingEuImaging" key="StructureDefinition-ObservationFindingEuImaging" name="Observation: Imaging Finding"/>
-<artifact id="StructureDefinition/observation-finding-obligation-eu-imaging" key="StructureDefinition-observation-finding-obligation-eu-imaging" name="Observation: Imaging Finding: Obligations"/>
 <artifact id="StructureDefinition/ObservationRadiationDoseEuImaging" key="StructureDefinition-ObservationRadiationDoseEuImaging" name="Observation: Radiation Dose"/>
 <artifact id="Observation/RestWmsi17" key="Observation-RestWmsi17" name="Observation: WMSI apex at rest - normal"/>
 <artifact id="Observation/StressWmsi17" key="Observation-StressWmsi17" name="Observation: WMSI apex under stress - normal"/>
@@ -162,13 +180,19 @@
 <artifact id="StructureDefinition/EHDSPregnancyHistory" key="StructureDefinition-EHDSPregnancyHistory" name="Pregnancy history model"/>
 <artifact id="StructureDefinition/EHDSProcedure" key="StructureDefinition-EHDSProcedure" name="Procedure model"/>
 <artifact id="StructureDefinition/ProcedureEuImaging" key="StructureDefinition-ProcedureEuImaging" name="Procedure: Imaging Acquisition"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/procedure-obligation-eu-imaging" key="StructureDefinition-procedure-obligation-eu-imaging" name="ProcedureEuImaging: Obligations"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="StructureDefinition/EHDSRelatedPerson" key="StructureDefinition-EHDSRelatedPerson" name="Related person model"/>
 <artifact id="SearchParameter/SearchParameterDocumentReferenceBodySite" key="SearchParameter-SearchParameterDocumentReferenceBodySite" name="SearchParameterDocumentReferenceBodySite"/>
 <artifact id="SearchParameter/SearchParameterDocumentReferenceModality" key="SearchParameter-SearchParameterDocumentReferenceModality" name="SearchParameterDocumentReferenceModality"/>
 <artifact id="StructureDefinition/EHDSServiceRequest" key="StructureDefinition-EHDSServiceRequest" name="Service request model"/>
 <artifact id="StructureDefinition/ServiceRequestOrderEuImaging" key="StructureDefinition-ServiceRequestOrderEuImaging" name="ServiceRequest: Imaging Order"/>
+<<<<<<< HEAD
 <artifact id="StructureDefinition/service-request-order-obligation-eu-imaging" key="StructureDefinition-service-request-order-obligation-eu-imaging" name="ServiceRequest: Imaging Order: Obligations"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <artifact id="ServiceRequest/ComeBackNextYearServiceRequest" key="ServiceRequest-ComeBackNextYearServiceRequest" name="ServiceRequest: structured report recommendation"/>
 <artifact id="StructureDefinition/EHDSSocialHistory" key="StructureDefinition-EHDSSocialHistory" name="Social history model"/>
 <artifact id="StructureDefinition/EHDSSpecimen" key="StructureDefinition-EHDSSpecimen" name="Specimen model"/>
@@ -206,7 +230,10 @@
 <page key="examples" name="Examples"/>
 <page key="index" name="Home"/>
 <page key="imaging-report" name="Imaging Report"/>
+<<<<<<< HEAD
 <page key="artifacts-obligations" name="Obligations"/>
+=======
+>>>>>>> 2acc27aad6d65f9fd478b7017ed3c7dd4ca2aed2
 <page key="patterns-and-guidelines" name="Patterns and Guidelines"/>
 <page key="references" name="References"/>
 <page key="artifacts-structural" name="Structural artifacts"/>

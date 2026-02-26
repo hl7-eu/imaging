@@ -22,14 +22,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
-   <p>This is the 0.1.0-snapshot1 version of the specification to be used by WP 7.2 of XtEHR for public consultation. Please note that this represents a snapshot of an implementation guide that is still in development.
-   </p>
-   <p>The source of this IG is stored on github (<a href="https://github.com/hl7-eu/imaging">https://github.com/hl7-eu/imaging</a>).
-   </p>
-   <p> The content of this implementation guide is discussed HL7 EU calls (<a href="https://confluence.hl7.org/spaces/HEU/pages/321160129/Imaging+meetings">HL7-eu imaging on Confluence</a>).
-   </p>
-   <p> This version is based on FHIR R5. A FHIR R4 version will be derived from this ballot version and is expected to be published in the near future.  
-   </p>
+   <p>This is the 0.2.0 ballot version of the specification to be used by WP 7.2 of XtEHR for public consultation.</p>
  </blockquote>
 </div>
 

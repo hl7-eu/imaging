@@ -7,7 +7,7 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#29463-7 "Body weight"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * valueQuantity
   * value = 80
   * unit = "kg"
@@ -23,7 +23,7 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#8302-2 "Body height"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * valueQuantity
   * value = 180
   * unit = "cm"
@@ -39,7 +39,7 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#8867-4 "Heart rate"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * valueQuantity
   * value = 180
   * unit = "bpm"
@@ -55,7 +55,7 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#85354-9 "Blood pressure panel with all children optional"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * component[+]
   * code = $loinc#8480-6 "Systolic blood pressure"
   * valueQuantity

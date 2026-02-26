@@ -13,9 +13,9 @@ Usage: #example
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
-* extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Leg Lower limb structure"
+* extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 "Upper trunk"
 * status = #available
-* subject = Reference( PatientSemiStructuredReport)
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * started = "2025-04-29"
 * series[+]
   * uid = "1.3.46.670589.58.10.10562925256214266678.11674839624289915183.1" // invented - not there in the report
@@ -23,19 +23,17 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 
   * description = "Stress"
-  //R4* bodySite 
-  * bodySite.concept 
-        = $sct#67734004 
-  * performer[custodian].actor = Reference( OrganizationStructuredReport )
-  * performer[organization].actor = Reference( OrganizationStructuredReport )
+  //R4* bodySite = $sct#67734004
+  * bodySite.concept = $sct#67734004
+  * performer[custodian].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+  * performer[organization].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
 * series[+]
   * uid = "1.3.46.670589.58.10.10562925256214266678.11674839624289915183.2" // invented - not there in the report
   * number = 2
   * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 
   * description = "Rest"
-  //R4* bodySite 
-  * bodySite.concept 
-        = $sct#80891009 "Heart structure (body structure)"	
-  * performer[custodian].actor = Reference( OrganizationStructuredReport )
-  * performer[organization].actor = Reference( OrganizationStructuredReport )
+  //R4* bodySite = $sct#80891009 "Heart structure (body structure)"
+  * bodySite.concept = $sct#80891009 "Heart structure (body structure)"
+  * performer[custodian].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+  * performer[organization].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"

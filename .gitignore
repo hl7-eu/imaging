@@ -1,5 +1,6 @@
 /.idea
 .vscode/launch.json
+.vscode/mcp.json
 input-cache/
 output/
 temp/
@@ -11,5 +12,3 @@ publisher.jar
 translations/**
 
 subigs/**
-
-.vscode/mcp.json
