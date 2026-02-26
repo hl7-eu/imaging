@@ -8,6 +8,77 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
 
+* insert DiagnosticReportEuImagingCommonRules
+
+// reference to the order that has the Accession Number and including the Accession Number as identifier
+* basedOn
+  * insert SliceElement( #type, $this )
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
+* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
+
+* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
+* extension[composition] ^short = "Imaging Diagnostic Report"
+* extension[composition].valueReference only Reference(CompositionEuImaging)
+
+//R5* composition 1..1
+//R5* composition ^short = "Imaging Diagnostic Report"
+//R5* composition only Reference(CompositionEuImaging)
+
+
+
+Profile: DiagnosticReportEuImagingMinimalMetadata
+Parent: DiagnosticReport
+Title: "DiagnosticReport: Imaging Report Minimal Metadata"
+Description: """
+DiagnosticReport profile for minimal metadata imaging report exchange. 
+This profile shares all common imaging report modeling with DiagnosticReportEuImaging but does not require a matching Composition resource.
+"""
+* insert SetFmmAndStatusRule( 1, draft )
+* insert DiagnosticReportEuImagingCommonRules
+
+// basedOn can either point to a ServiceRequest resource or carry only an accession identifier
+* basedOn
+  * insert SliceElement( #exists, identifier )
+* basedOn contains
+    order-resource 0..* and
+    order-identifier 0..*
+* basedOn[order-resource] only Reference(ServiceRequestOrderEuImaging)
+* basedOn[order-resource].reference 1..1
+* basedOn[order-resource].identifier 0..0
+* basedOn[order-identifier].reference 0..0
+* basedOn[order-identifier].identifier 1..1
+* basedOn[order-identifier].identifier only AccessionNumberIdentifierEuImaging
+
+// study/imagingStudy can either point to an ImagingStudy resource or carry only a Study Instance UID identifier
+* imagingStudy
+  * insert SliceElement( #exists, identifier )
+* imagingStudy contains
+    study-resource 0..* and
+    study-identifier 0..*
+* imagingStudy[study-resource] only Reference(ImagingStudyEuImaging)
+* imagingStudy[study-resource].reference 1..1
+* imagingStudy[study-resource].identifier 0..0
+* imagingStudy[study-identifier].reference 0..0
+* imagingStudy[study-identifier].identifier 1..1
+* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+
+//R5* study
+//R5  * insert SliceElement( #exists, identifier )
+//R5* study contains
+//R5    study-resource 0..* and
+//R5    study-identifier 0..*
+//R5* study[study-resource] only Reference(ImagingStudyEuImaging)
+//R5* study[study-resource].reference 1..1
+//R5* study[study-resource].identifier 0..0
+//R5* study[study-identifier].reference 0..0
+//R5* study[study-identifier].identifier 1..1
+//R5* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+
+
+//R5* composition 0..0
+//R5* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
+
+RuleSet: DiagnosticReportEuImagingCommonRules
 * extension contains $artifact-version-url named artifactVersion 0..1
 * extension contains AnatomicalRegionExtension named anatomical-region 0..*
 * extension[anatomical-region] ^short = "The anatomical regions covered by the study this report reports on."
@@ -29,11 +100,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * ^short = "Status of the Report"
   * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
 
-// reference to the order that has the Accession Number and including the Accession Number as identifier
-* basedOn
-  * insert SliceElement( #type, $this )
-* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
-* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
+/////////////////////
 
 //* status
 // code  --> TODO will likely change based on composition discussions
@@ -43,8 +110,12 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * category 0..*
   * insert SliceElement( #value, $this )
-* category contains diagnostic-service 0..1 
+* category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * ^definition = "Defines the priority category of the report as defined in the API spec."
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+  * ^definition = "Defines the category of the report, Diagnostic imaging report."
 
 * subject only Reference($EuPatient)
 
@@ -73,7 +144,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 * resultsInterpreter 0..*
   * insert SliceElementWithDescription( #profile, [[resolve()]], [[Primary interpreter of results]] )
 * resultsInterpreter contains author 0..* 
-* resultsInterpreter[author] only Reference($EuPractitionerRole)
+* resultsInterpreter[author] only Reference($EuPractitioner or $EuPractitionerRole)
 
 * result 0..* MS
 * result only Reference(ObservationFindingEuImaging)
@@ -91,17 +162,6 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 //R5* study only Reference(ImagingStudyEuImaging)
 //R5* study ^short = "Study subject to this report"
 //R5* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
-
-
-
-// refer to the mandatory composition
-* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
-* extension[composition] ^short = "Imaging Diagnostic Report"
-* extension[composition].valueReference only Reference(CompositionEuImaging)
-
-//R5* composition 1..1
-//R5* composition ^short = "Imaging Diagnostic Report"
-//R5* composition only Reference(CompositionEuImaging)
 
 
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
@@ -161,7 +221,6 @@ Communications captures what communications have been made with other care provi
 // * obeys hl7eu-im-dr-recommendation
 // * obeys hl7eu-im-dr-communication
 // * obeys hl7eu-im-dr-finding
-
 
 Extension: HL7IDRComparisonStudiesExt
 Title: "Extension: HL7IDR DiagnosticReport Comparison Study"

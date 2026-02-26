@@ -31,7 +31,6 @@ class Composition <<first entry - for display purposes>> {
 
 class DiagnosticReport <<for structured data>> {
   +presentedForm : Attachment~PDF~ (optional)
-  +imagingStudy : Reference~ImagingStudy~
   ...
 }
 
@@ -54,7 +53,7 @@ Bundle --> DiagnosticReport : entry
 Bundle --> ImagingStudy : entry
 Bundle --> ServiceRequest : entry
 Bundle --> Observation : entry
-DiagnosticReport --> ImagingStudy : +imagingStudy : Reference~ImagingStudy~
+DiagnosticReport --> ImagingStudy : imagingStudy
 DiagnosticReport --> ServiceRequest : basedOn
 DiagnosticReport --> Observation : result
 

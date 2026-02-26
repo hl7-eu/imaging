@@ -1,6 +1,6 @@
 The EHDS Imaging Report specification supports the use of different data formats for the representation of imaging reports, that introduce increasing level of structure to the data exchanged.
 
-### Renderable format with basic metadata
+### Renderable format with minimal metadata
 
 Comprised of a `Bundle` of type collection containing a `DiagnosticReport` with a reference to a PDF (or other renderable format) attachment through .presentedForm, the `ImagingStudy` resource(s) that is the object of the report, the `ServiceRequest` that represented the original order for the study, and the `Patient` to whom the report belongs. Other resources are also allowed to encode additional elements of the report environment, as specified by this IG. Optionally, if the only available information about the study and the order are their identifiers, those can be encoded as `DiagnosticReport.study.identifier` and `DiagnosticReport.basedOn.identifier`, without having to include `ImagingStudy` and `ServiceRequest` resources in the `Bundle`.
 

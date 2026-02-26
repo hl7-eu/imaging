@@ -10,7 +10,7 @@ Description: "Basic resource holding cross-version extensions for Imaging Select
 * subject only Reference( $EuPatient )
 
 Profile: SrInstanceImagingSelectionEuImaging
-Parent: $CrossVersion-R5-ImagingSelection-for-R4
+Parent: http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4
 Title: "Basic-ImagingSelection: DICOM SR Instance"
 Description: "Imaging Selection referring to a DICOM SR instance"
 * insert SetFmmAndStatusRule( 1, draft )

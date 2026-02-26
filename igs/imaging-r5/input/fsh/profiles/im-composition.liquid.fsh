@@ -15,8 +15,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 """
 * insert SetFmmAndStatusRule( 1, draft )
 
-* identifier 1..*
-//R4* identifier 1..1
+{{R5}}* identifier 1..*
+{{R4}}* identifier 1..1
   * ^short = "Report identifier"
   * ^definition = "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions"
   * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
@@ -28,7 +28,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
 
-//R4* extension contains $CrossVersion-Composition.version named version 0..1
+{{R4}}* extension contains $CrossVersion-Composition.version named version 0..1
 
 * subject 1..1
 
@@ -41,22 +41,25 @@ The `text` field of each section SHALL contain a textual representation of all l
 * attester[legalAuthenticator]
   * mode 1..1
   * mode = http://hl7.org/fhir/composition-attestation-mode#legal
-  * party only Reference( $EuPractitionerRole or $EuOrganization)
+  * party only Reference( $EuPractitioner or $EuPractitionerRole )
   * time 1..1
 * attester[resultValidator]
   * mode 1..1
   * mode = http://hl7.org/fhir/composition-attestation-mode#professional
-  * party only Reference( $EuPractitionerRole )
-    * extension contains DeviceAttesterExt named deviceAttester 0..1
+  * party only Reference( $EuPractitioner or $EuPractitionerRole )
   * time 1..1
 
 * author 1..*
-  * insert SliceElement( #profile, [[$this.resolve()]] )
+  // * insert SliceElement( #profile, [[$this.resolve()]] )
+  * ^slicing.discriminator.type = #profile
+  * ^slicing.discriminator.path = "$this.resolve()"
+  * ^slicing.rules = #open
+  * ^slicing.ordered = false
 * author contains 
     author 0..* and 
     authoringDevice 0..* and
     organization 0..*
-* author[author] only Reference( $EuPractitionerRole )
+* author[author] only Reference( $EuPractitioner or $EuPractitionerRole )
 * author[authoringDevice] only Reference( $EuDevice )
 * author[organization] only Reference( $EuOrganization )
 
@@ -68,8 +71,12 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * category 0..*
   * insert SliceElement( #value, $this )
-* category contains diagnostic-service 0..1 
+* category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * ^definition = "Defines the priority category of the report as defined in the API spec."
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+  * ^definition = "Defines the category of the report, Diagnostic imaging report."
 
 
 * status 
@@ -177,9 +184,9 @@ The `text` field of each section SHALL contain a textual representation of all l
       finding 0..* and
       keyimage 0..* and
       image 0..*
-  * entry[finding] only Reference(ObservationFindingEuImaging)
+  * entry[finding] only Reference(Observation)
   * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
-  * entry[image] only Reference( DocumentReference  )
+  * entry[image] only Reference( DocumentReference {% if isR4 %} or Media {% endif %} )
 
 
 // /////////////////// IMPRESSION SECTION //////////////////////////

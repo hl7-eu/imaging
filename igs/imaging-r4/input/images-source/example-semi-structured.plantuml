@@ -1,4 +1,18 @@
 @startuml
+    DocumentReferenceSemiStructured --> BundleReportSemiStructured: content.attachment.url
+    DocumentReferenceSemiStructured --> Patient: subject
+    DocumentReferenceSemiStructured --> RadiologyZentrum: custodian
+
+    BundleReportSemiStructured --> Composition: entry
+    BundleReportSemiStructured --> DiagnosticReport: entry
+    BundleReportSemiStructured --> Patient: entry
+    BundleReportSemiStructured --> LeftKnee: entry
+    BundleReportSemiStructured --> RightKnee: entry
+    BundleReportSemiStructured --> Author: entry
+    BundleReportSemiStructured --> RadiologyZentrum: entry
+    BundleReportSemiStructured --> LucasGassenzer: entry
+    BundleReportSemiStructured --> PDF: entry
+
     DiagnosticReport --> Composition: composition
     DiagnosticReport --> PDF: presentedForm
     DiagnosticReport --> Patient: subject
@@ -22,7 +36,12 @@
     Author --> RadiologyZentrum: organization
     Author --> LucasGassenzer: practitioner
 
-    class Author <<PractitionerRole>>
+        class DocumentReferenceSemiStructured <<DocumentReference>> [[./DocumentReference-DocumentReferenceSemiStructured.html]]
+        class BundleReportSemiStructured <<Bundle>> [[./Bundle-bundle-report-semi-structured.html]] {
+            +type : #document
+        }
+
+        class Author <<PractitionerRole>>
     class RadiologyZentrum <<Organization>>
     class LucasGassenzer <<Practitioner>>
 
@@ -44,7 +63,7 @@
         * series[+] "PDW FatSat (2.5mm) axial"    
     }
     
-    class PDF <<Binary>>
+    class PDF <<Binary>> [[./Binary-semi-structured-pdf.html]]
 
     class Composition [[./Composition-CompositionSemiStructured.html]] {
         section[imagingstudy]
