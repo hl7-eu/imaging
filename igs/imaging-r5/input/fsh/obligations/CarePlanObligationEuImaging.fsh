@@ -8,6 +8,7 @@ Id: care-plan-obligation-eu-imaging
 Title: "EuCarePlan: Obligations"
 Description: "Obligations for EuCarePlan"
 * description
+  * ^requirements = "Fullfiling Xt-EHR logical model EHDSCarePlan.description; Fullfiling Xt-EHR logical model EHDSImagingReport.body.recommendation.description"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSCarePlan.description, EHDSImagingReport.body.recommendation.description"

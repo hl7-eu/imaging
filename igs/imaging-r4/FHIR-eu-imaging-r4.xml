@@ -10,33 +10,41 @@
 <artifact id="StructureDefinition/AdverseEventEuImaging" key="StructureDefinition-AdverseEventEuImaging" name="AdverseEvent: Imaging Adverse Event"/>
 <artifact id="StructureDefinition/SrInstanceImagingSelectionEuImaging" key="StructureDefinition-SrInstanceImagingSelectionEuImaging" name="Basic-ImagingSelection: DICOM SR Instance"/>
 <artifact id="StructureDefinition/ImagingSelectionEuImaging" key="StructureDefinition-ImagingSelectionEuImaging" name="Basic-ImagingSelection: General"/>
-<artifact id="Binary/structured-pdf" key="Binary-structured-pdf" name="Binary: Structured report"/>
-<artifact id="Binary/unstructured-pdf" key="Binary-unstructured-pdf" name="Binary: Unstructured report pdf"/>
-<artifact id="Binary/semi-structured-pdf" key="Binary-semi-structured-pdf" name="Binary: semi-structured report"/>
+<artifact id="Binary/BinarySemistructuredReport" key="Binary-BinarySemistructuredReport" name="BinarySemistructuredReport"/>
+<artifact id="Binary/BinaryStructuredReport" key="Binary-BinaryStructuredReport" name="BinaryStructuredReport"/>
+<artifact id="Binary/BinaryUnstructuredReport" key="Binary-BinaryUnstructuredReport" name="BinaryUnstructuredReport"/>
 <artifact id="StructureDefinition/BundleReportEuImaging" key="StructureDefinition-BundleReportEuImaging" name="Bundle: Imaging Report"/>
+<artifact id="StructureDefinition/BundleReportMinimalMetadataEuImaging" key="StructureDefinition-BundleReportMinimalMetadataEuImaging" name="Bundle: Imaging Report Minimal Metadata"/>
+<artifact id="Bundle/bundle-report-minimal-metadata-unstructured" key="Bundle-bundle-report-minimal-metadata-unstructured" name="Bundle: Imaging Report minimal metadata (unstructured example)"/>
+<artifact id="Bundle/bundle-report-semi-structured" key="Bundle-bundle-report-semi-structured" name="Bundle: Imaging Report semi-structured"/>
+<artifact id="Bundle/bundle-report-structured" key="Bundle-bundle-report-structured" name="Bundle: Imaging Report structured"/>
 <artifact id="StructureDefinition/CompositionEuImaging" key="StructureDefinition-CompositionEuImaging" name="Composition: Imaging Report"/>
 <artifact id="StructureDefinition/composition-obligation-eu-imaging" key="StructureDefinition-composition-obligation-eu-imaging" name="Composition: Imaging Report: Obligations"/>
 <artifact id="Composition/CompositionSemiStructured" key="Composition-CompositionSemiStructured" name="Composition: semi-structured"/>
 <artifact id="Composition/CompositionStructured" key="Composition-CompositionStructured" name="Composition: structured report"/>
 <artifact id="StructureDefinition/DeviceEuImaging" key="StructureDefinition-DeviceEuImaging" name="Device: Imaging Device"/>
 <artifact id="StructureDefinition/DiagnosticReportEuImaging" key="StructureDefinition-DiagnosticReportEuImaging" name="DiagnosticReport: Imaging Report"/>
+<artifact id="StructureDefinition/DiagnosticReportEuImagingMinimalMetadata" key="StructureDefinition-DiagnosticReportEuImagingMinimalMetadata" name="DiagnosticReport: Imaging Report Minimal Metadata"/>
 <artifact id="StructureDefinition/diagnostic-report-obligation-eu-imaging" key="StructureDefinition-diagnostic-report-obligation-eu-imaging" name="DiagnosticReport: Imaging Report: Obligations"/>
 <artifact id="DiagnosticReport/DiagnosticReportSemiStructured" key="DiagnosticReport-DiagnosticReportSemiStructured" name="DiagnosticReport: semi-structured report"/>
 <artifact id="DiagnosticReport/DiagnosticReportStructured" key="DiagnosticReport-DiagnosticReportStructured" name="DiagnosticReport: structured report"/>
+<artifact id="DiagnosticReport/DiagnosticReportMinimalMetadata" key="DiagnosticReport-DiagnosticReportMinimalMetadata" name="DiagnosticReport: unstructured minimal metadata"/>
 <artifact id="StructureDefinition/DocumentReferenceKeyImageEuImaging" key="StructureDefinition-DocumentReferenceKeyImageEuImaging" name="DocumentReference: Key Image"/>
-<artifact id="DocumentReference/UnstructuredReportExample" key="DocumentReference-UnstructuredReportExample" name="DocumentReference: Unstructured Report"/>
+<artifact id="DocumentReference/DocumentReferenceSemiStructured" key="DocumentReference-DocumentReferenceSemiStructured" name="DocumentReference: Renderable format semi-structured"/>
+<artifact id="DocumentReference/DocumentReferenceStructuredReport" key="DocumentReference-DocumentReferenceStructuredReport" name="DocumentReference: Renderable format structured"/>
+<artifact id="DocumentReference/RenderableFormatWithBasicMetadata" key="DocumentReference-RenderableFormatWithBasicMetadata" name="DocumentReference: Renderable format with basic metadata"/>
 <artifact id="Media/StructuredKeyImageRest" key="Media-StructuredKeyImageRest" name="DocumentReference: key image rest"/>
 <artifact id="Media/StructuredKeyImageStress" key="Media-StructuredKeyImageStress" name="DocumentReference: key image stress"/>
-<artifact id="Media/WMSIImage" key="Media-WMSIImage" name="DocumentReference: structured report WMSI image"/>
+<artifact id="DocumentReference/WMSIImage" key="DocumentReference-WMSIImage" name="DocumentReference: structured report WMSI image"/>
 <artifact id="CapabilityStatement/EehrxfImagingDocumentAccessProvider" key="CapabilityStatement-EehrxfImagingDocumentAccessProvider" name="EEHRxF Imaging Report Document Access Provider CapabilityStatement"/>
 <artifact id="CapabilityStatement/EehrxfImagingReportDocumentConsumer" key="CapabilityStatement-EehrxfImagingReportDocumentConsumer" name="EEHRxF Imaging Report Document Consumer CapabilityStatement"/>
 <artifact id="CapabilityStatement/EeehrxfImagingReportResourceAccessProvider" key="CapabilityStatement-EeehrxfImagingReportResourceAccessProvider" name="EEHRxF Imaging Report Resource Access Provider CapabilityStatement"/>
 <artifact id="CapabilityStatement/EeehrxfImagingReportResourceConsumer" key="CapabilityStatement-EeehrxfImagingReportResourceConsumer" name="EEHRxF Imaging Report Resource Consumer CapabilityStatement"/>
 <artifact id="StructureDefinition/DocumentReferenceImagingReport" key="StructureDefinition-DocumentReferenceImagingReport" name="EEHRxF MHD DocumentReference Profile for Imaging Reports"/>
-<artifact id="StructureDefinition/DocumentReferenceUnstructuredImagingReport" key="StructureDefinition-DocumentReferenceUnstructuredImagingReport" name="EEHRxF MHD DocumentReference Profile for unstructured imaging reports"/>
 <artifact id="StructureDefinition/care-plan-obligation-eu-imaging" key="StructureDefinition-care-plan-obligation-eu-imaging" name="EuCarePlan: Obligations"/>
 <artifact id="StructureDefinition/AnatomicalRegionExtension" key="StructureDefinition-AnatomicalRegionExtension" name="Extension: Anatomical Region"/>
 <artifact id="StructureDefinition/DeviceAttesterExt" key="StructureDefinition-DeviceAttesterExt" name="Extension: Device Attester"/>
+<artifact id="StructureDefinition/im-documentreference-content-profile" key="StructureDefinition-im-documentreference-content-profile" name="Extension: DocumentReference content profile"/>
 <artifact id="StructureDefinition/HL7IDRCommunication" key="StructureDefinition-HL7IDRCommunication" name="Extension: HL7IDR Communication"/>
 <artifact id="StructureDefinition/HL7IDRComparisonStudy" key="StructureDefinition-HL7IDRComparisonStudy" name="Extension: HL7IDR DiagnosticReport Comparison Study"/>
 <artifact id="StructureDefinition/HL7IDRImagingProcedure" key="StructureDefinition-HL7IDRImagingProcedure" name="Extension: HL7IDR Imaging Procedure"/>
@@ -127,7 +135,6 @@
 <artifact id="ValueSet/ImagingReportTypesEuVSEuImaging" key="ValueSet-ImagingReportTypesEuVSEuImaging" name="ValueSet: Radiology Report Types"/>
 <artifact id="ValueSet/SectionEmptyReasonEuImaging" key="ValueSet-SectionEmptyReasonEuImaging" name="ValueSet: Reasons a section in an imaging report is empty."/>
 <artifact id="ValueSet/valueset-diagnosticreport-notes" key="ValueSet-valueset-diagnosticreport-notes" name="ValueSet: Section codes used to label annotations."/>
-<artifact id="ValueSet/im-xds-class-code-valueset" key="ValueSet-im-xds-class-code-valueset" name="ValueSet: XDS Class Codes"/>
 <page key="NA" name="(NA)"/>
 <page key="many" name="(many)"/>
 <page key="adapting" name="Adapting Guidelines for Country use"/>
@@ -141,9 +148,9 @@
 <page key="dependencies" name="Dependencies"/>
 <page key="design-considerations" name="Design considerations"/>
 <page key="api" name="EU Health Data API for Imaging Reports"/>
+<page key="example-unstructured" name="Example report with renderable content and minimal metadata"/>
 <page key="example-semi-structured" name="Example semi structured report"/>
 <page key="example-structured" name="Example structured report"/>
-<page key="example-unstructured" name="Example unstructured report"/>
 <page key="examples" name="Examples"/>
 <page key="index" name="Home"/>
 <page key="imaging-report" name="Imaging Report"/>

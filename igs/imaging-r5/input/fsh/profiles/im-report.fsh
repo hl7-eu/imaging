@@ -26,7 +26,10 @@ Description: "Document Bundle for Imaging Report"
     requested-procedure 0..* and
     performed-procedure 0..* and 
     findings 0..* and
-    key-images 0..*
+    key-images 0..* and
+    practitioner 0..* and
+    organization 0..*
+
 * entry[CompositionEuImaging]
   * ^short = "The Composition containing the rendering of the imaging report"
   * resource only CompositionEuImaging
@@ -51,6 +54,12 @@ Description: "Document Bundle for Imaging Report"
 * entry[key-images]
   * ^short = "Key Images referred to from report"
   * resource only ImagingSelectionKeyImageEuImaging
+* entry[practitioner]
+  * ^short = "Practitioner involved in the report"
+  * resource only PractitionerEu or $EuPractitionerRole
+* entry[organization]
+  * ^short = "Organization involved in the report"
+  * resource only $EuOrganization
 
 
 Invariant: dr-comp-author-org

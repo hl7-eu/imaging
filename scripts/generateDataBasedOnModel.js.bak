@@ -767,40 +767,6 @@ function generateObligationFiles(parsedData) {
             .filter(code => code.length > 0);
     }
 
-    function escapeFshString(value) {
-        return value
-            .replace(/\\/g, '\\\\')
-            .replace(/"/g, '\\"');
-    }
-
-    function writeTargetElementRequirements(writable, liquidCondition, tgtResource, tgtElement) {
-        const sourceMappings = new Set(
-            parsedData
-                .filter((row, index) => index > 0)
-                .filter(row => {
-                    const targetResource = liquidCondition === 'isR5'
-                        ? getValue(row, indices.tgtResource)
-                        : getValue(row, indices.tgtResourceR4);
-                    const targetElement = liquidCondition === 'isR5'
-                        ? getValue(row, indices.tgtElement)
-                        : getValue(row, indices.tgtElementR4);
-                    return targetResource === tgtResource && targetElement === tgtElement;
-                })
-                .map(row => `${getValue(row, indices.srcResource)}.${getValue(row, indices.srcField)}`)
-                .filter(v => v && v !== '.')
-        );
-
-        if (sourceMappings.size === 0) {
-            return;
-        }
-
-        const requirements = Array.from(sourceMappings)
-            .map(mapping => `Fullfiling Xt-EHR logical model ${mapping}`)
-            .join('; ');
-
-        writable.write(`  * ^requirements = "${escapeFshString(requirements)}"\n`);
-    }
-
     function normalizeResourceNameForIg(resourceName) {
         if (!resourceName || resourceName.length === 0) {
             return '';
@@ -968,7 +934,6 @@ function generateObligationFiles(parsedData) {
                 const documentation = documentationSet.size > 0 ? Array.from(documentationSet).join(', ') : '-';
 
                 writable.write(`* ${obligation}\n`);
-                writeTargetElementRequirements(writable, liquidCondition, resourceName, obligation);
                 const codeMap = data.obligationMap.get(obligation);
                 Array.from(codeMap.keys()).forEach(code => {
                     const actors = codeMap.get(code);

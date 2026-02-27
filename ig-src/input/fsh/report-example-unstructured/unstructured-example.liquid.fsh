@@ -38,7 +38,7 @@ Usage: #example
 {{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
-    * url = "./Bundle/bundle-report-minimal-metadata-unstructured"
+    * url = "Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
@@ -117,7 +117,7 @@ Usage: #example
 {{R5}}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
 * presentedForm[+]
   * contentType = #application/pdf
-  * url = "./Binary/BinaryUnstructuredReport"
+  * url = "Binary/BinaryUnstructuredReport"
   * language = #de
   * creation = "2024-01-01T00:00:00Z"
 

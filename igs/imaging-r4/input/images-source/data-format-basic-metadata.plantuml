@@ -41,7 +41,7 @@ class "ServiceRequestOrderEuImaging\n<<ServiceRequest>>" as ServiceRequestOrderE
   ...
 }
 
-class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Binary-unstructured-pdf.html]] {
+class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Binary-BinaryUnstructuredReport.html]] {
   +contentType : "application/pdf"
   +data : base64Binary
 }

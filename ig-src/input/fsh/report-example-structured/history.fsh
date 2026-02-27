@@ -13,6 +13,7 @@ Usage: #example
   * unit = "kg"
   * code = #kg
   * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"  
 
 Instance: HeightObservation
 InstanceOf: Observation
@@ -29,6 +30,8 @@ Usage: #example
   * unit = "cm"
   * code = #cm
   * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
+
 
 Instance: HRObservation
 InstanceOf: Observation
@@ -45,6 +48,7 @@ Usage: #example
   * unit = "bpm"
   * code = #/min
   * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
 
 Instance: BPObservation
 InstanceOf: Observation
@@ -70,4 +74,6 @@ Usage: #example
     * unit = "mm/Hg"
     * code = #mm[Hg]
     * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
+
 
