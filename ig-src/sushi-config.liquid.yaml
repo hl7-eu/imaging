@@ -1,15 +1,15 @@
-id: hl7.fhir.eu.imaging-{{r-code}}
-canonical: http://hl7.eu/fhir/imaging-{{r-code}}
+id: hl7.fhir.eu.imaging{{eu-core-r-code}}
+canonical: http://hl7.eu/fhir/imaging{{eu-core-r-code}}
 name: HL7EuImagingStudyReport
 title: HL7 Europe Imaging Report {{R-code}}
 description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR {{R-code}}.
 status: draft # draft | active | retired | unknown
 experimental: false
-version: 0.2.0-connecthaton
+version: 1.0.0-alpha
 fhirVersion: {{fhirVersion}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
-releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: qa-preview # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 jurisdiction: 	http://unstats.un.org/unsd/methods/m49/m49.htm#150 "Europe" # urn:iso:std:iso:3166#EU
 publisher:
@@ -26,7 +26,7 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 #
 dependencies:
   hl7.fhir.uv.ips: 2.0.0
-  hl7.fhir.eu.base{{eu-core-r-code}}: current
+  hl7.fhir.eu.base{{eu-core-r-code}}: 2.0.0-gamma
   {% if isR4 %}
   hl7.fhir.uv.extensions.r4: 5.2.0
   hl7.fhir.eu.extensions.r4: 1.2.0

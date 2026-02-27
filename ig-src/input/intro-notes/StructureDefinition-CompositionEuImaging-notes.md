@@ -74,8 +74,8 @@ The following table lists the elements that should be included in the narrative 
 | EuDevice | type |  | EHDSDevice.type |
 | CompositionEuImaging | section[procedure].entry[procedure] | EuProcedure | EHDSImagingReport.body.examinationReport.medication |
 | EuMedicationAdministration | partOf | ProcedureEuImaging | EHDSImagingReport.body.examinationReport.medication |
-| ImAdverseEvent | status |  | EHDSImagingReport.body.examinationReport.adverseReaction |
-| ImAdverseEvent | code |  | EHDSImagingReport.body.examinationReport.adverseReaction |
+| AdverseEventEuImaging | status |  | EHDSImagingReport.body.examinationReport.adverseReaction |
+| AdverseEventEuImaging | code |  | EHDSImagingReport.body.examinationReport.adverseReaction |
 | EuDevice | name |  | EHDSMedia.deviceName |
 | EuMedicationAdministration | reason |  | EHDSMedicationAdministration.reason[x] |
 | EuMedicationAdministration | note |  | EHDSMedicationAdministration.note |
