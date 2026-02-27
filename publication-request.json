@@ -1,9 +1,0 @@
-{
-  "package-id" : "hl7.fhir.eu.imaging-r5",
-  "version" : "0.1.0-snapshot1",
-  "path" : "http://hl7.eu/fhir/imaging-r5/0.1.0-snapshot1",
-  "desc" : "This is the snapshot of the Imaging Study report STU 1 used for the XtEHR public consultation.", 
-  "mode": "working",
-  "status" : "preview",
-  "sequence" : "STU 1"
-}
