@@ -39,7 +39,7 @@ else
 fi
 
 java_tool_options="${PUBLISHER_JAVA_TOOL_OPTIONS:-${JAVA_TOOL_OPTIONS:-"-Xmx6g -Xms512m"}}"
-publisher_command=${PUBLISHER_COMMAND:-"rm -rf temp template output && ./_updatePublisher.sh -y && ./_genonce.sh"}
+# publisher_command=${PUBLISHER_COMMAND:-"rm -rf temp template output && ./_updatePublisher.sh -y && ./_genonce.sh"}
 
 docker_args=(--name "$instance_name" --rm)
 
@@ -59,6 +59,6 @@ docker_args+=(-e "JAVA_TOOL_OPTIONS=$java_tool_options")
 
 docker run \
     "${docker_args[@]}" \
-    "$publisher_image" \
     --name "$instance_name" \
-    bash -c "$publisher_command"
+    -it \
+    "$publisher_image" 
