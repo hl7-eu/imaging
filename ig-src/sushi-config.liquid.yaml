@@ -29,9 +29,13 @@ dependencies:
   hl7.fhir.eu.base{{eu-core-r-code}}: current
   {% if isR4 %}
   hl7.fhir.uv.extensions.r4: 5.2.0
-  hl7.fhir.eu.extensions.r4: 1.2.0
-  hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
-  # hl7.terminology.r4: 7.0.1
+  hl7.fhir.eu.extensions.r4:
+    uri: http://hl7.eu/fhir/extensions/ImplementationGuide/hl7.fhir.eu.extensions
+    version: 1.2.0
+  hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2
+  hl7.terminology.r4:
+    uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+    version: 7.0.1
   {% endif %}
   {% if isR5 %}
   hl7.terminology.r5: 6.3.0
@@ -40,7 +44,7 @@ dependencies:
   {% endif %}  
   hl7.fhir.eu.eu-health-data-api: current
   ihe.iti.mhd: 4.2.3
-  # eu.ehds.models: 0.1.0
+  # eu.ehds.models: 0.1.0sushi
   # eu.ehds.models: current
   # required for medication extensions
   # ihe.pharm.mpd: current
