@@ -108,16 +108,24 @@ The communication entry typically records the date, time, and method of communic
 
 Typically a {{Communication}} resources is used to represent such event.
 
-### Report Profiles
+### Report Versions
 
-These define the FHIR resources for systems conforming to this implementation guide:
+Documents are created, amended and updated during their lifecycle. So although the focus is on providing the most recent version of the imaging report, users should be prepared for receiving multiple versions of the same document.
 
-{% sql {
-  "query" : "SELECT name AS Name, title AS Title, Type, Description, Web FROM Resources WHERE Type='StructureDefinition' AND Name LIKE 'Im%' ORDER BY CASE WHEN Name IN ('BundleReportEuImaging', 'DiagnosticReportEuImaging', 'CompositionEuImaging') THEN 1 ELSE 2 END, Name ASC",
-  "class" : "lines",
-  "columns" : [
-    { "name" : "Title"      , "type" : "link"     , "source" : "Name", "target" : "Web"},
-    { "name" : "Name"       , "type" : "markdown" , "source" : "Title" },
-    { "name" : "Description", "type" : "markdown" , "source" : "Description"}
-  ]
-} %}
+Document versioning is tracked using different concepts:
+
+* Bundle.identifier: a unique identifier of the Bundle
+* issue/last-edit date: the date the document is issues/last changed.
+* version: the version number of the document.
+* related document: optional references to the version of the document this one replaces.
+  
+These fields are present on the key resources of this IG as is illustrated by the table below:
+
+| Concept               | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging  | CompositionEuImaging | 
+| --------------------- | ----------------------------------------------------- | -------------------------- | -------------------- |
+| issued/last-edit date | date                                                  | issued                     | date                 |
+| version               | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} |
+| related               | {%if isR4%}related{%else%}relatesTo{%endif%}          |    -                       | relatesTo            |
+ 
+
+Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.

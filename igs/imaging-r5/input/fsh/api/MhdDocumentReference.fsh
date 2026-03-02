@@ -14,6 +14,10 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 * status 1..1
 
+//R4* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.version named version 0..1
+//R4* extension[version]
+//R4  * ^short = "Version of the document referenced by this DocumentReference." 
+
 // subject
 * subject 1..1
 * subject only Reference( $EuPatient )
