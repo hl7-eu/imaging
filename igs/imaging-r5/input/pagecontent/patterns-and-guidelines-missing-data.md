@@ -1,17 +1,17 @@
-#### Missing Data
+### Missing Data
 
 This page provides general rules for handling missing data. Not all of these rules apply to this version of the guide.
 
 The content of this page is adapted from the [HL7 International Patient Summary Implementation Guide (IPS)](https://hl7.org/fhir/uv/ips/) and [HL7eu core](https://hl7.eu/fhir/base-r5/2.0.0-ballot/missing-data.html).
 
 
-##### Optional Data Elements (cardinality of 0..1 or 0..\*)
+#### Optional Data Elements (cardinality of 0..1 or 0..\*)
 
 If a content creator does not have data to be included in the resources, the data element is omitted.
 
 Note: a content creator may have no data to be included in the resources, either because there are no data, the data cannot be shared, or the available data are not pertinent within the scope of the context of use.
 
-##### Required Data Elements (cardinality of 1..1 or 1..\*)
+#### Required Data Elements (cardinality of 1..1 or 1..\*)
 
 If a content creator does not have data to be included in the resources, the reason for the absence SHALL be specified as follows:
 
@@ -79,7 +79,7 @@ If a content creator does not have data to be included in the resources, the rea
     }
     ```
 
-##### Indicative Date Information: Period of Life Extension
+#### Indicative Date Information: Period of Life Extension
 
 When only indicative temporal information is known (e.g., "during adolescence"), the [**period of life extension**](https://hl7.eu/fhir/extensions/StructureDefinition-periods-of-life.html) can be used to convey this information.
 

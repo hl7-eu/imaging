@@ -11,6 +11,10 @@ The annotations are entered as markdown which allows inclusion of tables
 
 IHE-IMR defines a mechanism that allows inclusion multimedia content in the report. Use of these mechanisms is encouraged but not required.
 
+### Include links from the narrative included annotations (GSPS) and key images (instances/KIN/KO/IMA)
+
+This can be done using the linkaged defined in IHE-IMR.
+
 ### Link to FHIR resources
 
 As is specified in the FHIR specification (and made more explicit in FHIR R6), the narrative text of resources allows the inclusion of hyperlinks. A hyperlink can refer to structured data that is included in the report as is shown in the example below.
@@ -22,11 +26,12 @@ The diameter of the lesion is <a href="Observation/kjiewoj">11 mm</a>.
 ```
 The `href` field of the link holds a relative reference to the referred resource. When rendering this narrative, a click on this link SHOULD open a rendered version of the referred resource.
 
+
+### Supporting links to findings and prior studies from the narrative
+
+These links can be included in the text (Narrative) using the mechanism described in the previous section. This does require that the `ImagingStudy`/`Observation` resource representing the finding/prior is included in the document.
+
 {% include patterns-and-guidelines-missing-data.md %}
-
-### Supporting links findings and prior studies from the narrative
-
-These links can be included in the text (Narrative) using text-link extensions. Referring them from the unstructured text is TBD.
 
 ### What terminology use in the report
 
@@ -34,7 +39,36 @@ The specification focusses first on the infrastructural aspects and marks the te
 
 ### Support for addendum documents
 
-These are separate documents; separate imaging reports. TBD: in what way link these in this report.
+These are separate documents; separate imaging reports. The relationship of the addendum to the source document should be represented in the `Composition.relatesTo` field, as is illustrated below.
+
+{% if isR4 %}
+```json
+...
+  "relatesTo" : [
+    { "code": "appends",
+      "targetIdentifier": { "system": ..., "value", ...} 
+    }
+  ]
+...
+
+```
+{% endif %}
+{% if isR5 %}
+```json
+...
+  "relatesTo" : [
+    { "type": "amends",
+      "resourceReference":{ 
+        ...
+        "identifier":  { "system": ..., "value", ...} 
+        ...
+      }
+    }
+  ]
+...
+
+```
+{% endif %}
 
 ### Relation with DICOM-SR reports
 
@@ -44,11 +78,6 @@ DICOM-SR reports can be accessed and referred using ImagingSelections as they ar
 
 Yes, there can be multiple reports referring the same study. A study can refer tmore than one study. See semi-structured example.
 
-### Include links from the narrative included annotations (GSPS) and key images (instances/KIN/KO/IMA)
-
-This can be done using text-link extensions.
-
-TBD – can we this from the Narrative as well.
 
 ### Inclusion of images/drawings that are not stored in DICOM objects
 
@@ -57,10 +86,6 @@ These can be included as Media in R4 and DocumentReference in R5 and are referre
 ### Support for digital pathology
 
 Currently not in scope
-
-### Link with IHE-RAD-IMR
-
-TBD
 
 ### Link with IHE-AIResults
 
