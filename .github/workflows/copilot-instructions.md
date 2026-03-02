@@ -1,2 +1,0 @@
-This is a project to build a multi version FHIR implementation guide for EHDS Imaging Report specification.. The project is structured in three main folders: `ig-src`, `igs/imaging-r4` and `igs/imaging-r5`. The first one contains the the source files from which a liquid based /scripts/_preprocessMultiVersion.sh will complile the version specific files and place then in the version-specific folder.
-never edit files in the version specicic folder s because they will be overwritten.
