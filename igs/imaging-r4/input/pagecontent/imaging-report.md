@@ -14,6 +14,7 @@ The report uses the {{DiagnosticReportEuImaging}} to store the structured data. 
 
 As described by {{iheIDR}}, the all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{DiagnosticReportEuImaging}} and recommends it as the structure for sections defined in the {{CompositionEuImaging}}).
 
+
 #### Header
 
 General information on the report. Most of the information elements in this part of the report overlap with other clinical reports. The document header includes information on the patient, source organization, author, attester and custodian of the report.
@@ -121,11 +122,11 @@ Document versioning is tracked using different concepts:
   
 These fields are present on the key resources of this IG as is illustrated by the table below:
 
-| Concept              | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging  | CompositionEuImaging | 
-| -------------------- | ----------------------------------------------------- | -------------------------- | -------------------- |
-| issue/last-edit date | date                                                  | issued                     | date                 |
-| version              | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} |
-| related              | {%if isR4%}related{%else%}relatesTo{%endif%}          |    -                       | relatesTo            |
+| Concept               | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging  | CompositionEuImaging | 
+| --------------------- | ----------------------------------------------------- | -------------------------- | -------------------- |
+| issued/last-edit date | date                                                  | issued                     | date                 |
+| version               | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} |
+| related               | {%if isR4%}related{%else%}relatesTo{%endif%}          |    -                       | relatesTo            |
  
 
 Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.
