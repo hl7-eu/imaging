@@ -57,15 +57,119 @@ p, li {
 table.grid td {
   font-size: 13px;
 }
-h1, h2, h3, h4, h5, h6 {
-  margin: 1em 0 0.4em 0;
-  color: #2d457e;
+
+/* =========================
+   MAPPING TABLE STYLES
+   ========================= */
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  padding: 8px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 
-p, li {
-  font-size: 13px;
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
 }
 
-table.grid td {
-  font-size: 13px;
+thead th {
+  background: #f6f8fa;
+  font-weight: 600;
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid #d0d7de;
+  padding: 4px 6px;
+  vertical-align: top;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+caption {
+  text-align: left;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.relhead {
+  background-color: #6f2e80 !important;
+  color: #ffffff !important;
+}
+
+.relsub {
+  background-color: #e6d7ec !important;
+  font-weight: bold;
+}
+
+.src-head {
+  background-color: #1f54d1;
+  color: #ffffff;
+}
+
+.tgt-head {
+  background-color: #be072f;
+  color: #ffffff;
+}
+
+.src-sub {
+  background-color: #adc3f6;
+  font-weight: bold;
+}
+
+.tgt-sub {
+  background-color: #d78496;
+  font-weight: bold;
+}
+
+.highlight-yellow {
+  background-color: #fff3b0; /* soft yellow */
+}
+
+/* =========================
+   MODEL MAP BLOCK STYLES
+   ========================= */
+
+.model-map-block h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.model-map-block h4 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.model-map-block p {
+  line-height: 1.4;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.model-map-block .callout-wrapper {
+  margin: 1rem 0 2rem 0;
+}
+
+.model-map-block .callout-box {
+  border-radius: 8px;
+  border: 1px solid #d6c78a;
+  background: #fff8d6;
+  padding: 0.75rem 1rem;
+  line-height: 1.4;
+}
+
+.model-map-block .callout-box strong {
+  display: block;
+  margin-bottom: 0.4rem;
 }

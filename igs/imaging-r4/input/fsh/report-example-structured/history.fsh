@@ -7,12 +7,13 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#29463-7 "Body weight"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * valueQuantity
   * value = 80
   * unit = "kg"
   * code = #kg
   * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"  
 
 Instance: HeightObservation
 InstanceOf: Observation
@@ -23,12 +24,14 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#8302-2 "Body height"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * valueQuantity
   * value = 180
   * unit = "cm"
   * code = #cm
   * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
+
 
 Instance: HRObservation
 InstanceOf: Observation
@@ -39,12 +42,13 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#8867-4 "Heart rate"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * valueQuantity
   * value = 180
   * unit = "bpm"
   * code = #/min
   * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
 
 Instance: BPObservation
 InstanceOf: Observation
@@ -55,7 +59,7 @@ Usage: #example
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#85354-9 "Blood pressure panel with all children optional"
 * category = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs "Vital Signs"
-* subject =  Reference( PatientStructuredReport )
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * component[+]
   * code = $loinc#8480-6 "Systolic blood pressure"
   * valueQuantity
@@ -70,4 +74,6 @@ Usage: #example
     * unit = "mm/Hg"
     * code = #mm[Hg]
     * system = "http://unitsofmeasure.org"
+* performer.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
+
 
