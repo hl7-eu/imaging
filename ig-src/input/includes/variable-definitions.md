@@ -1,3 +1,11 @@
+{% if site.data.fhir.version == "4.0.1" %}
+  {% assign isR4 = true %}
+  {% assign isR5 = false %}
+{%else%}
+  {% assign isR4 = true %}
+  {% assign isR5 = false %}
+{%endif%}
+
 {% assign ehnImaging        = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
 {% assign ehnImagingGuidelines = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en) guidelines" %}
 {% assign ehnImagingHtml    = '<a href="https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en">eHN Imaging Studies and Reports</a>' %}
@@ -14,6 +22,10 @@
 {% assign iheMHD-R5         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
 {% if isR5 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
 {% assign iheXcWado         = "[IHE-XC-WADO](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD-Suppl_XC-WADO.pdf) %}
+{% assign iheQEDm           = [IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/index.html)}
+{% assign IHEmXDE           = [IHE-mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)}
+
+{% assign hl7IPA            = "[HL7-IPA](https://ipa.hl7.org/)%}
 
 {% assign hl7EuBase         = "[HL7 EU Base](https://build.fhir.org/ig/hl7-eu/base-r5/)" %}
 {% assign hl7EuExtensions   = "[HL7 Europe Extensions](https://build.fhir.org/ig/hl7-eu/extensions-r5/)" %}

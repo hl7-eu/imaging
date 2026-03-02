@@ -1,4 +1,4 @@
-
+{%include variable-definitions.md %}
 ### Representing unstructured text (dictated notes)
 
 These are stored in DiagnosticReport.note and in Composition.section.extension[note]. Based on this content the section.text and DiagnosticReport.text and Composition.text are populated.
@@ -78,14 +78,19 @@ DICOM-SR reports can be accessed and referred using ImagingSelections as they ar
 
 Yes, there can be multiple reports referring the same study. A study can refer tmore than one study. See semi-structured example.
 
-
 ### Inclusion of images/drawings that are not stored in DICOM objects
 
-These can be included as Media in R4 and DocumentReference in R5 and are referred from the Composition.section[finding] and DiagnosticReport.media
+These can be included as {%if isR4 %}`Media`{%else%}`DocumentReference`{%endif%} and are referred from the `Composition.section[finding]` and `DiagnosticReport.media`. It is RECOMMENDED to: 
+
+* Use `DocumentReference` when the information is not present in the PACS (e.g. screenshots, photo's, ...)
+* use {%if isR4 %}[`Basic-ImagingSelection`](StructureDefinition-SrInstanceImagingSelectionEuImaging.html){%else%}`ImagingSelection`{%endif%} to refer to information in the PACS.
+* Prefer `DocumentReference` over `Binary` as `DocumentReference` is patient scoped and `Binary` is not. `Binary` SHOULD only be used for images in `Narrative`s that are included as contained resources.
+* In the case both are possible, systems SHOULD use {%if isR4%}[`Basic-ImagingSelection`](StructureDefinition-SrInstanceImagingSelectionEuImaging.html){%else%}`ImagingSelection`{%endif%}.
+
 
 ### Support for digital pathology
 
-Currently not in scope
+Currently not in scope.
 
 ### Link with IHE-AIResults
 
