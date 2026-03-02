@@ -5,7 +5,6 @@
   {% assign isR4 = true %}
   {% assign isR5 = false %}
 {%endif%}
-FHIR versions R4:{{isR4}}, R5:{{isR5}}.
 
 {% assign ehnImaging        = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
 {% assign ehnImagingGuidelines = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en) guidelines" %}
