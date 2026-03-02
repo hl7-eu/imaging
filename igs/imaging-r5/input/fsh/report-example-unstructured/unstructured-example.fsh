@@ -117,7 +117,7 @@ Usage: #example
   * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
 * presentedForm[+]
   * contentType = #application/pdf
-  * url = "./Binary/BinaryUnstructuredReport"
+  * url = "Binary/BinaryUnstructuredReport"
   * language = #de
   * creation = "2024-01-01T00:00:00Z"
 

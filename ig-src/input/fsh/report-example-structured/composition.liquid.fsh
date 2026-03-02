@@ -147,6 +147,8 @@ Usage: #example
   * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
   * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
   * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000017"
+  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000028"
   
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]

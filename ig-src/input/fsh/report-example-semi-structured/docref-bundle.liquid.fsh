@@ -31,7 +31,7 @@ Usage: #example
 {{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
-    * url = "./Bundle/bundle-report-semi-structured"
+    * url = "Bundle/bundle-report-semi-structured"
     * language = #de-DE
     * creation = "2025-05-08T00:00:00Z"
 

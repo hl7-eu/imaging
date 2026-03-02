@@ -57,7 +57,7 @@
         * series[+] "rest"
     }
     
-    class PDF <<Binary>> [[./Binary-structured-pdf.html]]
+    class PDF <<Binary>> [[./Binary-BinaryStructuredReport.html]]
 
     class Composition [[./Composition-CompositionStructured.html]] {
         section[imagingstudy]

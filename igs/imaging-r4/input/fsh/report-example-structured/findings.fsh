@@ -8,15 +8,13 @@ RuleSet: WMSIObservation( obsCode, obsDisplay, code, display, bodyCode, bodyDisp
 * derivedFrom.reference = "urn:uuid:11111111-2222-4333-8444-00000000000c"
 
 Instance: WMSIImage
-InstanceOf: Media
+InstanceOf: DocumentReference
 Title: "DocumentReference: structured report WMSI image"
-//R5InstanceOf: DocumentReference
-//R5Title: "Media: structured report WMSI image"
 Description: "Shows the WMSI graphs."
 Usage: #example
 * status = #current
 * content.attachment
-  // * contentType = #image/png
+  * contentType = #image/png
   * id = "ig-loader-structured-wmsi.drawio.png"
 
 Instance: RestWmsi01
