@@ -14,6 +14,7 @@ The report uses the {{DiagnosticReportEuImaging}} to store the structured data. 
 
 As described by {{iheIDR}}, the all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{DiagnosticReportEuImaging}} and recommends it as the structure for sections defined in the {{CompositionEuImaging}}).
 
+
 #### Header
 
 General information on the report. Most of the information elements in this part of the report overlap with other clinical reports. The document header includes information on the patient, source organization, author, attester and custodian of the report.

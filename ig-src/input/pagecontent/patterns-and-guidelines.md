@@ -76,7 +76,7 @@ DICOM-SR reports can be accessed and referred using ImagingSelections as they ar
 
 ### Can there be multiple reports on a single study and can a report report on multiple studies?
 
-Yes, there can be multiple reports referring the same study. A study can refer tmore than one study. See semi-structured example.
+Yes, there can be multiple reports referring the same study. A study can refer to more than one study. See semi-structured example.
 
 ### Inclusion of images/drawings that are not stored in DICOM objects
 
