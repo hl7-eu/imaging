@@ -245,6 +245,7 @@ function generateXmlMappingTable(parsedData, srcResource, isR4) {
     // Data rows
     rows.forEach(row => {
         const srcField = escapeXml(row[indices.srcField].trim());
+
         const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
         const equivalence = isR4 
             ? getEquivalenceDisplay(row[indices.tgtEquivalenceR4] ? row[indices.tgtEquivalenceR4].trim() : '')
@@ -353,7 +354,14 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
         if ( srcField.endsWith('[x]') ) {
             if ( row[indices.srcType] && row[indices.srcType].trim().length > 0 ) {
                 const shortName = row[indices.srcType].trim().split('/').pop();
-                srcField = srcField.replace('[x]', '[<a href="'+row[indices.srcType].trim()+'">'+shortName+'</a>]');
+                switch (shortName) {
+                    case 'string':
+                    case 'CodeableConcept':
+                        srcField = shortName;
+                    default:
+                        srcField = srcField.replace('[x]', '[<a href="'+row[indices.srcType].trim()+'">'+shortName+'</a>]');
+                }
+                
             }
         }
        
