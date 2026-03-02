@@ -1,3 +1,11 @@
+{% if site.data.fhir.version == "4.0.1" %}
+  {% assign isR4 = true %}
+  {% assign isR5 = false %}
+{%else%}
+  {% assign isR4 = true %}
+  {% assign isR5 = false %}
+{%endif%}
+
 {% assign ehnImaging        = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
 {% assign ehnImagingGuidelines = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en) guidelines" %}
 {% assign ehnImagingHtml    = '<a href="https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en">eHN Imaging Studies and Reports</a>' %}
