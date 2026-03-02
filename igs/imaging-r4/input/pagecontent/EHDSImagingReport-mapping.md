@@ -465,7 +465,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderReason[<a href="CodeableConcept">CodeableConcept</a>]</td>
+        <td>CodeableConcept</td>
         <td>An explanation or justification for why this service is being requested.</td>
         <td>equivalent</td>
         <td>ServiceRequestOrderEuImaging</td>
@@ -489,7 +489,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderReason[<a href="string">string</a>]</td>
+        <td>string</td>
         <td>An explanation or justification for why this service is being requested.</td>
         <td></td>
         <td></td>
@@ -665,7 +665,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.results[<a href="string">string</a>]</td>
+        <td>string</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -673,7 +673,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.results[<a href="string">string</a>]</td>
+        <td>string</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
