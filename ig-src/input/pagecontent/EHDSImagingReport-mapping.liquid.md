@@ -89,7 +89,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>The author of the report.</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -97,7 +97,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>The author of the report.</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -105,7 +105,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
         <td>The author of the report.</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
@@ -113,7 +113,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
         <td>The author of the report.</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
@@ -233,7 +233,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.attestation.attester[x]</td>
+        <td>header.attestation.attester[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>Attester who validated the document</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -241,7 +241,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.attestation.attester[x]</td>
+        <td>header.attestation.attester[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
         <td>Attester who validated the document</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -265,7 +265,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.legalAuthentication.legalAuthenticator[x]</td>
+        <td>header.legalAuthentication.legalAuthenticator[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>The person or organisation taking responsibility for the medical content of the document (typically the person who signs it)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -273,7 +273,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.legalAuthentication.legalAuthenticator[x]</td>
+        <td>header.legalAuthentication.legalAuthenticator[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
         <td>The person or organisation taking responsibility for the medical content of the document (typically the person who signs it)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -369,7 +369,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.intendedRecipient[x]</td>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient">EHDSPatient</a>]</td>
         <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -377,7 +377,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.intendedRecipient[x]</td>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSRelatedPerson">EHDSRelatedPerson</a>]</td>
         <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -385,7 +385,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.intendedRecipient[x]</td>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -393,7 +393,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.intendedRecipient[x]</td>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
         <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -401,7 +401,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.intendedRecipient[x]</td>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
         <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -409,7 +409,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>header.intendedRecipient[x]</td>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient">EHDSPatient</a>]</td>
         <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -457,7 +457,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderPlacer[x]</td>
+        <td>body.orderInformation.orderPlacer[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>The person/organisation authorised to place the order. Order placer could be either a health professional, health professional organisation or the patient himself.</td>
         <td>equivalent</td>
         <td>ServiceRequestOrderEuImaging</td>
@@ -465,7 +465,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderReason[x]</td>
+        <td>body.orderInformation.orderReason[<a href="CodeableConcept">CodeableConcept</a>]</td>
         <td>An explanation or justification for why this service is being requested.</td>
         <td>equivalent</td>
         <td>ServiceRequestOrderEuImaging</td>
@@ -473,7 +473,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderReason[x]</td>
+        <td>body.orderInformation.orderReason[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition">EHDSCondition</a>]</td>
         <td>An explanation or justification for why this service is being requested.</td>
         <td></td>
         <td></td>
@@ -481,7 +481,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderReason[x]</td>
+        <td>body.orderInformation.orderReason[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
         <td>An explanation or justification for why this service is being requested.</td>
         <td></td>
         <td></td>
@@ -489,7 +489,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.orderInformation.orderReason[x]</td>
+        <td>body.orderInformation.orderReason[<a href="string">string</a>]</td>
         <td>An explanation or justification for why this service is being requested.</td>
         <td></td>
         <td></td>
@@ -657,7 +657,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.results[x]</td>
+        <td>body.examinationReport.results[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -665,7 +665,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.results[x]</td>
+        <td>body.examinationReport.results[<a href="string">string</a>]</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -673,7 +673,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.results[x]</td>
+        <td>body.examinationReport.results[<a href="string">string</a>]</td>
         <td>Imaging report result data (report could consist of multiple observations)</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
@@ -705,7 +705,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.conclusion.conditionOrFinding[x]</td>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition">EHDSCondition</a>]</td>
         <td>Condition or finding from imaging investigation.</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -713,7 +713,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.conclusion.conditionOrFinding[x]</td>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition">EHDSCondition</a>]</td>
         <td>Condition or finding from imaging investigation.</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>
@@ -721,7 +721,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.conclusion.conditionOrFinding[x]</td>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
         <td>Condition or finding from imaging investigation.</td>
         <td>equivalent</td>
         <td>CompositionEuImaging</td>
@@ -729,7 +729,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
-        <td>body.examinationReport.conclusion.conditionOrFinding[x]</td>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
         <td>Condition or finding from imaging investigation.</td>
         <td>equivalent</td>
         <td>DiagnosticReportEuImaging</td>

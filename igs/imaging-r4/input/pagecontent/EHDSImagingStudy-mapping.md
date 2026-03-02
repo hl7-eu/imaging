@@ -73,7 +73,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>Author(s) responsible for the provided information. The exact role of the responsible author varies across use cases and is specific to individual models.</td>
         <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
@@ -81,7 +81,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
         <td>Author(s) responsible for the provided information. The exact role of the responsible author varies across use cases and is specific to individual models.</td>
         <td></td>
         <td>ImagingStudyEuImaging</td>
@@ -89,7 +89,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
         <td></td>
       </tr>
       <tr>
-        <td>header.author[x]</td>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
         <td>Author(s) responsible for the provided information. The exact role of the responsible author varies across use cases and is specific to individual models.</td>
         <td>equivalent</td>
         <td>ImagingStudyEuImaging</td>
