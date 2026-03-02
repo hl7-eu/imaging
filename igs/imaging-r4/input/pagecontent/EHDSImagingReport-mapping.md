@@ -329,6 +329,14 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td></td>
       </tr>
       <tr>
+        <td>header.serviceSpecialty</td>
+        <td>Additional details about where the content was created (e.g. clinical specialty)</td>
+        <td>equivalent</td>
+        <td>DiagnosticReportEuImaging</td>
+        <td>category[diagnostic-service]</td>
+        <td></td>
+      </tr>
+      <tr>
         <td>header.custodian</td>
         <td>Organisation that is in charge of maintaining the document/report.</td>
         <td>equivalent</td>
@@ -358,6 +366,14 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>equivalent</td>
         <td>ServiceRequestOrderEuImaging</td>
         <td>identifier[accessionNumber]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[x]</td>
+        <td>Information recipient (intended recipient or recipients of the report, additional recipients might be identified by the ordering party, e.g. GP, other specialist), if applicable</td>
+        <td>equivalent</td>
+        <td>CompositionEuImaging</td>
+        <td>extension[informationRecipient]</td>
         <td></td>
       </tr>
       <tr>
@@ -569,6 +585,14 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365</td>
       </tr>
       <tr>
+        <td>body.exposureInformation</td>
+        <td>Information on total exposure to ionising radiation. This information is required by regulations in several EU countries.</td>
+        <td>equivalent</td>
+        <td>ObservationRadiationDoseEuImaging</td>
+        <td>value[x]</td>
+        <td>Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365</td>
+      </tr>
+      <tr>
         <td>body.examinationReport</td>
         <td>Examination report content.</td>
         <td></td>
@@ -622,6 +646,14 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>equivalent</td>
         <td>AdverseEventEuImaging</td>
         <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.adverseReaction</td>
+        <td>Adverse reactions manifested during imaging investigation.</td>
+        <td>equivalent</td>
+        <td>CompositionEuImaging</td>
+        <td>section[procedure].entry[adverse-event]</td>
         <td></td>
       </tr>
       <tr>

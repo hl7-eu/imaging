@@ -16,7 +16,8 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * basedOn contains ServiceRequestOrderEuImagingaccession 0..*
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
-//R4* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
+//R4* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1 and
+$information-recipient-url  named informationRecipient 0..*
 //R4* extension[composition] ^short = "Imaging Diagnostic Report"
 //R4* extension[composition].valueReference only Reference(CompositionEuImaging)
 

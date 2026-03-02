@@ -27,6 +27,10 @@ The `text` field of each section SHALL contain a textual representation of all l
     $hl7euDiagnosticReferenceReference named diagnosticreport-reference 0..1
 
 * extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
+* extension[informationRecipient]
+  * ^short = "Information Recipient"
+  * ^definition = "The intended recipient of the report, if any. The information recipient is the target of a directive to receive the report, such as a report being sent to a practitioner or organization. The information recipient may also be a target for reporting relevant information about the report, such as reporting an issue with the report content.
+  This is included as an extension as this information is typically render in the header section of the report."
 
 //R4* extension contains $CrossVersion-Composition.version named version 0..1
 

@@ -38,7 +38,7 @@ Usage: #example
   * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
-    * url = "./Bundle/bundle-report-minimal-metadata-unstructured"
+    * url = "Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
