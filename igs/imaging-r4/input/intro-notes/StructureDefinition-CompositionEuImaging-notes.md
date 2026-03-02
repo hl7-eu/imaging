@@ -3,7 +3,7 @@ For report creators, this page provides guidance on how to populate the narrativ
 
 The table below suggests the data points that SHOULD be included, and the source of those data. Those data points can be in a first order resource, referenced directly from the Composition (e.g. ImOrder), or they can live in a second,third order resource (e.g. Medication). For the later, a second query or a FHIR path (resolve) expression is required to fetch them.
 
-NOTE: Structural concerns and rationale on the ImComposition profile can be found in the [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html), which is the parent type of this Report-ImComposition profile.
+NOTE: Structural concerns and rationale on the CompositionEuImaging profile can be found in the [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html), which is the parent type of this CompositionEuImaging profile.
 
 ## Elements to include in sections narratives
 

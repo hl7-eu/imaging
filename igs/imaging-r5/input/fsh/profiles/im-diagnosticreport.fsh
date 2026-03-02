@@ -120,7 +120,9 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * subject only Reference($EuPatient)
 
-// * issued 1..1  -> we use obligations instead
+* issued 
+  * ^short = "Date and time of report issuance"
+  * ^definition = "The date and time that the report was issued. This is not necessarily the same as the date and time that the report was created, since a report may be revised and/or reviewed after it is created."
 
 //R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
 //R4* extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
