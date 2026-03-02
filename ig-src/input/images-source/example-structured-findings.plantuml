@@ -8,8 +8,8 @@
     }
 
     package KeyImages {
-        class StructuredKeyImageRest <<DocumentReference>> [[./Media-StructuredKeyImageRest.html]]
-        class StructuredKeyImageStress <<DocumentReference>> [[./Media-StructuredKeyImageStress.html]]
+        class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
+        class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
     }
     
     WmsiRest01 --> Patient: subject
