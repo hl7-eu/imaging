@@ -349,7 +349,14 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
     
     // R4 Data rows
     rows.forEach(row => {
-        const srcField = escapeXml(row[indices.srcField].trim());
+        let srcField = escapeXml(row[indices.srcField].trim());
+        if ( srcField.endsWith('[x]') ) {
+            if ( row[indices.srcType] && row[indices.srcType].trim().length > 0 ) {
+                const shortName = row[indices.srcType].trim().split('/').pop();
+                srcField = srcField.replace('[x]', '[<a href="'+row[indices.srcType].trim()+'">'+shortName+'</a>]');
+            }
+        }
+       
         const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
         const equivalence = getEquivalenceDisplay(row[indices.tgtEquivalenceR4] ? row[indices.tgtEquivalenceR4].trim() : '');
         const tgtResource = escapeXml(row[indices.tgtResourceR4] ? row[indices.tgtResourceR4].trim() : '');
