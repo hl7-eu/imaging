@@ -11,46 +11,60 @@ skinparam class {
   ArrowColor Black
 }
 
-class DocumentReference {
+class "DocumentReferenceImagingReport\n<<DocumentReference>>" as DocumentReferenceImagingReport [[./StructureDefinition-DocumentReferenceImagingReport.html]] {
   +subject : Reference~Patient~
   +date : dateTime
   +type : CodeableConcept
   +category : CodeableConcept
-  +content: Bundle
+  +content : Attachment(url -> Bundle)
   ...
 }
 
-class Bundle <<type: collection>> {
+class "BundleReportMinimalMetadataEuImaging\n<<Bundle>>" as BundleReportMinimalMetadataEuImaging [[./StructureDefinition-BundleReportMinimalMetadataEuImaging.html]] {
+  +type : #collection
 }
 
-class DiagnosticReport <<main resource>> {
+class "DiagnosticReportEuImagingMinimalMetadata\n<<DiagnosticReport>>" as DiagnosticReportEuImagingMinimalMetadata [[./StructureDefinition-DiagnosticReportEuImagingMinimalMetadata.html]] {
   +presentedForm : Attachment~PDF~
-  +study : Reference~ImagingStudy~
-  +basedOn : Reference~ServiceRequest~
+  +basedOn : Reference~ServiceRequest~ (or identifier)
+  +study/imagingStudy : Reference~ImagingStudy~ (or identifier)
   ...
 }
 
-class ImagingStudy <<optional in Bundle>> {
+class "ImagingStudyEuImaging\n<<ImagingStudy>>" as ImagingStudyEuImaging [[./StructureDefinition-ImagingStudyEuImaging.html]] {
   +identifier : StudyInstanceUidIdentifierEuImaging
   ...
 }
 
-class ServiceRequest <<optional in Bundle>> {
+class "ServiceRequestOrderEuImaging\n<<ServiceRequest>>" as ServiceRequestOrderEuImaging [[./StructureDefinition-ServiceRequestOrderEuImaging.html]] {
   +identifier : AccessionNumberIdentifierEuImaging
   ...
 }
 
-class PDF <<attachment>> {
+class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Binary-BinaryUnstructuredReport.html]] {
   +contentType : "application/pdf"
   +data : base64Binary
 }
 
-DocumentReference --> Bundle : content
-Bundle --> DiagnosticReport : entry
-Bundle --> ImagingStudy : entry (optional)
-Bundle --> ServiceRequest : entry (optional)
-DiagnosticReport --> PDF : presentedForm
-DiagnosticReport --> ImagingStudy : +study : Reference~ImagingStudy~
-DiagnosticReport --> ServiceRequest : basedOn
+DocumentReferenceImagingReport --> BundleReportMinimalMetadataEuImaging : content.attachment.url
+BundleReportMinimalMetadataEuImaging --> DiagnosticReportEuImagingMinimalMetadata : entry
+BundleReportMinimalMetadataEuImaging --> ImagingStudyEuImaging : entry (optional)
+BundleReportMinimalMetadataEuImaging --> ServiceRequestOrderEuImaging : entry (optional)
+DiagnosticReportEuImagingMinimalMetadata --> BinaryUnstructuredReport : presentedForm
+DiagnosticReportEuImagingMinimalMetadata --> ImagingStudyEuImaging : study/imagingStudy
+DiagnosticReportEuImagingMinimalMetadata --> ServiceRequestOrderEuImaging : basedOn
+
+note right of DiagnosticReportEuImagingMinimalMetadata
+R4 element name: imagingStudy
+R5 element name: study
+end note
+
+note right of DocumentReferenceImagingReport
+R4 content profile is carried in
+content.extension[profile].extension[value].valueCanonical
+
+R5 content profile is carried in
+content.profile[...].valueCanonical
+end note
 
 @enduml

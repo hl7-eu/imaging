@@ -15,27 +15,28 @@ Usage: #example
     * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
-* code = http://www.ama-assn.org/go/cpt#93351 "Ultrasound of heart with continuous electrocardiogram (ECG) during rest, exercise and/or drug induced stress with review and report' (en), 'Real time transthoracic echocardiography with 2-dimensional (2D) image documentation during rest and cardiovascular stress test using treadmill, bicycle exercise and pharmacologically induced stress, with interpretation and report, including performance of continuous electrocardiographic monitoring, with physician supervision' (en), 'Real time transthoracic echocardiography with 2-dimensional (2D) image documentation during rest and cardiovascular stress test using treadmill, bicycle exercise induced stress, with interpretation and report, including performance of continuous electrocardiographic monitoring, with physician supervision' (en), 'Real time transthoracic echocardiography with 2-dimensional (2D) image documentation during rest and cardiovascular stress test using treadmill, pharmacologically induced stress, with interpretation and report, including performance of continuous electrocardiographic monitoring, with physician supervision' (en), 'Real time transthoracic echocardiography with 2-dimensional (2D) image documentation, includes M-mode recording during rest and cardiovascular stress test using treadmill, bicycle exercise and pharmacologically induced stress, with interpretation and report, including performance of continuous electrocardiographic monitoring, with physician supervision' (en), 'Real time transthoracic echocardiography with 2-dimensional (2D) image documentation, includes M-mode recording during rest and cardiovascular stress test using treadmill, bicycle exercise induced stress, with interpretation and report, including performance of continuous electrocardiographic monitoring, with physician supervision' (en) or 'Real time transthoracic echocardiography with 2-dimensional (2D) image documentation, includes M-mode recording during rest and cardiovascular stress test using treadmill, pharmacologically induced stress, with interpretation and report, including performance of continuous electrocardiographic monitoring, with physician supervision"
+* code = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasound"
-* subject =  Reference( PatientStructuredReport )
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
 * extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 
 
-//R4* imagingStudy[+]
-* study[+] 
-      = Reference( ImagingStudStructuredReport )
+//R4* imagingStudy[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
+* study[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
 
-* performer[organization] = Reference(OrganizationStructuredReport)
-* resultsInterpreter[author] = Reference(PractitionerRoleStructuredReportAuthor)
+* performer[organization].reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+* resultsInterpreter[author].reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
 
-//R4* extension[composition].valueReference
-* composition 
-      = Reference(CompositionStructured)
+//R4* extension[composition].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000001"
+* composition.reference = "urn:uuid:11111111-2222-4333-8444-000000000001"
 
 // HISTORY
-* extension[patientHistory][+].valueReference = Reference( WeightObservation )
-* extension[patientHistory][+].valueReference = Reference( HeightObservation )
-* extension[patientHistory][+].valueReference = Reference( BPObservation )
-* extension[patientHistory][+].valueReference = Reference( HRObservation )
+* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
+* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
+* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
+* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
 
 // Procedure
 
@@ -78,45 +79,45 @@ Usage: #example
 * note[+]
   * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
   * text =  """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-* result[+] = Reference( RestWmsi01 )
-* result[+] = Reference( RestWmsi02 )
-* result[+] = Reference( RestWmsi03 ) 
-* result[+] = Reference( RestWmsi04 )
-* result[+] = Reference( RestWmsi05 )
-* result[+] = Reference( RestWmsi06 )
-* result[+] = Reference( RestWmsi07 )
-* result[+] = Reference( RestWmsi08 )
-* result[+] = Reference( RestWmsi09 )
-* result[+] = Reference( RestWmsi10 )
-* result[+] = Reference( RestWmsi12 )
-* result[+] = Reference( RestWmsi13 )
-* result[+] = Reference( RestWmsi14 )
-* result[+] = Reference( RestWmsi15 )
-* result[+] = Reference( RestWmsi16 )
-* result[+] = Reference( RestWmsi17 )
-* result[+] = Reference( StressWmsi01 )
-* result[+] = Reference( StressWmsi02 )
-* result[+] = Reference( StressWmsi03 ) 
-* result[+] = Reference( StressWmsi04 )
-* result[+] = Reference( StressWmsi05 )
-* result[+] = Reference( StressWmsi06 )
-* result[+] = Reference( StressWmsi07 )
-* result[+] = Reference( StressWmsi08 )
-* result[+] = Reference( StressWmsi09 )
-* result[+] = Reference( StressWmsi10 )
-* result[+] = Reference( StressWmsi12 )
-* result[+] = Reference( StressWmsi13 )
-* result[+] = Reference( StressWmsi14 )
-* result[+] = Reference( StressWmsi15 )
-* result[+] = Reference( StressWmsi16 )
-* result[+] = Reference( StressWmsi17 )
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000011"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000012"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000013"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000014"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000015"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000016"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000018"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000019"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001a"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001b"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001c"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001d"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001e"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001f"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000020"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000021"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000022"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000023"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000024"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000025"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000026"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000027"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000029"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002a"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002b"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002c"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002d"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
 
 * media[+]
   * comment = "Rest"
-  * link = Reference( StructuredKeyImageRest )
+  * link.reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
 * media[+]
   * comment = "Stress"
-  * link = Reference( StructuredKeyImageStress )
+  * link.reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
 
 // IMPRESSIONS
 * conclusion = """
@@ -125,21 +126,22 @@ Nothing wrong with this patient
 See you next year.
 """
 // RECOMMENDATION
-* extension[recommendation].valueReference = Reference( ComeBackNextYearServiceRequest )
+* extension[recommendation].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000031"
 
 * presentedForm
   * contentType = #application/pdf
   * language = #de-DE
   * pages = 3
-  * url = "./Binary/structured-pdf"
+  * url = "urn:uuid:11111111-2222-4333-8444-000000000032"
 
+// Loading the binary from .json in input/resources
 
-Instance: BinaryStructuredReport
-InstanceOf: Binary
-Title: "Binary: Structured report"
-Description: "Binary resource holding the report pdf."
-Usage: #example
-* id = "structured-pdf"
-* contentType = #application/pdf
-// * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
-* data = "ig-loader-1.3.46.670589.58.10.10562925256214266678.11674839624289915183.pdf"
+// Instance: BinaryStructuredReport
+// InstanceOf: Binary
+// Title: "Binary: Structured report"
+// Description: "Binary resource holding the report pdf."
+// Usage: #example
+// * id = "structured-pdf"
+// * contentType = #application/pdf
+// // * data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+// * data = "ig-loader-structured_report.pdf"

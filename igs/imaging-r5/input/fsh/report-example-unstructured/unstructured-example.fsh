@@ -1,10 +1,8 @@
-Instance: UnstructuredReportExample
-InstanceOf: DocumentReferenceUnstructuredImagingReport
-Title: "DocumentReference: Unstructured Report"
+Instance: RenderableFormatWithBasicMetadata
+InstanceOf: DocumentReferenceImagingReport
+Title: "DocumentReference: Renderable format with basic metadata"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example
-* contained[+] = PatientUnstructuredReport
-* contained[+] = OrganizationUnstructuredReport
 //R4* masterIdentifier[+]
 * identifier[+]
   * system = "urn:ietf:rfc:3986"
@@ -18,7 +16,7 @@ Usage: #example
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
-  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging study"
+  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
@@ -35,9 +33,12 @@ Usage: #example
 
 
 * content[+]
+//R4  * extension[profile]
+//R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
-    * contentType = #application/pdf
-    * url = "./Binary/unstructured-pdf"
+    * contentType = #application/fhir+json
+    * url = "Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
@@ -65,10 +66,7 @@ Usage: #example
     * value = "0421 / 84 13 13 04"   
   * telecom[+]
     * system = #fax
-    * value = "0421 / 84 13 13 84"   
-  * telecom[+]
-    * system = #url
-    * value = "radiologiezentrum-bremen.de"   
+    * value = "0421 / 84 13 13 84"
   * address[+]
     * type = #physical
     * text = "Schwachhauser Heerstr. 54, 28209 Bremen"
@@ -78,11 +76,57 @@ Usage: #example
     * postalCode = "28209"
     * city = "Bremen"
 
-Instance: BinaryUnstructuredReport
-InstanceOf: Binary
-Title: "Binary: Unstructured report pdf"
-Description: "Binary resource holding the unstructured report pdf."
+Instance: BundleReportMinimalMetadata
+InstanceOf: BundleReportMinimalMetadataEuImaging
+Title: "Bundle: Imaging Report minimal metadata (unstructured example)"
+Description: "Minimal metadata bundle carrying the report anchor and context resources."
 Usage: #example
-* id = "unstructured-pdf"
-* contentType = #application/pdf
-* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+* id = "bundle-report-minimal-metadata-unstructured"
+* entry[DiagnosticReportEuImagingMinimalMetadata]
+  * fullUrl = "urn:uuid:8f6d9c62-1b2a-4f3c-9d0e-7a6b5c4d3e2f"
+  * resource = DiagnosticReportMinimalMetadata
+* entry[Patient]
+  * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
+  * resource = PatientUnstructuredReport
+
+Instance: DiagnosticReportMinimalMetadata
+InstanceOf: DiagnosticReportEuImagingMinimalMetadata
+Title: "DiagnosticReport: unstructured minimal metadata"
+Description: "Minimal metadata DiagnosticReport compliant with DiagnosticReportEuImaging profile."
+Usage: #example
+* identifier[+]
+  * system = "http://example.org/myhospital/reportidentifiers"
+  * value = "unstructured-report-001"
+* status = #final
+* code = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+
+* subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
+* performer[organization] = Reference(OrganizationUnstructuredReport)
+* basedOn[order-identifier].identifier
+  * system = "http://example.org/myhospital/accessionsystem"
+  * value = "ACC-123456789"
+
+//R4* imagingStudy[study-identifier].identifier
+//R4  * system = "urn:dicom:uid"
+//R4  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+
+* study[study-identifier].identifier
+  * system = "urn:dicom:uid"
+  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+* presentedForm[+]
+  * contentType = #application/pdf
+  * url = "Binary/BinaryUnstructuredReport"
+  * language = #de
+  * creation = "2024-01-01T00:00:00Z"
+
+// Loadin the binary .json from input/resoures
+// Instance: BinaryUnstructuredReport
+// InstanceOf: Binary
+// Title: "Binary: Unstructured report pdf"
+// Description: "Binary resource holding the unstructured report pdf."
+// Usage: #example
+// * id = "unstructured-pdf"
+// * contentType = #application/pdf
+// * data = "ig-loader-unstructured_report.pdf"

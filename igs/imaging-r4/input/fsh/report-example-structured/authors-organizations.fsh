@@ -1,11 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 Instance: PractitionerRoleStructuredReportAuthor
-InstanceOf: PractitionerRoleEu
+InstanceOf: $EuPractitionerRole
 Title: "PractitionerRole: structured report"
 Description: "Role of the report author."
 Usage: #example
-* practitioner = Reference(PractitionerSemiStructuredReportAuthor)
-* organization = Reference(OrganizationSemiStructuredReport)
+* practitioner.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
+* organization.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
 * code = $sct#394579002 "Cardiology"
 
 Instance: PractitionerStructuredReportAuthor
@@ -22,7 +22,7 @@ Usage: #example
   * suffix = "Prof."
 
 Instance: OrganizationStructuredReport
-InstanceOf: OrganizationEu
+InstanceOf: $EuOrganization
 Title: "Organization: structured report"
 Description: "Organization of the report author."
 Usage: #example
