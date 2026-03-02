@@ -10,7 +10,7 @@ Id: composition-obligation-eu-imaging
 Title: "Composition: Imaging Report: Obligations"
 Description: "Obligations for Composition: Imaging Report"
 * subject
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.subject"
+  * ^requirements = "EHDSImagingReport.header.subject"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.subject"
@@ -18,7 +18,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.subject"
 * identifier
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.identifier"
+  * ^requirements = "EHDSImagingReport.header.identifier"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.identifier"
@@ -26,7 +26,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.identifier"
 * author[author]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.author[x]"
+  * ^requirements = "EHDSImagingReport.header.author[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.author[x]"
@@ -34,7 +34,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.author[x]"
 * author[organization]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.author[x]"
+  * ^requirements = "EHDSImagingReport.header.author[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.author[x]"
@@ -42,7 +42,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.author[x]"
 * date
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.date"
+  * ^requirements = "EHDSImagingReport.header.date"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.date"
@@ -50,17 +50,17 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.date"
 * status
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.status"
+  * ^requirements = "EHDSImagingReport.header.status"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #MAY:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.status"
 * language
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.language"
+  * ^requirements = "EHDSImagingReport.header.language"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.language"
 * category[diagnostic-service]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.documentType; Fullfiling Xt-EHR logical model EHDSImagingReport.header.eventType"
+  * ^requirements = "EHDSImagingReport.header.documentType; EHDSImagingReport.header.eventType"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.documentType, EHDSImagingReport.header.eventType"
@@ -68,27 +68,27 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.documentType, EHDSImagingReport.header.eventType"
 * title
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.documentTitle"
+  * ^requirements = "EHDSImagingReport.header.documentTitle"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.documentTitle"
 * event.period
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.period"
+  * ^requirements = "EHDSImagingReport.header.period"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.period"
 * extension[version]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.version"
+  * ^requirements = "EHDSImagingReport.header.version"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #MAY:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.version"
 * attester[resultValidator]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.attestation"
+  * ^requirements = "EHDSImagingReport.header.attestation"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.attestation"
 * attester[resultValidator].party
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.attestation.attester[x]"
+  * ^requirements = "EHDSImagingReport.header.attestation.attester[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.attestation.attester[x]"
@@ -96,17 +96,17 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.attestation.attester[x]"
 * attester[resultValidator].time
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.attestation.datetime"
+  * ^requirements = "EHDSImagingReport.header.attestation.datetime"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.attestation.datetime"
 * attester[legalAuthenticator]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.legalAuthentication"
+  * ^requirements = "EHDSImagingReport.header.legalAuthentication"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.legalAuthentication"
 * attester[legalAuthenticator].party
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.legalAuthentication.legalAuthenticator[x]"
+  * ^requirements = "EHDSImagingReport.header.legalAuthentication.legalAuthenticator[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.legalAuthentication.legalAuthenticator[x]"
@@ -114,12 +114,12 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.legalAuthentication.legalAuthenticator[x]"
 * attester[legalAuthenticator].time
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.legalAuthentication.datetime"
+  * ^requirements = "EHDSImagingReport.header.legalAuthentication.datetime"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #MAY:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.legalAuthentication.datetime"
 * custodian
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.custodian"
+  * ^requirements = "EHDSImagingReport.header.custodian"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.custodian"
@@ -127,7 +127,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.custodian"
 * text
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.presentedForm"
+  * ^requirements = "EHDSImagingReport.presentedForm"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.presentedForm"
@@ -135,7 +135,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.presentedForm"
 * extension[informationRecipient]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.header.intendedRecipient[x]"
+  * ^requirements = "EHDSImagingReport.header.intendedRecipient[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.intendedRecipient[x]"
@@ -143,7 +143,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.header.intendedRecipient[x]"
 * section[order]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.orderInformation"
+  * ^requirements = "EHDSImagingReport.body.orderInformation"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.orderInformation"
@@ -151,12 +151,12 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.orderInformation"
 * extension[basedOn]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.orderInformation.orderId"
+  * ^requirements = "EHDSImagingReport.body.orderInformation.orderId"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #MAY:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.orderInformation.orderId"
 * section[history].entry
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.supportingInformation.observation; Fullfiling Xt-EHR logical model EHDSImagingReport.body.supportingInformation.condition; Fullfiling Xt-EHR logical model EHDSImagingReport.body.supportingInformation.priorMedicationAdministration; Fullfiling Xt-EHR logical model EHDSImagingReport.body.supportingInformation.device; Fullfiling Xt-EHR logical model EHDSImagingReport.body.supportingInformation.pregnancyStatus"
+  * ^requirements = "EHDSImagingReport.body.supportingInformation.observation; EHDSImagingReport.body.supportingInformation.condition; EHDSImagingReport.body.supportingInformation.priorMedicationAdministration; EHDSImagingReport.body.supportingInformation.device; EHDSImagingReport.body.supportingInformation.pregnancyStatus"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.supportingInformation.observation, EHDSImagingReport.body.supportingInformation.condition, EHDSImagingReport.body.supportingInformation.priorMedicationAdministration, EHDSImagingReport.body.supportingInformation.device, EHDSImagingReport.body.supportingInformation.pregnancyStatus"
@@ -164,12 +164,12 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.supportingInformation.observation, EHDSImagingReport.body.supportingInformation.condition, EHDSImagingReport.body.supportingInformation.priorMedicationAdministration, EHDSImagingReport.body.supportingInformation.device, EHDSImagingReport.body.supportingInformation.pregnancyStatus"
 * section[procedure].extension[radiationDose]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.exposureInformation"
+  * ^requirements = "EHDSImagingReport.body.exposureInformation"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.exposureInformation"
 * section[procedure].entry[procedure]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.imagingProcedures"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.imagingProcedures"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.imagingProcedures"
@@ -177,7 +177,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.imagingProcedures"
 * section[procedure].entry[adverse-event]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.adverseReaction"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.adverseReaction"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.adverseReaction"
@@ -185,7 +185,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.adverseReaction"
 * section[findings].entry[finding]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.results[x]"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.results[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.results[x]"
@@ -193,7 +193,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.results[x]"
 * section[findings].extension[note]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.results[x]"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.results[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.results[x]"
@@ -201,7 +201,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.results[x]"
 * section[impression].extension[note]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.conclusion.impression"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.conclusion.impression"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.conclusion.impression"
@@ -209,7 +209,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.conclusion.impression"
 * section[impression].entry[impression]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
@@ -217,7 +217,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
 * section[impression].entry[finding]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
+  * ^requirements = "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
@@ -225,7 +225,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x]"
 * section[recommendation]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.recommendation"
+  * ^requirements = "EHDSImagingReport.body.recommendation"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.recommendation"
@@ -233,7 +233,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.recommendation"
 * section[recommendation].entry[suggestion]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.recommendation.carePlan"
+  * ^requirements = "EHDSImagingReport.body.recommendation.carePlan"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.recommendation.carePlan"
@@ -241,7 +241,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportConsumer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.recommendation.carePlan"
 * section[comparison].entry[comparedstudy]
-  * ^requirements = "Fullfiling Xt-EHR logical model EHDSImagingReport.body.comparisonStudy"
+  * ^requirements = "EHDSImagingReport.body.comparisonStudy"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.comparisonStudy"

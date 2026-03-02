@@ -14,6 +14,7 @@ The radiation dose IG uses two observations, one (Radiation Summary Report - Rad
 
 As this Radiation Dose IG is still draft, based on an earlier FHIR specification, and is unlikely to be published in the near future, it cannot be referred to. This mitigated by copying the relevant parts of the IG to this implementation guide.
 
-In this process, also some changes where made in line with FHIR R5, these include:
-* The observation identifier referred to the SOPInstanceUID, this is replaced with a reference to ImagingSelection.
+
+In this process, also some changes where made in line with FHIR R4, these include:
+* The observation identifier referred to the SOPInstanceUID, this is replaced with a reference to ImagingSelection through an `derivedFrom` extension, replicating R5 functionality by backporting that `Observation` R5 element to R4.
 * Adding slices on Observation.component for the different numeric values.

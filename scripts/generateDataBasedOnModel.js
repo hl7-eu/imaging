@@ -810,7 +810,7 @@ function generateObligationFiles(parsedData) {
         }
 
         const requirements = Array.from(sourceMappings)
-            .map(mapping => `Fullfiling Xt-EHR logical model ${mapping}`)
+            .map(mapping => `${mapping}`)
             .join('; ');
 
         writable.write(`  * ^requirements = "${escapeFshString(requirements)}"\n`);

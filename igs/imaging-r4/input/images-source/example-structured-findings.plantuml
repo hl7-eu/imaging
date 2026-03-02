@@ -7,11 +7,14 @@
         class WmsiStress02 <<Observation>> [[./Observation-StressWmsi02.html]]
     }
 
+
+
     package KeyImages {
         class StructuredKeyImageRest <<DocumentReference>> [[./Media-StructuredKeyImageRest.html]]
         class StructuredKeyImageStress <<DocumentReference>> [[./Media-StructuredKeyImageStress.html]]
     }
-    
+
+ 
     WmsiRest01 --> Patient: subject
     WmsiRest01 --> WMSIImage: derivedFrom
     WmsiStress01 --> Patient: subject

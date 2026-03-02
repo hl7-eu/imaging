@@ -9,6 +9,7 @@ In FHIR body locations can be represented in two ways: as a coded value or as a 
 
 References to a body site are used in `ServiceRequestOrderEuImaging` (what part of the body is to be studied), `ProcedureEuImaging` (the body site the procedure is performed on) and `ImagingStudy.series` (the body site the series is imaging). In FHIR R5 both `ServiceRequestOrderEuImaging` and `ImagingStudy` allow references to `BodyStructure`. `Procedure` only supports a coded value.
 
+
 In the specification there are different approaches that can be taken towards representing body sites:
 
 1. Use code when code is sufficient, `BodyStructure` when additional information is required,
