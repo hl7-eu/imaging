@@ -1,59 +1,72 @@
 
-#### Representing unstructured text (dictated notes)
+### Representing unstructured text (dictated notes)
 
 These are stored in DiagnosticReport.note and in Composition.section.extension[note]. Based on this content the section.text and DiagnosticReport.text and Composition.text are populated.
 
-#### Inclusion of tables
+### Inclusion of tables
 
 The annotations are entered as markdown which allows inclusion of tables
 
-#### Support of IHE-RAD-IMR
+### Support of IHE-RAD-IMR
 
-TBD
+IHE-IMR defines a mechanism that allows inclusion multimedia content in the report. Use of these mechanisms is encouraged but not required.
 
-#### Supporting links findings and prior studies from the narrative
+### Link to FHIR resources
+
+As is specified in the FHIR specification (and made more explicit in FHIR R6), the narrative text of resources allows the inclusion of hyperlinks. A hyperlink can refer to structured data that is included in the report as is shown in the example below.
+
+```
+...
+The diameter of the lesion is <a href="Observation/kjiewoj">11 mm</a>.
+...
+```
+The `href` field of the link holds a relative reference to the referred resource. When rendering this narrative, a click on this link SHOULD open a rendered version of the referred resource.
+
+{% include patterns-and-guidelines-missing-data.md %}
+
+### Supporting links findings and prior studies from the narrative
 
 These links can be included in the text (Narrative) using text-link extensions. Referring them from the unstructured text is TBD.
 
-#### What terminology use in the report
+### What terminology use in the report
 
 The specification focusses first on the infrastructural aspects and marks the terminology related this as extensible. We are conservative in placing terminology requirements on findings and interpretations are there currently is not a widespread consensus on what terminology is used.
 
-#### Support for addendum documents
+### Support for addendum documents
 
 These are separate documents; separate imaging reports. TBD: in what way link these in this report.
 
-#### Relation with DICOM-SR reports
+### Relation with DICOM-SR reports
 
 DICOM-SR reports can be accessed and referred using ImagingSelections as they are stored as instances in the PACS. In the case that the report is a DICOM-SR report,
 
-#### Can there be multiple reports on a single study and can a report report on multiple studies?
+### Can there be multiple reports on a single study and can a report report on multiple studies?
 
 Yes, there can be multiple reports referring the same study. A study can refer tmore than one study. See semi-structured example.
 
-#### Include links from the narrative included annotations (GSPS) and key images (instances/KIN/KO/IMA)
+### Include links from the narrative included annotations (GSPS) and key images (instances/KIN/KO/IMA)
 
 This can be done using text-link extensions.
 
 TBD – can we this from the Narrative as well.
 
-#### Inclusion of images/drawings that are not stored in DICOM objects
+### Inclusion of images/drawings that are not stored in DICOM objects
 
 These can be included as Media in R4 and DocumentReference in R5 and are referred from the Composition.section[finding] and DiagnosticReport.media
 
-#### Support for digital pathology
+### Support for digital pathology
 
 Currently not in scope
 
-#### Link with IHE-RAD-IMR
+### Link with IHE-RAD-IMR
 
 TBD
 
-#### Link with IHE-AIResults
+### Link with IHE-AIResults
 
 AI results are stored as DICOM-SR documents which can be accessed as DICOM instances using the manifest. Optionally, the source system has the option to reflect the content of these DICOM-SR documents in FHIR using the DICOM-SR-2-FHIR IG. When elements from the AIR reports are included in the imaging report, it is RECOMMENDED to use the format specified in DICOM-SR-2-FHIR.
 
-#### Inclusion of date-time values for which the time-zone is unknown
+### Inclusion of date-time values for which the time-zone is unknown
 
 Some of the source data for imaging report comes from DICOM. Although DICOM recommends to include time-zone information there will be situations that the timezone is not included in the DICOM data and cannot be derived from the context. In this case the document creator SHALL include the date-time value as is and add the [Uncertain period Extension](https://hl7.org/fhir/extensions/StructureDefinition-uncertainPeriod.html) to indicate the uncertainty period of the datetime value.
 
