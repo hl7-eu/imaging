@@ -2,7 +2,7 @@ This CapabilityStatement defines the capabilities for systems providing direct r
 access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
 It inherits patterns from:
 - **[HL7-IPA](https://ipa.hl7.org/) (International Patient Access)**: Resource profiles and search parameter patterns
-- **[IHE-QEDm] (https://profiles.ihe.net/PCC/QEDm/index.html) (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
+- **[IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
 
 ### Resource Flexibility (IPA Alignment)
 
