@@ -1,11 +1,11 @@
-id: hl7.fhir.eu.imaging
-canonical: http://hl7.eu/fhir/imaging
+id: hl7.fhir.eu.imaging-redirect
+canonical: http://hl7.eu/fhir/imaging-redirect
 name: HL7EuImagingStudyReport
 title: HL7 Europe Imaging Report
 description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR.
 status: draft # draft | active | retired | unknown
 experimental: false
-version: 2.0.0-connecthaton
+version: 0.1.1-build
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
@@ -25,7 +25,7 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  xtehr.eu.ehds.models: 0.3.0
+  # xtehr.eu.ehds.models: 0.3.0
 
 pages:
   index.md:
