@@ -27,8 +27,7 @@ This page lists the structural profiles defined in this specification
   ]
 } %}
 
-
-#### CapabilityStatements
+### CapabilityStatements
 
 {% sql {
   "query" : "SELECT name AS Name, title AS Title, Type, Description, Web, Url FROM Resources WHERE Type='CapabilityStatement' ORDER BY Name",
