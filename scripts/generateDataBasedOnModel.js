@@ -225,15 +225,15 @@ function generateXmlMappingTable(parsedData, srcResource, isR4) {
     
     // Header row 1
     writable.write(`          <tr>\n`);
-    writable.write(`            <th colspan="2" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
+    writable.write(`            <th colspan="1" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
     writable.write(`            <th class="relhead">Relationship</th>\n`);
-    writable.write(`            <th colspan="4" class="tgt-head">Target FHIR Resource</th>\n`);
+    writable.write(`            <th colspan="3" class="tgt-head">Target FHIR Resource</th>\n`);
     writable.write(`          </tr>\n`);
     
     // Header row 2
     writable.write(`          <tr>\n`);
     writable.write(`            <th class="src-sub">Element</th>\n`);
-    writable.write(`            <th class="src-sub">Description</th>\n`);
+    // writable.write(`            <th class="src-sub">Description</th>\n`);
     writable.write(`            <th class="relsub">Relation</th>\n`);
     writable.write(`            <th class="tgt-sub">Resource</th>\n`);
     writable.write(`            <th class="tgt-sub">Element</th>\n`);
@@ -244,8 +244,23 @@ function generateXmlMappingTable(parsedData, srcResource, isR4) {
     
     // Data rows
     rows.forEach(row => {
-        const srcField = escapeXml(row[indices.srcField].trim());
-
+        let srcField = escapeXml(row[indices.srcField].trim());
+        if ( srcField.endsWith('[x]') ) {
+            if ( row[indices.srcType] && row[indices.srcType].trim().length > 0 ) {
+                const shortName = row[indices.srcType].trim().split('/').pop();
+                switch (shortName) {
+                    case 'string':
+                    case 'CodeableConcept':
+                        srcField = srcField.replace('[x]', '['+shortName+']');
+                        break;
+                    default:
+                        srcField = srcField.replace('[x]', '[<a href="'+row[indices.srcType].trim()+'">'+shortName+'</a>]');
+                        break;
+                }
+                
+            }
+        }
+        
         const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
         const equivalence = isR4 
             ? getEquivalenceDisplay(row[indices.tgtEquivalenceR4] ? row[indices.tgtEquivalenceR4].trim() : '')
@@ -260,9 +275,19 @@ function generateXmlMappingTable(parsedData, srcResource, isR4) {
         
         writable.write(`          <tr>\n`);
         writable.write(`            <td>${srcField}</td>\n`);
-        writable.write(`            <td>${srcDescription}</td>\n`);
+        // writable.write(`            <td>${srcDescription}</td>\n`);
         writable.write(`            <td>${equivalence}</td>\n`);
-        writable.write(`            <td>${tgtResource}</td><td>${tgtElement}</td>\n`);
+        writable.write(`        <td>${equivalence}</td>\n`);
+        if ( tgtResource.length > 0 ) {
+            if ( !tgtResource.startsWith("Eu")){
+                writable.write(`        <td><a href="./StructureDefinition-${tgtResource}.html">${tgtResource}</a></td>\n`);
+            } else {
+                writable.write(`        <td>${tgtResource}</td>\n`);
+            }
+        } else {
+            writable.write(`        <td></td>\n`);
+        }
+        writable.write(`            <td>${tgtElement}</td>\n`);
         writable.write(`            <td>${notes}</td>\n`);
         writable.write(`          </tr>\n`);
     });
@@ -333,13 +358,13 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
     writable.write(`    <caption>${escapeXml(srcResource)} → FHIR Profiles (R4)</caption>\n`);
     writable.write(`    <thead>\n`);
     writable.write(`      <tr>\n`);
-    writable.write(`        <th colspan="2" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
+    writable.write(`        <th colspan="1" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
     writable.write(`        <th class="relhead">Relationship</th>\n`);
     writable.write(`        <th colspan="3" class="tgt-head">Target FHIR Resource</th>\n`);
     writable.write(`      </tr>\n`);
     writable.write(`      <tr>\n`);
     writable.write(`        <th class="src-sub">Element</th>\n`);
-    writable.write(`        <th class="src-sub">Description</th>\n`);
+    // writable.write(`        <th class="src-sub">Description</th>\n`);
     writable.write(`        <th class="relsub">Relation</th>\n`);
     writable.write(`        <th class="tgt-sub">Resource</th>\n`);
     writable.write(`        <th class="tgt-sub">Element</th>\n`);
@@ -357,9 +382,11 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
                 switch (shortName) {
                     case 'string':
                     case 'CodeableConcept':
-                        srcField = shortName;
+                        srcField = srcField.replace('[x]', '['+shortName+']');
+                        break;
                     default:
                         srcField = srcField.replace('[x]', '[<a href="'+row[indices.srcType].trim()+'">'+shortName+'</a>]');
+                        break;
                 }
                 
             }
@@ -373,9 +400,17 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
         
         writable.write(`      <tr>\n`);
         writable.write(`        <td>${srcField}</td>\n`);
-        writable.write(`        <td>${srcDescription}</td>\n`);
+        // writable.write(`        <td>${srcDescription}</td>\n`);
         writable.write(`        <td>${equivalence}</td>\n`);
-        writable.write(`        <td>${tgtResource}</td>\n`);
+        if ( tgtResource.length > 0 ) {
+            if ( !tgtResource.startsWith("Eu")){
+                writable.write(`        <td><a href="./StructureDefinition-${tgtResource}.html">${tgtResource}</a></td>\n`);
+            } else {
+                writable.write(`        <td>${tgtResource}</td>\n`);
+            }
+        } else {
+            writable.write(`        <td></td>\n`);
+        }
         writable.write(`        <td>${tgtElement}</td>\n`);
         writable.write(`        <td>${notes}</td>\n`);
         writable.write(`      </tr>\n`);
@@ -393,13 +428,13 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
     writable.write(`    <caption>${escapeXml(srcResource)} → FHIR Profiles (R5)</caption>\n`);
     writable.write(`    <thead>\n`);
     writable.write(`      <tr>\n`);
-    writable.write(`        <th colspan="2" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
+    writable.write(`        <th colspan="1" class="src-head">${escapeXml(srcResource)} (Logical Model)</th>\n`);
     writable.write(`        <th class="relhead">Relationship</th>\n`);
     writable.write(`        <th colspan="3" class="tgt-head">Target FHIR Resource</th>\n`);
     writable.write(`      </tr>\n`);
     writable.write(`      <tr>\n`);
     writable.write(`        <th class="src-sub">Element</th>\n`);
-    writable.write(`        <th class="src-sub">Description</th>\n`);
+    // writable.write(`        <th class="src-sub">Description</th>\n`);
     writable.write(`        <th class="relsub">Relation</th>\n`);
     writable.write(`        <th class="tgt-sub">Resource</th>\n`);
     writable.write(`        <th class="tgt-sub">Element</th>\n`);
@@ -410,7 +445,22 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
     
     // R5 Data rows
     rows.forEach(row => {
-        const srcField = escapeXml(row[indices.srcField].trim());
+        let srcField = escapeXml(row[indices.srcField].trim());
+        if ( srcField.endsWith('[x]') ) {
+            if ( row[indices.srcType] && row[indices.srcType].trim().length > 0 ) {
+                const shortName = row[indices.srcType].trim().split('/').pop();
+                switch (shortName) {
+                    case 'string':
+                    case 'CodeableConcept':
+                        srcField = srcField.replace('[x]', '['+shortName+']');
+                        break;
+                    default:
+                        srcField = srcField.replace('[x]', '[<a href="'+row[indices.srcType].trim()+'">'+shortName+'</a>]');
+                        break;
+                }
+                
+            }
+        }
         const srcDescription = escapeXml(row[indices.srcDescription] ? row[indices.srcDescription].trim() : '');
         const equivalence = getEquivalenceDisplay(row[indices.tgtEquivalence] ? row[indices.tgtEquivalence].trim() : '');
         const tgtResource = escapeXml(row[indices.tgtResource] ? row[indices.tgtResource].trim() : '');
@@ -419,9 +469,17 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
         
         writable.write(`      <tr>\n`);
         writable.write(`        <td>${srcField}</td>\n`);
-        writable.write(`        <td>${srcDescription}</td>\n`);
+        // writable.write(`        <td>${srcDescription}</td>\n`);
         writable.write(`        <td>${equivalence}</td>\n`);
-        writable.write(`        <td>${tgtResource}</td>\n`);
+        if ( tgtResource.length > 0 ) {
+            if ( !tgtResource.startsWith("Eu")){
+                writable.write(`        <td><a href="./StructureDefinition-${tgtResource}.html">${tgtResource}</a></td>\n`);
+            } else {
+                writable.write(`        <td>${tgtResource}</td>\n`);
+            }
+        } else {
+            writable.write(`        <td></td>\n`);
+        }
         writable.write(`        <td>${tgtElement}</td>\n`);
         writable.write(`        <td>${notes}</td>\n`);
         writable.write(`      </tr>\n`);
