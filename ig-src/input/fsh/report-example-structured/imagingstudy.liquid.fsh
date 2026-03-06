@@ -4,12 +4,14 @@ Title: "ImagingStudy: structured-report study"
 Description: "Transthoracic echocardiogram for 3D TEE 2D"
 Usage: #example
 * identifier[studyInstanceUid]
-  * type = MissingDicomTerminology#0020000D "Study Instance UID" 
+  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
   * system = "urn:dicom:uid"
   * value = "urn:oid:1.3.46.670589.58.10.10562925256214266678.11674839624289915183" // invented - not there in the report
 * basedOn[ServiceRequestOrderEuImagingaccession]
   * identifier
-    * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+    * type
+      * coding[+][v2-0203-coding] = $v2-0203#ACSN 
+      * coding[+][dcm] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"

@@ -1,4 +1,12 @@
 {%include variable-definitions.md %}
+
+### Presentation format of the document
+
+As is discussed in the [Data Format](dataformat.html) section there are two formats of the imaging reports. When presenting the content to the user two different presentation forms are used:
+* For imaging reports with minimal metadata the presented form is the pdf attached to the `DiagnosticReport`.
+* For Regular imaging reports the presented form is the html Narrative of the `Composition` resource, stored in `Compostion.text` and `Compostion.section.text`.
+
+
 ### Representing unstructured text (dictated notes)
 
 These are stored in DiagnosticReport.note and in Composition.section.extension[note]. Based on this content the section.text and DiagnosticReport.text and Composition.text are populated.
@@ -13,7 +21,7 @@ IHE-IMR defines a mechanism that allows inclusion multimedia content in the repo
 
 ### Include links from the narrative included annotations (GSPS) and key images (instances/KIN/KO/IMA)
 
-This can be done using the linkaged defined in IHE-IMR.
+This can be done using the links defined in IHE-IMR.
 
 ### Link to FHIR resources
 
@@ -25,7 +33,6 @@ The diameter of the lesion is <a href="Observation/kjiewoj">11 mm</a>.
 ...
 ```
 The `href` field of the link holds a relative reference to the referred resource. When rendering this narrative, a click on this link SHOULD open a rendered version of the referred resource.
-
 
 ### Supporting links to findings and prior studies from the narrative
 

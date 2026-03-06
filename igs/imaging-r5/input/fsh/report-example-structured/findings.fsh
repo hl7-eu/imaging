@@ -1,5 +1,13 @@
 RuleSet: WMSIObservation( obsCode, obsDisplay, code, display, bodyCode, bodyDisplay ) 
 * status = #final
+* basedOn // order
+  * type = #ServiceRequest
+  * identifier
+    * type
+      * coding[+] = $v2-0203#ACSN 
+      * coding[+] = $dcm#121022
+    * system = "http://example.org/myhosptital/accessionsystem"
+    * value  = "87654321" // invented - not there in the report
 * effectiveDateTime = "2023-06-01"
 * code = $loinc#{obsCode} "{obsDisplay}"
 * bodySite = $loinc#{bodyCode} "{bodyDisplay}"

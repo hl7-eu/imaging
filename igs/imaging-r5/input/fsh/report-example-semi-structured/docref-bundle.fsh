@@ -10,8 +10,8 @@ Usage: #example
   * value = "http://semi-structured-report.example.com"
 * status = #current
 * date = "2025-05-08T00:00:00Z"
-//R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#MR
-* modality = http://dicom.nema.org/resources/ontology/DCM#MR
+//R4* extension[modality].valueCodeableConcept = $dcm#MR
+* modality = $dcm#MR
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type

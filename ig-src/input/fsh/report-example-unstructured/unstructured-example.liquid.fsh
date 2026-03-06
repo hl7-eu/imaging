@@ -108,13 +108,13 @@ Usage: #example
   * system = "http://example.org/myhospital/accessionsystem"
   * value = "ACC-123456789"
 
-{{R4}}* imagingStudy[study-identifier].identifier
-{{R4}}  * system = "urn:dicom:uid"
-{{R4}}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
 
+{{R4}}* imagingStudy[study-identifier].identifier
 {{R5}}* study[study-identifier].identifier
-{{R5}}  * system = "urn:dicom:uid"
-{{R5}}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+{{R }}  * system = "urn:dicom:uid"
+{{R }}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+{{R }}  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+
 * presentedForm[+]
   * contentType = #application/pdf
   * url = "Binary/BinaryUnstructuredReport"

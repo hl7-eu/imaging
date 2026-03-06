@@ -11,3 +11,11 @@ Usage: #example
   * start = "2004-06-01"
   * end = "2004-06-01"
 * requester.reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
+* basedOn // order
+  * type = #ServiceRequest
+  * identifier
+    * type
+      * coding[+] = $v2-0203#ACSN 
+      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
+    * system = "http://example.org/myhosptital/accessionsystem"
+    * value  = "87654321" // invented - not there in the report

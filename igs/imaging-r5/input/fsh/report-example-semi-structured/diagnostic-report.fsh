@@ -13,7 +13,9 @@ Usage: #example
 * basedOn // order
   * type = #ServiceRequest
   * identifier
-    * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+    * type
+      * coding[+] = $v2-0203#ACSN 
+      * coding[+] = $dcm#121022
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "123456789" // invented - not there in the report
 * code = $loinc#24802-1

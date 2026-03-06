@@ -18,7 +18,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 * extension[anatomical-region] ^requirements = "This field may be present to align with a similar field on the Imaging Manifest."
 
 * identifier
-  * insert SliceElement( #value, system )
+  * insert SliceElement( #profile, system )
 * identifier contains studyInstanceUid 1..1
 * identifier[studyInstanceUid] only StudyInstanceUidIdentifierEuImaging
 
@@ -27,7 +27,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 // reference to the order that has the Accession Number and including the Accession Number as identifier
 * basedOn
-  * insert SliceElement( #type, $this )
+  * insert SliceElement( #profile, $this )
 * basedOn contains ServiceRequestOrderEuImagingaccession 0..1
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
