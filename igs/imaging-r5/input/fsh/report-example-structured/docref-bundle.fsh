@@ -10,8 +10,8 @@ Usage: #example
   * value = "http://structured-report.example.com"
 * status = #current
 * date = "2025-09-05T00:00:00Z"
-//R4* extension[modality].valueCodeableConcept = $dcm#US
-* modality = $dcm#US
+//R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US
+* modality = http://dicom.nema.org/resources/ontology/DCM#US
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
@@ -24,7 +24,7 @@ Usage: #example
 //R4      * coding[+] = $sct#67734004
 * bodySite
   * concept
-    * coding[+] = $sct#67734004
+    * coding[anatomical-region] = $sct#67734004
 * content[+]
 //R4  * extension[profile]
 //R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)

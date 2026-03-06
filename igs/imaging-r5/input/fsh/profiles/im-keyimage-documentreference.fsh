@@ -20,7 +20,7 @@ When the resource represents a DICOM series it SHALL contain the Series Instance
   * value 1..1
 * identifier[seriesInstanceUid] 
   * type 1..1
-  * type = $dcm#112002
+  * type = http://dicom.nema.org/resources/ontology/DCM#112002
   * system 1..1 
   * system = "urn:ietf:rfc:3986"
   * value 1..1

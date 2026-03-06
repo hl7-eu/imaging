@@ -9,14 +9,14 @@ Alias: $data-absent-reason = http://terminology.hl7.org/CodeSystem/data-absent-r
 Alias: $data-absent-reason-cs =  http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $diagnosis-role = http://terminology.hl7.org/CodeSystem/diagnosis-role
 Alias: $diagnostic-service-sections = http://hl7.org/fhir/ValueSet/diagnostic-service-sections
-Alias: $dicomOntology = $dcm
+Alias: $dicomOntology = http://dicom.nema.org/resources/ontology/DCM
 Alias: $edqm = https://standardterms.edqm.eu
 Alias: $encounter-status = http://hl7.org/fhir/encounter-status
 Alias: $iccc3 = http://terminology.hl7.org/CodeSystem/iccc-3 // FAKE URL NOT YET ASSIGNED !!
 Alias: $icd03 = http://terminology.hl7.org/CodeSystem/icd-o-3
 Alias: $icd10 = http://hl7.org/fhir/sid/icd-10
 Alias: $loinc =  http://loinc.org
-Alias: $dcm = $dcm
+Alias: $dcm = http://dicom.nema.org/resources/ontology/DCM
 Alias: $medicalDevice-cs = urn:oid:1.3.6.1.4.1.12559.11.10.1.3.1.44.6 // ===> to be checked <====
 Alias: $niaid = http://niaid.nih.gov
 Alias: $nibsc = http://nibsc.org

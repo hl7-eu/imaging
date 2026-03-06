@@ -49,6 +49,9 @@ Usage: #example
 ///////////////////////////////////////////////////////////////////////
 
 * section[order]
+  * text
+    * status = #generated
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Accession Number: 87654321</div>"
   * title = "Order"
   * code = $loinc#55115-0 "Requested imaging studies information Document"
   * entry[+]
@@ -60,12 +63,15 @@ Usage: #example
 
 ///////////////////////////////////////////////////////////////////////
 * section[history]
+  * text
+    * status = #generated
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Weight 80kg, Height: 180 cm, HT: 180 bpm, BP: 80/90 mm/Hg</div>"
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
+  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
+  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
+  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]

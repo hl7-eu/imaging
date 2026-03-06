@@ -10,8 +10,8 @@ Usage: #example
   * value = "http://unstructured-report.example.com"
 * status = #current
 * date = "2024-01-01T00:00:00Z"
-//R4* extension[modality].valueCodeableConcept = $dcm#CT
-* modality = $dcm#CT
+//R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
+* modality = http://dicom.nema.org/resources/ontology/DCM#CT
 
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
@@ -113,7 +113,7 @@ Usage: #example
 * study[study-identifier].identifier
   * system = "urn:dicom:uid"
   * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
-  * type = $dcm#110180 "Study Instance UID"
+  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
 
 * presentedForm[+]
   * contentType = #application/pdf

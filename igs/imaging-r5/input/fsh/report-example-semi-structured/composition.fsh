@@ -14,7 +14,7 @@ Usage: #example
     * identifier
       * type
         * coding[+] = $v2-0203#ACSN 
-        * coding[+] = $dcm#121022
+        * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "123456789" // invented - not there in the report
 * extension[diagnosticreport-reference].valueReference.reference = "urn:uuid:464458ef-b366-4125-b8f2-b2c2716d3608"

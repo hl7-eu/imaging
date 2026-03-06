@@ -14,7 +14,7 @@ Usage: #example
   * identifier
     * type
       * coding[+] = $v2-0203#ACSN 
-      * coding[+] = $dcm#121022
+      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * code = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
