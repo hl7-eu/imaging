@@ -26,24 +26,30 @@ ensure_publisher_for_ig() {
 }
 
 echo ==================================================================================
-echo Preprocessing - generate FHIR R4 version specific IG
-./_preprocessMultiVersion.sh 4.0.1
+echo Preprocessing - generate FHIR version specific IG
+./_preprocessMultiVersion.sh $1
+
+echo ==================================================================================
+echo ensure publisher is available for both IGs
+ensure_publisher_for_ig "igs/${ig_base}-r4" || exit 1
+ensure_publisher_for_ig "igs/${ig_base}-r5" || exit 1
+
 
 echo ==================================================================================
 echo check build R4
-ensure_publisher_for_ig "igs/${ig_base}-r4" || exit 1
-cd igs/${ig_base}-r4
-./_genonce.sh
-cd ..
+if [ "$1" = "4.0.1" ] || [ -z "$1" ]; then
+	cd igs/${ig_base}-r4
+	./_genonce.sh
+	cd ../..
+fi
 
-echo ==================================================================================
-echo Preprocessing - generate FHIR R5 version specific IG
-./_preprocessMultiVersion.sh 5.0.0
 
 echo ==================================================================================
 echo check build R5
-ensure_publisher_for_ig "igs/${ig_base}-r5" || exit 1
-cd igs/${ig_base}-r5
-./_genonce.sh
-cd ..
+if [ "$1" = "5.0.0" ] || [ -z "$1" ]; then
+	cd igs/${ig_base}-r5
+	./_genonce.sh
+	cd ../..
+fi
+
 
