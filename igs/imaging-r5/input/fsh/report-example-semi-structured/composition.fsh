@@ -4,7 +4,7 @@ Title: "Composition: semi-structured"
 Description: "Example of a CompositionEuImaging showing the report for the left/right foot study"
 Usage: #example
 * status = #final
-* subject.reference = "urn:uuid:907c9bcf-94b5-4243-88ba-6f85ffec4bc8"
+* subject = Reference(PatientSemiStructuredReport)
 * date = "2025-05-08"
 * language = #de-DE
 * extension[basedOn] // order
@@ -17,7 +17,7 @@ Usage: #example
         * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "123456789" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference.reference = "urn:uuid:464458ef-b366-4125-b8f2-b2c2716d3608"
+* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportSemiStructured)
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "o32u4js8492ff" // invented - not there in the report
@@ -26,8 +26,8 @@ Usage: #example
 * status = #final
 * type = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
-* author[author].reference = "urn:uuid:cc78737c-f9a7-4253-b932-ccdb13f745cd"
-* author[organization].reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
+* author[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
+* author[organization] = Reference(OrganizationSemiStructuredReport)
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report
 * text
   * status = #generated
@@ -52,9 +52,9 @@ Usage: #example
     // </div>
     
   * code = $loinc#18726-0
-  * entry[+].reference = "urn:uuid:b710ae7d-c8d7-4861-a01e-b1e34031de4f"
+  * entry[+] = Reference(ImagingStudySemiStructuredReport1)
   * entry[=].id = "study1-ref"
-  * entry[+].reference = "urn:uuid:118f57b8-a3ec-4b3e-90f7-47a7f5563218"
+  * entry[+] = Reference(ImagingStudySemiStructuredReport2)
   * entry[=].id = "study2-ref"
 
 ///////////////////////////////////////////////////////////////////////
@@ -92,6 +92,8 @@ Usage: #example
   
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
+ // R5 validator requires to populate the result field if composition is referenced, even if the report is semi-structured and does not contain any result reference. This is a known issue: 
+  * entry[finding] = Reference(ObservationAnchor)
   * title = "Findings"
   * code = $loinc#59776-5 "Procedure findings Narrative"
   * extension[note][+].valueAnnotation

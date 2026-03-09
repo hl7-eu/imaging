@@ -34,4 +34,3 @@ Usage: #example
     * url = "Bundle/bundle-report-semi-structured"
     * language = #de-DE
     * creation = "2025-05-08T00:00:00Z"
-

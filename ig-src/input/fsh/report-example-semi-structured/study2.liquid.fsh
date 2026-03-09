@@ -17,7 +17,7 @@ Usage: #example
 * extension[anatomical-region].valueCodeableConcept.coding = $sct#61685007 "Lower extremity"
 * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
 * status = #available
-* subject.reference = "urn:uuid:907c9bcf-94b5-4243-88ba-6f85ffec4bc8"
+* subject = Reference(PatientSemiStructuredReport)
 * started = "2025-04-29"
 * series[+]
   * uid = "1.2.276.2000010.784733.1" // invented - not there in the report
@@ -26,8 +26,8 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
   * bodySite = $sct#239830003 "Entire right foot (body structure)"	
   * laterality = $sct#7771000 "Left lateral"
-  * performer[custodian].actor.reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
-  * performer[organization].actor.reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
+  * performer[custodian].actor = Reference(OrganizationSemiStructuredReport)
+  * performer[organization].actor = Reference(OrganizationSemiStructuredReport)
 * series[+]
   * uid = "1.2.276.2000010.784733.2" // invented - not there in the report
   * number = 2
@@ -35,6 +35,6 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#MR "Magnetic Resonance"
   * bodySite = $sct#239830003 "Entire right foot (body structure)"	
   * laterality = $sct#24028007 "Right lateral"
-  * performer[custodian].actor.reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
-  * performer[organization].actor.reference = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
+  * performer[custodian].actor = Reference(OrganizationSemiStructuredReport)
+  * performer[organization].actor = Reference(OrganizationSemiStructuredReport)
   
