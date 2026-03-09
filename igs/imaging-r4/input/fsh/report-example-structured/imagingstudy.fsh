@@ -25,8 +25,8 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 
   * description = "Stress"
-  {{R4}}* bodySite = $sct#67734004
-  {{R5}}* bodySite.concept = $sct#67734004
+  * bodySite = $sct#67734004
+  //R5* bodySite.concept = $sct#67734004
   * performer[custodian].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
   * performer[organization].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
 * series[+]
@@ -35,7 +35,7 @@ Usage: #example
   * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 
   * description = "Rest"
-  {{R4}}* bodySite = $sct#80891009 "Heart structure (body structure)"
-  {{R5}}* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
+  * bodySite = $sct#80891009 "Heart structure (body structure)"
+  //R5* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
   * performer[custodian].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
   * performer[organization].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"

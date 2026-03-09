@@ -2,7 +2,7 @@
 
 ### Presentation format of the document
 
-As is discussed in the [Data Format](dataformat.html) section there are two formats of the imaging reports. When presenting the content to the user two different presentation forms are used:
+As is discussed in the [Data Formats](data-formats.html) section there are two formats of the imaging reports. When presenting the content to the user two different presentation forms are used:
 * For imaging reports with minimal metadata the presented form is the pdf attached to the `DiagnosticReport`.
 * For Regular imaging reports the presented form is the html Narrative of the `Composition` resource, stored in `Compostion.text` and `Compostion.section.text`.
 

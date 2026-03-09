@@ -3,15 +3,15 @@ InstanceOf: DocumentReferenceImagingReport
 Title: "DocumentReference: Renderable format with basic metadata"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example
-{{R4}}* masterIdentifier[+]
-{{R5}}* identifier[+]
+//R4* masterIdentifier[+]
+* identifier[+]
   * system = "urn:ietf:rfc:3986"
   * use = #usual
   * value = "http://unstructured-report.example.com"
 * status = #current
 * date = "2024-01-01T00:00:00Z"
-{{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#CT
+//R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
+* modality = http://dicom.nema.org/resources/ontology/DCM#CT
 
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
@@ -21,21 +21,21 @@ Usage: #example
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
 
-{{R4}}* extension[bodysite]
-{{R4}}  * extension[concept]
-{{R4}}    * valueCodeableConcept
-{{R4}}      * coding[+] = $sct#774007
-{{R4}}      * coding[+] = $sct#38266002
-{{R5}}* bodySite
-{{R5}}  * concept
-{{R5}}    * coding[+] = $sct#774007 
-{{R5}}    * coding[+] = $sct#38266002
+//R4* extension[bodysite]
+//R4  * extension[concept]
+//R4    * valueCodeableConcept
+//R4      * coding[+] = $sct#774007
+//R4      * coding[+] = $sct#38266002
+* bodySite
+  * concept
+    * coding[+] = $sct#774007 
+    * coding[+] = $sct#38266002
 
 
 * content[+]
-{{R4}}  * extension[profile]
-{{R4}}    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
-{{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+//R4  * extension[profile]
+//R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
     * url = "Bundle/bundle-report-minimal-metadata-unstructured"
@@ -109,11 +109,11 @@ Usage: #example
   * value = "ACC-123456789"
 
 
-{{R4}}* imagingStudy[study-identifier].identifier
-{{R5}}* study[study-identifier].identifier
-{{R }}  * system = "urn:dicom:uid"
-{{R }}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
-{{R }}  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+//R4* imagingStudy[study-identifier].identifier
+* study[study-identifier].identifier
+  * system = "urn:dicom:uid"
+  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
 
 * presentedForm[+]
   * contentType = #application/pdf

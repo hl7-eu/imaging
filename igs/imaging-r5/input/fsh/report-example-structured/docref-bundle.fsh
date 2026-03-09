@@ -3,32 +3,32 @@ InstanceOf: DocumentReferenceImagingReport
 Title: "DocumentReference: Renderable format structured"
 Description: "MHD DocumentReference for structured report."
 Usage: #example
-{{R4}}* masterIdentifier[+]
-{{R5}}* identifier[+]
+//R4* masterIdentifier[+]
+* identifier[+]
   * system = "urn:ietf:rfc:3986"
   * use = #usual
   * value = "http://structured-report.example.com"
 * status = #current
 * date = "2025-09-05T00:00:00Z"
-{{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US
-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US
+//R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US
+* modality = http://dicom.nema.org/resources/ontology/DCM#US
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
   * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 * subject = Reference(PatientStructuredReport)
 * custodian = Reference(OrganizationStructuredReport)
-{{R4}}* extension[bodysite]
-{{R4}}  * extension[concept]
-{{R4}}    * valueCodeableConcept
-{{R4}}      * coding[+] = $sct#67734004
-{{R5}}* bodySite
-{{R5}}  * concept
-{{R5}}    * coding[anatomical-region] = $sct#67734004
+//R4* extension[bodysite]
+//R4  * extension[concept]
+//R4    * valueCodeableConcept
+//R4      * coding[+] = $sct#67734004
+* bodySite
+  * concept
+    * coding[anatomical-region] = $sct#67734004
 * content[+]
-{{R4}}  * extension[profile]
-{{R4}}    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
-{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+//R4  * extension[profile]
+//R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
     * url = "Bundle/bundle-report-structured"

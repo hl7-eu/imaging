@@ -1,6 +1,18 @@
 #!/bin/bash
 
-versions=("4.0.1" "5.0.0" )
+# Optional CLI usage:
+#   ./_preprocessMultiVersion.sh           -> build both 4.0.1 and 5.0.0
+#   ./_preprocessMultiVersion.sh 4.0.1     -> build only 4.0.1
+#   ./_preprocessMultiVersion.sh 5.0.0     -> build only 5.0.0
+if [ "$#" -eq 0 ]; then
+    versions=("4.0.1" "5.0.0")
+elif [ "$#" -eq 1 ]; then
+    versions=("$1")
+else
+    echo "Usage: $0 [4.0.1|5.0.0]"
+    exit 1
+fi
+
 ig_base="imaging"
 
 for version in "${versions[@]}"; do

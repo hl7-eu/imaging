@@ -26,29 +26,30 @@ ensure_publisher_for_ig() {
 }
 
 echo ==================================================================================
-echo Preprocessing - generate FHIR version specific IGs
-./_preprocessMultiVersion.sh
-
-# echo ==================================================================================
-# echo checking repos - SUSHI R4
-# sushi igs/${ig_base}-r4
-
-# echo ==================================================================================
-# echo checking repos - SUSHI R5
-# sushi igs/${ig_base}-r5
+echo Preprocessing - generate FHIR version specific IG
+./_preprocessMultiVersion.sh $1
 
 echo ==================================================================================
-echo check build R5
+echo ensure publisher is available for both IGs
 ensure_publisher_for_ig "igs/${ig_base}-r4" || exit 1
-cd igs/${ig_base}-r4
-./_genonce.sh
+ensure_publisher_for_ig "igs/${ig_base}-r5" || exit 1
+
 
 echo ==================================================================================
 echo check build R4
-ensure_publisher_for_ig "../${ig_base}-r5" || exit 1
-cd ../${ig_base}-r5
-./_genonce.sh
+if [ "$1" = "4.0.1" ] || [ -z "$1" ]; then
+	cd igs/${ig_base}-r4
+	./_genonce.sh
+	cd ../..
+fi
+
 
 echo ==================================================================================
+echo check build R5
+if [ "$1" = "5.0.0" ] || [ -z "$1" ]; then
+	cd igs/${ig_base}-r5
+	./_genonce.sh
+	cd ../..
+fi
 
 
