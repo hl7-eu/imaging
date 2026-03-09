@@ -32,7 +32,8 @@ Description: "Document Bundle for Imaging Report"
     findings 0..* and
     key-images 0..* and
     practitioner 0..* and
-    organization 0..*
+    organization 0..* and
+    binary 0..*
 
 * entry[CompositionEuImaging]
   * ^short = "The Composition containing the rendering of the imaging report"
@@ -64,6 +65,9 @@ Description: "Document Bundle for Imaging Report"
 * entry[organization]
   * ^short = "Organization involved in the report"
   * resource only $EuOrganization
+* entry[binary]
+  * ^short = "The original rendered report as a binary attachment"
+  * resource only Binary
 
 
 Invariant: dr-comp-author-org

@@ -10,29 +10,35 @@ Usage: #example
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "o32u4js8492ff"
 * entry[CompositionEuImaging]
-  * fullUrl = "urn:uuid:4f37ad0a-11f8-4389-88bb-78118d8f84db"
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Composition/CompositionSemiStructured"
   * resource = CompositionSemiStructured
 * entry[DiagnosticReportEuImaging]
-  * fullUrl = "urn:uuid:464458ef-b366-4125-b8f2-b2c2716d3608"
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DiagnosticReport/DiagnosticReportSemiStructured"
   * resource = DiagnosticReportSemiStructured
 * entry[Patient]
-  * fullUrl = "urn:uuid:907c9bcf-94b5-4243-88ba-6f85ffec4bc8"
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Patient/PatientSemiStructuredReport"
   * resource = PatientSemiStructuredReport
 * entry[ImagingStudy][+]
-  * fullUrl = "urn:uuid:b710ae7d-c8d7-4861-a01e-b1e34031de4f"
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/ImagingStudy/ImagingStudySemiStructuredReport1"
   * resource = ImagingStudySemiStructuredReport1
 * entry[ImagingStudy][+]
-  * fullUrl = "urn:uuid:118f57b8-a3ec-4b3e-90f7-47a7f5563218"
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/ImagingStudy/ImagingStudySemiStructuredReport2"
   * resource = ImagingStudySemiStructuredReport2
-* entry[+]
-  * fullUrl = "urn:uuid:cc78737c-f9a7-4253-b932-ccdb13f745cd"
+* entry[practitioner]
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/PractitionerRole/PractitionerRoleSemiStructuredReportAuthor"
   * resource = PractitionerRoleSemiStructuredReportAuthor
-* entry[+]
-  * fullUrl = "urn:uuid:ef64fa06-f761-4097-9af1-c9f7615f95ce"
-  * resource = PractitionerSemiStructuredReportAuthor
-* entry[+]
-  * fullUrl = "urn:uuid:d6f6db53-9e8b-4b5a-9ccc-b06ad4b62d4b"
+// * entry[practitioner]
+  // * fullUrl = "http://hl7.eu/fhir/imaging-r5/Practitioner/PractitionerSemiStructuredReportAuthor"
+  // * resource = PractitionerSemiStructuredReportAuthor
+* entry[organization]
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Organization/OrganizationSemiStructuredReport"
   * resource = OrganizationSemiStructuredReport
-* entry[+]
-  * fullUrl = "urn:uuid:f7f11c74-2c5b-4d56-b00e-c66f8e56da67"
+* entry[binary]
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Binary/BinarySemistructuredReport"
   * resource = BinarySemistructuredReport
+//R5* entry[findings]
+//R5  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/ObservationAnchor"
+//R5  * resource = ObservationAnchor
+// * entry[order]
+//   * fullUrl = "http://hl7.eu/fhir/imaging-r5/ServiceRequest/ServiceRequestSemiStructured"
+//   * resource = ServiceRequestSemiStructured
