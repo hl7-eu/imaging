@@ -68,10 +68,13 @@ Usage: #example
     * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Weight 80kg, Height: 180 cm, HT: 180 bpm, BP: 80/90 mm/Hg</div>"
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
-  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
-  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
-  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+//R4  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
+//R4  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
+//R4  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
+//R4  * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+  * entry[vitals][+] = Reference(VitalsList) // references the list of vitals instead of individual vitals
+* contained[+] = VitalsList
+
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
@@ -121,7 +124,7 @@ Usage: #example
   * extension[note][+]
     * valueAnnotation.text =
   """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-  * entry[finding].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
+  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
   * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
   * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
   * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
@@ -177,3 +180,16 @@ See you next year.
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
   * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000031"
+
+
+Instance: VitalsList
+InstanceOf: ListCompositionObservationIndirection
+Title: "Patient Vitals"
+Usage: #inline
+* status = #current
+* mode = #snapshot
+* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
+* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
+* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
+* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
+* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"

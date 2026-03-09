@@ -148,8 +148,10 @@ The `text` field of each section SHALL contain a textual representation of all l
   * extension contains $note-url named note 0..*
   * entry 
     * insert SliceElement( #profile, [[$this.resolve()]] )
-  * entry contains vitals 0..* and problemlist 0..* and implants 0..* and medication 0..* 
-  * entry[vitals] only Reference(Observation)
+  //R4* entry contains vitals 0..* and problemlist 0..* and implants 0..* and medication 0..* 
+  * entry contains vitals 0..1 and problemlist 0..* and implants 0..* and medication 0..* 
+  //R4* entry[vitals] only Reference(Observation)
+  * entry[vitals] only Reference(ListCompositionObservationIndirection)
   * entry[problemlist] only Reference(Condition)
   * entry[implants] only Reference(Device)
   * entry[medication] only Reference(MedicationAdministration or MedicationRequest)
@@ -273,3 +275,18 @@ Invariant: eu-imaging-composition-2
 Description: "A section must contain at least one of text, entries, or sub-sections."
 Severity: #error 
 Expression: "text.exists() or entry.exists() or section.exists()"
+
+
+Profile: ListCompositionObservationIndirection
+Parent: List
+Title: "Composition: Observation PatientIndirection List"
+Description: "A List used in the Composition to reference Observations that are relevant for the interpretation of the imaging report but are not a result of the study the report is about. This allows to include additional Observations in the report which do not trigger the DiagnosticReport constraint that requires all observations to be present in `DiagnosticReport.result`."
+* status = #current
+* mode = #snapshot
+* subject 1..1
+* entry
+  * flag 0..0
+  * date 0..0
+  * deleted 0..0
+  * item only Reference(Observation)
+* emptyReason 0..0

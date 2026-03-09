@@ -113,6 +113,10 @@ Usage: #example
 * result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002c"
 * result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002d"
 * result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000017"
+* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000028"
 
 * media[+]
   * comment = "Rest"

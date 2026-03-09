@@ -154,7 +154,8 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 * result ^short = "Findings"
 * result ^definition = """
 Detailed description of the findings on the imaging study. The findings should be described in a clear and concise manner,
-using standardized anatomic, pathologic, and radiologic terminology whenever possible.
+using standardized anatomic, pathologic, and radiologic terminology whenever possible. This section contains all findings from
+the Finding as well as the Impression sections of the report.
 """
 
 // http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.study

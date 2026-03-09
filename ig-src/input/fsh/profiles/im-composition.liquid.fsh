@@ -144,15 +144,17 @@ The `text` field of each section SHALL contain a textual representation of all l
   Additional clinical information about the patient or specimen that may affect service delivery or interpretation 
   with information specific for imaging (i.e. Observation, Condition, Device, Medication Administration).
   """
-  * code = $loinc#11329-0 // "History general Narrative - Reported"
-  * extension contains $note-url named note 0..*
-  * entry 
-    * insert SliceElement( #profile, [[$this.resolve()]] )
-  * entry contains vitals 0..* and problemlist 0..* and implants 0..* and medication 0..* 
-  * entry[vitals] only Reference(Observation)
-  * entry[problemlist] only Reference(Condition)
-  * entry[implants] only Reference(Device)
-  * entry[medication] only Reference(MedicationAdministration or MedicationRequest)
+  {{R }}* code = $loinc#11329-0 // "History general Narrative - Reported"
+  {{R }}* extension contains $note-url named note 0..*
+  {{R }}* entry 
+  {{R }}  * insert SliceElement( #profile, [[$this.resolve()]] )
+  {{R4}}* entry contains vitals 0..* and problemlist 0..* and implants 0..* and medication 0..* 
+  {{R5}}* entry contains vitals 0..1 and problemlist 0..* and implants 0..* and medication 0..* 
+  {{R4}}* entry[vitals] only Reference(Observation)
+  {{R5}}* entry[vitals] only Reference(ListCompositionObservationIndirection)
+  {{R }}* entry[problemlist] only Reference(Condition)
+  {{R }}* entry[implants] only Reference(Device)
+  {{R }}* entry[medication] only Reference(MedicationAdministration or MedicationRequest)
 
 // // ///////////////////////////////// PROCEDURE SECTION ///////////////////////////////////////
 * section[procedure]
@@ -273,3 +275,18 @@ Invariant: eu-imaging-composition-2
 Description: "A section must contain at least one of text, entries, or sub-sections."
 Severity: #error 
 Expression: "text.exists() or entry.exists() or section.exists()"
+
+
+{{R5}}Profile: ListCompositionObservationIndirection
+{{R5}}Parent: List
+{{R5}}Title: "Composition: Observation PatientIndirection List"
+{{R5}}Description: "A List used in the Composition to reference Observations that are relevant for the interpretation of the imaging report but are not a result of the study the report is about. This allows to include additional Observations in the report which do not trigger the DiagnosticReport constraint that requires all observations to be present in `DiagnosticReport.result`."
+{{R5}}* status = #current
+{{R5}}* mode = #snapshot
+{{R5}}* subject 1..1
+{{R5}}* entry
+{{R5}}  * flag 0..0
+{{R5}}  * date 0..0
+{{R5}}  * deleted 0..0
+{{R5}}  * item only Reference(Observation)
+{{R5}}* emptyReason 0..0

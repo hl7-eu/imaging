@@ -72,6 +72,9 @@ Usage: #example
   * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
   * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
   * entry[vitals][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+//R5  * entry[vitals][+] = Reference(VitalsList) // references the list of vitals instead of individual vitals
+//R5* contained[+] = VitalsList
+
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
@@ -121,7 +124,7 @@ Usage: #example
   * extension[note][+]
     * valueAnnotation.text =
   """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-  * entry[finding].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
+  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
   * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
   * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
   * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
@@ -177,3 +180,16 @@ See you next year.
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
   * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000031"
+
+
+//R5Instance: VitalsList
+//R5InstanceOf: ListCompositionObservationIndirection
+//R5Title: "Patient Vitals"
+//R5Usage: #inline
+//R5* status = #current
+//R5* mode = #snapshot
+//R5* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
+//R5* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
+//R5* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
+//R5* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
+//R5* entry[+].item.reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
