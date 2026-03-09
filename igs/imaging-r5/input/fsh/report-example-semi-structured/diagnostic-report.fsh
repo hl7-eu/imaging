@@ -59,7 +59,7 @@ Rechter Fuß:
   * pages = 1
   * url = "http://hl7.eu/fhir/imaging-r5/Binary/BinarySemistructuredReport"
 
- // R5 validator requires to populate the result field if composition is referenced, even if the report is semi-structured and does not contain any result reference. This is a known issue: 
+ // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
 * result = Reference(ObservationAnchor)
 
 

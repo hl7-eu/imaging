@@ -24,11 +24,9 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * composition 1..1
 * composition ^short = "Imaging Diagnostic Report"
 * composition only Reference(CompositionEuImaging)
- // R5 requires a .result element to be present in .composition is present. This extension fills that gap for the model in which no Observations are part of the report.
+ // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
 * result 1..1
   * ^definition = "R5 requires a .result element to be present in .composition is present. This extension fills that gap for the model in which no Observations are part of the report."
-
-
 
 Profile: DiagnosticReportEuImagingMinimalMetadata
 Parent: DiagnosticReport
