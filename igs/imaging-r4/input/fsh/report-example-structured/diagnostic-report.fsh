@@ -20,23 +20,23 @@ Usage: #example
 * category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
 
-* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
+* subject = Reference (PatientStructuredReport)
 * extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 
 
-* imagingStudy[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
-//R5* study[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
+* imagingStudy[+] = Reference (ImagingStudStructuredReport)
+//R5* study[+] = Reference (ImagingStudStructuredReport)
 
-* performer[organization].reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
-* resultsInterpreter[author].reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
+* performer[organization] = Reference (OrganizationStructuredReport)
+* resultsInterpreter[author] = Reference (PractitionerRoleStructuredReportAuthor)
 
-* extension[composition].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000001"
-//R5* composition.reference = "urn:uuid:11111111-2222-4333-8444-000000000001"
+* extension[composition].valueReference = Reference (CompositionStructured)
+//R5* composition = Reference (CompositionStructured)
 
 // HISTORY
-* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
-* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
-* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
-* extension[patientHistory][+].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+* extension[patientHistory][+].valueReference = Reference (WeightObservation)
+* extension[patientHistory][+].valueReference = Reference (HeightObservation)
+* extension[patientHistory][+].valueReference = Reference (BPObservation)
+* extension[patientHistory][+].valueReference = Reference (HRObservation)
 
 // Procedure
 
@@ -79,45 +79,45 @@ Usage: #example
 //R5* note[+]
   * extension[annotation-type].valueCodeableConcept = $loinc#59776-5 "Procedure findings Narrative"
   * text =  """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000011"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000012"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000013"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000014"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000015"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000016"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000018"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000019"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001a"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001b"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001c"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001d"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001e"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001f"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000020"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000021"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000022"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000023"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000024"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000025"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000026"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000027"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000029"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002a"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002b"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002c"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002d"
-* result[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
+* result[+] = Reference (RestWmsi01)
+* result[+] = Reference (RestWmsi02)
+* result[+] = Reference (RestWmsi03)
+* result[+] = Reference (RestWmsi04)
+* result[+] = Reference (RestWmsi05)
+* result[+] = Reference (RestWmsi06)
+* result[+] = Reference (RestWmsi07)
+* result[+] = Reference (RestWmsi08)
+* result[+] = Reference (RestWmsi09)
+* result[+] = Reference (RestWmsi10)
+* result[+] = Reference (RestWmsi12)
+* result[+] = Reference (RestWmsi13)
+* result[+] = Reference (RestWmsi14)
+* result[+] = Reference (RestWmsi15)
+* result[+] = Reference (RestWmsi16)
+* result[+] = Reference (RestWmsi17)
+* result[+] = Reference (StressWmsi01)
+* result[+] = Reference (StressWmsi02)
+* result[+] = Reference (StressWmsi03)
+* result[+] = Reference (StressWmsi04)
+* result[+] = Reference (StressWmsi05)
+* result[+] = Reference (StressWmsi06)
+* result[+] = Reference (StressWmsi07)
+* result[+] = Reference (StressWmsi08)
+* result[+] = Reference (StressWmsi09)
+* result[+] = Reference (StressWmsi10)
+* result[+] = Reference (StressWmsi12)
+* result[+] = Reference (StressWmsi13)
+* result[+] = Reference (StressWmsi14)
+* result[+] = Reference (StressWmsi15)
+* result[+] = Reference (StressWmsi16)
+* result[+] = Reference (StressWmsi17)
 
 * media[+]
   * comment = "Rest"
-  * link.reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
+  * link = Reference (StructuredKeyImageRest)
 * media[+]
   * comment = "Stress"
-  * link.reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
+  * link = Reference (StructuredKeyImageStress)
 
 // IMPRESSIONS
 * conclusion = """
@@ -126,13 +126,13 @@ Nothing wrong with this patient
 See you next year.
 """
 // RECOMMENDATION
-* extension[recommendation].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000031"
+* extension[recommendation].valueReference = Reference (ComeBackNextYearServiceRequest)
 
 * presentedForm
   * contentType = #application/pdf
   * language = #de-DE
 //R5  * pages = 3
-  * url = "urn:uuid:11111111-2222-4333-8444-000000000032"
+  * url = "Binary/BinaryStructuredReport"
 
 // Loading the binary from .json in input/resources
 

@@ -30,8 +30,8 @@ Usage: #example
 * category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
   
-* author[author].reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
-* author[organization].reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+* author[author] = Reference(PractitionerRoleStructuredReportAuthor)
+* author[organization] = Reference(OrganizationStructuredReport)
 
 * title = "Transthoracic echocardiogram" // invented - not there in the report
 * text
@@ -60,10 +60,10 @@ Usage: #example
 * section[history]
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
-  * entry[vitals].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+  * entry[vitals][+] = Reference (WeightObservation)
+  * entry[vitals][+] = Reference (HeightObservation)
+  * entry[vitals][+] = Reference (BPObservation)
+  * entry[vitals][+] = Reference (HRObservation)
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
@@ -113,43 +113,43 @@ Usage: #example
   * extension[note][+]
     * valueAnnotation.text =
   """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-  * entry[finding].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000011"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000012"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000013"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000014"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000015"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000016"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000018"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000019"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001a"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001b"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001c"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001d"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001e"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001f"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000020"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000021"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000022"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000023"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000024"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000025"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000026"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000027"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000029"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002a"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002b"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002c"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002d"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000017"
-  * entry[finding][+].reference = "urn:uuid:11111111-2222-4333-8444-000000000028"
-  
+  * entry[finding] = Reference (RestWmsi01)
+  * entry[finding][+] = Reference (RestWmsi02)
+  * entry[finding][+] = Reference (RestWmsi03)
+  * entry[finding][+] = Reference (RestWmsi04)
+  * entry[finding][+] = Reference (RestWmsi05)
+  * entry[finding][+] = Reference (RestWmsi06)
+  * entry[finding][+] = Reference (RestWmsi07)
+  * entry[finding][+] = Reference (RestWmsi08)
+  * entry[finding][+] = Reference (RestWmsi09)
+  * entry[finding][+] = Reference (RestWmsi10)
+  * entry[finding][+] = Reference (RestWmsi12)
+  * entry[finding][+] = Reference (RestWmsi13)
+  * entry[finding][+] = Reference (RestWmsi14)
+  * entry[finding][+] = Reference (RestWmsi15)
+  * entry[finding][+] = Reference (RestWmsi16)
+  * entry[finding][+] = Reference (RestWmsi17)
+  * entry[finding][+] = Reference (StressWmsi01)
+  * entry[finding][+] = Reference (StressWmsi02)
+  * entry[finding][+] = Reference (StressWmsi03)
+  * entry[finding][+] = Reference (StressWmsi04)
+  * entry[finding][+] = Reference (StressWmsi05)
+  * entry[finding][+] = Reference (StressWmsi06)
+  * entry[finding][+] = Reference (StressWmsi07)
+  * entry[finding][+] = Reference (StressWmsi08)
+  * entry[finding][+] = Reference (StressWmsi09)
+  * entry[finding][+] = Reference (StressWmsi10)
+  * entry[finding][+] = Reference (StressWmsi12)
+  * entry[finding][+] = Reference (StressWmsi13)
+  * entry[finding][+] = Reference (StressWmsi14)
+  * entry[finding][+] = Reference (StressWmsi15)
+  * entry[finding][+] = Reference (StressWmsi16)
+  * entry[finding][+] = Reference (StressWmsi17)
+  * entry[finding][+] = Reference (RestWmsi11)
+  * entry[finding][+] = Reference (StressWmsi11)
+  * entry[image] = Reference (WMSIImage)
+  * entry[keyimage] = Reference (StructuredKeyImageStress)
+  * entry[keyimage][+] = Reference (StructuredKeyImageRest)
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
   * title = "Impression"
