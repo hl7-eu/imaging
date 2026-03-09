@@ -11,7 +11,11 @@ Description: "Document Bundle for Imaging Report"
 * total ..0
 * link ..0
 * entry 2..*
-  * insert SliceElement( #profile, resource )
+* entry ^slicing.discriminator[0].type = #type
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.discriminator[+].type = #profile
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.rules = #open
   * link ..0
   * fullUrl 1..1
   * resource 1..
