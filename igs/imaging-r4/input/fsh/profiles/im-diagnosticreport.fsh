@@ -24,6 +24,9 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 //R5* composition 1..1
 //R5* composition ^short = "Imaging Diagnostic Report"
 //R5* composition only Reference(CompositionEuImaging)
+//R5 // R5 requires a .result element to be present in .composition is present. This extension fills that gap for the model in which no Observations are part of the report.
+//R5* result 1..1
+//R5  * ^definition = "R5 requires a .result element to be present in .composition is present. This extension fills that gap for the model in which no Observations are part of the report."
 
 
 
