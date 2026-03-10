@@ -24,7 +24,7 @@ Usage: #example
 //R4      * coding[+] = $sct#67734004
 * bodySite
   * concept
-    * coding[anatomical-region] = $sct#67734004
+    * coding = $sct#67734004
 * content[+]
 //R4  * extension[profile]
 //R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
