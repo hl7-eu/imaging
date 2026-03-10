@@ -14,7 +14,7 @@ Usage: #example
     * identifier
       * type
         * coding[+] = $v2-0203#ACSN 
-        * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
+        * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "123456789" // invented - not there in the report
 * extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportSemiStructured)
@@ -25,7 +25,7 @@ Usage: #example
 //R5* version = "1.0.0" // invented - not there in the report
 * status = #final
 * type = $loinc#24802-1 "MR Knee"
-* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
 * author[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
 * author[organization] = Reference(OrganizationSemiStructuredReport)
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report

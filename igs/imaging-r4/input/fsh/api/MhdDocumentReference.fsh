@@ -49,10 +49,10 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 //R5  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
 //R5  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 //R5  * concept 1..1
-//R5    * coding
-//R5      * insert SliceElement( #value, concept )
-//R5    * coding contains anatomical-region 1..*
-//R5    * coding[anatomical-region] from ValueSetAnatomicalRegion (extensible)
+//R5    * coding from ValueSetAnatomicalRegion (extensible)
+// //R5      * insert SliceElement( #pattern, $this )
+// //R5    * coding contains anatomical-region 1..*
+// //R5    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
 * extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 * extension[bodysite].extension[concept] 1..1
 * extension[bodysite].extension[concept]
