@@ -45,14 +45,14 @@ Usage: #example
 * type = #document
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
-  * value = "dfkjewoieoijwoskdjf"
-* entry[CompositionEuImaging]
+  * value = "aspecificidentifier" // invented - not there in the report
+* entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Composition/CompositionStructured"
   * resource = CompositionStructured
-* entry[DiagnosticReportEuImaging]
+* entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/DiagnosticReport/DiagnosticReportStructured"
   * resource = DiagnosticReportStructured
-* entry[Patient]
+* entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Patient/PatientStructuredReport"
   * resource = PatientStructuredReport
 * entry[ImagingStudy][+]

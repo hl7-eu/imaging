@@ -50,9 +50,9 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
   * concept 1..1
     * coding
-      * insert SliceElement( #value, concept )
+      * insert SliceElement( #pattern, $this )
     * coding contains anatomical-region 1..*
-    * coding[anatomical-region] from ValueSetAnatomicalRegion (extensible)
+    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
 //R4* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 //R4* extension[bodysite].extension[concept] 1..1
 //R4* extension[bodysite].extension[concept]
