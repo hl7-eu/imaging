@@ -6,19 +6,14 @@
         class WmsiStress01 <<Observation>> [[./Observation-StressWmsi01.html]]
         class WmsiStress02 <<Observation>> [[./Observation-StressWmsi02.html]]
     }
-{% if isR5 %}
     package KeyImages {
         class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
         class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
     }
-{% endif %}
-
-{% if isR4 %}
     package KeyImages {
-        class StructuredKeyImageRest <<DocumentReference>> [[./Media-StructuredKeyImageRest.html]]
-        class StructuredKeyImageStress <<DocumentReference>> [[./Media-StructuredKeyImageStress.html]]
+        class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
+        class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
     }
-{% endif %}
  
     WmsiRest01 --> Patient: subject
     WmsiRest01 --> WMSIImage: derivedFrom
