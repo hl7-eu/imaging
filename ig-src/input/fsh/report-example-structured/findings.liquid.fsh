@@ -5,7 +5,7 @@ RuleSet: WMSIObservation( obsCode, obsDisplay, code, display, bodyCode, bodyDisp
   * identifier
     * type
       * coding[+] = $v2-0203#ACSN 
-      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
+      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * effectiveDateTime = "2023-06-01"

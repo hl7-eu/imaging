@@ -15,11 +15,11 @@ Usage: #example
   * identifier
     * type
       * coding[+] = $v2-0203#ACSN 
-      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
+      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "123456789" // invented - not there in the report
 * code = $loinc#24802-1
-* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiology"
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
 * subject = Reference(PatientSemiStructuredReport)
 {{R4}}* imagingStudy[+] = Reference(ImagingStudySemiStructuredReport1)
 {{R5}}* study[+] = Reference(ImagingStudySemiStructuredReport1)

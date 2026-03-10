@@ -9,12 +9,23 @@ Usage: #example
 * status = #final
 * effectiveDateTime = "2003-06-01"
 * language = #en-GB
+
+// * system 1..1
+// * value 1..1
+// * type 1..1
+// * type
+//   * coding
+//     * insert SliceElement( #value, $this )
+//   * coding contains v2-0203-coding 1..1 and dcm 0..1
+//   * coding[v2-0203-coding] = $v2-0203#ACSN 
+//   * coding[dcm] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
+
 * basedOn // order
   * type = #ServiceRequest
   * identifier
     * type
       * coding[+] = $v2-0203#ACSN 
-      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
+      * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
     * system = "http://example.org/myhosptital/accessionsystem"
     * value  = "87654321" // invented - not there in the report
 * code = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
