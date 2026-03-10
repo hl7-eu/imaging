@@ -4,7 +4,7 @@ Title: "Composition: structured report"
 Description: "Example of a CompositionEuImaging showing the report with structured data."
 Usage: #example
 * status = #final
-* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
+* subject = Reference(PatientStructuredReport)
 * date = "2025-09-05T02:22:00.000Z" 
 * language = #en-GB
 * identifier
@@ -20,7 +20,7 @@ Usage: #example
         * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "87654321" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000002"
+* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportStructured)
 
 //R4* extension[version].valueString = "1"
 * version = "1" // invented - not there in the report
@@ -44,7 +44,7 @@ Usage: #example
 * section[imagingstudy]
   * title = "Imaging Study"
   * code = $loinc#18726-0 "Radiology studies (set)"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
+  * entry[+] = Reference(ImagingStudStructuredReport)
 
 ///////////////////////////////////////////////////////////////////////
 
@@ -156,8 +156,6 @@ Usage: #example
   * entry[finding][+] = Reference (RestWmsi11)
   * entry[finding][+] = Reference (StressWmsi11)
   * entry[image] = Reference (WMSIImage)
-  * entry[keyimage] = Reference (StructuredKeyImageStress)
-  * entry[keyimage][+] = Reference (StructuredKeyImageRest)
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
   * title = "Impression"
@@ -176,4 +174,4 @@ See you next year.
 * section[recommendation]
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000031"
+  * entry[+] = Reference(ComeBackNextYearServiceRequest)

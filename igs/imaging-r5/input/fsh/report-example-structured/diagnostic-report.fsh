@@ -113,8 +113,6 @@ Usage: #example
 * result[+] = Reference (StressWmsi15)
 * result[+] = Reference (StressWmsi16)
 * result[+] = Reference (StressWmsi17)
-* extension[finding].valueReference = Reference (StructuredKeyImageRest)
-* extension[finding][+].valueReference = Reference (StructuredKeyImageStress)
 // * media[+]
 //   * comment = "Rest"
 //   * link = Reference (StructuredKeyImageRest)

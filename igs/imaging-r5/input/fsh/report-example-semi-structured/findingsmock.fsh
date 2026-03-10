@@ -6,3 +6,6 @@ Description: "Placeholder observation resource to satisfy the requirement of the
 * status = #final
 * code = $loinc#59776-5 "Procedure findings Narrative"
 * valueString = "."
+* performer[+] = Reference(PractitionerRoleSemiStructuredReportAuthor)
+* subject = Reference(PatientSemiStructuredReport)
+* effectiveDateTime = "2025-05-08T00:00:00Z"

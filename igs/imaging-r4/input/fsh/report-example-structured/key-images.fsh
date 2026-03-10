@@ -3,13 +3,13 @@ InstanceOf: DocumentReferenceKeyImageEuImaging
 Title: "DocumentReference: key image rest"
 Description: "Key image showing the ultrasound at rest."
 Usage: #example
-* status = #completed
+* status = #current
 //R5* status = #current
 
 * subject = Reference(PatientStructuredReport)
 * content[content]
   * attachment
-    * contentType = #image/.png
+    * contentType = #image/png
     * id = "ig-loader-structured-keyimage-rest.png"
     * url = "DocumentReference/StructuredKeyImageRest"
   * extension[thumbnail]
@@ -28,13 +28,13 @@ InstanceOf: DocumentReferenceKeyImageEuImaging
 Title: "DocumentReference: key image stress"
 Description: "Key image showing the ultrasound during stress."
 Usage: #example
-* status = #completed
+* status = #current
 //R5* status = #current
 * subject = Reference(PatientStructuredReport)
 
 * content[content]
   * attachment
-    * contentType = #image/.png
+    * contentType = #image/png
     * id = "ig-loader-structured-keyimage-stress.png"
     * url = "DocumentReference/StructuredKeyImageStress"
   * extension[thumbnail]

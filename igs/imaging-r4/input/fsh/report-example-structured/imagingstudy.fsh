@@ -17,7 +17,7 @@ Usage: #example
 * modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 * extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 "Upper trunk"
 * status = #available
-* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
+* subject = Reference(PatientStructuredReport)
 * started = "2025-04-29"
 * series[+]
   * uid = "1.3.46.670589.58.10.10562925256214266678.11674839624289915183.1" // invented - not there in the report
@@ -27,8 +27,8 @@ Usage: #example
   * description = "Stress"
   * bodySite = $sct#67734004
   //R5* bodySite.concept = $sct#67734004
-  * performer[custodian].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
-  * performer[organization].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+  * performer[custodian].actor = Reference(OrganizationStructuredReport)
+  * performer[organization].actor = Reference(OrganizationStructuredReport)
 * series[+]
   * uid = "1.3.46.670589.58.10.10562925256214266678.11674839624289915183.2" // invented - not there in the report
   * number = 2
@@ -37,5 +37,5 @@ Usage: #example
   * description = "Rest"
   * bodySite = $sct#80891009 "Heart structure (body structure)"
   //R5* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
-  * performer[custodian].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
-  * performer[organization].actor.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+  * performer[custodian].actor = Reference(OrganizationStructuredReport)
+  * performer[organization].actor = Reference(OrganizationStructuredReport)
