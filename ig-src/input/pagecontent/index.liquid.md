@@ -1,5 +1,5 @@
-{% include fsh-link-references.md %}
-{% include variable-definitions.md %}
+{% raw %}{% include fsh-link-references.md %}{% endraw %}
+{% raw %}{% include variable-definitions.md %}{% endraw %}
 
   <!-- Horizontal banner -->
 <div style="border: 2px solid #003366; border-radius: 8px; padding: 1em; margin: 1.5em 0; background-color: #f9f9ff; display: flex; flex-direction: column; align-items: flex-start;">
@@ -18,7 +18,23 @@
     and validation of specifications to enable consistency with EHDS requirements.
   </div>
 </div>
+{% if isR5 %}
+<div xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ <blockquote class="stu-note">  
+   <p>This is the 0.2.1 STU1 ballot version of the specification to be used by WP 7.2 of Xt-EHR for public consultation.
+   </p>
+   <p> The content of this implementation guide is discussed HL7 EU calls (<a href="https://confluence.hl7.org/spaces/HEU/pages/321160129/Imaging+meetings">HL7-eu imaging on Confluence</a>).
+   </p>
+   <p> This IG is available in FHIR version 4.0.1 and 5.0.0, and built from a single source repository on GitHub (<a href="https://github.com/hl7-eu/imaging">https://github.com/hl7-eu/imaging</a>)
+   </p>
 
+   <p> This ballot version welcomes feedback from the community specially on the following topic <a href="https://jira.hl7.org/browse/FHIR-56038">FHIR-56038</a>. Which proposes a solution to an error in this R5 version due to inconsistency in this model and an invariant in DiagnosticReport.
+   </p>
+ </blockquote>
+</div>
+{% endif %}
+{% if isR4 %}
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
@@ -30,6 +46,7 @@
    </p>
  </blockquote>
 </div>
+{% endif %}
 
 ### Scope
 
@@ -69,16 +86,16 @@ The development of this implementation guide is promoted by HL7 Europe, but real
 
 ### FHIR specific Dependencies
 
-{% include dependency-table-en.xhtml %}
+{% raw %}{% include dependency-table-en.xhtml %}{% endraw %}
 
 ### Cross Version Analysis
 
-{% include cross-version-analysis-en.xhtml %}
+{% raw %}{% include cross-version-analysis-en.xhtml %}{% endraw %}
 
 ### Global Profiles
 
-{% include globals-table-en.xhtml %}
+{% raw %}{% include globals-table-en.xhtml %}{% endraw %}
 
 ### IP statements
 
-{% include ip-statements-en.xhtml %}
+{% raw %}{% include ip-statements-en.xhtml %}{% endraw %}
