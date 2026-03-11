@@ -22,7 +22,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
-   <p>This is the 0.2.1 STU1 ballot version of the specification to be used by WP 7.2 of Xt-EHR for public consultation.
+   <p>This is the 1.0.0-ballot version of the specification to be used by WP 7.2 of Xt-EHR for public consultation.
    </p>
    <p> The content of this implementation guide is discussed HL7 EU calls (<a href="https://confluence.hl7.org/spaces/HEU/pages/321160129/Imaging+meetings">HL7-eu imaging on Confluence</a>).
    </p>
@@ -43,7 +43,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
  <blockquote class="stu-note">  
-   <p>This is the 0.2.1 STU1 ballot version of the specification to be used by WP 7.2 of Xt-EHR for public consultation.
+   <p>This is the 1.0.0-ballot version of the specification to be used by WP 7.2 of Xt-EHR for public consultation.
    </p>
    <p> The content of this implementation guide is discussed HL7 EU calls (<a href="https://confluence.hl7.org/spaces/HEU/pages/321160129/Imaging+meetings">HL7-eu imaging on Confluence</a>).
    </p>
