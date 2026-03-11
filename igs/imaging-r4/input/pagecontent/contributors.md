@@ -14,6 +14,6 @@ The following picture provide an overview of the origin of the participants.
 
 |Role                       | Name                |
 |---------------------------|---------------------|
-| Project facilitator HL7eu |  Bas van den Heuvel |
-| Project facilitator IHEeu |  Mark Kämmerer      |
-| Contributor               |  Ignacio Jauregui   |
+| Project facilitator HL7eu |  Bas van den Heuvel | // Philips
+| Project facilitator IHEeu |  Mark Kämmerer      | // Visus
+| Contributor               |  Ignacio Jauregui   | // Philips
