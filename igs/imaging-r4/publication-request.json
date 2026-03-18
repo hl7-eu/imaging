@@ -1,9 +1,11 @@
 {
-  "package-id" : "hl7.fhir.eu.imaging-r5",
+  "package-id" : "hl7.fhir.eu.imaging",
   "version" : "1.0.0-ballot",
-  "path" : "http://hl7.eu/fhir/imaging-r5/1.0.0-ballot",
-  "desc" : "This is the snapshot of the Imaging Study report STU 1 used for the XtEHR public consultation.", 
-  "mode": "working",
-  "status" : "preview",
-  "sequence" : "STU 1"
+  "path" : "http://hl7.eu/fhir/imaging/1.0.0-ballot",
+  "desc" : "First Standard for Trial Use (STU) ballot release of the EU Imaging ReportFHIR R4.",
+  "descmd" : "First Standard for Trial Use (STU) ballot release of the EU Imaging ReportFHIR R4.",  
+  "status" : "ballot",
+  "sequence" : "STU 1",
+  "mode": "milestone",
+  "changes" : "changes.html"
 }
