@@ -3,6 +3,8 @@ name: Validate and Deploy to Separate Repositories
 on:
   push:
     branches: ['**']  # Trigger on any branch push
+    branches-ignore:
+      - '1.0.0-ballot'  # Never run on pushes from this branch
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
