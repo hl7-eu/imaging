@@ -123,3 +123,46 @@ Slice 'Bundle.entry:CompositionEuImaging': a matching slice is required, but not
 # This is a known issue of the R5 version of this specification. We are balloting a proposed solution to this error (see https://jira.hl7.org/browse/FHIR-56038).
 Slice 'Bundle.entry:DiagnosticReportEuImaging': a matching slice is required, but not found (from http://hl7.eu/fhir/imaging-r5/StructureDefinition/BundleReportEuImaging|1.0.0-ballot). Note that other slices are allowed in addition to this required slice
 {% endif %}
+
+{% if isR4 %}
+# There are no valid display names found for the code for language(s) 'de-DE'.
+NO_VALID_DISPLAY_FOUND_NONE_FOR_LANG_OK
+
+# Reference to deprecated ValueSet and extensions
+MSG_DEPRECATED
+MSG_DEPENDS_ON_DEPRECATED
+
+# Not updated dependencies
+The ImplementationGuide uses package hl7.terminology.r4#7.0.1 released on 2025-12-11, but the most recent appropriate version is 7.1.0. This reference is getting old and the more recent version should be considered
+The ImplementationGuide uses package ihe.iti.mhd#4.2.3 released on 2025-10-31, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
+{% endif %}
+
+
+# There are no valid display names found for the code for language(s) 'de-DE'.
+NO_VALID_DISPLAY_FOUND_NONE_FOR_LANG_OK
+
+# Reference to deprecated ValueSet and extensions
+MSG_DEPRECATED
+MSG_DEPENDS_ON_DEPRECATED
+
+# Not updated dependencies
+The ImplementationGuide uses package hl7.terminology.r4#7.0.1 released on 2025-12-11, but the most recent appropriate version is 7.1.0. This reference is getting old and the more recent version should be considered
+The ImplementationGuide uses package ihe.iti.mhd#4.2.3 released on 2025-10-31, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
+
+# R5 Doc Bundle rules pre-adopted
+BUNDLE_BUNDLE_ENTRY_REVERSE_R4
+
+# Definitions not found
+A definition could not be found for Canonical URL 'http://www.rsna.org/RadLex_Playbook.aspx'
+
+# The display in the ValueSet does not match with any known display
+VALUESET_CODE_CONCEPT_HINT
+
+# Not resolved URL
+Type_Specific_Checks_DT_URL_Resolve
+
+# not valid url
+The URL is not valid because '(URL contains 4 Invalid Characters: '\')': file://C:\zFHIR-publication\hl7-eu\health-data-api\output/StructureDefinition-EehrxfMhdDocumentReference.html
+
+# Non matching slices
+This element does not match any known slice defined in the profile http://hl7.eu/fhir/imaging/StructureDefinition/BundleReportEuImaging|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
