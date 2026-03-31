@@ -59,6 +59,7 @@ InstanceOf: $EuOrganization
 Title: "Organization: unstructured report"
 Description: "Organization used in the unstructured report"
 Usage: #example
+{{R5}}// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
 * name = "Rediologie Zentrum Bremen"
 * contact
   * telecom[+]
@@ -106,7 +107,7 @@ Usage: #example
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
 
 * subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
-* performer[organization].reference = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
+{% if isR4 %}* performer[organization] = Reference(OrganizationUnstructuredReport){% endif %}{% if isR5 %}* performer[organization].reference = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"{% endif %}
 * basedOn[order-identifier].identifier
   * system = "http://example.org/myhospital/accessionsystem"
   * value = "ACC-123456789"
