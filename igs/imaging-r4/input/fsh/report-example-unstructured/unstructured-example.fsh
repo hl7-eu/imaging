@@ -14,7 +14,7 @@ Usage: #example
 //R5* modality = http://dicom.nema.org/resources/ontology/DCM#CT
 
 * category[+]
-  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * coding[priority-area] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
   * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 
@@ -88,6 +88,9 @@ Usage: #example
 * entry[Patient]
   * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
   * resource = PatientUnstructuredReport
+//R5* entry[+]
+//R5  * fullUrl = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
+//R5  * resource = OrganizationUnstructuredReport
 
 Instance: DiagnosticReportMinimalMetadata
 InstanceOf: DiagnosticReportEuImagingMinimalMetadata
@@ -99,11 +102,11 @@ Usage: #example
   * value = "unstructured-report-001"
 * status = #final
 * code = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
-* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
 
 * subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
-* performer[organization] = Reference(OrganizationUnstructuredReport)
+* performer[organization].reference = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
 * basedOn[order-identifier].identifier
   * system = "http://example.org/myhospital/accessionsystem"
   * value = "ACC-123456789"

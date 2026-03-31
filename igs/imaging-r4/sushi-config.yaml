@@ -1,5 +1,8 @@
-id: hl7.fhir.eu.imaging-r4
-canonical: http://hl7.eu/fhir/imaging-r4
+
+id: hl7.fhir.eu.imaging
+canonical: http://hl7.eu/fhir/imaging
+
+
 name: HL7EuImagingStudyReport
 title: HL7 Europe Imaging Report R4
 description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR R4.
@@ -235,6 +238,21 @@ menu:
 #     description: An example Patient
 #     exampleBoolean: true
 #   Patient/bad-example: omit
+resources:
+  Binary/BinarySemistructuredReport:
+    name: Binary Semistructured Report
+    description: An example of a Binary resource representing a semistructured report.
+    exampleBoolean: true
+
+  Binary/BinaryStructuredReport:
+    name: Binary Structured Report
+    description: An example of a Binary resource representing a structured report.
+    exampleBoolean: true
+
+  Binary/BinaryUnstructuredReport:
+    name: Binary Unstructured Report
+    description: An example of a Binary resource representing an unstructured report.
+    exampleBoolean: true
 #
 #
 # Groups can control certain aspects of the IG generation.  The IG

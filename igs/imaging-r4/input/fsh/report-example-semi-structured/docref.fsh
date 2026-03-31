@@ -13,7 +13,7 @@ Usage: #example
 * extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#MR
 //R5* modality = http://dicom.nema.org/resources/ontology/DCM#MR
 * category[+]
-  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * coding[priority-area] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
   * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 * subject = Reference(PatientSemiStructuredReport)

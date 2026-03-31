@@ -20,19 +20,6 @@
 </div>
 
 
-<div xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- <blockquote class="stu-note">  
-   <p>This is the 1.0.0-ballot version of the specification to be used by WP 7.2 of Xt-EHR for public consultation.
-   </p>
-   <p> The content of this implementation guide is discussed HL7 EU calls (<a href="https://confluence.hl7.org/spaces/HEU/pages/321160129/Imaging+meetings">HL7-eu imaging on Confluence</a>).
-   </p>
-   <p> This IG is available in FHIR version 4.0.1 and 5.0.0, and built from a single source repository on GitHub (<a href="https://github.com/hl7-eu/imaging">https://github.com/hl7-eu/imaging</a>)
-   </p>
- </blockquote>
-</div>
-
-
 ### Scope
 
 This implementation guide specifies imaging study report data in the **European** context, as defined in  and refined by , as a FHIR model. It defines:

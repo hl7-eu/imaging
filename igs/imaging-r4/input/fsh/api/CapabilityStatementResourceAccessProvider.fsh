@@ -25,7 +25,7 @@ IHE QEDm Clinical Data Source capabilities.
 * format[+] = #xml
 
 // Instantiation references
-* instantiates[+] = "http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server"
+ * instantiates[+] = "http://hl7.org/fhir/uv/ipa/CapabilityStatement/ipa-server"
 
 // Server mode for Imaging Report Resource Access Provider
 * rest[+].mode = #server
