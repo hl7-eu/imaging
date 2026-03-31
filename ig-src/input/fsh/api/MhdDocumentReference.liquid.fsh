@@ -29,7 +29,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * coding
     * insert SliceElement( #value, $this )
   * coding contains priority-area 1..1
-  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 
 * type 1..1
   * ^short = "Type of Imaging Diagnostic Report"

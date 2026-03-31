@@ -2,6 +2,7 @@ ValueSet: ImagingReportTypesEuVSEuImaging
 Title: "ValueSet: Radiology Report Types"
 Description: "The set of radiology types as defined by LOINC."
 * insert SetFmmAndStatusRule( 1, draft )
+* insert LOINCCopyrightForVS
 * ^experimental = false
 
 // Commented due to new error in validator * include codes from system $loinc where STATUS = "ACTIVE" and SCALE_TYP = "Doc" and CLASS = "RAD"

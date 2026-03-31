@@ -13,7 +13,7 @@ Usage: #example
 {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US
 {{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US
 * category[+]
-  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
   * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 * subject = Reference(PatientStructuredReport)
@@ -184,12 +184,12 @@ Usage: #example
 * entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/StressWmsi17"
   * resource = StressWmsi17
-* entry[+]
-  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/StructuredKeyImageRest"
-  * resource = StructuredKeyImageRest
-* entry[+]
-  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/StructuredKeyImageStress"
-  * resource = StructuredKeyImageStress
+{{R4}}* entry[+]
+{{R4}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/StructuredKeyImageRest"
+{{R4}}  * resource = StructuredKeyImageRest
+{{R4}}* entry[+]
+{{R4}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/StructuredKeyImageStress"
+{{R4}}  * resource = StructuredKeyImageStress
 * entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/ServiceRequest/ComeBackNextYearServiceRequest"
   * resource = ComeBackNextYearServiceRequest

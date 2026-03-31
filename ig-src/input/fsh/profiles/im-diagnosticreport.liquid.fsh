@@ -114,7 +114,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * insert SliceElement( #value, $this )
 * category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
-* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
   * ^definition = "Defines the priority category of the report as defined in the API spec."
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
   * ^definition = "Defines the category of the report, Diagnostic imaging report."
