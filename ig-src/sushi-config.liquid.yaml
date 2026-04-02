@@ -192,7 +192,7 @@ menu:
   R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
 {% endif %}
 {% if isR5 %}
-  R4: https://hl7-eu/fhir/imaging/history.html
+  R4: https://build.fhir.org/ig/hl7-eu/imaging-r4/
 {% endif %}
   
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
