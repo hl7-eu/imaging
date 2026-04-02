@@ -9,7 +9,7 @@ Description: "Document Bundle for Imaging Report"
 * identifier 1..1
 * type = #document
 * total ..0
-* link ..0
+
 * entry 2..*
 * entry ^slicing.discriminator[0].type = #type
 * entry ^slicing.discriminator[=].path = "resource"

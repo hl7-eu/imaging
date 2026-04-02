@@ -7,8 +7,8 @@
         class WmsiStress02 <<Observation>> [[./Observation-StressWmsi02.html]]
     }
     package KeyImages {
-        class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
-        class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
+        class StructuredKeyImageRest <<DocumentReference>> [[./Media-StructuredKeyImageRest.html]]
+        class StructuredKeyImageStress <<DocumentReference>> [[./Media-StructuredKeyImageStress.html]]
     }
     package KeyImages {
         class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
