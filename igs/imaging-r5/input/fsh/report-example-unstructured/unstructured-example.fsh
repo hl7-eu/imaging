@@ -59,6 +59,7 @@ InstanceOf: $EuOrganization
 Title: "Organization: unstructured report"
 Description: "Organization used in the unstructured report"
 Usage: #example
+// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
 * name = "Rediologie Zentrum Bremen"
 * contact
   * telecom[+]
