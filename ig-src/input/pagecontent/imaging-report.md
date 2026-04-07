@@ -34,7 +34,9 @@ In this specification, the order is represented by the {{ServiceRequestOrderEuIm
 
 ##### History
 
-This section includes patient history and other prior clinical details deemed relevant to the imaging study by the imaging clinician. Some information may be provided by the referring physician in the order, and more is extracted from the medical record by imaging staff, automated tools, or by the radiologist themselves. This information provides background for the imaging clinician, context for the contents of the report, and is sometimes relevant to billing and clinical guidelines. Potential sources include impressions or summaries of the clinical notes from the encounter where the imaging order was placed.
+This section includes patient history and other prior clinical details deemed relevant to the imaging study by the imaging clinician (e.g. pregnancy status, presence of metal implants, medication given prior imaging, etc.). Some information may be provided by the referring physician in the order, and more is extracted from the medical record by imaging staff, automated tools, or by the radiologist themselves. This information provides background for the imaging clinician, context for the contents of the report, and is sometimes relevant to billing and clinical guidelines. Potential sources include impressions or summaries of the clinical notes from the encounter where the imaging order was placed.
+
+This section will typically include resources of the type Observation, Condition, Device, Medication Administration, MedicationAdminstration, MedicationDispense and/or Device but is not restricted to those.
 
 ##### Procedure
 
