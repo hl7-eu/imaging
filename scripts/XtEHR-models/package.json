@@ -1,0 +1,28 @@
+{
+  "name" : "xtehr.eu.ehds.models",
+  "version" : "0.3.0",
+  "tools-version" : 3,
+  "type" : "IG",
+  "date" : "20260206193331",
+  "license" : "CC0-1.0",
+  "canonical" : "http://www.xt-ehr.eu/fhir/models",
+  "url" : "http://www.xt-ehr.eu/fhir/models/0.3.0",
+  "title" : "EHDS Logical Information Models",
+  "description" : "EHDS Logical Information Models (built Fri, Feb 6, 2026 19:33+0100+01:00)",
+  "fhirVersions" : ["5.0.0"],
+  "dependencies" : {
+    "hl7.terminology.r5" : "7.0.1",
+    "hl7.fhir.uv.extensions.r5" : "5.2.0"
+  },
+  "author" : "Xt-EHR",
+  "maintainers" : [
+    {
+      "name" : "Xt-EHR",
+      "url" : "http://www.xt-ehr.eu/"
+    }
+  ],
+  "directories" : {
+    "lib" : "package",
+    "example" : "example"
+  }
+}

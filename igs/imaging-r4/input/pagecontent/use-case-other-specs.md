@@ -1,5 +1,5 @@
 {% include variable-definitions.md %}
-### Imaging report and relaed specifications
+### Imaging report and related specifications
 
 #### IHE Imaging Diagnostic Report ({{iheIDR}})
 

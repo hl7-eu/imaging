@@ -14,6 +14,10 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 * status 1..1
 
+{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.version named version 0..1
+{{R4}}* extension[version]
+{{R4}}  * ^short = "Version of the document referenced by this DocumentReference." 
+
 // subject
 * subject 1..1
 {{R5}}* subject only Reference( $EuPatient )
@@ -25,7 +29,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * coding
     * insert SliceElement( #value, $this )
   * coding contains priority-area 1..1
-  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 
 * type 1..1
   * ^short = "Type of Imaging Diagnostic Report"
@@ -45,10 +49,10 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 {{R5}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
 {{R5}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 {{R5}}  * concept 1..1
-{{R5}}    * coding
-{{R5}}      * insert SliceElement( #value, concept )
-{{R5}}    * coding contains anatomical-region 1..*
-{{R5}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (extensible)
+{{R5}}    * coding from ValueSetAnatomicalRegion (extensible)
+// {{R5}}      * insert SliceElement( #pattern, $this )
+// {{R5}}    * coding contains anatomical-region 1..*
+// {{R5}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
 {{R4}}* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 {{R4}}* extension[bodysite].extension[concept] 1..1
 {{R4}}* extension[bodysite].extension[concept]

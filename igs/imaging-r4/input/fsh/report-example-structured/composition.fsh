@@ -4,7 +4,7 @@ Title: "Composition: structured report"
 Description: "Example of a CompositionEuImaging showing the report with structured data."
 Usage: #example
 * status = #final
-* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
+* subject = Reference(PatientStructuredReport)
 * date = "2025-09-05T02:22:00.000Z" 
 * language = #en-GB
 * identifier
@@ -15,10 +15,12 @@ Usage: #example
   * valueReference
     * type = #ServiceRequest
     * identifier
-      * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+      * type
+        * coding[+] = $v2-0203#ACSN 
+        * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "87654321" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference.reference = "urn:uuid:11111111-2222-4333-8444-000000000002"
+* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportStructured)
 
 * extension[version].valueString = "1"
 //R5* version = "1" // invented - not there in the report
@@ -27,11 +29,11 @@ Usage: #example
 * type = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
 
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasound"
-* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
   
-* author[author].reference = "urn:uuid:11111111-2222-4333-8444-000000000005"
-* author[organization].reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+* author[author] = Reference(PractitionerRoleStructuredReportAuthor)
+* author[organization] = Reference(OrganizationStructuredReport)
 
 * title = "Transthoracic echocardiogram" // invented - not there in the report
 * text
@@ -42,11 +44,14 @@ Usage: #example
 * section[imagingstudy]
   * title = "Imaging Study"
   * code = $loinc#18726-0 "Radiology studies (set)"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000004"
+  * entry[+] = Reference(ImagingStudStructuredReport)
 
 ///////////////////////////////////////////////////////////////////////
 
 * section[order]
+  * text
+    * status = #generated
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Accession Number: 87654321</div>"
   * title = "Order"
   * code = $loinc#55115-0 "Requested imaging studies information Document"
   * entry[+]
@@ -58,12 +63,15 @@ Usage: #example
 
 ///////////////////////////////////////////////////////////////////////
 * section[history]
+  * text
+    * status = #generated
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Weight 80kg, Height: 180 cm, HT: 180 bpm, BP: 80/90 mm/Hg</div>"
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000008"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000009"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000a"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000b"
+  * entry[vitals][+] = Reference (WeightObservation)
+  * entry[vitals][+] = Reference (HeightObservation)
+  * entry[vitals][+] = Reference (BPObservation)
+  * entry[vitals][+] = Reference (HRObservation)
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
@@ -113,41 +121,41 @@ Usage: #example
   * extension[note][+]
     * valueAnnotation.text =
   """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000d"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000e"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000000f"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000010"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000011"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000012"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000013"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000014"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000015"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000016"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000018"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000019"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001a"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001b"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001c"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001d"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001e"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000001f"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000020"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000021"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000022"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000023"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000024"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000025"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000026"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000027"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000029"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002a"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002b"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002c"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002d"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002e"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000030"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-00000000002f"
-  
+  * entry[finding] = Reference (RestWmsi01)
+  * entry[finding][+] = Reference (RestWmsi02)
+  * entry[finding][+] = Reference (RestWmsi03)
+  * entry[finding][+] = Reference (RestWmsi04)
+  * entry[finding][+] = Reference (RestWmsi05)
+  * entry[finding][+] = Reference (RestWmsi06)
+  * entry[finding][+] = Reference (RestWmsi07)
+  * entry[finding][+] = Reference (RestWmsi08)
+  * entry[finding][+] = Reference (RestWmsi09)
+  * entry[finding][+] = Reference (RestWmsi10)
+  * entry[finding][+] = Reference (RestWmsi12)
+  * entry[finding][+] = Reference (RestWmsi13)
+  * entry[finding][+] = Reference (RestWmsi14)
+  * entry[finding][+] = Reference (RestWmsi15)
+  * entry[finding][+] = Reference (RestWmsi16)
+  * entry[finding][+] = Reference (RestWmsi17)
+  * entry[finding][+] = Reference (StressWmsi01)
+  * entry[finding][+] = Reference (StressWmsi02)
+  * entry[finding][+] = Reference (StressWmsi03)
+  * entry[finding][+] = Reference (StressWmsi04)
+  * entry[finding][+] = Reference (StressWmsi05)
+  * entry[finding][+] = Reference (StressWmsi06)
+  * entry[finding][+] = Reference (StressWmsi07)
+  * entry[finding][+] = Reference (StressWmsi08)
+  * entry[finding][+] = Reference (StressWmsi09)
+  * entry[finding][+] = Reference (StressWmsi10)
+  * entry[finding][+] = Reference (StressWmsi12)
+  * entry[finding][+] = Reference (StressWmsi13)
+  * entry[finding][+] = Reference (StressWmsi14)
+  * entry[finding][+] = Reference (StressWmsi15)
+  * entry[finding][+] = Reference (StressWmsi16)
+  * entry[finding][+] = Reference (StressWmsi17)
+  * entry[finding][+] = Reference (RestWmsi11)
+  * entry[finding][+] = Reference (StressWmsi11)
+  * entry[image] = Reference (WMSIImage)
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
   * title = "Impression"
@@ -166,4 +174,4 @@ See you next year.
 * section[recommendation]
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
-  * entry[+].reference = "urn:uuid:11111111-2222-4333-8444-000000000031"
+  * entry[+] = Reference(ComeBackNextYearServiceRequest)

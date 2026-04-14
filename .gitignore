@@ -12,3 +12,5 @@ publisher.jar
 translations/**
 
 subigs/**
+ig-test
+.vscode/settings.json

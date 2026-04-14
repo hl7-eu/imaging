@@ -8,6 +8,6 @@ Usage: #definition
 * status = #draft
 * description = "Consumes the Imaging Report."
 * documentation = """
-This actor represents a system that consumes/uses an imaging report. This includes a wide variety of different systems that include systems that render the report, render only a report summary, interpreted the report and use the retrieved information in providing clinical decision report, systems generating metrics, prefetching, ...   
+This actor represents a system that consumes an imaging report. Given that this encompases a wide variety of systems, including displaying pre-rendered reports in a UI, processing for clinical decision report, systems generating metrics, etc., no obligations are defined for this actor as of now. Obligations may be added in the future when specific use cases or subgorups are defined.
 """
 * type = #system

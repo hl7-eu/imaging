@@ -4,8 +4,8 @@ InstanceOf: $EuPractitionerRole
 Title: "PractitionerRole: structured report"
 Description: "Role of the report author."
 Usage: #example
-* practitioner.reference = "urn:uuid:11111111-2222-4333-8444-000000000006"
-* organization.reference = "urn:uuid:11111111-2222-4333-8444-000000000007"
+* practitioner = Reference(PractitionerStructuredReportAuthor)
+* organization = Reference(OrganizationStructuredReport)
 * code = $sct#394579002 "Cardiology"
 
 Instance: PractitionerStructuredReportAuthor

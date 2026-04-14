@@ -4,82 +4,716 @@
 
 #### EHDSImagingReport
 
+<div class="model-map-block">
+  <div class="callout-wrapper">
+    <div class="callout-box">
+      <strong>Ongoing alignment:</strong>
+      The Xt-EHR logical models are under active revision and continuous refinement.
+      Updates from Xt-EHR will be progressively incorporated into this Implementation
+      Guide to maintain alignment with the evolving EHDS specifications.
+    </div>
+  </div>
+</div>
+
 The following table shows the mapping from EHDSImagingReport logical model elements to FHIR profiles.
 
-{:.grid}
-| Element | Target FHIR resource.element | Comments |
-| ------- | ---------------------------- | -------- |
-| EHDSImagingReport.header |  | N/A |
-| EHDSImagingReport.[header.subject](StructureDefinition-EHDSPatient.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).subject ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).subject |  |
-| EHDSImagingReport.header.identifier | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).identifier ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).identifier |  |
-| EHDSImagingReport.header.authorship | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).author |  |
-| EHDSImagingReport.header.authorship.author[x] ([EHDSHealthProfessional](StructureDefinition-EHDSHealthProfessional.html), [EHDSOrganisation](StructureDefinition-EHDSOrganisation.html), [EHDSDevice](StructureDefinition-EHDSDevice.html)) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).author[author] ; [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).author[organization] ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).performer[organization] ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).resultsInterpreter[author] |  |
-| EHDSImagingReport.header.authorship.datetime | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).date ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).issued |  |
-| EHDSImagingReport.header.lastUpdate | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).date ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).meta | meta.lastUpdated represents the time at which the instance of the resource was last modified by the server that hosts it. |
-| EHDSImagingReport.header.status | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).status ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).status |  |
-| EHDSImagingReport.header.statusReason[x] |  |  |
-| EHDSImagingReport.header.language | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).language ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).language |  |
-| EHDSImagingReport.header.version | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).version |  |
-| EHDSImagingReport.[presentedForm](StructureDefinition-EHDSAttachment.html) | [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).presentedForm ; [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).text | For all the resources that don't have a .presentedForm element, the .text is the default element to map this requirement. |
-| EHDSImagingReport.header.documentType | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).category[imaging] ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).category[imaging] |  |
-| EHDSImagingReport.header.documentTitle | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).title |  |
-| EHDSImagingReport.header.documentStatus | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).status ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).status |  |
-| EHDSImagingReport.header.period | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).event ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).effectivePeriod |  |
-| EHDSImagingReport.header.attestation | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).attester[resultValidator] |  |
-| EHDSImagingReport.[header.attestation.attester](StructureDefinition-EHDSHealthProfessional.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).attester[resultValidator] |  |
-| EHDSImagingReport.header.attestation.datetime | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).attester[resultValidator] |  |
-| EHDSImagingReport.header.legalAuthentication | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).attester[legalAuthenticator] |  |
-| EHDSImagingReport.[header.legalAuthentication.legalAuthenticator](StructureDefinition-EHDSHealthProfessional.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).attester[legalAuthenticator] |  |
-| EHDSImagingReport.header.legalAuthentication.datetime | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).attester[legalAuthenticator] |  |
-| EHDSImagingReport.header.eventType | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).event[imagingstudy] ; [ProcedureEuImaging](StructureDefinition-ProcedureEuImaging.html).location ; [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).event[procedure] ; [ImagingStudyEuImaging](StructureDefinition-ImagingStudyEuImaging.html).series ; [ImagingStudyEuImaging](StructureDefinition-ImagingStudyEuImaging.html).modality |  |
-| EHDSImagingReport.header.authorSpecialty | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).author[author] |  |
-| EHDSImagingReport.[header.custodian](StructureDefinition-EHDSOrganisation.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).custodian |  |
-| EHDSImagingReport.header.documentFormat | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).type | Could be extended with list of approved templates as a separate category in the future. |
-| EHDSImagingReport.header.confidentiality | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).meta ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).meta |  |
-| EHDSImagingReport.header.accessionNumber | [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).identifier[accessionNumber] ; [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).extension[basedOn] |  |
-| EHDSImagingReport.[header.healthInsuranceAndPaymentInformation](StructureDefinition-EHDSCoverage.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).extension[basedOn] ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).basedOn ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).insurance |  |
-| EHDSImagingReport.[header.intendedRecipient[x]](StructureDefinition-EHDSPatient.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).extension[informationRecipient] |  |
-| EHDSImagingReport.body |  | N/A |
-| EHDSImagingReport.body.orderInformation | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[order] |  |
-| EHDSImagingReport.body.orderInformation.orderId | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).identifier ; [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[order] |  |
-| EHDSImagingReport.body.orderInformation.orderDateAndTime | [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).authoredOn |  |
-| EHDSImagingReport.[body.orderInformation.orderPlacer](StructureDefinition-EHDSHealthProfessional.html) | [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).requester |  |
-| EHDSImagingReport.body.orderInformation.orderReasonText | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[order] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).reason |  |
-| EHDSImagingReport.body.orderInformation.orderReason | [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).reason | orderReason and clinicalQuestion map to the same element as a design choice |
-| EHDSImagingReport.body.orderInformation.clinicalQuestion | [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).reason |  |
-| EHDSImagingReport.body.orderInformation.supportingInformation | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).supportingInfo |  |
-| EHDSImagingReport.[body.orderInformation.supportingInformation.observation](StructureDefinition-EHDSObservation.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).supportingInfo |  |
-| EHDSImagingReport.[body.orderInformation.supportingInformation.condition](StructureDefinition-EHDSCondition.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).supportingInfo |  |
-| EHDSImagingReport.[body.orderInformation.supportingInformation.medicationAdministration](StructureDefinition-EHDSMedicationAdministration.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).reason |  |
-| EHDSImagingReport.[body.orderInformation.supportingInformation.devices](StructureDefinition-EHDSDevice.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).supportingInfo | Refer to device, might be replaced by a more constraint reference. |
-| EHDSImagingReport.[body.orderInformation.supportingInformation.pregnancyStatus](StructureDefinition-EHDSCurrentPregnancy.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] ; [ServiceRequestOrderEuImaging](StructureDefinition-ServiceRequestOrderEuImaging.html).supportingInfo[pregnancy] | Code in supporting info, could be a observation as well |
-| EHDSImagingReport.body.orderInformation.supportingInformation.sexForClinicalUse | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).subject ; EuPatient.extension[sex-for-clinical-use] ; EuPatient.extension[sex-for-clinical-use].extension[value].valueCodeableConcept ; EuPatient.extension[sex-for-clinical-use].extension[period].valuePeriod |  |
-| EHDSImagingReport.body.orderInformation.supportingInformation.otherSupportingInformation | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[history] |  |
-| EHDSImagingReport.[body.specimen](StructureDefinition-EHDSSpecimen.html) | [ImagingStudyEuImaging](StructureDefinition-ImagingStudyEuImaging.html).series |  |
-| EHDSImagingReport.[body.serviceRequest](StructureDefinition-EHDSServiceRequest.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[order] |  |
-| EHDSImagingReport.body.exposureInformation |  |  |
-| EHDSImagingReport.body.exposureInformation.effectiveDose | [ObservationRadiationDoseEuImaging](StructureDefinition-ObservationRadiationDoseEuImaging.html).component | Mapping to a defined slice is needed in the future |
-| EHDSImagingReport.body.exposureInformation.equivalentDoseInformation | [ObservationRadiationDoseEuImaging](StructureDefinition-ObservationRadiationDoseEuImaging.html).component | Mapping to a defined slice is needed in the future |
-| EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.equivalentDose | [ObservationRadiationDoseEuImaging](StructureDefinition-ObservationRadiationDoseEuImaging.html).component | Mapping to a defined slice is needed in the future |
-| EHDSImagingReport.body.exposureInformation.equivalentDoseInformation.tissueType | [ObservationRadiationDoseEuImaging](StructureDefinition-ObservationRadiationDoseEuImaging.html).bodySite |  |
-| EHDSImagingReport.body.examinationReport |  |  |
-| EHDSImagingReport.body.examinationReport.modality | [ImagingStudyEuImaging](StructureDefinition-ImagingStudyEuImaging.html).series |  |
-| EHDSImagingReport.[body.examinationReport.bodyPart](StructureDefinition-EHDSBodyStructure.html) |  |  |
-| EHDSImagingReport.examinationReport.bodyPart.bodyLocation | [ImagingStudyEuImaging](StructureDefinition-ImagingStudyEuImaging.html).series ; EuBodyStructure.morphology ; EuBodyStructure.includedStructure.structure |  |
-| EHDSImagingReport.examinationReport.bodyPart.laterality | [ImagingStudyEuImaging](StructureDefinition-ImagingStudyEuImaging.html).series ; EuBodyStructure.includedStructure.laterality |  |
-| EHDSImagingReport.[body.examinationReport.imagingProcedures](StructureDefinition-EHDSProcedure.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[procedure] |  |
-| EHDSImagingReport.[body.examinationReport.medication](StructureDefinition-EHDSMedicationAdministration.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[procedure] ; EuMedicationAdministration.partOf |  |
-| EHDSImagingReport.[body.examinationReport.adverseReaction](StructureDefinition-EHDSAllergyIntolerance.html) | [ImAdverseEvent](StructureDefinition-ImAdverseEvent.html).suspectEntity[procedure] ; [ImAdverseEvent](StructureDefinition-ImAdverseEvent.html).contributingFactor[allergy] ; [ImAdverseEvent](StructureDefinition-ImAdverseEvent.html).status ; [ImAdverseEvent](StructureDefinition-ImAdverseEvent.html).code ; [ImAdverseEvent](StructureDefinition-ImAdverseEvent.html).subject |  |
-| EHDSImagingReport.body.examinationReport.resultData | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[findings] |  |
-| EHDSImagingReport.body.examinationReport.resultData.resultText | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[findings] |  |
-| EHDSImagingReport.[body.examinationReport.resultData.observationResults](StructureDefinition-EHDSObservation.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[findings] ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).result |  |
-| EHDSImagingReport.body.examinationReport.conclusion | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[impression] |  |
-| EHDSImagingReport.body.examinationReport.conclusion.impression | [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).conclusion |  |
-| EHDSImagingReport.body.examinationReport.conclusion.conditionOrFinding[x] ([EHDSCondition](StructureDefinition-EHDSCondition.html), [EHDSObservation](StructureDefinition-EHDSObservation.html)) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[impression] ; [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[impression] |  |
-| EHDSImagingReport.body.recommendation | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[recommendation] |  |
-| EHDSImagingReport.body.recommendation.description | EuCarePlan.description |  |
-| EHDSImagingReport.[body.recommendation.carePlan](StructureDefinition-EHDSCarePlan.html) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[recommendation] |  |
-| EHDSImagingReport.[body.comparisonStudy](#ehdsimagingreport) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[comparison] |  |
-| EHDSImagingReport.[dicomStudyMetadata](#ehdsimagingstudy) | [ImagingStudyEuImagingManifest](https://build.fhir.org/ig/hl7-eu/imaging-manifest/) |  |
-| EHDSImagingReport.attachments[x] ([EHDSAttachment](StructureDefinition-EHDSAttachment.html), [EHDSMedia](StructureDefinition-EHDSMedia.html)) | [CompositionEuImaging](StructureDefinition-CompositionEuImaging.html).section[comparison] ; [DiagnosticReportEuImaging](StructureDefinition-DiagnosticReportEuImaging.html).media ; [ObservationFindingEuImaging](StructureDefinition-ObservationFindingEuImaging.html).derivedFrom |  |
+<div class="table-wrap">
+  <strong>Mapping Context</strong>
+  <ul>
+    <li>
+      <strong>Source logical model:</strong>
+      <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html" target="_blank">EHDSImagingReport</a>
+    </li>
+  </ul>
+</div>
 
+
+
+
+
+<div class="table-wrap">
+  <table summary="EHDSImagingReport → FHIR Profiles (R5)">
+    <caption>EHDSImagingReport → FHIR Profiles (R5)</caption>
+    <thead>
+      <tr>
+        <th colspan="1" class="src-head">EHDSImagingReport (Logical Model)</th>
+        <th class="relhead">Relationship</th>
+        <th colspan="3" class="tgt-head">Target FHIR Resource</th>
+      </tr>
+      <tr>
+        <th class="src-sub">Element</th>
+        <th class="relsub">Relation</th>
+        <th class="tgt-sub">Resource</th>
+        <th class="tgt-sub">Element</th>
+        <th class="tgt-sub">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>header</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>header.subject</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>subject</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.subject</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>subject</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.identifier</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>identifier</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.identifier</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>identifier</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>author[author]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>resultsInterpreter[author]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>performer[organization]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.author[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>resultsInterpreter[author]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.date</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>date</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.date</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>issued</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.status</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>status</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.status</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>status</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.source</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>header.language</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>language</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.language</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>language</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.documentType</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>category</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.documentTitle</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>title</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.period</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>event.period</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.period</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>effectivePeriod</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.version</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>version</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.version</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[artifactVersion]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.attestation</td>
+        <td></td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>attester[resultValidator]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.attestation.attester[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>attester[resultValidator].party</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.attestation.attester[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>attester[resultValidator].party.extension[deviceAttester]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.attestation.datetime</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>attester[resultValidator].time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.legalAuthentication</td>
+        <td></td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>attester[legalAuthenticator]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.legalAuthentication.legalAuthenticator[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
+        <td>equivalent</td>
+        <td></td>
+        <td>attester[legalAuthenticator].party</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.legalAuthentication.legalAuthenticator[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
+        <td>equivalent</td>
+        <td></td>
+        <td>attester[legalAuthenticator].party</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.legalAuthentication.datetime</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>attester[legalAuthenticator].time</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.eventType</td>
+        <td>source-is-broader-than-target</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>category[diagnostic-service]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.eventType</td>
+        <td>source-is-broader-than-target</td>
+        <td><a href="./StructureDefinition-ProcedureEuImaging.html">ProcedureEuImaging</a></td>
+        <td>code</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.eventType</td>
+        <td>source-is-broader-than-target</td>
+        <td><a href="./StructureDefinition-ImagingStudyEuImaging.html">ImagingStudyEuImaging</a></td>
+        <td>series.modality</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.eventType</td>
+        <td>source-is-broader-than-target</td>
+        <td><a href="./StructureDefinition-ImagingStudyEuImaging.html">ImagingStudyEuImaging</a></td>
+        <td>modality</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.serviceSpecialty</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>category[diagnostic-service]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.serviceSpecialty</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>category[diagnostic-service]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.custodian</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>custodian</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>presentedForm</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>presentedForm</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>presentedForm</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>text</td>
+        <td>For all the resources that don&apos;t have a .presentedForm element, the .text is the default element to map this requirement.</td>
+      </tr>
+      <tr>
+        <td>header.accessionNumber</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ServiceRequestOrderEuImaging.html">ServiceRequestOrderEuImaging</a></td>
+        <td>identifier[accessionNumber]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient">EHDSPatient</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>extension[informationRecipient]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSRelatedPerson">EHDSRelatedPerson</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>extension[informationRecipient]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>extension[informationRecipient]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSOrganisation">EHDSOrganisation</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>extension[informationRecipient]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>extension[informationRecipient]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>header.intendedRecipient[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSPatient">EHDSPatient</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[informationRecipient]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>body.orderInformation</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[order]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderId</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>extension[basedOn]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderId</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>basedOn[ServiceRequestOrderEuImagingaccession]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderDateAndTime</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ServiceRequestOrderEuImaging.html">ServiceRequestOrderEuImaging</a></td>
+        <td>authoredOn</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderPlacer[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ServiceRequestOrderEuImaging.html">ServiceRequestOrderEuImaging</a></td>
+        <td>requester</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderReason[CodeableConcept]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ServiceRequestOrderEuImaging.html">ServiceRequestOrderEuImaging</a></td>
+        <td>reason.concept</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderReason[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition">EHDSCondition</a>]</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderReason[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.orderReason[string]</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.orderInformation.clinicalQuestion</td>
+        <td>source-is-narrower-than-target</td>
+        <td><a href="./StructureDefinition-ServiceRequestOrderEuImaging.html">ServiceRequestOrderEuImaging</a></td>
+        <td>reason.concept</td>
+        <td>Order reason and clinical question map to the same element by design choice</td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation.observation</td>
+        <td>source-is-narrower-than-target</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[history].entry</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation.condition</td>
+        <td>source-is-narrower-than-target</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[history].entry</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation.priorMedicationAdministration</td>
+        <td>source-is-narrower-than-target</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[history].entry</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation.device</td>
+        <td>source-is-narrower-than-target</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[history].entry</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation.pregnancyStatus</td>
+        <td>source-is-narrower-than-target</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[history].entry</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.supportingInformation.sexForClinicalUse</td>
+        <td>equivalent</td>
+        <td>EuPatient</td>
+        <td>extension[sex-for-clinical-use]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.specimen</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ImagingStudyEuImaging.html">ImagingStudyEuImaging</a></td>
+        <td>series.specimen</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.exposureInformation</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[radiationDose]</td>
+        <td>Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365</td>
+      </tr>
+      <tr>
+        <td>body.exposureInformation</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[procedure].extension[radiationDose]</td>
+        <td>Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365</td>
+      </tr>
+      <tr>
+        <td>body.exposureInformation</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ObservationRadiationDoseEuImaging.html">ObservationRadiationDoseEuImaging</a></td>
+        <td>value[x]</td>
+        <td>Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365</td>
+      </tr>
+      <tr>
+        <td>body.examinationReport</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.modality</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ImagingStudyEuImaging.html">ImagingStudyEuImaging</a></td>
+        <td>series.modality</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.bodySite</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ImagingStudyEuImaging.html">ImagingStudyEuImaging</a></td>
+        <td>series.bodySite</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.imagingProcedures</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[procedure].entry[procedure]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.imagingProcedures</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[procedure]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.medicationAdministration</td>
+        <td>equivalent</td>
+        <td>EuMedicationAdministration</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.adverseReaction</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-AdverseEventEuImaging.html">AdverseEventEuImaging</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.adverseReaction</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[procedure].entry[adverse-event]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.results[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
+        <td>TN</td>
+        <td><a href="./StructureDefinition-ObservationFindingEuImaging.html">ObservationFindingEuImaging</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.results[string]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[findings].extension[note]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.results[string]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>note</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>N/A</td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion.impression</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[impression].extension[note]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion.impression</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>note</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition">EHDSCondition</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[impression].entry[impression]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSCondition">EHDSCondition</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[impression]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[impression].entry[finding]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.examinationReport.conclusion.conditionOrFinding[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSObservation">EHDSObservation</a>]</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[impression]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.recommendation</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[recommendation]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.recommendation</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[recommendation]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.recommendation.description</td>
+        <td>equivalent</td>
+        <td>EuCarePlan</td>
+        <td>description</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.recommendation.carePlan</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[recommendation].entry[suggestion]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.comparisonStudy</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
+        <td>section[comparison].entry[comparedstudy]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>body.comparisonStudy</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>extension[comparison]</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>dicomStudyMetadata</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ImagingStudyEuImaging.html">ImagingStudyEuImaging</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>attachments</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
+        <td>media</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>attachments</td>
+        <td>equivalent</td>
+        <td><a href="./StructureDefinition-ObservationFindingEuImaging.html">ObservationFindingEuImaging</a></td>
+        <td>derivedFrom</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

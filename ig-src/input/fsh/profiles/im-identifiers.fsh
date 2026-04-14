@@ -12,7 +12,12 @@ In order to ensure uniqueness **across** Hospital Information Systems, accession
 * system 1..1
 * value 1..1
 * type 1..1
-* type = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+* type
+  * coding
+    * insert SliceElement( #value, $this )
+  * coding contains v2-0203-coding 1..1 and dcm 0..1
+  * coding[v2-0203-coding] = $v2-0203#ACSN 
+  * coding[dcm] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
 
 RuleSet: BasedOnServiceRequestOrderEuImagingReference( slicename )
 * basedOn[{slicename}] only Reference( ServiceRequestOrderEuImaging )
@@ -27,8 +32,13 @@ Description: "This profile on Identifier represents the Study Instance UID (0020
 * insert SetFmmAndStatusRule( 1, draft )
 * system = "urn:dicom:uid"
 * value 1..1
-* type 0..1
-* type = MissingDicomTerminology#0020000D // "Study Instance UID"
+* type 1..1
+* type
+  * coding
+    * insert SliceElement( #value, $this )
+  * coding contains dcm 1..1
+  * coding[dcm] = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+
 
 Profile: SopInstanceUidIdentifierEuImaging
 Parent: Identifier

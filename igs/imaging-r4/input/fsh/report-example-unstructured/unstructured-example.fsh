@@ -14,7 +14,7 @@ Usage: #example
 //R5* modality = http://dicom.nema.org/resources/ontology/DCM#CT
 
 * category[+]
-  * coding[priority-area] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * coding[priority-area] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
   * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 
@@ -38,7 +38,7 @@ Usage: #example
 //R5  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
-    * url = "./Bundle/bundle-report-minimal-metadata-unstructured"
+    * url = "Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
@@ -59,6 +59,7 @@ InstanceOf: $EuOrganization
 Title: "Organization: unstructured report"
 Description: "Organization used in the unstructured report"
 Usage: #example
+//R5// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
 * name = "Rediologie Zentrum Bremen"
 * contact
   * telecom[+]
@@ -88,6 +89,9 @@ Usage: #example
 * entry[Patient]
   * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
   * resource = PatientUnstructuredReport
+//R5* entry[+]
+//R5  * fullUrl = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
+//R5  * resource = OrganizationUnstructuredReport
 
 Instance: DiagnosticReportMinimalMetadata
 InstanceOf: DiagnosticReportEuImagingMinimalMetadata
@@ -99,7 +103,7 @@ Usage: #example
   * value = "unstructured-report-001"
 * status = #final
 * code = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
-* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
 
 * subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
@@ -108,16 +112,16 @@ Usage: #example
   * system = "http://example.org/myhospital/accessionsystem"
   * value = "ACC-123456789"
 
+
 * imagingStudy[study-identifier].identifier
+//R5* study[study-identifier].identifier
   * system = "urn:dicom:uid"
   * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
 
-//R5* study[study-identifier].identifier
-//R5  * system = "urn:dicom:uid"
-//R5  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
 * presentedForm[+]
   * contentType = #application/pdf
-  * url = "./Binary/BinaryUnstructuredReport"
+  * url = "Binary/BinaryUnstructuredReport"
   * language = #de
   * creation = "2024-01-01T00:00:00Z"
 

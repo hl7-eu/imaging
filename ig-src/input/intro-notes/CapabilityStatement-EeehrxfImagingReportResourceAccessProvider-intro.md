@@ -1,8 +1,8 @@
 This CapabilityStatement defines the capabilities for systems providing direct resource
 access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
 It inherits patterns from:
-- **IPA (International Patient Access)**: Resource profiles and search parameter patterns
-- **IHE QEDm (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
+- **[HL7-IPA](https://ipa.hl7.org/) (International Patient Access)**: Resource profiles and search parameter patterns
+- **[IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
 
 ### Resource Flexibility (IPA Alignment)
 
@@ -29,3 +29,10 @@ Systems SHALL support SMART Backend Services authorization for all transactions.
 ### Profile Inheritance
 
 Resources SHOULD conform to EU Core profiles where available.
+
+### Providing resource access to FHIR documents
+
+When a imaging report is received as a FHIR document Bundle and the server makes the resources available the following guidelines SHOULD be taken into account:
+
+* Follow the guidance provided in [IHE-mXDE](https://profiles.ihe.net/ITI/mXDE/index.html), specifically related to the generation of Provenance resources; when the resources are added, a Provenance resource SHOULD be present providing information on the source of the information.
+* Retain the original DocumentReference and Bundle resource in the server.

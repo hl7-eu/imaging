@@ -38,7 +38,7 @@ Usage: #example
   * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
-    * url = "./Bundle/bundle-report-minimal-metadata-unstructured"
+    * url = "Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
@@ -59,6 +59,7 @@ InstanceOf: $EuOrganization
 Title: "Organization: unstructured report"
 Description: "Organization used in the unstructured report"
 Usage: #example
+// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
 * name = "Rediologie Zentrum Bremen"
 * contact
   * telecom[+]
@@ -88,6 +89,9 @@ Usage: #example
 * entry[Patient]
   * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
   * resource = PatientUnstructuredReport
+* entry[+]
+  * fullUrl = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
+  * resource = OrganizationUnstructuredReport
 
 Instance: DiagnosticReportMinimalMetadata
 InstanceOf: DiagnosticReportEuImagingMinimalMetadata
@@ -103,21 +107,21 @@ Usage: #example
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
 
 * subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
-* performer[organization] = Reference(OrganizationUnstructuredReport)
+* performer[organization].reference = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
 * basedOn[order-identifier].identifier
   * system = "http://example.org/myhospital/accessionsystem"
   * value = "ACC-123456789"
 
-//R4* imagingStudy[study-identifier].identifier
-//R4  * system = "urn:dicom:uid"
-//R4  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
 
+//R4* imagingStudy[study-identifier].identifier
 * study[study-identifier].identifier
   * system = "urn:dicom:uid"
   * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+
 * presentedForm[+]
   * contentType = #application/pdf
-  * url = "./Binary/BinaryUnstructuredReport"
+  * url = "Binary/BinaryUnstructuredReport"
   * language = #de
   * creation = "2024-01-01T00:00:00Z"
 

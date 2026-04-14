@@ -11,7 +11,11 @@ Description: "Document Bundle for Imaging Report"
 * total ..0
 
 * entry 2..*
-  * insert SliceElement( #profile, resource )
+* entry ^slicing.discriminator[0].type = #type
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.discriminator[+].type = #profile
+* entry ^slicing.discriminator[=].path = "resource"
+* entry ^slicing.rules = #open
   * link ..0
   * fullUrl 1..1
   * resource 1..
@@ -26,7 +30,11 @@ Description: "Document Bundle for Imaging Report"
     requested-procedure 0..* and
     performed-procedure 0..* and 
     findings 0..* and
-    key-images 0..*
+    key-images 0..* and
+    practitioner 0..* and
+    organization 0..* and
+    binary 0..*
+
 * entry[CompositionEuImaging]
   * ^short = "The Composition containing the rendering of the imaging report"
   * resource only CompositionEuImaging
@@ -51,6 +59,15 @@ Description: "Document Bundle for Imaging Report"
 * entry[key-images]
   * ^short = "Key Images referred to from report"
   * resource only ImagingSelectionKeyImageEuImaging
+* entry[practitioner]
+  * ^short = "Practitioner involved in the report"
+  * resource only PractitionerEu or $EuPractitionerRole
+* entry[organization]
+  * ^short = "Organization involved in the report"
+  * resource only $EuOrganization
+* entry[binary]
+  * ^short = "The original rendered report as a binary attachment"
+  * resource only Binary
 
 
 Invariant: dr-comp-author-org

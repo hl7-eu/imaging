@@ -1,16 +1,11 @@
 {
   "package-id" : "hl7.fhir.eu.imaging",
-  "version" : "1.0.0-alpha",
-  "path" : "http://hl7.eu/fhir/imaging/xtehr",
-  "ci-build": "https://build.fhir.org/ig/hl7-eu/imaging-r4",
-  "first": true,
-  "desc" : "This publication is a quality assurance (QA) preview release provided in support of the Xt-EHR Projectathon.",
-  "descmd" : "This publication is a quality assurance (QA) preview release provided in support of the Xt-EHR Projectathon.",  
-  "category" : "Imaging",
-  "introduction" : "This implementation guide specifies imaging study data in the European context, as defined in eHN Imaging Studies and Reports and refined by XtEHR Imaging Logical Model, as a FHIR model.",
-  "title" : "HL7 Europe Imaging Report",
-  "status" : "preview",
+  "version" : "1.0.0-ballot",
+  "path" : "http://hl7.eu/fhir/imaging/1.0.0-ballot",
+  "desc" : "First Standard for Trial Use (STU) ballot release of the EU Imaging ReportFHIR R4.",
+  "descmd" : "First Standard for Trial Use (STU) ballot release of the EU Imaging ReportFHIR R4.",  
+  "status" : "ballot",
   "sequence" : "STU 1",
-  "mode": "working",
+  "mode": "milestone",
   "changes" : "changes.html"
 }

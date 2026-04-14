@@ -29,8 +29,8 @@ classDiagram
     ImPractitionerRole --> ImPractitioner: practitioner
 ```
 
-The source resource (SrcResource) will always point to `ImPractitionerRole` when referring to a healthcare professional. The `ImPractitionerRole` requires support for the `organization` and `practitioner` fields.
+The source resource (SrcResource) will typically  point to `ImPractitionerRole` when referring to a healthcare professional. The `ImPractitionerRole` requires support for the `organization` and `practitioner` fields.
 
 On `ImPractitioner` and `ImOrganization` the fields present to identify the healthcare professional are labeled as must support.
 
-**OPEN ISSUE:** Are there requirements related to ImOrganization.period?
+

@@ -1,28 +1,48 @@
 Instance: StructuredKeyImageRest
-{{R4}}InstanceOf: Media
-{{R5}}InstanceOf: DocumentReference
+InstanceOf: DocumentReferenceKeyImageEuImaging
 Title: "DocumentReference: key image rest"
 Description: "Key image showing the ultrasound at rest."
 Usage: #example
-{{R4}}* status = #completed
+{{R4}}* status = #current
 {{R5}}* status = #current
-* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
-* content
-{{R4}}  * id = "ig-loader-structured-keyimage-rest.png"
-{{R5}}  * attachment
-{{R5}}    * id = "ig-loader-structured-keyimage-rest.png"
+
+* subject = Reference(PatientStructuredReport)
+* content[content]
+  * attachment
+    * contentType = #image/png
+    * id = "ig-loader-structured-keyimage-rest.png"
+    * url = "DocumentReference/StructuredKeyImageRest"
+  * extension[thumbnail]
+    * url = $document-reference-thumbnail-url
+    * valueBoolean = false
+
+
+{{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+* category[imkeyimages]
+  * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"
+
     
 Instance: StructuredKeyImageStress
-{{R4}}InstanceOf: Media
-{{R5}}InstanceOf: DocumentReference
+InstanceOf: DocumentReferenceKeyImageEuImaging
 Title: "DocumentReference: key image stress"
 Description: "Key image showing the ultrasound during stress."
 Usage: #example
-{{R4}}* status = #completed
+{{R4}}* status = #current
 {{R5}}* status = #current
-* subject.reference = "urn:uuid:11111111-2222-4333-8444-000000000003"
-* content
-{{R4}}  * id = "ig-loader-structured-keyimage-stress.png"
-{{R5}}  * attachment
-{{R5}}    * id = "ig-loader-structured-keyimage-stress.png"
-    
+* subject = Reference(PatientStructuredReport)
+
+* content[content]
+  * attachment
+    * contentType = #image/png
+    * id = "ig-loader-structured-keyimage-stress.png"
+    * url = "DocumentReference/StructuredKeyImageStress"
+  * extension[thumbnail]
+    * url = $document-reference-thumbnail-url
+    * valueBoolean = false
+
+
+{{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+* category[imkeyimages]
+  * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"

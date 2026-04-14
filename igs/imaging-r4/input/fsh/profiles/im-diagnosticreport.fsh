@@ -16,15 +16,17 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * basedOn contains ServiceRequestOrderEuImagingaccession 0..*
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
-* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
+* extension contains $information-recipient-url  named informationRecipient 0..*
+ and $diagnosticReport-composition named composition 1..1
 * extension[composition] ^short = "Imaging Diagnostic Report"
 * extension[composition].valueReference only Reference(CompositionEuImaging)
 
 //R5* composition 1..1
 //R5* composition ^short = "Imaging Diagnostic Report"
 //R5* composition only Reference(CompositionEuImaging)
-
-
+//R5 // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
+//R5* result 1..*
+//R5  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
 
 Profile: DiagnosticReportEuImagingMinimalMetadata
 Parent: DiagnosticReport
@@ -94,6 +96,8 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * ^definition = "Identifiers assigned to this Imaging Report by the performer or other systems. It shall be common to several report versions"
   * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
 
+* subject 1..1
+
 * status
   * ^short = "Status of the Report"
   * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
@@ -110,14 +114,16 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * insert SliceElement( #value, $this )
 * category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
-* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
   * ^definition = "Defines the priority category of the report as defined in the API spec."
 * category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
   * ^definition = "Defines the category of the report, Diagnostic imaging report."
 
 * subject only Reference($EuPatient)
 
-// * issued 1..1  -> we use obligations instead
+* issued 
+  * ^short = "Date and time of report issuance"
+  * ^definition = "The date and time that the report was issued. This is not necessarily the same as the date and time that the report was created, since a report may be revised and/or reviewed after it is created."
 
 * extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
 * extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
@@ -206,7 +212,7 @@ Recommendations a radiologist provides in the report for possible follow up acti
 * extension[communication] ^definition = """
 Communications captures what communications have been made with other care providers.
 """
-
+* extension contains RadiationDoseExt named radiationDose 0..1 MS
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
 // * obeys hl7eu-im-dr-code
 // * obeys hl7eu-im-dr-category

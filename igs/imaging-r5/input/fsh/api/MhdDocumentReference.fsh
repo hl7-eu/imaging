@@ -14,6 +14,10 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 * status 1..1
 
+//R4* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.version named version 0..1
+//R4* extension[version]
+//R4  * ^short = "Version of the document referenced by this DocumentReference." 
+
 // subject
 * subject 1..1
 * subject only Reference( $EuPatient )
@@ -45,10 +49,10 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
   * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
   * concept 1..1
-    * coding
-      * insert SliceElement( #value, concept )
-    * coding contains anatomical-region 1..*
-    * coding[anatomical-region] from ValueSetAnatomicalRegion (extensible)
+    * coding from ValueSetAnatomicalRegion (extensible)
+//       * insert SliceElement( #pattern, $this )
+//     * coding contains anatomical-region 1..*
+//     * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
 //R4* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 //R4* extension[bodysite].extension[concept] 1..1
 //R4* extension[bodysite].extension[concept]
