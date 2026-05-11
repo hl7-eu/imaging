@@ -68,10 +68,15 @@ The ticket remains in `Waiting for Input` with `Unresolved` resolution, so no fi
 #### Proposal
 
 Add a dedicated section on the IG home page that:
+- Explains that this IG is part of a family of IG's related to EHDS. List the other EHDS IG's and describes that a subset is used for imaging (MADO and this one). List the different versions of these IG's.
+- Explains that the imaging IG's define documents that can be exchanged in a document exchange framework such as IHE-MHD.
+- Explain that MADO can be used to search for studies and determine what part of a such to access.
+- Explain that this IG defines the imaging report.
+- That the API related elements (search, document reference) are kept in sync.
 - Explains how this IG relates to IHE MADO and to the EU Imaging Manifest.
-- Clarifies intended scope boundaries and responsibilities of each artifact.
 - Includes direct links to IHE MADO and the EU Imaging Manifest.
 - Adds a short historical rationale for why the specifications remain separate.
+- Shows a use case how to find a manifest based on a report and a report based on a MADO manifest, using study-instance-uid as well as accession-number.
 
 #### Justification
 

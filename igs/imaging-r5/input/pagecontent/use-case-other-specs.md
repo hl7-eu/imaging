@@ -42,3 +42,21 @@ The manifest is downloaded.
 > GET &lt;DocumentReference.content.attachment.url&gt;
 
 After inspecting the information available in the study, the requested DICOM images/series are downloaded and rendered using the URL.
+
+#### Bidirectional lookup between report and manifest
+
+The same linkage model supports both directions:
+* **Report to manifest**: start from an imaging report and query for the associated manifest.
+* **Manifest to report**: start from a manifest and query for the associated report(s).
+
+The primary anchors for this linkage are:
+* **StudyInstanceUID** (study-level relation);
+* **accession-number** (order/request-level relation).
+
+Example reverse lookup from manifest to report using accession-number:
+
+> GET DocumentReference?category=http://loinc.org	85430-7&subject=Patient/1234&identifier=&lt;accession-number&gt;
+
+Example reverse lookup from manifest to report using StudyInstanceUID:
+
+> GET DocumentReference?category=http://loinc.org	85430-7&subject=Patient/1234&identifier=&lt;StudyInstanceUID&gt;

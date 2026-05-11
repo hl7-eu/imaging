@@ -44,6 +44,8 @@ Given that the Study manifest (that includes location of image data) **always ex
 
 The study information is represented in an imaging-manifest. It represents the information that is stored in a PACS. The report is typically stored in the RIS and/or EHR. Separating the two concepts allows both systems to appropriately represent the data they have without being forced to include information they typically do not have access to.
 
+This separation is consistent with the guide-wide report/manifest relationship narrative and is intended to support reliable bidirectional linking using shared identifiers.
+
 In order to access the data, the URL's of the WADO/viewer endpoints are needed that provide access to the content, These URL's might change depending on the scope in which the data is accessed (within the healthcare provider, from outside the healthcare provider or cross border). During the life-cycle of an imaging study, it typically moves between different system. Starting in the main PACS and moving in and out of long term storage depending on the need. If we include the data access URL's in the report, each change might break the report signature. Placing these in the manifest prevents this and also allows for the situation where the same study data can be accessed from multiple locations.
 
 #### Conclusion
