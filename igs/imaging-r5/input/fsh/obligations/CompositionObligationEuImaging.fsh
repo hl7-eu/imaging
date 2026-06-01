@@ -125,7 +125,7 @@ Description: "Obligations for Composition: Imaging Report"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[documentation].valueMarkdown = "EHDSImagingReport.body.supportingInformation.observation, EHDSImagingReport.body.supportingInformation.condition, EHDSImagingReport.body.supportingInformation.priorMedicationAdministration, EHDSImagingReport.body.supportingInformation.device, EHDSImagingReport.body.supportingInformation.pregnancyStatus"
-* section[procedure].extension[radiationDose]
+* section[procedure].entry[radiation-dose]
   * ^requirements = "EHDSImagingReport.body.exposureInformation"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHOULD:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)

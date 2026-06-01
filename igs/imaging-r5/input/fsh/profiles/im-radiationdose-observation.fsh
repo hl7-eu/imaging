@@ -19,10 +19,12 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
   * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
 
 * partOf 1..*
-  * insert SliceElement( #profile, $this )
+  * insert SliceElement( #value, [[identifier]] )
 * partOf contains study 1..1 and procedure 0..1
 * partOf[study] only Reference( ImagingStudyEuImaging )
   * ^short = "Imaging Study reference"
+  * identifier 1..1
+  * identifier only StudyInstanceUidIdentifierEuImaging
 * partOf[procedure] only Reference( ProcedureEuImaging )
   * ^short = "Imaging Procedure reference"
 

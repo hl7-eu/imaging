@@ -64,7 +64,7 @@ Run the repository compile/check flow, inspect output, and provide concrete sugg
   - Use the `ig-liquid-alias-coverage-check` skill for systematic verification.
 
 ### IG Publisher validation errors
-- Pattern: QA or publisher constraint failures in generated output.
+- Pattern: QA or publisher constraint failures in generated output (igs/imaging-r4/output/qa.txt, igs/imaging-r5/output/qa.txt).
 - Suggestion:
   - Group by resource/profile and fix one resource class at a time.
   - Confirm canonical/profile URLs and bindings match project aliases.
