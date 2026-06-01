@@ -6,9 +6,10 @@ Usage: #example
 * status = #final
 * code = $loinc#73569-6 "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 * subject = Reference(PatientSemiStructuredReport)
-* partOf[study].type = "ImagingStudy"
-* partOf[study].identifier.system = "urn:dicom:uid"
-* partOf[study].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100001"
+* partOf.type = "ImagingStudy"
+* partOf.identifier.system = "urn:dicom:uid"
+* partOf.identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100001"
+* partOf.identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
 //R4* derivedFrom[+].type = "ImagingSelection"
 //R4* derivedFrom[=].identifier.system = "urn:dicom:uid"
 //R4* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501101500"
@@ -27,9 +28,12 @@ Usage: #example
 * status = #final
 * code = $loinc#73569-6 "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 * subject = Reference(PatientSemiStructuredReport)
-* partOf[study].type = "ImagingStudy"
-* partOf[study].identifier.system = "urn:dicom:uid"
-* partOf[study].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100002"
+
+* partOf.type = "ImagingStudy"
+* partOf.identifier.system = "urn:dicom:uid"
+* partOf.identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100002"
+* partOf.identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+
 //R4* derivedFrom[+].type = "ImagingSelection"
 //R4* derivedFrom[=].identifier.system = "urn:dicom:uid"
 //R4* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501103000"
@@ -48,9 +52,12 @@ Usage: #example
 * status = #final
 * code = $loinc#73569-6 "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 * subject = Reference(PatientStructuredReport)
-* partOf[study].type = "ImagingStudy"
-* partOf[study].identifier.system = "urn:dicom:uid"
-* partOf[study].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100003"
+
+* partOf.type = "ImagingStudy"
+* partOf.identifier.system = "urn:dicom:uid"
+* partOf.identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100003"
+* partOf.identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+
 //R4* derivedFrom[+].type = "ImagingSelection"
 //R4* derivedFrom[=].identifier.system = "urn:dicom:uid"
 //R4* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501104500"

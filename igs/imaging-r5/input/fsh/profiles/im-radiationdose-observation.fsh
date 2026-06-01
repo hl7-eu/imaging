@@ -18,15 +18,8 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 * identifier[radiation-sr-instance-uid]
   * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
 
-* partOf 1..*
-  * insert SliceElement( #value, [[identifier]] )
-* partOf contains study 1..1 and procedure 0..1
-* partOf[study] only Reference( ImagingStudyEuImaging )
-  * ^short = "Imaging Study reference"
-  * identifier 1..1
-  * identifier only StudyInstanceUidIdentifierEuImaging
-* partOf[procedure] only Reference( ProcedureEuImaging )
-  * ^short = "Imaging Procedure reference"
+* partOf 1..* 
+* partOf only Reference( ImagingStudyEuImaging or ProcedureEuImaging )
 
 //TBD use CV extension snapshot 3 as the version 2 throws errors.
 // //R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
