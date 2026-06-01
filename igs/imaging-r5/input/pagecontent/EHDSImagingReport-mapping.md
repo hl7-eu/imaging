@@ -508,7 +508,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>body.exposureInformation</td>
         <td>equivalent</td>
         <td><a href="./StructureDefinition-DiagnosticReportEuImaging.html">DiagnosticReportEuImaging</a></td>
-        <td>extension[radiationDose]</td>
+        <td>extension[procedure]</td>
         <td>Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365</td>
       </tr>
       <tr>
