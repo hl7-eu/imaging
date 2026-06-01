@@ -61,6 +61,24 @@ function parseWorkbook(excelPath) {
   return { tickets, sheetName };
 }
 
+function parseActiveTicketKeys(activeTicketsPath) {
+  if (!fs.existsSync(activeTicketsPath)) {
+    return new Set();
+  }
+
+  const content = fs.readFileSync(activeTicketsPath, "utf8");
+  const keys = new Set();
+  const matches = content.match(/FHIR-\d+/gi) || [];
+
+  matches.forEach((key) => {
+    if (KEY_PATTERN.test(key)) {
+      keys.add(key.toUpperCase());
+    }
+  });
+
+  return keys;
+}
+
 function renderTicketMarkdown(ticket) {
   const lines = [];
 
@@ -189,6 +207,7 @@ function migrateOldTicketStructure(outDir) {
 
 function syncTickets({ excelPath, outDir, prune }) {
   const { tickets, sheetName } = parseWorkbook(excelPath);
+  const activeTicketKeys = parseActiveTicketKeys(path.join(outDir, "ActiveTickets.md"));
   ensureDir(outDir);
 
   // Migrate old root-level ticket structure
@@ -196,12 +215,15 @@ function syncTickets({ excelPath, outDir, prune }) {
 
   const openDir = path.join(outDir, "open");
   const closedDir = path.join(outDir, "closed");
+  const activeDir = path.join(outDir, "active");
   ensureDir(openDir);
   ensureDir(closedDir);
+  ensureDir(activeDir);
 
   const keys = [...tickets.keys()].sort();
   let openCount = 0;
   let closedCount = 0;
+  let activeCount = 0;
 
   keys.forEach((key) => {
     const ticket = tickets.get(key);
@@ -220,7 +242,22 @@ function syncTickets({ excelPath, outDir, prune }) {
     } else {
       openCount++;
     }
+
+    if (activeTicketKeys.has(key)) {
+      const activeTicketDir = path.join(activeDir, key);
+      ensureDir(activeTicketDir);
+      const activeMarkdownPath = path.join(activeTicketDir, `${key}.md`);
+      fs.writeFileSync(activeMarkdownPath, content, "utf8");
+      activeCount++;
+    }
   });
+
+  const missingActiveKeys = [...activeTicketKeys].filter((key) => !tickets.has(key));
+  if (missingActiveKeys.length > 0) {
+    console.warn(
+      `Warning: ${missingActiveKeys.length} ticket(s) listed in ActiveTickets.md not found in Excel export: ${missingActiveKeys.join(", ")}`
+    );
+  }
 
   if (prune) {
     // Prune closed tickets
@@ -254,9 +291,25 @@ function syncTickets({ excelPath, outDir, prune }) {
         fs.rmSync(path.join(openDir, entry.name), { recursive: true, force: true });
       }
     });
+
+    // Prune active tickets
+    const existingActive = fs.readdirSync(activeDir, { withFileTypes: true });
+    const activeKeySet = new Set([...activeTicketKeys].filter((key) => tickets.has(key)));
+    existingActive.forEach((entry) => {
+      if (!entry.isDirectory()) {
+        return;
+      }
+      if (!KEY_PATTERN.test(entry.name)) {
+        return;
+      }
+      const normalized = entry.name.toUpperCase();
+      if (!activeKeySet.has(normalized)) {
+        fs.rmSync(path.join(activeDir, entry.name), { recursive: true, force: true });
+      }
+    });
   }
 
-  return { count: keys.length, openCount, closedCount, sheetName };
+  return { count: keys.length, openCount, closedCount, activeCount, sheetName, activeSource: path.join(outDir, "ActiveTickets.md") };
 }
 
 function main() {
@@ -272,13 +325,15 @@ function main() {
     throw new Error(`Excel file not found: ${excelPath}`);
   }
 
-  const { count, openCount, closedCount, sheetName } = syncTickets({ excelPath, outDir, prune });
+  const { count, openCount, closedCount, activeCount, sheetName, activeSource } = syncTickets({ excelPath, outDir, prune });
   console.log(`Synced ${count} Jira tickets from sheet '${sheetName}'.`);
   console.log(`  - Open (unresolved): ${openCount}`);
   console.log(`  - Closed (resolved): ${closedCount}`);
+  console.log(`  - Active (from ${activeSource}): ${activeCount}`);
   console.log(`Output directory: ${outDir}`);
   console.log(`  - Open tickets: ${outDir}/open`);
   console.log(`  - Closed tickets: ${outDir}/closed`);
+  console.log(`  - Active tickets: ${outDir}/active`);
   console.log(`Prune mode: ${prune ? "enabled" : "disabled"}`);
 }
 
