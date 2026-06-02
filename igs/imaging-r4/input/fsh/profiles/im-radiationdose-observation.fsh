@@ -3,7 +3,7 @@ Parent: $EuObservation
 Title: "Observation: Radiation Dose"
 Description: """
 A record for the radiation dose the subject has been exposed to during an imaging procedure.
-E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/dicom/current/output/html/part16.html) and [FHIR Radiation Dose Summary IG](https://build.fhir.org/ig/HL7/fhir-radiation-dose-summary-ig/index.html)
+E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/dicom/current/output/html/part16.html) 
 """
 * insert SetFmmAndStatusRule( 1, draft )
 
@@ -12,24 +12,30 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 * basedOn contains ServiceRequestOrderEuImagingaccession 0..1
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
-* identifier 0..*
-  * insert SliceElement( #value, type )
-* identifier contains radiation-sr-instance-uid 0..1
-* identifier[radiation-sr-instance-uid]
-  * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
+// Remove it as it is not and identifier of the Observation
+// * identifier 0..*
+//   * insert SliceElement( #value, type )
+// * identifier contains radiation-sr-instance-uid 0..1
+// * identifier[radiation-sr-instance-uid]
+//   * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
 
-* partOf 1..* 
-* partOf only Reference( ImagingStudyEuImaging or ProcedureEuImaging )
+* partOf 0..* 
+* partOf only Reference(  ProcedureEuImaging )
 
 //TBD use CV extension snapshot 3 as the version 2 throws errors.
 // * extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Observation.derivedFrom named derivedFrom 1..*
 // * extension[derivedFrom] contains srImagingSelection 1..* 
 // * extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
 
-//R5* derivedFrom
+* derivedFrom 1..*
+  * insert SliceElement( #profile, $this )
+* derivedFrom contains study 1..1 
+* derivedFrom[study] only Reference( ImagingStudyEuImaging )
+//R5* derivedFrom 1..*
 //R5  * insert SliceElement( #profile, $this )
-//R5* derivedFrom contains dicomSrInstance 1..1
-//R5* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
+//R5* derivedFrom contains study 1..1 and dicomSrInstance 0..* 
+//R5* derivedFrom[dicomSrInstance] only Reference( ImagingStudyEuImaging or SrInstanceImagingSelectionEuImaging )
+//R5* derivedFrom[study] only Reference( ImagingStudyEuImaging )
 
 * code
   * coding 1..*

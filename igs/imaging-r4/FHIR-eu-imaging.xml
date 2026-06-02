@@ -67,8 +67,6 @@
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report 2"/>
 <artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
 <artifact id="StructureDefinition/ImagingSelectionKeyImageEuImaging" key="StructureDefinition-ImagingSelectionKeyImageEuImaging" name="Key images represented as an ImagingSelection for R4"/>
-<artifact id="StructureDefinition/MadoReferencedStudyInstanceUidIdentifier" key="StructureDefinition-MadoReferencedStudyInstanceUidIdentifier" name="MADO Referenced Study Instance UID Identifier"/>
-<artifact id="StructureDefinition/MadoStudyInstanceUidIdentifier" key="StructureDefinition-MadoStudyInstanceUidIdentifier" name="MADO Study Instance UID Identifier"/>
 <artifact id="StructureDefinition/medication-administration-obligation-eu-imaging" key="StructureDefinition-medication-administration-obligation-eu-imaging" name="MedicationAdministration: Obligations"/>
 <artifact id="Observation/ObservationAnchor" key="Observation-ObservationAnchor" name="Observation Anchor"/>
 <artifact id="StructureDefinition/ObservationGestationalAgeEuImaging" key="StructureDefinition-ObservationGestationalAgeEuImaging" name="Observation: Gestational Age"/>
