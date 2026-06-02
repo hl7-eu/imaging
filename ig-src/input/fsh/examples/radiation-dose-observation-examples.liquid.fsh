@@ -6,10 +6,10 @@ Usage: #example
 * status = #final
 * code = $loinc#73569-6 "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 * subject = Reference(PatientSemiStructuredReport)
-{{R4}}* derivedFrom[+].type = "ImagingStudy"
-{{R4}}* derivedFrom[=].identifier.system = "urn:dicom:uid"
-{{R4}}* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100001"
-{{R4}}* derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+{{R }}* derivedFrom[+].type = "ImagingStudy"
+{{R }}* derivedFrom[=].identifier.system = "urn:dicom:uid"
+{{R }}* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100001"
+{{R }}* derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
 {{R5}}* derivedFrom[dicomSrInstance].type = "ImagingSelection"
 {{R5}}* derivedFrom[dicomSrInstance].identifier.system = "urn:dicom:uid"
 {{R5}}* derivedFrom[dicomSrInstance].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501101500"
@@ -25,10 +25,10 @@ Usage: #example
 * code = $loinc#73569-6 "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 * subject = Reference(PatientSemiStructuredReport)
 
-{{R4}}* derivedFrom[+].type = "ImagingStudy"
-{{R4}}* derivedFrom[=].identifier.system = "urn:dicom:uid"
-{{R4}}* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100002"
-{{R4}}* derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+{{R }}* derivedFrom[+].type = "ImagingStudy"
+{{R }}* derivedFrom[=].identifier.system = "urn:dicom:uid"
+{{R }}* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100002"
+{{R }}* derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
 {{R5}}* derivedFrom[dicomSrInstance].type = "ImagingSelection"
 {{R5}}* derivedFrom[dicomSrInstance].identifier.system = "urn:dicom:uid"
 {{R5}}* derivedFrom[dicomSrInstance].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501103000"
@@ -44,12 +44,12 @@ Usage: #example
 * code = $loinc#73569-6 "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 * subject = Reference(PatientStructuredReport)
 
-{{R4}}* derivedFrom[+].type = "ImagingStudy"
-{{R4}}* derivedFrom[=].identifier.system = "urn:dicom:uid"
-{{R4}}* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100003"
-{{R4}}* derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
-{{R5}}* derivedFrom[dicomSrInstance].type = "ImagingSelection"
-{{R5}}* derivedFrom[dicomSrInstance].identifier.system = "urn:dicom:uid"
-{{R5}}* derivedFrom[dicomSrInstance].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501104500"
+{{R }}* derivedFrom[+].type = "ImagingStudy"
+{{R }}* derivedFrom[=].identifier.system = "urn:dicom:uid"
+{{R }}* derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100003"
+{{R }}* derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+{{R5}}* derivedFrom[+].type = "ImagingSelection"
+{{R5}}* derivedFrom[+].identifier.system = "urn:dicom:uid"
+{{R5}}* derivedFrom[+].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501104500"
 
 * valueString = "Chest radiography (PA and lateral). Estimated dose indicators within typical range for this examination. This summary is suitable for reporting and does not imply patient-specific absorbed dose."

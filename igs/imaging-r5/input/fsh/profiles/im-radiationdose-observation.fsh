@@ -31,11 +31,14 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 //R4  * insert SliceElement( #profile, $this )
 //R4* derivedFrom contains study 1..1 
 //R4* derivedFrom[study] only Reference( ImagingStudyEuImaging )
+//R4  * ^short = "The study the radiation information relates to."
 * derivedFrom 1..*
   * insert SliceElement( #profile, $this )
 * derivedFrom contains study 1..1 and dicomSrInstance 0..* 
 * derivedFrom[dicomSrInstance] only Reference( ImagingStudyEuImaging or SrInstanceImagingSelectionEuImaging )
+  * ^short = "The DICOM SR Structured Report that is the source of the information in this Observation."
 * derivedFrom[study] only Reference( ImagingStudyEuImaging )
+  * ^short = "The study the radiation information relates to."
 
 * code
   * coding 1..*
