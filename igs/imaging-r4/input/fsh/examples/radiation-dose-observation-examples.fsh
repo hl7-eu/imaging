@@ -48,8 +48,8 @@ Usage: #example
 * derivedFrom[=].identifier.system = "urn:dicom:uid"
 * derivedFrom[=].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100003"
 * derivedFrom[=].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
-//R5* derivedFrom[dicomSrInstance].type = "ImagingSelection"
-//R5* derivedFrom[dicomSrInstance].identifier.system = "urn:dicom:uid"
-//R5* derivedFrom[dicomSrInstance].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501104500"
+//R5* derivedFrom[+].type = "ImagingSelection"
+//R5* derivedFrom[+].identifier.system = "urn:dicom:uid"
+//R5* derivedFrom[+].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501104500"
 
 * valueString = "Chest radiography (PA and lateral). Estimated dose indicators within typical range for this examination. This summary is suitable for reporting and does not imply patient-specific absorbed dose."

@@ -1,6 +1,6 @@
 Instance: ObservationRadiationDoseCtExample
 InstanceOf: ObservationRadiationDoseEuImaging
-Title: "Observation: radiation dose summary (CT)"
+Title: "Observation: radiation dose summary - CT"
 Description: "Example radiation dose Observation using narrative summary text for CT."
 Usage: #example
 * status = #final
@@ -18,7 +18,7 @@ Usage: #example
 
 Instance: ObservationRadiationDoseFluoroExample
 InstanceOf: ObservationRadiationDoseEuImaging
-Title: "Observation: radiation dose summary (fluoroscopy)"
+Title: "Observation: radiation dose summary - fluoroscopy"
 Description: "Example radiation dose Observation using narrative summary text for fluoroscopy."
 Usage: #example
 * status = #final
@@ -37,7 +37,7 @@ Usage: #example
 
 Instance: ObservationRadiationDoseXrayExample
 InstanceOf: ObservationRadiationDoseEuImaging
-Title: "Observation: radiation dose summary (plain radiography)"
+Title: "Observation: radiation dose summary - plain radiography"
 Description: "Example radiation dose Observation using narrative summary text for plain radiography."
 Usage: #example
 * status = #final
