@@ -40,12 +40,9 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 {{R5}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
 {{R5}}  * ^short = "The study the radiation information relates to."
 
-* code
-  * coding 1..*
-    * insert SliceElement( #value, $this )
-  * coding contains radiation-dose 1..1
-  * coding[radiation-dose] = $loinc#73569-6 // "Radiation exposure and protection information [Description] Document Diagnostic imaging"
-
+* code from ImEUValueSetAllSnomedLoinc (preferred)
+  * insert SliceCodeableConceptWithRequiredCode( radiation-dose, $loinc, #73569-6 )
+  
 * subject 1..1
 * subject only Reference( $EuPatient )
 

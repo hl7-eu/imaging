@@ -1,7 +1,5 @@
 Radiation dose information is complex. Many details are needed for proper analysis and the summary metrics selected by the medical physicists to give them a rough understanding of a given imaging procedure differ from modality to modality. This is further complicated by different geographic regions establishing varying regulations for inclusion of this information in diagnostic reports. Such regulations do serve the purpose of raising awareness amongst patients and referring physicians of the existence of radiation dose risks in some types of imaging procedures and demonstrating a commitment to transparency, but proper analysis to assess individual patient risk, patient population risk, or to assess departmental performance in managing protocols and dose, depends on the use of detailed dose information, rather than summary metrics.
 
- 
-
 With that background in mind, the recommended data flow of radiation dose information is as follows:
 
 * Imaging modalities that use x-rays (CT, radiography, angiography, mammography, fluoroscopy, etc) should create detailed dose data reports for each imaging procedure using the DICOM Radiation Dose Structured Report (RDSR) format and store those in the DICOM imaging study folder in the PACS when the scan is performed. This is specified in the IHE Radiation Exposure Monitoring (REM) Profile.
