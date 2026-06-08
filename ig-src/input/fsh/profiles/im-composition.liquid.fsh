@@ -180,7 +180,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 // ////////////////// COMPARISON SECTION //////////////////////////
 * section[comparison]
-  * ^short = "History"
+  * ^short = "Comparison"
   * code = $loinc#18834-2 // "Radiology Comparison study (narrative)"
   * extension contains $note-url named note 0..*
   * entry

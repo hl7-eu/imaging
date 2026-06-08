@@ -38,7 +38,6 @@ The `href` field of the link holds a relative reference to the referred resource
 
 These links can be included in the text (Narrative) using the mechanism described in the previous section. This does require that the `ImagingStudy`/`Observation` resource representing the finding/prior is included in the document.
 
-{% include patterns-and-guidelines-missing-data.md %}
 
 ### What terminology use in the report
 

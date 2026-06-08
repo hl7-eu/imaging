@@ -1,13 +1,20 @@
 ### Use cases based on actors
 A set of actors and use cases has been identified as the minimum functional scope needed to support the EHDS Imaging Report specification. These use cases are shown in the figure below.
 
-The diagram also shows how these use-case actors relate to the system actors described on the [actors-and-transactions.html](actors-and-transactions.html) page. Note that the displayer and processor roles are grouped into a single consumer actor, because user-interface display requirements and constraints are highly implementation-specific. Without a more detailed categorization of system types, no generic obligations can be defined for those roles.
+The diagram also shows how these use-case actors relate to the system actors described on the [actors-and-transactions.html](actors-and-transactions.html) page. Note that the displayer and processor roles are grouped into a single consumer actor, because user-interface display requirements and constraints are highly implementation-specific. As the variety of consumer needs makes it very difficult if not impossible to determine a generic rule for this, no generic obligations can be defined for those roles.
 
 <figure>
   {% include ehds-actors-usecases.svg %}
-  <figcaption>Figure: EHDS Imaging Report Functional Use Cases</figcaption>
+  <figcaption>Figure 1: EHDS Imaging Report Functional Use Cases</figcaption>
 </figure>
 <br clear="all"/>
+
+#### System actors
+
+- **Producer:** creates and publishes imaging reports using clinical and technical source data.
+- **Accessor:** searches and retrieves reports for patients or healthcare professionals.
+- **Processor:** extracts and processes structured and narrative report content for downstream use.
+- **Displayer:** presents imaging reports to end users in static or dynamic user interfaces (for images display refer to {{iheMADO}}).
 
 #### Use-cases details
 

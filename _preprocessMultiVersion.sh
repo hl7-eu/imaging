@@ -24,23 +24,26 @@ for version in "${versions[@]}"; do
         build_dir="igs/${ig_base}-r5"
     fi
 
+    # In CI, generated directories might not be tracked in git checkout.
+    mkdir -p "$build_dir"
+
     echo remove all files from $build_dir
     # rm -Rf $build_dir/*
     echo Setting read-only permissions on $build_dir
-    chmod -R a+w $build_dir
-    find $build_dir -maxdepth 1 -type f -exec rm -f {} +
-    rm -Rf $build_dir/input
-    rm -Rf $build_dir/output
-    rm -Rf $build_dir/ig-template
+    chmod -R a+w "$build_dir"
+    find "$build_dir" -maxdepth 1 -type f -exec rm -f {} +
+    rm -Rf "$build_dir/input"
+    rm -Rf "$build_dir/output"
+    rm -Rf "$build_dir/ig-template"
     
     echo copy all files to  $build_dir
-    find ig-src/ -maxdepth 1 -type f -exec cp {} $build_dir \;
-    cp -R ig-src/input $build_dir 
-    cp -R ig-src/ig-template $build_dir 
+    find ig-src/ -maxdepth 1 -type f -exec cp {} "$build_dir" \;
+    cp -R ig-src/input "$build_dir"
+    cp -R ig-src/ig-template "$build_dir"
     
     # Process all liquid files
     echo Processing liquid files
-    find $build_dir -type f -name "*.liquid.*" | while read file; do
+    find "$build_dir" -type f -name "*.liquid.*" | while read file; do
         if [ -f "$file" ]; then
             file_path=${file}
             clean_file_path=${file_path/\.liquid\./\.}

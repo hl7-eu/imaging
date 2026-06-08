@@ -3,7 +3,7 @@ Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report"
 Description: """
 DiagnosticReport profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.   
-The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-HL7IDR](https://build.fhir.org/ig/IHE/RAD.HL7IDR/branches/master/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
+The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-IDR](https://build.fhir.org/ig/IHE/RAD.IDR/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
@@ -80,6 +80,8 @@ This profile shares all common imaging report modeling with DiagnosticReportEuIm
 {{R5}}* composition 0..0
 {{R5}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
 
+///////////////////////
+
 RuleSet: DiagnosticReportEuImagingCommonRules
 * extension contains $artifact-version-url named artifactVersion 0..1
 * extension contains AnatomicalRegionExtension named anatomical-region 0..*
@@ -120,6 +122,8 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * ^definition = "Defines the category of the report, Diagnostic imaging report."
 
 * subject only Reference($EuPatient)
+
+* basedOn only Reference(ServiceRequest or CarePlan)
 
 * issued 
   * ^short = "Date and time of report issuance"

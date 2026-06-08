@@ -7,12 +7,12 @@ The imaging report represents a report made by a radiologist based on an imaging
 
 The figure below illustrates the structure of the Imaging Report.
 
-{% include img.html img="imaging-report-overview.drawio.png" caption="Figure: Imaging report overview" %}
+{% include img.html img="imaging-report-overview.drawio.png" caption="Figure 1: Imaging report overview" %}
 
-An Imaging Report is a FHIR Clinical Document that contains both a {{DiagnosticReport}} as a {{Composition}} resource.
+An Imaging Report is a FHIR Clinical Document that contains both a {{DiagnosticReport}} and a {{Composition}} resource.
 The report uses the {{DiagnosticReportEuImaging}} to store the structured data. This resource might also include a rendered version of the document. The {{CompositionEuImaging}} resource is used to present a rendered version of the document as a FHIR document.
 
-As described by {{iheIDR}}, the all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{DiagnosticReportEuImaging}} and recommends it as the structure for sections defined in the {{CompositionEuImaging}}).
+As described by {{iheIDR}}, all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{DiagnosticReportEuImaging}}) and recommends it as the structure for sections defined in the {{CompositionEuImaging}}.
 
 
 #### Header
@@ -23,7 +23,7 @@ General information on the report. Most of the information elements in this part
 
 ##### Imaging Study
 
-Information on the studies that this report is reporting on. It includes such as the study identifiers, date and time the exam was done, the modalities used in the exam and the different series. In this implementation guide this is represented by the {{ImagingStudyEuImaging}} profile.
+Information on the studies that this report is reporting on. It includes information such as the study identifiers, date and time the exam was done, the modalities used in the exam and the different series. In this implementation guide this is represented by the {{ImagingStudyEuImaging}} profile.
 
 ##### Order
 
@@ -97,7 +97,7 @@ Some items in the impression may be considered actionable, in that some follow-u
 
 ##### Communication
 
-This is an optional section as it not anticipated that it is often required.
+This is an optional section as it is not anticipated that it is often required.
 
 There is strong interest in tooling to facilitate communicating critical results clearly and rapidly with the appropriate people, confirming that follow-up of actionable findings takes place, and making sure that incidental findings do not “fall through the cracks”.
 
@@ -107,7 +107,7 @@ Communication is not listed as a separate section in the ACR guidance, but codes
 
 The communication entry typically records the date, time, and method of communication, the person/organization contacted, and may summarize the content communicated.
 
-Typically a {{Communication}} resources is used to represent such event.
+Typically a {{Communication}} resource is used to represent such an event.
 
 ### Report Versions
 
@@ -116,7 +116,7 @@ Documents are created, amended and updated during their lifecycle. So although t
 Document versioning is tracked using different concepts:
 
 * Bundle.identifier: a unique identifier of the Bundle
-* issue/last-edit date: the date the document is issues/last changed.
+* issue/last-edit date: the date the document is issued/last changed.
 * version: the version number of the document.
 * related document: optional references to the version of the document this one replaces.
   

@@ -6,13 +6,13 @@ This example addresses representing a imaging report that in the report structur
 
 The figure below shows the pdf of the report.
 
-{% include img.html img="example-semi-structured-pdf.drawio.png" caption="Figure: Radiology report with elements marked" %}
+{% include img.html img="example-semi-structured-pdf.drawio.png" caption="Figure 1: Radiology report with elements marked" %}
 
 The image shows what part of the report link to different elements in the report structure as defined in this specification. The structure of a imaging report as defined in this specification is illustrated in the figure below.
 
 <figure>
   {% include example-semi-structured.svg %}
-  <figcaption><b>Figure: FHIR objects in the Semi-Structured Report</b></figcaption>
+  <figcaption><b>Figure 2: FHIR objects in the Semi-Structured Report</b></figcaption>
   <p></p>
 </figure>
 

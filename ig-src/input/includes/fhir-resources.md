@@ -75,7 +75,7 @@
   {% assign GraphDefinition = "[`GraphDefinition`](https://www.hl7.org/fhir/R4/GraphDefinition.html)" %}
   {% assign GuidanceResponse = "[`GuidanceResponse`](https://www.hl7.org/fhir/R4/GuidanceResponse.html)" %}
   {% assign HealthcareService = "[`HealthcareService`](https://www.hl7.org/fhir/R4/HealthcareService.html)" %}
-  {% assign ImagingSelection = "[`ImagingSelection`](https://www.hl7.org/fhir/R4/ImagingSelection.html)" %}
+  {% assign ImagingSelection = "[`ImagingSelection (Basic)`](StructureDefinition-ImagingSelectionEuImaging.html)" %}
   {% assign ImagingStudy = "[`ImagingStudy`](https://www.hl7.org/fhir/R4/ImagingStudy.html)" %}
   {% assign Immunization = "[`Immunization`](https://www.hl7.org/fhir/R4/Immunization.html)" %}
   {% assign ImmunizationEvaluation = "[`ImmunizationEvaluation`](https://www.hl7.org/fhir/R4/ImmunizationEvaluation.html)" %}

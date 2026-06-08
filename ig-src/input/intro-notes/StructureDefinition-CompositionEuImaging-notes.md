@@ -46,10 +46,15 @@ The following table lists the elements that should be included in the narrative 
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
 | CompositionEuImaging | section[history].entry |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.observation |
+| DiagnosticReportEuImaging | extension[patientHistory] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.observation |
 | CompositionEuImaging | section[history].entry |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.condition |
+| DiagnosticReportEuImaging | extension[patientHistory] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.condition |
 | CompositionEuImaging | section[history].entry |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.priorMedicationAdministration |
+| DiagnosticReportEuImaging | extension[patientHistory] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.priorMedicationAdministration |
 | CompositionEuImaging | section[history].entry |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.device |
+| DiagnosticReportEuImaging | extension[patientHistory] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.device |
 | CompositionEuImaging | section[history].entry |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.pregnancyStatus |
+| DiagnosticReportEuImaging | extension[patientHistory] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.pregnancyStatus |
 | EuPatient | extension[sex-for-clinical-use] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.supportingInformation.sexForClinicalUse |
 
 ### Procedure
@@ -88,6 +93,7 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field |
 | -------- | ------- | -------------- | --------------------- |
+| DiagnosticReportEuImaging | extension[finding] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.results[x] |
 | CompositionEuImaging | section[findings].extension[note] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.results[x] |
 | DiagnosticReportEuImaging | note |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.results[x] |
 

@@ -12,7 +12,7 @@ Key images can be represented in two ways:
 ImagingSelection is more DICOM oriented and only relates to DICOM identifiers. DocumentReference is more image oriented and also contains information on the size, duration, etc. aspects of the image.
 The {% raw %}{{ehnImagingGuidelines}}{% endraw %} requires information on the size, format, duration etc., data elements that are provided on the `Attachment` field on `DocumentReference`. If these fields are critical, DocumentReference fits more closely. In US Core the R4 `Media` resource is used to represent key images. This resource later merged into the FHIR R5 `DocumentReference`.
 
-As this IG has an FHIR R5 and R4 representation, `DocumentReference` is an easy fit but in other sections of this specification, `ImagingSelection` is used (e.g. to state that an image can from a Procedure Phase).
+As this IG has an FHIR R5 and R4 representation, `DocumentReference` is an easy fit but in other sections of this specification, `ImagingSelection` is used (e.g. to state that an image can come from a Procedure Phase).
 
 The `ImagingSelection` resource points to a DICOM data. The DICOM instance data also holds the data required by the {% raw %}{{ehnImaging}}{% endraw %}. So the client can retrieve the information from the DICOM source data.
 
@@ -20,7 +20,7 @@ The {% raw %}{{ehnImagingGuidelines}}{% endraw %} also requires access to the im
 
 `DocumentReferences` refer to the data source directly (included in the Attachment or referred to it). It does not carry the DICOM identifiers, although these can be added to `DocumentReference` resources (identifier or extensions).
 
-Another aspect, although unlikely, is that the report mey refer to key images (charts, pdf's, ...) not stored in a DICOM PACS, `DocumentReferences` would allow this.
+Another aspect, although unlikely, is that the report may refer to key images (charts, pdf's, ...) not stored in a DICOM PACS, `DocumentReferences` would allow this.
 
 There is a point to be made for both resource types.
 

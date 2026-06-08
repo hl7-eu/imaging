@@ -6,11 +6,11 @@ This example addresses representing a imaging report that in the report structur
 
 The figure below shows the pdf of the report. The document is annotated to show where what part of the report goes in the FHIR document.
 
-{% include img.html img="example-structured-pdf-1.drawio.png" caption="Figure: Ultrasound report with marked content-page 1" %}
+{% include img.html img="example-structured-pdf-1.drawio.png" caption="Figure 1: Ultrasound report with marked content-page 1" %}
 
-{% include img.html img="example-structured-pdf-2.drawio.png" caption="Figure: Ultrasound report with marked content-page 2" %}
+{% include img.html img="example-structured-pdf-2.drawio.png" caption="Figure 2: Ultrasound report with marked content-page 2" %}
 
-{% include img.html img="example-structured-pdf-3.drawio.png" caption="Figure: Ultrasound report with marked content-page 3" %}
+{% include img.html img="example-structured-pdf-3.drawio.png" caption="Figure 3: Ultrasound report with marked content-page 3" %}
 
 The set of resources related to this example is much larger than the previous one so a uml diagram does not really add value. Instead we will focus on some aspects of the example.
 
@@ -18,7 +18,7 @@ The figure below shows the main structure of the report.
 
 <figure>
   {% include example-structured-base.svg %}
-  <figcaption><b>Figure: FHIR objects in the Semi-Structured Report</b></figcaption>
+  <figcaption><b>Figure 4: FHIR objects in the Semi-Structured Report</b></figcaption>
   <p></p>
 </figure>
 
@@ -28,7 +28,7 @@ This report contains structured data in the patient history section. It points t
 
 <figure>
   {% include example-structured-history.svg %}
-  <figcaption><b>Figure: History</b></figcaption>
+  <figcaption><b>Figure 5: History</b></figcaption>
   <p></p>
 </figure>
 
@@ -36,7 +36,7 @@ The finding sections hold the notes indicated in the report and references to ob
 
 <figure>
   {% include example-structured-findings.svg %}
-  <figcaption><b>Figure: Findings</b></figcaption>
+  <figcaption><b>Figure 6: Findings</b></figcaption>
   <p></p>
 </figure>
 
@@ -46,7 +46,7 @@ The figure below illustrates the way the conclusion is represented.
 
 <figure>
   {% include example-structured-conclusion.svg %}
-  <figcaption><b>Figure: Conclusion and Recommendations</b></figcaption>
+  <figcaption><b>Figure 7: Conclusion and Recommendations</b></figcaption>
   <p></p>
 </figure>
 

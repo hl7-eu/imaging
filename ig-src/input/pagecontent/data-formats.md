@@ -14,7 +14,7 @@ An example of this type of report format can be found [here](example-unstructure
 
 <figure>
   {% include data-format-basic-metadata.svg %}
-  <figcaption>Figure: Renderable format with basic metadata</figcaption>
+  <figcaption>Figure 1: Renderable format with basic metadata</figcaption>
 </figure>
 <br clear="all"/>
 
@@ -32,7 +32,7 @@ An example of this type of report format can be found [here](example-structured.
 
 <figure>
   {% include data-format-section-structured.svg %}
-  <figcaption>Figure: Section-structured report with processable narrative</figcaption>
+  <figcaption>Figure 2: Section-structured report with processable narrative</figcaption>
 </figure>
 <br clear="all"/> 
 

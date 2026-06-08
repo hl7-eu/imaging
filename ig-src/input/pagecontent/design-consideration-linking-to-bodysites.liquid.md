@@ -1,6 +1,6 @@
 ### Linking to body-sites
 
-THe {% raw %}{{ehnImagingGuidelines}}{% endraw %} requires that information is added that defines the body site of the imaging procedure (section A.5.1.6). This information consists of a set of different data elements:
+The {% raw %}{{ehnImagingGuidelines}}{% endraw %} requires that information is added that defines the body site of the imaging procedure (section A.5.1.6). This information consists of a set of different data elements:
 
 - body location
 - laterality
@@ -22,7 +22,7 @@ The first option might cause issues with searching as in some situations, the co
 
 The second option is not feasible in all cases as both options are not supported on all resources.
 
-The third option is allows for searched but does allow to specify further information if needed. But does require definition of resources that are not providing additional information.
+The third option allows for searching and does allow specifying further information if needed. It does however require defining additional resources that are not providing supplementary information.
 
 **CHOICE:**: when referring to a body site on a resource that allows both a reference as a coded value, always populate the coded value.
 

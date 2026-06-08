@@ -52,4 +52,12 @@ if [ "$1" = "5.0.0" ] || [ -z "$1" ]; then
 	cd ../..
 fi
 
+echo ==================================================================================
+echo validate external links in rendered output
+if [ -f "./scripts/validate-links.sh" ]; then
+	bash ./scripts/validate-links.sh
+else
+	echo "Warning: validate-links.sh not found, skipping link validation"
+fi
+
 

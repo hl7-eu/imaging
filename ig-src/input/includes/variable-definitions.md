@@ -11,13 +11,13 @@
 {% assign ehnImagingHtml    = '<a href="https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en">eHN Imaging Studies and Reports</a>' %}
 {% assign ehnImagingFull    = "[Guideline on the electronic exchange of health data under Cross-Border Directive 2011/24/EU Medical imaging studies and reports, release 1.1](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
 
-{% assign XtEhrImaging      = "[Xt-EHR Imaging Logical Model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html)" %}
-{% assign XtEhrImagingHtml  = '<a href="https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html)">XtEHR Imaging Logical Model</a>' %}
+{% assign XtEhrImaging      = "[Xt-EHR Imaging Logical Model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html)" %}
+{% assign XtEhrImagingHtml  = '<a href="https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html">XtEHR Imaging Logical Model</a>' %}
 
 {% assign iheRad            = "[IHE-RAD](https://profiles.ihe.net/RAD/)" %}
 {% assign iheIid            = "[IHE-IID](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_IID.pdf)" %}
 {% assign iheIDR            = "[IHE-IDR](https://build.fhir.org/ig/IHE/RAD.IDR/)" %}
-{% assign iheMADO           = "[IHE-MADO](https://build.fhir.org/ig/hl7-eu/imaging-manifest/)" %}
+{% assign iheMADO           = "[IHE-MADO](https://profiles.ihe.net/RAD/MADO)" %}
 {% assign iheMHD-R4         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
 {% assign iheMHD-R5         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
 {% if isR5 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}

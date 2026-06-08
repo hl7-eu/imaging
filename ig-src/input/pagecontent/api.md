@@ -17,28 +17,28 @@ this choices in this specification. These artifacts will have to be updated when
 
 This specification builds on the actors defined in {{EuridiceHealthDataAPI}}. For the main actors, imaging report specific versions are defined.
 
-{% include img.html img="eu-health-data-api-document-actors.drawio.png" caption="Figure: Document Actors" %}
+{% include img.html img="eu-health-data-api-document-actors.drawio.png" caption="Figure 1: Document Actors" %}
 
 The different actors defined in this specification are presented in the figure below (marked in blue).
 
-{% include img.html img="imaging-report-document-actors.drawio.png" caption="Figure: Imaging Report Document Actors" %}
+{% include img.html img="imaging-report-document-actors.drawio.png" caption="Figure 2: Imaging Report Document Actors" %}
 
 The main actors Document Access Provider and Document Consumer are refined in this specification and imaging report specific versions are defined.
 
 In this model each imaging report is represented by a {{DocumentReferenceImagingReport}} and a {{BundleReportEuImaging}}.
 
-{% include img.html img="api-documentreference-bundle.drawio.png" caption="Figure: DocumentReference and Bundle" %}
+{% include img.html img="api-documentreference-bundle.drawio.png" caption="Figure 3: DocumentReference and Bundle" %}
 
 ### Resource Access
 
 This specification builds on the actors defined in {{EuridiceHealthDataAPI}}.
 
-{% include img.html img="eu-health-data-api-resource-actors.drawio.png" caption="Figure: Resource Actors" %}
+{% include img.html img="eu-health-data-api-resource-actors.drawio.png" caption="Figure 4: Resource Actors" %}
 
 Note that resource level access requires that document level access is supported as well.
 The different actors defined in this specification are presented in the figure below (marked in blue).
 
-{% include img.html img="imaging-report-resource-actors.drawio.png" caption="Figure: Imaging Report Resource Actors" %}
+{% include img.html img="imaging-report-resource-actors.drawio.png" caption="Figure 5: Imaging Report Resource Actors" %}
 
 The main actors Resource Access Provider and Resource Consumer are refined in this specification and imaging report specific versions are defined.
 
