@@ -22,7 +22,7 @@ The string SHALL NOT:
 
 ### Source of information
 
-The content of this observation can be derived from radiation dose information stored in DICOM or provided directly from dose analysis software.
+The content of this observation is typically derived from radiation dose information stored in DICOM or provided directly from dose analysis software.
 
 DICOM templates (from https://build.fhir.org/ig/HL7/fhir-radiation-dose-summary-ig/background.html#minimal-radiation-information):
 * TID 2008 Radiation Exposure and Protection Information
