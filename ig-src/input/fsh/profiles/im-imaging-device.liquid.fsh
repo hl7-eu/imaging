@@ -12,7 +12,10 @@ Description: """The device the made the image."""
 {{R5}}* category 
 {{R5}}  * insert SliceElement( #value, $this )
 {{R5}}* category contains imaging 1..1
-{{R5}}* category[imaging] = $sct#314789007 // "Diagnostic imaging equipment"
+{{R5}}* category[imaging]
+{{R5}}  * insert SliceCodeableConceptWithRequiredCode( imaging, $sct, #314789007 ) // "Diagnostic imaging equipment"
+{{R5}}  * ^short = "Imaging Device"
+{{R5}}  * ^definition = "Defines the category of the device as an imaging device."
 
 * type from DeviceEuImagingType (extensible)
 

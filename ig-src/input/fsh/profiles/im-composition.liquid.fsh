@@ -78,20 +78,23 @@ The `text` field of each section SHALL contain a textual representation of all l
   * insert SliceElement( #value, $this )
 * category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
-* category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] 
   * ^definition = "Defines the priority category of the report as defined in the API spec."
-* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+  * insert SliceCodeableConceptWithRequiredCode( imaging, http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs, [[#Medical-Imaging]] )
+* category[imaging-report] 
   * ^definition = "Defines the category of the report, Diagnostic imaging report."
-
+  * insert SliceCodeableConceptWithRequiredCode( imaging-report, $loinc, #85430-7 )
 
 * status 
 
-* section.code 1..1 
-* section 
-  * insert SliceElement( #value, code )
 * section.emptyReason from SectionEmptyReasonEuImaging (preferred)  
+* section.code 1..1 
+* section.code from ValueSetCompositionSectionCodesEuImaging (preferred)
 * section obeys eu-imaging-composition-1
 * section obeys eu-imaging-composition-2
+
+* section 
+  * insert SliceElement( #value, code )
 * section contains 
     imagingstudy 1..1  and
     order 1..1 and
@@ -109,7 +112,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   * ^short = "Imaging Study"
   * ^definition = "This section holds information related to the imaging studies covered by this report."
   // * title = "Imaging Studies"
-  * code = $loinc#18726-0
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( imagingstudy, $loinc, #18726-0 )
   * extension contains $note-url named note 0..*
   * entry 
     * insert SliceElement( #profile, $this )
@@ -123,7 +127,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[order]
   * ^short = "Order"
   * ^definition = "This section holds information related to the order for the imaging study."
-  * code = $loinc#55115-0 // "Requested imaging studies information Document"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( order, $loinc, #55115-0 )
   * extension contains $note-url named note 0..*
 
   * entry
@@ -144,7 +149,8 @@ The `text` field of each section SHALL contain a textual representation of all l
   Additional clinical information about the patient or specimen that may affect service delivery or interpretation 
   with information specific for imaging (i.e. Observation, Condition, Device, Medication Administration).
   """
-  * code = $loinc#11329-0 // "History general Narrative - Reported"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( history, $loinc, #11329-0 )
   * extension contains $note-url named note 0..*
   * entry 
     * insert SliceElement( #profile, [[$this.resolve()]] )
@@ -158,7 +164,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[procedure]
   * ^short = "Procedure"
   * ^definition = "This section holds information related to the (performed) procedure(s) the generated the imaging study."
-  * code = $loinc#55111-9 // "Current imaging procedure descriptions Document"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( procedure, $loinc, #55111-9 )
   * extension contains 
     $note-url named note 0..* and
     RadiationDoseExt named radiationDose 0..1
@@ -172,7 +179,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * entry[adverse-event] only Reference(AdverseEvent)
     * ^short = "AdverseEvent(s)"
     * ^definition = "Possible AdverseEvents that occurred during the procedure."
-    // Replacing the ObservationRadiationDose by an extension on thi ssection due to XtEHR logical model 0.3.0 requirement change on data type
+    // Replacing the ObservationRadiationDose by an extension on this section due to XtEHR logical model 0.3.0 requirement change on data type
   // * entry[radiation-dose] only Reference(ObservationRadiationDoseEuImaging)
   //   * ^short = "Radiation-dose information"
   //   * ^definition = "Information on radiation the patient was exposed to during the procedure."
@@ -181,7 +188,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 // ////////////////// COMPARISON SECTION //////////////////////////
 * section[comparison]
   * ^short = "Comparison"
-  * code = $loinc#18834-2 // "Radiology Comparison study (narrative)"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( comparison, $loinc, #18834-2 )
   * extension contains $note-url named note 0..*
   * entry
     * insert SliceElement( #profile, [[resolve()]] )
@@ -192,7 +200,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 // /////////////////// FINDINGS SECTION //////////////////////////
 * section[findings]
   * ^short = "Findings"
-  * code = $loinc#59776-5 // "Findings"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( findings, $loinc, #59776-5 )
   * extension contains $note-url named note 0..*
   * entry
     * insert SliceElement( #profile, [[resolve()]] )
@@ -208,7 +217,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
   * ^short = "Impressions"
-  * code = $loinc#19005-8 // "Radiology Imaging study [Impression] (narrative)"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( impression, $loinc, #19005-8 )
   * extension contains $note-url named note 0..*
   * entry
     * insert SliceElement( #profile, $this )
@@ -223,7 +233,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
   * ^short = "Recommendations"
-  * code = $loinc#18783-1 // "Radiology Study recommendation (narrative)"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( recommendation, $loinc, #18783-1 )
   * extension contains $note-url named note 0..*
   * entry
     * insert SliceElement( #profile, $this )
@@ -235,14 +246,16 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[communication]
   * ^short = "Communications"
 // a proper code is needed
-  * code = $loinc#73568-8 // "Communication"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( communication, $loinc, #73568-8 )
   * extension contains $note-url named note 0..*
 
 // /////////////////// COMMUNICATION SECTION //////////////////////////
 * section[report]
   * ^short = "Report - all content in one section"
 // a proper code is needed
-  * code = $loinc#LP173421-1 // "Report"
+  * code
+    * insert SliceCodeableConceptWithRequiredCode( report, $loinc, #LP173421-1 )
   * extension contains $note-url named note 0..*
 
 Extension: RadiationDoseExt

@@ -34,10 +34,11 @@ E.g. based on information from https://dicom.nema.org/medical/dicom/current/outp
 {{R5}}* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
 
 * code
-  * coding 1..*
-    * insert SliceElement( #value, $this )
-  * coding contains radiation-dose 1..1
-  * coding[radiation-dose] = $loinc#73569-6 // "Radiation exposure and protection information [Description] Document Diagnostic imaging"
+  * insert SliceCodeableConceptWithRequiredCode( radiation-dose, $loinc, #73569-6 ) // "Radiation exposure and protection information [Description] Document Diagnostic imaging"
+  // * coding 1..*
+  //   * insert SliceElement( #value, $this )
+  // * coding contains radiation-dose 1..1
+  // * coding[radiation-dose] = $loinc#73569-6 // "Radiation exposure and protection information [Description] Document Diagnostic imaging"
 
 * subject 1..1
 * subject only Reference( $EuPatient )

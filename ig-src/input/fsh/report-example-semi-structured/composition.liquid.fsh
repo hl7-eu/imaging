@@ -26,6 +26,9 @@ Usage: #example
 * status = #final
 * type = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
+* category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7
+
 * author[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
 * author[organization] = Reference(OrganizationSemiStructuredReport)
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report

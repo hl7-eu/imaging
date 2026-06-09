@@ -344,6 +344,9 @@
 <artifact deprecated="true" id="StructureDefinition/EHDSSubstance" key="StructureDefinition-EHDSSubstance" name="Substance model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSTask" key="StructureDefinition-EHDSTask" name="Task model"/>
 <artifact deprecated="true" id="StructureDefinition/EHDSTelecom" key="StructureDefinition-EHDSTelecom" name="Telecom model"/>
+<artifact id="ValueSet/valueset-all-loinc-codes" key="ValueSet-valueset-all-loinc-codes" name="ValueSet: All LOINC codes"/>
+<artifact id="ValueSet/valueset-all-snomed-and-loinc-codes" key="ValueSet-valueset-all-snomed-and-loinc-codes" name="ValueSet: All SNOMED CT and LOINC codes"/>
+<artifact id="ValueSet/valueset-all-snomed-codes" key="ValueSet-valueset-all-snomed-codes" name="ValueSet: All SNOMED CT codes"/>
 <artifact id="ValueSet/im-anatomical-region-valueset" key="ValueSet-im-anatomical-region-valueset" name="ValueSet: Anatomical Region"/>
 <artifact id="ValueSet/valueset-diagnosticreport-report-support-info" key="ValueSet-valueset-diagnosticreport-report-support-info" name="ValueSet: DiagnosticReport supportInfo codes"/>
 <artifact id="ValueSet/DeviceEuImagingType" key="ValueSet-DeviceEuImagingType" name="ValueSet: Imaging Device Type"/>

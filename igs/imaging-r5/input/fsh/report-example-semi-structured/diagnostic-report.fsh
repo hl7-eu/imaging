@@ -20,6 +20,9 @@ Usage: #example
     * value  = "123456789" // invented - not there in the report
 * code = $loinc#24802-1
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
+* category[imaging] = http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+
 * subject = Reference(PatientSemiStructuredReport)
 //R4* imagingStudy[+] = Reference(ImagingStudySemiStructuredReport1)
 * study[+] = Reference(ImagingStudySemiStructuredReport1)

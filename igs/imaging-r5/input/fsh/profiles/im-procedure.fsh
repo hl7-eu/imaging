@@ -22,15 +22,17 @@ referred as the 'Performed Procedure Step' (PPS). This profile is used to captur
 * performer contains performer 0..* and imaging-device 0..*
 * performer[performer]
   * function
-    * coding
-      * insert SliceElement( #value, "$this" )
-    * coding contains healthcare-professional 0..1
-    * coding[healthcare-professional] = $sct#223366009 // "Healthcare professional" // TODO check this code
+    * insert SliceCodeableConceptWithRequiredCode( healthcare-professional, $sct, #223366009 ) // "Healthcare professional" // TODO check this code
+    // * coding
+    //   * insert SliceElement( #value, "$this" )
+    // * coding contains healthcare-professional 0..1
+    // * coding[healthcare-professional] = $sct#223366009 // "Healthcare professional" // TODO check this code
   * actor only Reference($EuPractitionerRole)
 * performer[imaging-device]
   * function
-    * coding
-      * insert SliceElement( #value, "$this" )
-    * coding contains imaging-equipment 0..1
-    * coding[imaging-equipment] = $sct#314789007 // "Diagnostic imaging equipment" // TODO check this code
+    * insert SliceCodeableConceptWithRequiredCode( imaging-equipment, $sct, #314789007 ) // "Healthcare professional" // TODO check this code
+    // * coding
+    //   * insert SliceElement( #value, "$this" )
+    // * coding contains imaging-equipment 0..1
+    // * coding[imaging-equipment] = $sct#314789007 // "Diagnostic imaging equipment" // TODO check this code
   * actor only Reference(DeviceEuImaging)

@@ -14,4 +14,6 @@ translations/**
 subigs/**
 ig-test
 .vscode/settings.json
+
 jira/node_modules/**
+.github/skills/jira-sync-from-excel/node_modules/**

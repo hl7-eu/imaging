@@ -39,3 +39,17 @@ RuleSet: LOINCCopyrightForVS
 
 RuleSet: UCUMCopyrightForVS
 * ^copyright = "The UCUM codes, UCUM table (regardless of format), and UCUM Specification are copyright 1999-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization. All rights reserved. https://ucum.org/trac/wiki/TermsOfUse"
+
+RuleSet: SliceCodeableConceptWithRequiredCode( slice, system, code )
+* coding 1..*
+  * ^slicing.discriminator[+].type = #value
+  * ^slicing.discriminator[=].path = "code"
+  * ^slicing.discriminator[+].type = #value
+  * ^slicing.discriminator[=].path = "system"
+  * ^slicing.ordered               = false
+  * ^slicing.rules                 = #open
+* coding contains {slice} 1..1
+* coding[{slice}].system
+  * ^fixedUri = {system}
+* coding[{slice}].code
+  * ^fixedCode = {code}

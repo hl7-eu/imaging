@@ -1,4 +1,4 @@
-ValueSet: Hl7EuImagingSectionValueSet
+ValueSet: ValueSetCompositionSectionCodesEuImaging
 Id: valueset-diagnosticreport-notes
 Title: "ValueSet: Section codes used to label annotations."
 Description: "These codes define what an annotation annotates."

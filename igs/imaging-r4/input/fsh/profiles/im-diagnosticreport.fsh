@@ -114,10 +114,9 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * insert SliceElement( #value, $this )
 * category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
-* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging] 
   * ^definition = "Defines the priority category of the report as defined in the API spec."
-* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
-  * ^definition = "Defines the category of the report, Diagnostic imaging report."
+  * insert SliceCodeableConceptWithRequiredCode( imaging, http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs, #Medical-Imaging )
 
 * subject only Reference($EuPatient)
 
@@ -127,11 +126,11 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
 * extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
-* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from ValueSetCompositionSectionCodesEuImaging (preferred)
 
 //R5* note 
 //R5  * extension contains $annotation-type named annotation-type 0..*
-//R5  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+//R5  * extension[annotation-type].valueCodeableConcept from ValueSetCompositionSectionCodesEuImaging (preferred)
 
 // * composition 0..0 -> we use composition
 // * media 0..0 // not in not in keyimages section
