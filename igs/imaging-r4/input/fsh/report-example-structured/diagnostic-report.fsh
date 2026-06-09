@@ -25,8 +25,8 @@ Usage: #example
 * subject = Reference (PatientStructuredReport)
 * extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 
 
-* imagingStudy[+] = Reference (ImagingStudStructuredReport)
-//R5* study[+] = Reference (ImagingStudStructuredReport)
+* imagingStudy[+] = Reference (ImagingStudyStructuredReport)
+//R5* study[+] = Reference (ImagingStudyStructuredReport)
 
 * performer[organization] = Reference (OrganizationStructuredReport)
 * resultsInterpreter[author] = Reference (PractitionerRoleStructuredReportAuthor)

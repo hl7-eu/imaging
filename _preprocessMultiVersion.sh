@@ -40,17 +40,25 @@ for version in "${versions[@]}"; do
     
     # Process all liquid files
     echo Processing liquid files
-    find $build_dir -type f -name "*.liquid.*" | while read file; do
+    pids=()
+    while IFS= read -r -d '' file; do
         if [ -f "$file" ]; then
-            file_path=${file}
-            clean_file_path=${file_path/\.liquid\./\.}
-            echo "- $file_path --> $clean_file_path"
+            (
+                file_path=${file}
+                clean_file_path=${file_path/\.liquid\./\.}
+                echo "- $file_path --> $clean_file_path"
 
-            # Process liquid template and inline version tags
-            content=$(npx --yes liquidjs -t @"$file" --context @"context-${context_version}.json")
-            echo "$content" > "$clean_file_path"
-            rm -f $file
+                # Process liquid template and inline version tags
+                content=$(npx --yes liquidjs -t @"$file" --context @"context-${context_version}.json")
+                printf '%s\n' "$content" > "$clean_file_path"
+                rm -f "$file"
+            ) &
+            pids+=("$!")
         fi
+    done < <(find "$build_dir" -type f -name "*.liquid.*" -print0)
+
+    for pid in "${pids[@]}"; do
+        wait "$pid"
     done
 
     # # make readonly

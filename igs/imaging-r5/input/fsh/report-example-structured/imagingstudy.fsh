@@ -1,4 +1,4 @@
-Instance: ImagingStudStructuredReport
+Instance: ImagingStudyStructuredReport
 InstanceOf: ImagingStudyEuImaging
 Title: "ImagingStudy: structured-report study"
 Description: "Transthoracic echocardiogram for 3D TEE 2D"

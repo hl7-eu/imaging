@@ -18,8 +18,6 @@ The sections in this chapter elaborate on the design considerations and decision
 
 {% include design-consideration-linking-to-bodysites.md %}
 
-{% include design-consideration-radiation-dose-summary.md %}
-
 {% include design-consideration-procedure-adverse-reaction.md %}
 
 {% include design-consideration-keyimages.md %}

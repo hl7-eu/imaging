@@ -44,7 +44,7 @@ Usage: #example
 * section[imagingstudy]
   * title = "Imaging Study"
   * code = $loinc#18726-0 "Radiology studies (set)"
-  * entry[+] = Reference(ImagingStudStructuredReport)
+  * entry[+] = Reference(ImagingStudyStructuredReport)
 
 ///////////////////////////////////////////////////////////////////////
 
