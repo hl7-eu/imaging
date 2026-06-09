@@ -58,6 +58,22 @@ Current approaches within Europe use different approaches to information exchang
 
 The specification is being designed in such a way that it can be used in all of these deployment scenarios.
 
+### Relationship and scope boundaries
+
+This guide is part of the broader European EHDS-aligned interoperability landscape and focuses on the imaging report model and related access patterns. It is designed to be complementary to other EHDS family guides and to remain interoperable with established IHE workflows.
+
+In particular, this guide aligns with {{iheMADO}} / {{manifest}} and related IHE document exchange infrastructure. The separation between report and manifest is intentional:
+* The report communicates the clinician-authored interpretation and supporting clinical content.
+* The manifest communicates imaging-study inventory and retrieval context for DICOM access.
+
+This split preserves clinical traceability while avoiding coupling report content to potentially changing image-location endpoints. Historically, report workflows (RIS/EHR-centric) and image-storage workflows (PACS-centric) evolved in different technical stacks, and this guide keeps that separation explicit while keeping both artifacts linkable.
+
+For operational workflows, both directions are expected:
+* starting from a report, discover the related manifest;
+* starting from a manifest, discover the related report(s).
+
+In both directions, {{ImagingStudy}} identifiers such as StudyInstanceUID and order-level identifiers such as accession-number are key matching anchors.
+
 ### Purpose
 
 The goal of this Implementation Guide is to define an European standard for the Imaging Report to facilitate the harmonization among the national initiatives and prepare the ground for the European EHR eXchange Format (E-EHRxF).
