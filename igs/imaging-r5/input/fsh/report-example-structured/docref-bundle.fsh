@@ -56,8 +56,8 @@ Usage: #example
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Patient/PatientStructuredReport"
   * resource = PatientStructuredReport
 * entry[ImagingStudy][+]
-  * fullUrl = "http://hl7.eu/fhir/imaging-r5/ImagingStudy/ImagingStudStructuredReport"
-  * resource = ImagingStudStructuredReport
+  * fullUrl = "http://hl7.eu/fhir/imaging-r5/ImagingStudy/ImagingStudyStructuredReport"
+  * resource = ImagingStudyStructuredReport
 * entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/PractitionerRole/PractitionerRoleStructuredReportAuthor"
   * resource = PractitionerRoleStructuredReportAuthor

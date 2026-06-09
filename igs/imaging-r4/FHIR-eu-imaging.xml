@@ -65,7 +65,7 @@
 <artifact id="StructureDefinition/imaging-study-obligation-eu-imaging" key="StructureDefinition-imaging-study-obligation-eu-imaging" name="ImagingStudy: General: Obligations"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport1" key="ImagingStudy-ImagingStudySemiStructuredReport1" name="ImagingStudy: semi-structured report 1"/>
 <artifact id="ImagingStudy/ImagingStudySemiStructuredReport2" key="ImagingStudy-ImagingStudySemiStructuredReport2" name="ImagingStudy: semi-structured report 2"/>
-<artifact id="ImagingStudy/ImagingStudStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
+<artifact id="ImagingStudy/ImagingStudyStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
 <artifact id="StructureDefinition/ImagingSelectionKeyImageEuImaging" key="StructureDefinition-ImagingSelectionKeyImageEuImaging" name="Key images represented as an ImagingSelection for R4"/>
 <artifact id="StructureDefinition/medication-administration-obligation-eu-imaging" key="StructureDefinition-medication-administration-obligation-eu-imaging" name="MedicationAdministration: Obligations"/>
 <artifact id="Observation/ObservationAnchor" key="Observation-ObservationAnchor" name="Observation Anchor"/>

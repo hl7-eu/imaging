@@ -52,7 +52,7 @@
           * family = "Gutefrage"
           * given[+] = Test-Schust
     }
-    class Ultrasound <<ImagingStudy>>  [[./ImagingStudy-ImagingStudStructuredReport.html]] {
+    class Ultrasound <<ImagingStudy>>  [[./ImagingStudy-ImagingStudyStructuredReport.html]] {
         * series[+] "stress"
         * series[+] "rest"
     }
