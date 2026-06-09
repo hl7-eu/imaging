@@ -139,7 +139,7 @@ RuleSet: ServiceRequestResource( strength1 )
     * code = #search-type
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Search for ServiceRequest resources."
-  * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the order (accession number).]] )
+  * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the order (AccessionNumber).]] )
   * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the order.]] )
   * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #reference, {strength1}, [[The subject of the order.]] )
 
