@@ -62,14 +62,17 @@ Servers SHALL accept scopes for the resources they support:
 - system/Condition.read, system/Condition.search (if Condition supported)
 - system/AllergyIntolerance.read, system/AllergyIntolerance.search (if AllergyIntolerance supported)
 - system/Observation.read, system/Observation.search
-- system/Composition.read, system/Observation.search
+- system/Composition.read, system/Composition.search
 - system/DiagnosticReport.read, system/DiagnosticReport.search
+- system/ImagingStudy.read, system/ImagingStudy.search
+- system/Device.read, system/Device.search
 - system/MedicationRequest.read, system/MedicationRequest.search
 - system/MedicationDispense.read, system/MedicationDispense.search
 - system/Encounter.read, system/Encounter.search (if Encounter supported)
 - system/Practitioner.read (if Practitioner supported)
 - system/Organization.read (if Organization supported)
 - system/Procedure.read
+- system/ServiceRequest.read, system/ServiceRequest.search
 - system/Provenance.read
 """
 
@@ -172,7 +175,7 @@ Servers SHOULD support this resource but MAY omit it based on their capabilities
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 Condition resources represent problems, diagnoses, and health concerns.
-If supported, servers SHALL support search by patient and SHOULD support additional filters.
+For servers that advertise Condition resources, search by patient SHALL be supported and additional filters SHOULD be supported.
 Servers MAY omit this resource based on their capabilities.
 """
 
@@ -222,7 +225,7 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 AllergyIntolerance resources represent patient allergies and intolerances.
-If supported, servers SHALL support search by patient.
+For servers that advertise AllergyIntolerance resources, search by patient SHALL be supported.
 Servers MAY omit this resource based on their capabilities.
 """
 
@@ -258,8 +261,8 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 Observation resources represent clinical observations including vital signs,
-laboratory results, and other measurements. If supported, servers SHALL support
-search by patient and category. Servers MAY omit this resource based on their capabilities.
+laboratory results, and other measurements. For servers that advertise Observation resources, search by patient and category SHALL be supported.
+Servers MAY omit this resource based on their capabilities.
 """
 
 * rest[=].resource[=].interaction[+].code = #read
@@ -315,7 +318,7 @@ search by patient and category. Servers MAY omit this resource based on their ca
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 DiagnosticReport resources represent laboratory results and imaging reports.
-If supported, servers SHALL support search by patient and category.
+For servers that advertise DiagnosticReport resources, search by patient and category SHALL be supported.
 Servers MAY omit this resource based on their capabilities.
 """
 
@@ -372,7 +375,7 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 MedicationRequest resources represent medication orders and prescriptions.
-If supported, servers SHALL support search by patient.
+For servers that advertise MedicationRequest resources, search by patient SHALL be supported.
 Servers MAY omit this resource based on their capabilities.
 """
 
@@ -422,7 +425,7 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 MedicationDispense resources represent medication dispensing events.
-If supported, servers SHALL support search by patient.
+For servers that advertise MedicationDispense resources, search by patient SHALL be supported.
 Servers MAY omit this resource based on their capabilities.
 """
 
@@ -465,7 +468,7 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].extension[=].valueCode = #SHOULD
 * rest[=].resource[=].documentation = """
 Encounter resources represent patient encounters (visits, admissions, etc.).
-If supported, servers SHALL support search by patient.
+For servers that advertise Encounter resources, search by patient SHALL be supported.
 Servers MAY omit this resource based on their capabilities.
 """
 

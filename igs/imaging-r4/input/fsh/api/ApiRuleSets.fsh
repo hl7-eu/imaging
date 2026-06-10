@@ -117,6 +117,10 @@ RuleSet: ProcedureResource( strength1 )
     * code = #read
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Read Procedure by logical ID"
+  * interaction[+]
+    * code = #search-type
+    * insert CapabilityStatementExpectation( {strength1} )
+    * documentation = "Search for Procedure resources."
   * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the procedure.]] )
   * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/Procedure-subject]], #reference, {strength1}, [[The subject of the procedure.]] )
 
@@ -131,6 +135,10 @@ RuleSet: ServiceRequestResource( strength1 )
     * code = #read
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Read ServiceRequest by logical ID"
+  * interaction[+]
+    * code = #search-type
+    * insert CapabilityStatementExpectation( {strength1} )
+    * documentation = "Search for ServiceRequest resources."
   * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the order (accession number).]] )
   * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the order.]] )
   * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #reference, {strength1}, [[The subject of the order.]] )
@@ -145,6 +153,10 @@ RuleSet: ProvenanceResource( strength1 )
     * code = #read
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Read ServiceRequest by logical ID"
+  * interaction[+]
+    * code = #search-type
+    * insert CapabilityStatementExpectation( #SHOULD )
+    * documentation = "Search for Provenance resources (optional)."
   * insert CapabilityStatementSearchParameter( patient, [[http://hl7.org/fhir/SearchParameter/clinical-patient]], #reference, {strength1}, [[The patient of the order.]] )
   * insert CapabilityStatementSearchParameter( subject, [[http://hl7.org/fhir/SearchParameter/ServiceRequest-subject]], #reference, {strength1}, [[The subject of the order.]] )
   * insert CapabilityStatementSearchParameter( target, [[http://hl7.org/fhir/SearchParameter/Provenance-target]], #reference, {strength1}, [[The target of the provenance.]] )

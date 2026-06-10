@@ -11,6 +11,8 @@ In order to ensure uniqueness **across** Hospital Information Systems, accession
 * insert SetFmmAndStatusRule( 1, draft )
 * system 1..1
 * value 1..1
+* value ^short = "The unique identifier value within the namespace defined by system"
+* value ^definition = "The unique identifier value within the namespace defined by system. For accession numbers, uniqueness within that namespace is intended but may not always be achievable in practice (for example due to legacy conversions, shared accessions, or workflow variations). Consumers should not rely on value alone as a globally unique key."
 * type 1..1
 * type
   * coding
@@ -24,28 +26,3 @@ RuleSet: BasedOnServiceRequestOrderEuImagingReference( slicename )
   * identifier 1..1
   * identifier only AccessionNumberIdentifierEuImaging
 
-
-Profile: StudyInstanceUidIdentifierEuImaging
-Parent: Identifier
-Title: "Identifier: Study Instance UID"
-Description: "This profile on Identifier represents the Study Instance UID (0020,000D) for the Imaging Order."
-* insert SetFmmAndStatusRule( 1, draft )
-* system = "urn:dicom:uid"
-* value 1..1
-* type 1..1
-* type
-  * coding
-    * insert SliceElement( #value, $this )
-  * coding contains dcm 1..1
-  * coding[dcm] = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
-
-
-Profile: SopInstanceUidIdentifierEuImaging
-Parent: Identifier
-Title: "Identifier: SOP Instance UID"
-Description: "This profile on Identifier represents the SOP Instance UID	(0008,0018) for the Imaging Order."
-* insert SetFmmAndStatusRule( 1, draft )
-* system = "urn:dicom:uid"
-* value 1..1
-* type 1..1
-* type = MissingDicomTerminology#00080018 // "SOP Instance UID"

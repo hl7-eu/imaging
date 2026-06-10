@@ -4,32 +4,32 @@ When referring to healthcare professionals, the {{ehnImagingGuidelines}} include
 
 ```mermaid
 classDiagram
-    class SrcResource
-    class ImPractitioner { 
-        <<Practitioner>>
-        identifier MS
-        name MS
-        telecom MS
-        address MS
-    }
-    class ImPractitionerRole{ 
-        <<PractitionerRole>>
-        organization MS
-        practitioner MS
-        period MS
-    }
-    class ImOrganization {
-        <<Organization>>
-        active MS
-        name MS
-    }
+ class SrcResource
+ class ImPractitioner { 
+ <<Practitioner>>
+ identifier MS
+ name MS
+ telecom MS
+ address MS
+ }
+ class ImPractitionerRole{ 
+ <<PractitionerRole>>
+ organization MS
+ practitioner MS
+ period MS
+ }
+ class ImOrganization {
+ <<Organization>>
+ active MS
+ name MS
+ }
 
-    SrcResource --> ImPractitionerRole
-    ImPractitionerRole --> ImOrganization: organization
-    ImPractitionerRole --> ImPractitioner: practitioner
+ SrcResource --> ImPractitionerRole
+ ImPractitionerRole --> ImOrganization: organization
+ ImPractitionerRole --> ImPractitioner: practitioner
 ```
 
-The source resource (SrcResource) will typically  point to `ImPractitionerRole` when referring to a healthcare professional. The `ImPractitionerRole` requires support for the `organization` and `practitioner` fields.
+The source resource (SrcResource) will typically point to `ImPractitionerRole` when referring to a healthcare professional. The `ImPractitionerRole` requires support for the `organization` and `practitioner` fields.
 
 On `ImPractitioner` and `ImOrganization` the fields present to identify the healthcare professional are labeled as must support.
 

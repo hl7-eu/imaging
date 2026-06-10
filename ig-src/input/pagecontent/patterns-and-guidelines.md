@@ -51,11 +51,11 @@ These are separate documents; separate imaging reports. The relationship of the 
 {% if isR4 %}
 ```json
 ...
-  "relatesTo" : [
-    { "code": "appends",
-      "targetIdentifier": { "system": ..., "value", ...} 
-    }
-  ]
+ "relatesTo" : [
+ { "code": "appends",
+ "targetIdentifier": { "system": ..., "value", ...} 
+ }
+ ]
 ...
 
 ```
@@ -63,15 +63,15 @@ These are separate documents; separate imaging reports. The relationship of the 
 {% if isR5 %}
 ```json
 ...
-  "relatesTo" : [
-    { "type": "amends",
-      "resourceReference":{ 
-        ...
-        "identifier":  { "system": ..., "value", ...} 
-        ...
-      }
-    }
-  ]
+ "relatesTo" : [
+ { "type": "amends",
+ "resourceReference":{ 
+ ...
+ "identifier": { "system": ..., "value", ...} 
+ ...
+ }
+ }
+ ]
 ...
 
 ```
@@ -109,16 +109,16 @@ Some of the source data for imaging report comes from DICOM. Although DICOM reco
 
 ```json
 ...
-  "started" : "2015-02-07T13:28:17-05:00"
-  "_started" : {
-    "extension" : [
-      { "url": "http://hl7.org/fhir/StructureDefinition/uncertainPeriod",
-        "valuePeriod" : {
-          "start": "2015-02-07T13:28:17-12:00",
-          "end": "2015-02-07T13:28:17+12:00"
-        }
-       }
-    ]
-  }
+ "started" : "2015-02-07T13:28:17-05:00"
+ "_started" : {
+ "extension" : [
+ { "url": "http://hl7.org/fhir/StructureDefinition/uncertainPeriod",
+ "valuePeriod" : {
+ "start": "2015-02-07T13:28:17-12:00",
+ "end": "2015-02-07T13:28:17+12:00"
+ }
+ }
+ ]
+ }
 ...
 ```

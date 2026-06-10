@@ -11,8 +11,8 @@
 {% assign ehnImagingHtml    = '<a href="https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en">eHN Imaging Studies and Reports</a>' %}
 {% assign ehnImagingFull    = "[Guideline on the electronic exchange of health data under Cross-Border Directive 2011/24/EU Medical imaging studies and reports, release 1.1](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
 
-{% assign XtEhrImaging      = "[Xt-EHR Imaging Logical Model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html)" %}
-{% assign XtEhrImagingHtml  = '<a href="https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html)">XtEHR Imaging Logical Model</a>' %}
+{% assign XtEhrImaging      = "[Xt-EHR Imaging Logical Model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html)" %}
+{% assign XtEhrImagingHtml  = '<a href="https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html">XtEHR Imaging Logical Model</a>' %}
 
 {% assign iheRad            = "[IHE-RAD](https://profiles.ihe.net/RAD/)" %}
 {% assign iheIid            = "[IHE-IID](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_Suppl_IID.pdf)" %}
@@ -47,4 +47,3 @@
 
 {% assign euridiceAPI       = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/jwg-api/branches/main/en/)" %}
 
-{% include fhir-resources.md %}

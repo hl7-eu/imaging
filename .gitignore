@@ -1,16 +1,12 @@
+# IDEAs
 /.idea
 .vscode/launch.json
 .vscode/mcp.json
-input-cache/
-output/
-temp/
-template/
-fsh-generated/**
-ig-template/**/*.db
-ig-template/**/*index.json
-publisher.jar
-translations/**
-
-subigs/**
-ig-test
 .vscode/settings.json
+
+# FHIR publisher specific
+# igs/imaging-r4/**
+# igs/imaging-r5/**
+subigs/**
+
+build-logs/**

@@ -31,6 +31,25 @@ RuleSet: SliceElementWithDescription( type, path, description )
 * ^slicing.description = "{description}"
 * ^slicing.ordered = false
 
+RuleSet: ReplaceBinding( strength, description )
+* ^binding.strength = {strength}
+* ^binding.description = "{description}"
+* ^binding.valueSet = ""
+
+RuleSet: SliceCodeableConceptWithRequiredCode( slice, system, code )
+* coding 1..*
+  * ^slicing.discriminator[+].type = #value
+  * ^slicing.discriminator[=].path = "code"
+  * ^slicing.discriminator[+].type = #value
+  * ^slicing.discriminator[=].path = "system"
+  * ^slicing.ordered               = false
+  * ^slicing.rules                 = #open
+* coding contains {slice} 1..1
+* coding[{slice}].system
+  * ^fixedUri = {system}
+* coding[{slice}].code
+  * ^fixedCode = {code}
+
 RuleSet: SNOMEDCopyrightForVS
 * ^copyright = "This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement"
 

@@ -11,9 +11,9 @@ The figure below shows the pdf of the report.
 The image shows what part of the report link to different elements in the report structure as defined in this specification. The structure of a imaging report as defined in this specification is illustrated in the figure below.
 
 <figure>
-  {% include example-semi-structured.svg %}
-  <figcaption><b>Figure: FHIR objects in the Semi-Structured Report</b></figcaption>
-  <p></p>
+ {% include example-semi-structured.svg %}
+ <figcaption><b>Figure: FHIR objects in the Semi-Structured Report</b></figcaption>
+ <p></p>
 </figure>
 
 The figure shows the `DocumentReference` wrapper pointing to a document `Bundle` that groups the report resources. Inside the bundle, the `DiagnosticReport` refers to the imaging studies (LeftKnee and RightKnee), to the patient and to the author of the report. The resource holds the textual note of the findings in notes and the impression to conclusion.

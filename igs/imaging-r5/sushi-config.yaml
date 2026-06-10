@@ -39,7 +39,9 @@ dependencies:
   hl7.fhir.eu.base-r5: 2.0.0-ballot
   hl7.fhir.uv.extensions: 5.3.0-ballot
   hl7.fhir.eu.extensions: 1.2.0
-  hl7.terminology.r5: 7.1.0
+  hl7.terminology.r5:
+    uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+    version: 7.1.0
   ihe.iti.mhd: 5.0.0
     
 
@@ -147,18 +149,21 @@ menu:
     Dependencies: dependencies.html
     References: references.html
     Adapting Guidelines for Country use: adapting.html
+    Authors and contributors: contributors.html
+    Copyright: copyright.html
+    Current status: current-status.html
   Functional:
     Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html
-    Use Cases: use-cases.html
     System actors: actors-and-transactions.html
+    Use Cases: use-cases.html
   Implementation:
-    Xt-EHR mapping: xtehr-mapping.html
-    Imaging Report: imaging-report.html
     Data formats: data-formats.html
-    EU Health Data API for Imaging Reports: api.html
     Imaging Report Examples: examples.html
+    EU Health Data API for Imaging Reports: api.html
+    Xt-EHR mapping: xtehr-mapping.html
     Patterns and Guidelines: patterns-and-guidelines.html
     Design considerations: design-considerations.html
+    Imaging Report: imaging-report.html
   About:
     Authors and contributors: contributors.html
     Copyright: copyright.html

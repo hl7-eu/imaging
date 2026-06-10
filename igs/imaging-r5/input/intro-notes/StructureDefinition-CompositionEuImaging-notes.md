@@ -66,7 +66,7 @@ The following table lists the elements that should be included in the narrative 
 | EuAllergyIntolerance | reaction.manifestation |  | [EHDSAllergyIntolerance](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAllergyIntolerance.html).reaction.manifestation |  |
 | EuAllergyIntolerance | reaction.severity |  | [EHDSAllergyIntolerance](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAllergyIntolerance.html).reaction.severity |  |
 | EuDevice | type |  | [EHDSDevice](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSDevice.html).type |  |
-| DiagnosticReportEuImaging | extension[radiationDose] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.exposureInformation | Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365 |
+| DiagnosticReportEuImaging | extension[procedure] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.exposureInformation | Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365 |
 | CompositionEuImaging | section[procedure].entry[procedure] | EuProcedure | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.imagingProcedures |  |
 | CompositionEuImaging | section[procedure].entry[adverse-event] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.adverseReaction |  |
 | EuMedicationAdministration | reason |  | [EHDSMedicationAdministration](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSMedicationAdministration.html).reason[x] |  |
@@ -124,5 +124,4 @@ The following table lists the elements that should be included in the narrative 
 {:.grid}
 | First order resource | Element | Referenced resource | Logical model resource.field | Comments |
 | -------- | ------- | -------------- | --------------------- | -------- |
-| R5 Mapped Resource | R5 Mapped Field |  | [Xt-EHR resource](https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-Xt-EHR resource.html).Xt-EHR field | R5 Comments |
 

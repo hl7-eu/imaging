@@ -1,12 +1,13 @@
 {
     "cSpell.words": [
+        "CodeableConcept",
+        "DICOM",
         "EDQM",
         "EHDS",
+        "FHIR",
         "LOINC",
         "UCUM",
-        "WADO",
-        "CodeableConcept",
-        "DICOM"
+        "WADO"
     ],
     "editor.wordWrap": "on",
     "markdownlint.config": {
@@ -19,4 +20,15 @@
     },
     "editor.tabSize": 2,
     "editor.indentSize": 2,
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /home/nly98977/SwArchives/hl7eu/imaging && bash \\./\\.github/skills/ig-preprocess-build-check/scripts/check-preprocess-build\\.sh$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "./_preprocessMultiVersion.sh": true,
+        "/^cd /home/nly98977/SwArchives/hl7eu/imaging/jira && bash \\.\\./\\.github/skills/jira-sync-from-excel/scripts/sync-if-newer\\.sh$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    },
 }

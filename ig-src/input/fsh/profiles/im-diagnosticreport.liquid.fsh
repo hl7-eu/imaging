@@ -3,7 +3,7 @@ Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report"
 Description: """
 DiagnosticReport profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.   
-The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-HL7IDR](https://build.fhir.org/ig/IHE/RAD.HL7IDR/branches/master/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
+The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-IDR](https://build.fhir.org/ig/IHE/RAD.IDR/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
@@ -212,7 +212,6 @@ Recommendations a radiologist provides in the report for possible follow up acti
 * extension[communication] ^definition = """
 Communications captures what communications have been made with other care providers.
 """
-* extension contains RadiationDoseExt named radiationDose 0..1 MS
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
 // * obeys hl7eu-im-dr-code
 // * obeys hl7eu-im-dr-category
