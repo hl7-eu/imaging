@@ -51,6 +51,12 @@ latest_file_in_dir() {
   find "$dir" -type f -printf '%T@ %p\n' 2>/dev/null | sort -nr | sed -n '1{s/^[^ ]* //;p;}'
 }
 
+source_changes_under_ig_src() {
+  git status --porcelain=1 --untracked-files=normal -- "$source_dir" |
+    cut -c4- |
+    grep -vE '(^|/)(input-cache|temp|fsh-generated|output)(/|$)' || true
+}
+
 needs_rebuild=false
 
 if [ ! -d "$source_dir" ]; then
@@ -59,13 +65,14 @@ if [ ! -d "$source_dir" ]; then
 fi
 
 log_step "Checking whether rebuild is needed"
-latest_source_file="$(latest_file_in_dir "$source_dir")"
-if [ -z "$latest_source_file" ]; then
-  echo "No source files found under $source_dir"
-  exit 1
+source_changes="$(source_changes_under_ig_src)"
+if [ -n "$source_changes" ]; then
+  echo "Source changes detected under $source_dir:"
+  echo "$source_changes" | sed 's/^/  /'
+  needs_rebuild=true
+else
+  echo "No source changes detected under $source_dir."
 fi
-latest_source_ts="$(stat -c %Y "$latest_source_file")"
-echo "Latest source file: $latest_source_file"
 
 for version in "${versions[@]}"; do
   ig_dir="igs/imaging-${version}"
@@ -82,21 +89,6 @@ for version in "${versions[@]}"; do
     echo "No build output files found for imaging-${version}: $output_dir"
     needs_rebuild=true
     continue
-  fi
-
-  latest_build_file="$(latest_file_in_dir "$ig_dir")"
-  if [ -z "$latest_build_file" ]; then
-    echo "No files found under $ig_dir"
-    needs_rebuild=true
-    continue
-  fi
-  latest_build_ts="$(stat -c %Y "$latest_build_file")"
-
-  if [ "$latest_build_ts" -lt "$latest_source_ts" ]; then
-    echo "imaging-${version} is older than latest source change."
-    echo "Latest build file:  $latest_build_file"
-    echo "Latest source file: $latest_source_file"
-    needs_rebuild=true
   fi
 done
 
@@ -133,9 +125,6 @@ ensure_publisher_for_ig() {
   echo "IG Publisher still missing for $ig_dir after update"
   return 1
 }
-
-ensure_publisher_for_ig "igs/imaging-r4"
-ensure_publisher_for_ig "igs/imaging-r5"
 
 run_build_in_docker() {
   local version="$1"
@@ -175,55 +164,90 @@ run_build_locally() {
   ) 2>&1 | tee -a "$version_log" | sed -u "s/^/[${version}] /"
 }
 
+print_qa_summary() {
+  local version="$1"
+  local qa_file="$repo_dir/igs/imaging-${version}/output/qa.txt"
+
+  if [ ! -f "$qa_file" ]; then
+    echo "imaging-${version} QA summary: missing $qa_file"
+    return 0
+  fi
+
+  local qa_line
+  qa_line="$(grep -m1 '^err =' "$qa_file" || true)"
+  if [ -n "$qa_line" ]; then
+    echo "imaging-${version} QA summary: $qa_line"
+  else
+    echo "imaging-${version} QA summary: no err/warn/info line found in $qa_file"
+  fi
+}
+
 publisher_image_has_java() {
   docker run --rm "$publisher_image" bash -lc "command -v java >/dev/null 2>&1" >/dev/null 2>&1
 }
 
-build_runner="docker"
-if ! command -v docker >/dev/null 2>&1; then
-  echo "Docker not found in PATH; switching to local build mode."
-  build_runner="local"
-elif ! publisher_image_has_java; then
-  echo "Publisher image '$publisher_image' does not provide java for _genonce.sh; switching to local build mode."
-  build_runner="local"
-fi
+if [ "$needs_rebuild" = true ]; then
+  ensure_publisher_for_ig "igs/imaging-r4"
+  ensure_publisher_for_ig "igs/imaging-r5"
 
-log_step "Running parallel builds"
-if [ "$build_runner" = "docker" ]; then
-  run_build_in_docker "r4" &
-else
-  run_build_locally "r4" &
-fi
-pid_r4=$!
-if [ "$build_runner" = "docker" ]; then
-  run_build_in_docker "r5" &
-else
-  run_build_locally "r5" &
-fi
-pid_r5=$!
+  build_runner="docker"
+  if ! command -v docker >/dev/null 2>&1; then
+    echo "Docker not found in PATH; switching to local build mode."
+    build_runner="local"
+  elif ! publisher_image_has_java; then
+    echo "Publisher image '$publisher_image' does not provide java for _genonce.sh; switching to local build mode."
+    build_runner="local"
+  fi
 
-echo "Waiting for imaging-r4 and imaging-r5 builds to finish (blocking)..."
+  log_step "Running parallel builds"
+  if [ "$build_runner" = "docker" ]; then
+    run_build_in_docker "r4" &
+  else
+    run_build_locally "r4" &
+  fi
+  pid_r4=$!
+  if [ "$build_runner" = "docker" ]; then
+    run_build_in_docker "r5" &
+  else
+    run_build_locally "r5" &
+  fi
+  pid_r5=$!
 
-set +e
-wait "$pid_r4"
-status_r4=$?
-echo "imaging-r4 build finished with exit code $status_r4"
-wait "$pid_r5"
-status_r5=$?
-echo "imaging-r5 build finished with exit code $status_r5"
-set -e
+  echo "Waiting for imaging-r4 and imaging-r5 builds to finish (blocking)..."
 
-if [ "$status_r4" -ne 0 ] || [ "$status_r5" -ne 0 ]; then
-  echo "Parallel build failed: r4 exit=$status_r4, r5 exit=$status_r5"
+  set +e
+  wait "$pid_r4"
+  status_r4=$?
+  echo "imaging-r4 build finished with exit code $status_r4"
+  wait "$pid_r5"
+  status_r5=$?
+  echo "imaging-r5 build finished with exit code $status_r5"
+  set -e
+
+  if [ "$status_r4" -ne 0 ] || [ "$status_r5" -ne 0 ]; then
+    echo "Parallel build failed: r4 exit=$status_r4, r5 exit=$status_r5"
+    echo "Inspect logs:"
+    echo "- Run log: $run_log"
+    echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
+    echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+    print_qa_summary "r4"
+    print_qa_summary "r5"
+    exit 1
+  fi
+
+  print_qa_summary "r4"
+  print_qa_summary "r5"
+  echo "Parallel build completed successfully for imaging-r4 and imaging-r5."
   echo "Inspect logs:"
   echo "- Run log: $run_log"
   echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
   echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
-  exit 1
+else
+  print_qa_summary "r4"
+  print_qa_summary "r5"
+  echo "No version rebuild needed: source tree is clean and build outputs are present."
+  echo "Inspect logs:"
+  echo "- Run log: $run_log"
+  echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
+  echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
 fi
-
-echo "Parallel build completed successfully for imaging-r4 and imaging-r5."
-echo "Inspect logs:"
-echo "- Run log: $run_log"
-echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
-echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
