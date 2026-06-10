@@ -1,0 +1,44 @@
+@startuml example-unstructured
+
+skinparam backgroundColor white
+skinparam handwritten false
+skinparam defaultFontSize 10
+skinparam classAttributeFontSize 9
+
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+}
+
+class "RenderableFormatWithBasicMetadata\n<<DocumentReference>>" as RenderableFormatWithBasicMetadata [[./DocumentReference-RenderableFormatWithBasicMetadata.html]]
+class "BundleReportMinimalMetadata\n<<Bundle>>" as BundleReportMinimalMetadata [[./Bundle-bundle-report-minimal-metadata-unstructured.html]] {
+  +type : #collection
+}
+class "DiagnosticReportMinimalMetadata\n<<DiagnosticReport>>" as DiagnosticReportMinimalMetadata [[./DiagnosticReport-DiagnosticReportMinimalMetadata.html]] {
+  +presentedForm : Attachment~PDF~
+  +basedOn : Reference~ServiceRequest~ (or identifier)
+  +study/imagingStudy : Reference~ImagingStudy~ (or identifier)
+}
+class "PatientUnstructuredReport\n<<Patient>>" as PatientUnstructuredReport [[./Patient-PatientUnstructuredReport.html]]
+class "OrganizationUnstructuredReport\n<<Organization>>" as OrganizationUnstructuredReport [[./Organization-OrganizationUnstructuredReport.html]]
+class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Binary-BinaryUnstructuredReport.html]] {
+  +contentType : application/pdf
+}
+
+RenderableFormatWithBasicMetadata --> BundleReportMinimalMetadata : content.attachment.url
+RenderableFormatWithBasicMetadata --> PatientUnstructuredReport : subject
+RenderableFormatWithBasicMetadata --> OrganizationUnstructuredReport : custodian
+BundleReportMinimalMetadata --> DiagnosticReportMinimalMetadata : entry (required)
+BundleReportMinimalMetadata --> PatientUnstructuredReport : entry (optional)
+BundleReportMinimalMetadata --> OrganizationUnstructuredReport : entry (optional)
+DiagnosticReportMinimalMetadata --> PatientUnstructuredReport : subject
+DiagnosticReportMinimalMetadata --> OrganizationUnstructuredReport : performer
+DiagnosticReportMinimalMetadata --> BinaryUnstructuredReport : presentedForm
+
+note right of DiagnosticReportMinimalMetadata
+R4 element name: imagingStudy
+R5 element name: study
+end note
+
+@enduml

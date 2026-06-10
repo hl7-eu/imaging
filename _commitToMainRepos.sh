@@ -12,8 +12,58 @@ echo "Current branch: $current_branch"
 
 src_dir="igs/"
 subrepo_dir="subigs/"
+source_dir="ig-src"
 
 versions=("r4" "r5" )
+
+# Validate that imaging-r4 and imaging-r5 were built after latest ig-src change.
+if [ ! -d "$source_dir" ]; then
+  echo "Source directory $source_dir does not exist."
+  exit 1
+fi
+
+latest_source_file=$(find "$source_dir" -type f -print0 | xargs -0 ls -1t 2>/dev/null | head -n 1)
+if [ -z "$latest_source_file" ]; then
+  echo "No files found under $source_dir. Cannot validate build freshness."
+  exit 1
+fi
+latest_source_ts=$(stat -c %Y "$latest_source_file")
+echo "Latest source file: $latest_source_file"
+
+for version in "${versions[@]}"; do
+  full_src_dir=${src_dir}imaging-${version}
+  output_dir=${full_src_dir}/output
+
+  if [ ! -d "$output_dir" ]; then
+    echo "Build output directory missing: $output_dir"
+    echo "Please build imaging-${version} first."
+    exit 1
+  fi
+
+  output_file_count=$(find "$output_dir" -type f | wc -l)
+  if [ "$output_file_count" -eq 0 ]; then
+    echo "Build output directory is empty: $output_dir"
+    echo "Please build imaging-${version} first."
+    exit 1
+  fi
+
+  latest_build_file=$(find "$full_src_dir" -type f -print0 | xargs -0 ls -1t 2>/dev/null | head -n 1)
+  if [ -z "$latest_build_file" ]; then
+    echo "No files found under $full_src_dir. Cannot validate build freshness."
+    exit 1
+  fi
+  latest_build_ts=$(stat -c %Y "$latest_build_file")
+
+  if [ "$latest_build_ts" -lt "$latest_source_ts" ]; then
+    echo "imaging-${version} appears outdated."
+    echo "Latest build file:  $latest_build_file"
+    echo "Latest source file: $latest_source_file"
+    echo "Please rebuild imaging-${version} after latest ig-src changes."
+    exit 1
+  fi
+
+  echo "Build freshness check passed for imaging-${version}."
+done
 
 if [ ! -d "${src_dir}" ]; then
   mkdir -p "${src_dir}"
