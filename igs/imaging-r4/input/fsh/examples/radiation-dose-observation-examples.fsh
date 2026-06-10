@@ -10,7 +10,6 @@ Usage: #example
 * derivedFrom[study].identifier.system = "urn:dicom:uid"
 * derivedFrom[study].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100001"
 * derivedFrom[study].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
-//R5* derivedFrom[study].reference = "ImagingStudy/ImagingStudySemiStructuredReport1"
 
 * valueString = "CT examination of the abdomen and pelvis. CTDIvol 9.8 mGy; DLP 520 mGy.cm. Dose values represent scanner output metrics and not patient absorbed dose."
 
@@ -27,7 +26,6 @@ Usage: #example
 * derivedFrom[study].identifier.system = "urn:dicom:uid"
 * derivedFrom[study].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100002"
 * derivedFrom[study].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
-//R5* derivedFrom[study].reference = "ImagingStudy/ImagingStudySemiStructuredReport2"
 
 * valueString = "Fluoroscopic coronary angiography. Dose area product (DAP) 45 Gy.cm2; fluoroscopy time 6.2 minutes. Reported values summarize scanner output and are not patient absorbed dose."
 
@@ -44,6 +42,5 @@ Usage: #example
 * derivedFrom[study].identifier.system = "urn:dicom:uid"
 * derivedFrom[study].identifier.value = "urn:oid:1.2.840.113619.2.312.4120.7932814.15731.20260501100003"
 * derivedFrom[study].identifier.type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
-//R5* derivedFrom[study].reference = "ImagingStudy/ImagingStudyStructuredReport"
 
 * valueString = "Chest radiography (PA and lateral). Estimated dose indicators within typical range for this examination. This summary is suitable for reporting and does not imply patient-specific absorbed dose."

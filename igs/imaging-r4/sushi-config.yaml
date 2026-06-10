@@ -43,7 +43,7 @@ dependencies:
     uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
     version: 7.1.0
   hl7.fhir.uv.xver-r5.r4:
-    uri: http://hl7.org/fhir/5.0/ImplementationGuide/hl7.fhir.uv.xver-r5.r4
+    uri: http://hl7.org/fhir/uv/xver
     version: 0.0.1-snapshot-2
   ihe.iti.mhd: 4.2.3
   fhir.dicom: 
