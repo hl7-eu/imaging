@@ -10,6 +10,11 @@ fi
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 echo "Current branch: $current_branch"
 
+if [ "$current_branch" = "HEAD" ] && [ -n "$GITHUB_REF_NAME" ]; then
+  current_branch="$GITHUB_REF_NAME"
+  echo "Detected detached HEAD, using branch from GITHUB_REF_NAME: $current_branch"
+fi
+
 src_dir="igs/"
 subrepo_dir="subigs/"
 source_dir="ig-src"
@@ -84,9 +89,17 @@ for version in "${versions[@]}"; do
   if [ -d "$full_tgt_dir/.git" ]; then
     pushd "$full_tgt_dir" > /dev/null
 
-    if git show-ref --verify --quiet "refs/heads/$current_branch"; then
-      git checkout "$current_branch"
+    git fetch origin --prune
+
+    if git ls-remote --exit-code --heads origin "$current_branch" >/dev/null 2>&1; then
+      if git show-ref --verify --quiet "refs/heads/$current_branch"; then
+        git checkout "$current_branch"
+      else
+        git checkout -b "$current_branch" "origin/$current_branch"
+      fi
       git pull origin "$current_branch" || true
+    elif git show-ref --verify --quiet "refs/heads/$current_branch"; then
+      git checkout "$current_branch"
     else
       git checkout -b "$current_branch"
     fi
@@ -94,14 +107,28 @@ for version in "${versions[@]}"; do
     popd > /dev/null
   else
     echo "Directory $full_tgt_dir is not a git repository."
-    # git clone https://github.com/hl7-eu/imaging-r4 "$subrepo_dir$version"
-    git clone git@github.com:hl7-eu/imaging-$version.git "$full_tgt_dir"
+    if [ -n "$DEPLOY_TOKEN" ]; then
+      git clone "https://x-access-token:${DEPLOY_TOKEN}@github.com/hl7-eu/imaging-$version.git" "$full_tgt_dir"
+    else
+      git clone "git@github.com:hl7-eu/imaging-$version.git" "$full_tgt_dir"
+    fi
+
+    pushd "$full_tgt_dir" > /dev/null
+    git fetch origin --prune
+
+    if git ls-remote --exit-code --heads origin "$current_branch" >/dev/null 2>&1; then
+      git checkout -b "$current_branch" "origin/$current_branch"
+    else
+      git checkout -b "$current_branch"
+    fi
+
+    popd > /dev/null
   fi
 
   # Copy contents from igs/r4 to the current directory
   if [ -d "$full_src_dir" ]; then
-    rm -Rf $full_tgt_dir/ig-template
-    rm -Rf $full_tgt_dir/input
+    rm -Rf "$full_tgt_dir/ig-template"
+    rm -Rf "$full_tgt_dir/input"
     cp -r "$full_src_dir"/. $full_tgt_dir
     echo "Copied contents from $full_src_dir to $full_tgt_dir."
   else
@@ -125,7 +152,7 @@ for version in "${versions[@]}"; do
     last_commit_message=$(git log -1 --pretty=%B)
 
     git commit -m "$last_commit_message" -m "Sync from https://github.com/hl7-eu/imaging for commit $main_repo_commit from $main_repo_url."
-    git push origin "$current_branch"
+    git push -u origin "$current_branch"
     echo "Committed and pushed changes in $full_tgt_dir."
   fi
   popd > /dev/null

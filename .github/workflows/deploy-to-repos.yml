@@ -1,0 +1,48 @@
+name: Validate and Sync Slave IG Repositories
+
+on:
+  push:
+    branches-ignore:
+      - '1.0.0-ballot'  # Never run on pushes from this branch
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+    name: Build and sync R4/R5 slave repositories
+    permissions:
+      contents: read
+    env:
+      JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Git configuration
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Build or refresh imaging-r4 and imaging-r5
+        run: |
+          chmod u+x *.sh
+          ./_preProcessAndCheckAll.sh
+
+      - name: Sync updates to slave repositories
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "Error: DEPLOY_TOKEN secret not configured."
+            echo "Add secret DEPLOY_TOKEN with write access to hl7-eu/imaging-r4 and hl7-eu/imaging-r5."
+            exit 1
+          fi
+          ./_commitToMainRepos.sh

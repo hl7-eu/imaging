@@ -1,0 +1,32 @@
+name: Validate IG Builds
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  validate-r4-r5:
+    runs-on: ubuntu-latest
+    name: Validate R4 and R5 generation
+    env:
+      JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Build and validate imaging-r4 and imaging-r5
+        run: |
+          chmod u+x *.sh
+          ./_preProcessAndCheckAll.sh
