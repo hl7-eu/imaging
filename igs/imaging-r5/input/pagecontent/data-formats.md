@@ -13,8 +13,8 @@ This level of structure allows for a human-readable report (the PDF) that can fu
 An example of this type of report format can be found [here](example-unstructured.html).
 
 <figure>
-  {% include data-format-basic-metadata.svg %}
-  <figcaption>Figure: Renderable format with basic metadata</figcaption>
+ {% include data-format-basic-metadata.svg %}
+ <figcaption>Figure: Renderable format with basic metadata</figcaption>
 </figure>
 <br clear="all"/>
 
@@ -31,8 +31,8 @@ This level of structure allows the PROCESSOR actor to interpret the structured d
 An example of this type of report format can be found [here](example-structured.html).
 
 <figure>
-  {% include data-format-section-structured.svg %}
-  <figcaption>Figure: Section-structured report with processable narrative</figcaption>
+ {% include data-format-section-structured.svg %}
+ <figcaption>Figure: Section-structured report with processable narrative</figcaption>
 </figure>
 <br clear="all"/> 
 

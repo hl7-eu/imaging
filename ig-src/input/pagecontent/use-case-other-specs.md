@@ -14,8 +14,8 @@ The European imaging specifications consist of the imaging manifest and the imag
 The sequence diagram presented below presents a typical use case in which both specifications are used.
 
 <figure>
-  {% include report-and-mado-usecase.svg %}
-  <figcaption>Figure: Use case describing report and manifest use</figcaption>
+ {% include report-and-mado-usecase.svg %}
+ <figcaption>Figure: Use case describing report and manifest use</figcaption>
 </figure>
 <br clear="all"/>
 

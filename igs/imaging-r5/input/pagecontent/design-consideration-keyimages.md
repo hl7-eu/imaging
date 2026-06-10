@@ -29,41 +29,41 @@ That leaves the question in what way are these resources linked into the overall
 
 ```mermaid
 classDiagram
-    direction TD
+ direction TD
 
-    class ImagingSelectionKeyImageEuImaging{ 
-        <<ImagingSelection>>
-        studyUid
-        instance.uid
-        instance.sopClass
-    }
+ class ImagingSelectionKeyImageEuImaging{ 
+ <<ImagingSelection>>
+ studyUid
+ instance.uid
+ instance.sopClass
+ }
 
 
-    class DocumentReferenceKeyImageEuImaging{ 
-        <<DocumentReference>> 
-        modality
-    }
-    class ImKeyImageInstanceDocumentReference{ 
-        <<DocumentReference>>
-        identifier: SOP Instance UID
-    }
-    class ImKeyImageInstanceSerieDocumentReference{ 
-        <<DocumentReference>>
-        identifier: SerieInstanceUID
-    }
-    class CompositionEuImaging{ 
-        <<Composition>>
-        section[keyimages]
-    }
-    class DiagnosticReportEuImaging{
-        <<DiagnosticReport>>
-    }
-    CompositionEuImaging --> DocumentReferenceKeyImageEuImaging: section[findings].entry[keyimages]
-    CompositionEuImaging --> ImagingSelectionKeyImageEuImaging: section[findings].entry[keyimages]
-    DiagnosticReportEuImaging --> DocumentReferenceKeyImageEuImaging: extension[finding]
-    DiagnosticReportEuImaging --> ImagingSelectionKeyImageEuImaging: extension[finding]
+ class DocumentReferenceKeyImageEuImaging{ 
+ <<DocumentReference>> 
+ modality
+ }
+ class ImKeyImageInstanceDocumentReference{ 
+ <<DocumentReference>>
+ identifier: SOP Instance UID
+ }
+ class ImKeyImageInstanceSerieDocumentReference{ 
+ <<DocumentReference>>
+ identifier: SerieInstanceUID
+ }
+ class CompositionEuImaging{ 
+ <<Composition>>
+ section[keyimages]
+ }
+ class DiagnosticReportEuImaging{
+ <<DiagnosticReport>>
+ }
+ CompositionEuImaging --> DocumentReferenceKeyImageEuImaging: section[findings].entry[keyimages]
+ CompositionEuImaging --> ImagingSelectionKeyImageEuImaging: section[findings].entry[keyimages]
+ DiagnosticReportEuImaging --> DocumentReferenceKeyImageEuImaging: extension[finding]
+ DiagnosticReportEuImaging --> ImagingSelectionKeyImageEuImaging: extension[finding]
 
-    DocumentReferenceKeyImageEuImaging --> ImageData: content.attachment.url
-    DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceSerieDocumentReference
-    DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceDocumentReference
+ DocumentReferenceKeyImageEuImaging --> ImageData: content.attachment.url
+ DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceSerieDocumentReference
+ DocumentReferenceKeyImageEuImaging <|-- ImKeyImageInstanceDocumentReference
 ```

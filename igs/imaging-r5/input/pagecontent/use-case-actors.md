@@ -4,8 +4,8 @@ A set of actors and use cases has been identified as the minimum functional scop
 The diagram also shows how these use-case actors relate to the system actors described on the [actors-and-transactions.html](actors-and-transactions.html) page. Note that the displayer and processor roles are grouped into a single consumer actor, because user-interface display requirements and constraints are highly implementation-specific. As the variety of consumer needs makes it very difficult if not impossible to determine a generic rule for this, no generic obligations can be defined for those roles.
 
 <figure>
-  {% include ehds-actors-usecases.svg %}
-  <figcaption>Figure: EHDS Imaging Report Functional Use Cases</figcaption>
+ {% include ehds-actors-usecases.svg %}
+ <figcaption>Figure: EHDS Imaging Report Functional Use Cases</figcaption>
 </figure>
 <br clear="all"/>
 

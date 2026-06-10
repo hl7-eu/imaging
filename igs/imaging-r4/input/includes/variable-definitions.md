@@ -47,4 +47,3 @@
 
 {% assign euridiceAPI       = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/jwg-api/branches/main/en/)" %}
 
-{% include fhir-resources.md %}

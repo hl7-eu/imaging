@@ -13,7 +13,7 @@ The structure of this report is illustrated in the figure below.
 
 This example corresponds to the [Renderable format with minimal metadata](data-formats.html#renderable-format-with-minimal-metadata) data format.
 
-The report is represented as a DocumentReference resource following the profile {% include profile-link.html name="DocumentReferenceImagingReport" %}. It refers to a {{Patient}} and to an {{Organization}} resource that represents the custodian of the document.
+The report is represented as a DocumentReference resource following the profile [[[DocumentReferenceImagingReport]]]. It refers to a [[[Patient]]] and to an [[[Organization]]] resource that represents the custodian of the document.
 
 Resources used in this example:
 
