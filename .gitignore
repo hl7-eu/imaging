@@ -10,3 +10,4 @@
 subigs/**
 
 build-logs/**
+jira/node_modules/**
