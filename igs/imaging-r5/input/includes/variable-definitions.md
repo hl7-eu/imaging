@@ -2,8 +2,8 @@
   {% assign isR4 = true %}
   {% assign isR5 = false %}
 {%else%}
-  {% assign isR4 = true %}
-  {% assign isR5 = false %}
+  {% assign isR4 = false %}
+  {% assign isR5 = true %}
 {%endif%}
 
 {% assign ehnImaging        = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}

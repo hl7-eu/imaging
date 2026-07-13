@@ -147,3 +147,41 @@ These fields are present on the key resources of this IG as is illustrated by th
  
 
 Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.
+
+#### Addendum and imaging report succession management
+
+This IG follows the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) rules for how a clinical document (in this case an imaging report) supersedes or extends a previous one.
+
+**Possible scenarios:**
+
+* **Addendum** — new content is added in a subsequent report, but the previously reported content stays valid. The original report remains active and both are intended to be read together.
+* **Correction** — the previously reported content is changed. The update is a *complete* replacement (the full report, not only the changes) and supersedes the previous one, which is not meant to be read anymore unless for audit.
+* **Retraction** — the report was issued in error and is withdrawn.
+
+When it is unknown whether content was added or changed, handle it as a correction to prevent potentially stale information from being consumed.
+
+**Modeling:** the update is a new Imaging Report document that references the prior one through `Composition.relatesTo` (target = prior `Bundle.identifier`, carried in {%if isR4%}`relatesTo.targetIdentifier`{%endif%}{%if isR5%}`relatesTo.resourceReference.identifier`{%endif%}).
+The nature of the update — content added, content changed, or report retracted — is recorded in both `DiagnosticReport.status` and `Composition.status`. The two SHALL be aligned as depicted in the table below; note that in R4 `Composition.status` cannot express `corrected` or `appended` and therefore falls back to `amended`.
+
+Note: The model for DiagnosticReport is an addition of this specification, as it's not described in the FHIR Clinical Documents IG.
+
+**Addendum and correction elements mapping**
+
+{% if isR4 %}
+| Use case | DiagnosticReport.status | Composition.status | Composition.relatesTo.code |
+| -------------------- | ----------------------- | ------------------ | -------------------------- |
+| Original | `final` | `final` | – |
+| Addendum | `appended` | `amended` | `appends` |
+| Correction / unknown | `corrected` | `amended` | `replaces` |
+| Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
+{% endif %}
+{% if isR5 %}
+| Use case | DiagnosticReport.status | Composition.status | Composition.relatesTo.type |
+| -------------------- | ----------------------- | ------------------ | -------------------------- |
+| Original | `final` | `final` | – |
+| Addendum | `appended` | `appended` | `appends` |
+| Correction / unknown | `corrected` | `corrected` | `replaces` |
+| Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
+{% endif %}
+
+See [Support for addendum documents and report updates](patterns-and-guidelines.html#support-for-addendum-documents-and-report-updates) for examples.
