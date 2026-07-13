@@ -1,3 +1,4 @@
+This version of the specification reflects the 1.0.0-ballot version. The ballot on this version was held in May 2026.
 
 The HL7 Europe and IHE Europe imaging report group has completed processing the ballot comments from the [0.1.0 ballot](https://hl7.eu/fhir/imaging-r5/0.1.0-ballot/). In addition to those ballot fixes, an R4 version of the specification was added. Both specifications are generated from a common source base and are intended to reflect the same content.
 

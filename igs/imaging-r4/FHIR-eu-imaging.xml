@@ -68,11 +68,14 @@
 <artifact id="ImagingStudy/ImagingStudyStructuredReport" key="ImagingStudy-ImagingStudStructuredReport" name="ImagingStudy: structured-report study"/>
 <artifact id="StructureDefinition/ImagingSelectionKeyImageEuImaging" key="StructureDefinition-ImagingSelectionKeyImageEuImaging" name="Key images represented as an ImagingSelection for R4"/>
 <artifact id="StructureDefinition/medication-administration-obligation-eu-imaging" key="StructureDefinition-medication-administration-obligation-eu-imaging" name="MedicationAdministration: Obligations"/>
-<artifact id="Observation/ObservationAnchor" key="Observation-ObservationAnchor" name="Observation Anchor"/>
+<artifact deprecated="true" id="Observation/ObservationAnchor" key="Observation-ObservationAnchor" name="Observation Anchor"/>
 <artifact id="StructureDefinition/ObservationGestationalAgeEuImaging" key="StructureDefinition-ObservationGestationalAgeEuImaging" name="Observation: Gestational Age"/>
 <artifact id="StructureDefinition/ObservationFindingEuImaging" key="StructureDefinition-ObservationFindingEuImaging" name="Observation: Imaging Finding"/>
 <artifact deprecated="true" id="StructureDefinition/observation-finding-obligation-eu-imaging" key="StructureDefinition-observation-finding-obligation-eu-imaging" name="Observation: Imaging Finding: Obligations"/>
+<artifact id="StructureDefinition/ObservationNarrativeReport" key="StructureDefinition-ObservationNarrativeReport" name="Observation: Narrative Report"/>
+<artifact id="Observation/NarrativeFindingsAll" key="Observation-NarrativeFindingsAll" name="Observation: Narrative findings - all findings"/>
 <artifact id="StructureDefinition/ObservationRadiationDoseEuImaging" key="StructureDefinition-ObservationRadiationDoseEuImaging" name="Observation: Radiation Dose"/>
+<artifact id="Observation/ObservationNarrative" key="Observation-ObservationNarrative" name="Observation: Semi-structured narrative findings"/>
 <artifact id="Observation/RestWmsi17" key="Observation-RestWmsi17" name="Observation: WMSI apex at rest - normal"/>
 <artifact id="Observation/StressWmsi17" key="Observation-StressWmsi17" name="Observation: WMSI apex under stress - normal"/>
 <artifact id="Observation/RestWmsi13" key="Observation-RestWmsi13" name="Observation: WMSI apical anterior at rest - normal"/>
@@ -114,6 +117,7 @@
 <artifact id="Observation/ObservationRadiationDoseCtExample" key="Observation-ObservationRadiationDoseCtExample" name="Observation: radiation dose summary - CT"/>
 <artifact id="Observation/ObservationRadiationDoseFluoroExample" key="Observation-ObservationRadiationDoseFluoroExample" name="Observation: radiation dose summary - fluoroscopy"/>
 <artifact id="Observation/ObservationRadiationDoseXrayExample" key="Observation-ObservationRadiationDoseXrayExample" name="Observation: radiation dose summary - plain radiography"/>
+<artifact id="StructureDefinition/observation-narrative-report-obligation-eu-imaging" key="StructureDefinition-observation-narrative-report-obligation-eu-imaging" name="ObservationNarrativeReport: Obligations"/>
 <artifact id="StructureDefinition/observation-radiation-dose-obligation-eu-imaging" key="StructureDefinition-observation-radiation-dose-obligation-eu-imaging" name="ObservationRadiationDoseEuImaging: Obligations"/>
 <artifact id="OperationDefinition/DiagnosticReport-fhir-report" key="OperationDefinition-DiagnosticReport-fhir-report" name="OperationDefinition: $document on DiagnosticReport"/>
 <artifact id="Organization/OrganizationSemiStructuredReport" key="Organization-OrganizationSemiStructuredReport" name="Organization: semi-structured"/>

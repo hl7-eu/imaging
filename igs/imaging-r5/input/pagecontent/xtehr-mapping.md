@@ -4,7 +4,9 @@
 
 {% include variable-definitions.md %}
 
-The following tables describe the way the [Xt-EHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.
+> **STU note:** These mapping tables are based on version 1.0.0 of the Xt-EHR logical model {{XtEhrImaging}}. They will be reviewed and updated, where needed, when the revised EHDS implementing-act requirements (including relevant Art. 15 details) are published and finalized.
+
+The following tables describe the way the {{XtEhrImaging}} has been mapped onto the FHIR profiles defined in this specification.
 
 ### Core models of the Imaging Report IG
 
