@@ -86,6 +86,31 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * status 
 
+// Relationship to a prior report: addendum (appends) or replacement (replaces).
+// Mirrors the FHIR Clinical Document Composition profile slicing.
+* relatesTo ^slicing.discriminator.type = #value
+* relatesTo ^slicing.discriminator.path = "code"
+//R5* relatesTo ^slicing.discriminator.path = "type"
+* relatesTo ^slicing.rules = #open
+* relatesTo ^short = "Relationship to a prior report (addendum or replacement)"
+* relatesTo contains 
+    replaced_document 0..* and 
+    appended_document 0..*
+* relatesTo[replaced_document] ^short = "Prior report this one replaces (corresponds to DiagnosticReport.status = corrected)"
+* relatesTo[appended_document] ^short = "Prior report this one appends to (corresponds to DiagnosticReport.status = appended)"
+* relatesTo[replaced_document].code = #replaces
+* relatesTo[replaced_document].target[x] only Identifier
+* relatesTo[replaced_document].targetIdentifier 1..1
+* relatesTo[appended_document].code = #appends
+* relatesTo[appended_document].target[x] only Identifier
+* relatesTo[appended_document].targetIdentifier 1..1
+//R5* relatesTo[replaced_document].type = #replaces
+//R5* relatesTo[replaced_document].resourceReference 1..1
+//R5* relatesTo[replaced_document].resourceReference.identifier 1..1
+//R5* relatesTo[appended_document].type = #appends
+//R5* relatesTo[appended_document].resourceReference 1..1
+//R5* relatesTo[appended_document].resourceReference.identifier 1..1
+
 * section.code 1..1 
 * section 
   * insert SliceElement( #value, code )

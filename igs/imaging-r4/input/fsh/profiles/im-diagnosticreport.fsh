@@ -28,6 +28,10 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 //R5* result 1..*
 //R5  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
 
+// Correspondence between DiagnosticReport.status and the referenced Composition.relatesTo
+* obeys eu-imaging-dr-status-appended
+* obeys eu-imaging-dr-status-corrected
+
 Profile: DiagnosticReportEuImagingMinimalMetadata
 Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report Minimal Metadata"
@@ -102,7 +106,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * status
   * ^short = "Status of the Report"
-  * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
+  * ^comment = "DiagnosticReport.status and Composition.status SHALL be aligned"
 
 /////////////////////
 
@@ -327,3 +331,17 @@ Invariant: hl7eu-im-dr-finding
 Description: "Finding must be present in composition."
 * severity = #error
 * expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(result.reference)"
+
+// ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
+
+Invariant: eu-imaging-dr-status-appended
+Description: "If DiagnosticReport.status is 'appended', the referenced Composition SHALL reference the prior document via relatesTo with code (R4) / type (R5) = 'appends'."
+* severity = #error
+* expression = "status = 'appended' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().relatesTo.where(code = 'appends').exists()"
+//R5* expression = "status = 'appended' implies composition.resolve().relatesTo.where(type = 'appends').exists()"
+
+Invariant: eu-imaging-dr-status-corrected
+Description: "If DiagnosticReport.status is 'corrected', the referenced Composition SHALL reference the prior document via relatesTo with code (R4) / type (R5) = 'replaces'."
+* severity = #error
+* expression = "status = 'corrected' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().relatesTo.where(code = 'replaces').exists()"
+//R5* expression = "status = 'corrected' implies composition.resolve().relatesTo.where(type = 'replaces').exists()"

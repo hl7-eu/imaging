@@ -73,7 +73,7 @@ An **addendum** is a *separate* imaging report that adds content to a still-acti
 ```
 {% endif %}
 
-A **correction** — or any update where existing content changed, or where it is unknown whether content was changed or added — is issued as a *complete replacement* document. The relationship is recorded using {%if isR4%}`code = replaces`{%else%}`type = replaces`{%endif%}, targeting the replaced document's `Bundle.identifier`. The replacement document SHALL contain the full report, not only the changes. The corresponding `DiagnosticReport.status` is `corrected`.
+A **replacement** — or any update where existing content changed, or where it is unknown whether content was changed or added — is a *complete* document that supersedes the previous one. The relationship is recorded using {%if isR4%}`code = replaces`{%else%}`type = replaces`{%endif%}, targeting the replaced document's `Bundle.identifier`. The replacement document SHALL contain the full report, not only the changes. The corresponding `DiagnosticReport.status` is `corrected`.
 
 {% if isR4 %}
 ```json
@@ -103,6 +103,8 @@ A **correction** — or any update where existing content changed, or where it i
 
 ```
 {% endif %}
+
+Worked examples: [addendum](DiagnosticReport-DiagnosticReportImagingAddendum.html) (`appended` / `appends`) and [replacement](DiagnosticReport-DiagnosticReportImagingReplacement.html) (`corrected` / `replaces`).
 
 ### Relation with DICOM-SR reports
 

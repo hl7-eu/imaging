@@ -155,10 +155,10 @@ This IG follows the HL7 [FHIR Clinical Document — Succession Management](https
 **Possible scenarios:**
 
 * **Addendum** — new content is added in a subsequent report, but the previously reported content stays valid. The original report remains active and both are intended to be read together.
-* **Correction** — the previously reported content is changed. The update is a *complete* replacement (the full report, not only the changes) and supersedes the previous one, which is not meant to be read anymore unless for audit.
+* **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore unless for audit.
 * **Retraction** — the report was issued in error and is withdrawn.
 
-When it is unknown whether content was added or changed, handle it as a correction to prevent potentially stale information from being consumed.
+When it is unknown whether content was added or changed, handle it as a replacement to prevent potentially stale information from being consumed.
 
 **Modeling:** the update is a new Imaging Report document that references the prior one through `Composition.relatesTo` (target = prior `Bundle.identifier`, carried in {%if isR4%}`relatesTo.targetIdentifier`{%endif%}{%if isR5%}`relatesTo.resourceReference.identifier`{%endif%}).
 The nature of the update — content added, content changed, or report retracted — is recorded in both `DiagnosticReport.status` and `Composition.status`. The two SHALL be aligned as depicted in the table below; note that in R4 `Composition.status` cannot express `corrected` or `appended` and therefore falls back to `amended`.
@@ -172,7 +172,7 @@ Note: The model for DiagnosticReport is an addition of this specification, as it
 | -------------------- | ----------------------- | ------------------ | -------------------------- |
 | Original | `final` | `final` | – |
 | Addendum | `appended` | `amended` | `appends` |
-| Correction / unknown | `corrected` | `amended` | `replaces` |
+| Replacement / unknown | `corrected` | `amended` | `replaces` |
 | Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
 {% endif %}
 {% if isR5 %}
@@ -180,7 +180,7 @@ Note: The model for DiagnosticReport is an addition of this specification, as it
 | -------------------- | ----------------------- | ------------------ | -------------------------- |
 | Original | `final` | `final` | – |
 | Addendum | `appended` | `appended` | `appends` |
-| Correction / unknown | `corrected` | `corrected` | `replaces` |
+| Replacement / unknown | `corrected` | `corrected` | `replaces` |
 | Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
 {% endif %}
 
