@@ -46,30 +46,42 @@ An **addendum** is a *separate* imaging report that adds content to a still-acti
 
 {% if isR4 %}
 ```json
-...
- "relatesTo" : [
- { "code": "appends",
- "targetIdentifier": { "system": ..., "value": ...} 
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "appended"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "amended",
+  "relatesTo": [
+    {
+      "code": "appends",
+      "targetIdentifier": { "system": "...", "value": "..." }
+    }
+  ]
+}
 ```
 {% endif %}
 {% if isR5 %}
 ```json
-...
- "relatesTo" : [
- { "type": "appends",
- "resourceReference":{ 
- ...
- "identifier": { "system": ..., "value": ...} 
- ...
- }
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "appended"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "appended",
+  "relatesTo": [
+    {
+      "type": "appends",
+      "resourceReference": { "identifier": { "system": "...", "value": "..." } }
+    }
+  ]
+}
 ```
 {% endif %}
 
@@ -77,30 +89,42 @@ A **replacement** — or any update where existing content changed, or where it 
 
 {% if isR4 %}
 ```json
-...
- "relatesTo" : [
- { "code": "replaces",
- "targetIdentifier": { "system": ..., "value": ...} 
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "corrected"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "amended",
+  "relatesTo": [
+    {
+      "code": "replaces",
+      "targetIdentifier": { "system": "...", "value": "..." }
+    }
+  ]
+}
 ```
 {% endif %}
 {% if isR5 %}
 ```json
-...
- "relatesTo" : [
- { "type": "replaces",
- "resourceReference":{ 
- ...
- "identifier": { "system": ..., "value": ...} 
- ...
- }
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "corrected"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "corrected",
+  "relatesTo": [
+    {
+      "type": "replaces",
+      "resourceReference": { "identifier": { "system": "...", "value": "..." } }
+    }
+  ]
+}
 ```
 {% endif %}
 

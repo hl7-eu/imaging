@@ -184,4 +184,4 @@ Note: The model for DiagnosticReport is an addition of this specification, as it
 | Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
 {% endif %}
 
-See [Support for addendum documents and report updates](patterns-and-guidelines.html#support-for-addendum-documents-and-report-updates) for examples.
+See [Support for addendum documents and report updates with a worked example can be found here](patterns-and-guidelines.html#support-for-addendum-documents-and-report-updates) for examples.

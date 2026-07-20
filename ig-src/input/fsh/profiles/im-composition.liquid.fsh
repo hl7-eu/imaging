@@ -111,6 +111,9 @@ The `text` field of each section SHALL contain a textual representation of all l
 {{R5}}* relatesTo[appended_document].resourceReference 1..1
 {{R5}}* relatesTo[appended_document].resourceReference.identifier 1..1
 
+* obeys eu-imaging-comp-status-appended
+* obeys eu-imaging-comp-status-corrected
+
 * section.code 1..1 
 * section 
   * insert SliceElement( #value, code )
@@ -276,3 +279,17 @@ Invariant: eu-imaging-composition-2
 Description: "A section must contain at least one of text, entries, or sub-sections."
 Severity: #error 
 Expression: "text.exists() or entry.exists() or section.exists()"
+
+// ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
+
+Invariant: eu-imaging-comp-status-appended
+Description: "If Composition.relatesTo includes an 'appends' relationship, the status SHALL reflect it (R5: appended; R4: amended)."
+* severity = #error
+{{R4}}* expression = "relatesTo.where(code = 'appends').exists() implies status = 'amended'"
+{{R5}}* expression = "relatesTo.where(type = 'appends').exists() implies status = 'appended'"
+
+Invariant: eu-imaging-comp-status-corrected
+Description: "If Composition.relatesTo includes a 'replaces' relationship, the status SHALL reflect it (R5: corrected; R4: amended)."
+* severity = #error
+{{R4}}* expression = "relatesTo.where(code = 'replaces').exists() implies status = 'amended'"
+{{R5}}* expression = "relatesTo.where(type = 'replaces').exists() implies status = 'corrected'"

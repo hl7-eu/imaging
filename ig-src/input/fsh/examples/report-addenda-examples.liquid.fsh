@@ -42,6 +42,7 @@ RuleSet: AddendaImagingReportDRShared
 * code = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
 * category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * category[imaging-report] = $loinc#85430-7
+* performer[organization] = Reference(OrganizationStructuredReport)
 * result[+] = Reference(NarrativeFindingsAll)
 
 // ---------------- Addendum (content added) ----------------

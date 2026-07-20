@@ -40,36 +40,48 @@ The specification focusses first on the infrastructural aspects and marks the te
 
 ### Support for addendum documents and report updates
 
-An imaging report may be updated after it has been issued. The document-level mechanics (replacement, addendum, retraction) follow the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) specification; the correspondence with `DiagnosticReport.status` and the full mapping table are described in [Report Versions](imaging-report.html#report-versions).
+An imaging report may be updated after it has been issued. The document-level mechanics (replacement, addendum, retraction) follow the HL7 [FHIR Clinical Document — Succession Management](https://build.fhir.org/ig/HL7/fhir-clinical-document/en/versioning.html) specification; the correspondence with `DiagnosticReport.status` and the full mapping table are described in [Report Versions](imaging-report.html#report-versions).
 
 An **addendum** is a *separate* imaging report that adds content to a still-active report. The relationship is recorded in the new document's `Composition.relatesTo` using {%if isR4%}`code = appends`{%else%}`type = appends`{%endif%}, targeting the appended document's `Bundle.identifier`. The corresponding `DiagnosticReport.status` is `appended`.
 
 {% if isR4 %}
 ```json
-...
- "relatesTo" : [
- { "code": "appends",
- "targetIdentifier": { "system": ..., "value": ...} 
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "appended"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "amended",
+  "relatesTo": [
+    {
+      "code": "appends",
+      "targetIdentifier": { "system": "...", "value": "..." }
+    }
+  ]
+}
 ```
 {% endif %}
 {% if isR5 %}
 ```json
-...
- "relatesTo" : [
- { "type": "appends",
- "resourceReference":{ 
- ...
- "identifier": { "system": ..., "value": ...} 
- ...
- }
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "appended"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "appended",
+  "relatesTo": [
+    {
+      "type": "appends",
+      "resourceReference": { "identifier": { "system": "...", "value": "..." } }
+    }
+  ]
+}
 ```
 {% endif %}
 
@@ -77,30 +89,42 @@ A **replacement** — or any update where existing content changed, or where it 
 
 {% if isR4 %}
 ```json
-...
- "relatesTo" : [
- { "code": "replaces",
- "targetIdentifier": { "system": ..., "value": ...} 
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "corrected"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "amended",
+  "relatesTo": [
+    {
+      "code": "replaces",
+      "targetIdentifier": { "system": "...", "value": "..." }
+    }
+  ]
+}
 ```
 {% endif %}
 {% if isR5 %}
 ```json
-...
- "relatesTo" : [
- { "type": "replaces",
- "resourceReference":{ 
- ...
- "identifier": { "system": ..., "value": ...} 
- ...
- }
- }
- ]
-...
-
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "corrected"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "corrected",
+  "relatesTo": [
+    {
+      "type": "replaces",
+      "resourceReference": { "identifier": { "system": "...", "value": "..." } }
+    }
+  ]
+}
 ```
 {% endif %}
 

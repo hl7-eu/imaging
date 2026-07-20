@@ -96,8 +96,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 * relatesTo contains 
     replaced_document 0..* and 
     appended_document 0..*
-* relatesTo[replaced_document] ^short = "Prior report this one replaces (corresponds to DiagnosticReport.status = corrected)"
-* relatesTo[appended_document] ^short = "Prior report this one appends to (corresponds to DiagnosticReport.status = appended)"
+* relatesTo[replaced_document] ^short = "Prior report this one replaces"
+* relatesTo[appended_document] ^short = "Prior report this one appends to"
 * relatesTo[replaced_document].code = #replaces
 * relatesTo[replaced_document].target[x] only Identifier
 * relatesTo[replaced_document].targetIdentifier 1..1
@@ -110,6 +110,9 @@ The `text` field of each section SHALL contain a textual representation of all l
 //R5* relatesTo[appended_document].type = #appends
 //R5* relatesTo[appended_document].resourceReference 1..1
 //R5* relatesTo[appended_document].resourceReference.identifier 1..1
+
+* obeys eu-imaging-comp-status-appended
+* obeys eu-imaging-comp-status-corrected
 
 * section.code 1..1 
 * section 
@@ -276,3 +279,17 @@ Invariant: eu-imaging-composition-2
 Description: "A section must contain at least one of text, entries, or sub-sections."
 Severity: #error 
 Expression: "text.exists() or entry.exists() or section.exists()"
+
+// ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
+
+Invariant: eu-imaging-comp-status-appended
+Description: "If Composition.relatesTo includes an 'appends' relationship, the status SHALL reflect it (R5: appended; R4: amended)."
+* severity = #error
+* expression = "relatesTo.where(code = 'appends').exists() implies status = 'amended'"
+//R5* expression = "relatesTo.where(type = 'appends').exists() implies status = 'appended'"
+
+Invariant: eu-imaging-comp-status-corrected
+Description: "If Composition.relatesTo includes a 'replaces' relationship, the status SHALL reflect it (R5: corrected; R4: amended)."
+* severity = #error
+* expression = "relatesTo.where(code = 'replaces').exists() implies status = 'amended'"
+//R5* expression = "relatesTo.where(type = 'replaces').exists() implies status = 'corrected'"
