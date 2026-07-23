@@ -28,9 +28,10 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 //R5* result 1..*
 //R5  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
 
-// Correspondence between DiagnosticReport.status and the referenced Composition.relatesTo
-* obeys eu-imaging-dr-status-appended
-* obeys eu-imaging-dr-status-corrected
+// Correspondence between DiagnosticReport.status and the referenced Composition succession data
+* obeys eu-imaging-dr-status-replacement
+* obeys eu-imaging-dr-status-retraction
+* obeys eu-imaging-dr-status-no-addendum
 
 Profile: DiagnosticReportEuImagingMinimalMetadata
 Parent: DiagnosticReport
@@ -334,14 +335,19 @@ Description: "Finding must be present in composition."
 
 // ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
 
-Invariant: eu-imaging-dr-status-appended
-Description: "If DiagnosticReport.status is 'appended', the referenced Composition SHALL reference the prior document via relatesTo with code (R4) / type (R5) = 'appends'."
+Invariant: eu-imaging-dr-status-replacement
+Description: "If DiagnosticReport.status is 'amended', the referenced Composition SHALL replace the prior report and have status 'final'."
 * severity = #error
-* expression = "status = 'appended' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().relatesTo.where(code = 'appends').exists()"
-//R5* expression = "status = 'appended' implies composition.resolve().relatesTo.where(type = 'appends').exists()"
+* expression = "status = 'amended' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'final' and relatesTo.where(code = 'replaces').exists()).exists()"
+//R5* expression = "status = 'amended' implies composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
 
-Invariant: eu-imaging-dr-status-corrected
-Description: "If DiagnosticReport.status is 'corrected', the referenced Composition SHALL reference the prior document via relatesTo with code (R4) / type (R5) = 'replaces'."
+Invariant: eu-imaging-dr-status-retraction
+Description: "If DiagnosticReport.status is 'entered-in-error', the referenced Composition SHALL replace the prior report and also have status 'entered-in-error'."
 * severity = #error
-* expression = "status = 'corrected' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().relatesTo.where(code = 'replaces').exists()"
-//R5* expression = "status = 'corrected' implies composition.resolve().relatesTo.where(type = 'replaces').exists()"
+* expression = "status = 'entered-in-error' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'entered-in-error' and relatesTo.where(code = 'replaces').exists()).exists()"
+//R5* expression = "status = 'entered-in-error' implies composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
+
+Invariant: eu-imaging-dr-status-no-addendum
+Description: "The addendum and corrected succession statuses are not allowed for Imaging Reports."
+* severity = #error
+* expression = "status != 'appended' and status != 'corrected'"

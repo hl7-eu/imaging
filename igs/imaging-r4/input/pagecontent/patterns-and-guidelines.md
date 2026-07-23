@@ -38,66 +38,23 @@ These links can be included in the text (Narrative) using the mechanism describe
 
 The specification focusses first on the infrastructural aspects and marks the terminology related this as extensible. We are conservative in placing terminology requirements on findings and interpretations are there currently is not a widespread consensus on what terminology is used.
 
-### Support for addendum documents and report updates
+### Support for report replacement and retraction
 
-An imaging report may be updated after it has been issued. The document-level mechanics (replacement, addendum, retraction) follow the HL7 [FHIR Clinical Document — Succession Management](https://build.fhir.org/ig/HL7/fhir-clinical-document/en/versioning.html) specification; the correspondence with `DiagnosticReport.status` and the full mapping table are described in [Report Versions](imaging-report.html#report-versions).
+An imaging report may be replaced or retracted after it has been issued. The document-level mechanics follow the HL7 [FHIR Clinical Document — Succession Management](https://build.fhir.org/ig/HL7/fhir-clinical-document/en/versioning.html) specification, restricted by this IG to replacement and retraction. Addenda are not allowed. The correspondence with `DiagnosticReport.status` and the full mapping table are described in [Report Versions](imaging-report.html#report-versions).
 
-An **addendum** is a *separate* imaging report that adds content to a still-active report. The relationship is recorded in the new document's `Composition.relatesTo` using {%if isR4%}`code = appends`{%else%}`type = appends`{%endif%}, targeting the appended document's `Bundle.identifier`. The corresponding `DiagnosticReport.status` is `appended`.
-
-{% if isR4 %}
-```json
-// DiagnosticReport
-{
-  "resourceType": "DiagnosticReport",
-  "status": "appended"
-}
-// Composition
-{
-  "resourceType": "Composition",
-  "status": "amended",
-  "relatesTo": [
-    {
-      "code": "appends",
-      "targetIdentifier": { "system": "...", "value": "..." }
-    }
-  ]
-}
-```
-{% endif %}
-{% if isR5 %}
-```json
-// DiagnosticReport
-{
-  "resourceType": "DiagnosticReport",
-  "status": "appended"
-}
-// Composition
-{
-  "resourceType": "Composition",
-  "status": "appended",
-  "relatesTo": [
-    {
-      "type": "appends",
-      "resourceReference": { "identifier": { "system": "...", "value": "..." } }
-    }
-  ]
-}
-```
-{% endif %}
-
-A **replacement** — or any update where existing content changed, or where it is unknown whether content was changed or added — is a *complete* document that supersedes the previous one. The relationship is recorded using {%if isR4%}`code = replaces`{%else%}`type = replaces`{%endif%}, targeting the replaced document's `Bundle.identifier`. The replacement document SHALL contain the full report, not only the changes. The corresponding `DiagnosticReport.status` is `corrected`.
+For a **replacement**, the new Imaging Report is a complete document that supersedes the previous one. The relationship targets the replaced document's `Bundle.identifier` using {%if isR4%}`Composition.relatesTo.code = replaces`{%else%}`Composition.relatesTo.type = replaces`{%endif%}. The new `Composition.status` is `final` and the new `DiagnosticReport.status` is `amended`; both statuses on the previous report remain `final`.
 
 {% if isR4 %}
 ```json
 // DiagnosticReport
 {
   "resourceType": "DiagnosticReport",
-  "status": "corrected"
+  "status": "amended"
 }
 // Composition
 {
   "resourceType": "Composition",
-  "status": "amended",
+  "status": "final",
   "relatesTo": [
     {
       "code": "replaces",
@@ -112,12 +69,12 @@ A **replacement** — or any update where existing content changed, or where it 
 // DiagnosticReport
 {
   "resourceType": "DiagnosticReport",
-  "status": "corrected"
+  "status": "amended"
 }
 // Composition
 {
   "resourceType": "Composition",
-  "status": "corrected",
+  "status": "final",
   "relatesTo": [
     {
       "type": "replaces",
@@ -128,7 +85,50 @@ A **replacement** — or any update where existing content changed, or where it 
 ```
 {% endif %}
 
-Worked examples: [addendum](DiagnosticReport-DiagnosticReportImagingAddendum.html) (`appended` / `appends`) and [replacement](DiagnosticReport-DiagnosticReportImagingReplacement.html) (`corrected` / `replaces`).
+A **retraction** is a standalone Imaging Report that withdraws a report issued in error. It references the withdrawn report using the same `replaces` relationship. Both `Composition.status` and `DiagnosticReport.status` on the new retraction report are `entered-in-error`; both statuses on the previous report remain `final`.
+
+{% if isR4 %}
+```json
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "entered-in-error"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "entered-in-error",
+  "relatesTo": [
+    {
+      "code": "replaces",
+      "targetIdentifier": { "system": "...", "value": "..." }
+    }
+  ]
+}
+```
+{% endif %}
+{% if isR5 %}
+```json
+// DiagnosticReport
+{
+  "resourceType": "DiagnosticReport",
+  "status": "entered-in-error"
+}
+// Composition
+{
+  "resourceType": "Composition",
+  "status": "entered-in-error",
+  "relatesTo": [
+    {
+      "type": "replaces",
+      "resourceReference": { "identifier": { "system": "...", "value": "..." } }
+    }
+  ]
+}
+```
+{% endif %}
+
+Worked examples: [replacement](DiagnosticReport-DiagnosticReportImagingReplacement.html) (`amended` / `replaces`) and [retraction](DiagnosticReport-DiagnosticReportImagingRetraction.html) (`entered-in-error` / `replaces`).
 
 ### Relation with DICOM-SR reports
 

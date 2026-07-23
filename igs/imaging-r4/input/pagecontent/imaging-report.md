@@ -148,40 +148,26 @@ These fields are present on the key resources of this IG as is illustrated by th
 
 Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.
 
-#### Addendum and imaging report succession management
+#### Imaging report succession management
 
-This IG follows the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) rules for how a clinical document (in this case an imaging report) supersedes or extends a previous one.
+This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) rules for Imaging Reports, restricted to replacement and retraction. The addendum scenario is not allowed for Imaging Reports.
 
-**Possible scenarios:**
+**Allowed scenarios:**
 
-* **Addendum** — new content is added in a subsequent report, but the previously reported content stays valid. The original report remains active and both are intended to be read together.
-* **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore unless for audit.
-* **Retraction** — the report was issued in error and is withdrawn.
+* **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore except for audit purposes.
+* **Retraction as standalone** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study.
 
-When it is unknown whether content was added or changed, handle it as a replacement to prevent potentially stale information from being consumed.
+When it is unknown whether content was added or changed, handle it as a replacement to prevent potentially stale information from being consumed. Content additions therefore result in a complete replacement report rather than an addendum.
 
-**Modeling:** the update is a new Imaging Report document that references the prior one through `Composition.relatesTo` (target = prior `Bundle.identifier`, carried in {%if isR4%}`relatesTo.targetIdentifier`{%endif%}{%if isR5%}`relatesTo.resourceReference.identifier`{%endif%}).
-The nature of the update — content added, content changed, or report retracted — is recorded in both `DiagnosticReport.status` and `Composition.status`. The two SHALL be aligned as depicted in the table below; note that in R4 `Composition.status` cannot express `corrected` or `appended` and therefore falls back to `amended`.
+**Modeling:** the new Imaging Report references the previous report through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
 
-Note: The model for DiagnosticReport is an addition of this specification, as it's not described in the FHIR Clinical Documents IG.
+Note: The `DiagnosticReport` version management model is specific to Imaging Reports and is not part of the FHIR Clinical Documents IG.
 
-**Addendum and correction elements mapping**
+**Succession status mapping**
 
-{% if isR4 %}
-| Use case | DiagnosticReport.status | Composition.status | Composition.relatesTo.code |
-| -------------------- | ----------------------- | ------------------ | -------------------------- |
-| Original | `final` | `final` | – |
-| Addendum | `appended` | `amended` | `appends` |
-| Replacement / unknown | `corrected` | `amended` | `replaces` |
-| Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
-{% endif %}
-{% if isR5 %}
-| Use case | DiagnosticReport.status | Composition.status | Composition.relatesTo.type |
-| -------------------- | ----------------------- | ------------------ | -------------------------- |
-| Original | `final` | `final` | – |
-| Addendum | `appended` | `appended` | `appends` |
-| Replacement / unknown | `corrected` | `corrected` | `replaces` |
-| Retraction | `entered-in-error` | `entered-in-error` | `replaces` |
-{% endif %}
+| Use case | New Composition.relatesTo.{%if isR4%}code{%else%}type{%endif%} | New Composition.status | New DiagnosticReport.status | Previous Composition.relatesTo | Previous Composition.status | Previous DiagnosticReport.status |
+| -------------------- | -------------------------- | ---------------------- | --------------------------- | ------------------------------ | --------------------------- | -------------------------------- |
+| Replacement | `replaces` | `final` | `amended` | – | `final` | `final` |
+| Retraction | `replaces` | `entered-in-error` | `entered-in-error` | – | `final` | `final` |
 
-See [Support for addendum documents and report updates with a worked example can be found here](patterns-and-guidelines.html#support-for-addendum-documents-and-report-updates) for examples.
+See [Support for report replacement and retraction](patterns-and-guidelines.html#support-for-report-replacement-and-retraction) for worked examples.
