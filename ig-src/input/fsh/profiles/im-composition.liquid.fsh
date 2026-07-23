@@ -86,33 +86,23 @@ The `text` field of each section SHALL contain a textual representation of all l
 
 * status 
 
-// Relationship to a prior report: addendum (appends) or replacement (replaces).
+// Relationship to a prior report: replacement or retraction (both use replaces).
 // Mirrors the FHIR Clinical Document Composition profile slicing.
 * relatesTo ^slicing.discriminator.type = #value
 {{R4}}* relatesTo ^slicing.discriminator.path = "code"
 {{R5}}* relatesTo ^slicing.discriminator.path = "type"
-* relatesTo ^slicing.rules = #open
-* relatesTo ^short = "Relationship to a prior report (addendum or replacement)"
-* relatesTo contains 
-    replaced_document 0..* and 
-    appended_document 0..*
+* relatesTo ^slicing.rules = #closed
+* relatesTo ^short = "Prior report replaced or retracted by this report"
+* relatesTo contains replaced_document 0..*
 * relatesTo[replaced_document] ^short = "Prior report this one replaces"
-* relatesTo[appended_document] ^short = "Prior report this one appends to"
 {{R4}}* relatesTo[replaced_document].code = #replaces
 {{R4}}* relatesTo[replaced_document].target[x] only Identifier
 {{R4}}* relatesTo[replaced_document].targetIdentifier 1..1
-{{R4}}* relatesTo[appended_document].code = #appends
-{{R4}}* relatesTo[appended_document].target[x] only Identifier
-{{R4}}* relatesTo[appended_document].targetIdentifier 1..1
 {{R5}}* relatesTo[replaced_document].type = #replaces
 {{R5}}* relatesTo[replaced_document].resourceReference 1..1
 {{R5}}* relatesTo[replaced_document].resourceReference.identifier 1..1
-{{R5}}* relatesTo[appended_document].type = #appends
-{{R5}}* relatesTo[appended_document].resourceReference 1..1
-{{R5}}* relatesTo[appended_document].resourceReference.identifier 1..1
 
-* obeys eu-imaging-comp-status-appended
-* obeys eu-imaging-comp-status-corrected
+* obeys eu-imaging-comp-status-succession
 
 * section.code 1..1 
 * section 
@@ -282,14 +272,8 @@ Expression: "text.exists() or entry.exists() or section.exists()"
 
 // ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
 
-Invariant: eu-imaging-comp-status-appended
-Description: "If Composition.relatesTo includes an 'appends' relationship, the status SHALL reflect it (R5: appended; R4: amended)."
+Invariant: eu-imaging-comp-status-succession
+Description: "A Composition that replaces or retracts a prior report SHALL have status final or entered-in-error."
 * severity = #error
-{{R4}}* expression = "relatesTo.where(code = 'appends').exists() implies status = 'amended'"
-{{R5}}* expression = "relatesTo.where(type = 'appends').exists() implies status = 'appended'"
-
-Invariant: eu-imaging-comp-status-corrected
-Description: "If Composition.relatesTo includes a 'replaces' relationship, the status SHALL reflect it (R5: corrected; R4: amended)."
-* severity = #error
-{{R4}}* expression = "relatesTo.where(code = 'replaces').exists() implies status = 'amended'"
-{{R5}}* expression = "relatesTo.where(type = 'replaces').exists() implies status = 'corrected'"
+{{R4}}* expression = "relatesTo.where(code = 'replaces').exists() implies status in ('final' | 'entered-in-error')"
+{{R5}}* expression = "relatesTo.where(type = 'replaces').exists() implies status in ('final' | 'entered-in-error')"

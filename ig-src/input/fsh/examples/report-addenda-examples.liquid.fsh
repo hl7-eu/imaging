@@ -1,6 +1,7 @@
 // Examples illustrating imaging report succession management:
-//   - Addendum   (content added)   -> DiagnosticReport.status = appended, Composition.relatesTo = appends
-//   - Replacement (content changed) -> DiagnosticReport.status = corrected, Composition.relatesTo = replaces
+//   - Replacement (content changed) -> DiagnosticReport.status = amended, Composition.status = final
+//   - Retraction (issued in error)   -> DiagnosticReport.status and Composition.status = entered-in-error
+// Both scenarios use Composition.relatesTo = replaces.
 // They reuse shared resources from the structured report example set.
 
 RuleSet: AddendaImagingReportCompositionShared
@@ -45,40 +46,39 @@ RuleSet: AddendaImagingReportDRShared
 * performer[organization] = Reference(OrganizationStructuredReport)
 * result[+] = Reference(NarrativeFindingsAll)
 
-// ---------------- Addendum (content added) ----------------
-Instance: CompositionImagingAddendum
+// ---------------- Retraction (issued in error) ----------------
+Instance: CompositionImagingRetraction
 InstanceOf: CompositionEuImaging
-Title: "Composition: imaging report addendum"
-Description: "Addendum composition that appends content to a still-active prior report (Composition.relatesTo = appends)."
+Title: "Composition: imaging report retraction"
+Description: "Standalone retraction that withdraws a prior report issued in error (Composition.relatesTo = replaces)."
 Usage: #example
 * insert AddendaImagingReportCompositionShared
 * identifier.system = "http://example.org/myhosptital/reportidentifiers"
 * identifier.value = "report-0001"
 * date = "2025-09-10T10:00:00.000Z"
-{{R4}}* status = #amended
-{{R5}}* status = #appended
+* status = #entered-in-error
 {{R4}}* extension[version].valueString = "2"
 {{R5}}* version = "2"
-* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportImagingAddendum)
-* title = "Addendum to transthoracic echocardiogram"
-{{R4}}* relatesTo[appended_document].code = #appends
-{{R4}}* relatesTo[appended_document].targetIdentifier.system = "http://example.org/myhosptital/bundleidentifiers"
-{{R4}}* relatesTo[appended_document].targetIdentifier.value = "bundle-report-original"
-{{R5}}* relatesTo[appended_document].type = #appends
-{{R5}}* relatesTo[appended_document].resourceReference.identifier.system = "http://example.org/myhosptital/bundleidentifiers"
-{{R5}}* relatesTo[appended_document].resourceReference.identifier.value = "bundle-report-original"
+* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportImagingRetraction)
+* title = "Retraction of transthoracic echocardiogram report"
+{{R4}}* relatesTo[replaced_document].code = #replaces
+{{R4}}* relatesTo[replaced_document].targetIdentifier.system = "http://example.org/myhosptital/bundleidentifiers"
+{{R4}}* relatesTo[replaced_document].targetIdentifier.value = "bundle-report-original"
+{{R5}}* relatesTo[replaced_document].type = #replaces
+{{R5}}* relatesTo[replaced_document].resourceReference.identifier.system = "http://example.org/myhosptital/bundleidentifiers"
+{{R5}}* relatesTo[replaced_document].resourceReference.identifier.value = "bundle-report-original"
 
-Instance: DiagnosticReportImagingAddendum
+Instance: DiagnosticReportImagingRetraction
 InstanceOf: DiagnosticReportEuImaging
-Title: "DiagnosticReport: imaging report addendum"
-Description: "Addendum report; content was added, so DiagnosticReport.status = appended (aligned with Composition.relatesTo = appends)."
+Title: "DiagnosticReport: imaging report retraction"
+Description: "Standalone retraction; the report was issued in error, so DiagnosticReport.status and Composition.status are entered-in-error."
 Usage: #example
 * insert AddendaImagingReportDRShared
 * identifier.system = "http://example.org/myhosptital/reportidentifiers"
 * identifier.value = "report-0001"
-* status = #appended
-{{R4}}* extension[composition].valueReference = Reference(CompositionImagingAddendum)
-{{R5}}* composition = Reference(CompositionImagingAddendum)
+* status = #entered-in-error
+{{R4}}* extension[composition].valueReference = Reference(CompositionImagingRetraction)
+{{R5}}* composition = Reference(CompositionImagingRetraction)
 
 // ---------------- Replacement (content changed) ----------------
 Instance: CompositionImagingReplacement
@@ -90,12 +90,11 @@ Usage: #example
 * identifier.system = "http://example.org/myhosptital/reportidentifiers"
 * identifier.value = "report-0002"
 * date = "2025-09-11T10:00:00.000Z"
-{{R4}}* status = #amended
-{{R5}}* status = #corrected
+* status = #final
 {{R4}}* extension[version].valueString = "2"
 {{R5}}* version = "2"
 * extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportImagingReplacement)
-* title = "Corrected transthoracic echocardiogram"
+* title = "Replacement transthoracic echocardiogram report"
 {{R4}}* relatesTo[replaced_document].code = #replaces
 {{R4}}* relatesTo[replaced_document].targetIdentifier.system = "http://example.org/myhosptital/bundleidentifiers"
 {{R4}}* relatesTo[replaced_document].targetIdentifier.value = "bundle-report-superseded"
@@ -106,11 +105,11 @@ Usage: #example
 Instance: DiagnosticReportImagingReplacement
 InstanceOf: DiagnosticReportEuImaging
 Title: "DiagnosticReport: imaging report replacement"
-Description: "Replacement report; content was changed, so DiagnosticReport.status = corrected (aligned with Composition.relatesTo = replaces)."
+Description: "Replacement report; content was changed, so DiagnosticReport.status = amended and Composition.status = final."
 Usage: #example
 * insert AddendaImagingReportDRShared
 * identifier.system = "http://example.org/myhosptital/reportidentifiers"
 * identifier.value = "report-0002"
-* status = #corrected
+* status = #amended
 {{R4}}* extension[composition].valueReference = Reference(CompositionImagingReplacement)
 {{R5}}* composition = Reference(CompositionImagingReplacement)
