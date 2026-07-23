@@ -150,7 +150,7 @@ Imaging Report Producers SHOULD include version information in the documents, Co
 
 #### Imaging report succession management
 
-This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) rules for Imaging Reports, restricted to replacement and retraction. The addendum scenario is not allowed for Imaging Reports.
+This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) rules for Imaging Reports, restricted to replacement and retraction. The addendum scenario described in the mentioned specification is not allowed for EHDS Imaging Reports.
 
 **Allowed scenarios:**
 
