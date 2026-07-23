@@ -128,8 +128,6 @@ A **retraction** is a standalone Imaging Report that withdraws a report issued i
 ```
 {% endif %}
 
-Worked examples: [replacement](DiagnosticReport-DiagnosticReportImagingReplacement.html) (`amended` / `replaces`) and [retraction](DiagnosticReport-DiagnosticReportImagingRetraction.html) (`entered-in-error` / `replaces`).
-
 ### Relation with DICOM-SR reports
 
 DICOM-SR reports can be accessed and referred using ImagingSelections as they are stored as instances in the PACS. In the case that the report is a DICOM-SR report,
