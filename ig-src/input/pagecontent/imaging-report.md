@@ -155,13 +155,10 @@ This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https:
 **Allowed scenarios:**
 
 * **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore except for audit purposes.
-* **Retraction as standalone** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study.
+In this case the new report references the previous one through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
+* **Retraction** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study. Following the FHIR Clinical Documents IG, the original report is replaced by an *empty document* with `Composition.status` set to `entered-in-error`.
 
-When it is unknown whether content was added or changed, handle it as a replacement to prevent potentially stale information from being consumed. Content additions therefore result in a complete replacement report rather than an addendum.
-
-**Modeling:** the new Imaging Report references the previous report through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
-
-Note: The `DiagnosticReport` version management model is specific to Imaging Reports and is not part of the FHIR Clinical Documents IG.
+Note: The `DiagnosticReport.status` version management model is specific to this specification and is not part of the FHIR Clinical Documents IG.
 
 **Succession status mapping**
 
