@@ -156,9 +156,9 @@ This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https:
 
 * **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore except for audit purposes.
 In this case the new report references the previous one through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
-* **Retraction** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study. Following the FHIR Clinical Documents IG, the original report is replaced by an *empty document* with `Composition.status` set to `entered-in-error`. The exact content expected in this empty document is under clarification; no additional constraints on its sections or references are specified here.
+* **Retraction** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study. Following the FHIR Clinical Documents IG, the original report is replaced by an *empty document* with `Composition.status` set to `entered-in-error`.
 
-Note: The `DiagnosticReport` version management model is specific to Imaging Reports and is not part of the FHIR Clinical Documents IG.
+Note: The `DiagnosticReport.status` version management model is specific to this specification and is not part of the FHIR Clinical Documents IG.
 
 **Succession status mapping**
 
@@ -167,4 +167,4 @@ Note: The `DiagnosticReport` version management model is specific to Imaging Rep
 | Replacement | `replaces` | `final` | `amended` | – | `final` | `final` |
 | Retraction | `replaces` | `entered-in-error` | `entered-in-error` | – | `final` | `final` |
 
-See [Support for report replacement and retraction](patterns-and-guidelines.html#support-for-report-replacement-and-retraction) for worked examples.
+See [Support for report replacement and retraction](patterns-and-guidelines.html#support-for-report-replacement-and-retraction) for implementation guidance and worked examples.

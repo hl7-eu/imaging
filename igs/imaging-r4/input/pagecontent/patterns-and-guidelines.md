@@ -44,6 +44,8 @@ An imaging report may be replaced or retracted after it has been issued. The doc
 
 For a **replacement**, the new Imaging Report is a complete document that supersedes the previous one. The relationship targets the replaced document's `Bundle.identifier` using {%if isR4%}`Composition.relatesTo.code = replaces`{%else%}`Composition.relatesTo.type = replaces`{%endif%}. The new `Composition.status` is `final` and the new `DiagnosticReport.status` is `amended`; both statuses on the previous report remain `final`.
 
+See the replacement [DiagnosticReport example](DiagnosticReport-ImagingReportReplacementExample.html) and [Composition example](Composition-ImagingReportReplacementComposition.html).
+
 {% if isR4 %}
 ```json
 // DiagnosticReport
@@ -86,6 +88,8 @@ For a **replacement**, the new Imaging Report is a complete document that supers
 {% endif %}
 
 A **retraction** is a standalone Imaging Report that withdraws a report issued in error. It references the withdrawn report using the same `replaces` relationship. Both `Composition.status` and `DiagnosticReport.status` on the new retraction report are `entered-in-error`; both statuses on the previous report remain `final`.
+
+See the retraction [DiagnosticReport example](DiagnosticReport-ImagingReportRetractionExample.html) and [Composition example](Composition-ImagingReportRetractionComposition.html).
 
 {% if isR4 %}
 ```json

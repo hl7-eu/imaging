@@ -336,18 +336,18 @@ Description: "Finding must be present in composition."
 // ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
 
 Invariant: eu-imaging-dr-status-replacement
-Description: "If DiagnosticReport.status is 'amended', the referenced Composition SHALL replace the prior report and have status 'final'."
+Description: "DiagnosticReport.status SHALL be 'amended' if and only if the referenced Composition replaces a prior report and has status 'final'."
 * severity = #error
-* expression = "status = 'amended' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'final' and relatesTo.where(code = 'replaces').exists()).exists()"
-//R5* expression = "status = 'amended' implies composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
+* expression = "(status = 'amended') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'final' and relatesTo.where(code = 'replaces').exists()).exists()"
+//R5* expression = "(status = 'amended') = composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
 
 Invariant: eu-imaging-dr-status-retraction
-Description: "If DiagnosticReport.status is 'entered-in-error', the referenced Composition SHALL replace the prior report and also have status 'entered-in-error'."
+Description: "DiagnosticReport.status SHALL be 'entered-in-error' if and only if the referenced Composition retracts a prior report by replacing it with status 'entered-in-error'."
 * severity = #error
-* expression = "status = 'entered-in-error' implies extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'entered-in-error' and relatesTo.where(code = 'replaces').exists()).exists()"
-//R5* expression = "status = 'entered-in-error' implies composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
+* expression = "(status = 'entered-in-error') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'entered-in-error' and relatesTo.where(code = 'replaces').exists()).exists()"
+//R5* expression = "(status = 'entered-in-error') = composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
 
 Invariant: eu-imaging-dr-status-no-addendum
-Description: "The addendum and corrected succession statuses are not allowed for Imaging Reports."
+Description: "DiagnosticReport.status SHALL NOT be 'appended' or 'corrected'; content added or corrected after final issuance is represented as a complete replacement with status 'amended'."
 * severity = #error
 * expression = "status != 'appended' and status != 'corrected'"
