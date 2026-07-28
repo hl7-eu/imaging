@@ -24,7 +24,7 @@ Title: "Composition: Replacement example"
 Description: "Composition for the replacement Imaging Report example."
 Usage: #example
 * text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Replacement imaging report.</p></div>"
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Replacement imaging report.</p></div>"
 * identifier
   * system = "https://example.org/imaging-report-identifiers"
   * value = "report-replacement-example"
@@ -89,7 +89,7 @@ Title: "Composition: Retraction example"
 Description: "Entered-in-error Composition for the retraction Imaging Report example."
 Usage: #example
 * text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>The previous imaging report was issued in error and has been withdrawn.</p></div>"
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>The previous imaging report was issued in error and has been withdrawn.</p></div>"
 * identifier
   * system = "https://example.org/imaging-report-identifiers"
   * value = "report-retraction-example"
