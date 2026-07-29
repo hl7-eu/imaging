@@ -100,6 +100,8 @@ The `text` field of each section SHALL contain a textual representation of all l
 {{R5}}* relatesTo[replaced_document].type = #replaces
 {{R5}}* relatesTo[replaced_document].resourceReference 1..1
 {{R5}}* relatesTo[replaced_document].resourceReference.identifier 1..1
+{{R5}}* relatesTo[replaced_document].resourceReference.reference 0..0
+
 
 * obeys eu-imaging-comp-status-succession
 
