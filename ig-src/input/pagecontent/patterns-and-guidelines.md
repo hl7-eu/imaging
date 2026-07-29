@@ -40,9 +40,9 @@ The specification focusses first on the infrastructural aspects and marks the te
 
 ### Support for report replacement and retraction
 
-An imaging report may be replaced or retracted after it has been issued. The document-level mechanics follow the HL7 [FHIR Clinical Document — Succession Management](https://build.fhir.org/ig/HL7/fhir-clinical-document/en/versioning.html) specification, restricted by this IG to replacement and retraction. Addenda are not allowed. The correspondence with `DiagnosticReport.status` and the full mapping table are described in [Report Versions](imaging-report.html#report-versions).
+This spec follows the document-level mechanics outlined in the HL7 [FHIR Clinical Document — Succession Management](https://build.fhir.org/ig/HL7/fhir-clinical-document/en/versioning.html) specification, except that addenda are not allowed, and introducing requirements to the `DiagnosticReport.status` population.
 
-For a **replacement**, the new Imaging Report is a complete document that supersedes the previous one. The relationship targets the replaced document's `Bundle.identifier` using {%if isR4%}`Composition.relatesTo.code = replaces`{%else%}`Composition.relatesTo.type = replaces`{%endif%}. The new `Composition.status` is `final` and the new `DiagnosticReport.status` is `amended`; both statuses on the previous report remain `final`.
+#### Replacement of a report example snippet
 
 {% if isR4 %}
 ```json
@@ -85,7 +85,7 @@ For a **replacement**, the new Imaging Report is a complete document that supers
 ```
 {% endif %}
 
-A **retraction** is a standalone Imaging Report that withdraws a report issued in error. It references the withdrawn report using the same `replaces` relationship. Both `Composition.status` and `DiagnosticReport.status` on the new retraction report are `entered-in-error`; both statuses on the previous report remain `final`.
+#### Retraction of a report example snippet
 
 {% if isR4 %}
 ```json

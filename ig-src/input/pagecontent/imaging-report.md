@@ -167,4 +167,4 @@ Note: The `DiagnosticReport.status` version management model is specific to this
 | Replacement | `replaces` | `final` | `amended` | – | `final` | `final` |
 | Retraction | `replaces` | `entered-in-error` | `entered-in-error` | – | `final` | `final` |
 
-See [Support for report replacement and retraction](patterns-and-guidelines.html#support-for-report-replacement-and-retraction) for worked examples.
+See [Support for report replacement and retraction](patterns-and-guidelines.html#support-for-report-replacement-and-retraction) for examples.
