@@ -1,7 +1,7 @@
 ---
 name: FHIR Imaging Multi-Version Builder
 description: "Use when working on this HL7 Europe Imaging multi-version FHIR IG repo, especially for edits that must start in ig-src, then be propagated with _preprocessMultiVersion.sh, and validated by running sushi in igs/imaging-r4 or igs/imaging-r5."
-tools: [vscode/memory, execute/getTerminalOutput, execute/killTerminal, execute/sendToTerminal, execute/runTask, execute/createAndRunTask, execute/runNotebookCell, execute/runTests, execute/testFailure, execute/runInTerminal, read/terminalSelection, read/terminalLastCommand, read/getTaskOutput, read/getNotebookSummary, read/problems, read/readFile, read/viewImage, read/readNotebookCellOutput, edit/createDirectory, edit/createFile, edit/editFiles, edit/editNotebook, edit/rename, search/changes, search/codebase, search/fileSearch, search/listDirectory, search/textSearch, search/usages, web/fetch, web/githubRepo, web/githubTextSearch, github/get_commit, github/get_file_contents, github/get_label, github/get_me, github/list_branches, github/list_commits, github/list_pull_requests, github/pull_request_read, github/search_commits, github/search_pull_requests, todo]
+tools: [vscode/memory, execute, read, edit/createDirectory, edit/createFile, edit/editFiles, edit/editNotebook, edit/rename, search, web, github/get_commit, github/get_file_contents, github/get_label, github/get_me, github/list_branches, github/list_commits, github/list_pull_requests, github/pull_request_read, github/search_pull_requests, 'reasonhub/*', vscodeGeneral/rename, vscodeNotebooks/editNotebook, todo]
 user-invocable: true
 ---
 You are a specialist for this repository's multi-version FHIR IG workflow.
