@@ -1,0 +1,35 @@
+Profile,Field,Card,Issue
+CompositionEuImaging,attester[legalAuthenticator].time,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: MAY:able-to-populate / MAY:able-to-populate / SHALL:able-to-populate)
+CompositionEuImaging,attester[resultValidator].time,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHOULD:able-to-populate / SHOULD:able-to-populate / SHALL:able-to-populate)
+CompositionEuImaging,date,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+CompositionEuImaging,section[order],1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHOULD:able-to-populate / SHOULD:able-to-populate / SHOULD:able-to-populate)
+CompositionEuImaging,status,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: MAY:able-to-populate / MAY:able-to-populate / SHALL:able-to-populate)
+CompositionEuImaging,subject,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+CompositionEuImaging,title,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+DiagnosticReportEuImaging,composition,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate)
+DiagnosticReportEuImaging,extension[communication],0..*,MS field without any obligation
+DiagnosticReportEuImaging,extension[composition],1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate)
+DiagnosticReportEuImaging,result,1..*,MS field without any obligation
+DiagnosticReportEuImaging,status,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: MAY:able-to-populate / MAY:able-to-populate / SHALL:able-to-populate)
+DiagnosticReportEuImaging,subject,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+DiagnosticReportEuImagingMinimalMetadata,extension[communication],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,extension[comparison],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,extension[finding],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,extension[impression],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,extension[patientHistory],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,extension[procedure],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,extension[recommendation],0..*,MS field without any obligation
+DiagnosticReportEuImagingMinimalMetadata,result,0..*,MS field without any obligation
+DocumentReferenceImagingReport,category,1..1,MS field without any obligation
+DocumentReferenceImagingReport,context.practiceSetting,0..1,MS field without any obligation
+DocumentReferenceImagingReport,date,1..1,MS field without any obligation
+DocumentReferenceImagingReport,subject,1..1,MS field without any obligation
+DocumentReferenceImagingReport,type,1..1,MS field without any obligation
+ImagingStudyEuImaging,identifier[studyInstanceUid],1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+ImagingStudyEuImaging,series.instance.sopClass,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+ImagingStudyEuImaging,series.instance.uid,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+ImagingStudyEuImaging,series.modality,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+ImagingStudyEuImaging,series.uid,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+ImagingStudyEuImaging,subject,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHALL:able-to-populate / SHALL:able-to-populate / SHALL:able-to-populate)
+ObservationRadiationDoseEuImaging,value[x],1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHOULD:able-to-populate / SHOULD:able-to-populate / SHOULD:able-to-populate)
+ProcedureEuImaging,code,1..1,mandatory 1..1 with non-SHALL:populate obligation (has: SHOULD:able-to-populate / SHOULD:able-to-populate / SHOULD:able-to-populate)

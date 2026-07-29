@@ -4,17 +4,6 @@
 
 #### EHDSImagingReport
 
-<div class="model-map-block">
-  <div class="callout-wrapper">
-    <div class="callout-box">
-      <strong>Ongoing alignment:</strong>
-      The Xt-EHR logical models are under active revision and continuous refinement.
-      Updates from Xt-EHR will be progressively incorporated into this Implementation
-      Guide to maintain alignment with the evolving EHDS specifications.
-    </div>
-  </div>
-</div>
-
 The following table shows the mapping from EHDSImagingReport logical model elements to FHIR profiles.
 
 <div class="table-wrap">
@@ -22,7 +11,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
   <ul>
     <li>
       <strong>Source logical model:</strong>
-      <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingReport.html" target="_blank">EHDSImagingReport</a>
+      <a href="https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html" target="_blank">EHDSImagingReport</a>
     </li>
   </ul>
 </div>
@@ -596,7 +585,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       <tr>
         <td>body.examinationReport.medicationAdministration</td>
         <td>equivalent</td>
-        <td>EuMedicationAdministration</td>
+        <td><a href="https://hl7.org/fhir/medicationadministration.html" target="_blank">MedicationAdministration</a></td>
         <td>partOf</td>
         <td></td>
       </tr>
@@ -715,7 +704,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       <tr>
         <td>body.recommendation.description</td>
         <td>equivalent</td>
-        <td>EuCarePlan</td>
+        <td><a href="https://hl7.org/fhir/careplan.html" target="_blank">CarePlan</a></td>
         <td>description</td>
         <td></td>
       </tr>
@@ -1329,7 +1318,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       <tr>
         <td>body.examinationReport.medicationAdministration</td>
         <td>equivalent</td>
-        <td>EuMedicationAdministration</td>
+        <td><a href="https://hl7.org/fhir/medicationadministration.html" target="_blank">MedicationAdministration</a></td>
         <td></td>
         <td></td>
       </tr>
@@ -1448,7 +1437,7 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
       <tr>
         <td>body.recommendation.description</td>
         <td>equivalent</td>
-        <td>EuCarePlan</td>
+        <td><a href="https://hl7.org/fhir/careplan.html" target="_blank">CarePlan</a></td>
         <td>description</td>
         <td></td>
       </tr>

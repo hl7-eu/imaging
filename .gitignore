@@ -11,9 +11,9 @@ ig-template/**/*.db
 ig-template/**/*index.json
 publisher.jar
 translations/**
-# igs/imaging-r4/**
-# igs/imaging-r5/**
 
+igs/imaging-r4/**
+igs/imaging-r5/**
 subigs/**
 ig-test
 .vscode/settings.json
@@ -48,3 +48,5 @@ subigs/**
 build-logs/**
 jira/node_modules/**
 
+# Downloaded Xt-EHR logical model definitions (regenerable, not source)
+scripts/XtEHR-models/**

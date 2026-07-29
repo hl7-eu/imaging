@@ -4,17 +4,6 @@
 
 #### EHDSImagingStudy
 
-<div class="model-map-block">
-  <div class="callout-wrapper">
-    <div class="callout-box">
-      <strong>Ongoing alignment:</strong>
-      The Xt-EHR logical models are under active revision and continuous refinement.
-      Updates from Xt-EHR will be progressively incorporated into this Implementation
-      Guide to maintain alignment with the evolving EHDS specifications.
-    </div>
-  </div>
-</div>
-
 The following table shows the mapping from EHDSImagingStudy logical model elements to FHIR profiles.
 
 <div class="table-wrap">
@@ -22,7 +11,7 @@ The following table shows the mapping from EHDSImagingStudy logical model elemen
   <ul>
     <li>
       <strong>Source logical model:</strong>
-      <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImagingStudy.html" target="_blank">EHDSImagingStudy</a>
+      <a href="https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingStudy.html" target="_blank">EHDSImagingStudy</a>
     </li>
   </ul>
 </div>

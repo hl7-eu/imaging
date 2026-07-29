@@ -6,36 +6,38 @@ const obligationsDirs = {
     r4: '../ig-src/input/fsh/obligations'
 };
 const mappingTablesDir   = '../ig-src/input/pagecontent/';	
-const xtehrDir           = '../input/resources';	
 const conceptMapIntroDir = '../input/intro-notes';
 
 // Indices for relevant columns
 const indices = {
     srcResource: 1,
     srcField: 2,
+    cardinality: 3,
     srcDescription: 4,
     srcType: 5,
     srcReq:7,
-    tgtResource: 8,
-    tgtElement: 9,
-    tgtEquivalence: 10,
-    tgtRationale: 11,
-    tgtRefType: 12,
-    includeAsWell: 13,
-    tgtModeling: 14,
-    obligationProducerR5: 16,
-    obligationConsumerR5: 17,
-    section: 18,
-    tgtResourceR4: 19,
-    tgtElementR4: 20,
-    tgtEquivalenceR4: 21,
-    tgtModelingR4: 25,
-    obligationProducerR4: 27,
-    obligationConsumerR4: 28,
-    sectionR4: 29,
+    srcObligationProducer: 8,
+    srcObligationConsumer: 9,
+    tgtResource: 10,
+    tgtElement: 11,
+    tgtEquivalence: 12,
+    tgtRationale: 13,
+    tgtRefType: 14,
+    includeAsWell: 15,
+    tgtModeling: 16,
+    obligationProducerR5: 18,
+    obligationConsumerR5: 19,
+    section: 20,
+    tgtResourceR4: 21,
+    tgtElementR4: 22,
+    tgtEquivalenceR4: 23,
+    tgtModelingR4: 27,
+    obligationProducerR4: 29,
+    obligationConsumerR4: 30,
+    sectionR4: 31,
 };
 
-const XtEHRBaseUrl = "https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-";
+const XtEHRBaseUrl = "https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-";
 
 // Configuration: Define which models are considered "core" for this IG
 const CORE_MODELS = [
@@ -44,26 +46,33 @@ const CORE_MODELS = [
     // Add other core models here as needed
 ];
 
-function extractAndCopyResources(parsedData, srcResources ) {
-    // Extract unique source resources
-    
+// Configuration (FHIR-56572, ask 5): common Xt-EHR logical models that ARE used by this
+// IG but whose FHIR mapping is defined by the HL7 EU Base/core guide (mirroring the EPS/HDR
+// approach). These are listed under "Other logical models that are used by this IG" even when
+// they carry no obligation in the mapping TSV, instead of being mis-categorised as "not included".
+const USED_COMMON_MODELS = [
+    'EHDSPatient',
+    'EHDSOrganisation',
+    'EHDSAddress',
+    'EHDSTelecom'
+];
 
-    // Copy XtEHR resources
-    const srcModel = new Set(
-    parsedData
-        .filter(row => row[indices.srcResource]?.startsWith('EHDS'))
-        .filter(row => row[indices.tgtResource]?.length > 0)
-        .map(row => row[indices.srcResource])
-    );
-    srcModel.forEach(srcResource => {
-    console.log(`XtEHR-models/StructureDefinition-${srcResource}.json -> ${xtehrDir}/StructureDefinition-${srcResource}.json`);
-    fs.copyFile(
-        `XtEHR-models/StructureDefinition-${srcResource}.json`,
-        `${xtehrDir}/StructureDefinition-${srcResource}.json`,
-        (err) => {}
-    );
-    });
-}
+// Configuration (FHIR-56779): compact top-level cardinality summary shown on the mapping page
+// intro. Element paths + human labels are curated; the cardinality values are looked up from the
+// mapping TSV (the EHDS model source) so the table stays consistent on regeneration.
+const CARDINALITY_SUMMARY_ELEMENTS = [
+    { path: 'header', label: 'Imaging report header' },
+    { path: 'header.legalAuthentication', label: 'Document legal authentication details' },
+    { path: 'header.attestation', label: 'Document attestation details' },
+    { path: 'body', label: 'Imaging report structured body' },
+    { path: 'body.orderInformation', label: 'Order information' },
+    { path: 'body.comparisonStudy', label: 'Prior imaging report reference' },
+    { path: 'body.examinationReport', label: 'Examination report content' },
+    { path: 'dicomStudyMetadata', label: 'DICOM study metadata' },
+    { path: 'presentedForm', label: 'Narrative / rendered form' },
+    { path: 'attachments', label: 'Report attachments' }
+];
+
 // function generateCodeSystem(parsedData, srcResources) {
 //     srcResources.forEach(srcResource => {
 
@@ -156,6 +165,30 @@ function getEquivalenceDisplay(code) {
         "": ""
     };
     return map[code] || code || "";
+}
+
+// Xt-EHR mapping target cells sometimes reference an alias (e.g. $EuCarePlan,
+// $EuMedicationAdministration) that resolves to a base FHIR resource rather than an EU profile
+// defined in this IG (FHIR-56572, ask 4). Render these as the base resource type they alias,
+// linking to the core FHIR resource, so no non-existent IG profile is implied.
+const ALIAS_TO_BASE_RESOURCE = {
+    'EuCarePlan': { type: 'CarePlan', url: 'https://hl7.org/fhir/careplan.html' },
+    'EuMedicationAdministration': { type: 'MedicationAdministration', url: 'https://hl7.org/fhir/medicationadministration.html' }
+};
+
+// Render the target-resource table cell for a mapping row.
+function renderTargetResourceCell(tgtResource) {
+    if (!tgtResource || tgtResource.length === 0) {
+        return `        <td></td>\n`;
+    }
+    if (ALIAS_TO_BASE_RESOURCE[tgtResource]) {
+        const base = ALIAS_TO_BASE_RESOURCE[tgtResource];
+        return `        <td><a href="${base.url}" target="_blank">${base.type}</a></td>\n`;
+    }
+    if (!tgtResource.startsWith('Eu')) {
+        return `        <td><a href="./StructureDefinition-${tgtResource}.html">${tgtResource}</a></td>\n`;
+    }
+    return `        <td>${tgtResource}</td>\n`;
 }
 
 // Generate XML mapping table for a single resource
@@ -326,18 +359,6 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
     
     writable.write(`#### ${srcResource}\n\n`);
     
-    // Callout boxes
-    writable.write(`<div class="model-map-block">\n`);
-    writable.write(`  <div class="callout-wrapper">\n`);
-    writable.write(`    <div class="callout-box">\n`);
-    writable.write(`      <strong>Ongoing alignment:</strong>\n`);
-    writable.write(`      The Xt-EHR logical models are under active revision and continuous refinement.\n`);
-    writable.write(`      Updates from Xt-EHR will be progressively incorporated into this Implementation\n`);
-    writable.write(`      Guide to maintain alignment with the evolving EHDS specifications.\n`);
-    writable.write(`    </div>\n`);
-    writable.write(`  </div>\n`);
-    writable.write(`</div>\n\n`);
-    
     writable.write(`The following table shows the mapping from ${srcResource} logical model elements to FHIR profiles.\n\n`);
     
     // Mapping context
@@ -402,15 +423,7 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
         writable.write(`        <td>${srcField}</td>\n`);
         // writable.write(`        <td>${srcDescription}</td>\n`);
         writable.write(`        <td>${equivalence}</td>\n`);
-        if ( tgtResource.length > 0 ) {
-            if ( !tgtResource.startsWith("Eu")){
-                writable.write(`        <td><a href="./StructureDefinition-${tgtResource}.html">${tgtResource}</a></td>\n`);
-            } else {
-                writable.write(`        <td>${tgtResource}</td>\n`);
-            }
-        } else {
-            writable.write(`        <td></td>\n`);
-        }
+        writable.write(renderTargetResourceCell(tgtResource));
         writable.write(`        <td>${tgtElement}</td>\n`);
         writable.write(`        <td>${notes}</td>\n`);
         writable.write(`      </tr>\n`);
@@ -471,15 +484,7 @@ function generateStyledMarkdownTable(parsedData, srcResource) {
         writable.write(`        <td>${srcField}</td>\n`);
         // writable.write(`        <td>${srcDescription}</td>\n`);
         writable.write(`        <td>${equivalence}</td>\n`);
-        if ( tgtResource.length > 0 ) {
-            if ( !tgtResource.startsWith("Eu")){
-                writable.write(`        <td><a href="./StructureDefinition-${tgtResource}.html">${tgtResource}</a></td>\n`);
-            } else {
-                writable.write(`        <td>${tgtResource}</td>\n`);
-            }
-        } else {
-            writable.write(`        <td></td>\n`);
-        }
+        writable.write(renderTargetResourceCell(tgtResource));
         writable.write(`        <td>${tgtElement}</td>\n`);
         writable.write(`        <td>${notes}</td>\n`);
         writable.write(`      </tr>\n`);
@@ -548,7 +553,7 @@ function generateMappingTables(parsedData, srcResources) {
         
         if (CORE_MODELS.includes(srcResource)) {
             coreResources.push(srcResource);
-        } else if (hasAnyObligation) {
+        } else if (hasAnyObligation || USED_COMMON_MODELS.includes(srcResource)) {
             nonCoreWithR.push(srcResource);
         } else {
             resourcesWithoutR.push(srcResource);
@@ -658,10 +663,10 @@ function generateMappingTables(parsedData, srcResources) {
     });
     
     // Generate the main index file
-    generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR);
+    generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR, parsedData);
 }
 
-function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
+function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR, parsedData) {
     const indexPath = '../ig-src/input/pagecontent/xtehr-mapping.md';
     console.log(`Generating mapping index: ${indexPath}`);
     const writable = fs.createWriteStream(indexPath);
@@ -672,9 +677,61 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
     writable.write('{% include variable-definitions.md %}\n\n');
     writable.write('The following tables describe the way the [Xt-EHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.\n\n');
 
+    // Orientation reference to the upstream Xt-EHR model (FHIR-56779: moved here from the
+    // top-level "Functional > Xt-EHR model" menu entry, which was an off-site dead-end).
+    writable.write('For orientation, the upstream Xt-EHR logical models for medical imaging are described in the [Xt-EHR common IG model overview](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html).\n\n');
+
+    // Ongoing alignment callout (applies to all Xt-EHR mappings)
+    writable.write(`<div class="model-map-block">\n`);
+    writable.write(`  <div class="callout-wrapper">\n`);
+    writable.write(`    <div class="callout-box">\n`);
+    writable.write(`      <strong>XtEHR Release Reference:</strong>\n`);
+    writable.write(`      This mapping is based on the Xt-EHR logical models\n`);
+    writable.write(`      <a href="https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html" target="_blank">release 1.0.0</a>.\n`);
+    writable.write(`      These models are expected to continue evolving and, as part of the EU comitology process,\n`);
+    writable.write(`      it is likely that changes will be made; such changes are to be published in the implementing\n`);
+    writable.write(`      acts related to\n`);
+    writable.write(`      <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ:L_202500327#art_15" target="_blank">article 15</a>\n`);
+    writable.write(`      of the EHDS Regulation. When updated models are published, the changes will be progressively\n`);
+    writable.write(`      incorporated into this Implementation Guide to maintain alignment with the EHDS Implementing Acts.\n`);
+    writable.write(`    </div>\n`);
+    writable.write(`  </div>\n`);
+    writable.write(`</div>\n\n`);
+
+    // Compact top-level cardinality summary for EHDSImagingReport (FHIR-56779).
+    // Cardinalities are sourced from the mapping TSV so they stay in sync with the model.
+    if (parsedData) {
+        const cardinalityRows = CARDINALITY_SUMMARY_ELEMENTS.map(({ path, label }) => {
+            const row = parsedData.find(r =>
+                r[indices.srcResource] === 'EHDSImagingReport' &&
+                r[indices.srcField] && r[indices.srcField].trim() === path);
+            const card = row && row[indices.cardinality] ? row[indices.cardinality].trim() : '';
+            return { path, label, card };
+        }).filter(r => r.card.length > 0);
+
+        if (cardinalityRows.length > 0) {
+            writable.write(`### Key element cardinalities\n\n`);
+            writable.write(`The table below summarises the cardinalities of the main top-level elements of the [EHDSImagingReport](${getXtEhrStructureDefinitionUrl('EHDSImagingReport')}) logical model, to help readers orient without navigating to the formal profile pages.\n\n`);
+            writable.write(`| Element | Cardinality | Description |\n`);
+            writable.write(`|---------|-------------|-------------|\n`);
+            cardinalityRows.forEach(({ path, label, card }) => {
+                writable.write(`| \`${path}\` | ${card} | ${label} |\n`);
+            });
+            writable.write(`\n`);
+        }
+    }
+
     // Sort files alphabetically for consistent output
     const sortedFiles = generatedFiles.sort((a, b) => a.resource.localeCompare(b.resource));
     
+    // NOTE (FHIR-56572, ask 3 — page split deferred):
+    // The single mapping page currently embeds all core-model mapping tables inline.
+    // This is acceptable while there are at most two core-model tables (today:
+    // EHDSImagingReport, EHDSImagingStudy). If the number of core-model mapping tables
+    // grows beyond 2, split this page into a mapping landing page plus one page per
+    // model map: keep the intro/caveat + §7.x lists here, and emit each
+    // `{% include <model>-mapping.md %}` on its own generated page (with matching
+    // sushi-config `pages:`/`menu:` entries) instead of concatenating them below.
     // Core models section - include the .md files
     if (sortedFiles.length > 0) {
         writable.write('### Core models of the Imaging Report IG\n\n');
@@ -694,6 +751,7 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR) {
             return model.startsWith("EHDS") ? `[${model}](${getXtEhrStructureDefinitionUrl(model)})` : model;
         });
         writable.write(`* ${nonCoreWithRNamesWithHyperlinks.join(', ')}\n\n`);
+        writable.write(`The mapping of these common models to FHIR is defined in the HL7 Europe Base / core guide, following the same approach used by other EHDS specifications (e.g. the Patient Summary and Hospital Discharge Report guides).\n\n`);
     }
     
     // Section for resources without 'R'
@@ -1190,6 +1248,7 @@ function generateSectionTablesMarkdown(parsedData) {
 
     // Define custom section order
     const sectionOrder = [
+        'Header',
         'Imaging Study',
         'Order',
         'History',
@@ -1298,8 +1357,6 @@ function main() {
         const srcResources = new Set(
             parsedData.filter(row => row[indices.srcResource]?.startsWith('EHDS')).map(row => row[1])
             );
-        
-        extractAndCopyResources(parsedData, srcResources);
         
         generateMappingTables(parsedData, srcResources);
         

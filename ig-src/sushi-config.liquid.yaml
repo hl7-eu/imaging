@@ -82,15 +82,13 @@ pages:
     background.md:
       title: Background and context
     changes.md: 
-      title: Changes
+      title: Change Log
     dependencies.md:
       title: Dependencies
     cross-version-analysis.md:
       title: Cross version analysis
     references.md:
       title: References
-    adapting.md: 
-      title: Adapting Guidelines for Country use
     contributors.md:
       title: Authors and contributors
     copyright.md:
@@ -114,7 +112,7 @@ pages:
   api.md: 
     title: EU Health Data API for Imaging Reports
   xtehr-mapping.md:
-    title: Xt-EHR mapping
+    title: Mapping to EHDS Logical Model profiles
   patterns-and-guidelines.md:
     title: Patterns and Guidelines
   missing-data.md:
@@ -175,30 +173,25 @@ parameters:
 menu:
   Home: index.html
   Introduction:
-    Background and context: background.html
-    Changes: changes.html
     References: references.html
-    Adapting Guidelines for Country use: adapting.html
-    Authors and contributors: contributors.html
-    Copyright: copyright.html
-    Current status: current-status.html
   Functional:
-    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html
     System actors: actors-and-transactions.html
     Use Cases: use-cases.html
   Implementation:
     Imaging Report: imaging-report.html
     Data formats: data-formats.html
     Imaging Report Examples: examples.html
-    Xt-EHR mapping: xtehr-mapping.html
     EU Health Data API for Imaging Reports: api.html
+    Mapping to EHDS Logical Model profiles: xtehr-mapping.html
     Patterns and Guidelines: patterns-and-guidelines.html
     Handling missing data: missing-data.html
     Design considerations: design-considerations.html
   About:
+    Change Log: changes.html
+    Dependencies: dependencies.html
     Authors and contributors: contributors.html
     Copyright: copyright.html
-    Dependencies: dependencies.html
+    Current status: current-status.html
     Cross version analysis: cross-version-analysis.html
   Artifacts:
     Structural: artifacts-structural.html

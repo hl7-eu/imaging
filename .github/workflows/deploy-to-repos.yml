@@ -34,9 +34,10 @@ jobs:
       - name: Update IG publisher
         working-directory: ./igs/imaging-r4
         run: |
-          pwd
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
+          mkdir -p input-cache
+          curl -fL https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+            -o input-cache/publisher.jar --retry 3
+          echo "IG Publisher downloaded to $(pwd)/input-cache/publisher.jar"
       
       - name: Validate R4 IG
         working-directory: ./igs/imaging-r4
@@ -70,9 +71,10 @@ jobs:
       - name: Update IG publisher
         working-directory: ./igs/imaging-r5
         run: |
-          pwd
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
+          mkdir -p input-cache
+          curl -fL https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+            -o input-cache/publisher.jar --retry 3
+          echo "IG Publisher downloaded to $(pwd)/input-cache/publisher.jar"
       
       - name: Validate R5 IG
         working-directory: ./igs/imaging-r5

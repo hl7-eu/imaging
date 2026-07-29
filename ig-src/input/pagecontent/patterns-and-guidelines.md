@@ -177,3 +177,13 @@ Some of the source data for imaging report comes from DICOM. Although DICOM reco
  }
 ...
 ```
+
+### Displaying the releasing organization
+
+The organization that released the imaging report is carried by `Composition.author` where the author is an `Organization` (equivalently `DiagnosticReport.performer[author]`, constrained to `Organization` per FHIR-51393). Consuming systems SHOULD make this releasing organization identifiable and display it to the reader as the source of the report.
+
+Consumers SHALL NOT infer the releasing organization from the clinical `encounter`: in independent-reporting / teleradiology / outside-read scenarios the encounter organization differs from the reporting organization, and the acquisition encounter may be unavailable. Where multiple author organizations are present, the releasing organization is the one referenced by the `Composition`/`DiagnosticReport` author/performer, not the encounter.
+
+### Assembling document bundles and freshness of data
+
+It is fully expected that organizations may assemble these document bundles and collections on the fly in response to a request, and that these documents may not be versioned. As a consequence, the `lastUpdated` of a bundle may not correspond to the last clinical change to a result and SHOULD NOT be relied upon as an indicator of clinical currency.

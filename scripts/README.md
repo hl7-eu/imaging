@@ -15,19 +15,21 @@ The XtEHR source files are stored in XtEHR-models. This section explains the pro
 
 ### Download and extract logical model
 
-Updating these files is done using following process:
+Updating these files is done using the following process.
 
-Enter source directory:
-> cd XtEHR-models
+The published EHDS Logical Information Models are downloaded as a FHIR package
+and the base StructureDefinitions (excluding the `*Obligations` profiles) are
+extracted into `XtEHR-models`. From the `scripts` directory run:
 
-Download model files:
-> wget  http://build.fhir.org/ig/Xt-EHR/xt-ehr-common/definitions.json.zip
+> ./dowloadXtEhr.sh
 
-Or for the 0.2.0 release:
-> wget https://github.com/Xt-EHR/xt-ehr-common/archive/refs/tags/0.2.0.zip
+This downloads `https://www.xt-ehr.eu/fhir/models/1.0.0/package.tgz` (EHDS
+Logical Information Models v1.0.0) and refreshes the model files in
+`XtEHR-models`.
 
-Unzip file
-> unzip definitions.json.zip
+To pull a different published release, change the version in the
+`https://www.xt-ehr.eu/fhir/models/<version>/package.tgz` URL in
+`dowloadXtEhr.sh`.
 
 ### Create xtehr-model.csv file
 
@@ -35,6 +37,13 @@ In the `scripts` directory run:
 > node parseLogicalModels.js XtEHR-models xtehr-model.csv
 
 This will store the data of the source model in xtehr-model.csv.
+
+The file starts with a header row and has the following columns:
+`Resource; Field; Cardinality; Definition; Type; Binding; Short; Producer Obligation; Consumer Obligation`.
+The two obligation columns are populated from the published `*Obligations`
+profiles (downloaded by `dowloadXtEhr.sh` into `XtEHR-models/obligations/`), so
+each element carries its producer/consumer obligations (e.g.
+`SHALL:able-to-populate` / `SHOULD:process`) directly in the spreadsheet source.
 
 ### Edit mapping
 
@@ -55,6 +64,22 @@ Run `xtehr-mapping.sh`, which will read the `xtehr-mode-mapping.tsv` file and ge
 
 *Note*: The script generates Obligations files, which will no longer be required by this IG, but still provide the functionality of validating FHIR compliance of the mapped paths.
 
+#### Xt-EHR obligation columns
+
+Before generating, `xtehr-mapping.sh` runs `injectObligationsIntoTsv.js`, which
+inserts two columns into `xtehr-model-mapping.tsv` between `Xt-EHR source` and
+`R5 Mapped Resource`:
+
+* `Xt-EHR Producer Obligation`
+* `Xt-EHR Consumer Obligation`
+
+These are populated per element from the published `*Obligations` profiles
+(in `XtEHR-models/obligations/`), grouped by actor. The step is idempotent (it
+skips if the columns already exist). Because the Google spreadsheet is the master
+source, add these two columns to the spreadsheet as well if you want them to
+survive the next `.tsv` download; otherwise they are re-injected locally on each
+`xtehr-mapping.sh` run.
+
 ### Test mapping
 
 Run `sushi` to check the mapping.
@@ -62,3 +87,34 @@ Run `sushi` to check the mapping.
 > sushi .
 
 Note: The script generates Obligations files, which will no longer be required by this IG, but still provide the functionality of validating FHIR compliance of the mapped paths.
+
+## Obligations (MS ⇒ obligation convention)
+
+This IG follows an **MS ⇒ obligation** convention (FHIR-56773): every Must-Support (MS) element
+carries an obligation. Where the Xt-EHR (EHDS) logical model defines an obligation for the mapped
+source element, that obligation is used; otherwise the IG defines its own using codes from the
+[FHIR obligation code system](https://hl7.org/fhir/extensions/CodeSystem-obligation.html). Every
+mandatory (`1..1`) element carries a `SHALL:populate` obligation. Obligations are **not reduced**
+below the level defined by the Xt-EHR model.
+
+Obligations are stored in dedicated `<Resource>ObligationEuImaging` profiles, generated from
+`xtehr-model-mapping.tsv` by `generateDataBasedOnModel.js`. When several source elements map to the
+same target element, the **strongest** obligation applies (`SHALL` > `SHOULD` > `MAY`).
+
+### Obligations table + consistency check
+
+`updateEuImagingObligations.js` builds `eu-imaging-obligations.csv` — all fields of all EU Imaging
+profiles with their EHDS / R5 / R4 obligations, MS flag, cardinality, and the contributing EHDS
+source paths. Run:
+
+> node updateEuImagingObligations.js --check
+
+This regenerates the table and reports, against the Xt-EHR mapping:
+
+* `eu-imaging-obligations-mismatches.csv` — **missing EHDS-sourced obligations** and
+  **level-reducing overrides** (IG obligation weaker than EHDS).
+* `eu-imaging-obligations-gaps.csv` — MS fields without an obligation, and mandatory `1..1` fields
+  not at `SHALL:populate`.
+
+With `--check` the process exits non-zero when mismatches exist. See the
+`obligation-consistency-check` skill for details.

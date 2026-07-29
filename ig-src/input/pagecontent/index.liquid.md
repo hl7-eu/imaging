@@ -38,6 +38,8 @@
  </p>
  <p> This IG is available in FHIR version 4.0.1 and 5.0.0, and built from a single source repository on GitHub (<a href="https://github.com/hl7-eu/imaging">https://github.com/hl7-eu/imaging</a>)
  </p>
+ <p> This STU-ballot specification will be reviewed and updated, where needed, when the European Commission publishes and finalizes the revised EHDS implementing-act requirements, including relevant Art. 15 details.
+ </p>
  </blockquote>
 </div>
 

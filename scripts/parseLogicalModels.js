@@ -78,6 +78,49 @@ function readStructureDefinitions(directory) {
     }
 }
 
+// Build a map of `${baseType}.${elementPath}` -> { producer:[codes], consumer:[codes] }
+// from the published *Obligations profiles (e.g. EHDSImagingStudyObligations).
+function buildObligationMap(structures) {
+    const map = {};
+    structures
+        .filter(s => s.definition && s.definition.name && s.definition.name.endsWith('Obligations'))
+        .forEach(s => {
+            const elements = s.definition.differential && s.definition.differential.element
+                ? s.definition.differential.element : [];
+            elements.forEach(el => {
+                const producer = new Set();
+                const consumer = new Set();
+                (el.extension || []).forEach(ext => {
+                    if (!ext.url || !ext.url.includes('obligation')) return;
+                    let code = null;
+                    const actors = [];
+                    (ext.extension || []).forEach(sub => {
+                        if (sub.url === 'code') code = sub.valueCode;
+                        if (sub.url === 'actor') actors.push((sub.valueCanonical || '').split('/').pop());
+                    });
+                    if (!code) return;
+                    actors.forEach(a => {
+                        if (a === 'actor-producer') producer.add(code);
+                        else if (a === 'actor-consumer') consumer.add(code);
+                    });
+                });
+                if (producer.size || consumer.size) {
+                    const key = el.path; // e.g. EHDSImagingStudy.header.subject
+                    if (!map[key]) map[key] = { producer: new Set(), consumer: new Set() };
+                    producer.forEach(c => map[key].producer.add(c));
+                    consumer.forEach(c => map[key].consumer.add(c));
+                }
+            });
+        });
+    Object.keys(map).forEach(k => {
+        map[k] = {
+            producer: [...map[k].producer].sort(),
+            consumer: [...map[k].consumer].sort(),
+        };
+    });
+    return map;
+}
+
 // Main execution
 function main( ) {
     // Directory containing XtEHR-models   
@@ -94,12 +137,23 @@ function main( ) {
     // sheet bases
     let writable = fs.createWriteStream('xtehr-model.csv');
     const structures = readStructureDefinitions(modelsDir);
-    console.log(`Writing ${structures.length} structure definitions to ${tgtFile}`);
-    structures.forEach((structure, index) => {
+
+    // Build the producer/consumer obligation map from the *Obligations profiles.
+    const obligationMap = buildObligationMap(structures);
+
+    // Header row
+    writable.write(`Resource; Field; Cardinality; Definition; Type; Binding; Short; Producer Obligation; Consumer Obligation\n`);
+
+    // Emit one row per element of each base logical model (skip *Obligations profiles).
+    const baseStructures = structures.filter(s =>
+        s.definition && s.definition.name &&
+        !s.definition.name.endsWith('Obligations') &&
+        s.definition.snapshot && s.definition.snapshot.element);
+    console.log(`Writing ${baseStructures.length} base structure definitions to ${tgtFile}`);
+    baseStructures.forEach((structure) => {
         let extResource = structure.definition.name;
         console.log( extResource)
-        let elements = structure.definition.snapshot && structure.definition.snapshot.element
-            ? structure.definition.snapshot.element : [];
+        let elements = structure.definition.snapshot.element;
         elements.forEach(element => {
             let extField = element.id.substr(structure.definition.name.length+1);
             let types = element.type? element.type : [];
@@ -107,10 +161,13 @@ function main( ) {
             let binding = element.binding
                 ? `${element.binding.description} (${element.binding.strength})`
                 : '';
+            const ob = obligationMap[`${extResource}.${extField}`] || { producer: [], consumer: [] };
+            const producer = ob.producer.join(', ');
+            const consumer = ob.consumer.join(', ');
             types.forEach(type => {
                 // console.log(`${extResource}; ${extField}; ${element.min}..${element.max}; ${element.definition.replace(";",",")}; ${type.code.replace('https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/','')}; ${element.short.replace(";",",")} `);
                 const definition = `${element.definition.replace(new RegExp(";","g"),',').replace(new RegExp('\t','g'),' ')}`;
-                writable.write(`${extResource}; ${extField}; ${element.min}..${element.max}; ${definition}; ${type.code.replace('https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/','')}; ${binding}  ; ${element.short.replace(";",",")} `);
+                writable.write(`${extResource}; ${extField}; ${element.min}..${element.max}; ${definition}; ${type.code.replace('https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/','')}; ${binding}  ; ${element.short.replace(";",",")} ; ${producer}; ${consumer}`);
                 writable.write('\n');
             });
         });

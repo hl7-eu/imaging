@@ -1,1 +1,0 @@
-{% include ip-statements-en.xhtml %}
