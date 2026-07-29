@@ -44,6 +44,8 @@ This spec follows the document-level mechanics outlined in the HL7 [FHIR Clinica
 
 #### Replacement of a report example snippet
 
+See the replacement [DiagnosticReport example](DiagnosticReport-ImagingReportReplacementExample.html) and [Composition example](Composition-ImagingReportReplacementComposition.html).
+
 {% if isR4 %}
 ```json
 // DiagnosticReport
@@ -86,6 +88,8 @@ This spec follows the document-level mechanics outlined in the HL7 [FHIR Clinica
 {% endif %}
 
 #### Retraction of a report example snippet
+
+See the retraction [DiagnosticReport example](DiagnosticReport-ImagingReportRetractionExample.html) and [Composition example](Composition-ImagingReportRetractionComposition.html).
 
 {% if isR4 %}
 ```json
