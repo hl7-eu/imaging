@@ -91,10 +91,9 @@ The `text` field of each section SHALL contain a textual representation of all l
 * relatesTo ^slicing.discriminator.type = #value
 //R4* relatesTo ^slicing.discriminator.path = "code"
 * relatesTo ^slicing.discriminator.path = "type"
-* relatesTo ^slicing.rules = #closed
-* relatesTo ^short = "Prior report replaced or retracted by this report"
-* relatesTo contains replaced_document 0..*
-* relatesTo[replaced_document] ^short = "Prior report this one replaces"
+* relatesTo ^slicing.rules = #open
+* relatesTo contains replaced_document 0..1
+* relatesTo[replaced_document] ^short = "Prior report this one replaces or retracts"
 //R4* relatesTo[replaced_document].code = #replaces
 //R4* relatesTo[replaced_document].target[x] only Identifier
 //R4* relatesTo[replaced_document].targetIdentifier 1..1

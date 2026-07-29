@@ -107,7 +107,6 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * status
   * ^short = "Status of the Report"
-  * ^comment = "DiagnosticReport.status and Composition.status SHALL be aligned"
 
 /////////////////////
 
