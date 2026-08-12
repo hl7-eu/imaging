@@ -1,8 +1,9 @@
 ValueSet: Hl7EuImagingSectionValueSet
 Id: valueset-diagnosticreport-notes
-Title: "Section codes used to label annotations."
+Title: "ValueSet: Section codes used to label annotations."
 Description: "These codes define what an annotation annotates."
 * insert SetFmmAndStatusRule( 1, draft )
+* insert LOINCCopyrightForVS
 * ^experimental = false
 * $loinc#18726-0 "Imaging Study"
 * $loinc#55115-0 "Order"

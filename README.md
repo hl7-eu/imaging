@@ -1,5 +1,18 @@
 # README
 
+This repository holds the source files for the HL7-eu imaging report IG. More information on the IG, meeting minutes and telco details can be found on 
+[HL7 confluence](https://confluence.hl7.org/spaces/HEU/pages/248712142/Imaging+Study+Report+Project+Edition+1). 
+
+The current builds of the implementation guide can be found at the following URLs:
+
+* [HL7 Europe Imaging Study Report R4](https://build.fhir.org/ig/hl7-eu/imaging-r4/en/)
+* [HL7 Europe Imaging Study Report R5](https://build.fhir.org/ig/hl7-eu/imaging-r5/en/)
+
+Feedback on the specification is tracked using [HL7 Jira](https://docs.google.com/document/d/1zp_5O0HgfMPF3Ug-w_7AJCVXeibjiB9l/edit?usp=drive_link&ouid=113157828813462633672&rtpof=true&sd=true).
+
+
+## Multi-version approach
+
 This repository contains the source files to build and deploy a multi-FHIR version of the HL7 EU Imaging Studies EHDS Implementation Guide.
 
 ```text

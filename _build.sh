@@ -1,176 +1,253 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$repo_dir"
 
-# Variables
-dlurl="https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
-publisher_jar="publisher.jar"
-input_cache_path="$(pwd)/input-cache/"
-skipPrompts=false
-upper_path="../"
-scriptdlroot="https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main"
-build_bat_url="${scriptdlroot}/_build.bat"
-build_sh_url="${scriptdlroot}/_build.sh"
+timestamp="$(date +%Y%m%d-%H%M%S)"
+log_dir="$repo_dir/build-logs"
+mkdir -p "$log_dir"
+run_log="$log_dir/build-$timestamp.log"
+touch "$run_log"
+run_start_epoch="$(date +%s)"
 
-function check_jar_location() {
-  if [ -f "${input_cache_path}${publisher_jar}" ]; then
-    jar_location="${input_cache_path}${publisher_jar}"
-    echo "Found publisher.jar in input-cache"
-  elif [ -f "${upper_path}${publisher_jar}" ]; then
-    jar_location="${upper_path}${publisher_jar}"
-    echo "Found publisher.jar in parent folder"
+# Mirror all script output to a timestamped build log for post-failure inspection.
+exec > >(tee -a "$run_log") 2>&1
+echo "Build run log: $run_log"
+echo "Build run started: $(date -Iseconds)"
+
+log_step() {
+  echo ""
+  echo "==== $1 ===="
+}
+
+on_exit() {
+  local exit_code="$?"
+  local run_end_epoch
+  run_end_epoch="$(date +%s)"
+  local duration_sec=$((run_end_epoch - run_start_epoch))
+
+  echo ""
+  echo "Build run ended: $(date -Iseconds)"
+  echo "Build duration: ${duration_sec}s"
+  if [ "$exit_code" -eq 0 ]; then
+    echo "Build result: COMPLETED"
   else
-    jar_location="not_found"
-    echo "publisher.jar not found in input-cache or parent folder"
+    echo "Build result: FAILED (exit=$exit_code)"
   fi
 }
 
-function check_internet_connection() {
-  if ping -c 1 tx.fhir.org &>/dev/null; then
-    online=true
-    echo "We're online and tx.fhir.org is available."
-    latest_version=$(curl -s https://api.github.com/repos/HL7/fhir-ig-publisher/releases/latest | grep tag_name | cut -d'"' -f4)
+trap on_exit EXIT
+
+source_dir="ig-src"
+versions=("r4" "r5")
+
+publisher_image="${PUBLISHER_IMAGE:-hl7fhir/ig-publisher-base:latest}"
+cache_mode="${PUBLISHER_FHIR_CACHE_MODE:-volume}"
+cache_dir="${PUBLISHER_FHIR_CACHE_DIR:-$HOME/.fhir}"
+
+latest_file_in_dir() {
+  local dir="$1"
+  find "$dir" -type f -printf '%T@ %p\n' 2>/dev/null | sort -nr | sed -n '1{s/^[^ ]* //;p;}'
+}
+
+source_changes_under_ig_src() {
+  git status --porcelain=1 --untracked-files=normal -- "$source_dir" |
+    cut -c4- |
+    grep -vE '(^|/)(input-cache|temp|fsh-generated|output)(/|$)' || true
+}
+
+needs_rebuild=false
+
+if [ ! -d "$source_dir" ]; then
+  echo "Source directory not found: $source_dir"
+  exit 1
+fi
+
+log_step "Checking whether rebuild is needed"
+source_changes="$(source_changes_under_ig_src)"
+if [ -n "$source_changes" ]; then
+  echo "Source changes detected under $source_dir:"
+  echo "$source_changes" | sed 's/^/  /'
+  needs_rebuild=true
+else
+  echo "No source changes detected under $source_dir."
+fi
+
+for version in "${versions[@]}"; do
+  ig_dir="igs/imaging-${version}"
+  output_dir="$ig_dir/output"
+
+  if [ ! -d "$output_dir" ]; then
+    echo "Missing output directory for imaging-${version}: $output_dir"
+    needs_rebuild=true
+    continue
+  fi
+
+  output_file_count="$(find "$output_dir" -type f | wc -l)"
+  if [ "$output_file_count" -eq 0 ]; then
+    echo "No build output files found for imaging-${version}: $output_dir"
+    needs_rebuild=true
+    continue
+  fi
+done
+
+if [ "$needs_rebuild" = true ]; then
+  log_step "Preprocessing"
+  echo "Rebuild required. Running _preprocessMultiVersion.sh..."
+  ./_preprocessMultiVersion.sh
+else
+  echo "No preprocess needed: build outputs are present and newer than ig-src."
+fi
+
+ensure_publisher_for_ig() {
+  local ig_dir="$1"
+  local local_publisher="$ig_dir/input-cache/publisher.jar"
+  local parent_publisher
+  parent_publisher="$(dirname "$ig_dir")/publisher.jar"
+
+  if [ -f "$local_publisher" ] || [ -f "$parent_publisher" ]; then
+    echo "IG Publisher found for $ig_dir"
+    return 0
+  fi
+
+  echo "IG Publisher missing for $ig_dir. Running _updatePublisher.sh..."
+  (
+    cd "$ig_dir"
+    ./_updatePublisher.sh -y
+  )
+
+  if [ -f "$local_publisher" ] || [ -f "$parent_publisher" ]; then
+    echo "IG Publisher ready for $ig_dir"
+    return 0
+  fi
+
+  echo "IG Publisher still missing for $ig_dir after update"
+  return 1
+}
+
+run_build_in_docker() {
+  local version="$1"
+  local instance_name="ig-publisher-imaging-${version}-$(date +%s%N | cut -b1-13)"
+  local ig_container_dir="/home/publisher/ig/igs/imaging-${version}"
+  local version_log="$log_dir/build-${version}-$timestamp.log"
+
+  local cache_args=()
+  if [ "$cache_mode" = "volume" ]; then
+    mkdir -p "$cache_dir"
+    cache_args=(-v "$cache_dir:/home/publisher/.fhir")
   else
-    online=false
-    echo "We're offline or tx.fhir.org is unavailable."
+    cache_args=(--tmpfs "/home/publisher/.fhir")
   fi
+
+  echo "Starting docker build for imaging-${version} (container: $instance_name)"
+  echo "Version build log: $version_log"
+  docker run \
+    --name "$instance_name" \
+    --rm \
+    -v "$repo_dir:/home/publisher/ig" \
+    "${cache_args[@]}" \
+    "$publisher_image" \
+    bash -lc "cd '$ig_container_dir' && ./_genonce.sh" 2>&1 | tee -a "$version_log" | sed -u "s/^/[${version}] /"
 }
 
+run_build_locally() {
+  local version="$1"
+  local ig_dir="$repo_dir/igs/imaging-${version}"
+  local version_log="$log_dir/build-${version}-$timestamp.log"
 
-function update_publisher() {
-  echo "Publisher jar location: ${input_cache_path}${publisher_jar}"
-  read -p "Download or update publisher.jar? (Y/N): " confirm
-  if [[ "$confirm" =~ ^[Yy]$ ]]; then
-    echo "Downloading latest publisher.jar (~200 MB)..."
-    mkdir -p "$input_cache_path"
-    curl -L "$dlurl" -o "${input_cache_path}${publisher_jar}"
+  echo "Starting local build for imaging-${version}"
+  echo "Version build log: $version_log"
+  (
+    cd "$ig_dir"
+    ./_genonce.sh
+  ) 2>&1 | tee -a "$version_log" | sed -u "s/^/[${version}] /"
+}
+
+print_qa_summary() {
+  local version="$1"
+  local qa_file="$repo_dir/igs/imaging-${version}/output/qa.txt"
+
+  if [ ! -f "$qa_file" ]; then
+    echo "imaging-${version} QA summary: missing $qa_file"
+    return 0
+  fi
+
+  local qa_line
+  qa_line="$(grep -m1 '^err =' "$qa_file" || true)"
+  if [ -n "$qa_line" ]; then
+    echo "imaging-${version} QA summary: $qa_line"
   else
-    echo "Skipped downloading publisher.jar"
+    echo "imaging-${version} QA summary: no err/warn/info line found in $qa_file"
   fi
-
-  update_scripts_prompt
 }
 
+publisher_image_has_java() {
+  docker run --rm "$publisher_image" bash -lc "command -v java >/dev/null 2>&1" >/dev/null 2>&1
+}
 
-function update_scripts_prompt() {
-  read -p "Update scripts (_build.bat and _build.sh)? (Y/N): " update_confirm
-  if [[ "$update_confirm" =~ ^[Yy]$ ]]; then
-    echo "Updating scripts..."
-    curl -L "$build_bat_url" -o "_build.new.bat" && mv "_build.new.bat" "_build.bat"
-    curl -L "$build_sh_url" -o "_build.new.sh" && mv "_build.new.sh" "_build.sh"
-    chmod +x _build.sh
-    echo "Scripts updated."
+if [ "$needs_rebuild" = true ]; then
+  ensure_publisher_for_ig "igs/imaging-r4"
+  ensure_publisher_for_ig "igs/imaging-r5"
+
+  build_runner="docker"
+  if ! command -v docker >/dev/null 2>&1; then
+    echo "Docker not found in PATH; switching to local build mode."
+    build_runner="local"
+  elif ! publisher_image_has_java; then
+    echo "Publisher image '$publisher_image' does not provide java for _genonce.sh; switching to local build mode."
+    build_runner="local"
+  fi
+
+  log_step "Running parallel builds"
+  if [ "$build_runner" = "docker" ]; then
+    run_build_in_docker "r4" &
   else
-    echo "Skipped updating scripts."
+    run_build_locally "r4" &
   fi
-}
-
-
-function build_ig() {
-  if [ "$jar_location" != "not_found" ]; then
-    args=()
-    if [ "$online" = "false" ]; then
-      args+=("-tx" "n/a")
-    fi
-    java -Dfile.encoding=UTF-8 -jar "$jar_location" -ig . "${args[@]}" "$@"
+  pid_r4=$!
+  if [ "$build_runner" = "docker" ]; then
+    run_build_in_docker "r5" &
   else
-    echo "publisher.jar not found. Please run update."
+    run_build_locally "r5" &
   fi
-}
+  pid_r5=$!
 
+  echo "Waiting for imaging-r4 and imaging-r5 builds to finish (blocking)..."
 
-function build_nosushi() {
-  if [ "$jar_location" != "not_found" ]; then
-    java -Dfile.encoding=UTF-8 -jar "$jar_location" -ig . -no-sushi "$@"
-  else
-    echo "publisher.jar not found. Please run update."
+  set +e
+  wait "$pid_r4"
+  status_r4=$?
+  echo "imaging-r4 build finished with exit code $status_r4"
+  wait "$pid_r5"
+  status_r5=$?
+  echo "imaging-r5 build finished with exit code $status_r5"
+  set -e
+
+  if [ "$status_r4" -ne 0 ] || [ "$status_r5" -ne 0 ]; then
+    echo "Parallel build failed: r4 exit=$status_r4, r5 exit=$status_r5"
+    echo "Inspect logs:"
+    echo "- Run log: $run_log"
+    echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
+    echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+    print_qa_summary "r4"
+    print_qa_summary "r5"
+    exit 1
   fi
-}
 
-function build_notx() {
-  if [ "$jar_location" != "not_found" ]; then
-    java -Dfile.encoding=UTF-8 -jar "$jar_location" -ig . -tx n/a "$@"
-  else
-    echo "publisher.jar not found. Please run update."
-  fi
-}
-
-function jekyll_build() {
-  echo "Running Jekyll build..."
-  jekyll build -s temp/pages -d output
-}
-
-function cleanup() {
-  echo "Cleaning up temp directories..."
-  if [ -f "${input_cache_path}${publisher_jar}" ]; then
-    mv "${input_cache_path}${publisher_jar}" ./
-    rm -rf "${input_cache_path}"*
-    mkdir -p "$input_cache_path"
-    mv "$publisher_jar" "$input_cache_path"
-  fi
-  rm -rf ./output ./template ./temp
-  echo "Cleanup complete."
-}
-
-check_jar_location
-check_internet_connection
-
-# Handle command-line argument or menu
-case "$1" in
-  update) update_publisher ;;
-  build) build_ig ;;
-  nosushi) build_nosushi ;;
-  notx) build_notx ;;
-  jekyll) jekyll_build ;;
-  clean) cleanup ;;
-  exit) exit 0 ;;
-  *)
-    # Compute default choice
-    default_choice=2 # Build by default
-
-    if [ "$jar_location" = "not_found" ]; then
-      default_choice=1 # Download if jar is missing
-    elif [ "$online" = "false" ]; then
-      default_choice=4 # Offline build
-    elif [ -n "$latest_version" ]; then
-      current_version=$(java -jar "$jar_location" -v 2>/dev/null | tr -d '\r')
-      if [ "$current_version" != "$latest_version" ]; then
-        default_choice=1 # Offer update if newer version exists
-      fi
-    fi
-
-    echo "---------------------------------------------"
-    echo "Publisher: ${current_version:-unknown}; Latest: ${latest_version:-unknown}"
-    echo "Publisher location: $jar_location"
-    echo "Online: $online"
-    echo "---------------------------------------------"
-    echo
-    echo "Please select an option:"
-    echo "1) Download or update publisher"
-    echo "2) Build IG"
-    echo "3) Build IG without Sushi"
-    echo "4) Build IG without TX server"
-    echo "5) Jekyll build"
-    echo "6) Cleanup temp directories"
-    echo "0) Exit"
-    echo
-
-    # Read with timeout, but default if nothing entered
-    echo -n "Choose an option [default: $default_choice]: "
-    read -t 5 choice || choice="$default_choice"
-    choice="${choice:-$default_choice}"
-    echo "You selected: $choice"
-
-    case "$choice" in
-      1) update_publisher ;;
-      2) build_ig ;;
-      3) build_nosushi ;;
-      4) build_notx ;;
-      5) jekyll_build ;;
-      6) cleanup ;;
-      0) exit 0 ;;
-      *) echo "Invalid option." ;;
-    esac
-  ;;
-
-esac
+  print_qa_summary "r4"
+  print_qa_summary "r5"
+  echo "Parallel build completed successfully for imaging-r4 and imaging-r5."
+  echo "Inspect logs:"
+  echo "- Run log: $run_log"
+  echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
+  echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+else
+  print_qa_summary "r4"
+  print_qa_summary "r5"
+  echo "No version rebuild needed: source tree is clean and build outputs are present."
+  echo "Inspect logs:"
+  echo "- Run log: $run_log"
+  echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
+  echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+fi

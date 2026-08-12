@@ -1,0 +1,3 @@
+Most radiology reports still contain a significant amount of unstructured, narrative (dictated or free-text) content. This profile defines a dedicated, explicit home to encode the source of that narrative content in a FHIR resource, so that it can be referenced from the `DiagnosticReport` and rendered in `Composition` sections.
+
+To see how to reference this resource in the model please read [Representing unstructured text (narrative) in the report](imaging-report.html#representing-unstructured-narrative-text-in-the-report)

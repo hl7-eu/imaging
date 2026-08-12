@@ -3,23 +3,12 @@ Parent: DiagnosticReport
 Title: "DiagnosticReport: Imaging Report"
 Description: """
 DiagnosticReport profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.   
-The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-HL7IDR](https://build.fhir.org/ig/IHE/RAD.HL7IDR/branches/master/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
+The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-IDR](https://build.fhir.org/ig/IHE/RAD.IDR/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
 
-* extension contains
-  $artifact-version-url named artifactVersion 0..1
-
-//business identifier and relation with the composition resource
-* identifier 1..*
-  * ^short = "Report identifier"
-  * ^definition = "Identifiers assigned to this Imaging Report by the performer or other systems. It shall be common to several report versions"
-  * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
-
-* status
-  * ^short = "Status of the Report"
-  * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
+* insert DiagnosticReportEuImagingCommonRules
 
 // reference to the order that has the Accession Number and including the Accession Number as identifier
 * basedOn
@@ -27,28 +16,122 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * basedOn contains ServiceRequestOrderEuImagingaccession 0..*
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
+* extension contains $information-recipient-url  named informationRecipient 0..*
+{{R4}} and $diagnosticReport-composition named composition 1..1
+{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
+{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
+
+{{R5}}* composition 1..1
+{{R5}}* composition ^short = "Imaging Diagnostic Report"
+{{R5}}* composition only Reference(CompositionEuImaging)
+{{R5}} // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
+{{R5}}* result 1..*
+{{R5}}  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
+
+// Correspondence between DiagnosticReport.status and the referenced Composition succession data
+* obeys eu-imaging-dr-status-replacement
+* obeys eu-imaging-dr-status-retraction
+* obeys eu-imaging-dr-status-no-addendum
+
+Profile: DiagnosticReportEuImagingMinimalMetadata
+Parent: DiagnosticReport
+Title: "DiagnosticReport: Imaging Report Minimal Metadata"
+Description: """
+DiagnosticReport profile for minimal metadata imaging report exchange. 
+This profile shares all common imaging report modeling with DiagnosticReportEuImaging but does not require a matching Composition resource.
+"""
+* insert SetFmmAndStatusRule( 1, draft )
+* insert DiagnosticReportEuImagingCommonRules
+
+// basedOn can either point to a ServiceRequest resource or carry only an accession identifier
+* basedOn
+  * insert SliceElement( #exists, identifier )
+* basedOn contains
+    order-resource 0..* and
+    order-identifier 0..*
+* basedOn[order-resource] only Reference(ServiceRequestOrderEuImaging)
+* basedOn[order-resource].reference 1..1
+* basedOn[order-resource].identifier 0..0
+* basedOn[order-identifier].reference 0..0
+* basedOn[order-identifier].identifier 1..1
+* basedOn[order-identifier].identifier only AccessionNumberIdentifierEuImaging
+
+// study/imagingStudy can either point to an ImagingStudy resource or carry only a Study Instance UID identifier
+{{R4}}* imagingStudy
+{{R4}}  * insert SliceElement( #exists, identifier )
+{{R4}}* imagingStudy contains
+{{R4}}    study-resource 0..* and
+{{R4}}    study-identifier 0..*
+{{R4}}* imagingStudy[study-resource] only Reference(ImagingStudyEuImaging)
+{{R4}}* imagingStudy[study-resource].reference 1..1
+{{R4}}* imagingStudy[study-resource].identifier 0..0
+{{R4}}* imagingStudy[study-identifier].reference 0..0
+{{R4}}* imagingStudy[study-identifier].identifier 1..1
+{{R4}}* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+
+{{R5}}* study
+{{R5}}  * insert SliceElement( #exists, identifier )
+{{R5}}* study contains
+{{R5}}    study-resource 0..* and
+{{R5}}    study-identifier 0..*
+{{R5}}* study[study-resource] only Reference(ImagingStudyEuImaging)
+{{R5}}* study[study-resource].reference 1..1
+{{R5}}* study[study-resource].identifier 0..0
+{{R5}}* study[study-identifier].reference 0..0
+{{R5}}* study[study-identifier].identifier 1..1
+{{R5}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+
+
+{{R5}}* composition 0..0
+{{R5}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
+
+///////////////////////
+
+RuleSet: DiagnosticReportEuImagingCommonRules
+* extension contains $artifact-version-url named artifactVersion 0..1
+* extension contains AnatomicalRegionExtension named anatomical-region 0..*
+* extension[anatomical-region] ^short = "The anatomical regions covered by the study this report reports on."
+* extension[anatomical-region] ^definition = """
+The anatomical regions covered by the report, depending on the study there can be zero, one or more regions. 
+The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.bodysite`, if present.
+"""
+* extension[anatomical-region] ^requirements = "This field is present in order to be able to populate the MHD DocumentReference field."
+
+//business identifier and relation with the composition resource
+* identifier 1..*
+  * ^short = "Report identifier"
+  * ^definition = "Identifiers assigned to this Imaging Report by the performer or other systems. It shall be common to several report versions"
+  * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
+
+* subject 1..1
+
+* status
+  * ^short = "Status of the Report"
+
+/////////////////////
+
 //* status
 // code  --> TODO will likely change based on composition discussions
 * code from ImagingReportTypesEuVSEuImaging (preferred) 
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
-* category 1..*
+* category 0..*
   * insert SliceElement( #value, $this )
-* category contains diagnostic-service 1..1 
+* category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
+* category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+  * ^definition = "Defines the priority category of the report as defined in the API spec."
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+  * ^definition = "Defines the category of the report, Diagnostic imaging report."
 
 * subject only Reference($EuPatient)
 
-// * issued 1..1  -> we use obligations instead
+* basedOn only Reference(ServiceRequest or CarePlan)
 
-{{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
-{{R4}}* extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
-{{R4}}* extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
-
-{{R5}}* note 
-{{R5}}  * extension contains $annotation-type named annotation-type 0..*
-{{R5}}  * extension[annotation-type].valueCodeableConcept from Hl7EuImagingSectionValueSet (preferred)
+* issued 
+  * ^short = "Date and time of report issuance"
+  * ^definition = "The date and time that the report was issued. This is not necessarily the same as the date and time that the report was created, since a report may be revised and/or reviewed after it is created."
 
 // * composition 0..0 -> we use composition
 // * media 0..0 // not in not in keyimages section
@@ -65,10 +148,10 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * resultsInterpreter 0..*
   * insert SliceElementWithDescription( #profile, [[resolve()]], [[Primary interpreter of results]] )
 * resultsInterpreter contains author 0..* 
-* resultsInterpreter[author] only Reference($EuPractitionerRole)
+* resultsInterpreter[author] only Reference($EuPractitioner or $EuPractitionerRole)
 
 * result 0..* MS
-* result only Reference(ObservationFindingEuImaging)
+* result only Reference(ObservationFindingEuImaging or ObservationNarrativeReport)
 * result ^short = "Findings"
 * result ^definition = """
 Detailed description of the findings on the imaging study. The findings should be described in a clear and concise manner,
@@ -83,17 +166,6 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 {{R5}}* study only Reference(ImagingStudyEuImaging)
 {{R5}}* study ^short = "Study subject to this report"
 {{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
-
-
-
-// refer to the mandatory composition
-{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition named composition 1..1
-{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
-{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
-
-{{R5}}* composition 1..1
-{{R5}}* composition ^short = "Imaging Diagnostic Report"
-{{R5}}* composition only Reference(CompositionEuImaging)
 
 
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
@@ -140,7 +212,6 @@ Recommendations a radiologist provides in the report for possible follow up acti
 * extension[communication] ^definition = """
 Communications captures what communications have been made with other care providers.
 """
-
 // We have changed these and they now deviate from IDR as they also need to include the notes related to those sections.
 // * obeys hl7eu-im-dr-code
 // * obeys hl7eu-im-dr-category
@@ -153,7 +224,6 @@ Communications captures what communications have been made with other care provi
 // * obeys hl7eu-im-dr-recommendation
 // * obeys hl7eu-im-dr-communication
 // * obeys hl7eu-im-dr-finding
-
 
 Extension: HL7IDRComparisonStudiesExt
 Title: "Extension: HL7IDR DiagnosticReport Comparison Study"
@@ -173,23 +243,23 @@ Context: DiagnosticReport
 Extension: HL7IDRImagingProcedureExt
 Title: "Extension: HL7IDR Imaging Procedure"
 Id: HL7IDRImagingProcedure
-Description: "Imaging procedure used for the imaging acquisition"
+Description: "Imaging procedure used for the imaging acquisition and procedure specific information."
 Context: DiagnosticReport
-* value[x] only Reference(ProcedureEuImaging)
+* value[x] only Reference(ProcedureEuImaging or AdverseEvent or ObservationRadiationDoseEuImaging)
 
 Extension: HL7IDRFindingExt
 Title: "Extension: HL7IDR KeyImage Finding"
 Id: HL7IDRFinding
 Description: "KeyImage in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
+* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging or DocumentReference {% if isR4 %} or Media {% endif %}  )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"
 Id: HL7IDRImpression
 Description: "Impression in the imaging report"
 Context: DiagnosticReport
-* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging or DocumentReferenceKeyImageEuImaging )
+* value[x] only Reference(ObservationFindingEuImaging or Condition or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
 
 Extension: HL7IDRRecommendationExt
 Title: "Extension: HL7IDR Recommendation"
@@ -261,3 +331,22 @@ Invariant: hl7eu-im-dr-finding
 Description: "Finding must be present in composition."
 * severity = #error
 * expression = "DiagnosticReport.composition.resolve().section.entry.reference.superset(result.reference)"
+
+// ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
+
+Invariant: eu-imaging-dr-status-replacement
+Description: "DiagnosticReport.status SHALL be 'amended' if and only if the referenced Composition replaces a prior report and has status 'final'."
+* severity = #error
+{{R4}}* expression = "(status = 'amended') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'final' and relatesTo.where(code = 'replaces').exists()).exists()"
+{{R5}}* expression = "(status = 'amended') = composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
+
+Invariant: eu-imaging-dr-status-retraction
+Description: "DiagnosticReport.status SHALL be 'entered-in-error' if and only if the referenced Composition retracts a prior report by replacing it with status 'entered-in-error'."
+* severity = #error
+{{R4}}* expression = "(status = 'entered-in-error') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'entered-in-error' and relatesTo.where(code = 'replaces').exists()).exists()"
+{{R5}}* expression = "(status = 'entered-in-error') = composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
+
+Invariant: eu-imaging-dr-status-no-addendum
+Description: "DiagnosticReport.status SHALL NOT be 'appended' or 'corrected'; content added or corrected after final issuance is represented as a complete replacement with status 'amended'."
+* severity = #error
+* expression = "status != 'appended' and status != 'corrected'"

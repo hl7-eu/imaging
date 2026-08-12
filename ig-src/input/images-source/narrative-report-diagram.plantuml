@@ -1,0 +1,30 @@
+@startuml
+title Imaging Report narrative representation
+
+skinparam classAttributeIconSize 0
+
+class "ObservationNarrativeReport" as ONR {
+	valueString: narrative report text
+}
+
+class "DiagnosticReportEuImaging" as DR {
+	result: Reference(Observation)
+}
+
+class "CompositionEuImaging" as COMP {
+	section[].text: for section-specific narrative content
+	section[report].text: for full narrative when no sections
+}
+
+note as NARRATIVE
+	**Report narrative text**
+	The unstructured narrative present
+	in most imaging reports
+end note
+
+DR "1" --> "0..*" ONR : result (references Observation)
+
+NARRATIVE ..> ONR : source data in\nvalueString / valueAttachment
+NARRATIVE ..> COMP : encoded in section.text
+
+@enduml

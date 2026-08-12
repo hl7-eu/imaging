@@ -1,5 +1,7 @@
+# IDEAs
 /.idea
 .vscode/launch.json
+.vscode/mcp.json
 input-cache/
 output/
 temp/
@@ -10,4 +12,41 @@ ig-template/**/*index.json
 publisher.jar
 translations/**
 
+igs/imaging-r4/**
+igs/imaging-r5/**
 subigs/**
+ig-test
+.vscode/settings.json
+
+# LibreOffice/OpenOffice lock files
+.~lock.*#
+.vscode/settings.json
+
+# Local test folder
+ig-test
+
+# Generated/build artifacts
+input-cache/
+output/
+temp/
+template/
+fsh-generated/**
+ig-template/**/*.db
+ig-template/**/*index.json
+publisher.jar
+translations/**
+igs/**
+
+# FHIR publisher specific
+# igs/imaging-r4/**
+# igs/imaging-r5/**
+subigs/**
+
+# LibreOffice/OpenOffice lock files
+.~lock.*#
+
+build-logs/**
+jira/node_modules/**
+
+# Downloaded Xt-EHR logical model definitions (regenerable, not source)
+scripts/XtEHR-models/**

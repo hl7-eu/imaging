@@ -1,11 +1,17 @@
+{% if isR4 %}
+id: hl7.fhir.eu.imaging
+canonical: http://hl7.eu/fhir/imaging
+{% endif %}
+{% if isR5 %}
 id: hl7.fhir.eu.imaging-{{r-code}}
 canonical: http://hl7.eu/fhir/imaging-{{r-code}}
+{% endif %}
 name: HL7EuImagingStudyReport
 title: HL7 Europe Imaging Report {{R-code}}
 description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR {{R-code}}.
 status: draft # draft | active | retired | unknown
 experimental: false
-version: 0.1.1-build
+version:  1.0.0-ballot
 fhirVersion: {{fhirVersion}} # https://www.hl7.org/fhir/valueset-FHIR-version.html
 #fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2025+
@@ -25,58 +31,100 @@ license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # use cases, the value can be an object with keys for id, uri, and version.
 #
 dependencies:
-  hl7.terminology.r5: 6.3.0
-  # hl7.fhir.uv.extensions: 5.2.0
-  hl7.fhir.uv.extensions: 5.3.0-ballot
-  hl7.fhir.uv.ips: 1.1.0
-  hl7.fhir.eu.extensions: current
-  hl7.fhir.eu.base{{eu-core-r-code}}: current
-  {% if isR4 %}
-  hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2 
-  {% endif %}
+  # hl7.fhir.uv.ips: 2.0.0
+  fhir.dicom:
+    id: DICOM
+    uri: http://fhir.org/packages/fhir.dicom/ImplementationGuide/fhir.dicom
+    version: 2025.3.20250714
   
-  # eu.ehds.models: 0.1.0
+
+  {% if isR4 %}
+  hl7.fhir.eu.health-data-api: 1.0.0-ballot
+  # hl7.fhir.eu.health-data-api: current
+  hl7.fhir.eu.base: 2.0.0-ballot
+  hl7.fhir.uv.extensions.r4: 5.2.0
+  hl7.fhir.eu.extensions.r4:
+    uri: http://hl7.eu/fhir/extensions/ImplementationGuide/hl7.fhir.eu.extensions
+    version: 1.2.0
+  hl7.terminology.r4:
+    uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+    version: 7.1.0
+  hl7.fhir.uv.xver-r5.r4:
+    uri: http://hl7.org/fhir/uv/xver
+    version: 0.0.1-snapshot-2
+  ihe.iti.mhd: 4.2.3
+  {% endif %}
+
+  {% if isR5 %}
+  # hl7.fhir.uv.ips: 2.0.0
+
+  hl7.fhir.eu.base-r5: 2.0.0-ballot
+  hl7.fhir.uv.extensions: 5.3.0-ballot
+  hl7.fhir.eu.extensions: 1.2.0
+  hl7.terminology.r5:
+    uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+    version: 7.1.0
+  ihe.iti.mhd: 5.0.0
+  {% endif %}  
+
+  # eu.ehds.models: 0.1.0sushi
   # eu.ehds.models: current
   # required for medication extensions
   # ihe.pharm.mpd: current
-  fhir.dicom:
-    id: DICOM
-    uri: http://fhir.org/packages/fhir.dicom
-    version: 2025.2.20250411
+
+  
   
 pages:
   index.md:
     title: Home
+    how-to-read.md:
+      title: How to read this guide
+    background.md:
+      title: Background and context
     changes.md: 
-      title: Changes
+      title: Change Log
     dependencies.md:
       title: Dependencies
+    cross-version-analysis.md:
+      title: Cross version analysis
     references.md:
       title: References
-    adapting.md: 
-      title: Adapting Guidelines for Country use
     contributors.md:
       title: Authors and contributors
     copyright.md:
       title: Copyright
+    current-status.md:
+      title: Current status
   actors-and-transactions.md:
     title: System actors
+  use-cases.md:
+    title: Use Cases
+  data-formats.md:
+    title: Data formats
   examples.md:
     title: Examples
     example-unstructured.md:
-      title: Example unstructured report
+      title: Example report with renderable content and minimal metadata
     example-semi-structured.md:
       title: Example semi structured report
     example-structured.md:
       title: Example structured report
+  api.md: 
+    title: EU Health Data API for Imaging Reports
   xtehr-mapping.md:
-    title: Xt-EHR mapping
+    title: Mapping to EHDS Logical Model profiles
+  patterns-and-guidelines.md:
+    title: Patterns and Guidelines
+  missing-data.md:
+    title: Handling missing data
   design-considerations.md:
     title: Design considerations
   artifacts-intro.md:
     title: Artifacts
     artifacts-structural.md:
       title: Structural artifacts
+    artifacts-obligations.md:
+      title: Obligations
     imaging-report.md:
       title: Imaging Report
 # The parameters property represents IG.definition.parameter. Rather
@@ -125,25 +173,32 @@ parameters:
 menu:
   Home: index.html
   Introduction:
-    Changes: changes.html
-    Dependencies: dependencies.html
     References: references.html
-    Adapting Guidelines for Country use: adapting.html
   Functional:
-    Xt-EHR model: https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/useCaseMedicalImages.html
     System actors: actors-and-transactions.html
+    Use Cases: use-cases.html
   Implementation:
-    Xt-EHR mapping: xtehr-mapping.html
     Imaging Report: imaging-report.html
+    Data formats: data-formats.html
     Imaging Report Examples: examples.html
+    EU Health Data API for Imaging Reports: api.html
+    Mapping to EHDS Logical Model profiles: xtehr-mapping.html
+    Patterns and Guidelines: patterns-and-guidelines.html
+    Handling missing data: missing-data.html
     Design considerations: design-considerations.html
   About:
+    Change Log: changes.html
+    Dependencies: dependencies.html
     Authors and contributors: contributors.html
     Copyright: copyright.html
+    Current status: current-status.html
+    Cross version analysis: cross-version-analysis.html
   Artifacts:
     Structural: artifacts-structural.html
+    Obligations: artifacts-obligations.html
     All: artifacts.html
     Examples: artifacts.html#example-example-instances
+
 {% if isR4 %}
   R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
 {% endif %}
@@ -207,6 +262,21 @@ menu:
 #     description: An example Patient
 #     exampleBoolean: true
 #   Patient/bad-example: omit
+resources:
+  Binary/BinarySemistructuredReport:
+    name: Binary Semistructured Report
+    description: An example of a Binary resource representing a semistructured report.
+    exampleBoolean: true
+
+  Binary/BinaryStructuredReport:
+    name: Binary Structured Report
+    description: An example of a Binary resource representing a structured report.
+    exampleBoolean: true
+
+  Binary/BinaryUnstructuredReport:
+    name: Binary Unstructured Report
+    description: An example of a Binary resource representing an unstructured report.
+    exampleBoolean: true
 #
 #
 # Groups can control certain aspects of the IG generation.  The IG

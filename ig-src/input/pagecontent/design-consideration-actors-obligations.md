@@ -9,6 +9,7 @@ The specification recognizes the following actors:
 * BundleReportEuImagingProvider - provides the imaging studies report.
 
 #### Provider obligations
+
 The ImProvider provides the information. In this case this means that it has to provide the information defined in the eHN Guidelines that are further refined by Xt-EHR in the Xt-EHR logical model. 
 
 All data elements in the Xt-EHR model are mapped onto one or more FHIR elements (see the mapping section in the spec). In order to ensure that the provider populates these data elements, a requirement/obligation is placed on each FHIR element referred to in the mapping.
@@ -22,6 +23,7 @@ This means that the provider SHALL populate these fields it has the information.
 
 
 #### Using obligations in resources
+
 The obligation extensions will be placed in the profiles. In order to make the profiles clear and concise, for each profile with obligations, sub-profiles will be created.
 
 The main profile will have the structural constraints. The actor specific sub-profile will only hold the obligations placed on the actors.

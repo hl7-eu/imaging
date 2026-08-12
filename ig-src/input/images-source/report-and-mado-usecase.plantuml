@@ -1,0 +1,39 @@
+@startuml
+
+Actor Clinician
+Clinician -> "Document\nAccess Provider" : search imaging reports
+Clinician <-- "Document\nAccess Provider" : <report summeries>
+
+note over Clinician
+  Inspect the summaries and select one to view in detail.
+end note
+
+Clinician -> "Document\nAccess Provider" : request report
+Clinician <-- "Document\nAccess Provider" : <report>
+
+note over Clinician
+  Review the report and determine if the associated images are needed.
+end note
+
+Clinician -> "Document\nAccess Provider" : search for manifestations
+Clinician <-- "Document\nAccess Provider" : <manifest summaries>
+
+note over Clinician
+  Inspect the summaries and select one to view in detail.
+end note
+
+Clinician -> "Document\nAccess Provider" : request manifest
+Clinician <-- "Document\nAccess Provider" : <manifest>
+
+note over Clinician
+  Review the manifest and determine what images are needed.
+end note  
+
+Clinician -> "Imaging Source" : wado-rs request
+Clinician <-- "Imaging Source" : <images>
+
+note over Clinician
+  Review the images.
+end note
+
+@enduml

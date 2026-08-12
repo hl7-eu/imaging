@@ -1,7 +1,10 @@
 Profile: ProcedureEuImaging
 Parent: $EuProcedure
 Title: "Procedure: Imaging Acquisition"
-Description: "This profile on Procedure represents the imaging procedure."
+Description: """
+This profile on Procedure represents the imaging procedure. In this DICOM this is
+referred as the 'Performed Procedure Step' (PPS). This profile is used to capture metadata about the imaging procedure itself.
+"""
 * insert SetFmmAndStatusRule( 1, draft )
 
 // reference to the order that has the Accession Number and including the Accession Number as identifier
