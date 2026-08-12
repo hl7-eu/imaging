@@ -1,0 +1,1244 @@
+diff --git a/ig-src/ig.liquid.ini b/ig-src/ig.liquid.ini
+index 8697bb80..8d227460 100644
+--- a/ig-src/ig.liquid.ini
++++ b/ig-src/ig.liquid.ini
+@@ -1,6 +1,7 @@
+ [IG]
+ {{R4-yaml}}ig = fsh-generated/resources/ImplementationGuide-hl7.fhir.eu.imaging.json
+ {{R5-yaml}}ig = fsh-generated/resources/ImplementationGuide-hl7.fhir.eu.imaging-r5.json
++{{R6-yaml}}ig = fsh-generated/resources/ImplementationGuide-hl7.fhir.eu.imaging-r6.json
+ #template = fhir.base.template#current
+ template = ig-template
+ #template = who.template.root#current
+\ No newline at end of file
+diff --git a/ig-src/input/fsh/alias-euroProfiles.liquid.fsh b/ig-src/input/fsh/alias-euroProfiles.liquid.fsh
+index 6ef453f2..66ad5426 100644
+--- a/ig-src/input/fsh/alias-euroProfiles.liquid.fsh
++++ b/ig-src/input/fsh/alias-euroProfiles.liquid.fsh
+@@ -51,8 +51,8 @@ Alias: $EuImagingStudyUrl      = http://hl7.org/fhir/StructureDefinition/Imaging
+ 
+ {{R4}}Alias: $EuLocation             = http://hl7.eu/fhir/base/StructureDefinition/location-eu
+ {{R4}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base/StructureDefinition/location-eu
+-{{R5}}Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
+-{{R5}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
++{{R56}}Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
++{{R56}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
+ 
+ Alias: $EuMedication           = Medication
+ Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/ImagingStudy/Medication
+diff --git a/ig-src/input/fsh/alias-extensions.liquid.fsh b/ig-src/input/fsh/alias-extensions.liquid.fsh
+index 64730f5e..91bc4d4f 100644
+--- a/ig-src/input/fsh/alias-extensions.liquid.fsh
++++ b/ig-src/input/fsh/alias-extensions.liquid.fsh
+@@ -30,7 +30,7 @@ Alias: $performer-function-url                = http://hl7.org/fhir/StructureDef
+ Alias: $sexParameter-for-clinical-use-url     = http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse
+ Alias: $workflow-reason-url                   = http://hl7.org/fhir/StructureDefinition/workflow-reason
+ // Alias: $workflow-status-reason-url            = http://hl7.org/fhir/StructureDefinition/workflow-statusReason
+-{{R5}} Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
++{{R56}} Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
+ {% if isR4 %}
+ Alias: $CrossVersion-Attachment.pages                     = http://hl7.org/fhir/5.0/StructureDefinition/extension-Attachment.pages
+ Alias: $CrossVersion-Composition.version                  = http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version
+diff --git a/ig-src/input/fsh/api/ApiRuleSets.liquid.fsh b/ig-src/input/fsh/api/ApiRuleSets.liquid.fsh
+index 2532e06a..cf22149a 100644
+--- a/ig-src/input/fsh/api/ApiRuleSets.liquid.fsh
++++ b/ig-src/input/fsh/api/ApiRuleSets.liquid.fsh
+@@ -2,7 +2,7 @@ RuleSet: MhdSearchParameters
+ // Imaging specific search parameters
+ {{R }}* rest[=].resource[=].searchParam[+].name = "bodysite"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceBodySite )
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
+ {{R }}* rest[=].resource[=].searchParam[=].type = #token
+ {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+@@ -10,7 +10,7 @@ RuleSet: MhdSearchParameters
+ 
+ {{R }}* rest[=].resource[=].searchParam[+].name = "modality"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceModality )
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
+ {{R }}* rest[=].resource[=].searchParam[=].type = #token
+ {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+@@ -44,9 +44,9 @@ RuleSet: ImagingStudyResource( strength1, strength2 )
+     * insert CapabilityStatementExpectation( {strength1} )
+     * documentation = "Search for ImagingStudy resources."
+   {{R4}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-basedon]], #reference, {strength1}, [[The order that lead to the imaging study.]])
+-  {{R5}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-based-on]], #reference, {strength1}, [[The order that lead to the imaging study.]])
++  {{R56}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-based-on]], #reference, {strength1}, [[The order that lead to the imaging study.]])
+   {{R4}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-bodysite]], #token, {strength1}, [[The body-site the study examined.]])
+-  {{R5}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-body-site]], #token, {strength1}, [[The body-site the study examined.]])
++  {{R56}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-body-site]], #token, {strength1}, [[The body-site the study examined.]])
+   * insert CapabilityStatementSearchParameter( dicom-class, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-dicom-class]], #token, {strength2}, [[The type of the instances.]])
+   * insert CapabilityStatementSearchParameter( modality, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-modality]], #token, {strength1}, [[The modality of the imaging study.]])
+   * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the imaging study.]] )
+@@ -87,7 +87,7 @@ RuleSet: AdverseEventResource( strength1 )
+ RuleSet: ImagingSelectionResource( strength1 )
+ {{R }}* resource[+]
+ {{R4}}  * type = #Basic
+-{{R5}}  * type = #ImagingSelection
++{{R56}}  * type = #ImagingSelection
+ {{R }}  * insert CapabilityStatementExpectation( {strength1} )
+ {{R }}  * documentation = "Represents part of an imaging study."
+ {{R }}  * interaction[+]
+diff --git a/ig-src/input/fsh/api/CapabilityStatementDocumentAccessProvider.liquid.fsh b/ig-src/input/fsh/api/CapabilityStatementDocumentAccessProvider.liquid.fsh
+index bf9cfbc6..9c1ccb50 100644
+--- a/ig-src/input/fsh/api/CapabilityStatementDocumentAccessProvider.liquid.fsh
++++ b/ig-src/input/fsh/api/CapabilityStatementDocumentAccessProvider.liquid.fsh
+@@ -147,7 +147,7 @@ indexes document metadata for queries by Document Consumers.
+ 
+ * rest[=].resource[=].searchParam[+].name = "format"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format"
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format-code"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format-code"
+ * rest[=].resource[=].searchParam[=].type = #token
+ * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+@@ -177,7 +177,7 @@ indexes document metadata for queries by Document Consumers.
+ 
+ * rest[=].resource[=].searchParam[+].name = "event"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event"
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event-code"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event-code"
+ * rest[=].resource[=].searchParam[=].type = #token
+ * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+@@ -192,7 +192,7 @@ indexes document metadata for queries by Document Consumers.
+ 
+ * rest[=].resource[=].searchParam[+].name = "related"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-related"
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto"
+ * rest[=].resource[=].searchParam[=].type = #reference
+ * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
+@@ -220,7 +220,7 @@ indexes document metadata for queries by Document Consumers.
+ // Imaging specific search parameters
+ {{R }}* rest[=].resource[=].searchParam[+].name = "bodysite"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceBodySite )
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
+ {{R }}* rest[=].resource[=].searchParam[=].type = #token
+ {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+@@ -228,7 +228,7 @@ indexes document metadata for queries by Document Consumers.
+ 
+ {{R }}* rest[=].resource[=].searchParam[+].name = "modality"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceModality )
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
+ {{R }}* rest[=].resource[=].searchParam[=].type = #token
+ {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+diff --git a/ig-src/input/fsh/api/CapabilityStatementDocumentConsumer.liquid.fsh b/ig-src/input/fsh/api/CapabilityStatementDocumentConsumer.liquid.fsh
+index 85c645bd..7837d709 100644
+--- a/ig-src/input/fsh/api/CapabilityStatementDocumentConsumer.liquid.fsh
++++ b/ig-src/input/fsh/api/CapabilityStatementDocumentConsumer.liquid.fsh
+@@ -121,7 +121,7 @@ transaction to discover available documents for a patient.
+ // Imaging specific search parameters
+ {{R }}* rest[=].resource[=].searchParam[+].name = "bodysite"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceBodySite )
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
+ {{R }}* rest[=].resource[=].searchParam[=].type = #token
+ {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+@@ -129,7 +129,7 @@ transaction to discover available documents for a patient.
+ 
+ {{R }}* rest[=].resource[=].searchParam[+].name = "modality"
+ {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceModality )
+-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
++{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
+ {{R }}* rest[=].resource[=].searchParam[=].type = #token
+ {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+ {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
+diff --git a/ig-src/input/fsh/api/MhdDocumentReference.liquid.fsh b/ig-src/input/fsh/api/MhdDocumentReference.liquid.fsh
+index 08c08bb3..320fdb70 100644
+--- a/ig-src/input/fsh/api/MhdDocumentReference.liquid.fsh
++++ b/ig-src/input/fsh/api/MhdDocumentReference.liquid.fsh
+@@ -1,6 +1,6 @@
+ Profile: DocumentReferenceImagingReport
+ {{R4}}Parent: EehrxfMhdDocumentReference
+-{{R5}}Parent: DocumentReference
++{{R56}}Parent: DocumentReference
+ Title: "EEHRxF MHD DocumentReference Profile for Imaging Reports"
+ Description: """
+ Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile. This profile is used for the DocumentReference resources that represent imaging reports in the EEHRxF context. It includes additional constraints and extensions specific to imaging reports, such as the type of report, the clinical specialty, the anatomical region of interest and the profile of the imaging report.
+@@ -10,7 +10,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
+ 
+ // practice setting
+ {{R4}}* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+-{{R5}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
++{{R56}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+ 
+ * status 1..1
+ 
+@@ -20,7 +20,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
+ 
+ // subject
+ * subject 1..1
+-{{R5}}* subject only Reference( $EuPatient )
++{{R56}}* subject only Reference( $EuPatient )
+ 
+ // date
+ * date 1..1
+@@ -44,15 +44,15 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
+   * ^short = "Organization that manages the Imaging Report"
+ 
+ // bodysite
+-{{R5}}* bodySite
+-// {{R5}}* bodySite only CodeableReferenceAnatomicalRegion
+-{{R5}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+-{{R5}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+-{{R5}}  * concept 1..1
+-{{R5}}    * coding from ValueSetAnatomicalRegion (extensible)
+-// {{R5}}      * insert SliceElement( #pattern, $this )
+-// {{R5}}    * coding contains anatomical-region 1..*
+-// {{R5}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
++{{R56}}* bodySite
++// {{R56}}* bodySite only CodeableReferenceAnatomicalRegion
++{{R56}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
++{{R56}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
++{{R56}}  * concept 1..1
++{{R56}}    * coding from ValueSetAnatomicalRegion (extensible)
++// {{R56}}      * insert SliceElement( #pattern, $this )
++// {{R56}}    * coding contains anatomical-region 1..*
++// {{R56}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
+ {{R4}}* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
+ {{R4}}* extension[bodysite].extension[concept] 1..1
+ {{R4}}* extension[bodysite].extension[concept]
+@@ -72,12 +72,12 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
+ {{R4}}  * extension contains ImDocumentReferenceContentProfile named profile 1..*
+ {{R4}}  * extension[profile] ^short = "Contains the profile of the referred report"
+   
+-{{R5}}* content 1..1
+-{{R5}}  * profile 1..*
+-{{R5}}    * insert SliceElement( #value, value )
+-{{R5}}  * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
+-{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+-{{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
++{{R56}}* content 1..1
++{{R56}}  * profile 1..*
++{{R56}}    * insert SliceElement( #value, value )
++{{R56}}  * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
++{{R56}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
++{{R56}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+ 
+ 
+ {{R4}}Extension: ImDocumentReferenceContentProfile
+diff --git a/ig-src/input/fsh/examples/report-succession-examples.liquid.fsh b/ig-src/input/fsh/examples/report-succession-examples.liquid.fsh
+index 9c5ae0be..0f271b42 100644
+--- a/ig-src/input/fsh/examples/report-succession-examples.liquid.fsh
++++ b/ig-src/input/fsh/examples/report-succession-examples.liquid.fsh
+@@ -13,10 +13,10 @@ Usage: #example
+ * subject = Reference(PatientStructuredReport)
+ * performer[organization] = Reference(OrganizationStructuredReport)
+ {{R4}}* imagingStudy = Reference(ImagingStudyStructuredReport)
+-{{R5}}* study = Reference(ImagingStudyStructuredReport)
++{{R56}}* study = Reference(ImagingStudyStructuredReport)
+ {{R4}}* extension[composition].valueReference = Reference(ImagingReportReplacementComposition)
+-{{R5}}* composition = Reference(ImagingReportReplacementComposition)
+-{{R5}}* result = Reference(ObservationNarrative)
++{{R56}}* composition = Reference(ImagingReportReplacementComposition)
++{{R56}}* result = Reference(ObservationNarrative)
+ 
+ Instance: ImagingReportReplacementComposition
+ InstanceOf: CompositionEuImaging
+@@ -42,6 +42,9 @@ Usage: #example
+ {{R5}}* relatesTo[replaced_document].resourceReference.identifier
+ {{R5}}  * system = "https://example.org/imaging-document-identifiers"
+ {{R5}}  * value = "prior-document"
++{{R6}}* relatesTo[replaced_document].targetReference.identifier
++{{R6}}  * system = "https://example.org/imaging-document-identifiers"
++{{R6}}  * value = "prior-document"
+ * section[imagingstudy]
+   * text.status = #generated
+   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Imaging study information</div>"
+@@ -58,10 +61,10 @@ Usage: #example
+   * text.status = #generated
+   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Procedure information</div>"
+   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
+-{{R5}}* section[findings]
+-{{R5}}  * text.status = #generated
+-{{R5}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Technical placeholder required by R5 validation.</div>"
+-{{R5}}  * entry[finding] = Reference(ObservationNarrative)
++{{R56}}* section[findings]
++{{R56}}  * text.status = #generated
++{{R56}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Technical placeholder required by R5 validation.</div>"
++{{R56}}  * entry[finding] = Reference(ObservationNarrative)
+ 
+ Instance: ImagingReportRetractionExample
+ InstanceOf: DiagnosticReportEuImaging
+@@ -78,10 +81,10 @@ Usage: #example
+ * subject = Reference(PatientStructuredReport)
+ * performer[organization] = Reference(OrganizationStructuredReport)
+ {{R4}}* imagingStudy = Reference(ImagingStudyStructuredReport)
+-{{R5}}* study = Reference(ImagingStudyStructuredReport)
++{{R56}}* study = Reference(ImagingStudyStructuredReport)
+ {{R4}}* extension[composition].valueReference = Reference(ImagingReportRetractionComposition)
+-{{R5}}* composition = Reference(ImagingReportRetractionComposition)
+-{{R5}}* result = Reference(ObservationNarrative)
++{{R56}}* composition = Reference(ImagingReportRetractionComposition)
++{{R56}}* result = Reference(ObservationNarrative)
+ 
+ Instance: ImagingReportRetractionComposition
+ InstanceOf: CompositionEuImaging
+@@ -107,6 +110,9 @@ Usage: #example
+ {{R5}}* relatesTo[replaced_document].resourceReference.identifier
+ {{R5}}  * system = "https://example.org/imaging-document-identifiers"
+ {{R5}}  * value = "prior-document"
++{{R6}}* relatesTo[replaced_document].targetReference.identifier
++{{R6}}  * system = "https://example.org/imaging-document-identifiers"
++{{R6}}  * value = "prior-document"
+ * section[imagingstudy]
+   * text.status = #generated
+   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">The previous imaging report was issued in error and has been withdrawn.</div>"
+@@ -123,7 +129,7 @@ Usage: #example
+   * text.status = #generated
+   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided.</div>"
+   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
+-{{R5}}* section[findings]
+-{{R5}}  * text.status = #generated
+-{{R5}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided; this entry is a technical placeholder required by R5 validation.</div>"
+-{{R5}}  * entry[finding] = Reference(ObservationNarrative)
++{{R56}}* section[findings]
++{{R56}}  * text.status = #generated
++{{R56}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided; this entry is a technical placeholder required by R5 validation.</div>"
++{{R56}}  * entry[finding] = Reference(ObservationNarrative)
+diff --git a/ig-src/input/fsh/obligations/CarePlanObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/CarePlanObligationEuImaging.liquid.fsh
+index 45523cde..26ab37de 100644
+--- a/ig-src/input/fsh/obligations/CarePlanObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/CarePlanObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/CompositionObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/CompositionObligationEuImaging.liquid.fsh
+index 371c9e6d..20f2fa8e 100644
+--- a/ig-src/input/fsh/obligations/CompositionObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/CompositionObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/DiagnosticReportObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/DiagnosticReportObligationEuImaging.liquid.fsh
+index e4cd545c..f9c8102e 100644
+--- a/ig-src/input/fsh/obligations/DiagnosticReportObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/DiagnosticReportObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/ImagingStudyObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/ImagingStudyObligationEuImaging.liquid.fsh
+index ddf4c6de..f3c23b40 100644
+--- a/ig-src/input/fsh/obligations/ImagingStudyObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/ImagingStudyObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/ObservationNarrativeReportObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/ObservationNarrativeReportObligationEuImaging.liquid.fsh
+index 1845d64b..96b713a1 100644
+--- a/ig-src/input/fsh/obligations/ObservationNarrativeReportObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/ObservationNarrativeReportObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/ObservationRadiationDoseObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/ObservationRadiationDoseObligationEuImaging.liquid.fsh
+index 0ba84b46..3bd43eea 100644
+--- a/ig-src/input/fsh/obligations/ObservationRadiationDoseObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/ObservationRadiationDoseObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/PatientObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/PatientObligationEuImaging.liquid.fsh
+index 9a06f908..a439df39 100644
+--- a/ig-src/input/fsh/obligations/PatientObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/PatientObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/ProcedureObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/ProcedureObligationEuImaging.liquid.fsh
+index 7279f969..1c9bba3f 100644
+--- a/ig-src/input/fsh/obligations/ProcedureObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/ProcedureObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/obligations/ServiceRequestOrderObligationEuImaging.liquid.fsh b/ig-src/input/fsh/obligations/ServiceRequestOrderObligationEuImaging.liquid.fsh
+index fd4fbd25..1420cb8d 100644
+--- a/ig-src/input/fsh/obligations/ServiceRequestOrderObligationEuImaging.liquid.fsh
++++ b/ig-src/input/fsh/obligations/ServiceRequestOrderObligationEuImaging.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ ////////////////////////////////////////////////////
+ // Generated file. Do not edit.
+ ////////////////////////////////////////////////////
+diff --git a/ig-src/input/fsh/profiles/im-adverseevent.liquid.fsh b/ig-src/input/fsh/profiles/im-adverseevent.liquid.fsh
+index 2fd0e06c..5a3dd5ed 100644
+--- a/ig-src/input/fsh/profiles/im-adverseevent.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-adverseevent.liquid.fsh
+@@ -9,6 +9,7 @@ Description: """Adverse Event that occurred during an imaging procedure."""
+ * suspectEntity contains procedure 0..*
+ {{R4}}* suspectEntity[procedure].instance only Reference(ProcedureEuImaging)
+ {{R5}}* suspectEntity[procedure].instanceReference only Reference(ProcedureEuImaging)
++{{R6}}* suspectEntity[procedure].instance only CodeableReference(ProcedureEuImaging)
+ 
+ {{R4}}* subjectMedicalHistory
+ {{R4}}  * insert SliceElement( #profile, $this )
+@@ -16,8 +17,9 @@ Description: """Adverse Event that occurred during an imaging procedure."""
+ {{R4}}* subjectMedicalHistory[allergy]
+ {{R4}}* subjectMedicalHistory only Reference($EuAllergyIntolerance)
+ 
+-{{R5}}* contributingFactor
+-{{R5}}  * insert SliceElement( #profile, $this )
+-{{R5}}* contributingFactor contains allergy 0..*
++{{R56}}* contributingFactor
++{{R56}}  * insert SliceElement( #profile, $this )
++{{R56}}* contributingFactor contains allergy 0..*
+ {{R5}}* contributingFactor[allergy]
+-{{R5}}  * itemReference only Reference($EuAllergyIntolerance)
+\ No newline at end of file
++{{R5}}  * itemReference only Reference($EuAllergyIntolerance)
++{{R6}}* contributingFactor[allergy] only CodeableReference($EuAllergyIntolerance)
+\ No newline at end of file
+diff --git a/ig-src/input/fsh/profiles/im-composition.liquid.fsh b/ig-src/input/fsh/profiles/im-composition.liquid.fsh
+index 5296a7af..c6fc6e49 100644
+--- a/ig-src/input/fsh/profiles/im-composition.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-composition.liquid.fsh
+@@ -15,7 +15,7 @@ The `text` field of each section SHALL contain a textual representation of all l
+ """
+ * insert SetFmmAndStatusRule( 1, draft )
+ 
+-{{R5}}* identifier 1..*
++{{R56}}* identifier 1..*
+ {{R4}}* identifier 1..1
+   * ^short = "Report identifier"
+   * ^definition = "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions"
+@@ -90,17 +90,20 @@ The `text` field of each section SHALL contain a textual representation of all l
+ // Mirrors the FHIR Clinical Document Composition profile slicing.
+ * relatesTo ^slicing.discriminator.type = #value
+ {{R4}}* relatesTo ^slicing.discriminator.path = "code"
+-{{R5}}* relatesTo ^slicing.discriminator.path = "type"
++{{R56}}* relatesTo ^slicing.discriminator.path = "type"
+ * relatesTo ^slicing.rules = #open
+ * relatesTo contains replaced_document 0..1
+ * relatesTo[replaced_document] ^short = "Prior report this one replaces or retracts"
+ {{R4}}* relatesTo[replaced_document].code = #replaces
+ {{R4}}* relatesTo[replaced_document].target[x] only Identifier
+ {{R4}}* relatesTo[replaced_document].targetIdentifier 1..1
+-{{R5}}* relatesTo[replaced_document].type = #replaces
++{{R56}}* relatesTo[replaced_document].type = #replaces
+ {{R5}}* relatesTo[replaced_document].resourceReference 1..1
+ {{R5}}* relatesTo[replaced_document].resourceReference.identifier 1..1
+ {{R5}}* relatesTo[replaced_document].resourceReference.reference 0..0
++{{R6}}* relatesTo[replaced_document].targetReference 1..1
++{{R6}}* relatesTo[replaced_document].targetReference.identifier 1..1
++{{R6}}* relatesTo[replaced_document].targetReference.reference 0..0
+ 
+ 
+ * obeys eu-imaging-comp-status-succession
+@@ -277,4 +280,4 @@ Invariant: eu-imaging-comp-status-succession
+ Description: "A Composition that replaces or retracts a prior report SHALL have status final or entered-in-error."
+ * severity = #error
+ {{R4}}* expression = "relatesTo.where(code = 'replaces').exists() implies status in ('final' | 'entered-in-error')"
+-{{R5}}* expression = "relatesTo.where(type = 'replaces').exists() implies status in ('final' | 'entered-in-error')"
+\ No newline at end of file
++{{R56}}* expression = "relatesTo.where(type = 'replaces').exists() implies status in ('final' | 'entered-in-error')"
+\ No newline at end of file
+diff --git a/ig-src/input/fsh/profiles/im-diagnosticreport.liquid.fsh b/ig-src/input/fsh/profiles/im-diagnosticreport.liquid.fsh
+index bec6f2c5..0f0fd009 100644
+--- a/ig-src/input/fsh/profiles/im-diagnosticreport.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-diagnosticreport.liquid.fsh
+@@ -21,12 +21,12 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
+ {{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
+ {{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
+ 
+-{{R5}}* composition 1..1
+-{{R5}}* composition ^short = "Imaging Diagnostic Report"
+-{{R5}}* composition only Reference(CompositionEuImaging)
+-{{R5}} // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
+-{{R5}}* result 1..*
+-{{R5}}  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
++{{R56}}* composition 1..1
++{{R56}}* composition ^short = "Imaging Diagnostic Report"
++{{R56}}* composition only Reference(CompositionEuImaging)
++{{R56}} // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
++{{R56}}* result 1..*
++{{R56}}  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
+ 
+ // Correspondence between DiagnosticReport.status and the referenced Composition succession data
+ * obeys eu-imaging-dr-status-replacement
+@@ -69,21 +69,21 @@ This profile shares all common imaging report modeling with DiagnosticReportEuIm
+ {{R4}}* imagingStudy[study-identifier].identifier 1..1
+ {{R4}}* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+ 
+-{{R5}}* study
+-{{R5}}  * insert SliceElement( #exists, identifier )
+-{{R5}}* study contains
+-{{R5}}    study-resource 0..* and
+-{{R5}}    study-identifier 0..*
+-{{R5}}* study[study-resource] only Reference(ImagingStudyEuImaging)
+-{{R5}}* study[study-resource].reference 1..1
+-{{R5}}* study[study-resource].identifier 0..0
+-{{R5}}* study[study-identifier].reference 0..0
+-{{R5}}* study[study-identifier].identifier 1..1
+-{{R5}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
++{{R56}}* study
++{{R56}}  * insert SliceElement( #exists, identifier )
++{{R56}}* study contains
++{{R56}}    study-resource 0..* and
++{{R56}}    study-identifier 0..*
++{{R56}}* study[study-resource] only Reference(ImagingStudyEuImaging)
++{{R56}}* study[study-resource].reference 1..1
++{{R56}}* study[study-resource].identifier 0..0
++{{R56}}* study[study-identifier].reference 0..0
++{{R56}}* study[study-identifier].identifier 1..1
++{{R56}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+ 
+ 
+-{{R5}}* composition 0..0
+-{{R5}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
++{{R56}}* composition 0..0
++{{R56}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
+ 
+ ///////////////////////
+ 
+@@ -163,9 +163,9 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
+ {{R4}}* imagingStudy ^short = "Study subject to this report"
+ {{R4}}* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+ 
+-{{R5}}* study only Reference(ImagingStudyEuImaging)
+-{{R5}}* study ^short = "Study subject to this report"
+-{{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
++{{R56}}* study only Reference(ImagingStudyEuImaging)
++{{R56}}* study ^short = "Study subject to this report"
++{{R56}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+ 
+ 
+ * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
+@@ -338,13 +338,13 @@ Invariant: eu-imaging-dr-status-replacement
+ Description: "DiagnosticReport.status SHALL be 'amended' if and only if the referenced Composition replaces a prior report and has status 'final'."
+ * severity = #error
+ {{R4}}* expression = "(status = 'amended') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'final' and relatesTo.where(code = 'replaces').exists()).exists()"
+-{{R5}}* expression = "(status = 'amended') = composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
++{{R56}}* expression = "(status = 'amended') = composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
+ 
+ Invariant: eu-imaging-dr-status-retraction
+ Description: "DiagnosticReport.status SHALL be 'entered-in-error' if and only if the referenced Composition retracts a prior report by replacing it with status 'entered-in-error'."
+ * severity = #error
+ {{R4}}* expression = "(status = 'entered-in-error') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'entered-in-error' and relatesTo.where(code = 'replaces').exists()).exists()"
+-{{R5}}* expression = "(status = 'entered-in-error') = composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
++{{R56}}* expression = "(status = 'entered-in-error') = composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
+ 
+ Invariant: eu-imaging-dr-status-no-addendum
+ Description: "DiagnosticReport.status SHALL NOT be 'appended' or 'corrected'; content added or corrected after final issuance is represented as a complete replacement with status 'amended'."
+diff --git a/ig-src/input/fsh/profiles/im-gestational-age-observation.liquid.fsh b/ig-src/input/fsh/profiles/im-gestational-age-observation.liquid.fsh
+index 4ae5c78b..6dbcca71 100644
+--- a/ig-src/input/fsh/profiles/im-gestational-age-observation.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-gestational-age-observation.liquid.fsh
+@@ -18,5 +18,5 @@ Description: "Gestational Age Observation"
+ {{R4}}  * ^binding.extension[=].extension[+].url = #valueSet
+ {{R4}}  * ^binding.extension[=].extension[=].valueCanonical =  Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
+ 
+-{{R5}}  * ^binding.additional[+].purpose = #maximum
+-{{R5}}  * ^binding.additional[=].valueSet = Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
+\ No newline at end of file
++{{R56}}  * ^binding.additional[+].purpose = #maximum
++{{R56}}  * ^binding.additional[=].valueSet = Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
+\ No newline at end of file
+diff --git a/ig-src/input/fsh/profiles/im-imaging-device.liquid.fsh b/ig-src/input/fsh/profiles/im-imaging-device.liquid.fsh
+index 6a188690..f869c71b 100644
+--- a/ig-src/input/fsh/profiles/im-imaging-device.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-imaging-device.liquid.fsh
+@@ -9,10 +9,10 @@ Description: """The device the made the image."""
+ {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Device.category named imagingCategory 1..1
+ {{R4}}* extension[imagingCategory].valueCodeableConcept = $sct#314789007 // "Diagnostic imaging equipment"
+ 
+-{{R5}}* category 
+-{{R5}}  * insert SliceElement( #value, $this )
+-{{R5}}* category contains imaging 1..1
+-{{R5}}* category[imaging] = $sct#314789007 // "Diagnostic imaging equipment"
++{{R56}}* category 
++{{R56}}  * insert SliceElement( #value, $this )
++{{R56}}* category contains imaging 1..1
++{{R56}}* category[imaging] = $sct#314789007 // "Diagnostic imaging equipment"
+ 
+ * type from http://dicom.nema.org/medical/dicom/current/output/chtml/part16/sect_CID_29.html (extensible)
+ 
+@@ -22,10 +22,11 @@ Target: "http://nema.org/dicom"
+ Title: "Mapping from DICOM to Imaging Device"
+ Description: "Mapping from DICOM to Imaging Device."
+ * identifier -> "DeviceUID (0018,1002), (0018,1003) Device ID"
+-* version -> "Software Versions (0018,1020)"
++{{R45}}* version -> "Software Versions (0018,1020)"
++{{R6}}* deviceVersion -> "Software Versions (0018,1020)"
+ * type -> "ManufacturerDeviceClassUID (0018,1008) | Modality (0008,0060)"
+ {{R4}}* deviceName -> "StationName (0008,1010) | ManufacturerModelName (0008,1090)"
+-{{R5}}* name -> "StationName (0008,1010) | ManufacturerModelName (0008,1090)"
++{{R56}}* name -> "StationName (0008,1010) | ManufacturerModelName (0008,1090)"
+ * udiCarrier.deviceIdentifier -> "UniqueDeviceIdentifier (0018,1009)"
+ * manufacturer -> "StationName (0008,1010) | ManufacturerModelName (0008,1090)"
+ * serialNumber -> "(0018,1000) Device Serial Number"
+diff --git a/ig-src/input/fsh/profiles/im-imagingselection.liquid.fsh b/ig-src/input/fsh/profiles/im-imagingselection.liquid.fsh
+index ac397530..bf1fce6b 100644
+--- a/ig-src/input/fsh/profiles/im-imagingselection.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-imagingselection.liquid.fsh
+@@ -1,4 +1,4 @@
+-{% if isR5 %}
++{% if isR56 %}
+ Profile: ImagingSelectionEuImaging
+ Parent: ImagingSelection
+ Title: "ImagingSelection: General"
+@@ -6,10 +6,12 @@ Description: "Imaging Selection"
+ * insert SetFmmAndStatusRule( 1, draft )
+ * subject only Reference( $EuPatient )
+ 
+-* derivedFrom 1..*
+-  * insert SliceElement( #profile, $this )
+-* derivedFrom contains study 1..1
+-* derivedFrom[study] only Reference( ImagingStudyEuImaging )
++{{R5}}* derivedFrom 1..*
++{{R5}}  * insert SliceElement( #profile, $this )
++{{R5}}* derivedFrom contains study 1..1
++{{R5}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
++{{R6}}* derivedFrom 1..1
++{{R6}}* derivedFrom only Reference( ImagingStudyEuImaging )
+ {% endif %}
+ 
+ {% if isR4 %}
+@@ -42,7 +44,7 @@ Description: "Imaging Selection referring to a DICOM SR instance"
+ 
+ {% endif %}
+ 
+-{% if isR5 %}
++{% if isR5 or isR6 %}
+ Profile: SrInstanceImagingSelectionEuImaging
+ Parent: ImagingSelectionEuImaging
+ Title: "ImagingSelection: DICOM SR Instance"
+@@ -59,6 +61,6 @@ Description: "Imaging Selection referring to a DICOM SR instance"
+   * uid 1..1
+   * subset 0..0
+   * imageRegion2D 0..0
+-  * imageRegion3D 0..0
++{{R5}}  * imageRegion3D 0..0
+ 
+ {% endif %}
+diff --git a/ig-src/input/fsh/profiles/im-keyimage-documentreference.liquid.fsh b/ig-src/input/fsh/profiles/im-keyimage-documentreference.liquid.fsh
+index 3d0901a9..08eb1bdf 100644
+--- a/ig-src/input/fsh/profiles/im-keyimage-documentreference.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-keyimage-documentreference.liquid.fsh
+@@ -36,11 +36,11 @@ When the resource represents a DICOM series it SHALL contain the Series Instance
+ {{R4}}  * identifier 1..1
+ {{R4}}  * identifier only AccessionNumberIdentifierEuImaging
+ 
+-{{R5}}* basedOn
+-{{R5}}  * insert SliceElement( #type, $this )
+-{{R5}}* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+-{{R5}}* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
+-{{R5}}* modality 1..1
++{{R56}}* basedOn
++{{R56}}  * insert SliceElement( #type, $this )
++{{R56}}* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
++{{R56}}* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
++{{R56}}* modality 1..1
+ 
+ // type of image reference
+ * type from http://terminology.hl7.org/ValueSet/image-reference-type (preferred)
+diff --git a/ig-src/input/fsh/profiles/im-keyimage-imagingselection.liquid.fsh b/ig-src/input/fsh/profiles/im-keyimage-imagingselection.liquid.fsh
+index fa138647..359bd223 100644
+--- a/ig-src/input/fsh/profiles/im-keyimage-imagingselection.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-keyimage-imagingselection.liquid.fsh
+@@ -1,22 +1,22 @@
+ // https://hl7.org/fhir/uv/xver-r5.r4/0.0.1-snapshot-2/Lookup-R5-ImagingSelection-R4.html
+ 
+-{{R5}}Profile: ImagingSelectionKeyImageEuImaging
+-{{R5}}Parent: ImagingSelectionEuImaging
+-{{R5}}Title: "ImagingSelection: Key Image"
+-{{R5}}Description: "Key images represented as an ImagingSelection"
+-{{R5}}* insert SetFmmAndStatusRule( 1, draft )
+-{{R5}}
+-{{R5}}* extension contains 
+-{{R5}}    $artifact-title-url        named title 0..1 and
+-{{R5}}    $artifact-description-url  named description 0..1
+-{{R5}}  
+-{{R5}}* performer
+-{{R5}}  * insert SliceElement( #type, actor )
+-{{R5}}* performer contains performer 0..1 and device 0..1
+-{{R5}}* performer[performer]
+-{{R5}}  * actor only Reference( $EuPractitionerRole )
+-{{R5}}* performer[device]
+-{{R5}}  * actor only Reference( DeviceEuImaging )
++{{R56}}Profile: ImagingSelectionKeyImageEuImaging
++{{R56}}Parent: ImagingSelectionEuImaging
++{{R56}}Title: "ImagingSelection: Key Image"
++{{R56}}Description: "Key images represented as an ImagingSelection"
++{{R56}}* insert SetFmmAndStatusRule( 1, draft )
++{{R56}}
++{{R56}}* extension contains 
++{{R56}}    $artifact-title-url        named title 0..1 and
++{{R56}}    $artifact-description-url  named description 0..1
++{{R56}}  
++{{R56}}* performer
++{{R56}}  * insert SliceElement( #type, actor )
++{{R56}}* performer contains performer 0..1 and device 0..1
++{{R56}}* performer[performer]
++{{R56}}  * actor only Reference( $EuPractitionerRole )
++{{R56}}* performer[device]
++{{R56}}  * actor only Reference( DeviceEuImaging )
+ 
+ {{R4}}Profile: ImagingSelectionKeyImageEuImaging
+ {{R4}}Parent: ImagingSelectionEuImaging
+diff --git a/ig-src/input/fsh/profiles/im-observation-narrative.liquid.fsh b/ig-src/input/fsh/profiles/im-observation-narrative.liquid.fsh
+index bced6996..c4007c22 100644
+--- a/ig-src/input/fsh/profiles/im-observation-narrative.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-observation-narrative.liquid.fsh
+@@ -22,7 +22,7 @@ Description: "Unstructured narrative text in an imaging report."
+ * value[x] ^short = "Unstructured narrative imaging report"
+ * value[x] ^definition = "This element represents unstructured narrative text in an imaging report, 
+ as it was entered by the reporting clinician or an automated system."
+-{{R5}}* value[x] only string or Attachment
++{{R56}}* value[x] only string or Attachment
+ // {{R4}}* value[x] only string
+ // {{R4}}* valueString.extension contains $rendering-xhtml-url named renderingXhtml 0..1 and 
+ // {{R4}}  $rendering-markdown-url named renderingMarkdown 0..1 and 
+diff --git a/ig-src/input/fsh/profiles/im-order.liquid.fsh b/ig-src/input/fsh/profiles/im-order.liquid.fsh
+index 170780c1..967ea7d0 100644
+--- a/ig-src/input/fsh/profiles/im-order.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-order.liquid.fsh
+@@ -28,10 +28,10 @@ the requested modality.
+ // {{R4}}* supportingInfo.extension[codeableConcept]
+ // {{R4}}  * valueCodeableConcept from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+ 
+-{{R5}}* supportingInfo 0..*
+-{{R5}}  * insert SliceElement( #value, $this )
+-{{R5}}* supportingInfo contains pregnancy 0..1
+-{{R5}}* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
++{{R56}}* supportingInfo 0..*
++{{R56}}  * insert SliceElement( #value, $this )
++{{R56}}* supportingInfo contains pregnancy 0..1
++{{R56}}* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+ 
+ {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
+ 
+@@ -71,6 +71,6 @@ Description: "Mapping from DICOM to Imaging Order."
+ {{R }}* note -> "RequestedProcedureDescription (0040,0100)"
+ {{R }}* code -> "RequestedProcedureCodeSequence (0040,1001)"
+ {{R4}}* extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
+-{{R5}}* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
++{{R56}}* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
+ {{R4}}* extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
+-{{R5}}* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
++{{R56}}* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
+diff --git a/ig-src/input/fsh/profiles/im-radiationdose-observation.liquid.fsh b/ig-src/input/fsh/profiles/im-radiationdose-observation.liquid.fsh
+index 4efb296c..a67d734b 100644
+--- a/ig-src/input/fsh/profiles/im-radiationdose-observation.liquid.fsh
++++ b/ig-src/input/fsh/profiles/im-radiationdose-observation.liquid.fsh
+@@ -32,13 +32,13 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
+ {{R4}}* derivedFrom contains study 1..1 
+ {{R4}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
+ {{R4}}  * ^short = "The study the radiation information relates to."
+-{{R5}}* derivedFrom 1..*
+-{{R5}}  * insert SliceElement( #profile, $this )
+-{{R5}}* derivedFrom contains study 1..1 and dicomSrInstance 0..* 
+-{{R5}}* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
+-{{R5}}  * ^short = "The DICOM SR Structured Report that is the source of the information in this Observation."
+-{{R5}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
+-{{R5}}  * ^short = "The study the radiation information relates to."
++{{R56}}* derivedFrom 1..*
++{{R56}}  * insert SliceElement( #profile, $this )
++{{R56}}* derivedFrom contains study 1..1 and dicomSrInstance 0..* 
++{{R56}}* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )
++{{R56}}  * ^short = "The DICOM SR Structured Report that is the source of the information in this Observation."
++{{R56}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
++{{R56}}  * ^short = "The study the radiation information relates to."
+ 
+ * code from ImEUValueSetAllSnomedLoinc (preferred)
+   * insert SliceCodeableConceptWithRequiredCode( radiation-dose, $loinc, #73569-6 )
+diff --git a/ig-src/input/fsh/report-example-semi-structured/bundle-report.liquid.fsh b/ig-src/input/fsh/report-example-semi-structured/bundle-report.liquid.fsh
+index cebdc887..ae0bd009 100644
+--- a/ig-src/input/fsh/report-example-semi-structured/bundle-report.liquid.fsh
++++ b/ig-src/input/fsh/report-example-semi-structured/bundle-report.liquid.fsh
+@@ -36,9 +36,9 @@ Usage: #example
+ * entry[binary]
+   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Binary/BinarySemistructuredReport"
+   * resource = BinarySemistructuredReport
+-{{R5}}* entry[findings]
+-{{R5}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/ObservationNarrative"
+-{{R5}}  * resource = ObservationNarrative
++{{R56}}* entry[findings]
++{{R56}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/ObservationNarrative"
++{{R56}}  * resource = ObservationNarrative
+ // * entry[order]
+ //   * fullUrl = "http://hl7.eu/fhir/imaging-r5/ServiceRequest/ServiceRequestSemiStructured"
+ //   * resource = ServiceRequestSemiStructured
+\ No newline at end of file
+diff --git a/ig-src/input/fsh/report-example-semi-structured/composition.liquid.fsh b/ig-src/input/fsh/report-example-semi-structured/composition.liquid.fsh
+index bf86c4df..737b9715 100644
+--- a/ig-src/input/fsh/report-example-semi-structured/composition.liquid.fsh
++++ b/ig-src/input/fsh/report-example-semi-structured/composition.liquid.fsh
+@@ -22,7 +22,7 @@ Usage: #example
+   * system = "http://example.org/myhosptital/reportidentifiers"
+   * value = "o32u4js8492ff" // invented - not there in the report
+ {{R4}}* extension[version].valueString = "1.0.0" // invented - not there in the report
+-{{R5}}* version = "1.0.0" // invented - not there in the report
++{{R56}}* version = "1.0.0" // invented - not there in the report
+ * status = #final
+ * type = $loinc#24802-1 "MR Knee"
+ * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
+@@ -92,8 +92,8 @@ Usage: #example
+   
+ ///////////////////////////////////////////////////////////////////////
+ * section[findings]
+-{{R5}} // R5 validator requires to populate the result field if composition is referenced, even if the report is semi-structured and does not contain any result reference. This is a known issue: 
+-{{R5}}  * entry[finding] = Reference(ObservationNarrative)
++{{R56}} // R5 validator requires to populate the result field if composition is referenced, even if the report is semi-structured and does not contain any result reference. This is a known issue: 
++{{R56}}  * entry[finding] = Reference(ObservationNarrative)
+   * title = "Findings"
+   * code = $loinc#59776-5 "Procedure findings Narrative"
+   * extension[note][+].valueAnnotation
+diff --git a/ig-src/input/fsh/report-example-semi-structured/diagnostic-report.liquid.fsh b/ig-src/input/fsh/report-example-semi-structured/diagnostic-report.liquid.fsh
+index 6bc9d26b..5298d2d0 100644
+--- a/ig-src/input/fsh/report-example-semi-structured/diagnostic-report.liquid.fsh
++++ b/ig-src/input/fsh/report-example-semi-structured/diagnostic-report.liquid.fsh
+@@ -22,14 +22,14 @@ Usage: #example
+ * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
+ * subject = Reference(PatientSemiStructuredReport)
+ {{R4}}* imagingStudy[+] = Reference(ImagingStudySemiStructuredReport1)
+-{{R5}}* study[+] = Reference(ImagingStudySemiStructuredReport1)
++{{R56}}* study[+] = Reference(ImagingStudySemiStructuredReport1)
+ {{R4}}* imagingStudy[+] = Reference(ImagingStudySemiStructuredReport2)
+-{{R5}}* study[+] = Reference(ImagingStudySemiStructuredReport2)
++{{R56}}* study[+] = Reference(ImagingStudySemiStructuredReport2)
+ * performer[organization] = Reference(OrganizationSemiStructuredReport)
+ * resultsInterpreter[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
+ 
+ {{R4}}* extension[composition].valueReference = Reference(CompositionSemiStructured)
+-{{R5}}* composition = Reference(CompositionSemiStructured)
++{{R56}}* composition = Reference(CompositionSemiStructured)
+ 
+ * result = Reference(ObservationNarrative)
+ * conclusion = "Beginnende Großzehengrundgelenksarthrose, links mehr als rechts. Z.n. Umstellungsosteotomie des MFK1 links."
+@@ -37,9 +37,9 @@ Usage: #example
+ * presentedForm
+   * contentType = #application/pdf
+   * language = #de-DE
+-{{R5}}  * pages = 1
++{{R56}}  * pages = 1
+ {{R4}}  * url = "http://hl7.eu/fhir/imaging-r5/Binary/BinarySemistructuredReport"
+-{{R5}}  * url = "http://hl7.eu/fhir/imaging-r5/Binary/BinarySemistructuredReport"
++{{R56}}  * url = "http://hl7.eu/fhir/imaging-r5/Binary/BinarySemistructuredReport"
+ 
+ // Instance: BinarySemiStructuredReport
+ // InstanceOf: Binary
+diff --git a/ig-src/input/fsh/report-example-semi-structured/docref.liquid.fsh b/ig-src/input/fsh/report-example-semi-structured/docref.liquid.fsh
+index f40e0d65..3da73ec7 100644
+--- a/ig-src/input/fsh/report-example-semi-structured/docref.liquid.fsh
++++ b/ig-src/input/fsh/report-example-semi-structured/docref.liquid.fsh
+@@ -4,14 +4,14 @@ Title: "DocumentReference: Renderable format semi-structured"
+ Description: "MHD DocumentReference for semi-structured report."
+ Usage: #example
+ {{R4}}* masterIdentifier[+]
+-{{R5}}* identifier[+]
++{{R56}}* identifier[+]
+   * system = "urn:ietf:rfc:3986"
+   * use = #usual
+   * value = "http://semi-structured-report.example.com"
+ * status = #current
+ * date = "2025-05-08T00:00:00Z"
+ {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#MR
+-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#MR
++{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#MR
+ * category[+]
+   * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+ * type
+@@ -22,13 +22,13 @@ Usage: #example
+ {{R4}}  * extension[concept]
+ {{R4}}    * valueCodeableConcept
+ {{R4}}      * coding[+] = $sct#61685007
+-{{R5}}* bodySite
+-{{R5}}  * concept
+-{{R5}}    * coding[+] = $sct#61685007
++{{R56}}* bodySite
++{{R56}}  * concept
++{{R56}}    * coding[+] = $sct#61685007
+ * content[+]
+ {{R4}}  * extension[profile]
+ {{R4}}    * valueCanonical = Canonical(BundleReportEuImaging)
+-{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
++{{R56}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+   * attachment[0]
+     * contentType = #application/fhir+json
+     * url = "Bundle/bundle-report-semi-structured"
+diff --git a/ig-src/input/fsh/report-example-structured/composition.liquid.fsh b/ig-src/input/fsh/report-example-structured/composition.liquid.fsh
+index b4354834..eab9e243 100644
+--- a/ig-src/input/fsh/report-example-structured/composition.liquid.fsh
++++ b/ig-src/input/fsh/report-example-structured/composition.liquid.fsh
+@@ -23,7 +23,7 @@ Usage: #example
+ * extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportStructured)
+ 
+ {{R4}}* extension[version].valueString = "1"
+-{{R5}}* version = "1" // invented - not there in the report
++{{R56}}* version = "1" // invented - not there in the report
+ 
+ * status = #final
+ * type = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
+diff --git a/ig-src/input/fsh/report-example-structured/diagnostic-report.liquid.fsh b/ig-src/input/fsh/report-example-structured/diagnostic-report.liquid.fsh
+index 09c8ca08..6c98421e 100644
+--- a/ig-src/input/fsh/report-example-structured/diagnostic-report.liquid.fsh
++++ b/ig-src/input/fsh/report-example-structured/diagnostic-report.liquid.fsh
+@@ -26,13 +26,13 @@ Usage: #example
+ * extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 
+ 
+ {{R4}}* imagingStudy[+] = Reference (ImagingStudyStructuredReport)
+-{{R5}}* study[+] = Reference (ImagingStudyStructuredReport)
++{{R56}}* study[+] = Reference (ImagingStudyStructuredReport)
+ 
+ * performer[organization] = Reference (OrganizationStructuredReport)
+ * resultsInterpreter[author] = Reference (PractitionerRoleStructuredReportAuthor)
+ 
+ {{R4}}* extension[composition].valueReference = Reference (CompositionStructured)
+-{{R5}}* composition = Reference (CompositionStructured)
++{{R56}}* composition = Reference (CompositionStructured)
+ 
+ // HISTORY
+ * extension[patientHistory][+].valueReference = Reference (WeightObservation)
+@@ -96,7 +96,7 @@ See you next year.
+ * presentedForm
+   * contentType = #application/pdf
+   * language = #de-DE
+-{{R5}}  * pages = 3
++{{R56}}  * pages = 3
+   * url = "Binary/BinaryStructuredReport"
+ 
+ // Loading the binary from .json in input/resources
+diff --git a/ig-src/input/fsh/report-example-structured/docref-bundle.liquid.fsh b/ig-src/input/fsh/report-example-structured/docref-bundle.liquid.fsh
+index 9c3cf567..2088b2ee 100644
+--- a/ig-src/input/fsh/report-example-structured/docref-bundle.liquid.fsh
++++ b/ig-src/input/fsh/report-example-structured/docref-bundle.liquid.fsh
+@@ -4,14 +4,14 @@ Title: "DocumentReference: Renderable format structured"
+ Description: "MHD DocumentReference for structured report."
+ Usage: #example
+ {{R4}}* masterIdentifier[+]
+-{{R5}}* identifier[+]
++{{R56}}* identifier[+]
+   * system = "urn:ietf:rfc:3986"
+   * use = #usual
+   * value = "http://structured-report.example.com"
+ * status = #current
+ * date = "2025-09-05T00:00:00Z"
+ {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US
+-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US
++{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#US
+ * category[+]
+   * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+ * type
+@@ -22,13 +22,13 @@ Usage: #example
+ {{R4}}  * extension[concept]
+ {{R4}}    * valueCodeableConcept
+ {{R4}}      * coding[+] = $sct#67734004
+-{{R5}}* bodySite
+-{{R5}}  * concept
+-{{R5}}    * coding = $sct#67734004
++{{R56}}* bodySite
++{{R56}}  * concept
++{{R56}}    * coding = $sct#67734004
+ * content[+]
+ {{R4}}  * extension[profile]
+ {{R4}}    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+-{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
++{{R56}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+   * attachment[0]
+     * contentType = #application/fhir+json
+     * url = "Bundle/bundle-report-structured"
+diff --git a/ig-src/input/fsh/report-example-structured/imagingstudy.liquid.fsh b/ig-src/input/fsh/report-example-structured/imagingstudy.liquid.fsh
+index 938fae3c..f562f0f2 100644
+--- a/ig-src/input/fsh/report-example-structured/imagingstudy.liquid.fsh
++++ b/ig-src/input/fsh/report-example-structured/imagingstudy.liquid.fsh
+@@ -26,7 +26,7 @@ Usage: #example
+ 
+   * description = "Stress"
+   {{R4}}* bodySite = $sct#67734004
+-  {{R5}}* bodySite.concept = $sct#67734004
++  {{R56}}* bodySite.concept = $sct#67734004
+   * performer[custodian].actor = Reference(OrganizationStructuredReport)
+   * performer[organization].actor = Reference(OrganizationStructuredReport)
+ * series[+]
+@@ -36,6 +36,6 @@ Usage: #example
+ 
+   * description = "Rest"
+   {{R4}}* bodySite = $sct#80891009 "Heart structure (body structure)"
+-  {{R5}}* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
++  {{R56}}* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
+   * performer[custodian].actor = Reference(OrganizationStructuredReport)
+   * performer[organization].actor = Reference(OrganizationStructuredReport)
+diff --git a/ig-src/input/fsh/report-example-structured/key-images.liquid.fsh b/ig-src/input/fsh/report-example-structured/key-images.liquid.fsh
+index 28b45f6c..2c81ccdb 100644
+--- a/ig-src/input/fsh/report-example-structured/key-images.liquid.fsh
++++ b/ig-src/input/fsh/report-example-structured/key-images.liquid.fsh
+@@ -4,7 +4,7 @@ Title: "DocumentReference: key image rest"
+ Description: "Key image showing the ultrasound at rest."
+ Usage: #example
+ {{R4}}* status = #current
+-{{R5}}* status = #current
++{{R56}}* status = #current
+ 
+ * subject = Reference(PatientStructuredReport)
+ * content[content]
+@@ -18,7 +18,7 @@ Usage: #example
+ 
+ 
+ {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
++{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+ * category[imkeyimages]
+   * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"
+ 
+@@ -29,7 +29,7 @@ Title: "DocumentReference: key image stress"
+ Description: "Key image showing the ultrasound during stress."
+ Usage: #example
+ {{R4}}* status = #current
+-{{R5}}* status = #current
++{{R56}}* status = #current
+ * subject = Reference(PatientStructuredReport)
+ 
+ * content[content]
+@@ -43,6 +43,6 @@ Usage: #example
+ 
+ 
+ {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
++{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+ * category[imkeyimages]
+   * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"
+\ No newline at end of file
+diff --git a/ig-src/input/fsh/report-example-unstructured/unstructured-example.liquid.fsh b/ig-src/input/fsh/report-example-unstructured/unstructured-example.liquid.fsh
+index 889006e9..63924b8b 100644
+--- a/ig-src/input/fsh/report-example-unstructured/unstructured-example.liquid.fsh
++++ b/ig-src/input/fsh/report-example-unstructured/unstructured-example.liquid.fsh
+@@ -4,14 +4,14 @@ Title: "DocumentReference: Renderable format with basic metadata"
+ Description: "MHD DocumentReference for unstructured report."
+ Usage: #example
+ {{R4}}* masterIdentifier[+]
+-{{R5}}* identifier[+]
++{{R56}}* identifier[+]
+   * system = "urn:ietf:rfc:3986"
+   * use = #usual
+   * value = "http://unstructured-report.example.com"
+ * status = #current
+ * date = "2024-01-01T00:00:00Z"
+ {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
+-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#CT
++{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#CT
+ 
+ * category[+]
+   * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+@@ -26,16 +26,16 @@ Usage: #example
+ {{R4}}    * valueCodeableConcept
+ {{R4}}      * coding[+] = $sct#774007
+ {{R4}}      * coding[+] = $sct#38266002
+-{{R5}}* bodySite
+-{{R5}}  * concept
+-{{R5}}    * coding[+] = $sct#774007 
+-{{R5}}    * coding[+] = $sct#38266002
++{{R56}}* bodySite
++{{R56}}  * concept
++{{R56}}    * coding[+] = $sct#774007 
++{{R56}}    * coding[+] = $sct#38266002
+ 
+ 
+ * content[+]
+ {{R4}}  * extension[profile]
+ {{R4}}    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+-{{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
++{{R56}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+   * attachment[0]
+     * contentType = #application/fhir+json
+     * url = "Bundle/bundle-report-minimal-metadata-unstructured"
+@@ -59,7 +59,7 @@ InstanceOf: $EuOrganization
+ Title: "Organization: unstructured report"
+ Description: "Organization used in the unstructured report"
+ Usage: #example
+-{{R5}}// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
++{{R56}}// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
+ * name = "Rediologie Zentrum Bremen"
+ * contact
+   * telecom[+]
+@@ -89,9 +89,9 @@ Usage: #example
+ * entry[Patient]
+   * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
+   * resource = PatientUnstructuredReport
+-{{R5}}* entry[+]
+-{{R5}}  * fullUrl = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
+-{{R5}}  * resource = OrganizationUnstructuredReport
++{{R56}}* entry[+]
++{{R56}}  * fullUrl = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
++{{R56}}  * resource = OrganizationUnstructuredReport
+ 
+ Instance: DiagnosticReportMinimalMetadata
+ InstanceOf: DiagnosticReportEuImagingMinimalMetadata
+@@ -114,7 +114,7 @@ Usage: #example
+ 
+ 
+ {{R4}}* imagingStudy[study-identifier].identifier
+-{{R5}}* study[study-identifier].identifier
++{{R56}}* study[study-identifier].identifier
+ {{R }}  * system = "urn:dicom:uid"
+ {{R }}  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+ {{R }}  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+diff --git a/ig-src/input/includes/variable-definitions.md b/ig-src/input/includes/variable-definitions.md
+index 1b5af7db..178ddc36 100644
+--- a/ig-src/input/includes/variable-definitions.md
++++ b/ig-src/input/includes/variable-definitions.md
+@@ -1,10 +1,16 @@
+ {% if site.data.fhir.version == "4.0.1" %}
+   {% assign isR4 = true %}
+   {% assign isR5 = false %}
+-{%else%}
++  {% assign isR6 = false %}
++{% elsif site.data.fhir.version contains "5.0" %}
+   {% assign isR4 = false %}
+   {% assign isR5 = true %}
+-{%endif%}
++  {% assign isR6 = false %}
++{% else %}
++  {% assign isR4 = false %}
++  {% assign isR5 = false %}
++  {% assign isR6 = true %}
++{% endif %}
+ 
+ {% assign ehnImaging        = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
+ {% assign ehnImagingGuidelines = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en) guidelines" %}
+@@ -20,7 +26,7 @@
+ {% assign iheMADO           = "[IHE-MADO](https://profiles.ihe.net/RAD/MADO)" %}
+ {% assign iheMHD-R4         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
+ {% assign iheMHD-R5         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
+-{% if isR5 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
++{% if isR5 or isR6 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
+ {% assign iheXcWado         = "[IHE-XC-WADO](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD-Suppl_XC-WADO.pdf) %}
+ {% assign iheQEDm           = [IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/index.html)}
+ {% assign IHEmXDE           = [IHE-mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)}
+diff --git a/ig-src/input/pagecontent/imaging-report.md b/ig-src/input/pagecontent/imaging-report.md
+index 8eecf704..ee164b5c 100644
+--- a/ig-src/input/pagecontent/imaging-report.md
++++ b/ig-src/input/pagecontent/imaging-report.md
+@@ -155,7 +155,7 @@ This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https:
+ **Allowed scenarios:**
+ 
+ * **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore except for audit purposes.
+-In this case the new report references the previous one through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
++In this case the new report references the previous one through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5 or isR6%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
+ * **Retraction** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study. Following the FHIR Clinical Documents IG, the original report is replaced by an empty `Composition` and empty `DiagnosticReport` (no clinical content, preserving/updating the references, and a minimal explanatory narrative) with the value of `Composition.status` and `DiagnosticReport.status` set to `entered-in-error`.
+ 
+ Note: The `DiagnosticReport.status` version management model is specific to this specification and is not part of the FHIR Clinical Documents IG.
+diff --git a/ig-src/input/pagecontent/obligations.md b/ig-src/input/pagecontent/obligations.md
+index c065bf51..f725d536 100644
+--- a/ig-src/input/pagecontent/obligations.md
++++ b/ig-src/input/pagecontent/obligations.md
+@@ -2,7 +2,7 @@
+ 
+ ### Obligations
+ 
+-Systems are expected to handle specific data elements according to the role (actor) they play in the EHDS Imaging Report ecosystem. In this specification, these expectations are defined as [FHIR Implementation Obligations]({% if isR5 %}https://hl7.org/fhir/R5/obligations.html{% else %}https://hl7.org/fhir/extensions/ValueSet-obligation.html{% endif %}), following [EHDS shared practices](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/branches/new-pages/obligations.html) and are listed in the [Artifacts](artifacts-obligations.html) section.
++Systems are expected to handle specific data elements according to the role (actor) they play in the EHDS Imaging Report ecosystem. In this specification, these expectations are defined as [FHIR Implementation Obligations]({% if isR6 %}https://hl7.org/fhir/6.0.0-ballot3/obligations.html{% elsif isR5 %}https://hl7.org/fhir/R5/obligations.html{% else %}https://hl7.org/fhir/extensions/ValueSet-obligation.html{% endif %}), following [EHDS shared practices](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/branches/new-pages/obligations.html) and are listed in the [Artifacts](artifacts-obligations.html) section.
+ 
+ Following this guidance, for {{ ProducerActor }}s `SHALL/SHOULD/MAY:able-to-populate` obligations are added indicating the required capability of the Producer to populate a field. For {{ ConsumerActor }}s `SHALL/SHOULD/MAY:process` obligations are used to express what fields a {{ ConsumerActor }} is required to process. Note that no display related obligations are used and the variety of {{ ConsumerActor }}s makes it very difficult if not impossible to determine a generic rule for this.
+ 
+diff --git a/ig-src/input/pagecontent/patterns-and-guidelines.md b/ig-src/input/pagecontent/patterns-and-guidelines.md
+index d0dfb6cd..2985aa9d 100644
+--- a/ig-src/input/pagecontent/patterns-and-guidelines.md
++++ b/ig-src/input/pagecontent/patterns-and-guidelines.md
+@@ -66,7 +66,7 @@ See the replacement [DiagnosticReport example](DiagnosticReport-ImagingReportRep
+ }
+ ```
+ {% endif %}
+-{% if isR5 %}
++{% if isR5 or isR6 %}
+ ```json
+ // DiagnosticReport
+ {
+@@ -111,7 +111,7 @@ See the retraction [DiagnosticReport example](DiagnosticReport-ImagingReportRetr
+ }
+ ```
+ {% endif %}
+-{% if isR5 %}
++{% if isR5 or isR6 %}
+ ```json
+ // DiagnosticReport
+ {
+diff --git a/ig-src/sushi-config.liquid.yaml b/ig-src/sushi-config.liquid.yaml
+index 7dc47c57..fddcafd7 100644
+--- a/ig-src/sushi-config.liquid.yaml
++++ b/ig-src/sushi-config.liquid.yaml
+@@ -6,6 +6,10 @@ canonical: http://hl7.eu/fhir/imaging
+ id: hl7.fhir.eu.imaging-{{r-code}}
+ canonical: http://hl7.eu/fhir/imaging-{{r-code}}
+ {% endif %}
++{% if isR6 %}
++id: hl7.fhir.eu.imaging-{{r-code}}
++canonical: http://hl7.eu/fhir/imaging-{{r-code}}
++{% endif %}
+ name: HL7EuImagingStudyReport
+ title: HL7 Europe Imaging Report {{R-code}}
+ description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR {{R-code}}.
+@@ -60,7 +64,21 @@ dependencies:
+ 
+   hl7.fhir.eu.base-r5: 2.0.0-ballot
+   hl7.fhir.uv.extensions: 5.3.0-ballot
+-  hl7.fhir.eu.extensions: 1.2.0
++  hl7.fhir.eu.extensions: 1.3.0
++  hl7.terminology.r5:
++    uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
++    version: 7.1.0
++  ihe.iti.mhd: 5.0.0
++  {% endif %}  
++
++  {% if isR6 %}
++  # R6 EU base built locally from r6-dependencies/base-r6 and installed in the FHIR cache.
++  # hl7.terminology.r6 is not yet published, so the R5 terminology package is used as interim.
++  # hl7.fhir.eu.extensions has no R6 build; its extensions are version-tolerant, so the R5 package
++  # supplies information-recipient and composition-diagnosticReportReference.
++  hl7.fhir.eu.base-r6: dev
++  hl7.fhir.eu.extensions: 1.3.0
++  hl7.fhir.uv.extensions: 5.3.0-ballot
+   hl7.terminology.r5:
+     uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+     version: 7.1.0
+@@ -200,10 +218,13 @@ menu:
+     Examples: artifacts.html#example-example-instances
+ 
+ {% if isR4 %}
+-  R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
++  R5: https://build.fhir.org/ig/hl7-eu/imaging-r4/
+ {% endif %}
+ {% if isR5 %}
+-  R4: https://build.fhir.org/ig/hl7-eu/imaging-r4/
++  R4: https://build.fhir.org/ig/hl7-eu/imaging-r5/
++{% endif %}
++{% if isR6 %}
++  R4: https://build.fhir.org/ig/hl7-eu/imaging-r6/
+ {% endif %}
+   
+ # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮

@@ -40,7 +40,7 @@ on_exit() {
 trap on_exit EXIT
 
 source_dir="ig-src"
-versions=("r4" "r5")
+versions=("r4" "r5" "r6")
 
 publisher_image="${PUBLISHER_IMAGE:-hl7fhir/ig-publisher-base:latest}"
 cache_mode="${PUBLISHER_FHIR_CACHE_MODE:-volume}"
@@ -189,6 +189,7 @@ publisher_image_has_java() {
 if [ "$needs_rebuild" = true ]; then
   ensure_publisher_for_ig "igs/imaging-r4"
   ensure_publisher_for_ig "igs/imaging-r5"
+  ensure_publisher_for_ig "igs/imaging-r6"
 
   build_runner="docker"
   if ! command -v docker >/dev/null 2>&1; then
@@ -212,8 +213,14 @@ if [ "$needs_rebuild" = true ]; then
     run_build_locally "r5" &
   fi
   pid_r5=$!
+  if [ "$build_runner" = "docker" ]; then
+    run_build_in_docker "r6" &
+  else
+    run_build_locally "r6" &
+  fi
+  pid_r6=$!
 
-  echo "Waiting for imaging-r4 and imaging-r5 builds to finish (blocking)..."
+  echo "Waiting for imaging-r4, imaging-r5 and imaging-r6 builds to finish (blocking)..."
 
   set +e
   wait "$pid_r4"
@@ -222,32 +229,41 @@ if [ "$needs_rebuild" = true ]; then
   wait "$pid_r5"
   status_r5=$?
   echo "imaging-r5 build finished with exit code $status_r5"
+  wait "$pid_r6"
+  status_r6=$?
+  echo "imaging-r6 build finished with exit code $status_r6"
   set -e
 
-  if [ "$status_r4" -ne 0 ] || [ "$status_r5" -ne 0 ]; then
-    echo "Parallel build failed: r4 exit=$status_r4, r5 exit=$status_r5"
+  if [ "$status_r4" -ne 0 ] || [ "$status_r5" -ne 0 ] || [ "$status_r6" -ne 0 ]; then
+    echo "Parallel build failed: r4 exit=$status_r4, r5 exit=$status_r5, r6 exit=$status_r6"
     echo "Inspect logs:"
     echo "- Run log: $run_log"
     echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
     echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+    echo "- R6 log:  $log_dir/build-r6-$timestamp.log"
     print_qa_summary "r4"
     print_qa_summary "r5"
+    print_qa_summary "r6"
     exit 1
   fi
 
   print_qa_summary "r4"
   print_qa_summary "r5"
-  echo "Parallel build completed successfully for imaging-r4 and imaging-r5."
+  print_qa_summary "r6"
+  echo "Parallel build completed successfully for imaging-r4, imaging-r5 and imaging-r6."
   echo "Inspect logs:"
   echo "- Run log: $run_log"
   echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
   echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+  echo "- R6 log:  $log_dir/build-r6-$timestamp.log"
 else
   print_qa_summary "r4"
   print_qa_summary "r5"
+  print_qa_summary "r6"
   echo "No version rebuild needed: source tree is clean and build outputs are present."
   echo "Inspect logs:"
   echo "- Run log: $run_log"
   echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
   echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+  echo "- R6 log:  $log_dir/build-r6-$timestamp.log"
 fi

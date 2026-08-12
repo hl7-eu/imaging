@@ -66,7 +66,7 @@ See the replacement [DiagnosticReport example](DiagnosticReport-ImagingReportRep
 }
 ```
 {% endif %}
-{% if isR5 %}
+{% if isR5 or isR6 %}
 ```json
 // DiagnosticReport
 {
@@ -111,7 +111,7 @@ See the retraction [DiagnosticReport example](DiagnosticReport-ImagingReportRetr
 }
 ```
 {% endif %}
-{% if isR5 %}
+{% if isR5 or isR6 %}
 ```json
 // DiagnosticReport
 {

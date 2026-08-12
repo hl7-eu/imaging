@@ -1,10 +1,16 @@
 {% if site.data.fhir.version == "4.0.1" %}
   {% assign isR4 = true %}
   {% assign isR5 = false %}
-{%else%}
+  {% assign isR6 = false %}
+{% elsif site.data.fhir.version contains "5.0" %}
   {% assign isR4 = false %}
   {% assign isR5 = true %}
-{%endif%}
+  {% assign isR6 = false %}
+{% else %}
+  {% assign isR4 = false %}
+  {% assign isR5 = false %}
+  {% assign isR6 = true %}
+{% endif %}
 
 {% assign ehnImaging        = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en)" %}
 {% assign ehnImagingGuidelines = "[eHN Imaging Studies and Reports](https://health.ec.europa.eu/publications/ehn-guidelines-medical-imaging-studies-and-reports_en) guidelines" %}
@@ -20,7 +26,7 @@
 {% assign iheMADO           = "[IHE-MADO](https://profiles.ihe.net/RAD/MADO)" %}
 {% assign iheMHD-R4         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
 {% assign iheMHD-R5         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
-{% if isR5 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
+{% if isR5 or isR6 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
 {% assign iheXcWado         = "[IHE-XC-WADO](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD-Suppl_XC-WADO.pdf) %}
 {% assign iheQEDm           = [IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/index.html)}
 {% assign IHEmXDE           = [IHE-mXDE](https://profiles.ihe.net/ITI/mXDE/index.html)}
