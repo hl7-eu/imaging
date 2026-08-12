@@ -21,12 +21,12 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 {{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
 {{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
 
-{{R5}}* composition 1..1
-{{R5}}* composition ^short = "Imaging Diagnostic Report"
-{{R5}}* composition only Reference(CompositionEuImaging)
-{{R5}} // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
-{{R5}}* result 1..*
-{{R5}}  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
+{{R56}}* composition 1..1
+{{R56}}* composition ^short = "Imaging Diagnostic Report"
+{{R56}}* composition only Reference(CompositionEuImaging)
+{{R56}} // R5 validation requires a .result element to be present if .composition is present. This is a known issue: https://github.com/HL7/fhir-ig-publisher/issues/1267
+{{R56}}* result 1..*
+{{R56}}  * ^definition = "R5 requires a .result element to be present if .composition is present. This mandatory cardinality fills that gap for the model in which no Observations are part of the report."
 
 // Correspondence between DiagnosticReport.status and the referenced Composition succession data
 * obeys eu-imaging-dr-status-replacement
@@ -69,21 +69,21 @@ This profile shares all common imaging report modeling with DiagnosticReportEuIm
 {{R4}}* imagingStudy[study-identifier].identifier 1..1
 {{R4}}* imagingStudy[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
 
-{{R5}}* study
-{{R5}}  * insert SliceElement( #exists, identifier )
-{{R5}}* study contains
-{{R5}}    study-resource 0..* and
-{{R5}}    study-identifier 0..*
-{{R5}}* study[study-resource] only Reference(ImagingStudyEuImaging)
-{{R5}}* study[study-resource].reference 1..1
-{{R5}}* study[study-resource].identifier 0..0
-{{R5}}* study[study-identifier].reference 0..0
-{{R5}}* study[study-identifier].identifier 1..1
-{{R5}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
+{{R56}}* study
+{{R56}}  * insert SliceElement( #exists, identifier )
+{{R56}}* study contains
+{{R56}}    study-resource 0..* and
+{{R56}}    study-identifier 0..*
+{{R56}}* study[study-resource] only Reference(ImagingStudyEuImaging)
+{{R56}}* study[study-resource].reference 1..1
+{{R56}}* study[study-resource].identifier 0..0
+{{R56}}* study[study-identifier].reference 0..0
+{{R56}}* study[study-identifier].identifier 1..1
+{{R56}}* study[study-identifier].identifier only StudyInstanceUidIdentifierEuImaging
 
 
-{{R5}}* composition 0..0
-{{R5}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
+{{R56}}* composition 0..0
+{{R56}}* composition ^short = "Composition is not allowed in this minimal metadata profile. If composition is present, use the DiagnosticReportEuImaging profile instead."
 
 ///////////////////////
 
@@ -163,9 +163,9 @@ using standardized anatomic, pathologic, and radiologic terminology whenever pos
 {{R4}}* imagingStudy ^short = "Study subject to this report"
 {{R4}}* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
-{{R5}}* study only Reference(ImagingStudyEuImaging)
-{{R5}}* study ^short = "Study subject to this report"
-{{R5}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+{{R56}}* study only Reference(ImagingStudyEuImaging)
+{{R56}}* study ^short = "Study subject to this report"
+{{R56}}* study ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
 
 
 * extension contains HL7IDRComparisonStudiesExt named comparison 0..* MS
@@ -338,13 +338,13 @@ Invariant: eu-imaging-dr-status-replacement
 Description: "DiagnosticReport.status SHALL be 'amended' if and only if the referenced Composition replaces a prior report and has status 'final'."
 * severity = #error
 {{R4}}* expression = "(status = 'amended') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'final' and relatesTo.where(code = 'replaces').exists()).exists()"
-{{R5}}* expression = "(status = 'amended') = composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
+{{R56}}* expression = "(status = 'amended') = composition.resolve().where(status = 'final' and relatesTo.where(type = 'replaces').exists()).exists()"
 
 Invariant: eu-imaging-dr-status-retraction
 Description: "DiagnosticReport.status SHALL be 'entered-in-error' if and only if the referenced Composition retracts a prior report by replacing it with status 'entered-in-error'."
 * severity = #error
 {{R4}}* expression = "(status = 'entered-in-error') = extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition').value.resolve().where(status = 'entered-in-error' and relatesTo.where(code = 'replaces').exists()).exists()"
-{{R5}}* expression = "(status = 'entered-in-error') = composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
+{{R56}}* expression = "(status = 'entered-in-error') = composition.resolve().where(status = 'entered-in-error' and relatesTo.where(type = 'replaces').exists()).exists()"
 
 Invariant: eu-imaging-dr-status-no-addendum
 Description: "DiagnosticReport.status SHALL NOT be 'appended' or 'corrected'; content added or corrected after final issuance is represented as a complete replacement with status 'amended'."

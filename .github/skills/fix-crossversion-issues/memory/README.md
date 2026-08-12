@@ -19,9 +19,15 @@ instantly without re-deriving them.
 - Versions: <e.g. R5 → R6> (also note R4 if relevant)
 - Delta: <what changed, verified in core SD>
 - Symptom: <the SUSHI error text>
-- Fix (FSH):
-  - Before: `<old rule>`
-  - After:  `<new rule>`
+- Fix (FSH, version-guarded — keep original commented, wrap change in markers):
+  ```fsh
+  //<sourceVersion> <old rule>
+  //<targetVersion>-start
+  <new rule>
+  //<targetVersion>-end
+  ```
+  When the change applies to several versions (e.g. R5 and R6), prefer a combined guard
+  (`{{R56}}` / `R56`) over duplicating per-version blocks.
 - Caveat: <e.g. reference targets the new core forbids; value set change; none>
 - Verified: <YYYY-MM-DD>, core pkg(s) <hl7.fhir.rX.core#ver>
 ```

@@ -12,7 +12,10 @@ Description: """This profile introduces essential constraints and extensions for
 * extension[relatedArtifact] // reference to an external document (e.g. a guideline for this condition)
 * category ^short = "Category" // to be updated
 * severity from $condition-severity (preferred)
-* participant.actor ^short = "Who or what participated in the activities related to the allergy (e.g. asserter, reporter)"
+//R5 * participant.actor ^short = "Who or what participated in the activities related to the allergy (e.g. asserter, reporter)"
+//R6-start
+* asserter ^short = "Who or what asserted the condition (e.g. asserter, reporter)"
+//R6-end
 * language ^short = "Language of the condition content"
 * code 1..1 
 * code from $problems-uv-ips (preferred) 
@@ -37,7 +40,10 @@ Description: """This profile introduces essential constraints and extensions for
 * onsetDateTime ^definition = "Onset of the symptom, complaint, functional limitation, complication or date of diagnosis. A ‘vague’ date, such as only the year or the month and the year, is permitted."
 * abatement[x] only dateTime or Age or Period or Range or string
 * abatementDateTime ^definition = "The date or estimated date that the condition resolved or went into remission. A ‘vague’ date, such as only the year or the month and the year, is permitted"
-* participant.actor only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device or OrganizationEuCore or CareTeam)
+//R5 * participant.actor only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device or OrganizationEuCore or CareTeam)
+//R6-start
+* asserter only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device)
+//R6-end
 * recordedDate ^short = "Date when the condition record was created"
 * stage ^short = "Stage/grade"
 * stage.summary  ^short = "Most recent Stage Group"

@@ -28,10 +28,10 @@ the requested modality.
 // {{R4}}* supportingInfo.extension[codeableConcept]
 // {{R4}}  * valueCodeableConcept from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
-{{R5}}* supportingInfo 0..*
-{{R5}}  * insert SliceElement( #value, $this )
-{{R5}}* supportingInfo contains pregnancy 0..1
-{{R5}}* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+{{R56}}* supportingInfo 0..*
+{{R56}}  * insert SliceElement( #value, $this )
+{{R56}}* supportingInfo contains pregnancy 0..1
+{{R56}}* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
 {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
 
@@ -71,6 +71,6 @@ Description: "Mapping from DICOM to Imaging Order."
 {{R }}* note -> "RequestedProcedureDescription (0040,0100)"
 {{R }}* code -> "RequestedProcedureCodeSequence (0040,1001)"
 {{R4}}* extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
-{{R5}}* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
+{{R56}}* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
 {{R4}}* extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
-{{R5}}* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
+{{R56}}* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"

@@ -1,6 +1,8 @@
 { 
     "isR4": true,
+    "isR45": true,
     "isR5": false,
+    "isR56": false,
     "isR6": false,
     "fhirVersion": "4.0.1",
     "r-code": "r4",
@@ -10,6 +12,7 @@
     "R4": "",
     "R5": "//R5",
     "R6": "//R6",
+    "R56": "//R5-6",
     "R " : "",
     "R5-yaml": "# R5",
     "R6-yaml": "# R6"

@@ -19,5 +19,9 @@ Description: "Example of an Immunization resource conforming to the Immunization
 * performer[administeringCentreOrHp].actor = Reference(PractitionerRoleEuCoreExample)
 * reason[+].concept = $sct#840539006 "Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder)"
 * protocolApplied[0].targetDisease = $sct#840539006 "COVID-19"
-* protocolApplied[0].doseNumber = "2"
-* protocolApplied[0].seriesDoses = "2"
+//R5 * protocolApplied[0].doseNumber = "2"
+//R5 * protocolApplied[0].seriesDoses = "2"
+//R6-start
+* protocolApplied[0].doseNumber.text = "2"
+* protocolApplied[0].seriesDoses.text = "2"
+//R6-end

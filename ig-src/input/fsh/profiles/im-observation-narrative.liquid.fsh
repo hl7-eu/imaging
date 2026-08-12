@@ -22,7 +22,7 @@ Description: "Unstructured narrative text in an imaging report."
 * value[x] ^short = "Unstructured narrative imaging report"
 * value[x] ^definition = "This element represents unstructured narrative text in an imaging report, 
 as it was entered by the reporting clinician or an automated system."
-{{R5}}* value[x] only string or Attachment
+{{R56}}* value[x] only string or Attachment
 // {{R4}}* value[x] only string
 // {{R4}}* valueString.extension contains $rendering-xhtml-url named renderingXhtml 0..1 and 
 // {{R4}}  $rendering-markdown-url named renderingMarkdown 0..1 and 

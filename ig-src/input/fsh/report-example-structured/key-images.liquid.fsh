@@ -4,7 +4,7 @@ Title: "DocumentReference: key image rest"
 Description: "Key image showing the ultrasound at rest."
 Usage: #example
 {{R4}}* status = #current
-{{R5}}* status = #current
+{{R56}}* status = #current
 
 * subject = Reference(PatientStructuredReport)
 * content[content]
@@ -18,7 +18,7 @@ Usage: #example
 
 
 {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 * category[imkeyimages]
   * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"
 
@@ -29,7 +29,7 @@ Title: "DocumentReference: key image stress"
 Description: "Key image showing the ultrasound during stress."
 Usage: #example
 {{R4}}* status = #current
-{{R5}}* status = #current
+{{R56}}* status = #current
 * subject = Reference(PatientStructuredReport)
 
 * content[content]
@@ -43,6 +43,6 @@ Usage: #example
 
 
 {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
+{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 * category[imkeyimages]
   * coding[keyimagecode] = $loinc#55113-5 "Key images Document Radiology"

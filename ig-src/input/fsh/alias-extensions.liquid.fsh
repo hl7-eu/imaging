@@ -30,7 +30,7 @@ Alias: $performer-function-url                = http://hl7.org/fhir/StructureDef
 Alias: $sexParameter-for-clinical-use-url     = http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse
 Alias: $workflow-reason-url                   = http://hl7.org/fhir/StructureDefinition/workflow-reason
 // Alias: $workflow-status-reason-url            = http://hl7.org/fhir/StructureDefinition/workflow-statusReason
-{{R5}} Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
+{{R56}} Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
 {% if isR4 %}
 Alias: $CrossVersion-Attachment.pages                     = http://hl7.org/fhir/5.0/StructureDefinition/extension-Attachment.pages
 Alias: $CrossVersion-Composition.version                  = http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version

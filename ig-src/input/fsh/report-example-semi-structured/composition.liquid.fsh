@@ -22,7 +22,7 @@ Usage: #example
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "o32u4js8492ff" // invented - not there in the report
 {{R4}}* extension[version].valueString = "1.0.0" // invented - not there in the report
-{{R5}}* version = "1.0.0" // invented - not there in the report
+{{R56}}* version = "1.0.0" // invented - not there in the report
 * status = #final
 * type = $loinc#24802-1 "MR Knee"
 * category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#RAD "Radiologie"
@@ -92,8 +92,8 @@ Usage: #example
   
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
-{{R5}} // R5 validator requires to populate the result field if composition is referenced, even if the report is semi-structured and does not contain any result reference. This is a known issue: 
-{{R5}}  * entry[finding] = Reference(ObservationNarrative)
+{{R56}} // R5 validator requires to populate the result field if composition is referenced, even if the report is semi-structured and does not contain any result reference. This is a known issue: 
+{{R56}}  * entry[finding] = Reference(ObservationNarrative)
   * title = "Findings"
   * code = $loinc#59776-5 "Procedure findings Narrative"
   * extension[note][+].valueAnnotation

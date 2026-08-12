@@ -26,13 +26,13 @@ Usage: #example
 * extension[anatomical-region].valueCodeableConcept.coding = $sct#67734004 
 
 {{R4}}* imagingStudy[+] = Reference (ImagingStudyStructuredReport)
-{{R5}}* study[+] = Reference (ImagingStudyStructuredReport)
+{{R56}}* study[+] = Reference (ImagingStudyStructuredReport)
 
 * performer[organization] = Reference (OrganizationStructuredReport)
 * resultsInterpreter[author] = Reference (PractitionerRoleStructuredReportAuthor)
 
 {{R4}}* extension[composition].valueReference = Reference (CompositionStructured)
-{{R5}}* composition = Reference (CompositionStructured)
+{{R56}}* composition = Reference (CompositionStructured)
 
 // HISTORY
 * extension[patientHistory][+].valueReference = Reference (WeightObservation)
@@ -96,7 +96,7 @@ See you next year.
 * presentedForm
   * contentType = #application/pdf
   * language = #de-DE
-{{R5}}  * pages = 3
+{{R56}}  * pages = 3
   * url = "Binary/BinaryStructuredReport"
 
 // Loading the binary from .json in input/resources

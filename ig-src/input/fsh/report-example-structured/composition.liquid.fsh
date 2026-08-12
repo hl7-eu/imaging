@@ -23,7 +23,7 @@ Usage: #example
 * extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportStructured)
 
 {{R4}}* extension[version].valueString = "1"
-{{R5}}* version = "1" // invented - not there in the report
+{{R56}}* version = "1" // invented - not there in the report
 
 * status = #final
 * type = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"

@@ -13,10 +13,10 @@ Usage: #example
 * subject = Reference(PatientStructuredReport)
 * performer[organization] = Reference(OrganizationStructuredReport)
 {{R4}}* imagingStudy = Reference(ImagingStudyStructuredReport)
-{{R5}}* study = Reference(ImagingStudyStructuredReport)
+{{R56}}* study = Reference(ImagingStudyStructuredReport)
 {{R4}}* extension[composition].valueReference = Reference(ImagingReportReplacementComposition)
-{{R5}}* composition = Reference(ImagingReportReplacementComposition)
-{{R5}}* result = Reference(ObservationNarrative)
+{{R56}}* composition = Reference(ImagingReportReplacementComposition)
+{{R56}}* result = Reference(ObservationNarrative)
 
 Instance: ImagingReportReplacementComposition
 InstanceOf: CompositionEuImaging
@@ -42,6 +42,9 @@ Usage: #example
 {{R5}}* relatesTo[replaced_document].resourceReference.identifier
 {{R5}}  * system = "https://example.org/imaging-document-identifiers"
 {{R5}}  * value = "prior-document"
+{{R6}}* relatesTo[replaced_document].targetReference.identifier
+{{R6}}  * system = "https://example.org/imaging-document-identifiers"
+{{R6}}  * value = "prior-document"
 * section[imagingstudy]
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Imaging study information</div>"
@@ -58,10 +61,10 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Procedure information</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
-{{R5}}* section[findings]
-{{R5}}  * text.status = #generated
-{{R5}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Technical placeholder required by R5 validation.</div>"
-{{R5}}  * entry[finding] = Reference(ObservationNarrative)
+{{R56}}* section[findings]
+{{R56}}  * text.status = #generated
+{{R56}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Technical placeholder required by R5 validation.</div>"
+{{R56}}  * entry[finding] = Reference(ObservationNarrative)
 
 Instance: ImagingReportRetractionExample
 InstanceOf: DiagnosticReportEuImaging
@@ -78,10 +81,10 @@ Usage: #example
 * subject = Reference(PatientStructuredReport)
 * performer[organization] = Reference(OrganizationStructuredReport)
 {{R4}}* imagingStudy = Reference(ImagingStudyStructuredReport)
-{{R5}}* study = Reference(ImagingStudyStructuredReport)
+{{R56}}* study = Reference(ImagingStudyStructuredReport)
 {{R4}}* extension[composition].valueReference = Reference(ImagingReportRetractionComposition)
-{{R5}}* composition = Reference(ImagingReportRetractionComposition)
-{{R5}}* result = Reference(ObservationNarrative)
+{{R56}}* composition = Reference(ImagingReportRetractionComposition)
+{{R56}}* result = Reference(ObservationNarrative)
 
 Instance: ImagingReportRetractionComposition
 InstanceOf: CompositionEuImaging
@@ -107,6 +110,9 @@ Usage: #example
 {{R5}}* relatesTo[replaced_document].resourceReference.identifier
 {{R5}}  * system = "https://example.org/imaging-document-identifiers"
 {{R5}}  * value = "prior-document"
+{{R6}}* relatesTo[replaced_document].targetReference.identifier
+{{R6}}  * system = "https://example.org/imaging-document-identifiers"
+{{R6}}  * value = "prior-document"
 * section[imagingstudy]
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">The previous imaging report was issued in error and has been withdrawn.</div>"
@@ -123,7 +129,7 @@ Usage: #example
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided.</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
-{{R5}}* section[findings]
-{{R5}}  * text.status = #generated
-{{R5}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided; this entry is a technical placeholder required by R5 validation.</div>"
-{{R5}}  * entry[finding] = Reference(ObservationNarrative)
+{{R56}}* section[findings]
+{{R56}}  * text.status = #generated
+{{R56}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided; this entry is a technical placeholder required by R5 validation.</div>"
+{{R56}}  * entry[finding] = Reference(ObservationNarrative)

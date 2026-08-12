@@ -26,7 +26,7 @@ Usage: #example
 
   * description = "Stress"
   {{R4}}* bodySite = $sct#67734004
-  {{R5}}* bodySite.concept = $sct#67734004
+  {{R56}}* bodySite.concept = $sct#67734004
   * performer[custodian].actor = Reference(OrganizationStructuredReport)
   * performer[organization].actor = Reference(OrganizationStructuredReport)
 * series[+]
@@ -36,6 +36,6 @@ Usage: #example
 
   * description = "Rest"
   {{R4}}* bodySite = $sct#80891009 "Heart structure (body structure)"
-  {{R5}}* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
+  {{R56}}* bodySite.concept = $sct#80891009 "Heart structure (body structure)"
   * performer[custodian].actor = Reference(OrganizationStructuredReport)
   * performer[organization].actor = Reference(OrganizationStructuredReport)

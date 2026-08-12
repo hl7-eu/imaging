@@ -22,8 +22,28 @@ argument-hint: '[path to version-specific IG folder, e.g. igs/imaging-r6 or r6-d
 2. **Edit the source of truth.** If the IG is generated from liquid templates (an `ig-src/` with
    `*.liquid.*` files and `//R4` / `//R5` style conditionals), edit `ig-src` and re-run
    `_preprocessMultiVersion.sh <fhirVersion>`. If it is a standalone repo, edit its FSH directly.
-3. **Prefer version-guarded edits** in templated IGs (mirror the existing `//R4`/`//R5` comment-guard
-   pattern) so other versions keep building.
+3. **Preserve the original with a version-guard marker.** Never delete the source-version expression.
+   Comment it out with a `//<sourceVersion> ` prefix, and wrap the new expression between
+   `//<targetVersion>-start` and `//<targetVersion>-end` marker lines. Example (R5 → R6):
+   ```fsh
+   //R5 * participant.actor only Reference(PractitionerRoleEu or ... or CareTeam)
+   //R6-start
+   * asserter only Reference(PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device)
+   //R6-end
+   ```
+   This keeps the change traceable and reversible. In templated IGs, mirror the existing
+   `//R4`/`//R5` comment-guard pattern the preprocessor understands.
+3a. **Prefer a combined guard when a delta applies to more than one target version.** Do NOT duplicate
+   separate R5 and R6 blocks for the same change. This repo defines a combined `R56` context variable
+   (`""` in R5/R6, `"//R5-6"` in R4) in `context-R*.json`. Use it as a single prefix guard for rules
+   shared by R5 and R6 but not R4:
+   ```fsh
+   //R4 * imagingStudy only Reference(ImagingStudyEuImaging)   // R4-only shape
+   {{R56}}* study only Reference(ImagingStudyEuImaging)         // active in R5 AND R6
+   ```
+   Prefer this over writing one `{{R5}}` block and an identical `{{R6}}` block. If a combined guard for
+   the needed version set does not yet exist, add it to `context-R*.json` following the `R56` pattern
+   rather than duplicating blocks.
 4. **Re-run SUSHI after each change** and confirm the error count drops.
 5. **Record every successful fix** in the memory files (see below) — this is mandatory.
 
@@ -44,7 +64,11 @@ argument-hint: '[path to version-specific IG folder, e.g. igs/imaging-r6 or r6-d
      print('$v', [ (e['path'],[t['code'] for t in e.get('type',[])]) for e in d['snapshot']['element'] if e['path'] in ('Condition.recorder','Condition.asserter') ])"; done
    ```
 5. **Propose the fix** with the exact FSH change and any semantic caveat (e.g. reference targets that
-   the new version's core does not allow). Apply it (source-of-truth per Golden Rule 2).
+   the new version's core does not allow). Apply it using the version-guard marker format from Golden
+   Rule 3 (comment the original `//<sourceVersion> `, wrap the new lines in
+   `//<targetVersion>-start` / `//<targetVersion>-end`), at the source of truth per Golden Rule 2.
+   When the same change applies to several versions (e.g. R5 and R6), use the combined guard from
+   Golden Rule 3a (`{{R56}}` / `R56`) instead of duplicating per-version blocks.
 6. **Re-run SUSHI**; confirm the specific error is gone and the total dropped.
 7. **Update memory** for every error that is now resolved (see protocol below).
 8. Repeat until only non-cross-version errors remain (report those separately).

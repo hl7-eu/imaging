@@ -15,7 +15,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 """
 * insert SetFmmAndStatusRule( 1, draft )
 
-{{R5}}* identifier 1..*
+{{R56}}* identifier 1..*
 {{R4}}* identifier 1..1
   * ^short = "Report identifier"
   * ^definition = "Identifiers assigned to this report by the performer or other systems. It shall be common to several report versions"
@@ -90,17 +90,20 @@ The `text` field of each section SHALL contain a textual representation of all l
 // Mirrors the FHIR Clinical Document Composition profile slicing.
 * relatesTo ^slicing.discriminator.type = #value
 {{R4}}* relatesTo ^slicing.discriminator.path = "code"
-{{R5}}* relatesTo ^slicing.discriminator.path = "type"
+{{R56}}* relatesTo ^slicing.discriminator.path = "type"
 * relatesTo ^slicing.rules = #open
 * relatesTo contains replaced_document 0..1
 * relatesTo[replaced_document] ^short = "Prior report this one replaces or retracts"
 {{R4}}* relatesTo[replaced_document].code = #replaces
 {{R4}}* relatesTo[replaced_document].target[x] only Identifier
 {{R4}}* relatesTo[replaced_document].targetIdentifier 1..1
-{{R5}}* relatesTo[replaced_document].type = #replaces
+{{R56}}* relatesTo[replaced_document].type = #replaces
 {{R5}}* relatesTo[replaced_document].resourceReference 1..1
 {{R5}}* relatesTo[replaced_document].resourceReference.identifier 1..1
 {{R5}}* relatesTo[replaced_document].resourceReference.reference 0..0
+{{R6}}* relatesTo[replaced_document].targetReference 1..1
+{{R6}}* relatesTo[replaced_document].targetReference.identifier 1..1
+{{R6}}* relatesTo[replaced_document].targetReference.reference 0..0
 
 
 * obeys eu-imaging-comp-status-succession
@@ -277,4 +280,4 @@ Invariant: eu-imaging-comp-status-succession
 Description: "A Composition that replaces or retracts a prior report SHALL have status final or entered-in-error."
 * severity = #error
 {{R4}}* expression = "relatesTo.where(code = 'replaces').exists() implies status in ('final' | 'entered-in-error')"
-{{R5}}* expression = "relatesTo.where(type = 'replaces').exists() implies status in ('final' | 'entered-in-error')"
+{{R56}}* expression = "relatesTo.where(type = 'replaces').exists() implies status in ('final' | 'entered-in-error')"

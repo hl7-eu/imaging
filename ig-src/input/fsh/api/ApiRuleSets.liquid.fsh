@@ -2,7 +2,7 @@ RuleSet: MhdSearchParameters
 // Imaging specific search parameters
 {{R }}* rest[=].resource[=].searchParam[+].name = "bodysite"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceBodySite )
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
 {{R }}* rest[=].resource[=].searchParam[=].type = #token
 {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
@@ -10,7 +10,7 @@ RuleSet: MhdSearchParameters
 
 {{R }}* rest[=].resource[=].searchParam[+].name = "modality"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceModality )
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
 {{R }}* rest[=].resource[=].searchParam[=].type = #token
 {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
@@ -44,9 +44,9 @@ RuleSet: ImagingStudyResource( strength1, strength2 )
     * insert CapabilityStatementExpectation( {strength1} )
     * documentation = "Search for ImagingStudy resources."
   {{R4}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-basedon]], #reference, {strength1}, [[The order that lead to the imaging study.]])
-  {{R5}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-based-on]], #reference, {strength1}, [[The order that lead to the imaging study.]])
+  {{R56}}* insert CapabilityStatementSearchParameter( based-on, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-based-on]], #reference, {strength1}, [[The order that lead to the imaging study.]])
   {{R4}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-bodysite]], #token, {strength1}, [[The body-site the study examined.]])
-  {{R5}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-body-site]], #token, {strength1}, [[The body-site the study examined.]])
+  {{R56}}* insert CapabilityStatementSearchParameter( body-site, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-body-site]], #token, {strength1}, [[The body-site the study examined.]])
   * insert CapabilityStatementSearchParameter( dicom-class, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-dicom-class]], #token, {strength2}, [[The type of the instances.]])
   * insert CapabilityStatementSearchParameter( modality, [[http://hl7.org/fhir/SearchParameter/ImagingStudy-modality]], #token, {strength1}, [[The modality of the imaging study.]])
   * insert CapabilityStatementSearchParameter( identifier, [[http://hl7.org/fhir/SearchParameter/clinical-identifier]], #token, {strength1}, [[The identifier of the imaging study.]] )
@@ -87,7 +87,7 @@ RuleSet: AdverseEventResource( strength1 )
 RuleSet: ImagingSelectionResource( strength1 )
 {{R }}* resource[+]
 {{R4}}  * type = #Basic
-{{R5}}  * type = #ImagingSelection
+{{R56}}  * type = #ImagingSelection
 {{R }}  * insert CapabilityStatementExpectation( {strength1} )
 {{R }}  * documentation = "Represents part of an imaging study."
 {{R }}  * interaction[+]

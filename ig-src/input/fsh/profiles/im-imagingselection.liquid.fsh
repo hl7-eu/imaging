@@ -1,4 +1,4 @@
-{% if isR5 %}
+{% if isR56 %}
 Profile: ImagingSelectionEuImaging
 Parent: ImagingSelection
 Title: "ImagingSelection: General"
@@ -6,10 +6,12 @@ Description: "Imaging Selection"
 * insert SetFmmAndStatusRule( 1, draft )
 * subject only Reference( $EuPatient )
 
-* derivedFrom 1..*
-  * insert SliceElement( #profile, $this )
-* derivedFrom contains study 1..1
-* derivedFrom[study] only Reference( ImagingStudyEuImaging )
+{{R5}}* derivedFrom 1..*
+{{R5}}  * insert SliceElement( #profile, $this )
+{{R5}}* derivedFrom contains study 1..1
+{{R5}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
+{{R6}}* derivedFrom 1..1
+{{R6}}* derivedFrom only Reference( ImagingStudyEuImaging )
 {% endif %}
 
 {% if isR4 %}
@@ -42,7 +44,7 @@ Description: "Imaging Selection referring to a DICOM SR instance"
 
 {% endif %}
 
-{% if isR5 %}
+{% if isR5 or isR6 %}
 Profile: SrInstanceImagingSelectionEuImaging
 Parent: ImagingSelectionEuImaging
 Title: "ImagingSelection: DICOM SR Instance"
@@ -59,6 +61,6 @@ Description: "Imaging Selection referring to a DICOM SR instance"
   * uid 1..1
   * subset 0..0
   * imageRegion2D 0..0
-  * imageRegion3D 0..0
+{{R5}}  * imageRegion3D 0..0
 
 {% endif %}

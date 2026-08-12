@@ -147,7 +147,7 @@ indexes document metadata for queries by Document Consumers.
 
 * rest[=].resource[=].searchParam[+].name = "format"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format"
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format-code"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-format-code"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
@@ -177,7 +177,7 @@ indexes document metadata for queries by Document Consumers.
 
 * rest[=].resource[=].searchParam[+].name = "event"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event"
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event-code"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-event-code"
 * rest[=].resource[=].searchParam[=].type = #token
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
@@ -192,7 +192,7 @@ indexes document metadata for queries by Document Consumers.
 
 * rest[=].resource[=].searchParam[+].name = "related"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-related"
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-relatesto"
 * rest[=].resource[=].searchParam[=].type = #reference
 * rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 * rest[=].resource[=].searchParam[=].extension[=].valueCode = #MAY
@@ -220,7 +220,7 @@ indexes document metadata for queries by Document Consumers.
 // Imaging specific search parameters
 {{R }}* rest[=].resource[=].searchParam[+].name = "bodysite"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceBodySite )
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-bodysite"
 {{R }}* rest[=].resource[=].searchParam[=].type = #token
 {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD
@@ -228,7 +228,7 @@ indexes document metadata for queries by Document Consumers.
 
 {{R }}* rest[=].resource[=].searchParam[+].name = "modality"
 {{R4}}* rest[=].resource[=].searchParam[=].definition = Canonical( SearchParameterDocumentReferenceModality )
-{{R5}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
+{{R56}}* rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/DocumentReference-modality"
 {{R }}* rest[=].resource[=].searchParam[=].type = #token
 {{R }}* rest[=].resource[=].searchParam[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
 {{R }}* rest[=].resource[=].searchParam[=].extension[=].valueCode = #SHOULD

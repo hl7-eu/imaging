@@ -4,14 +4,14 @@ Title: "DocumentReference: Renderable format structured"
 Description: "MHD DocumentReference for structured report."
 Usage: #example
 {{R4}}* masterIdentifier[+]
-{{R5}}* identifier[+]
+{{R56}}* identifier[+]
   * system = "urn:ietf:rfc:3986"
   * use = #usual
   * value = "http://structured-report.example.com"
 * status = #current
 * date = "2025-09-05T00:00:00Z"
 {{R4}}* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#US
-{{R5}}* modality = http://dicom.nema.org/resources/ontology/DCM#US
+{{R56}}* modality = http://dicom.nema.org/resources/ontology/DCM#US
 * category[+]
   * coding[priority-area] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
 * type
@@ -22,13 +22,13 @@ Usage: #example
 {{R4}}  * extension[concept]
 {{R4}}    * valueCodeableConcept
 {{R4}}      * coding[+] = $sct#67734004
-{{R5}}* bodySite
-{{R5}}  * concept
-{{R5}}    * coding = $sct#67734004
+{{R56}}* bodySite
+{{R56}}  * concept
+{{R56}}    * coding = $sct#67734004
 * content[+]
 {{R4}}  * extension[profile]
 {{R4}}    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
-{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+{{R56}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
   * attachment[0]
     * contentType = #application/fhir+json
     * url = "Bundle/bundle-report-structured"

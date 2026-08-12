@@ -1,6 +1,6 @@
 Profile: DocumentReferenceImagingReport
 {{R4}}Parent: EehrxfMhdDocumentReference
-{{R5}}Parent: DocumentReference
+{{R56}}Parent: DocumentReference
 Title: "EEHRxF MHD DocumentReference Profile for Imaging Reports"
 Description: """
 Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile. This profile is used for the DocumentReference resources that represent imaging reports in the EEHRxF context. It includes additional constraints and extensions specific to imaging reports, such as the type of report, the clinical specialty, the anatomical region of interest and the profile of the imaging report.
@@ -10,7 +10,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 // practice setting
 {{R4}}* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
-{{R5}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+{{R56}}* practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
 
 * status 1..1
 
@@ -20,7 +20,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 // subject
 * subject 1..1
-{{R5}}* subject only Reference( $EuPatient )
+{{R56}}* subject only Reference( $EuPatient )
 
 // date
 * date 1..1
@@ -44,15 +44,15 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * ^short = "Organization that manages the Imaging Report"
 
 // bodysite
-{{R5}}* bodySite
-// {{R5}}* bodySite only CodeableReferenceAnatomicalRegion
-{{R5}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
-{{R5}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
-{{R5}}  * concept 1..1
-{{R5}}    * coding from ValueSetAnatomicalRegion (extensible)
-// {{R5}}      * insert SliceElement( #pattern, $this )
-// {{R5}}    * coding contains anatomical-region 1..*
-// {{R5}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
+{{R56}}* bodySite
+// {{R56}}* bodySite only CodeableReferenceAnatomicalRegion
+{{R56}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+{{R56}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+{{R56}}  * concept 1..1
+{{R56}}    * coding from ValueSetAnatomicalRegion (extensible)
+// {{R56}}      * insert SliceElement( #pattern, $this )
+// {{R56}}    * coding contains anatomical-region 1..*
+// {{R56}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
 {{R4}}* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
 {{R4}}* extension[bodysite].extension[concept] 1..1
 {{R4}}* extension[bodysite].extension[concept]
@@ -72,12 +72,12 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 {{R4}}  * extension contains ImDocumentReferenceContentProfile named profile 1..*
 {{R4}}  * extension[profile] ^short = "Contains the profile of the referred report"
   
-{{R5}}* content 1..1
-{{R5}}  * profile 1..*
-{{R5}}    * insert SliceElement( #value, value )
-{{R5}}  * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
-{{R5}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
-{{R5}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+{{R56}}* content 1..1
+{{R56}}  * profile 1..*
+{{R56}}    * insert SliceElement( #value, value )
+{{R56}}  * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
+{{R56}}  * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+{{R56}}  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
 
 
 {{R4}}Extension: ImDocumentReferenceContentProfile

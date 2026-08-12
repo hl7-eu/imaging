@@ -16,7 +16,10 @@ Description: """This profile introduces essential constraints and extensions for
   * extension[periodOfLife].valueCodeableConcept from PeriodsOfLifeEuVs (preferred) */
 * recordedDate ^short = "Date when the allergy or intolerance was recorded"
 * patient ^short = "Who the allergy or intolerance concerns"
-* participant.actor ^short = "Who or what participated in the activities related to the allergy (e.g. asserter, reporter)"
+//R5 * participant.actor ^short = "Who or what participated in the activities related to the allergy (e.g. asserter, reporter)"
+//R6-start
+* asserter ^short = "Who or what asserted the allergy or intolerance (e.g. asserter, reporter)"
+//R6-end
 * verificationStatus ^short = "Certainty"
 * clinicalStatus ^short = "Current allergy or Intolerance status"
 * type ^short = "Type of propensity"

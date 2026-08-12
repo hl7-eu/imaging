@@ -18,5 +18,5 @@ Description: "Gestational Age Observation"
 {{R4}}  * ^binding.extension[=].extension[+].url = #valueSet
 {{R4}}  * ^binding.extension[=].extension[=].valueCanonical =  Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
 
-{{R5}}  * ^binding.additional[+].purpose = #maximum
-{{R5}}  * ^binding.additional[=].valueSet = Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
+{{R56}}  * ^binding.additional[+].purpose = #maximum
+{{R56}}  * ^binding.additional[=].valueSet = Canonical( http://hl7.org/fhir/ValueSet/all-time-units )

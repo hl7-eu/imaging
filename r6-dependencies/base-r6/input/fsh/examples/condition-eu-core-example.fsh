@@ -14,4 +14,7 @@ Description: "Example of a Condition resource conforming to the Condition (EU Co
 * extension[assertedDate].valueDateTime = "2024-12-01"
 * bodySite = $sct#41224006 "Lower lobe of left lung"
 * note.text = "Productive cough with fever; antibiotics started during admission."
-* participant[+].actor = Reference(PractitionerRoleEuCoreExample)
+//R5 * participant[+].actor = Reference(PractitionerRoleEuCoreExample)
+//R6-start
+* asserter = Reference(PractitionerRoleEuCoreExample)
+//R6-end
