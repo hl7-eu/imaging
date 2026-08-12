@@ -1,0 +1,142 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<div xmlns="http://www.w3.org/1999/xhtml">
+		<h4>Characteristics Extension</h4><a>   </a>
+		<p> The <code>characteristic</code> extension is a loosely defined key–value pair that allows
+			implementations to add any other information about the medicinal product. Such
+			information may include details relevant to requests (for example lactose-free = true)
+			or additional data about the product actually dispensed (for example special precaution
+			for storage = "Store in a refrigerator (2°C – 8°C)"). The data type of the value depends
+			on the type of the characteristic. </p>
+		<p> Availability of this information depends on its presence in the source data. In FHIR, <code>
+			MedicationKnowledge</code> and resources in the Medication Definition module
+			include elements for characteristics or properties, which allow medicinal product
+			dictionaries to communicate this type of data when necessary. Other elements in detailed
+			product descriptions may also be conveyed using this extension. </p>
+		<h4>Strength Representation with basisOfStrengthSubstance Extension</h4><a>   </a>
+		<p> The <code>basisOfStrengthSubstance</code> extension is used when the substance listed as
+			the ingredient differs from the substance on which the strength is expressed. </p>
+		<p> In many medicinal products, the ingredient may be represented as a precise substance
+			(for example a salt form), while the strength is expressed in terms of the active
+			moiety. When the ingredient substance and the strength reference substance do not match,
+			the <code>basisOfStrengthSubstance</code> extension indicates which substance the
+			strength value refers to. </p>
+		<p>
+			The following examples represent different representations of the concept:
+		</p>
+		<p>
+			<i>1193768007 | Product containing precisely cefuroxime (as cefuroxime sodium) 750
+				milligram/1 vial powder for conventional release solution for injection (clinical
+				drug)|</i>
+		</p>
+		<p>
+			Depending on the medicinal product dictionary, the substance and strength provided may
+			differ.
+		</p>
+		<p>
+			If the ingredient substance and the strength refer to the same substance, the extension
+			can be
+			used for explicit clarity, but it does not add additional information.
+		</p>
+		<table border="1">
+			<tr>
+				<th>Data element</th>
+				<th>Example 1</th>
+				<th>Example 2</th>
+			</tr>
+			<tr>
+				<td>Ingredient</td>
+				<td>cefuroxime</td>
+				<td>cefuroxime sodium</td>
+			</tr>
+			<tr>
+				<td>Strength</td>
+				<td>750 mg</td>
+				<td>789 mg</td>
+			</tr>
+		</table>
+		<p>
+			If the ingredient is a different form of the substance (for example a salt), but the
+			strength is
+			expressed for another substance (typically the active moiety), the extension is needed
+			to remove
+			this ambiguity.
+		</p>
+		<table border="1">
+			<tr>
+				<th>Data element</th>
+				<th>Example 3</th>
+				<th>Example 4</th>
+			</tr>
+			<tr>
+				<td>Ingredient</td>
+				<td>cefuroxime</td>
+				<td>cefuroxime sodium</td>
+			</tr>
+			<tr>
+				<td>Strength</td>
+				<td>789 mg</td>
+				<td>750 mg</td>
+			</tr>
+			<tr>
+				<td>basisOfStrengthSubstance</td>
+				<td>cefuroxime sodium</td>
+				<td>cefuroxime</td>
+			</tr>
+		</table>
+		<p>
+			The approach described here aligns with the SNOMED CT medicinal product concept model
+			and can
+			be derived from the ISO IDMP representation.
+		</p>
+		<h4>Medicinal Product Name</h4><a>   </a>
+		<p> The <code>Medication</code> resource does not include an explicit element for the
+			medicinal product name. In countries where medication information is distributed as a
+			code system, the de facto elements used for holding the medication name have been <code>
+			Medication.code.text</code> or <code>Medication.code.coding.display</code>. This is also
+			the recommendation of HL7 Pharmacy. </p>
+		<p> However, analysis of extensions in national implementation guides showed that many
+			countries prefer to extend the <code>Medication</code> resource in order to include an
+			explicit element for the authorised name of the product. It is also evident that
+			countries often add multiple codings to the <code>.code</code> element, which makes it
+			difficult to understand which coding is associated with the official product name. </p>
+		<p> Therefore, this implementation guide includes a simple extension for the authorised
+			medicinal product name. National implementations are not required to use this extension
+			when their functional requirements are covered by the <code>.code</code> element. </p>
+		<h4>Identifier vs Code</h4><a>   </a>
+		<p> In case of medications, the line between <code>.identifier</code> and <code>.code</code>
+			is not always clear, and the practice of using these elements differs between countries. </p>
+		<p> This implementation guide allows the use of the <code>.identifier</code> element for
+			non-instance identifiers such as IDMP identifiers or product codes from a national
+			product registry or EMA PMS. It should be noted that identifiers do not have display
+			names, which requires the consumer of the data to have lookup access to the source
+			system of the identifier or the producer of the data to populate additional descriptive
+			elements describing the product. </p>
+		<h4>Code vs Classification (e.g. ATC)</h4><a>   </a>
+		<p> The <code>classification</code> extension was introduced after reviewing how
+			different countries implement medication classifications. Some implementations include
+			ATC codes in <code>Medication.code.coding</code>, while others use extensions. </p>
+		<p>
+			Because classifications such as ATC represent a categorisation of a medication rather
+			than the
+			medication itself, the preferred approach is to convey them in a separate classification
+			element.
+		</p>
+		<p>
+			National implementations that currently include ATC as an additional coding may continue
+			to do so,
+			but should maintain the ability to map it to the classification extension, particularly
+			for
+			cross-border use.
+		</p>
+		<p> If ATC itself is used as the medication code (for example in certain <code>
+			MedicationStatement</code> contexts), it should remain in <code>Medication.code</code>.
+			ATC is not recommended for ingredient representation, as the code system lacks the
+			required granularity. </p>
+		<h4>Additional Information and Examples</h4><a>   </a>
+		<p>
+			Additional information and example instances can be found in the
+			HL7 Europe Medication Prescription and Dispense Implementation Guide.
+		</p>
+	</div>
+</div>

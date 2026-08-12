@@ -4,7 +4,7 @@ Title: "Composition: structured report"
 Description: "Example of a CompositionEuImaging showing the report with structured data."
 Usage: #example
 * status = #final
-* subject = Reference( PatientStructuredReport )
+* subject = Reference(PatientStructuredReport)
 * date = "2025-09-05T02:22:00.000Z" 
 * language = #en-GB
 * identifier
@@ -15,33 +15,43 @@ Usage: #example
   * valueReference
     * type = #ServiceRequest
     * identifier
-      * type   = http://terminology.hl7.org/CodeSystem/v2-0203#ACSN
+      * type
+        * coding[+] = $v2-0203#ACSN 
+        * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "87654321" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference = Reference ( DiagnosticReportStructured )
+* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportStructured)
 
 //R4* extension[version].valueString = "1"
-* version = "1" // invented - not there in the report
+//R5* version = "1" // invented - not there in the report
 
 * status = #final
-* type = http://www.ama-assn.org/go/cpt#93351 "transthoracic echocardiogram"
+* type = http://www.ama-assn.org/go/cpt#93351 "STRESS TTE COMPLETE"
 
-* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasoundy"
-
+* category[diagnostic-service] = http://terminology.hl7.org/CodeSystem/v2-0074#CUS "Cardiac Ultrasound"
+* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+  
 * author[author] = Reference(PractitionerRoleStructuredReportAuthor)
 * author[organization] = Reference(OrganizationStructuredReport)
 
 * title = "Transthoracic echocardiogram" // invented - not there in the report
+* text
+  * status = #generated
+  * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Stress echocardiography composition narrative. See section narratives below.</div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[imagingstudy]
   * title = "Imaging Study"
   * code = $loinc#18726-0 "Radiology studies (set)"
-  * entry[+] = Reference(ImagingStudStructuredReport)
+  * entry[+] = Reference(ImagingStudyStructuredReport)
 
 ///////////////////////////////////////////////////////////////////////
 
 * section[order]
+  * text
+    * status = #generated
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Accession Number: 87654321</div>"
   * title = "Order"
   * code = $loinc#55115-0 "Requested imaging studies information Document"
   * entry[+]
@@ -53,24 +63,31 @@ Usage: #example
 
 ///////////////////////////////////////////////////////////////////////
 * section[history]
+  * text
+    * status = #generated
+    * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Weight 80kg, Height: 180 cm, HT: 180 bpm, BP: 80/90 mm/Hg</div>"
   * title = "History"
   * code = $loinc#11329-0 "History general Narrative - Reported"
-  * entry[+] = Reference( WeightObservation )
-  * entry[+] = Reference( HeightObservation )
-  * entry[+] = Reference( BPObservation )
-  * entry[+] = Reference( HRObservation )
+  * entry[vitals][+] = Reference (WeightObservation)
+  * entry[vitals][+] = Reference (HeightObservation)
+  * entry[vitals][+] = Reference (BPObservation)
+  * entry[vitals][+] = Reference (HRObservation)
 
 ///////////////////////////////////////////////////////////////////////
 * section[procedure]
   * title = "Procedure"
   * code = $loinc#55111-9 "Current imaging procedure descriptions Document"
-  * emptyReason = #unavailable "Unavailable"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#unavailable "Unavailable"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Unavailable</div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[comparison]
   * title = "Comparison"
   * code = $loinc#18834-2 "Radiology Comparison study (narrative)"
-  * emptyReason = #nilknown "Nil Known"
+  * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Nil Known</div>"
   
 ///////////////////////////////////////////////////////////////////////
 * section[findings]
@@ -104,41 +121,42 @@ Usage: #example
   * extension[note][+]
     * valueAnnotation.text =
   """**Pericardium**\nThere is pericardial thickening and/or a small pericardial effusion. Large left pleural effusion."""
-  * entry[+] = Reference( RestWmsi01 )
-  * entry[+] = Reference( RestWmsi02 )
-  * entry[+] = Reference( RestWmsi03 ) 
-  * entry[+] = Reference( RestWmsi04 )
-  * entry[+] = Reference( RestWmsi05 )
-  * entry[+] = Reference( RestWmsi06 )
-  * entry[+] = Reference( RestWmsi07 )
-  * entry[+] = Reference( RestWmsi08 )
-  * entry[+] = Reference( RestWmsi09 )
-  * entry[+] = Reference( RestWmsi10 )
-  * entry[+] = Reference( RestWmsi12 )
-  * entry[+] = Reference( RestWmsi13 )
-  * entry[+] = Reference( RestWmsi14 )
-  * entry[+] = Reference( RestWmsi15 )
-  * entry[+] = Reference( RestWmsi16 )
-  * entry[+] = Reference( RestWmsi17 )
-  * entry[+] = Reference( StressWmsi01 )
-  * entry[+] = Reference( StressWmsi02 )
-  * entry[+] = Reference( StressWmsi03 ) 
-  * entry[+] = Reference( StressWmsi04 )
-  * entry[+] = Reference( StressWmsi05 )
-  * entry[+] = Reference( StressWmsi06 )
-  * entry[+] = Reference( StressWmsi07 )
-  * entry[+] = Reference( StressWmsi08 )
-  * entry[+] = Reference( StressWmsi09 )
-  * entry[+] = Reference( StressWmsi10 )
-  * entry[+] = Reference( StressWmsi12 )
-  * entry[+] = Reference( StressWmsi13 )
-  * entry[+] = Reference( StressWmsi14 )
-  * entry[+] = Reference( StressWmsi15 )
-  * entry[+] = Reference( StressWmsi16 )
-  * entry[+] = Reference( StressWmsi17 )
-  * entry[+] = Reference( StructuredKeyImageStress )
-  * entry[+] = Reference( StructuredKeyImageRest )
-  
+  * entry[finding] = Reference (RestWmsi01)
+  * entry[finding][+] = Reference (RestWmsi02)
+  * entry[finding][+] = Reference (RestWmsi03)
+  * entry[finding][+] = Reference (RestWmsi04)
+  * entry[finding][+] = Reference (RestWmsi05)
+  * entry[finding][+] = Reference (RestWmsi06)
+  * entry[finding][+] = Reference (RestWmsi07)
+  * entry[finding][+] = Reference (RestWmsi08)
+  * entry[finding][+] = Reference (RestWmsi09)
+  * entry[finding][+] = Reference (RestWmsi10)
+  * entry[finding][+] = Reference (RestWmsi12)
+  * entry[finding][+] = Reference (RestWmsi13)
+  * entry[finding][+] = Reference (RestWmsi14)
+  * entry[finding][+] = Reference (RestWmsi15)
+  * entry[finding][+] = Reference (RestWmsi16)
+  * entry[finding][+] = Reference (RestWmsi17)
+  * entry[finding][+] = Reference (StressWmsi01)
+  * entry[finding][+] = Reference (StressWmsi02)
+  * entry[finding][+] = Reference (StressWmsi03)
+  * entry[finding][+] = Reference (StressWmsi04)
+  * entry[finding][+] = Reference (StressWmsi05)
+  * entry[finding][+] = Reference (StressWmsi06)
+  * entry[finding][+] = Reference (StressWmsi07)
+  * entry[finding][+] = Reference (StressWmsi08)
+  * entry[finding][+] = Reference (StressWmsi09)
+  * entry[finding][+] = Reference (StressWmsi10)
+  * entry[finding][+] = Reference (StressWmsi12)
+  * entry[finding][+] = Reference (StressWmsi13)
+  * entry[finding][+] = Reference (StressWmsi14)
+  * entry[finding][+] = Reference (StressWmsi15)
+  * entry[finding][+] = Reference (StressWmsi16)
+  * entry[finding][+] = Reference (StressWmsi17)
+  * entry[finding][+] = Reference (RestWmsi11)
+  * entry[finding][+] = Reference (StressWmsi11)
+  * entry[finding][+] = Reference (NarrativeFindingsAll)
+  * entry[image] = Reference (WMSIImage)
 // /////////////////// IMPRESSION SECTION //////////////////////////
 * section[impression]
   * title = "Impression"
@@ -150,9 +168,11 @@ This was a normal stress echocardiogram.
 Nothing wrong with this patient
 See you next year.
 """
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">This was a normal stress echocardiogram. Nothing wrong with this patient. See you next year.</div>"
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
-  * entry[+] = Reference( ComeBackNextYearServiceRequest )
+  * entry[+] = Reference(ComeBackNextYearServiceRequest)

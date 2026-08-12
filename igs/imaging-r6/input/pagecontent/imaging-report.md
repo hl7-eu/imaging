@@ -7,34 +7,39 @@ The imaging report represents a report made by a radiologist based on an imaging
 
 The figure below illustrates the structure of the Imaging Report.
 
-{% include img.html img="imaging-report-overview.drawio.png" caption="Figure: Imaging report overview" %}
+{% include img.html img="imaging-report-overview.drawio.png" caption="Figure 1: Imaging report overview" %}
 
-An Imaging Report is a FHIR Clinical Document that contains both a {{DiagnosticReport}} as a {{Composition}} resource.
-The report uses the {{DiagnosticReportEuImaging}} to store the structured data. This resource might also include a rendered version of the document. The {{CompositionEuImaging}} resource is used to present a rendered version of the document as a FHIR document.
+An Imaging Report is a FHIR Clinical Document that contains both a [[[DiagnosticReport]]] and a [[[Composition]]] resource.
+The report uses the [[[DiagnosticReportEuImaging]]] to store the structured data. This resource might also include a rendered version of the document. The [[[CompositionEuImaging]]] resource is used to present a rendered version of the document as a FHIR document.
 
-As described by {{iheIDR}}, the all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see {{DiagnosticReportEuImaging}} and recommends it as the structure for sections defined in the {{CompositionEuImaging}}).
+As described by {{iheIDR}}, all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see [[[DiagnosticReportEuImaging]]]) and recommends it as the structure for sections defined in the [[[CompositionEuImaging]]].
+
 
 #### Header
 
 General information on the report. Most of the information elements in this part of the report overlap with other clinical reports. The document header includes information on the patient, source organization, author, attester and custodian of the report.
 
-#### Imaging Study
+#### Document sections
 
-Information on the studies that this report is reporting on. It includes such as the study identifiers, date and time the exam was done, the modalities used in the exam and the different series. In this implementation guide this is represented by the {{ImagingStudyEuImaging}} profile.
+##### Imaging Study
 
-#### Order
+Information on the studies that this report is reporting on. It includes information such as the study identifiers, date and time the exam was done, the modalities used in the exam and the different series. In this implementation guide this is represented by the [[[ImagingStudyEuImaging]]] profile.
 
-The order section contains information on the orders that resulted in the studies and this report. It includes information such as the  `AccessionNumber`, the identity of the referring physician or organization, the indication for examination, and, ideally, additional patient context and specific clinical questions provided by the referring physician. Clinical questions are sometimes of the form “Follow-up X”, where X is an existing known finding (perhaps from a previous exam), or “Rule out X”, where X is a condition for which imaging input is requested on whether or not it is present. Indications are also, hopefully, provided to provide important clinical context to the imaging clinician, and to support assessment of the appropriateness of the order and/or billing. If indications are not present, they are sometimes sought out by imaging staff.
+##### Order
+
+The order section contains information on the orders that resulted in the studies and this report. It includes information such as one or many `AccessionNumbers`, the identity of the referring physician or organization, the indication for examination, and, ideally, additional patient context and specific clinical questions provided by the referring physician. Clinical questions are sometimes of the form “Follow-up X”, where X is an existing known finding (perhaps from a previous exam), or “Rule out X”, where X is a condition for which imaging input is requested on whether or not it is present. Indications are also, hopefully, provided to provide important clinical context to the imaging clinician, and to support assessment of the appropriateness of the order and/or billing. If indications are not present, they are sometimes sought out by imaging staff.
 
 > Note: “Rule out X”, while somewhat helpful for the imaging clinician, can be problematic for billing since the symptoms that suggest the possible presence of the condition and establish the medical necessity of the imaging exam are implied, but not captured. Site practices increasingly deprecate such wording.
 
-In this specification, the order is represented by the {{ServiceRequestOrderEuImaging}} profile.
+In this specification, the order is represented by the [[[ServiceRequestOrderEuImaging]]] profile.
 
-#### History
+##### History
 
-This section includes patient history and other prior clinical details deemed relevant to the imaging study by the imaging clinician. Some information may be provided by the referring physician in the order, and more is extracted from the medical record by imaging staff, automated tools, or by the radiologist themselves. This information provides background for the imaging clinician, context for the contents of the report, and is sometimes relevant to billing and clinical guidelines. Potential sources include impressions or summaries of the clinical notes from the encounter where the imaging order was placed.
+This section includes patient history and other prior clinical details deemed relevant to the imaging study by the imaging clinician (e.g. pregnancy status, presence of metal implants, medication given prior imaging, etc.). Some information may be provided by the referring physician in the order, and more is extracted from the medical record by imaging staff, automated tools, or by the radiologist themselves. This information provides background for the imaging clinician, context for the contents of the report, and is sometimes relevant to billing and clinical guidelines. Potential sources include impressions or summaries of the clinical notes from the encounter where the imaging order was placed.
 
-#### Procedure
+This section will typically include resources of the type `Observation`, `Condition`, `Device`, `MedicationAdministration`, `MedicationDispense` and/or `Device` but is not restricted to those.
+
+##### Procedure
 
 This section contains information such as the procedure type, the anatomy imaged, the date and time of the imaging examination, and the facility that performed it.
 
@@ -52,15 +57,15 @@ While the actual instructions given to the patient are not typically listed in t
 
 Procedure details that may be required for billing are sometimes included here as well.
 
-In this specification, this information is represented by the {{ProcedureEuImaging}} profile.
+In this specification, this information is represented by the [[[ProcedureEuImaging]]] profile.
 
-#### Comparison
+##### Comparison
 
 This section is a list of other studies that were considered relevant by the imaging clinician. They are typically identified by type (modality, anatomy, exam type) and date. Findings from these studies and comparisons with the current study are typically woven into the next section (e.g. indicating no change, differentiating descriptions and/or measurements), although some of these studies may not be specifically mentioned in the findings. It is typically presumed that both the images and the report for each comparison study were available to the imaging clinician, however in some cases, such as for external priors, only the report or only the images were available, in which case that may be noted here.
 
-In this specification a comparison study can be represented as an {{ImagingStudyEuImaging}} describing the full study or an {{ImagingSelection}} resource representing part of a study.
+In this specification a comparison study can be represented as an [[[ImagingStudyEuImaging]]] describing the full study or an [[[ImagingSelectionEuImaging]]] resource representing part of a study.
 
-#### Findings
+##### Findings
 
 This section provides a detailed description of the findings on the imaging examination. The findings should be described in a clear and concise manner, using standardized anatomic, pathologic, and radiologic terminology whenever possible.
 
@@ -68,9 +73,9 @@ When there are significant numbers of findings, the imaging clinician will typic
 
 An important distinction between Findings and Impressions is that Findings capture what the imaging clinician saw in the image, while Impressions capture what they inferred/concluded. The findings might record a radiolucency, while the impression records a fracture. There are some cases where the two overlap, but generally imaging clinicians try to capture in the Findings what the significant image features are and strive in the Impressions to communicate to the referring physician what they think those represent in clinical terms.
 
-In this specification, findings are represented as resources following the {{ObservationFindingEuImaging}} profile. Optionally, this section can also hold one or more key image resource represented by either {{ImagingSelectionKeyImageEuImaging}} or {{DocumentReferenceKeyImageEuImaging}}.
+In this specification, findings are represented as resources following the [[[ObservationFindingEuImaging]]] profile. Optionally, this section can also hold one or more key image resources represented by either [[[ImagingSelectionKeyImageEuImaging]]] or [[[DocumentReferenceKeyImageEuImaging]]] or other relevant images represented by a [[[DocumentReference]]].
 
-#### Impression
+##### Impression
 
 Sometimes also called Conclusion or Diagnosis, provides the radiologist’s overall interpretation of the findings, a specific diagnosis and/or differential diagnosis (when possible), responses to any clinical questions posed by the referring physician, and any recommendations for further management and/or confirmation, as appropriate.
 
@@ -84,15 +89,15 @@ Some items in the impression may be clinically significant but were not associat
 
 Some items in the impression may be critical, in that they represent the potential for severe negative clinical impact to the patient if appropriate action is not taken promptly. The presence of such items almost always results in a communication with care staff and/or the patient.
 
-In this specification, impressions are represented by {{ObservationFindingEuImaging}} and {{Condition}} resources.
+In this specification, impressions are represented by [[[ObservationFindingEuImaging]]] and [[[Condition]]] resources.
 
-#### Recommendation
+##### Recommendation
 
-Some items in the impression may be considered actionable, in that some follow-up action or communication is advisable. The recommendations may or may not include a specific corresponding follow-up action. A corresponding communication to relevant persons may or may not have taken place during the reporting process and be noted in the report. In this specification, recommendations are represented as orders ({{ServiceRequest}} resources) or {{CarePlan}}s.
+Some items in the impression may be considered actionable, in that some follow-up action or communication is advisable. The recommendations may or may not include a specific corresponding follow-up action. A corresponding communication to relevant persons may or may not have taken place during the reporting process and be noted in the report. In this specification, recommendations are represented as orders ([[[ServiceRequest]]] resources) or [[[CarePlan]]]s.
 
-#### Communication
+##### Communication
 
-This is an optional section as it not anticipated that it is often required.
+This is an optional section as it is not anticipated that it is often required.
 
 There is strong interest in tooling to facilitate communicating critical results clearly and rapidly with the appropriate people, confirming that follow-up of actionable findings takes place, and making sure that incidental findings do not “fall through the cracks”.
 
@@ -102,18 +107,64 @@ Communication is not listed as a separate section in the ACR guidance, but codes
 
 The communication entry typically records the date, time, and method of communication, the person/organization contacted, and may summarize the content communicated.
 
-Typically a {{Communication}} resources is used to represent such event.
+Typically a [[[Communication]]] resource is used to represent such an event.
 
-### Report Profiles
+### Representing unstructured (narrative) text in the report
 
-These define the FHIR resources for systems conforming to this implementation guide:
+The unstructured (narrative) text present in most imaging reports SHALL be encoded in each `Composition.section[].text` of the [`CompositionEuImaging`](StructureDefinition-CompositionEuImaging.html) profile,  if sections are present in the report, or in `Composition.section[report].text` if no sections are present.
 
-{% sql {
-  "query" : "SELECT name AS Name, title AS Title, Type, Description, Web FROM Resources WHERE Type='StructureDefinition' AND Name LIKE 'Im%' ORDER BY CASE WHEN Name IN ('BundleReportEuImaging', 'DiagnosticReportEuImaging', 'CompositionEuImaging') THEN 1 ELSE 2 END, Name ASC",
-  "class" : "lines",
-  "columns" : [
-    { "name" : "Title"      , "type" : "link"     , "source" : "Name", "target" : "Web"},
-    { "name" : "Name"       , "type" : "markdown" , "source" : "Title" },
-    { "name" : "Description", "type" : "markdown" , "source" : "Description"}
-  ]
-} %}
+The source data of that text SHALL be represented in an [`ObservationNarrativeReport`](StructureDefinition-ObservationNarrativeReport.html) profile, using its `valueString` or `valueAttachment` (in R4 a cross-version extension enables this type) element. That resource SHALL be referenced from [`DiagnosticReportEuImaging.result`](StructureDefinition-DiagnosticReportEuImaging-definitions.html#DiagnosticReport.result).
+
+<figure>
+ {% include narrative-report-diagram.svg %}
+ <figcaption><b>Figure: Unstructured Narrative Representation in Imaging Report</b></figcaption>
+ <p></p>
+</figure>
+
+<!-- Note: Although not mandated, creators MAY link the text in `Composition.section[].text` to the corresponding `ObservationNarrativeReport` that is present in the Bundle using the standard (textLink extension)[https://hl7.org/fhir/extensions/StructureDefinition-textLink.html]. -->
+Note: When using `ObservationNarrativeReport.valueString`, two extensions are available to encode [xhtml](https://hl7.org/fhir/R4/extension-rendering-xhtml.html) or [markdown](https://hl7.org/fhir/R4/extension-rendering-markdown.html) content.
+
+For more information on the rationale for this design, please read [Design Considerations: Narrative Content](design-considerations.html#narrative-unstructured-report-content-encoding).
+
+### Report Versions
+
+Documents are created, amended and updated during their lifecycle. So although the focus is on providing the most recent version of the imaging report, users should be prepared for receiving multiple versions of the same document.
+
+Document versioning is tracked using different concepts:
+
+* Bundle.identifier: a unique identifier of the Bundle
+* issue/last-edit date: the date the document is issued/last changed.
+* version: the version number of the document.
+* related document: optional references to the version of the document this one replaces.
+ 
+These fields are present on the key resources of this IG as is illustrated by the table below:
+
+| Concept               | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging  | CompositionEuImaging | 
+| --------------------- | ----------------------------------------------------- | -------------------------- | -------------------- |
+| issued/last-edit date |                                                       | issued                     | date |
+| version               | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} |
+| related               | {%if isR4%}related{%else%}relatesTo{%endif%}          | -                          | relatesTo |
+ 
+
+Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.
+
+#### Imaging report succession management
+
+This IG adopts the HL7 [FHIR Clinical Document — Succession Management](https://hl7.org/fhir/uv/fhir-clinical-document/en/versioning.html) rules for Imaging Reports, restricted to replacement and retraction. The addendum scenario described in the mentioned specification is not allowed for EHDS Imaging Reports.
+
+**Allowed scenarios:**
+
+* **Replacement** — the previously reported content is changed. A *complete* new document (the full report, not only the changes) supersedes the previous one, which is not meant to be read anymore except for audit purposes.
+In this case the new report references the previous one through `Composition.relatesTo` with {%if isR4%}`code = replaces` and the prior `Bundle.identifier` in `targetIdentifier`{%endif%}{%if isR5%}`type = replaces` and the prior `Bundle.identifier` in `resourceReference.identifier`{%endif%}. `DiagnosticReport.status` and `Composition.status` SHALL be aligned for both the new and previous reports as shown below.
+* **Retraction** — the report was issued in error and is withdrawn, for example because it was assigned to the wrong patient or study. Following the FHIR Clinical Documents IG, the original report is replaced by an empty `Composition` and empty `DiagnosticReport` (no clinical content, preserving/updating the references, and a minimal explanatory narrative) with the value of `Composition.status` and `DiagnosticReport.status` set to `entered-in-error`.
+
+Note: The `DiagnosticReport.status` version management model is specific to this specification and is not part of the FHIR Clinical Documents IG.
+
+**Succession status mapping**
+
+| Use case | New Composition.relatesTo.{%if isR4%}code{%else%}type{%endif%} | New Composition.status | New DiagnosticReport.status | Previous Composition.relatesTo | Previous Composition.status | Previous DiagnosticReport.status |
+| -------------------- | -------------------------- | ---------------------- | --------------------------- | ------------------------------ | --------------------------- | -------------------------------- |
+| Replacement | `replaces` | `final` | `amended` | – | `final` | `final` |
+| Retraction | `replaces` | `entered-in-error` | `entered-in-error` | – | `final` | `final` |
+
+See [Support for report replacement and retraction](patterns-and-guidelines.html#support-for-report-replacement-and-retraction) for implementation guidance and worked examples.

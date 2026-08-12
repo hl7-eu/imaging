@@ -11,11 +11,12 @@ Description: "Gestational Age Observation"
 * valueQuantity from CommonUCUMCodesForAge (extensible)
   * ^short = "The age of the patient."
 //R4  * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+//R4  * ^binding.extension[=].extension[+].url =  #key
+//R4  * ^binding.extension[=].extension[=].valueId =  "patient-age-ucum"
 //R4  * ^binding.extension[=].extension[+].url =  #purpose
 //R4  * ^binding.extension[=].extension[=].valueCode =  #maximum
 //R4  * ^binding.extension[=].extension[+].url = #valueSet
 //R4  * ^binding.extension[=].extension[=].valueCanonical =  Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
 
-  * ^binding.additional[+].purpose = #maximum
-  * ^binding.additional[=].valueSet = Canonical( http://hl7.org/fhir/ValueSet/all-time-units )
-    
+//R5  * ^binding.additional[+].purpose = #maximum
+//R5  * ^binding.additional[=].valueSet = Canonical( http://hl7.org/fhir/ValueSet/all-time-units )

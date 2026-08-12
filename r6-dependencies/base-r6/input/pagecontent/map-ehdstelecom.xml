@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>EHDSTelecom → ContactPoint</title>
+  </head>
+<body>
+    <div class="model-map-block">
+      <div class="callout-wrapper">
+        <div class="callout-box">
+          <strong>Ongoing alignment:</strong>
+The models are expected to continue evolving, with updates incorporated into this Implementation Guide to maintain alignment with the EHDS Implementing Acts.
+        </div>
+      </div>
+    </div>
+    <h3>EHDSTelecom → ContactPoint</h3><a>  </a>
+    <p></p>
+    <p>
+  This page explains how conceptual elements from the EHDS logical model are expressed
+  in the corresponding FHIR ContactPoint datatype used by this Implementation Guide.
+    </p>
+    <p></p>
+    <div class="table-wrap">
+      <strong>Mapping Context</strong>
+      <ul>
+        <li>
+          <strong>Source logical model:</strong>
+          <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition/EHDSTelecom" target="_blank">
+        EHDSTelecom
+          </a>
+        </li>
+        <li>
+          <strong>Target FHIR datatype:</strong>
+          <a href="https://hl7.org/fhir/datatypes.html#ContactPoint">
+        ContactPoint
+          </a>
+        </li>
+      </ul>
+    </div>
+    <p></p>
+    <div class="table-wrap">
+      <table summary="EHDSTelecom → ContactPoint">
+        <caption>EHDSTelecom → ContactPoint</caption>
+        <thead>
+          <tr>
+            <th colspan="1" class="src-head">EHDSTelecom (Logical Model)</th>
+            <th class="relhead">Relationship</th>
+            <th colspan="3" class="tgt-head">ContactPoint</th>
+          </tr>
+          <tr>
+            <th class="src-sub">Element</th>
+            <th class="relsub">Relation</th>
+            <th class="tgt-sub">Datatype</th>
+            <th class="tgt-sub">Element</th>
+            <th class="tgt-sub">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>use</td>
+            <td>equivalent</td>
+            <td>ContactPoint</td><td>use</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>type</td>
+            <td>equivalent</td>
+            <td>ContactPoint</td><td>system</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>value</td>
+            <td>equivalent</td>
+            <td>ContactPoint</td><td>value</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:2rem;color:#555;">
+      Return to overview: <a href="modelmap.html">EHDS Logical Models → FHIR Profiles</a>
+    </p>
+  </body>
+</div>

@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" class="model-map-block">
+    <head>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+        <title>EHDS Logical Models to FHIR Profiles Mapping</title>
+    </head>
+    <!-- <td>✅ Ready for review</td> -->
+    <div class="model-map-block">
+        <div class="callout-wrapper">
+            <div class="callout-box">
+                <strong>Ongoing alignment:</strong>The models are expected to continue evolving,
+                with updates incorporated into this Implementation Guide to maintain alignment with
+                the EHDS Implementing Acts.</div>
+        </div>
+    </div>
+    <h3>EHDS Logical Models → FHIR Profiles</h3>
+    <a> </a>
+    <p>
+        The Xt-EHR Joint Action defines EHDS logical data models for core clinical and
+        administrative concepts. This Implementation Guide provides HL7 FHIR profiles
+        that realise those models.
+    </p>
+    <p>
+        The sections below group the EHDS logical models into categories.
+    </p>
+    <p>Each table shows:</p>
+    <ul>
+        <li>the logical model</li>
+        <li>the FHIR datatype or profile(s) used in this IG</li>
+        <li>a link to the detailed element-by-element mapping</li>
+    </ul>
+    <h4>
+        <span class="group-emoji">🧩</span> Foundational Models </h4>
+    <a> </a>
+    <p> </p>
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAddress.html"
+                            target="_blank">EHDSAddress</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-Address-eu.html">
+                            <code>AddressEu</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsaddress.html">EHDSAddress Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSHumanName.html"
+                            target="_blank">EHDSHumanName</a>
+                    </td>
+                    <td>
+                        <a href="https://hl7.org/fhir/datatypes.html#HumanName">
+                            <code>HumanName</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdshumanname.html">EHDSHumanName Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSTelecom.html"
+                            target="_blank">EHDSTelecom</a>
+                    </td>
+                    <td>
+                        <a href="https://hl7.org/fhir/datatypes.html#ContactPoint">
+                            <code>ContactPoint</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdstelecom.html">EHDSTelecom Mapping</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4>
+        <span class="group-emoji">🧑‍⚕️</span> Entity Models </h4>
+    <a> </a>
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSPatient.html"
+                            target="_blank">EHDSPatient</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-patient-eu-core.html">
+                            <code>PatientEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdspatient.html">EHDSPatient Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSHealthProfessional.html"
+                            target="_blank">EHDSHealthProfessional</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-practitionerRole-eu-core.html">
+                            <code>PractitionerRoleEuCore</code>
+                        </a>, <a
+                            href="StructureDefinition-practitioner-eu-core.html">
+                            <code>PractitionerEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdshealthprofessional.html">EHDSHealthProfessional
+                            Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSOrganisation.html"
+                            target="_blank">EHDSOrganisation</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-organization-eu-core.html">
+                            <code>OrganizationEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsorganisation.html">EHDSOrganisation Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSLocation.html"
+                            target="_blank">EHDSLocation</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-location-eu-core.html">
+                            <code>LocationEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdslocation.html">EHDSLocation Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSBodyStructure.html"
+                            target="_blank">EHDSBodyStructure</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-bodyStructure-eu-core.html">
+                            <code>BodyStructureEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsbodystructure.html">EHDSBodyStructure Mapping</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4>
+        <span class="group-emoji">🩺</span> Clinical Information Models </h4>
+    <a> </a>
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAlert.html"
+                            target="_blank">EHDSAlert</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-flag-patient-eu-core.html">
+                            <code>FlagPatientEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsalert.html">EHDSAlert Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAllergyIntolerance.html"
+                            target="_blank">EHDSAllergyIntolerance</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-allergyIntolerance-eu-core.html">
+                            <code>AllergyIntoleranceEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsallergyintolerance.html">EHDSAllergyIntolerance
+                            Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSCondition.html"
+                            target="_blank">EHDSCondition</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-condition-eu-core.html">
+                            <code>ConditionEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdscondition.html">EHDSCondition Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSObservation.html"
+                            target="_blank">EHDSObservation</a>
+                        <span style="font-size:1.18em; line-height:1; vertical-align:0.08em;">
+                            &#8224;</span>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-medicalTestResult-eu-core.html">
+                            <code>MedicalTestResultEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsobservation.html">EHDSObservation Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSProcedure.html"
+                            target="_blank">EHDSProcedure</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-procedure-eu-core.html">
+                            <code>ProcedureEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsprocedure.html">EHDSProcedure Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSImmunisation.html"
+                            target="_blank">EHDSImmunisation</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-immunization-eu-core.html">
+                            <code>ImmunizationEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsimmunisation.html">EHDSImmunisation Mapping</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4>
+        <span class="group-emoji">📄</span> Document Models </h4>
+    <a> </a>
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSDocument.html"
+                            target="_blank">EHDSDocument</a>
+                        <span style="font-size:1.18em; line-height:1; vertical-align:0.08em;">
+                            &#8224;</span>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-composition-eu-core.html">
+                            <code>CompositionEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsdocument.html">EHDSDocument Mapping
+                            (Composition)</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSDocument.html"
+                            target="_blank">EHDSDocument</a>
+                        <span style="font-size:1.18em; line-height:1; vertical-align:0.08em;">
+                            &#8224;</span>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-diagnosticReport-eu-core.html">
+                            <code>DiagnosticReportEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsdocument-report.html">EHDSDocument Mapping
+                            (DiagnosticReport)</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h4>
+        <span class="group-emoji">💊</span> Medication Models </h4>
+    <a> </a>
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSMedication.html"
+                            target="_blank">EHDSMedication</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-medication-eu-core.html">
+                            <code>MedicationEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsmedication.html">EHDSMedication Mapping</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a
+                            href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSMedicationUse.html"
+                            target="_blank">EHDSMedicationUse</a>
+                    </td>
+                    <td>
+                        <a href="StructureDefinition-medicationStatement-eu-core.html">
+                            <code>MedicationStatementEuCore</code>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdsmedicationstatement.html">EHDSMedicationUse
+                            Mapping</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><strong>
+            <span style="font-size:1.18em; line-height:1; vertical-align:0.08em;">&#8224;</span>
+        </strong>
+        Mapping with additional clarification note below.</p>
+    <div class="model-map-block">
+        <div class="callout-wrapper">
+            <div class="callout-box">
+                <strong>Scope Clarifications:</strong>
+                <ul>
+                    <li> The mapping <code>EHDSObservation → MedicalTestResultEuCore</code> does not
+                        apply to every kind of Observation. Not all observations are medical test
+                        results; for example, social history observations are Observation resources
+                        but are outside the MedicalTestResult scope. </li>
+                    <!--                     <li>
+                        <code>EHDSMedicationPrescription</code> is defined in the HL7 Europe MPD
+                        guide context. A prescription is not represented by simply the core <code>
+                        MedicationRequest</code> alone; it requires the MPD modelling context and
+                        related constraints. </li> -->
+                    <li>
+                        <code>EHDSDocument</code> is represented as <code>CompositionEuCore</code>
+                        when modelling the structured clinical document composition; it is
+                        represented as <code>DiagnosticReportEuCore</code> when modelling
+                        report-oriented diagnostic content and results. </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

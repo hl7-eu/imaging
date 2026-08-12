@@ -1,25 +1,44 @@
-Instance: UnstructuredReportExample
-InstanceOf: UnstructuredDocumentReferenceEuImaging
-Title: "DocumentReference: Unstructured Report"
+Instance: RenderableFormatWithBasicMetadata
+InstanceOf: DocumentReferenceImagingReport
+Title: "DocumentReference: Renderable format with basic metadata"
 Description: "MHD DocumentReference for unstructured report."
 Usage: #example
-* contained[+] = PatientUnstructuredReport
-* contained[+] = OrganizationUnstructuredReport
-* identifier[entry-uuid]
+//R4* masterIdentifier[+]
+//R5* identifier[+]
   * system = "urn:ietf:rfc:3986"
-  * use = #official
+  * use = #usual
   * value = "http://unstructured-report.example.com"
 * status = #current
+* date = "2024-01-01T00:00:00Z"
 //R4* extension[modality].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#CT
-* modality = http://dicom.nema.org/resources/ontology/DCM#CT
-* category[class-code] = $xds-class-code#REPORTS "Reports"
-* type = $loinc#18748-4 "Diagnostic imaging study"
+//R5* modality = http://dicom.nema.org/resources/ontology/DCM#CT
+
+* category[+]
+  * coding[priority-area] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* type
+  * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
+
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
+
+//R4* extension[bodysite]
+//R4  * extension[concept]
+//R4    * valueCodeableConcept
+//R4      * coding[+] = $sct#774007
+//R4      * coding[+] = $sct#38266002
+//R5* bodySite
+//R5  * concept
+//R5    * coding[+] = $sct#774007 
+//R5    * coding[+] = $sct#38266002
+
+
 * content[+]
+//R4  * extension[profile]
+//R4    * valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
+//R5  * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   * attachment[0]
-    * contentType = #application/pdf
-    * url = "./Binary/unstructured-pdf"
+    * contentType = #application/fhir+json
+    * url = "Bundle/bundle-report-minimal-metadata-unstructured"
     * language = #de
     * creation = "2024-01-01T00:00:00Z"
   
@@ -40,6 +59,7 @@ InstanceOf: $EuOrganization
 Title: "Organization: unstructured report"
 Description: "Organization used in the unstructured report"
 Usage: #example
+//R5// * id = a66ff79c-d233-424c-b3c4-1f1520fbea40
 * name = "Rediologie Zentrum Bremen"
 * contact
   * telecom[+]
@@ -47,10 +67,7 @@ Usage: #example
     * value = "0421 / 84 13 13 04"   
   * telecom[+]
     * system = #fax
-    * value = "0421 / 84 13 13 84"   
-  * telecom[+]
-    * system = #url
-    * value = "radiologiezentrum-bremen.de"   
+    * value = "0421 / 84 13 13 84"
   * address[+]
     * type = #physical
     * text = "Schwachhauser Heerstr. 54, 28209 Bremen"
@@ -60,11 +77,60 @@ Usage: #example
     * postalCode = "28209"
     * city = "Bremen"
 
-Instance: BinaryUnstructuredReport
-InstanceOf: Binary
-Title: "Binary: Unstructured report pdf"
-Description: "Binary resource holding the unstructured report pdf."
+Instance: BundleReportMinimalMetadata
+InstanceOf: BundleReportMinimalMetadataEuImaging
+Title: "Bundle: Imaging Report minimal metadata (unstructured example)"
+Description: "Minimal metadata bundle carrying the report anchor and context resources."
 Usage: #example
-* id = "unstructured-pdf"
-* contentType = #application/pdf
-* data = "ig-loader-9df9cc92-0f09-4dbb-8d5d-e74bd9eaac3a.pdf"
+* id = "bundle-report-minimal-metadata-unstructured"
+* entry[DiagnosticReportEuImagingMinimalMetadata]
+  * fullUrl = "urn:uuid:8f6d9c62-1b2a-4f3c-9d0e-7a6b5c4d3e2f"
+  * resource = DiagnosticReportMinimalMetadata
+* entry[Patient]
+  * fullUrl = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
+  * resource = PatientUnstructuredReport
+//R5* entry[+]
+//R5  * fullUrl = "urn:uuid:a66ff79c-d233-424c-b3c4-1f1520fbea40"
+//R5  * resource = OrganizationUnstructuredReport
+
+Instance: DiagnosticReportMinimalMetadata
+InstanceOf: DiagnosticReportEuImagingMinimalMetadata
+Title: "DiagnosticReport: unstructured minimal metadata"
+Description: "Minimal metadata DiagnosticReport compliant with DiagnosticReportEuImaging profile."
+Usage: #example
+* identifier[+]
+  * system = "http://example.org/myhospital/reportidentifiers"
+  * value = "unstructured-report-001"
+* status = #final
+* code = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
+* category[imaging] = http://hl7.eu/fhir/health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
+* category[imaging-report] = $loinc#85430-7 //Diagnostic imaging report
+
+* subject.reference = "urn:uuid:1d3c5b7a-9e0f-4a2b-8c6d-5e4f3a2b1c0d"
+
+* basedOn[order-identifier].identifier
+  * system = "http://example.org/myhospital/accessionsystem"
+  * value = "ACC-123456789"
+
+
+//R4* imagingStudy[study-identifier].identifier
+//R5* study[study-identifier].identifier
+  * system = "urn:dicom:uid"
+  * value = "1.2.840.113619.2.55.3.604688123.783.1704067200.1"
+  * type = http://dicom.nema.org/resources/ontology/DCM#110180 "Study Instance UID"
+
+* presentedForm[+]
+  * contentType = #application/pdf
+  * url = "Binary/BinaryUnstructuredReport"
+  * language = #de
+  * creation = "2024-01-01T00:00:00Z"
+
+// Loadin the binary .json from input/resoures
+// Instance: BinaryUnstructuredReport
+// InstanceOf: Binary
+// Title: "Binary: Unstructured report pdf"
+// Description: "Binary resource holding the unstructured report pdf."
+// Usage: #example
+// * id = "unstructured-pdf"
+// * contentType = #application/pdf
+// * data = "ig-loader-unstructured_report.pdf"

@@ -1,0 +1,49 @@
+# Temporary folders #
+#####################
+temp
+template
+output
+fsh-generated
+
+# Don't commit this because it's so large #
+###########################################
+/input-cache
+
+# Windows generated files #
+###########################
+Thumbs.db
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+
+# backup files #
+################
+*.bak
+*.fsh-bak
+*.xlk
+
+# java settings 
+################
+
+
+.vscode/
+.idea/
+.idea/*
+
+# config file #
+################
+
+/scripts/config.json
+
+# Submodules   #
+################
+__r4-r5
+.gitmodules
+
+# log files    #
+################
+*.log
+/runJekyll_r5.bat
+/sushi_r5.bat

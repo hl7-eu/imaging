@@ -1,0 +1,15 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+   	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<h3>Address extensions</h3>
+	<a> </a>
+	<p>The Address extensions provide additional information about a patient's address, as the fact that it is an official address, or more structured information about the address itself.</p>
+	<p>This profile doesn't explicitly list all of them, but only those that are <strong>explicitly listed in the <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAddress.html">EHDS Address model</a></strong>.</p>
+	<p>Examples of extensions not included, but used in several jurisdictions are:</p>
+	<ul>
+		<li><a href="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-buildingNumberSuffix">ADXPBuildingNumberSuffix</a></li>
+		<li><a href="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-additionalLocator">ADXPAdditionalLocator</a></li>
+		<li><a href="http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-unitID">ADXPUnitID</a></li>
+	</ul>
+	<p>Implementers should refer to the HL7 FHIR specification for guidance on the use of these extensions.</p>
+	<p>Please note that the fact they are not included in the differential doesn't preclude their use in a compliant instance.</p>
+</div>

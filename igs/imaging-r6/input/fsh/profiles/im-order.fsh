@@ -1,7 +1,12 @@
 Profile: ServiceRequestOrderEuImaging
 Parent: $EuServiceRequest
 Title: "ServiceRequest: Imaging Order"
-Description: "This profile on ServiceRequest represents the order for the Imaging Study and report."
+Description: """
+This profile on ServiceRequest represents the order for the Imaging Study and report. In DICOM this is referred
+to as the *Requested Procedure*. The `code` element represents the requested imaging procedure type which includes
+the requested modality.
+"""
+
 * insert SetFmmAndStatusRule( 1, draft )
 
 * category 1..*
@@ -14,15 +19,19 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 * identifier contains accessionNumber 0..1
 * identifier[accessionNumber] only AccessionNumberIdentifierEuImaging
 
+* code
+  * ^short = "Requested procedure"
+* code from ProcedureEuImagingType (example)
+
 //R4* supportingInfo.extension contains 
 //R4    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*
 // //R4* supportingInfo.extension[codeableConcept]
 // //R4  * valueCodeableConcept from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
-* supportingInfo 0..*
-  * insert SliceElement( #value, $this )
-* supportingInfo contains pregnancy 0..1
-* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
+//R5* supportingInfo 0..*
+//R5  * insert SliceElement( #value, $this )
+//R5* supportingInfo contains pregnancy 0..1
+//R5* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
 //R4* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
 
@@ -52,7 +61,6 @@ Description: "This profile on ServiceRequest represents the order for the Imagin
 
 
 
-
 Mapping: DicomToServiceRequestOrderEuImaging
 Source: ServiceRequestOrderEuImaging
 Target: "http://nema.org/dicom"
@@ -63,6 +71,6 @@ Description: "Mapping from DICOM to Imaging Order."
 * note -> "RequestedProcedureDescription (0040,0100)"
 * code -> "RequestedProcedureCodeSequence (0040,1001)"
 //R4* extension[reason].valueCodeableConcept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
-* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
+//R5* reason.concept.text -> "ReasonForTheRequestedProcedure (0040,1002)"
 //R4* extension[reason].valueCodeableConcept -> "ReasonForTheRequestedProcedure (0040,100A)"
-* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"
+//R5* reason.concept -> "ReasonForTheRequestedProcedure (0040,100A)"

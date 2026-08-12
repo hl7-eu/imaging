@@ -1,0 +1,11 @@
+{
+  "package-id" : "hl7.fhir.eu.base-r5",
+  "path" : "http://hl7.eu/fhir/base-r5/2.0.0",
+  "version" : "2.0.0",
+  "desc" : "This publication represents a new STU release (version 2.0.0). It incorporates new profiles, references to new logical models, updated model-to-profile mapping tables, terminology updates, and general publication cleanup.",
+  "descmd" : "This publication represents a new STU release (version 2.0.0) of the HL7 Europe Base and Core FHIR IG",
+  "status" : "trial-use",
+  "sequence" : "STU 2",
+  "mode": "milestone",
+  "changes" : "changes.html"
+}

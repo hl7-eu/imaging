@@ -1,10 +1,13 @@
-// Instance: ImConsumer
-// InstanceOf: ActorDefinition
-// Title: "Imaging Study and Reports Consumer"
-// Description: "Application consumer the imaging studies and reports and uses them in a clinical context."
-// Usage: #definition
-// * title = "IM Consumer"
-// * name = "Imaging study and report consumer"
-// * status = #draft
-// * description = "Application that searches for imaging studies and reports, retrieves them and uses them in a clinical context."
-// * type = #system
+Instance: EuImagingReportConsumer
+InstanceOf: ActorDefinition
+Title: "ActorDefinition: Imaging Report Consumer"
+Description: "The actor responsible for consuming the Imaging Report resources."
+Usage: #definition
+* name = "EUImagingReportReportConsumer"
+* title = "Imaging Report Consumer"
+* status = #draft
+* description = "Consumes the Imaging Report. Copied from Xt-EHR Consumer actor definition"
+* documentation = """
+A system that receives electronic health data originating from another system and processes or displays that data. In this role, the system is responsible for ingesting and validating the received data and for preserving the meaning, structure, and associated metadata of the information in accordance with the applicable Consumer obligations, ensuring correct interpretation and presentation to end users or other systems.
+"""
+* type = #system

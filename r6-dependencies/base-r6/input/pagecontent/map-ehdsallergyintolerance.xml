@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+    <title>EHDSAllergyIntolerance → AllergyIntoleranceEuCore</title>
+  </head>
+  <body>
+    <div class="model-map-block">
+      <div class="callout-wrapper">
+        <div class="callout-box">
+          <strong>Ongoing alignment:</strong>
+The models are expected to continue evolving, with updates incorporated into this Implementation Guide to maintain alignment with the EHDS Implementing Acts.
+        </div>
+      </div>
+    </div>
+    <h3>EHDSAllergyIntolerance → AllergyIntoleranceEuCore</h3>
+    <a> </a>
+    <p></p>
+    <p>
+  This page explains how conceptual elements from the EHDS logical model are expressed
+  in the corresponding FHIR AllergyIntoleranceEuCore profile used by this Implementation Guide.
+    </p>
+    <p></p>
+    <div class="table-wrap">
+      <strong>Mapping Context</strong>
+      <ul>
+        <li>
+          <strong>Source logical model:</strong>
+          <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSAllergyIntolerance.html" target="_blank">
+        EHDSAllergyIntolerance
+          </a>
+        </li>
+        <li>
+          <strong>Target FHIR profile:</strong>
+          <a href="StructureDefinition-allergyIntolerance-eu-core.html">
+        AllergyIntoleranceEuCore
+          </a>
+        </li>
+      </ul>
+    </div>
+    <p></p>
+    <div class="table-wrap">
+      <table summary="EHDSAllergyIntolerance → AllergyIntoleranceEuCore">
+        <caption>EHDSAllergyIntolerance → AllergyIntoleranceEuCore</caption>
+        <thead>
+          <tr>
+            <th colspan="1" class="src-head">EHDSAllergyIntolerance (Logical Model)</th>
+            <th class="relhead">Relationship</th>
+            <th colspan="3" class="tgt-head">AllergyIntoleranceEuCore</th>
+          </tr>
+          <tr>
+            <th class="src-sub">Element</th>
+            <th class="relsub">Relation</th>
+            <th class="tgt-sub">Resource</th>
+            <th class="tgt-sub">Element</th>
+            <th class="tgt-sub">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- HEADER BLOCK (common dataset header) -->
+          <tr>
+            <td>header</td>
+            <td>related-to</td>
+            <td>AllergyIntolerance</td><td>.</td>
+            <td>Dataset-level; not usually carried in AllergyIntolerance as-is.</td>
+          </tr>
+          <tr>
+            <td>header.subject</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>patient</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>header.identifier</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>identifier</td>
+            <td>Copy over all identifiers if multiple.</td>
+          </tr>
+<tr>
+            <td>header.author[x]</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>recorder<span style="color:#2e7d32;font-weight:600;">〔R4〕</span><br></br>participant.actor<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
+            <td>With participant.function = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#author"</td>
+          </tr>
+          <tr>
+            <td>header.date</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>recordedDate</td>
+            <td> </td>
+          </tr>
+<tr>
+            <td>header.status</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>clinicalStatus</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>header.source</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>asserter<span style="color:#2e7d32;font-weight:600;">〔R4〕</span><br></br>participant.actor<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
+            <td>With participant.function = "http://terminology.hl7.org/CodeSystem/provenance-participant-type#informant"</td>
+          </tr>
+          <tr>
+            <td>header.language</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>language</td>
+            <td></td>
+          </tr>
+          <!-- agentOrAllergen -->
+          <tr>
+            <td>agentOrAllergen</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>code</td>
+            <td></td>
+          </tr>
+<!-- note -->
+          <tr>
+            <td>note</td>
+            <td>source-is-broader-than-target</td>
+            <td>AllergyIntolerance</td><td>note.text</td>
+            <td></td>
+          </tr>
+          <!-- criticality -->
+          <tr>
+            <td>criticality</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>criticality</td>
+            <td></td>
+          </tr>
+          <!-- certainty -->
+          <tr>
+            <td>certainty</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>verificationStatus</td>
+            <td></td>
+          </tr>
+<!-- onsetDate -->
+          <tr>
+            <td>onsetDate</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>onset[x]</td>
+            <td>FHIR supports multiple datatypes; here you have dateTime → map to <code>onsetDateTime</code>.
+            </td>
+          </tr>
+          <!-- endDate -->
+          <tr>
+            <td>endDate</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>extension:abatement</td>
+            <td></td>
+          </tr>
+          <!-- reaction (container) -->
+          <tr>
+            <td>reaction</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>reaction</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>reaction.agentOrAllergen</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>reaction.substance</td>
+            <td>Maps the reaction-level causative agent where provided.</td>
+          </tr>
+          <!-- reaction.manifestation -->
+          <tr>
+            <td>reaction.manifestation</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>reaction.manifestation</td>
+            <td></td>
+          </tr>
+<!-- reaction.severity -->
+          <tr>
+            <td>reaction.severity</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>reaction.severity</td>
+            <td></td>
+          </tr>
+          <!-- reaction.onset (EHDS subelement) -->
+          <tr>
+            <td>reaction.onset</td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>reaction.onset</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:2rem;color:#555;">
+      Return to overview: <a href="modelmap.html">EHDS Logical Models → FHIR Profiles</a>
+    </p>
+  </body>
+</div>

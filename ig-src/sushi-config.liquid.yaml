@@ -6,6 +6,10 @@ canonical: http://hl7.eu/fhir/imaging
 id: hl7.fhir.eu.imaging-{{r-code}}
 canonical: http://hl7.eu/fhir/imaging-{{r-code}}
 {% endif %}
+{% if isR6 %}
+id: hl7.fhir.eu.imaging-{{r-code}}
+canonical: http://hl7.eu/fhir/imaging-{{r-code}}
+{% endif %}
 name: HL7EuImagingStudyReport
 title: HL7 Europe Imaging Report {{R-code}}
 description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR {{R-code}}.
@@ -61,6 +65,17 @@ dependencies:
   hl7.fhir.eu.base-r5: 2.0.0-ballot
   hl7.fhir.uv.extensions: 5.3.0-ballot
   hl7.fhir.eu.extensions: 1.2.0
+  hl7.terminology.r5:
+    uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
+    version: 7.1.0
+  ihe.iti.mhd: 5.0.0
+  {% endif %}  
+
+  {% if isR6 %}
+  # NOTE: R6 EU packages (hl7.fhir.eu.base-r6, hl7.terminology.r6) are not yet
+  # published. Declaring best-available R6-compatible deps so SUSHI can run;
+  # eu.base profiles are unavailable until an R6 build is released.
+  hl7.fhir.uv.extensions: 5.3.0-ballot
   hl7.terminology.r5:
     uri: http://terminology.hl7.org/ImplementationGuide/hl7.terminology
     version: 7.1.0
@@ -200,10 +215,13 @@ menu:
     Examples: artifacts.html#example-example-instances
 
 {% if isR4 %}
-  R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/
+  R5: https://build.fhir.org/ig/hl7-eu/imaging-r4/
 {% endif %}
 {% if isR5 %}
-  R4: https://build.fhir.org/ig/hl7-eu/imaging-r4/
+  R4: https://build.fhir.org/ig/hl7-eu/imaging-r5/
+{% endif %}
+{% if isR6 %}
+  R4: https://build.fhir.org/ig/hl7-eu/imaging-r6/
 {% endif %}
   
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮

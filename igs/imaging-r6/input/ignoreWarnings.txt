@@ -105,3 +105,7 @@ The IG is not for the international realm, and it uses SNOMED CT, so it should f
 
 # 	The repeating element pattern.
 The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+
+# See https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Issue.20using.20version-specific.20packages
+The URL should refer directly to the ImplementationGuide resource (e.g. include '/ImplementationGuide/')
+The canonical URL http://hl7.eu/fhir/extensions doesn't point to an actual ImplementationGuide resource

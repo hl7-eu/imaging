@@ -3,7 +3,7 @@ InstanceOf: OperationDefinition
 Title: "OperationDefinition: $document on DiagnosticReport"
 Description: "OperationDefinition for creating a document Bundle based on a DiagnosticReport."
 Usage: #definition
-* name = "document"
+* name = "Document"
 * title = "OperationDefinition: create a FHIR report from a DiagnosticReport"
 * status = #active
 * kind = #operation

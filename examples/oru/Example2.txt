@@ -1,8 +1,0 @@
-OBR|1|X89‑1501^OE|78912^RD|71020^CHEST XRAY AP \T\ LATERAL^CPT4|R|
-  199903291530|19993290800|||JBM|N <cr>
-OBX|1|CE|71020&IMP^Radiologist impression|||^Mass left lower lobe|1||A||F<cr> 
-OBX|2|CE|71020&IMP||^Iinfiltrate right lower lobe|||A||F<cr>
-OBX|3|CE|71020&IMP||H20^Heart size normal^L|||N||F<cr>
-OBX|4|FT|71020&GDT||circular density (2 x 2 cm) is seen in the posterior
-  segment of... the LLL. \.br\ A second, less well‑defined infiltrated circulation density is seen in the R mid lung field and appears to cross the minor fissure.||||||F<cr>
-OBX|5|CE|71020&REC||71020^Follow up CXR 1 month||30‑45||||F<cr>

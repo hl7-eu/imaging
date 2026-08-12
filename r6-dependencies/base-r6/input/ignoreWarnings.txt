@@ -1,0 +1,79 @@
+== Suppressed Messages ==      
+# Add warning and/or information messages here after you've confirmed that they aren't really a problem
+# (And include comments like this justifying why)
+# See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
+# Multiple extension versions
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/iso21090%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-animal'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/ValueSet/animal-breeds'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/ValueSet/animal-genderstatus'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-birthPlace'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-citizenship%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-nationality%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-birthTime%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/bodySite%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/condition-assertedDate%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/flag-detail%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/flag-priority'%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/procedure-targetBodyStructure%
+%There are multiple different potential matches for the url 'http://terminology.hl7.org/CodeSystem/v3-NullFlavor%
+# Multiple code system versions
+%Pinned the version of http://terminology.hl7.org/CodeSystem/v3-NullFlavor to 4.0.0%
+TYPE_SPECIFIC_CHECKS_DT_CANONICAL_MULTIPLE_POSSIBLE_VERSIONS
+# SNOMED CT related warnings
+%The IG is not for the international realm, and it uses SNOMED CT, so it should fix the SCT edition in the expansion parameters%
+# Deprecated artefcats
+%The extension http://hl7.org/fhir/StructureDefinition/regex|5.2.0 is deprecated%
+%The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated%
+# Context will be fixed
+The extension http://hl7.org/fhir/5.0/StructureDefinition/extension-BodyStructure.includedStructure.laterality from FHIR version 5.0 is not allowed to be used at this point (this element is [BodyStructure]; allowed for this version = e:BodyStructure.includedStructure; this is a warning since contexts may be renamed between FHIR versions)
+# Known issue with BodyStructure extensions (see https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Issue.20with.20the.20bodySite.20extension)
+The extension http://hl7.org/fhir/5.0/StructureDefinition/extension-BodyStructure.includedStructure.laterality from FHIR version 5.0 is not allowed to be used at this point (allowed = e:BodyStructure.includedStructure; this element is [[BodyStructure]; this is a warning since contexts may be renamed between FHIR versions)
+# duplicate anchor Ids
+The html source has duplicate anchor Ids: 1
+# Reference to deprecated ValueSet
+Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction|5.0.0
+# experimental value set
+SD_ED_EXPERIMENTAL_BINDING
+The definition for the element 'BodyStructure.morphology' binds to the value set 'http://hl7.org/fhir/ValueSet/bodystructure-code' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Procedure.bodySite' binds to the value set 'http://hl7.org/fhir/ValueSet/body-site' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Procedure.status' binds to the value set 'http://hl7.org/fhir/ValueSet/event-status|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'MedicationRequest.priority' binds to the value set 'http://hl7.org/fhir/ValueSet/request-priority|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Medication.ingredient.strength[x]' binds to the value set 'http://hl7.org/fhir/ValueSet/medication-ingredientstrength|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Flag.status' binds to the value set 'http://hl7.org/fhir/ValueSet/flag-status|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'DiagnosticReport.category' binds to the value set 'http://hl7.org/fhir/ValueSet/diagnostic-service-sections' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Condition.participant.function' binds to the value set 'http://hl7.org/fhir/ValueSet/participation-role-type|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Condition.bodySite' binds to the value set 'http://hl7.org/fhir/ValueSet/body-site' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Condition.subject.type' binds to the value set 'http://hl7.org/fhir/ValueSet/resource-types|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'AllergyIntolerance.patient.type' binds to the value set 'http://hl7.org/fhir/ValueSet/resource-types|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'AllergyIntolerance.participant.function' binds to the value set 'http://hl7.org/fhir/ValueSet/participation-role-type|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Observation.category' binds to the value set 'http://hl7.org/fhir/ValueSet/observation-category|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'Observation.referenceRange.type' binds to the value set 'http://hl7.org/fhir/ValueSet/referencerange-meaning|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'BodyStructure.includedStructure.bodyLandmarkOrientation.surfaceOrientation' binds to the value set 'http://hl7.org/fhir/ValueSet/bodystructure-relative-location|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'PractitionerRole.specialty' binds to the value set 'http://hl7.org/fhir/ValueSet/c80-practice-codes|5.0.0' which is experimental, but this structure is not labeled as experimental
+#   experimental CodeSystem
+%Reference to experimental CodeSystem http://hl7.org/fhir/guide-parameter-code%
+%Reference to experimental CodeSystem http://hl7.org/fhir/event-status%
+# See https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Issue.20using.20version-specific.20packages
+The canonical URL for an Implementation Guide must point directly to the implementation guide resource, not to the Implementation Guide as a whole
+The URL should refer directly to the ImplementationGuide resource (e.g. include '/ImplementationGuide/')
+# Additional Bindings with no key
+%Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained.%
+# No matching slices
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/composition-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/diagnosticReport-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/medicationRequest-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/medicationStatement-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base-r5/StructureDefinition/medicationStatement-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base-r5/StructureDefinition/medicationRequest-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base-r5/StructureDefinition/diagnosticReport-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base-r5/StructureDefinition/composition-eu-core%
+# Errors caused by missing terminology on tx.fhir.org
+%A definition for CodeSystem 'http://npu-terminology.org' could not be found, so the value set cannot be expanded%
+# This ballot version includes a mix of draft and trial-use resources
+The resource status 'active' and the standards status 'draft' are not consistent
+# Known issue with hl7.fhir.uv.xver-r5.r4 version 0.1.0 (see https://chat.fhir.org/#narrow/channel/179166-implementers/topic/Which.20package.20to.20import.20for.20cross.20version.20extensions/with/584676154)
+The slice definition for BodyStructure.extension:includedStructure.extension:bodyLandmarkOrientation.extension:distanceFromLandmark.extension:device.extension has a minimum of 0 but the slices add up to a minimum of 1
+# Code used in the example not from the additional value Set
+None of the codings provided are in the value set 'WHO ATC - IPS' (http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips|2.0.0) specified in an additional binding, and a coding is recommended to come from this value set (codes = http://snomed.info/sct#91935009)
+Terminology_TX_NoValid_3_CC
