@@ -142,11 +142,11 @@ Yes, there can be multiple reports referring the same study. A study can refer t
 
 ### Inclusion of images/drawings that are not stored in DICOM objects
 
-These can be included as {%if isR4 %}`Media`{%else%}`DocumentReference`{%endif%} and are referred from the `Composition.section[finding]` and `DiagnosticReport.media`. It is RECOMMENDED to: 
+These can be included as {%if isR4 %}`Media`{%else%}`DocumentReference`{%endif%} and are referred from the `Composition.section[finding]` and `DiagnosticReport.media`. It is RECOMMENDED to:
 
-* Use `DocumentReference` when the information is not present in the PACS (e.g. screenshots, photo's, ...)
-* use {%if isR4 %}[`Basic-ImagingSelection`](StructureDefinition-SrInstanceImagingSelectionEuImaging.html){%else%}`ImagingSelection`{%endif%} to refer to information in the PACS.
-* Prefer `DocumentReference` over `Binary` as `DocumentReference` is patient scoped and `Binary` is not. `Binary` SHOULD only be used for images in `Narrative`s that are included as contained resources.
+* Use {%if isR4 %}`Media`{%else%}`DocumentReference`{%endif%} when the information is not present in the PACS (e.g. screenshots, photos, ...)
+* Use {%if isR4 %}[`Basic-ImagingSelection`](StructureDefinition-SrInstanceImagingSelectionEuImaging.html){%else%}`ImagingSelection`{%endif%} to refer to information in the PACS.
+* Prefer {%if isR4 %}`Media`{%else%}`DocumentReference`{%endif%} over `Binary` as {%if isR4 %}`Media`{%else%}`DocumentReference`{%endif%} is patient scoped and `Binary` is not. `Binary` SHOULD only be used for images in `Narrative`s that are included as contained resources.
 * In the case both are possible, systems SHOULD use {%if isR4%}[`Basic-ImagingSelection`](StructureDefinition-SrInstanceImagingSelectionEuImaging.html){%else%}`ImagingSelection`{%endif%}.
 
 
