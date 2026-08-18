@@ -141,11 +141,15 @@ Document versioning is tracked using different concepts:
  
 These fields are present on the key resources of this IG as is illustrated by the table below:
 
-| Concept               | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging  | CompositionEuImaging | 
-| --------------------- | ----------------------------------------------------- | -------------------------- | -------------------- |
-| issued/last-edit date |                                                       | issued                     | date |
-| version               | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} |
-| related               | {%if isR4%}related{%else%}relatesTo{%endif%}          | -                          | relatesTo |
+| Concept                                      | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging | CompositionEuImaging                              | BundleReportEuImaging |
+| -------------------------------------------- | ----------------------------------------------------- | ------------------------- | -------------------------------------------------- | --------------------- |
+| clinically effective time (when study took place) | {%if isR4%}context.period{%else%}period{%endif%} | effective[x]              | {%if isR4%}event.period{%else%}period{%endif%}     | -                     |
+| report content last logically changed by the author | -                                                  | -                         | date                                               | -                     |
+| report version issued/released to providers  | -                                                     | issued                    | -                                                  | -                     |
+| document created/assembled                   | content.attachment.creation                          | -                         | -                                                  | timestamp             |
+| document reference created/indexed           | date                                                  | -                         | -                                                  | -                     |
+| version                                      | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} | -                     |
+| related                                      | {%if isR4%}related{%else%}relatesTo{%endif%}          | -                         | relatesTo                                          | -                     |
  
 
 Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.
