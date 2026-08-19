@@ -27,6 +27,12 @@
 {{R4}}  * system 1..1
 {{R4}}  * value 1..1
 
+{{R4}}* basedOn
+{{R4}}  * insert SliceElement( #type, $this )
+{{R4}}* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+{{R4}}* insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
+{{R4}}* modality 1..1
+
 {{R4}}* type from http://hl7.org/fhir/ValueSet/media-type (extensible)
 {{R4}}* subject 1..1
 {{R4}}* subject only Reference( $EuPatient )

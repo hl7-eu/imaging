@@ -80,7 +80,8 @@ Usage: #example
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/HRObservation"
   * resource = HRObservation
 * entry[+]
-  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/WMSIImage"
+{{R4}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Media/WMSIImage"
+{{R5}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/WMSIImage"
   * resource = WMSIImage
 * entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/RestWmsi01"

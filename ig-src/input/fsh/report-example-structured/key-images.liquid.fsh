@@ -5,6 +5,7 @@
 {{R4}}Usage: #example
 {{R4}}* subject = Reference(PatientStructuredReport)
 {{R4}}* type = http://terminology.hl7.org/CodeSystem/media-type#image "Image"
+{{R4}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 {{R4}}* content
 {{R4}}  * contentType = #image/png
 {{R4}}  * id = "ig-loader-structured-keyimage-rest.png"
@@ -17,6 +18,7 @@
 {{R4}}Usage: #example
 {{R4}}* subject = Reference(PatientStructuredReport)
 {{R4}}* type = http://terminology.hl7.org/CodeSystem/media-type#image "Image"
+{{R4}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 {{R4}}* content
 {{R4}}  * contentType = #image/png
 {{R4}}  * id = "ig-loader-structured-keyimage-stress.png"

@@ -7,6 +7,7 @@
 {{R4}}Usage: #example
 {{R4}}* subject = Reference(PatientStructuredReport)
 {{R4}}* type = http://terminology.hl7.org/CodeSystem/media-type#image "Image"
+{{R4}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 {{R4}}* identifier[sopClassInstanceUid]
 {{R4}}  * type = MissingDicomTerminology#00080018
 {{R4}}  * system = "urn:ietf:rfc:3986"
