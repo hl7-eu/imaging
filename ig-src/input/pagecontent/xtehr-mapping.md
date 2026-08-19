@@ -9,7 +9,7 @@
 
 The following tables describe the way the [Xt-EHR logical model](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/StructureDefinition-XtEHR.html) has been mapped onto the FHIR profiles defined in this specification.
 
-For orientation, the upstream Xt-EHR logical models for medical imaging are described in the [Xt-EHR common IG model overview](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common/overview-medicalimages.html).
+For orientation, the upstream Xt-EHR logical models for medical imaging are described in the {{ XtEhrImaging }}.
 
 <div class="model-map-block">
   <div class="callout-wrapper">
