@@ -32,7 +32,7 @@ This report contains structured data in the patient history section. It points t
   <p></p>
 </figure>
 
-The finding sections hold the notes indicated in the report and references to observations of the different wall motion index scores of the different segments indicated in the graph on page three of the report. These observation include a reference to a [[[DocumentReference]]] resource which holds the image itself.
+The finding sections hold the notes indicated in the report and references to observations of the different wall motion index scores of the different segments indicated in the graph on page three of the report. These observations include a reference to a {% if isR4 %}[[[Media]]]{% else %}[[[DocumentReference]]]{% endif %} resource which holds the image itself.
 
 <figure>
   {% include example-structured-findings.svg %}
@@ -40,7 +40,7 @@ The finding sections hold the notes indicated in the report and references to ob
   <p></p>
 </figure>
 
-The document contains two key images. These are included as [[[DocumentReference]]] resources.
+The document contains two key images. These are included as {% if isR4 %}[[[Media]]]{% else %}[[[DocumentReference]]]{% endif %} resources.
 
 The figure below illustrates the way the conclusion is represented.
 

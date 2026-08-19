@@ -213,7 +213,7 @@ The `text` field of each section SHALL contain a textual representation of all l
       keyimage 0..* and
       image 0..*
   * entry[finding] only Reference(Observation)
-  * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
+  * entry[keyimage] only Reference( {% if isR4 %}MediaKeyImageEuImaging or ImagingSelectionKeyImageEuImaging{% else %}DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging{% endif %} )
   * entry[image] only Reference( DocumentReference {% if isR4 %} or Media {% endif %} )
 
 
@@ -229,7 +229,7 @@ The `text` field of each section SHALL contain a textual representation of all l
       keyimage 0..*
   * entry[finding] only Reference(ObservationFindingEuImaging)
   * entry[impression] only Reference( $EuCondition )
-  * entry[keyimage] only Reference(DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging)
+  * entry[keyimage] only Reference({% if isR4 %}MediaKeyImageEuImaging or ImagingSelectionKeyImageEuImaging{% else %}DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging{% endif %})
 
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
