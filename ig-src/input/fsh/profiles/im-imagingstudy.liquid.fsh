@@ -28,7 +28,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 // reference to the order that has the Accession Number and including the Accession Number as identifier
 * basedOn
   * insert SliceElement( #profile, $this )
-* basedOn contains ServiceRequestOrderEuImagingaccession 0..1
+* basedOn contains ServiceRequestOrderEuImagingaccession 0..*
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 // * insert EndpointTypes 
