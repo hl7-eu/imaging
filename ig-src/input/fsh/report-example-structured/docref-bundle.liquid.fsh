@@ -83,6 +83,18 @@ Usage: #example
 {{R4}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Media/WMSIImage"
 {{R5}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/WMSIImage"
   * resource = WMSIImage
+{{R4}}* entry[+]
+{{R4}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Media/StructuredKeyImageRestR4"
+{{R4}}  * resource = StructuredKeyImageRestR4
+{{R4}}* entry[+]
+{{R4}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/Media/StructuredKeyImageStressR4"
+{{R4}}  * resource = StructuredKeyImageStressR4
+{{R5}}* entry[+]
+{{R5}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/StructuredKeyImageRest"
+{{R5}}  * resource = StructuredKeyImageRest
+{{R5}}* entry[+]
+{{R5}}  * fullUrl = "http://hl7.eu/fhir/imaging-r5/DocumentReference/StructuredKeyImageStress"
+{{R5}}  * resource = StructuredKeyImageStress
 * entry[+]
   * fullUrl = "http://hl7.eu/fhir/imaging-r5/Observation/RestWmsi01"
   * resource = RestWmsi01

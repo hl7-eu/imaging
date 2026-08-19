@@ -210,20 +210,15 @@ The `text` field of each section SHALL contain a textual representation of all l
 {{R }}    * insert SliceElement( #profile, [[resolve()]] )
 {{R }}  * entry contains 
 {{R }}      finding 0..* and
-{{R5}}      keyimage 0..* and
 {{R }}      image 0..*
 {{R }}  * entry[finding] only Reference(Observation)
 {{R }}  * entry[finding] ^short = "Finding"
 {{R }}  * entry[finding] ^definition = "A structured finding reported for the study, represented as an `Observation`."
-{{R5}}  * entry[keyimage] only Reference( DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
-{{R5}}  * entry[keyimage] ^short = "Key images"
-{{R5}}  * entry[keyimage] ^definition = "A key image, either represented as image content (`DocumentReferenceKeyImageEuImaging`) or identified using DICOM selection data (`ImagingSelectionKeyImageEuImaging`)."
 {{R4}}  * entry[image] only Reference( Media or MediaKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
-{{R4}}  * entry[image] ^short = "Images and key images"
+{{R5}}  * entry[image] only Reference( DocumentReference or DocumentReferenceKeyImageEuImaging or ImagingSelectionKeyImageEuImaging )
+{{R }}  * entry[image] ^short = "Images and key images"
 {{R4}}  * entry[image] ^definition = "Used to include general images as well as key images. This may be a general image as a `Media` resource, a key image represented as image content (`MediaKeyImageEuImaging`), or a key image identified using DICOM selection data (`ImagingSelectionKeyImageEuImaging`)."
-{{R5}}  * entry[image] only Reference( DocumentReference )
-{{R5}}  * entry[image] ^short = "Images"
-{{R5}}  * entry[image] ^definition = "A general image included in the report as a `DocumentReference`."
+{{R5}}  * entry[image] ^definition = "Used to include general images as well as key images. This may be a general image as a `DocumentReference` resource, a key image represented as image content (`DocumentReferenceKeyImageEuImaging`), or a key image identified using DICOM selection data (`ImagingSelectionKeyImageEuImaging`)."
 
 
 // /////////////////// IMPRESSION SECTION //////////////////////////
