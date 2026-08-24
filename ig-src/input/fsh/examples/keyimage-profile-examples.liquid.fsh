@@ -9,6 +9,7 @@
 {{R4}}* type = http://terminology.hl7.org/CodeSystem/media-type#image "Image"
 {{R4}}* modality = http://dicom.nema.org/resources/ontology/DCM#US "Ultrasound"
 {{R4}}* identifier[sopClassInstanceUid]
+// FHIR-56757: MissingDicomTerminology#00080018 is temporary; replace with the DICOM terminology IG equivalent once published.
 {{R4}}  * type = MissingDicomTerminology#00080018
 {{R4}}  * system = "urn:ietf:rfc:3986"
 {{R4}}  * value = "urn:oid:1.2.840.113619.2.5.1762583153.215519.978957063.121"
@@ -32,6 +33,7 @@
 {{R5}}* status = #current
 {{R5}}* subject = Reference(PatientStructuredReport)
 {{R5}}* identifier[sopClassInstanceUid]
+// FHIR-56757: MissingDicomTerminology#00080018 is temporary; replace with the DICOM terminology IG equivalent once published.
 {{R5}}  * type = MissingDicomTerminology#00080018
 {{R5}}  * system = "urn:ietf:rfc:3986"
 {{R5}}  * value = "urn:oid:1.2.840.113619.2.5.1762583153.215519.978957063.121"

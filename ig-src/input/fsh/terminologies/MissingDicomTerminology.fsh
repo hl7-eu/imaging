@@ -8,17 +8,16 @@ Description: "Code system for codes that are defined in DICOM but for which no m
 * ^hierarchyMeaning = #is-a
 * ^content = #fragment
 
+// FHIR-56757: This CodeSystem is temporary and will be removed once DICOM publishes the
+// equivalents in the DICOM FHIR Terminology repo. Concepts with an existing DCM ontology
+// equivalent have been removed (SOP Class UID=DCM#110181, Modality=DCM#121139,
+// Irradiation Event UID=DCM#113769, Device Serial Number=DCM#113880, Study Instance UID=DCM#110180,
+// Series Instance UID=DCM#112002, Accession Number=DCM#121022, Specimen UID=DCM#121039,
+// Tracking UID=DCM#112040). Unused concepts without a DCM equivalent were also removed
+// (Device UID, Manufacturer Device Class UID, Observation UID). Only SOP Instance UID is
+// retained, as it is referenced by profiles and has no DCM equivalent yet.
+// (DICOM PS3.16 2026b defines no unqualified "SOP Instance UID" DCM concept; the nearest is
+// DCM#121126 "Performed Procedure Step SOP Instance UID", and CID 10001 UID Type has no
+// unqualified SOP Instance UID entry.)
 * #elements "DICOM Elements" "DICOM Element definitions"	
-  * #00080016 "SOP Class UID" "Uniquely identifies the SOP Class."
   * #00080018 "SOP Instance UID" "Uniquely identifies the SOP Instance."
-  * #00080060 "Modality" "Type of device, process or method that originally acquired or produced the data used to create the Instances in this Series."
-  * #00083010 "Irradiation Event UID" "Irradiation Event UID"
-  * #00181000 "Device Serial Number" "Device Serial Number"
-  * #00181002 "Device UID" "Unique identifier of the equipment."
-  * #00181008 "Manufacturer Device Class UID" "Manufacturer Device Class UID"
-  * #0020000D "Study Instance UID" "Unique identifier for the Study."
-  * #0020000E "Series Instance UID" "Unique identifier of the Series."
-  * #00080050 "Accession Number" "A departmental Information System generated number that identifies the Imaging Service Request."
-  * #0040A171 "Observation UID" "Unique identifier for the observation Content Item (and its subsidiary Content Items, if any). The UID represents the semantic content of the observation; an encoding of the same observation with the same context into another representation (e.g., a CDA Entry) may use the same UID."
-  * #00400554 "Specimen UID" "Unique identifier for the Specimen."
-  * #00620021 "Tracking UID" "A unique identifier used for tracking a finding or feature, potentially across multiple reporting objects, over time."

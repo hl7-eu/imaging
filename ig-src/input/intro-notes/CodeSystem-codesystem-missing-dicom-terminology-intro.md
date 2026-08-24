@@ -1,0 +1,1 @@
+{% include worknote.html text="This list is a temporary placeholder and needs to be removed. The codes must be replaced with the equivalents defined by the DICOM terminology IG once they are published in the DICOM FHIR Terminology repository." %}

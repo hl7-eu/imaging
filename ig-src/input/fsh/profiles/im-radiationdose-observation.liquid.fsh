@@ -17,7 +17,7 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 //   * insert SliceElement( #value, type )
 // * identifier contains radiation-sr-instance-uid 0..1
 // * identifier[radiation-sr-instance-uid]
-//   * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
+//   * type = $dicomOntology#113769 // "Irradiation Event UID"
 
 * partOf 0..* 
 * partOf only Reference(  ProcedureEuImaging )
