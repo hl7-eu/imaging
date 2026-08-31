@@ -22,11 +22,11 @@ Usage: #example
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
 
-{{R4}}* extension[bodysite]
-{{R4}}  * extension[concept]
-{{R4}}    * valueCodeableConcept
-{{R4}}      * coding[+] = $sct#774007
-{{R4}}      * coding[+] = $sct#38266002
+// {{R4}}* extension[bodysite]
+// {{R4}}  * extension[concept]
+// {{R4}}    * valueCodeableConcept
+// {{R4}}      * coding[+] = $sct#774007
+// {{R4}}      * coding[+] = $sct#38266002
 {{R5}}* bodySite
 {{R5}}  * concept
 {{R5}}    * coding[+] = $sct#774007 

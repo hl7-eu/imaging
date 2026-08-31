@@ -131,6 +131,8 @@ run_build_in_docker() {
   local instance_name="ig-publisher-imaging-${version}-$(date +%s%N | cut -b1-13)"
   local ig_container_dir="/home/publisher/ig/igs/imaging-${version}"
   local version_log="$log_dir/build-${version}-$timestamp.log"
+  local tx_variable="TX_URL_${version^^}"
+  local tx_url="${!tx_variable:-}"
 
   local cache_args=()
   if [ "$cache_mode" = "volume" ]; then
@@ -140,13 +142,28 @@ run_build_in_docker() {
     cache_args=(--tmpfs "/home/publisher/.fhir")
   fi
 
+  local tx_args=()
+  if [[ -n "$tx_url" ]]; then
+    if [[ "$tx_url" == http://localhost:* ]]; then
+      tx_url="${tx_url/localhost/host.docker.internal}"
+      tx_args+=(--add-host "host.docker.internal:host-gateway")
+      if [[ -n "${FHIR_SETTINGS:-}" && -f "$FHIR_SETTINGS" ]]; then
+        tx_args+=(-v "$FHIR_SETTINGS:/tmp/fhir-settings.json:ro")
+        tx_args+=(-e "FHIR_SETTINGS=/tmp/fhir-settings.json")
+      fi
+    fi
+    tx_args+=(-e "TX_URL=$tx_url")
+  fi
+
   echo "Starting docker build for imaging-${version} (container: $instance_name)"
+  [[ -n "$tx_url" ]] && echo "Terminology endpoint for imaging-${version}: $tx_url"
   echo "Version build log: $version_log"
   docker run \
     --name "$instance_name" \
     --rm \
     -v "$repo_dir:/home/publisher/ig" \
     "${cache_args[@]}" \
+    "${tx_args[@]}" \
     "$publisher_image" \
     bash -lc "cd '$ig_container_dir' && ./_genonce.sh" 2>&1 | tee -a "$version_log" | sed -u "s/^/[${version}] /"
 }
@@ -155,12 +172,20 @@ run_build_locally() {
   local version="$1"
   local ig_dir="$repo_dir/igs/imaging-${version}"
   local version_log="$log_dir/build-${version}-$timestamp.log"
+  local tx_variable="TX_URL_${version^^}"
+  local tx_url="${!tx_variable:-}"
+  local fhir_settings=""
+
+  if [[ "$tx_url" == http://localhost:* && -n "${FHIR_SETTINGS:-}" ]]; then
+    fhir_settings="$FHIR_SETTINGS"
+  fi
 
   echo "Starting local build for imaging-${version}"
+  [[ -n "$tx_url" ]] && echo "Terminology endpoint for imaging-${version}: $tx_url"
   echo "Version build log: $version_log"
   (
     cd "$ig_dir"
-    ./_genonce.sh
+    TX_URL="$tx_url" FHIR_SETTINGS="$fhir_settings" ./_genonce.sh
   ) 2>&1 | tee -a "$version_log" | sed -u "s/^/[${version}] /"
 }
 

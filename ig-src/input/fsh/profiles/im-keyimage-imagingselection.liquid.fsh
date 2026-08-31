@@ -1,4 +1,4 @@
-// https://hl7.org/fhir/uv/xver-r5.r4/0.0.1-snapshot-2/Lookup-R5-ImagingSelection-R4.html
+// https://hl7.org/fhir/uv/xver-r5.r4/0.1.0/StructureDefinition-profile-ImagingSelection.html
 
 {{R5}}Profile: ImagingSelectionKeyImageEuImaging
 {{R5}}Parent: ImagingSelectionEuImaging

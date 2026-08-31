@@ -19,10 +19,10 @@ Usage: #example
   * coding[imaging-report] = $loinc#85430-7 "Diagnostic imaging report - example sections and entries"
 * subject = Reference(PatientSemiStructuredReport)
 * custodian = Reference(OrganizationSemiStructuredReport)
-{{R4}}* extension[bodysite]
-{{R4}}  * extension[concept]
-{{R4}}    * valueCodeableConcept
-{{R4}}      * coding[+] = $sct#61685007
+// {{R4}}* extension[bodysite]
+// {{R4}}  * extension[concept]
+// {{R4}}    * valueCodeableConcept
+// {{R4}}      * coding[+] = $sct#61685007
 {{R5}}* bodySite
 {{R5}}  * concept
 {{R5}}    * coding[+] = $sct#61685007

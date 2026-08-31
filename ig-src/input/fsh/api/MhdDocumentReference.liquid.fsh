@@ -14,7 +14,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 * status 1..1
 
-{{R4}}* extension contains 	http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.version named version 0..1
+{{R4}}* extension contains $CrossVersion-R5-DocumentReference.version-for-R4 named version 0..1
 {{R4}}* extension[version]
 {{R4}}  * ^short = "Version of the document referenced by this DocumentReference." 
 
@@ -44,30 +44,22 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * ^short = "Organization that manages the Imaging Report"
 
 // bodysite
+{{R4}}* extension contains $ihe-mado-docref-bodysite named bodysite 0..*
+{{R4}}* extension[bodysite]
+{{R4}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+{{R4}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+{{R4}}  * valueCodeableConcept from ValueSetAnatomicalRegion (extensible)
+
 {{R5}}* bodySite
-// {{R5}}* bodySite only CodeableReferenceAnatomicalRegion
 {{R5}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
 {{R5}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 {{R5}}  * concept 1..1
 {{R5}}    * coding from ValueSetAnatomicalRegion (extensible)
-// {{R5}}      * insert SliceElement( #pattern, $this )
-// {{R5}}    * coding contains anatomical-region 1..*
-// {{R5}}    * coding[anatomical-region] from ValueSetAnatomicalRegion (required)
-{{R4}}* extension contains $CrossVersion-R5-DocumentReference.bodySite-for-R4 named bodysite 0..1 
-{{R4}}* extension[bodysite].extension[concept] 1..1
-{{R4}}* extension[bodysite].extension[concept]
-{{R4}}  * valueCodeableConcept from ValueSetAnatomicalRegion (extensible)
-{{R4}}  * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
-{{R4}}  * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
 
 // modality
-{{R4}}* extension contains $CrossVersion-R5-DocumentReference.modality-for-R4 named modality 1..1
+{{R4}}* extension contains $ihe-mado-docref-modality named modality 1..1
 
-// content profile representation. Defining a custom extension as the CV spanshot 2 fails. TBD replace with CV snapshot 3 when available.
-// {{R4}}* content 1..1
-// {{R4}}  * extension contains  http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.content.profile named profile 1..*
-// {{R4}}  * extension[profile]
-// {{R4}}  * ^short = "Contains the profile of the referred report"
+// content profile representation
 {{R4}}* content 1..1
 {{R4}}  * extension contains ImDocumentReferenceContentProfile named profile 1..*
 {{R4}}  * extension[profile] ^short = "Contains the profile of the referred report"
