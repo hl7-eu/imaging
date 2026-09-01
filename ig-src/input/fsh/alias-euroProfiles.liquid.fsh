@@ -7,8 +7,8 @@ Alias: $EuAddressUrl           = http://hl7.eu/fhir/base-r5/StructureDefinition/
 Alias: $EuAppointment          = Appointment
 Alias: $EuAppointmentUrl       = http://hl7.org/fhir/StructureDefinition/Appointment
 
-Alias: $EuAllergyIntolerance    = AllergyIntolerance
-Alias: $EuAllergyIntoleranceUrl = http://hl7.org/fhir/StructureDefinition/Appointment/AllergyIntolerance
+Alias: $EuAllergyIntolerance    = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/allergyIntolerance-eu-core
+Alias: $EuAllergyIntoleranceUrl = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/allergyIntolerance-eu-core
 
 Alias: $EuAttachment           = Attachment
 Alias: $EuAttachmentUrl        = http://hl7.org/fhir/StructureDefinition/Attachment
@@ -16,8 +16,8 @@ Alias: $EuAttachmentUrl        = http://hl7.org/fhir/StructureDefinition/Attachm
 Alias: $EuBodyStructure        = BodyStructure
 Alias: $EuBodyStructureUrl     = http://hl7.org/fhir/StructureDefinition/BodyStructure
 
-Alias: $EuCondition            = Condition
-Alias: $EuConditionUrl         = http://hl7.org/fhir/StructureDefinition/Condition
+Alias: $EuCondition            = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/condition-eu-core
+Alias: $EuConditionUrl         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/condition-eu-core
 
 Alias: $EuCoverage             = Coverage
 Alias: $EuCoverageUrl          = http://hl7.org/fhir/StructureDefinition/Coverage
@@ -61,7 +61,7 @@ Alias: $EuImagingStudyUrl      = http://hl7.org/fhir/StructureDefinition/Imaging
 {{R5}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu-core
 
 Alias: $EuMedication           = Medication
-Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/ImagingStudy/Medication
+Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/Medication
 
 Alias: $EuObservation          = Observation
 Alias: $EuObservationUrl       = http://hl7.org/fhir/StructureDefinition/Observation
