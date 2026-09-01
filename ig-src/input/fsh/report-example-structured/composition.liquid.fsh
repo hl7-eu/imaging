@@ -20,7 +20,7 @@ Usage: #example
         * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "87654321" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportStructured)
+* extension[diagnosticReport].valueReference = Reference(DiagnosticReportStructured)
 
 {{R4}}* extension[version].valueString = "1"
 {{R5}}* version = "1" // invented - not there in the report
@@ -44,6 +44,8 @@ Usage: #example
 * section[imagingstudy]
   * title = "Imaging Study"
   * code = $loinc#18726-0 "Radiology studies (set)"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Stress transthoracic echocardiogram study.</div>"
   * entry[+] = Reference(ImagingStudyStructuredReport)
 
 ///////////////////////////////////////////////////////////////////////
@@ -93,6 +95,8 @@ Usage: #example
 * section[findings]
   * title = "Findings"
   * code = $loinc#59776-5 "Findings"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Structured stress and rest wall motion findings with valve and pericardial assessment. See structured findings and key images below.</div>"
 
   * extension[note][+]
     * valueAnnotation.text =
@@ -179,4 +183,6 @@ See you next year.
 * section[recommendation]
   * title = "Recommendations"
   * code = $loinc#18783-1 "Radiology Study recommendation (narrative)"
+  * text.status = #generated
+  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en-GB\" lang=\"en-GB\">Recommend follow-up echocardiogram next year.</div>"
   * entry[+] = Reference(ComeBackNextYearServiceRequest)

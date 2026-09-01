@@ -43,22 +43,27 @@ Usage: #example
 {{R5}}  * system = "https://example.org/imaging-document-identifiers"
 {{R5}}  * value = "prior-document"
 * section[imagingstudy]
+  * title = "Imaging Study"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Imaging study information</div>"
   * entry[imagingstudy] = Reference(ImagingStudyStructuredReport)
 * section[order]
+  * title = "Order"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Order information</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 * section[history]
+  * title = "History"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">History information</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 * section[procedure]
+  * title = "Procedure"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Procedure information</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 {{R5}}* section[findings]
+{{R5}}  * title = "Findings"
 {{R5}}  * text.status = #generated
 {{R5}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">Technical placeholder required by R5 validation.</div>"
 {{R5}}  * entry[finding] = Reference(ObservationNarrative)
@@ -108,22 +113,27 @@ Usage: #example
 {{R5}}  * system = "https://example.org/imaging-document-identifiers"
 {{R5}}  * value = "prior-document"
 * section[imagingstudy]
+  * title = "Imaging Study"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">The previous imaging report was issued in error and has been withdrawn.</div>"
   * entry[imagingstudy] = Reference(ImagingStudyStructuredReport)
 * section[order]
+  * title = "Order"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided.</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 * section[history]
+  * title = "History"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided.</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 * section[procedure]
+  * title = "Procedure"
   * text.status = #generated
   * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided.</div>"
   * emptyReason = http://terminology.hl7.org/CodeSystem/list-empty-reason#nilknown "Nil Known"
 {{R5}}* section[findings]
+{{R5}}  * title = "Findings"
 {{R5}}  * text.status = #generated
 {{R5}}  * text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\">No report content is provided; this entry is a technical placeholder required by R5 validation.</div>"
 {{R5}}  * entry[finding] = Reference(ObservationNarrative)

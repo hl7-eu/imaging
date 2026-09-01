@@ -1,5 +1,5 @@
 Profile: CompositionEuImaging
-Parent: Composition
+Parent: $EuComposition
 Title: "Composition: Imaging Report"
 Description: "Clinical document used to represent a Imaging Report for the scope of the HL7 Europe project."
 * . ^short = "Imaging Report composition"
@@ -22,37 +22,26 @@ The `text` field of each section SHALL contain a textual representation of all l
   * ^comment = "Composition.identifier SHALL be equal to one of the DiagnosticReport.identifier, if at least one exists"
 
 * extension contains 
-    $event-basedOn-url          named basedOn 0..* and
-    $information-recipient-url  named informationRecipient 0..* and
-    $hl7euDiagnosticReferenceReference named diagnosticreport-reference 0..1
+    $event-basedOn-url          named basedOn 0..*
+    // $information-recipient-url  named informationRecipient 0..* and
 
-* extension[diagnosticreport-reference].valueReference only Reference ( DiagnosticReportEuImaging )
+* extension[diagnosticReport].valueReference only Reference ( DiagnosticReportEuImaging )
 * extension[informationRecipient]
   * ^short = "Information Recipient"
   * ^definition = "The intended recipient of the report, if any. The information recipient is the target of a directive to receive the report, such as a report being sent to a practitioner or organization. The information recipient may also be a target for reporting relevant information about the report, such as reporting an issue with the report content.
   This is included as an extension as this information is typically render in the header section of the report."
 
-{{R4}}* extension contains $CrossVersion-Composition.version named version 0..1
+// {{R4}}* extension contains $CrossVersion-Composition.version named version 0..1
 
 * subject 1..1
 
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
 
-* attester 0..*
-  * insert SliceElement( #value, mode )
-* attester contains legalAuthenticator 0..* and resultValidator 0..*
-* attester[legalAuthenticator]
-  * mode 1..1
-  * mode = http://hl7.org/fhir/composition-attestation-mode#legal
-  * party only Reference( $EuPractitioner or $EuPractitionerRole )
-  * time 1..1
-* attester[resultValidator]
-  * mode 1..1
-  * mode = http://hl7.org/fhir/composition-attestation-mode#professional
-  * party only Reference( $EuPractitioner or $EuPractitionerRole )
-  * party.extension contains DeviceAttesterExt named deviceAttester 0..1
-  * time 1..1
+{{R4}}* attester[validator]
+{{R4}}  * party.extension contains DeviceAttesterExt named deviceAttester 0..1
+{{R5}}* attester[resultValidator]
+{{R5}}  * party.extension contains DeviceAttesterExt named deviceAttester 0..1
 
 * author 1..*
   // * insert SliceElement( #profile, [[$this.resolve()]] )
@@ -106,11 +95,12 @@ The `text` field of each section SHALL contain a textual representation of all l
 * obeys eu-imaging-comp-status-succession
 
 * section.code 1..1 
-* section 
-  * insert SliceElement( #value, code )
 * section.emptyReason from SectionEmptyReasonEuImaging (preferred)  
 * section obeys eu-imaging-composition-1
 * section obeys eu-imaging-composition-2
+
+* section 
+  * insert SliceElement( #value, code )
 * section contains 
     imagingstudy 1..1  and
     order 1..1 and
@@ -127,7 +117,6 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[imagingstudy]
   * ^short = "Imaging Study"
   * ^definition = "This section holds information related to the imaging studies covered by this report."
-  // * title = "Imaging Studies"
   * code = $loinc#18726-0
   * entry 
     * insert SliceElement( #profile, $this )
@@ -238,8 +227,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 // /////////////////// RECOMMENDATION SECTION //////////////////////////
 * section[recommendation]
   * ^short = "Recommendations"
-  * code = $loinc#18783-1 // "Radiology Study recommendation (narrative)"
-  
+  * code = $loinc#18783-1 // "Radiology Study recommendation (narrative)" 
   * entry
     * insert SliceElement( #profile, $this )
   * entry contains suggestion 0..*

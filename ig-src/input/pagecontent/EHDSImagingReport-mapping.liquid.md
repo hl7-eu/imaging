@@ -194,28 +194,28 @@ The following table shows the mapping from EHDSImagingReport logical model eleme
         <td>header.attestation</td>
         <td></td>
         <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
-        <td>attester[resultValidator]</td>
+        <td>attester[validator]</td>
         <td></td>
       </tr>
       <tr>
         <td>header.attestation.attester[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional">EHDSHealthProfessional</a>]</td>
         <td>equivalent</td>
         <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
-        <td>attester[resultValidator].party</td>
+        <td>attester[validator].party</td>
         <td></td>
       </tr>
       <tr>
         <td>header.attestation.attester[<a href="http://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSDevice">EHDSDevice</a>]</td>
         <td>equivalent</td>
         <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
-        <td>attester[resultValidator].party</td>
+        <td>attester[validator].party</td>
         <td></td>
       </tr>
       <tr>
         <td>header.attestation.datetime</td>
         <td>equivalent</td>
         <td><a href="./StructureDefinition-CompositionEuImaging.html">CompositionEuImaging</a></td>
-        <td>attester[resultValidator].time</td>
+        <td>attester[validator].time</td>
         <td></td>
       </tr>
       <tr>
