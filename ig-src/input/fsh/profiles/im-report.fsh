@@ -62,7 +62,7 @@ Description: "Document Bundle for Imaging Report"
   * resource only ImagingSelectionKeyImageEuImaging
 * entry[practitioner]
   * ^short = "Practitioner involved in the report"
-  * resource only PractitionerEu or $EuPractitionerRole
+  * resource only $EuPractitioner or $EuPractitionerRole
 * entry[organization]
   * ^short = "Organization involved in the report"
   * resource only $EuOrganization

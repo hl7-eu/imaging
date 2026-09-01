@@ -40,7 +40,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
   * coding[imaging-report] = $loinc#85430-7
   // * coding[imaging-report-type] from ImagingReportTypesEuVSEuImaging (preferred)  
 
-* custodian only Reference(OrganizationEu)
+* custodian only Reference($EuOrganization)
   * ^short = "Organization that manages the Imaging Report"
 
 // bodysite

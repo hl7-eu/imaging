@@ -9,7 +9,7 @@ Usage: #example
 * code = $sct#394579002 "Cardiology"
 
 Instance: PractitionerStructuredReportAuthor
-InstanceOf: PractitionerEu
+InstanceOf: $EuPractitioner
 Title: "Practitioner: structured report"
 Description: "The report author."
 Usage: #example
