@@ -134,7 +134,7 @@ Parent: DiagnosticReportEuImaging
 Id: diagnostic-report-obligation-eu-imaging
 Title: "DiagnosticReport: Imaging Report: Obligations"
 Description: "Obligations for DiagnosticReport: Imaging Report"
-* extension[composition]
+* extension[DiagnosticReportCompositionR5]
   * ^requirements = "EHDSImagingReport."
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][=].extension[actor].valueCanonical = Canonical(EuImagingReportProducer)

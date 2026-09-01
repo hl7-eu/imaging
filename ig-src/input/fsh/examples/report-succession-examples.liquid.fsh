@@ -14,7 +14,7 @@ Usage: #example
 * performer[organization] = Reference(OrganizationStructuredReport)
 {{R4}}* imagingStudy = Reference(ImagingStudyStructuredReport)
 {{R5}}* study = Reference(ImagingStudyStructuredReport)
-{{R4}}* extension[composition].valueReference = Reference(ImagingReportReplacementComposition)
+{{R4}}* extension[DiagnosticReportCompositionR5].valueReference = Reference(ImagingReportReplacementComposition)
 {{R5}}* composition = Reference(ImagingReportReplacementComposition)
 {{R5}}* result = Reference(ObservationNarrative)
 
@@ -84,7 +84,7 @@ Usage: #example
 * performer[organization] = Reference(OrganizationStructuredReport)
 {{R4}}* imagingStudy = Reference(ImagingStudyStructuredReport)
 {{R5}}* study = Reference(ImagingStudyStructuredReport)
-{{R4}}* extension[composition].valueReference = Reference(ImagingReportRetractionComposition)
+{{R4}}* extension[DiagnosticReportCompositionR5].valueReference = Reference(ImagingReportRetractionComposition)
 {{R5}}* composition = Reference(ImagingReportRetractionComposition)
 {{R5}}* result = Reference(ObservationNarrative)
 

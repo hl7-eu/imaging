@@ -1,5 +1,5 @@
 Profile: DiagnosticReportEuImaging
-Parent: DiagnosticReport
+Parent: $EuDiagnosticReport
 Title: "DiagnosticReport: Imaging Report"
 Description: """
 DiagnosticReport profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.   
@@ -17,9 +17,11 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 * extension contains $information-recipient-url  named informationRecipient 0..*
-{{R4}} and $diagnosticReport-composition named composition 1..1
-{{R4}}* extension[composition] ^short = "Imaging Diagnostic Report"
-{{R4}}* extension[composition].valueReference only Reference(CompositionEuImaging)
+
+// EU Core already slices this extension URL as DiagnosticReportCompositionR5; refine that slice rather than redeclaring it.
+{{R4}}* extension[DiagnosticReportCompositionR5] 1..1
+{{R4}}* extension[DiagnosticReportCompositionR5] ^short = "Imaging Diagnostic Report"
+{{R4}}* extension[DiagnosticReportCompositionR5].valueReference only Reference(CompositionEuImaging)
 
 {{R5}}* composition 1..1
 {{R5}}* composition ^short = "Imaging Diagnostic Report"
@@ -34,7 +36,7 @@ The structure of the modelled has been aligned with the DiagnosticResource as de
 * obeys eu-imaging-dr-status-no-addendum
 
 Profile: DiagnosticReportEuImagingMinimalMetadata
-Parent: DiagnosticReport
+Parent: $EuDiagnosticReport
 Title: "DiagnosticReport: Imaging Report Minimal Metadata"
 Description: """
 DiagnosticReport profile for minimal metadata imaging report exchange. 
@@ -116,9 +118,11 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
-* category 0..*
-  * insert SliceElement( #value, $this )
-* category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
+// R5 EU Core already slices category and defines the diagnostic-service slice; R4 EU Core does not.
+{{R4}}* category 0..*
+{{R4}}  * insert SliceElement( #value, $this )
+{{R4}}* category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
+{{R5}}* category contains imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
 * category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
   * ^definition = "Defines the priority category of the report as defined in the API spec."
@@ -127,7 +131,9 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * subject only Reference($EuPatient)
 
-* basedOn only Reference(ServiceRequest or CarePlan)
+// R5 EU Core narrows basedOn to ServiceRequest only, so CarePlan can only be offered in R4.
+{{R4}}* basedOn only Reference(ServiceRequest or CarePlan)
+{{R5}}* basedOn only Reference(ServiceRequest)
 
 * issued 
   * ^short = "Date and time of report issuance"
@@ -137,18 +143,13 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 // * media 0..0 // not in not in keyimages section
 
 // at least one performer is an Organization, the practitioner must follow the profile in this guide
-* performer 
-  * insert SliceElementWithDescription( #profile, $this, [[Organization that delivered the report]] )
-* performer contains organization 0..*
-* performer[organization] only Reference($EuOrganization)
+// EU Core already slices performer and defines the organization slice as Reference(organization-eu-core).
 * performer[organization] ^short = "The organization producer of this report"
 * performer[organization] ^definition = "The organization responsible for producing this report. In case practitioners produce them in their private practices, they will be accounted as an organization for this purpose."
 
 // author etc.
-* resultsInterpreter 0..*
-  * insert SliceElementWithDescription( #profile, [[resolve()]], [[Primary interpreter of results]] )
-* resultsInterpreter contains author 0..* 
-* resultsInterpreter[author] only Reference($EuPractitioner or $EuPractitionerRole)
+// EU Core already slices resultsInterpreter and constrains the author slice to practitionerRole-eu-core.
+* resultsInterpreter[author] ^short = "Primary interpreter of results"
 
 * result 0..* MS
 * result only Reference(ObservationFindingEuImaging or ObservationNarrativeReport)
