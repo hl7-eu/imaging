@@ -5,8 +5,8 @@
 Profile: ImagingStudyObligationEuImaging
 Parent: ImagingStudyEuImaging
 Id: imaging-study-obligation-eu-imaging
-Title: "ImagingStudy: General: Obligations"
-Description: "Obligations for ImagingStudy: General"
+Title: "ImagingStudy: Reported Study: Obligations"
+Description: "Obligations for ImagingStudy: Reported Study"
 * series.modality
   * ^requirements = "EHDSImagingReport.header.eventType; EHDSImagingReport.body.examinationReport.modality; EHDSImagingStudy.modality; EHDSImagingStudy.series.seriesModality"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate
@@ -176,8 +176,8 @@ Description: "Obligations for ImagingStudy: General"
 Profile: ImagingStudyObligationEuImaging
 Parent: ImagingStudyEuImaging
 Id: imaging-study-obligation-eu-imaging
-Title: "ImagingStudy: General: Obligations"
-Description: "Obligations for ImagingStudy: General"
+Title: "ImagingStudy: Reported Study: Obligations"
+Description: "Obligations for ImagingStudy: Reported Study"
 * series.modality
   * ^requirements = "EHDSImagingReport.header.eventType; EHDSImagingReport.body.examinationReport.modality; EHDSImagingStudy.modality; EHDSImagingStudy.series.seriesModality"
   * ^extension[http://hl7.org/fhir/StructureDefinition/obligation][+].extension[code].valueCode = #SHALL:able-to-populate

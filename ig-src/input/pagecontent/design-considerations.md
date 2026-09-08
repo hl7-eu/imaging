@@ -8,6 +8,8 @@ The sections in this chapter elaborate on the design considerations and decision
 
 {% include design-consideration-data-entrypoints.md %}
 
+{% include design-consideration-imaging-study-usecases.md %}
+
 {% include design-consideration-healthcareprofessional.md %}
 
 {% include design-consideration-actors-obligations.md %}

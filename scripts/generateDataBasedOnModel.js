@@ -866,7 +866,7 @@ function generateObligationFiles(parsedData) {
     const RESOURCE_TITLES = {
         CompositionEuImaging: 'Composition: Imaging Report',
         ServiceRequestOrderEuImaging: 'ServiceRequest: Imaging Order',
-        ImagingStudyEuImaging: 'ImagingStudy: General',
+        ImagingStudyEuImaging: 'ImagingStudy: Reported Study',
         DiagnosticReportEuImaging: 'DiagnosticReport: Imaging Report',
         ObservationFindingEuImaging: 'Observation: Imaging Finding',
         EuMedicationAdministration: 'MedicationAdministration'

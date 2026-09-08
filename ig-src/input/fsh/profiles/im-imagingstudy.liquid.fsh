@@ -1,6 +1,6 @@
 Profile: ImagingStudyEuImaging
 Parent: ImagingStudy
-Title: "ImagingStudy: General"
+Title: "ImagingStudy: Reported Study"
 Description: """ 
 This profile represents an imaging study instance.
 """
@@ -19,8 +19,10 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 
 * identifier
   * insert SliceElement( #profile, system )
-* identifier contains studyInstanceUid 1..1
+* identifier contains studyInstanceUid 0..1
 * identifier[studyInstanceUid] only StudyInstanceUidIdentifierEuImaging
+* identifier[studyInstanceUid] ^short = "Study Instance UID"
+* identifier[studyInstanceUid] ^definition = "The DICOM Study Instance UID. It SHALL be populated whenever it is known, as it is the key used to retrieve the imaging manifest (MADO) and the images."
 
 * subject 1..1
 * subject only Reference( $EuPatient or $EuDevice )
