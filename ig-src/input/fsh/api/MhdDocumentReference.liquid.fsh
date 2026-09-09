@@ -62,6 +62,7 @@ Profile for DocumentReference resources used in the EEHRxF context, based on the
 
 // modality
 {{R4}}* extension contains $CrossVersion-R5-DocumentReference.modality-for-R4 named modality 1..*
+{{R5}}* modality 1..*
 
 // content profile representation. Defining a custom extension as the CV spanshot 2 fails. TBD replace with CV snapshot 3 when available.
 // {{R4}}* content 1..1

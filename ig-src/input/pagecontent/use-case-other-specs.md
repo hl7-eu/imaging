@@ -11,37 +11,19 @@ The intent of this specification is to align with {{iheIDR}} so that an instance
  
 The European imaging specifications consist of the imaging manifest and the imaging report. The report represents the report as is written by the clinician. The manifest ({{iheMADO}}) provides a summary of the data available in the DICOM study. It is represented as a FHIR Bundle simultaneously to the imaging report. This allows it to be distributed in the same ({{iheMHD}}) infrastructure as is defined by {{euridiceAPI}}.
 
-The sequence diagram presented below presents a typical use case in which both specifications are used.
+The sequence diagram presented below presents a typical use case in which both specifications are used. It corresponds to the report-driven retrieval use case published in {{iheMADO}} Volume 1.
 
 <figure>
-  {% include report-and-mado-usecase.svg %}
+  {% include mado-volume1-eu2-report-driven-retrieval.svg %}
   <figcaption>Figure 1: Use case describing report and manifest use</figcaption>
 </figure>
 <br clear="all"/>
 
-The Clinician searches for documents. Select the document to inspect and downloads it.
+The Clinician searches for imaging reports, selects the report to inspect and retrieves it.
 
-After inspection of the document, it searches for the manifest related to the report, downloads it and determines which images/series to view.
+After reviewing the report and determining that image access is needed, the Clinician searches for the study manifest related to the report, retrieves it and determines which images/series to view.
 
-Using the {{iheXcWado}} URL, the Clinician download the relevant DICOM images and renders them.
-
-The Clinician searches for documents.
-
-> GET DocumentReference?category=http://loinc.org	85430-7&subject=Patient/1234
-
-Select the document to inspect and downloads it.
-
-> GET &lt;DocumentReference.content.attachment.url&gt;
-
-After inspection of the document, it searches for the manifest related to the report using the StudyInstanceUID identifier of the ImagingStudy.
-
-> GET DocumentReference?category=http://loinc.org	18748-4&subject=Patient/1234&identifier=&lt;StudyInstanceUID&gt;
-
-The manifest is downloaded.
-
-> GET &lt;DocumentReference.content.attachment.url&gt;
-
-After inspecting the information available in the study, the requested DICOM images/series are downloaded and rendered using the URL.
+Using the {{iheXcWado}} URL provided by the manifest, the Clinician downloads the relevant DICOM images and renders them.
 
 #### Bidirectional lookup between report and manifest
 
@@ -52,11 +34,3 @@ The same linkage model supports both directions:
 The primary anchors for this linkage are:
 * **StudyInstanceUID** (study-level relation);
 * **accession-number** (order/request-level relation).
-
-Example reverse lookup from manifest to report using accession-number:
-
-> GET DocumentReference?category=http://loinc.org	85430-7&subject=Patient/1234&identifier=&lt;accession-number&gt;
-
-Example reverse lookup from manifest to report using StudyInstanceUID:
-
-> GET DocumentReference?category=http://loinc.org	85430-7&subject=Patient/1234&identifier=&lt;StudyInstanceUID&gt;
