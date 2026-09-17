@@ -3,15 +3,21 @@
 
 {% raw %}{% include key-image-representation.md %}{% endraw %}
 
+{% if isR4 %}
+## Required Imaging Study Reference
+
+The profile SHALL contain the `derivedFrom[study]` slice exactly once. The slice SHALL reference the `ImagingStudyEuImaging` profile:
+
+* `extension[derivedFrom][study].value[x]` SHALL be a reference to `ImagingStudyEuImaging`.
+
 ## Performer Requirements
 
-The profile distinguishes up to two performer entries for a key image:
+When performer information is present, the profile SHALL distinguish it using the following slices:
 
-* `pracRole` (0..1) identifies the practitioner role that selected the key image. Its `function` is fixed to [`PRF` (Performer)](http://hl7.org/fhir/ValueSet/series-performer-function#PRF), and its `actor` references a [[[EuPractitionerRole]]].
-* `device` (0..1) identifies the device used for the key image. Its `function` is fixed to [`DEV` (Device)](http://hl7.org/fhir/ValueSet/series-performer-function#DEV), and its `actor` references a [[[DeviceEuImaging]]].
+* `performer[pracRole]` MAY occur once. When present, its `function` SHALL be fixed to [`PRF` (Performer)](http://hl7.org/fhir/ValueSet/series-performer-function#PRF), and its `actor` SHALL reference [[[EuPractitionerRole]]].
+* `performer[device]` MAY occur once. When present, its `function` SHALL be fixed to [`DEV` (Device)](http://hl7.org/fhir/ValueSet/series-performer-function#DEV), and its `actor` SHALL reference [[[DeviceEuImaging]]].
 
-These slices and their function-to-actor correlation are enforced in R5. R4 is intended to apply the equivalent constraints through the cross-version performer extension.
+These slices and their function-to-actor correlation are enforced in R5. R4 retains the aggregate cross-version performer constraints until the required publisher and validator support is available.
 
-{% if isR4 %}
-{% raw %}{% include worknote.html text="The R4 <code>performer</code> extension cannot yet be resliced into practitioner-role and device slices because of a <a href='https://jira.hl7.org/browse/FHIR-57776'>SUSHI tooling issue</a>. The slicing will be added once the tooling issue has been resolved." %}{% endraw %}
+{% raw %}{% include imaging-selection-cross-version-worknote.md %}{% endraw %}
 {% endif %}
