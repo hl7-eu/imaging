@@ -10,7 +10,7 @@ Following this guidance, for {{ ProducerActor }}s `SHALL/SHOULD/MAY:able-to-popu
 
 Every element flagged as Must-Support (MS) carries an obligation. Where the Xt-EHR (EHDS) logical model defines an obligation for the mapped source element, that obligation is used; where the model defines none, this guide defines its own obligation using codes from the [FHIR obligation code system](https://hl7.org/fhir/extensions/CodeSystem-obligation.html). Every mandatory (`1..1`) element carries a `SHALL:populate` obligation, since a required element must be populated when its value is known.
 
-Obligations are stored in dedicated `<Resource>Obligation…` profiles and are derived from the Xt-EHR mapping. When more than one source element maps to the same target element, the strongest obligation applies (`SHALL` > `SHOULD` > `MAY`), and the contributing Xt-EHR source elements are recorded in the obligation's documentation. This guide does not lower an obligation below the level defined by the Xt-EHR model.
+Obligations are stored in dedicated `<Resource>Obligation…` profiles and are derived from the Xt-EHR mapping. When more than one source element maps to the same target element, the strongest obligation applies (`SHALL` > `SHOULD` > `MAY`), and the contributing Xt-EHR source elements are recorded in the obligation's documentation. As a result, a single actor never carries more than one obligation of the same kind on a given element: any duplicate obligations for that actor are collapsed to the strongest. This guide does not lower an obligation below the level defined by the Xt-EHR model.
 
 #### Interpretation of the obligation codes
 

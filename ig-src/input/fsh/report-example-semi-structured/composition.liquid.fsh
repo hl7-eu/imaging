@@ -31,7 +31,7 @@ Usage: #example
 * title = "Radiology Report for the left/right foot study" // invented - not there in the report
 * text
   * status = #generated
-  * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\">Radiology report composition narrative. See section narratives below.</div>"
+  * div = "<div xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"de-DE\" lang=\"de-DE\"><p><b>MR Knee</b> &#8212; final report.</p><table><tr><td><b>Patient</b></td><td>Frau GuteFrage Test-Schusti, born 1976-04-29</td></tr><tr><td><b>Author</b></td><td>Dr. Lucas Gasenzer (Radiologist)</td></tr><tr><td><b>Organization</b></td><td>Radiology Zentrum Bremen</td></tr><tr><td><b>Report date</b></td><td>2025-05-08</td></tr><tr><td><b>Report identifier</b></td><td>o32u4js8492ff</td></tr></table></div>"
 
 ///////////////////////////////////////////////////////////////////////
 * section[imagingstudy]

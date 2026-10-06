@@ -866,7 +866,7 @@ function generateObligationFiles(parsedData) {
     const RESOURCE_TITLES = {
         CompositionEuImaging: 'Composition: Imaging Report',
         ServiceRequestOrderEuImaging: 'ServiceRequest: Imaging Order',
-        ImagingStudyEuImaging: 'ImagingStudy: General',
+        ImagingStudyEuImaging: 'ImagingStudy: Reported Study',
         DiagnosticReportEuImaging: 'DiagnosticReport: Imaging Report',
         ObservationFindingEuImaging: 'Observation: Imaging Finding',
         EuMedicationAdministration: 'MedicationAdministration'
@@ -994,6 +994,40 @@ function generateObligationFiles(parsedData) {
         return resourceUrl.startsWith('Eu') ? `$${resourceUrl}` : resourceUrl;
     }
 
+    const OBLIGATION_LEVEL_RANK = { SHALL: 3, SHOULD: 2, MAY: 1 };
+
+    // Keep only the strongest obligation level per actor and activity (SHALL > SHOULD > MAY), so an
+    // actor never carries duplicate obligations on the same element (FHIR-56752).
+    function pruneWeakerObligations(codeMap) {
+        const best = new Map();
+        codeMap.forEach((actors, code) => {
+            const [level, activity = ''] = code.split(':');
+            const rank = OBLIGATION_LEVEL_RANK[level] ?? 0;
+            actors.forEach(actor => {
+                const key = `${actor}\u0000${activity}`;
+                const existing = best.get(key);
+                if (!existing || rank > existing.rank) {
+                    best.set(key, { code, rank });
+                }
+            });
+        });
+
+        const pruned = new Map();
+        codeMap.forEach((actors, code) => {
+            const [, activity = ''] = code.split(':');
+            actors.forEach(actor => {
+                const key = `${actor}\u0000${activity}`;
+                if (best.get(key)?.code === code) {
+                    if (!pruned.has(code)) {
+                        pruned.set(code, new Set());
+                    }
+                    pruned.get(code).add(actor);
+                }
+            });
+        });
+        return pruned;
+    }
+
     function buildVersionData(resourceName, targetResourceIndex, targetElementIndex, actorVersionConfigs) {
         const rows = parsedData
             .filter((row, index) => index > 0)
@@ -1027,6 +1061,10 @@ function generateObligationFiles(parsedData) {
                     codeMap.get(code).add(cfg.actorCanonical);
                 });
             });
+        });
+
+        obligationMap.forEach((codeMap, element) => {
+            obligationMap.set(element, pruneWeakerObligations(codeMap));
         });
 
         return {

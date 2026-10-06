@@ -11,7 +11,9 @@ When the accession number is known, it SHALL be included as the identifier on th
 * identifier
   * insert SliceElement( #value, type )
 * identifier contains observationUid 0..1
-* identifier[observationUid].type = MissingDicomTerminology#00080018 // "SOP Instance UID"
+* identifier[observationUid].type = MissingDicomTerminology#0040A171 // "Observation UID"
+* identifier[observationUid] ^short = "DICOM Observation UID"
+* identifier[observationUid] ^definition = "Observation UID (DICOM tag 0040,A171) is the tag used in DICOM to identify observations."
 
 * basedOn
   * insert SliceElement( #type, $this )
