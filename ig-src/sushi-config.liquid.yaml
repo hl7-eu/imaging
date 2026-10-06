@@ -68,13 +68,7 @@ dependencies:
   ihe.iti.mhd: 5.0.0
   {% endif %}  
 
-  # eu.ehds.models: 0.1.0sushi
-  # eu.ehds.models: current
-  # required for medication extensions
-  # ihe.pharm.mpd: current
-
-
-
+    
 pages:
   index.md:
     title: Home
