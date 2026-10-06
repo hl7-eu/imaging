@@ -47,7 +47,7 @@ Description: "Basic resource holding cross-version extensions for Imaging Select
 * extension[derivedFrom][study].value[x] only Reference( ImagingStudyEuImaging )
 
 Profile: SrInstanceImagingSelectionEuImaging
-Parent: $CrossVersion-R5-ImagingSelection-for-R4
+Parent: ImagingSelectionEuImaging
 Title: "Basic-ImagingSelection: DICOM SR Instance"
 Description: "Imaging Selection referring to a DICOM SR instance"
 * insert SetFmmAndStatusRule( 1, draft )
