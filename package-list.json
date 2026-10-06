@@ -1,5 +1,5 @@
 {
-  "package-id" : "hl7.fhir.eu.template",
+  "package-id" : "hl7.fhir.eu.imaging",
   "title" : "HL7 Europe FHIR IG template",
   "canonical" : "http://hl7.eu/fhir/imaging",
   "introduction" : "This is the template for FHIR Implementation Guides published by HL7 Europe.",
