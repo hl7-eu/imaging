@@ -10,6 +10,6 @@
 {% assign ServiceRequestOrderEuImaging           = "[`ServiceRequestOrderEuImaging`](StructureDefinition-ServiceRequestOrderEuImaging.html)" %}
 {% assign ProcedureEuImaging                     = "[`ProcedureEuImaging`](StructureDefinition-ProcedureEuImaging.html)" %}
 {% assign ImagingStudyEuImaging                  = "[`ImagingStudyEuImaging`](StructureDefinition-ImagingStudyEuImaging.html)" %}
-5 - {% assign ProducerActor                          = "[`Producer`](ActorDefinition-EuImagingReportProducer.html)" %}
+{% assign ProducerActor                          = "[`Producer`](ActorDefinition-EuImagingReportProducer.html)" %}
 {% assign ConsumerActor                          = "[`Consumer`](ActorDefinition-EuImagingReportConsumer.html)" %}
 {% assign DocumentReferenceImagingReport         = "[`DocumentReferenceImagingReport`](StructureDefinition-DocumentReferenceImagingReport.html)" %}
