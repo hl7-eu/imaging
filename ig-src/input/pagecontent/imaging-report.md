@@ -83,7 +83,7 @@ When there are significant numbers of findings, the imaging clinician will typic
 
 An important distinction between Findings and Impressions is that Findings capture what the imaging clinician saw in the image, while Impressions capture what they inferred/concluded. The findings might record a radiolucency, while the impression records a fracture. There are some cases where the two overlap, but generally imaging clinicians try to capture in the Findings what the significant image features are and strive in the Impressions to communicate to the referring physician what they think those represent in clinical terms. In cases of disease-like imaging appearances (e.g. *5 mm non-obstructing left renal calculus*) that are observed in the images, they should be encoded as [[[ObservationFindingEuImaging]]] as well, not as Condition resources.
 
-In this specification, findings are represented as resources following the [[[ObservationFindingEuImaging]]] profile. Optionally, this section can also hold one or more key image resources represented by either [[[ImagingSelectionKeyImageEuImaging]]] or [[[DocumentReferenceKeyImageEuImaging]]] or other relevant images represented by a [[[DocumentReference]]].
+In this specification, findings are represented as resources following the [[[ObservationFindingEuImaging]]] profile. Optionally, this section can also hold one or more key image resources represented by either [[[ImagingSelectionKeyImageEuImaging]]] or {% if isR4 %}{{ MediaKeyImageEuImaging }}{% else %}{{ DocumentReferenceKeyImageEuImaging }}{% endif %} or other relevant images represented by a {% if isR4 %}[[[Media]]] or [[[DocumentReference]]]{% else %}[[[DocumentReference]]]{% endif %}.
 
 ##### Impression
 
@@ -149,11 +149,15 @@ Document versioning is tracked using different concepts:
  
 These fields are present on the key resources of this IG as is illustrated by the table below:
 
-| Concept               | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging  | CompositionEuImaging | 
-| --------------------- | ----------------------------------------------------- | -------------------------- | -------------------- |
-| issued/last-edit date |                                                       | issued                     | date |
-| version               | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} |
-| related               | {%if isR4%}related{%else%}relatesTo{%endif%}          | -                          | relatesTo |
+| Concept                                      | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging | CompositionEuImaging                              | BundleReportEuImaging |
+| -------------------------------------------- | ----------------------------------------------------- | ------------------------- | -------------------------------------------------- | --------------------- |
+| clinically effective time (when study took place) | {%if isR4%}context.period{%else%}period{%endif%} | effective[x]              | {%if isR4%}event.period{%else%}period{%endif%}     | -                     |
+| report content last logically changed by the author | -                                                  | -                         | date                                               | -                     |
+| report version issued/released to providers  | -                                                     | issued                    | -                                                  | -                     |
+| document created/assembled                   | content.attachment.creation                          | -                         | -                                                  | timestamp             |
+| document reference created/indexed           | date                                                  | -                         | -                                                  | -                     |
+| version                                      | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} | -                     |
+| related                                      | {%if isR4%}related{%else%}relatesTo{%endif%}          | -                         | relatesTo                                          | -                     |
  
 
 Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.

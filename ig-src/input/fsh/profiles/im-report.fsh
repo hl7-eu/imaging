@@ -26,7 +26,7 @@ Description: "Document Bundle for Imaging Report"
     CompositionEuImaging 1..1 and
     DiagnosticReportEuImaging 1..1 and
     Patient 1..1 and 
-    ImagingStudy 0..* and 
+    ImagingStudy 0..* and
     requested-procedure 0..* and
     performed-procedure 0..* and 
     findings 0..* and
@@ -62,7 +62,7 @@ Description: "Document Bundle for Imaging Report"
   * resource only ImagingSelectionKeyImageEuImaging
 * entry[practitioner]
   * ^short = "Practitioner involved in the report"
-  * resource only PractitionerEu or $EuPractitionerRole
+  * resource only $EuPractitioner or $EuPractitionerRole
 * entry[organization]
   * ^short = "Organization involved in the report"
   * resource only $EuOrganization

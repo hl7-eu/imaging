@@ -1,8 +1,9 @@
+{% include variable-definitions.md %}
 This CapabilityStatement defines the capabilities for systems providing direct resource
 access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
 It inherits patterns from:
-- **[HL7-IPA](https://ipa.hl7.org/) (International Patient Access)**: Resource profiles and search parameter patterns
-- **[IHE-QEDm](https://profiles.ihe.net/PCC/QEDm/index.html) (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
+- **{{ hl7IPA }} (International Patient Access)**: Resource profiles and search parameter patterns
+- **{{ iheQEDm }} (Query for Existing Data for Mobile)**: Clinical Data Source actor capabilities
 
 ### Resource Flexibility (IPA Alignment)
 
@@ -34,5 +35,6 @@ Resources SHOULD conform to EU Core profiles where available.
 
 When a imaging report is received as a FHIR document Bundle and the server makes the resources available the following guidelines SHOULD be taken into account:
 
-* Follow the guidance provided in [IHE-mXDE](https://profiles.ihe.net/ITI/mXDE/index.html), specifically related to the generation of Provenance resources; when the resources are added, a Provenance resource SHOULD be present providing information on the source of the information.
+* Follow the guidance provided in {{ IHEmXDE }}, specifically related to the generation of Provenance resources; when the resources are added, a Provenance resource SHOULD be present providing information on the source of the information.
+* When resources are extracted from the FHIR document Bundle and made available as individual resources, follow the {{ IHEmXDE }} guidance for generating Provenance resources. A Provenance resource SHOULD identify the extracted resources and their source document.
 * Retain the original DocumentReference and Bundle resource in the server.

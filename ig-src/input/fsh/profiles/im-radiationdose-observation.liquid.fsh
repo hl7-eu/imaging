@@ -17,7 +17,7 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 //   * insert SliceElement( #value, type )
 // * identifier contains radiation-sr-instance-uid 0..1
 // * identifier[radiation-sr-instance-uid]
-//   * type = MissingDicomTerminology#00083010 // "Irradiation Event UID"
+//   * type = $dicomOntology#113769 // "Irradiation Event UID"
 
 * partOf 0..* 
 * partOf only Reference(  ProcedureEuImaging )
@@ -27,12 +27,12 @@ E.g. based on information from [DICOM part 16](https://dicom.nema.org/medical/di
 // {{R4}}* extension[derivedFrom] contains srImagingSelection 1..* 
 // {{R4}}* extension[derivedFrom][srImagingSelection].value[x] only Reference( SrInstanceImagingSelectionEuImaging )
 
-{{R4}}* derivedFrom 1..*
+{{R4}}* derivedFrom 0..*
 {{R4}}  * insert SliceElement( #profile, $this )
 {{R4}}* derivedFrom contains study 1..1 
 {{R4}}* derivedFrom[study] only Reference( ImagingStudyEuImaging )
 {{R4}}  * ^short = "The study the radiation information relates to."
-{{R5}}* derivedFrom 1..*
+{{R5}}* derivedFrom 0..*
 {{R5}}  * insert SliceElement( #profile, $this )
 {{R5}}* derivedFrom contains study 1..1 and dicomSrInstance 0..* 
 {{R5}}* derivedFrom[dicomSrInstance] only Reference( SrInstanceImagingSelectionEuImaging )

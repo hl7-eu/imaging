@@ -1,0 +1,15 @@
+{
+  "package-id" : "hl7.fhir.eu.imaging",
+  "title" : "HL7 Europe Imaging Report",
+  "canonical" : "http://hl7.eu/fhir/imaging",
+  "introduction" : "FHIR Implementation Guide for HL7 Europe Imaging Reports.",
+  "list" : [
+    {
+      "version" : "current",
+      "desc" : "Continuous Integration Build (latest in version control)",
+      "path" : "https://build.fhir.org/ig/hl7-eu/imaging",
+      "status" : "ci-build",
+      "current" : true
+    }
+  ]
+}

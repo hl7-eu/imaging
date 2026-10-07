@@ -20,17 +20,11 @@ referred as the 'Performed Procedure Step' (PPS). This profile is used to captur
   * insert SliceElementWithDescription( #value, function, [[Different performers can be added to the procedure.]] )
   * function 1..1
 * performer contains performer 0..* and imaging-device 0..*
+// The discriminating value must sit on `function` itself; a fixed value on a nested
+// `function.coding` slice leaves the discriminator unevaluable for validators.
 * performer[performer]
-  * function
-    * coding
-      * insert SliceElement( #value, "$this" )
-    * coding contains healthcare-professional 0..1
-    * coding[healthcare-professional] = $sct#223366009 // "Healthcare professional" // TODO check this code
+  * function = $sct#223366009 // "Healthcare professional"
   * actor only Reference($EuPractitionerRole)
 * performer[imaging-device]
-  * function
-    * coding
-      * insert SliceElement( #value, "$this" )
-    * coding contains imaging-equipment 0..1
-    * coding[imaging-equipment] = $sct#314789007 // "Diagnostic imaging equipment" // TODO check this code
+  * function = $sct#314789007 // "Diagnostic imaging equipment"
   * actor only Reference(DeviceEuImaging)

@@ -1,15 +1,15 @@
 Profile: ObservationGestationalAgeEuImaging
 Parent: $EuObservation
 Title: "Observation: Gestational Age"
-Description: "Gestational Age Observation"
+Description: "Represents the gestational age of the current pregnancy, expressed as a time duration (typically completed weeks and/or days)."
 * insert SetFmmAndStatusRule( 1, draft )
 
 * code 1..1
-* code = $sct#598151000005105 // "Gestational age"
+* code from GestationalAgeLoincEuImaging (required)
 * value[x] only Quantity
 * valueQuantity 1..1 
 * valueQuantity from CommonUCUMCodesForAge (extensible)
-  * ^short = "The age of the patient."
+  * ^short = "The age of the fetus."
 {{R4}}  * ^binding.extension[+].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
 {{R4}}  * ^binding.extension[=].extension[+].url =  #key
 {{R4}}  * ^binding.extension[=].extension[=].valueId =  "patient-age-ucum"

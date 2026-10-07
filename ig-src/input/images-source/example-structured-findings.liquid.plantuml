@@ -7,12 +7,13 @@
         class WmsiStress02 <<Observation>> [[./Observation-StressWmsi02.html]]
     }
     package KeyImages {
+{% if isR4 %}
+        class StructuredKeyImageRestR4 <<Media>> [[./Media-StructuredKeyImageRestR4.html]]
+        class StructuredKeyImageStressR4 <<Media>> [[./Media-StructuredKeyImageStressR4.html]]
+{% else %}
         class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
         class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
-    }
-    package KeyImages {
-        class StructuredKeyImageRest <<DocumentReference>> [[./DocumentReference-StructuredKeyImageRest.html]]
-        class StructuredKeyImageStress <<DocumentReference>> [[./DocumentReference-StructuredKeyImageStress.html]]
+{% endif %}
     }
  
     WmsiRest01 --> Patient: subject
@@ -24,7 +25,11 @@
     WmsiStress02 --> Patient: subject
     WmsiStress02 --> WMSIImage: derivedFrom
 
+{% if isR4 %}
+    class WMSIImage <<Media>>
+{% else %}
     class WMSIImage <<DocumentReference>>
+{% endif %}
 
     DiagnosticReport --> Composition: composition
     DiagnosticReport --> WmsiRest01: result
@@ -37,8 +42,13 @@
     Composition --> WmsiRest02: section[finding].entry
     Composition --> WmsiStress01: section[finding].entry
     Composition --> WmsiStress02: section[finding].entry
+{% if isR4 %}
+    Composition --> StructuredKeyImageStressR4: section[finding].entry
+    Composition --> StructuredKeyImageRestR4: section[finding].entry
+{% else %}
     Composition --> StructuredKeyImageStress: section[finding].entry
     Composition --> StructuredKeyImageRest: section[finding].entry
+{% endif %}
 
     class Patient{
         * name 
@@ -53,8 +63,13 @@
         -- note: "..."
         -- note: "..."
         -- entry: WMSI observations
+    {% if isR4 %}
+        -- entry: StructuredKeyimageRestR4
+        -- entry: StructuredKeyImageStressR4
+    {% else %}
         -- entry: StructuredKeyimageRest
         -- entry: StructuredKeyImageStress
+    {% endif %}
     }
 
     class DiagnosticReport [[./DiagnosticReport-DiagnosticReportStructured.html]] {
@@ -62,8 +77,13 @@
         note[finding] = "..."
         note[finding] = "..."
         note[finding] = "..."
+    {% if isR4 %}
+        extension[finding]: StructuredKeyimageRestR4
+        extension[finding]: StructuredKeyImageStressR4
+    {% else %}
         extension[finding]: StructuredKeyimageRest
         extension[finding]: StructuredKeyImageStress
+    {% endif %}
         result: WMSI observations
     }
 

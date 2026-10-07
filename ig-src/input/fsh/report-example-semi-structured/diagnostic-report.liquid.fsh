@@ -28,7 +28,7 @@ Usage: #example
 * performer[organization] = Reference(OrganizationSemiStructuredReport)
 * resultsInterpreter[author] = Reference(PractitionerRoleSemiStructuredReportAuthor)
 
-{{R4}}* extension[composition].valueReference = Reference(CompositionSemiStructured)
+{{R4}}* extension[DiagnosticReportCompositionR5].valueReference = Reference(CompositionSemiStructured)
 {{R5}}* composition = Reference(CompositionSemiStructured)
 
 * result = Reference(ObservationNarrative)
