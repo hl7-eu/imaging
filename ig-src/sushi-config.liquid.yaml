@@ -7,7 +7,7 @@ id: hl7.fhir.eu.imaging-{{r-code}}
 canonical: http://hl7.eu/fhir/imaging-{{r-code}}
 {% endif %}
 name: HL7EuImagingStudyReport
-title: HL7 Europe Imaging Report {{R-code}}
+title: EU Imaging Report {{R-code}}
 description: This guide describes how a Imaging Report can be represented in the European REALM using FHIR {{R-code}}.
 status: draft # draft | active | retired | unknown
 experimental: false
