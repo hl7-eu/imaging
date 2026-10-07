@@ -147,10 +147,10 @@ run_build_in_docker() {
     if [[ "$tx_url" == http://localhost:* ]]; then
       tx_url="${tx_url/localhost/host.docker.internal}"
       tx_args+=(--add-host "host.docker.internal:host-gateway")
-      if [[ -n "${FHIR_SETTINGS:-}" && -f "$FHIR_SETTINGS" ]]; then
-        tx_args+=(-v "$FHIR_SETTINGS:/tmp/fhir-settings.json:ro")
-        tx_args+=(-e "FHIR_SETTINGS=/tmp/fhir-settings.json")
-      fi
+    fi
+    if [[ -n "${FHIR_SETTINGS:-}" && -f "$FHIR_SETTINGS" ]]; then
+      tx_args+=(-v "$FHIR_SETTINGS:/tmp/fhir-settings.json:ro")
+      tx_args+=(-e "FHIR_SETTINGS=/tmp/fhir-settings.json")
     fi
     tx_args+=(-e "TX_URL=$tx_url")
   fi
