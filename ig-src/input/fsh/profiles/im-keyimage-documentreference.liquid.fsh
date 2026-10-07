@@ -41,7 +41,7 @@
 {{R5}}* category contains imkeyimages 1..1
 {{R5}}* category[imkeyimages]
 {{R5}}  * coding
-{{R5}}    insert SliceElement( #value, $this )
+{{R5}}    * insert SliceElement( #value, $this )
 {{R5}}  * coding contains keyimagecode 1..1
 {{R5}}  * coding[keyimagecode] = $loinc#55113-5 // "Key images Document Radiology"
 
