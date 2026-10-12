@@ -95,7 +95,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section obeys eu-imaging-composition-1
 * section obeys eu-imaging-composition-2
 
-* section 
+* section 3..*
   * insert SliceElement( #value, code )
 * section contains 
     imagingstudy 0..1  and

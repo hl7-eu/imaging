@@ -40,6 +40,8 @@ Description: "Basic resource holding cross-version extensions for Imaging Select
 * insert SetFmmAndStatusRule( 1, draft )
 * subject only Reference( $EuPatient )
 
+* extension 2..*
+* modifierExtension 1..*
 * extension[derivedFrom]
   * insert SliceElement( #profile, value.resolve(\) )
 * extension[derivedFrom] contains study 1..1
