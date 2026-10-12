@@ -86,7 +86,7 @@
 {{R4}}* subject = Reference(PatientStructuredReport)
 {{R4}}* modifierExtension[status].valueCode = #available
 {{R4}}* extension[code].valueCodeableConcept = http://dicom.nema.org/resources/ontology/DCM#113000 "Of Interest"
-{{R4}}* extension[derivedFrom].valueReference = Reference(ImagingStudyStructuredReport)
+{{R4}}* extension[derivedFrom][study].valueReference = Reference(ImagingStudyStructuredReport)
 {{R4}}* identifier[sopInstanceUid]
 {{R4}}  * type = MissingDicomTerminology#00080018
 {{R4}}  * system = "urn:dicom:uid"
