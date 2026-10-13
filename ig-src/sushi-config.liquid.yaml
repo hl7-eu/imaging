@@ -51,8 +51,9 @@ dependencies:
     version: 7.1.0
   hl7.fhir.uv.xver-r5.r4:
     uri: http://hl7.org/fhir/uv/xver
-    version: 0.0.1-snapshot-2
+    version: 0.1.0
   ihe.iti.mhd: 4.2.3
+  ihe.rad.mado: dev
   {% endif %}
 
   {% if isR5 %}
@@ -67,13 +68,7 @@ dependencies:
   ihe.iti.mhd: 5.0.0
   {% endif %}  
 
-  # eu.ehds.models: 0.1.0sushi
-  # eu.ehds.models: current
-  # required for medication extensions
-  # ihe.pharm.mpd: current
-
-  
-  
+    
 pages:
   index.md:
     title: Home
@@ -197,7 +192,7 @@ menu:
     Structural: artifacts-structural.html
     Obligations: artifacts-obligations.html
     All: artifacts.html
-    Examples: artifacts.html#example-example-instances
+    Examples: examples.html
 
 {% if isR4 %}
   R5: https://build.fhir.org/ig/hl7-eu/imaging-r5/

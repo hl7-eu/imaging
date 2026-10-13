@@ -17,7 +17,7 @@ Usage: #example
         * coding[+] = http://dicom.nema.org/resources/ontology/DCM#121022 "Accession Number"
       * system = "http://example.org/myhosptital/accessionsystem"
       * value  = "123456789" // invented - not there in the report
-* extension[diagnosticreport-reference].valueReference = Reference(DiagnosticReportSemiStructured)
+* extension[diagnosticReport].valueReference = Reference(DiagnosticReportSemiStructured)
 * identifier
   * system = "http://example.org/myhosptital/reportidentifiers"
   * value = "o32u4js8492ff" // invented - not there in the report

@@ -200,4 +200,17 @@ The URL is not valid because '(URL contains 4 Invalid Characters: '\')': file://
 
 # Non matching slices
 This element does not match any known slice defined in the profile http://hl7.eu/fhir/imaging/StructureDefinition/BundleReportEuImaging|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# R4 cross-version Basic derivedFrom slice matching
+# The inherited xver Basic.extension:derivedFrom slice is valid in principle, but the released publisher/validator cannot match the required resliced slice in R4 instances. See the FHIR-57776 worknote in cross-version-analysis.md and the pending org.hl7.fhir.core fix.
+%Slice 'Basic.extension:derivedFrom' for extension 'http://hl7.org/fhir/5.0/StructureDefinition/extension-ImagingSelection.derivedFrom': a matching slice is required, but not found (from http://hl7.eu/fhir/imaging/StructureDefinition/ImagingSelectionEuImaging|1.0.0-ballot)
+
+# R4 cross-version Basic derivedFrom slice matching for key images
+# Same documented xver validator limitation for the key-image profile; keep the profile constraint and example, and re-check after the upstream fix is released.
+%Slice 'Basic.extension:derivedFrom' for extension 'http://hl7.org/fhir/5.0/StructureDefinition/extension-ImagingSelection.derivedFrom': a matching slice is required, but not found (from http://hl7.eu/fhir/imaging/StructureDefinition/ImagingSelectionKeyImageEuImaging|1.0.0-ballot)
+
+# R4 Basic artifact extensions under discussion at the September 2026 HL7 WGM
+# The R4 key-image example uses these extensions for its title and description, but the current publisher/validator reports that they are not permitted on Basic. Keep the issue visible for the WGM discussion and future re-validation.
+%Basic/KeyImageImagingSelectionDicomInstanceExample: Basic: The extension http://hl7.org/fhir/StructureDefinition/artifact-description v5.3.0 is not allowed to be used at this point
+%Basic/KeyImageImagingSelectionDicomInstanceExample: Basic: The extension http://hl7.org/fhir/StructureDefinition/artifact-title v5.3.0 is not allowed to be used at this point
 {% endif %}

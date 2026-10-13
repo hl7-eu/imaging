@@ -31,7 +31,7 @@ Usage: #example
 * performer[organization] = Reference (OrganizationStructuredReport)
 * resultsInterpreter[author] = Reference (PractitionerRoleStructuredReportAuthor)
 
-{{R4}}* extension[composition].valueReference = Reference (CompositionStructured)
+{{R4}}* extension[DiagnosticReportCompositionR5].valueReference = Reference (CompositionStructured)
 {{R5}}* composition = Reference (CompositionStructured)
 
 // HISTORY

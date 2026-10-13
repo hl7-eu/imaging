@@ -23,6 +23,6 @@ In order to ensure uniqueness **across** Hospital Information Systems, accession
 
 RuleSet: BasedOnServiceRequestOrderEuImagingReference( slicename )
 * basedOn[{slicename}] only Reference( ServiceRequestOrderEuImaging )
-  * identifier 1..1
+  * identifier 0..1
   * identifier only AccessionNumberIdentifierEuImaging
 

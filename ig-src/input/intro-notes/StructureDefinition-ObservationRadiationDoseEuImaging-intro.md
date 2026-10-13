@@ -24,6 +24,8 @@ The string SHALL NOT:
 
 The content of this observation is typically derived from radiation dose information stored in DICOM or provided directly from dose analysis software.
 
+Technologists / radiographers may also directly document radiation exposure. In addition, DICOM Modality Performed Procedure Step (MPPS) was used to file radiation dose information until very recently.
+
 DICOM templates (from https://build.fhir.org/ig/HL7/fhir-radiation-dose-summary-ig/background.html#minimal-radiation-information):
 * TID 2008 Radiation Exposure and Protection Information
 * Radiopharmaceutical Radiation Dose SR IOD Templates

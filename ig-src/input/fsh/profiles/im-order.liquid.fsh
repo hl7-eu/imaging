@@ -33,6 +33,7 @@ the requested modality.
 {{R5}}* supportingInfo contains pregnancy 0..1
 {{R5}}* supportingInfo[pregnancy] from http://hl7.org/fhir/uv/ips/ValueSet/pregnancy-status-uv-ips
 
+// https://jira.hl7.org/browse/FHIR-59601 addresses the error mentioned by the publisher related to minimum number of extensions
 {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.reason named reason 0..*
 
 // * status 1..1
