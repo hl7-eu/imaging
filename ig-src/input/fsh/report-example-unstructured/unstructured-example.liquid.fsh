@@ -5,6 +5,7 @@ Description: "MHD DocumentReference for unstructured report."
 Usage: #example
 {{R4}}* masterIdentifier[+]
 {{R5}}* identifier[+]
+{{R4}}  * type = https://profiles.ihe.net/ITI/MHD/CodeSystem/IHE.MHD.MHDIdentifierType#uniqueId
   * system = "urn:ietf:rfc:3986"
   * use = #usual
   * value = "http://unstructured-report.example.com"
@@ -21,11 +22,11 @@ Usage: #example
 * subject = Reference(PatientUnstructuredReport)
 * custodian = Reference(OrganizationUnstructuredReport)
 
-{{R4}}* extension[bodysite]
-{{R4}}  * extension[concept]
-{{R4}}    * valueCodeableConcept
-{{R4}}      * coding[+] = $sct#774007
-{{R4}}      * coding[+] = $sct#38266002
+// {{R4}}* extension[bodysite]
+// {{R4}}  * extension[concept]
+// {{R4}}    * valueCodeableConcept
+// {{R4}}      * coding[+] = $sct#774007
+// {{R4}}      * coding[+] = $sct#38266002
 {{R5}}* bodySite
 {{R5}}  * concept
 {{R5}}    * coding[+] = $sct#774007 

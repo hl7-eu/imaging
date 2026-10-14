@@ -15,15 +15,27 @@ RuleSet: WMSIObservation( obsCode, obsDisplay, code, display, bodyCode, bodyDisp
 * valueCodeableConcept = $loinc#{code} "{display}"
 * derivedFrom = Reference(WMSIImage)
 
-Instance: WMSIImage
-InstanceOf: DocumentReference
-Title: "DocumentReference: structured report WMSI image"
-Description: "Shows the WMSI graphs."
-Usage: #example
-* status = #current
-* content.attachment
-  * contentType = #image/png
-  * id = "ig-loader-structured-wmsi.drawio.png"
+{{R4}}Instance: WMSIImage
+{{R4}}InstanceOf: Media
+{{R4}}Title: "Media: structured report WMSI image"
+{{R4}}Description: "Shows the WMSI graphs."
+{{R4}}Usage: #example
+{{R4}}* status = #completed
+{{R4}}* type = http://terminology.hl7.org/CodeSystem/media-type#image "Image"
+{{R4}}* subject = Reference(PatientStructuredReport)
+{{R4}}* content
+{{R4}}  * contentType = #image/png
+{{R4}}  * id = "ig-loader-structured-wmsi.drawio.png"
+
+{{R5}}Instance: WMSIImage
+{{R5}}InstanceOf: DocumentReference
+{{R5}}Title: "DocumentReference: structured report WMSI image"
+{{R5}}Description: "Shows the WMSI graphs."
+{{R5}}Usage: #example
+{{R5}}* status = #current
+{{R5}}* content.attachment
+{{R5}}  * contentType = #image/png
+{{R5}}  * id = "ig-loader-structured-wmsi.drawio.png"
 
 Instance: RestWmsi01
 InstanceOf: Observation

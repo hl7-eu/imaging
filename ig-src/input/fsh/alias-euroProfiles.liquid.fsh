@@ -7,8 +7,8 @@ Alias: $EuAddressUrl           = http://hl7.eu/fhir/base-r5/StructureDefinition/
 Alias: $EuAppointment          = Appointment
 Alias: $EuAppointmentUrl       = http://hl7.org/fhir/StructureDefinition/Appointment
 
-Alias: $EuAllergyIntolerance    = AllergyIntolerance
-Alias: $EuAllergyIntoleranceUrl = http://hl7.org/fhir/StructureDefinition/Appointment/AllergyIntolerance
+Alias: $EuAllergyIntolerance    = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/allergyIntolerance-eu-core
+Alias: $EuAllergyIntoleranceUrl = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/allergyIntolerance-eu-core
 
 Alias: $EuAttachment           = Attachment
 Alias: $EuAttachmentUrl        = http://hl7.org/fhir/StructureDefinition/Attachment
@@ -16,8 +16,8 @@ Alias: $EuAttachmentUrl        = http://hl7.org/fhir/StructureDefinition/Attachm
 Alias: $EuBodyStructure        = BodyStructure
 Alias: $EuBodyStructureUrl     = http://hl7.org/fhir/StructureDefinition/BodyStructure
 
-Alias: $EuCondition            = Condition
-Alias: $EuConditionUrl         = http://hl7.org/fhir/StructureDefinition/Condition
+Alias: $EuCondition            = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/condition-eu-core
+Alias: $EuConditionUrl         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/condition-eu-core
 
 Alias: $EuCoverage             = Coverage
 Alias: $EuCoverageUrl          = http://hl7.org/fhir/StructureDefinition/Coverage
@@ -25,11 +25,17 @@ Alias: $EuCoverageUrl          = http://hl7.org/fhir/StructureDefinition/Coverag
 Alias: $EuCarePlan             = CarePlan
 Alias: $EuCarePlanUrl          = http://hl7.eu/fhir/StructureDefinition/CarePlan
 
+Alias: $EuComposition          = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/composition-eu-core
+Alias: $EuCompositionUrl       = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/composition-eu-core
+
 Alias: $EuContactPoint         = ContactPoint
 Alias: $EuContactPointUrl      = http://hl7.org/fhir/StructureDefinition/ContactPoint
 
 Alias: $EuDevice               = Device
 Alias: $EuDeviceUrl            = http://hl7.org/fhir/StructureDefinition/Device
+
+Alias: $EuDiagnosticReport     = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/diagnosticReport-eu-core
+Alias: $EuDiagnosticReportUrl  = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/diagnosticReport-eu-core
 
 Alias: $EuDocumentReference    = DocumentReference
 Alias: $EuDocumentReferenceUrl = http://hl7.org/fhir/StructureDefinition/DocumentReference
@@ -49,13 +55,13 @@ Alias: $EuEpisodeOfCareUrl     = http://hl7.org/fhir/StructureDefinition/Episode
 Alias: $EuImagingStudy         = ImagingStudy
 Alias: $EuImagingStudyUrl      = http://hl7.org/fhir/StructureDefinition/ImagingStudy
 
-{{R4}}Alias: $EuLocation             = http://hl7.eu/fhir/base/StructureDefinition/location-eu
-{{R4}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base/StructureDefinition/location-eu
-{{R5}}Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
-{{R5}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu
+{{R4}}Alias: $EuLocation             = http://hl7.eu/fhir/base/StructureDefinition/location-eu-core
+{{R4}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base/StructureDefinition/location-eu-core
+{{R5}}Alias: $EuLocation             = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu-core
+{{R5}}Alias: $EuLocationUrl          = http://hl7.eu/fhir/base-r5/StructureDefinition/location-eu-core
 
 Alias: $EuMedication           = Medication
-Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/ImagingStudy/Medication
+Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/Medication
 
 Alias: $EuObservation          = Observation
 Alias: $EuObservationUrl       = http://hl7.org/fhir/StructureDefinition/Observation
@@ -81,8 +87,8 @@ Alias: $EuPractitionerRoleUrl  = http://hl7.eu/fhir/base{{eu-core-r-code}}/Struc
 Alias: $EuPractitioner         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/practitioner-eu-core
 Alias: $EuPractitionerUrl      = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/practitioner-eu-core
 
-Alias: $EuProcedure            = Procedure
-Alias: $EuProcedureUrl         = http://hl7.org/fhir/StructureDefinition/Procedure
+Alias: $EuProcedure            = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/procedure-eu-core
+Alias: $EuProcedureUrl         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/procedure-eu-core
 
 Alias: $EuRange                = Range
 Alias: $EuRangeUrl             = http://hl7.org/fhir/StructureDefinition/Range

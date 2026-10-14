@@ -34,7 +34,7 @@ This implementation guide follows the approach taken by those specifications in 
 classDiagram
  class DiagnosticReportEuImaging
  class CompositionEuImaging
- DiagnosticReportEuImaging --> CompositionEuImaging: extension[composition]
+ DiagnosticReportEuImaging --> CompositionEuImaging: extension[DiagnosticReportCompositionR5]
  CompositionEuImaging --> DiagnosticReportEuImaging: extension[diagnosticReport-reference]
 ```
 {% endif %}

@@ -1,0 +1,203 @@
+== Suppressed Messages ==
+
+# Add warning and/or information messages here after you've confirmed that they aren't really a problem
+# (And include comments like this justifying why)
+# See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
+
+# Link used in an examples
+The link 'radiologiezentrum-bremen.de' for "radiologiezentrum-bremen.de" cannot be resolved
+
+# ConceptMaps in this IG also refer to structure definitions
+%refers to a resource that has the wrong type. Found StructureDefinition expecting one of [CodeSystem]
+Reference must be to a ValueSet, but found a StructureDefinition instead
+
+# ConceptMaps in this IG refer to StructureDefinition that can not be resolved
+Canonical URL 'http://hl7.eu/fhir/imaging/r5/StructureDefinition/%
+
+# ConceptMaps in this IG refer to StructureDefinition that can not be resolved
+%is not fully defined and populated, and no targetScope is specified, so the target code checking will not be performed
+No Target Code System, so the target codes cannot be checked
+
+# Broken link in R5
+%The link 'http://hl7.org/fhir/R5/valueset-diagnostic-requests.html' for "here" cannot be resolved%
+# IG's are not available for R5, dependencies are compatible
+This IG is version 5.0.0, while the IG 'hl7.fhir.uv.ips' is from version 4.0.1
+
+# IG's are not available for R5, dependencies are compatible
+This IG is version 5.0.0, while the IG 'fhir.dicom' is from version 4.0.1
+
+# Artifact of the R5 specification
+The extension http://hl7.org/fhir/StructureDefinition/regex|5.2.0 is deprecated with the note This was deprecated in favor of using a constraint on the element using FHIRPath, since constraints allow for the provision of a human readable message associated with the regex
+Canonical URL 'https://www.hl7.org/fhir/valueset-procedure-reason.html' does not resolve
+
+# Error likely caused by missing or incorrect CodeSystem at the FHIR side
+%Error converting output stream to byte array%
+
+# XtEHR logical model Artifact
+%The element EHDSLaboratoryObservation.observationDevice has a binding, but no bindable types are present [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice]
+%The element EHDSLaboratoryObservation.observationResult has a binding, but no bindable types are present [Base]
+%The element EHDSObservation.observationDevice has a binding, but no bindable types are present [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice]
+%The element EHDSObservation.observationResult has a binding, but no bindable types are present [Base]
+%The element EHDSPatientSummaryBody.socialHistory.socialHistoryObservationsRelatedToHealth.observationDevice has a binding, but no bindable types are present [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice]
+%The element EHDSPatientSummaryBody.socialHistory.socialHistoryObservationsRelatedToHealth.observationResult has a binding, but no bindable types are present [Base]
+%This element has a Binding but the types [Base] do not make this kind of constraint relevant
+%This element has a Binding but the types [https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDSDevice] do not make this kind of constraint relevant
+%Constraint failed: eld-20: 'The first component of the path should be UpperCamelCase. Additional components (following a '.') should be lowerCamelCase. If this syntax is not adhered to, code generation tools may be broken. Logical models may be less concerned about this implication.' (defined in http://hl7.org/fhir/StructureDefinition/ElementDefinition)
+
+# Due to time constraints, examples could not generated for all resources
+%The Implementation Guide contains no explicitly linked examples for this profile
+%The Implementation Guide contains no examples for this profile
+%The Implementation Guide contains no examples for this data type profile
+%The Implementation Guide contains no examples for this extension
+
+# Error in the extension pack, see https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Sub-extension.20url.20'source'.20is.20not.20defined.20by.20Extension.20error
+%Sub-extension url 'source' is not defined by the Extension http://hl7.org/fhir/StructureDefinition/obligation|5.2.0%
+%This element does not match any known slice defined in the profile http://hl7.org/fhir/StructureDefinition/obligation|5.2.0 (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# Comes out of the base spec - ignore
+%which is experimental, but this structure is not labeled as experimental
+
+# XtEHR comes with Narrative - this is ok
+Resource has provided narrative, but the narrative indicates that it is generated - remove the narrative or fix it up
+
+# XtEHR logical models use a different canonical
+% does not match the URL (https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/EHDS%
+%vs https://www.xt-ehr.eu/specifications/fhir/StructureDefinition/%
+
+# ConceptMaps can have no mappings
+Constraint failed: cmd-5: 'Either code or valueSet SHALL be present but not both.' (defined in http://hl7.org/fhir/StructureDefinition/ConceptMap)
+
+# EU profiles are beyond the scope of this IG
+There are multiple different potential matches for the url 'http://terminology.hl7.org/ValueSet/v3-ActCode%
+
+# The IG is draft and so will have draft codesystems.
+%Reference to draft CodeSystem%
+
+# Caused by inclusion of both R5 and R5 resources. The valuesets are not mandated in this specification.
+There are multiple different potential matches for the url%
+
+# DICOM valuesets do not resolve - that is expected.
+%Canonical URL 'http://dicom.nema.org/medical/dicom/current/output/chtml/part%
+%The link '#DCM%
+The link '??' for "Modality%
+The link '??' for "Laterality%
+The link '??' for "KeyObjectSelectionDocumentTitle%
+
+# DICOM ValueSets are not available using download
+ValueSet 'http://dicom.nema.org/medical/dicom/current/output/chtml/part04%
+Canonical URL 'https://dicom.nema.org/medical/dicom/current/output/chtml/part16%
+
+# No code system exists for DICOM SOPclass
+%in the CodeSystem 'urn:ietf:rfc:3986' version 'null'
+
+# Remove warnings related to R5 use of R4 packages
+%based on FHIR version 4.0.1. In general, this version mismatch should be avoided - some tools will try to make this work with variable degrees of success, but others will not even try
+
+
+# Reference to deprecated ValueSet
+%Reference to deprecated ValueSet http://hl7.org/fhir/ValueSet/jurisdiction%
+
+# SCT edition
+The IG is not for the international realm, and it uses SNOMED CT, so it should fix the SCT edition in the expansion parameters
+
+# Duplicates anchor Ids
+%The html source has duplicate anchor Ids%
+
+# 	The repeating element pattern.
+The repeating element has a pattern. The pattern will apply to all the repeats (this has not been clear to all users)
+
+# See https://chat.fhir.org/#narrow/channel/179252-IG-creation/topic/Issue.20using.20version-specific.20packages
+The URL should refer directly to the ImplementationGuide resource (e.g. include '/ImplementationGuide/')
+The canonical URL http://hl7.eu/fhir/extensions doesn't point to an actual ImplementationGuide resource
+
+{% if isR5 %}
+# Reference to experimental code systems
+MSG_EXPERIMENTAL
+
+# This is a known issue of the R5 version of this specification. We are balloting a proposed solution to this error (see https://jira.hl7.org/browse/FHIR-56038).
+Constraint failed: dgr-1: 'When a Composition is referenced in `Diagnostic.composition`, all Observation resources referenced in `Composition.entry` must also be referenced in `Diagnostic.entry` or in the references Observations in `Observation.hasMember` (composition.exists() implies (composition.resolve().section.entry.reference.where(resolve() is Observation) in (result.reference|result.reference.resolve().hasMember.reference)))' (defined in http://hl7.org/fhir/StructureDefinition/DiagnosticReport)Error evaluating FHIRPath expression: left operand to in can only have 1 value, but has 38 values (Observation/WeightObservation,Observation/HeightObservation,Observation/BPObservation,Observation/HRObservation,Observation/RestWmsi01,Observation/RestWmsi02,Observation/RestWmsi03,Observation/RestWmsi04,Observation/RestWmsi05,Observation/RestWmsi06,Observation/RestWmsi07,Observation/RestWmsi08,Observation/RestWmsi09,Observation/RestWmsi10,Observation/RestWmsi12,Observation/RestWmsi13,Observation/RestWmsi14,Observation/RestWmsi15,Observation/RestWmsi16,Observation/RestWmsi17,Observation/StressWmsi01,Observation/StressWmsi02,Observation/StressWmsi03,Observation/StressWmsi04,Observation/StressWmsi05,Observation/StressWmsi06,Observation/StressWmsi07,Observation/StressWmsi08,Observation/StressWmsi09,Observation/StressWmsi10,Observation/StressWmsi12,Observation/StressWmsi13,Observation/StressWmsi14,Observation/StressWmsi15,Observation/StressWmsi16,Observation/StressWmsi17,Observation/RestWmsi11,Observation/StressWmsi11) (@char 31) (log: Error evaluating FHIRPath expression: left operand to in can only have 1 value, but has 38 values (Observation/WeightObservation,Observation/HeightObservation,Observation/BPObservation,Observation/HRObservation,Observation/RestWmsi01,Observation/RestWmsi02,Observation/RestWmsi03,Observation/RestWmsi04,Observation/RestWmsi05,Observation/RestWmsi06,Observation/RestWmsi07,Observation/RestWmsi08,Observation/RestWmsi09,Observation/RestWmsi10,Observation/RestWmsi12,Observation/RestWmsi13,Observation/RestWmsi14,Observation/RestWmsi15,Observation/RestWmsi16,Observation/RestWmsi17,Observation/StressWmsi01,Observation/StressWmsi02,Observation/StressWmsi03,Observation/StressWmsi04,Observation/StressWmsi05,Observation/StressWmsi06,Observation/StressWmsi07,Observation/StressWmsi08,Observation/StressWmsi09,Observation/StressWmsi10,Observation/StressWmsi12,Observation/StressWmsi13,Observation/StressWmsi14,Observation/StressWmsi15,Observation/StressWmsi16,Observation/StressWmsi17,Observation/RestWmsi11,Observation/StressWmsi11) (@char 31))
+
+# This is a known issue of the R5 version of this specification. A proposed resolution to this error (see https://jira.hl7.org/browse/FHIR-56038)is being balloted in this ballot-0.2.0 version of the spec. Please refer to the STU notes in the home page.
+Unable to find a profile match for DiagnosticReport/DiagnosticReportStructured among choices: http://hl7.eu/fhir/imaging-r5/StructureDefinition/DiagnosticReportEuImaging
+
+# This is a known issue of the R5 version of this specification. We are balloting a proposed solution to this error (see https://jira.hl7.org/browse/FHIR-56038).
+Slice 'Bundle.entry:CompositionEuImaging': a matching slice is required, but not found (from http://hl7.eu/fhir/imaging-r5/StructureDefinition/BundleReportEuImaging|1.0.0-ballot). Note that other slices are allowed in addition to this required slice
+
+# This is a known issue of the R5 version of this specification. We are balloting a proposed solution to this error (see https://jira.hl7.org/browse/FHIR-56038).
+Slice 'Bundle.entry:DiagnosticReportEuImaging': a matching slice is required, but not found (from http://hl7.eu/fhir/imaging-r5/StructureDefinition/BundleReportEuImaging|1.0.0-ballot). Note that other slices are allowed in addition to this required slice
+
+
+# There are no valid display names found for the code for language(s) 'de-DE'.
+NO_VALID_DISPLAY_FOUND_NONE_FOR_LANG_OK
+
+# Reference to deprecated ValueSet and extensions
+MSG_DEPRECATED
+MSG_DEPENDS_ON_DEPRECATED
+
+# Not updated dependencies
+The ImplementationGuide uses package hl7.terminology.r4#7.0.1 released on 2025-12-11, but the most recent appropriate version is 7.1.0. This reference is getting old and the more recent version should be considered
+The ImplementationGuide uses package ihe.iti.mhd#4.2.3 released on 2025-10-31, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
+
+# R5 Doc Bundle rules pre-adopted
+BUNDLE_BUNDLE_ENTRY_REVERSE_R4
+
+# Definitions not found
+A definition could not be found for Canonical URL 'http://www.rsna.org/RadLex_Playbook.aspx'
+
+# The display in the ValueSet does not match with any known display
+VALUESET_CODE_CONCEPT_HINT
+
+# Not resolved URL
+Type_Specific_Checks_DT_URL_Resolve
+
+# not valid url
+The URL is not valid because '(URL contains 4 Invalid Characters: '\')': file://C:\zFHIR-publication\hl7-eu\health-data-api\output/StructureDefinition-EehrxfMhdDocumentReference.html
+
+# Non matching slices
+This element does not match any known slice defined in the profile http://hl7.eu/fhir/imaging/StructureDefinition/BundleReportEuImaging|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+
+# dependency on a ballot version
+The ImplementationGuide uses package hl7.fhir.uv.extensions#5.3.0-ballot released on 2025-08-01, but the most recent appropriate version is 5.2.0. This reference is getting old and the more recent version should be considered
+
+# Non matching slices
+
+Details_for__matching_against_Profile_
+
+# Temporary usage of local code system http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs
+
+UNKNOWN_CODESYSTEM
+A definition for CodeSystem 'http://hl7.eu/fhir/eu-health-data-api/CodeSystem/eehrxf-document-priority-category-cs' could not be found, so the code cannot be validated
+{% endif %}
+
+{% if isR4 %}
+# There are no valid display names found for the code for language(s) 'de-DE'.
+NO_VALID_DISPLAY_FOUND_NONE_FOR_LANG_OK
+
+# Reference to deprecated ValueSet and extensions
+MSG_DEPRECATED
+MSG_DEPENDS_ON_DEPRECATED
+
+# Not updated dependencies
+The ImplementationGuide uses package hl7.terminology.r4#7.0.1 released on 2025-12-11, but the most recent appropriate version is 7.1.0. This reference is getting old and the more recent version should be considered
+The ImplementationGuide uses package ihe.iti.mhd#4.2.3 released on 2025-10-31, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
+
+
+# R5 Doc Bundle rules pre-adopted
+BUNDLE_BUNDLE_ENTRY_REVERSE_R4
+
+# Definitions not found
+A definition could not be found for Canonical URL 'http://www.rsna.org/RadLex_Playbook.aspx'
+
+# The display in the ValueSet does not match with any known display
+VALUESET_CODE_CONCEPT_HINT
+
+# Not resolved URL
+Type_Specific_Checks_DT_URL_Resolve
+
+# not valid url
+The URL is not valid because '(URL contains 4 Invalid Characters: '\')': file://C:\zFHIR-publication\hl7-eu\health-data-api\output/StructureDefinition-EehrxfMhdDocumentReference.html
+
+
+# Non matching slices
+This element does not match any known slice defined in the profile http://hl7.eu/fhir/imaging/StructureDefinition/BundleReportEuImaging|1.0.0-ballot (this may not be a problem, but you should check that it's not intended to match a slice)
+{% endif %}

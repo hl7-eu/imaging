@@ -4,7 +4,6 @@ Parent: Device
 Title: "Device: Imaging Device"
 Description: """The device the made the image."""	
 * insert SetFmmAndStatusRule( 1, draft )
-* status 1..1
 
 {{R4}}* extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-Device.category named imagingCategory 1..1
 {{R4}}* extension[imagingCategory].valueCodeableConcept = $sct#314789007 // "Diagnostic imaging equipment"
