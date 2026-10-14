@@ -69,17 +69,17 @@ The first pattern uses the  `{% if isR4 % }` and `{% endif}` statements as is de
 
 In the R4 version of the shorthand file on the R4 part will be present, the R5 version will only hand the R5 alternative.
 
-This approach has the advantage that the identation remains in place but the disadvantage that the line numbers change. An alternative approach is illustrated below.
+This approach has the advantage that indentation remains in place, but the disadvantage that line numbers change. An alternative approach is illustrated below.
 
 ```text
 * status = #final
-{%R5%}* version = "1.0.0" // invented - not there in the report
-{%R4%}* extension[version].valueString = "1.0.0"
-{% endif}
+{{R5}}* version = "1.0.0" // invented - not there in the report
+{{R4}}* extension[version].valueString = "1.0.0"
 ```
 
-In the R4 version, `{%R4%}` will be replaced by "" and `{%R4%}` by "//R5". In the R5 version `{%R4%}` will be replaced by "//R4" and `{%R4%}` by "".
-The different sections are clearly marked and the line numbering is not compromised at the expense of loosing indent alignment. 
+In the R4 version, `{{R4}}` is replaced by `""` and `{{R5}}` by `"//R5"`.
+In the R5 version, `{{R4}}` is replaced by `"//R4"` and `{{R5}}` by `""`.
+This keeps the different sections clearly marked and preserves line numbers, at the cost of indentation alignment.
 
 ## Compiling Content
 
@@ -89,4 +89,3 @@ The different sections are clearly marked and the line numbering is not compromi
    ```
 2. The compiled IGs will be found in the `igs/r4` and `igs/r5` directories.
 3. Run `./_updatePublisher.sh` and then `./_genonce.sh` to build each IG.
-
