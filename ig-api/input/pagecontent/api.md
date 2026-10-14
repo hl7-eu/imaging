@@ -32,6 +32,10 @@ The different actors defined in this specification are presented in the figure b
 
 The main actors Resource Access Provider and Resource Consumer are refined in this specification and imaging report specific versions are defined.
 
+### Report Bundle generation
+
+Resource Access Providers that support DiagnosticReport SHOULD support the instance-level [DiagnosticReport/$document] operation to generate a report Bundle conforming to BundleReportEuImaging. See [[[DiagnosticReport-fhir-report]]].
+
 ### Capability Statements
 
 The requirements related to each actor are reflected by capability statements that are listed below.

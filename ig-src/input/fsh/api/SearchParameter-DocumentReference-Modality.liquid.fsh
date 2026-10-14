@@ -12,5 +12,5 @@
 {{R4}}* code = #modality
 {{R4}}* base[+] = #DocumentReference
 {{R4}}* type = #token
-{{R4}}* expression = "DocumentReference.extension('http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality').value"
+{{R4}}* expression = "DocumentReference.extension('https://profiles.ihe.net/RAD/MADO/StructureDefinition/ext-R5-DocumentReference.modality').value"
 

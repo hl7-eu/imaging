@@ -34,9 +34,10 @@ Alias: $workflow-reason-url                   = http://hl7.org/fhir/StructureDef
 
 Alias: $CrossVersion-Attachment.pages                     = http://hl7.org/fhir/5.0/StructureDefinition/extension-Attachment.pages
 Alias: $CrossVersion-Composition.version                  = http://hl7.org/fhir/5.0/StructureDefinition/extension-Composition.version
-Alias: $CrossVersion-R5-ImagingSelection-for-R4           = http://hl7.org/fhir/4.0/StructureDefinition/R5-ImagingSelection-for-R4
-Alias: $CrossVersion-R5-DocumentReference.bodySite-for-R4 = http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.bodySite|0.0.1-snapshot-2
-Alias: $CrossVersion-R5-DocumentReference.modality-for-R4 = http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.modality
+Alias: $ihe-mado-docref-modality                          = https://profiles.ihe.net/RAD/MADO/StructureDefinition/ext-R5-DocumentReference.modality
+Alias: $ihe-mado-docref-bodysite                          = https://profiles.ihe.net/RAD/MADO/StructureDefinition/ext-R5-DocumentReference.bodySite
+Alias: $CrossVersion-R5-ImagingSelection-for-R4           = http://hl7.org/fhir/5.0/StructureDefinition/profile-ImagingSelection
+Alias: $CrossVersion-R5-DocumentReference.version-for-R4  = http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.version
 Alias: $diagnosticReport-composition = http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition
 
 Alias: $hl7euDiagnosticReferenceReference     =  http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference

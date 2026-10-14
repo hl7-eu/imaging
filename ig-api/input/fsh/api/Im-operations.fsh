@@ -7,11 +7,11 @@ Usage: #definition
 * title = "OperationDefinition: create a FHIR report from a DiagnosticReport"
 * status = #active
 * kind = #operation
-* experimental = false 
+* experimental = false
 * date = 2025-01-01
 * purpose = "Utility operation to generate a FHIR report from a DiagnosticReport."
 * description = """
-This operation generates a FHIR report from an DiagnosticReport resource that points to a Composition resource. Its behavior is identical to the [Composition/$document](https://build.fhir.org/composition-operation-document.html) operation but adds the DiagnosticReport and its referenced resources to the Bundle.
+This operation generates a FHIR report from a DiagnosticReport resource that points to a Composition resource. Its behavior is identical to the [Composition/$document](https://build.fhir.org/composition-operation-document.html) operation but adds the DiagnosticReport and its referenced resources to the Bundle.
 """
 * code = #document
 * system = false

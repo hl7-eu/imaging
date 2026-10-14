@@ -332,6 +332,12 @@ Servers MAY omit this resource based on their capabilities.
 * rest[=].resource[=].interaction[=].extension[=].valueCode = #SHALL
 * rest[=].resource[=].interaction[=].documentation = "Search for DiagnosticReport resources"
 
+* rest[=].resource[=].operation[+].name = "document"
+* rest[=].resource[=].operation[=].definition = Canonical(DiagnosticReport-fhir-report)
+* rest[=].resource[=].operation[=].documentation = "Generate a report Bundle for this DiagnosticReport."
+* rest[=].resource[=].operation[=].extension[+].url = "http://hl7.org/fhir/StructureDefinition/capabilitystatement-expectation"
+* rest[=].resource[=].operation[=].extension[=].valueCode = #SHOULD
+
 * rest[=].resource[=].searchParam[+].name = "patient"
 * rest[=].resource[=].searchParam[=].definition = "http://hl7.org/fhir/SearchParameter/clinical-patient"
 * rest[=].resource[=].searchParam[=].type = #reference
