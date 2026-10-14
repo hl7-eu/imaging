@@ -1,0 +1,238 @@
+<!-- Liquid template version: 0.4.6 -->
+<div>
+  {% if Composition.title.exists() %}
+    <h3><b>Title: </b>{{Composition.title}}</h3>
+  {% else %}  
+    <h3><b>Title: </b>Imaging Report</h3>
+  {% endif %}
+
+  {% if Composition.description.exists() %}
+    <p>{{Composition.description}}</p>
+  {% endif %}
+
+  <table class="grid dict">
+        {% if Composition.id.exists() %}
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">{{Composition.id}}</td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.url.exists() %}
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;">{{Composition.url}}</td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.version.exists() %}
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">{{Composition.version}}</td>
+        </tr>
+        {% endif %}
+
+        {% for identifier in Composition.identifier %}
+        <tr>
+            <th scope="row">
+                <b>
+                    {% if identifier.type.coding.exists() %}
+                        {% if identifier.type.coding.display.exists() %}
+                            {{identifier.type.coding.display}}{% if identifier.assigner.display.exists() %} ({{identifier.assigner.display}}){% endif %} Identifier:
+                        {% else %}
+                            {{identifier.type.coding.code}}{% if identifier.assigner.display.exists() %} ({{identifier.assigner.display}}){% endif %} identifier:
+                        {% endif %}
+                    {% elsif identifier.use.exists() %}
+                        {{identifier.use}}
+                    {% else %}
+                        Identifier:
+                    {% endif %}
+                </b>
+            </th>
+            <td style="padding-left: 4px;">
+              <p style="margin-bottom: 5px;">
+                {% if identifier.system.exists() %}
+                  <span>{{identifier.system}}: </span>
+                {% endif %}
+                {% if identifier.value.exists() %}
+                  <span>{{identifier.value}}</span>
+                {% endif %}
+              </p>
+            </td>
+        </tr>
+        {% endfor %}
+       
+        {% if Composition.status.exists() and Composition.status.value != 'active' %}
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">{{Composition.status.value}}</td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.experimental.exists() and Composition.experimental.value = 'true' %}
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">{{Composition.experimental.value}}</td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.type.exists() %}
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+              {%include codeable-concept.html cc=Composition.type %}
+            </td>
+        </tr>
+        {% endif %}
+        
+        {% if Composition.category.exists() %}
+          <tr>
+              <th scope="row"><b>Category: </b></th>
+              <td style="padding-left: 4px;">
+                {% for category in Composition.category %}
+                  {%include codeable-concept.html cc=category %}
+                {% endfor %}
+              </td>
+          </tr>
+        {% endif %}
+        
+        {% if Composition.subject.exists() %}
+        <tr>
+            <th scope="row"><b>Subject: </b></th>
+            {% if Composition.subject is Reference %}
+              <td style="padding-left: 4px;">{{Composition.subject}} </td>
+            {% endif %}
+        </tr>
+        {% endif %}
+
+        {% if Composition.date.exists() %}
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">{{Composition.date}}</td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.attester.exists() %}
+        <tr>
+            <th scope="row"><b>Attester: </b></th>
+            <td>
+            {% for attester in Composition.attester %}
+              <p>{{attester}}</p>
+            {% endfor %}
+            </td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.author.exists() %}
+        <tr>
+            <th scope="row"><b>Author: </b></th>
+            <td>
+            {% for author in Composition.author %}
+              <p>{{author}}</p>
+            {% endfor %}
+            </td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.custodian.exists() %}
+        <tr>
+            <th scope="row"><b>Custodian: </b></th>
+            <td>
+            {% for custodian in Composition.custodian %}
+              <p>{{custodian}}</p>
+            {% endfor %}
+            </td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.useContext.exists() %}
+        <tr>
+            <th scope="row"><b>Use Context: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    <tr>
+                        <th><b>code</b></th>
+                        <th><b>value</b></th>
+                    </tr>
+                    {% for useContext in Composition.useContext %}
+                        <tr>
+                            <td>{{useContext.code.code}}</td>
+                            <td>{{useContext.value.text}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+        {% endif %}
+
+        {% if Composition.relatedArtifact.exists() %}
+        <tr>
+            <th scope="row"><b>Related Artifacts: </b></th>
+            <td style="padding-left: 4px;">
+                {% if Composition.relatedArtifact.where(type = 'documentation' or type = 'justification').exists() %}
+                <p><b>Documentation</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'documentation' or type = 'justification') %}
+                    <li><a href="{{artifact.url}}">{{artifact.label}} {{artifact.display}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if Composition.relatedArtifact.where(type = 'citation').exists() %}
+                <p><b>References</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'citation') %}
+                    <li>{{artifact.citation}}<br/><a href="{{artifact.url}}">{{artifact.url}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if Composition.relatedArtifact.where(type = 'depends-on').exists() %}
+                <p><b>Dependencies</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'depends-on') %}
+                    <li>{{artifact.resource}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if Composition.relatedArtifact.where(type = 'composed-of').exists() %}
+                <p><b>Components</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'composed-of') %}
+                    <li>{{artifact.resource}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if Composition.relatedArtifact.where(type = 'derived-from').exists() %}
+                <p><b>Derived From</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'derived-from') %}
+                    <li>{{artifact.resource}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if Composition.relatedArtifact.where(type = 'successor').exists() %}
+                <p><b>Successor</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'successor') %}
+                    <li>{{artifact.resource}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if Composition.relatedArtifact.where(type = 'predecessor').exists() %}
+                <p><b>Predecessor</b></p>
+                <ul>
+                    {% for artifact in Composition.relatedArtifact.where(type = 'predecessor') %}
+                    <li>{{artifact.resource}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+    </table>
+
+    {% if Composition.section.exists() %}
+      {% for section in Composition.section %}
+        {% include composition-section.html section=section %}
+      {% endfor %}
+    {% endif %}
+</div>

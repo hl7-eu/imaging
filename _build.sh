@@ -57,6 +57,16 @@ source_changes_under_ig_src() {
     grep -vE '(^|/)(input-cache|temp|fsh-generated|output)(/|$)' || true
 }
 
+api_root="$repo_dir/ig-api"
+api_output_dir="$api_root/output"
+api_needs_rebuild=false
+
+api_source_changes() {
+  git status --porcelain=1 --untracked-files=normal -- ig-api |
+    cut -c4- |
+    grep -vE '(^|/)ig-api/(input-cache|temp|fsh-generated|output|template|translations)(/|$)|(^|/)ig-api/Requirements-fromNarrative\.json$' || true
+}
+
 needs_rebuild=false
 
 if [ ! -d "$source_dir" ]; then
@@ -72,6 +82,24 @@ if [ -n "$source_changes" ]; then
   needs_rebuild=true
 else
   echo "No source changes detected under $source_dir."
+fi
+
+if [ -f "$api_root/sushi-config.yaml" ]; then
+  api_changes="$(api_source_changes)"
+  if [ -n "$api_changes" ]; then
+    echo "API source changes detected under ig-api:"
+    echo "$api_changes" | sed 's/^/  /'
+    api_needs_rebuild=true
+  elif [ ! -f "$api_output_dir/qa.txt" ]; then
+    echo "Missing API R4 QA output: $api_output_dir/qa.txt"
+    api_needs_rebuild=true
+  elif find "$api_root/input" "$api_root/ig-template" -type f -newer "$api_output_dir/qa.txt" -print -quit 2>/dev/null | grep -q .; then
+    echo "API input sources are newer than the Publisher QA output."
+    api_needs_rebuild=true
+  elif [ "$api_root/sushi-config.yaml" -nt "$api_output_dir/qa.txt" ] || [ "$api_root/ig.ini" -nt "$api_output_dir/qa.txt" ]; then
+    echo "API root configuration is newer than the Publisher QA output."
+    api_needs_rebuild=true
+  fi
 fi
 
 for version in "${versions[@]}"; do
@@ -182,6 +210,21 @@ print_qa_summary() {
   fi
 }
 
+print_api_qa_summary() {
+  local qa_file="$api_output_dir/qa.txt"
+  if [ ! -f "$api_root/sushi-config.yaml" ]; then
+    echo "imaging-api-r4 QA summary: standalone API IG not present"
+    return 0
+  fi
+  if [ ! -f "$qa_file" ]; then
+    echo "imaging-api-r4 QA summary: missing $qa_file"
+    return 0
+  fi
+  local qa_line
+  qa_line="$(grep -m1 '^err =' "$qa_file" || true)"
+  echo "imaging-api-r4 QA summary: ${qa_line:-no err/warn/info line found in $qa_file}"
+}
+
 publisher_image_has_java() {
   docker run --rm "$publisher_image" bash -lc "command -v java >/dev/null 2>&1" >/dev/null 2>&1
 }
@@ -250,4 +293,24 @@ else
   echo "- Run log: $run_log"
   echo "- R4 log:  $log_dir/build-r4-$timestamp.log"
   echo "- R5 log:  $log_dir/build-r5-$timestamp.log"
+fi
+
+if [ -f "$api_root/sushi-config.yaml" ]; then
+  if [ "$api_needs_rebuild" = true ]; then
+    log_step "Building standalone R4 API IG directly (no preprocessing)"
+    if [ ! -f "$api_root/input-cache/publisher.jar" ] && [ ! -f "$api_root/publisher.jar" ]; then
+      (cd "$api_root" && ./_updatePublisher.sh -y)
+    fi
+    api_log="$log_dir/build-api-r4-$timestamp.log"
+    if (cd "$api_root" && ./_genonce.sh) > >(tee -a "$api_log") 2>&1; then
+      echo "Standalone API R4 build completed. Log: $api_log"
+    else
+      echo "Standalone API R4 build failed. Log: $api_log"
+      print_api_qa_summary
+      exit 1
+    fi
+  else
+    echo "No standalone API rebuild needed: source is clean and API output is present."
+  fi
+  print_api_qa_summary
 fi

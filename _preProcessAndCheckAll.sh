@@ -57,6 +57,18 @@ if [ "$version" = "5.0.0" ] || [ -z "$version" ]; then
 fi
 
 echo ==================================================================================
+echo "check standalone R4 API IG (no preprocessing)"
+if [[ -d "ig-api" && -f "ig-api/sushi-config.yaml" && ( "$version" = "4.0.1" || -z "$version" ) ]]; then
+	if [[ ! -f "ig-api/input-cache/publisher.jar" && ! -f "ig-api/publisher.jar" ]]; then
+		(cd ig-api && ./_updatePublisher.sh -y)
+	fi
+	if ! (cd ig-api && ./_genonce.sh); then
+		echo "R4 API IG build failed"
+		exit 1
+	fi
+fi
+
+echo ==================================================================================
 echo validate external links in rendered output
 if [ -f "./scripts/validate-links.sh" ]; then
 	bash ./scripts/validate-links.sh
