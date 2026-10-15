@@ -1,4 +1,5 @@
 {% include variable-definitions.md %}
+
 This CapabilityStatement defines the capabilities for systems providing direct resource
 access (beyond document-based exchange) in the EU EHR Exchange Format (EEHRxF) ecosystem.
 It inherits patterns from:

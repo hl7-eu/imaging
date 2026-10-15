@@ -35,12 +35,16 @@ pages:
     title: Home
   api.md:
     title: Health Access API for Imaging Reports
+  examples.md:
+    title: Report access examples
   dependencies.md:
     title: Dependencies
 
 menu:
   Home: index.html
-  Functional: api.html
+  Functional:
+    Health Access API: api.html
+    Report access examples: examples.html
   Artifacts: artifacts.html
   About:
     Dependencies: dependencies.html

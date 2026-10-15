@@ -34,7 +34,21 @@ The main actors Resource Access Provider and Resource Consumer are refined in th
 
 ### Report Bundle generation
 
-Resource Access Providers that support DiagnosticReport SHOULD support the instance-level [DiagnosticReport/$document] operation to generate a report Bundle conforming to BundleReportEuImaging. See [[[DiagnosticReport-fhir-report]]].
+Resource Access Providers that support DiagnosticReport SHOULD support the instance-level [DiagnosticReport/$document](OperationDefinition-DiagnosticReport-fhir-report.html) operation to generate a report Bundle conforming to BundleReportEuImaging.
+
+### Report indexing and versioning
+
+The [report access examples](examples.html) illustrate how R4 DocumentReference wrappers refer to report Bundles and their patient and custodian resources.
+
+| Concept | R4 DocumentReference representation |
+| --- | --- |
+| Clinically effective time (when the study took place) | `context.period` |
+| Document created/assembled | `content.attachment.creation` |
+| Document reference created/indexed | `date` |
+| Version | `extension[version]` |
+| Related document | `relatesTo` |
+
+The report Bundle and its clinical resources carry their own identifiers, timestamps, and version information as defined by the [Imaging Report R4 guide](https://build.fhir.org/ig/hl7-eu/imaging-r4/en/imaging-report.html).
 
 ### Capability Statements
 
@@ -50,4 +64,3 @@ The requirements related to each actor are reflected by capability statements th
  ]
 }
 %}
-

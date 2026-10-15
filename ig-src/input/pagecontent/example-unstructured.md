@@ -13,17 +13,16 @@ The structure of this report is illustrated in the figure below.
 
 This example corresponds to the [Renderable format with minimal metadata](data-formats.html#renderable-format-with-minimal-metadata) data format.
 
-The report is represented as a DocumentReference resource following the profile [[[DocumentReferenceImagingReport]]]. It refers to a [[[Patient]]] and to an [[[Organization]]] resource that represents the custodian of the document.
+The report is represented by a collection Bundle containing a DiagnosticReport and its patient context. The DiagnosticReport references the reporting Organization and the renderable report payload.
 
 Resources used in this example:
 
-- [DocumentReference](DocumentReference-RenderableFormatWithBasicMetadata.html): wrapper resource used for indexing and retrieval metadata; its `content.attachment.url` points to the report bundle.
 - [Bundle](Bundle-bundle-report-minimal-metadata-unstructured.html): collection bundle that groups the core report resources for exchange.
 - [DiagnosticReport](DiagnosticReport-DiagnosticReportMinimalMetadata.html): main clinical report resource carrying report metadata and references to study/order as identifiers.
 - [Patient](Patient-PatientUnstructuredReport.html): subject of the report.
 - [Organization](Organization-OrganizationUnstructuredReport.html): reporting/custodian organization metadata.
 - [Binary](Binary-BinaryUnstructuredReport.html): PDF payload referenced from `DiagnosticReport.presentedForm`.
 
-The full `DocumentReference` resource is presented below.
+The full report `Bundle` resource is presented below.
 
-{% fragment DocumentReference/RenderableFormatWithBasicMetadata JSON ELIDE:meta|text %}
+{% fragment Bundle/bundle-report-minimal-metadata-unstructured JSON ELIDE:meta|text %}

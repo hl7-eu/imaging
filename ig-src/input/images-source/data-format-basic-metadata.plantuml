@@ -11,15 +11,6 @@ skinparam class {
   ArrowColor Black
 }
 
-class "DocumentReferenceImagingReport\n<<DocumentReference>>" as DocumentReferenceImagingReport [[./StructureDefinition-DocumentReferenceImagingReport.html]] {
-  +subject : Reference~Patient~
-  +date : dateTime
-  +type : CodeableConcept
-  +category : CodeableConcept
-  +content : Attachment(url -> Bundle)
-  ...
-}
-
 class "BundleReportMinimalMetadataEuImaging\n<<Bundle>>" as BundleReportMinimalMetadataEuImaging [[./StructureDefinition-BundleReportMinimalMetadataEuImaging.html]] {
   +type : #collection
 }
@@ -46,7 +37,6 @@ class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Bin
   +data : base64Binary
 }
 
-DocumentReferenceImagingReport --> BundleReportMinimalMetadataEuImaging : content.attachment.url
 BundleReportMinimalMetadataEuImaging --> DiagnosticReportEuImagingMinimalMetadata : entry
 BundleReportMinimalMetadataEuImaging --> ImagingStudyEuImaging : entry (optional)
 BundleReportMinimalMetadataEuImaging --> ServiceRequestOrderEuImaging : entry (optional)
@@ -57,14 +47,6 @@ DiagnosticReportEuImagingMinimalMetadata --> ServiceRequestOrderEuImaging : base
 note right of DiagnosticReportEuImagingMinimalMetadata
 R4 element name: imagingStudy
 R5 element name: study
-end note
-
-note right of DocumentReferenceImagingReport
-R4 content profile is carried in
-content.extension[profile].extension[value].valueCanonical
-
-R5 content profile is carried in
-content.profile[...].valueCanonical
 end note
 
 @enduml

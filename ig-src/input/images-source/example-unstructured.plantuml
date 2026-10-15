@@ -11,7 +11,6 @@ skinparam class {
   ArrowColor Black
 }
 
-class "RenderableFormatWithBasicMetadata\n<<DocumentReference>>" as RenderableFormatWithBasicMetadata [[./DocumentReference-RenderableFormatWithBasicMetadata.html]]
 class "BundleReportMinimalMetadata\n<<Bundle>>" as BundleReportMinimalMetadata [[./Bundle-bundle-report-minimal-metadata-unstructured.html]] {
   +type : #collection
 }
@@ -26,9 +25,6 @@ class "BinaryUnstructuredReport\n<<Binary>>" as BinaryUnstructuredReport [[./Bin
   +contentType : application/pdf
 }
 
-RenderableFormatWithBasicMetadata --> BundleReportMinimalMetadata : content.attachment.url
-RenderableFormatWithBasicMetadata --> PatientUnstructuredReport : subject
-RenderableFormatWithBasicMetadata --> OrganizationUnstructuredReport : custodian
 BundleReportMinimalMetadata --> DiagnosticReportMinimalMetadata : entry (required)
 BundleReportMinimalMetadata --> PatientUnstructuredReport : entry (optional)
 BundleReportMinimalMetadata --> OrganizationUnstructuredReport : entry (optional)
