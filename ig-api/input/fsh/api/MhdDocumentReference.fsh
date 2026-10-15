@@ -1,9 +1,7 @@
 Profile: DocumentReferenceImagingReport
 Parent: EehrxfMhdDocumentReference
 Title: "EEHRxF MHD DocumentReference Profile for Imaging Reports"
-Description: """
-Profile for DocumentReference resources used in the EEHRxF context, based on the IHE MHD Minimal DocumentReference profile. This profile is used for the DocumentReference resources that represent imaging reports in the EEHRxF context. It includes additional constraints and extensions specific to imaging reports, such as the type of report, the clinical specialty, the anatomical region of interest and the profile of the imaging report.
-"""
+Description: "R4 DocumentReference for indexing imaging report Bundles in the EEHRxF API."
 * insert SetFmmAndStatusRule( 1, draft )
 
 
