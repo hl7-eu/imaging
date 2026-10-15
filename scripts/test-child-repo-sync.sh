@@ -2,6 +2,7 @@
 set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+test -x "$root/_commitToMainRepos.sh" || { echo "Synchronization entry point must be executable" >&2; exit 1; }
 work="$(mktemp -d "${TMPDIR:-/tmp}/imaging-sync-test.XXXXXX")"
 echo "Test artifacts: $work"
 export GIT_CONFIG_GLOBAL="$work/gitconfig" GIT_CONFIG_NOSYSTEM=1
