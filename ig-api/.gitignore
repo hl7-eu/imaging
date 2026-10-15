@@ -1,4 +1,5 @@
 /fsh-generated/
+/.build-source.sha256
 /Requirements-fromNarrative.json
 /FHIR-eu-imaging-api.xml
 /ig-template/**/*.db

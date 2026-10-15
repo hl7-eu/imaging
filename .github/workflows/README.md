@@ -7,6 +7,20 @@ This document explains how to configure the automatic validation and deployment 
 
 ## Required Setup
 
+### Manual child-repository synchronization
+
+The source repository's `_commitToMainRepos.sh` additionally synchronizes the
+standalone R4 API project from `ig-api/` to `hl7-eu/imaging-api`, alongside
+Imaging R4/R5. It uses matching branches, excludes generated/cache files, and
+supports `--api-only` and `--no-push`. See the root [README](../../README.md)
+for build prerequisites and safeguards.
+
+The GitHub Actions jobs described below are separate from this script and do
+not invoke it. Adding API support to the manual script does not add an automatic
+API deployment job or register the API guide for CI publication. Ensure a
+`DEPLOY_TOKEN` used by the script can write to all selected child repositories;
+the script does not store the token in remote URLs.
+
 ### 1. GitHub Secrets
 
 You need to create the following secret in your repository settings:
