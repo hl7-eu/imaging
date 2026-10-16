@@ -90,6 +90,30 @@ first="$(git -C "$child" rev-parse HEAD)"
 run_sync
 test "$(git -C "$child" rev-parse HEAD)" = "$first"
 
+# LICENSE on an unrelated branch must not block the selected synchronization branch.
+git -C "$work/seed-api" switch master
+printf 'Different license on default branch\n' > "$work/seed-api/LICENSE"
+git -C "$work/seed-api" commit -am 'Change default branch license'
+git -C "$work/seed-api" push origin master
+git -C "$child" switch master
+run_sync
+test "$(git -C "$child" branch --show-current)" = api-spin-off
+
+# A fetched fast-forward that changes the selected branch LICENSE must be rejected.
+git -C "$work/seed-api" fetch origin
+git -C "$work/seed-api" switch -C api-spin-off origin/api-spin-off
+printf 'Different license on sync branch\n' > "$work/seed-api/LICENSE"
+git -C "$work/seed-api" commit -am 'Change sync branch license'
+git -C "$work/seed-api" push origin api-spin-off
+expect_failure 'API destination LICENSE differs' run_sync
+cp "$root/ig-api/LICENSE" "$work/seed-api/LICENSE"
+git -C "$work/seed-api" commit -am 'Restore sync branch license'
+git -C "$work/seed-api" push origin api-spin-off
+git -C "$work/seed-api" switch master
+git -C "$work/seed-api" branch -D api-spin-off
+run_sync
+first="$(git -C "$child" rev-parse HEAD)"
+
 # Missing later-target evidence must not create or push earlier children.
 expect_failure 'Missing build evidence' bash "$source/_commitToMainRepos.sh"
 test ! -e "$source/subigs/imaging-r4"
