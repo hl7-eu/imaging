@@ -90,8 +90,10 @@ if [ -f "$api_root/sushi-config.yaml" ]; then
     echo "API source changes detected under ig-api:"
     echo "$api_changes" | sed 's/^/  /'
     api_needs_rebuild=true
-  elif [ ! -f "$api_output_dir/qa.txt" ]; then
-    echo "Missing API R4 QA output: $api_output_dir/qa.txt"
+  elif [ ! -f "$api_output_dir/qa.txt" ] ||
+       [ ! -s "$api_root/.build-source.sha256" ] ||
+       [ "$(bash "$api_root/_source-state.sh")" != "$(cat "$api_root/.build-source.sha256")" ]; then
+    echo "API build evidence is missing or does not match the current authoring sources."
     api_needs_rebuild=true
   elif find "$api_root/input" "$api_root/ig-template" -type f -newer "$api_output_dir/qa.txt" -print -quit 2>/dev/null | grep -q .; then
     echo "API input sources are newer than the Publisher QA output."
