@@ -128,7 +128,7 @@ for target in "${targets[@]}"; do
   fi
 
   # Own input/template trees and project root files, not destination README/history.
-  filters=(--exclude='/.git/' --exclude='/README.md' --exclude='/LICENSE'
+  filters=(--exclude='/.git' --exclude='/README.md' --exclude='/LICENSE'
     --exclude='/output/' --exclude='/temp/' --exclude='/input-cache/'
     --exclude='/fsh-generated/' --exclude='/template/' --exclude='/translations/'
     --exclude='/publisher.jar' --exclude='/Requirements-fromNarrative.json'
