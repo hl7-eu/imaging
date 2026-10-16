@@ -1,8 +1,4 @@
 @startuml
-    DocumentReferenceSemiStructured --> BundleReportSemiStructured: content.attachment.url
-    DocumentReferenceSemiStructured --> Patient: subject
-    DocumentReferenceSemiStructured --> RadiologyZentrum: custodian
-
     BundleReportSemiStructured --> Composition: entry
     BundleReportSemiStructured --> DiagnosticReport: entry
     BundleReportSemiStructured --> Patient: entry
@@ -36,7 +32,6 @@
     Author --> RadiologyZentrum: organization
     Author --> LucasGassenzer: practitioner
 
-        class DocumentReferenceSemiStructured <<DocumentReference>> [[./DocumentReference-DocumentReferenceSemiStructured.html]]
         class BundleReportSemiStructured <<Bundle>> [[./Bundle-bundle-report-semi-structured.html]] {
             +type : #document
         }

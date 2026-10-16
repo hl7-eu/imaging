@@ -8,8 +8,6 @@ The R4 build uses the cross-version (xver-r5.r4) extensions 0.1.0 STU package wh
 | --- | --- | --- |
 | ImagingSelection | `ImagingSelectionEuImaging` and `ImagingSelectionKeyImageEuImaging` are profiled on the xver `Basic` backport profile. Generated examples are `Basic` resources. | The same profiles are native `ImagingSelection` profiles. Generated examples are `ImagingSelection` resources. |
 | Key images as image content | Uses the R4 `MediaKeyImageEuImaging` profile and generated `Media` examples. | Uses the R5 `DocumentReferenceKeyImageEuImaging` profile and generated `DocumentReference` examples. |
-| DocumentReference body site and modality | Uses R4 extension slices for `bodySite` and `modality`, with IG-defined R4 SearchParameters for `bodysite` and `modality`. | Uses native R5 `DocumentReference.bodySite`, `DocumentReference.modality`, and the corresponding core R5 SearchParameters. |
-| DocumentReference content profile | Uses an R4 `DocumentReference.content` extension carrying the referenced profile canonical. | Uses native R5 `DocumentReference.content.profile`. |
 | Device category | Uses the R5 `Device.category` cross-version extension on R4 `Device`. | Uses native R5 `Device.category`. |
 | Composition and DiagnosticReport links | Uses R4-compatible elements or R5 backport extensions where R5 moved the relationship, such as DiagnosticReport-to-Composition and Composition version. | Uses native R5 elements such as `DiagnosticReport.composition` and `Composition.version`. |
 

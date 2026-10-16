@@ -1,0 +1,10 @@
+/fsh-generated/
+/.build-source.sha256
+/Requirements-fromNarrative.json
+/FHIR-eu-imaging-api.xml
+/ig-template/**/*.db
+/ig-template/**/*index.json
+/output/
+/temp/
+/input-cache/
+/template/

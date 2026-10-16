@@ -97,7 +97,7 @@ RuleSet: DiagnosticReportEuImagingCommonRules
 The anatomical regions covered by the report, depending on the study there can be zero, one or more regions. 
 The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.bodysite`, if present.
 """
-* extension[anatomical-region] ^requirements = "This field is present in order to be able to populate the MHD DocumentReference field."
+* extension[anatomical-region] ^requirements = "Identifies the anatomical region covered by the report when additional anatomical context is available."
 
 //business identifier and relation with the composition resource
 * identifier 1..*

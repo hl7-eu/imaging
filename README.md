@@ -38,7 +38,51 @@ Structure of this repository
 
 The versions in the igs/imaging-r4 and igs/imaging-r5 directory can be used to check the R4 and R5 versions during editing.
 
-Once the changes have checked and results can be committed, the script `_commitToMainRepos.sh` should be run. This will checkout the corresponding branch on the imaging-r4 and imaging-r5 repositories, copy the contents of the igs/imaging-r4 and igs/imaging-r5 directories and check in the changes. 
+Once changes are checked and committed, run `bash ./_commitToMainRepos.sh`. This
+commits and pushes each child repository on the same branch as this source
+repository:
+
+| Source | Child repository | Local checkout |
+|---|---|---|
+| `igs/imaging-r4/` | [hl7-eu/imaging-r4](https://github.com/hl7-eu/imaging-r4) | `subigs/imaging-r4/` |
+| `igs/imaging-r5/` | [hl7-eu/imaging-r5](https://github.com/hl7-eu/imaging-r5) | `subigs/imaging-r5/` |
+| `ig-api/` | [hl7-eu/imaging-api](https://github.com/hl7-eu/imaging-api) | `subigs/imaging-api/` |
+
+The API is a standalone, static **FHIR R4** project, not a preprocessing target.
+Keep editing its source under `ig-api/` in this repository, not in the child
+repository. Build it with `bash ig-api/_genonce.sh` (provision the Publisher with
+`bash ig-api/_updatePublisher.sh -y` if needed). A successful build records an
+ignored source fingerprint; any authoring change or deletion requires rebuilding
+before synchronization. Existing unrelated QA issues do not prevent a completed
+Publisher build from being synchronized.
+
+API export includes `input/`, `ig-template/`, `.gitignore`, `ig.ini`,
+`sushi-config.yaml`, `_source-state.sh`, and the shell/Windows `_build`,
+`_genonce`, `_gencontinuous`, and `_updatePublisher` wrappers. It does not export
+the legacy nested `ig-src/`, generated output/cache, downloaded templates,
+translations, Publisher JAR, generated XML, template databases/indexes, or the
+local build fingerprint. Source deletions propagate within managed export paths.
+Destination README and LICENSE are preserved; a differing API license requires
+explicit review.
+
+Useful modes:
+
+```sh
+# Prepare API-only local commits for review; do not push any child.
+bash ./_commitToMainRepos.sh --api-only --no-push
+# Commit and push only API content after reviewing its destination/branch.
+bash ./_commitToMainRepos.sh --api-only
+```
+
+Child repositories must be clean, have the expected GitHub origin and
+non-diverged branches. New branches start from the destination's default-branch
+history. Synchronization never force-pushes; a rerun also retries an already
+committed but unpushed update. Multi-repository pushes are not atomic: if a push
+fails, inspect the reported completed targets before retrying.
+
+Run the isolated Git regression tests with
+`bash scripts/test-child-repo-sync.sh`; these use temporary local remotes, not
+production GitHub repositories.
 
 ## Multi-version process
 
@@ -89,4 +133,3 @@ The different sections are clearly marked and the line numbering is not compromi
    ```
 2. The compiled IGs will be found in the `igs/r4` and `igs/r5` directories.
 3. Run `./_updatePublisher.sh` and then `./_genonce.sh` to build each IG.
-

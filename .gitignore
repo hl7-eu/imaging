@@ -46,6 +46,7 @@ subigs/**
 .~lock.*#
 
 build-logs/**
+build-link-validation-report.md
 jira/node_modules/**
 
 # Downloaded Xt-EHR logical model definitions (regenerable, not source)
