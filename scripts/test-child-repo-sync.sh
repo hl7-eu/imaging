@@ -167,6 +167,16 @@ printf 'remote\n' > "$work/seed-api/remote.txt"
 git -C "$work/seed-api" add remote.txt
 git -C "$work/seed-api" commit -m 'Remote update'
 git -C "$work/seed-api" push origin api-spin-off
+printf 'Different destination license\n' > "$work/seed-api/LICENSE"
+git -C "$work/seed-api" commit -am 'Change destination license'
+git -C "$work/seed-api" push origin api-spin-off
+before="$(git -C "$child" rev-parse HEAD)"
+expect_failure 'API destination LICENSE differs' run_sync
+test "$(git -C "$child" rev-parse HEAD)" = "$before"
+test ! -e "$child/remote.txt"
+cp "$root/ig-api/LICENSE" "$work/seed-api/LICENSE"
+git -C "$work/seed-api" commit -am 'Restore destination license'
+git -C "$work/seed-api" push origin api-spin-off
 run_sync
 test -f "$child/remote.txt"
 printf 'second remote\n' >> "$work/seed-api/remote.txt"

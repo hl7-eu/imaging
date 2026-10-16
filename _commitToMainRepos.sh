@@ -93,17 +93,29 @@ for target in "${targets[@]}"; do
     git clone "$url" "$checkout"
   fi
   git -C "$checkout" fetch origin --prune
-  if [[ "$target" == api && -f "$checkout/LICENSE" ]]; then
-    cmp -s "$repo_dir/ig-api/LICENSE" "$checkout/LICENSE" ||
-      fail "API destination LICENSE differs; review it before syncing."
-  fi
   remote_ref="refs/remotes/origin/$current_branch"
   local_ref="refs/heads/$current_branch"
-  if git -C "$checkout" show-ref --verify --quiet "$remote_ref" &&
-     git -C "$checkout" show-ref --verify --quiet "$local_ref"; then
-    git -C "$checkout" merge-base --is-ancestor "$remote_ref" "$local_ref" ||
-      git -C "$checkout" merge-base --is-ancestor "$local_ref" "$remote_ref" ||
-      fail "Diverged branch in imaging-$target. Reconcile it before syncing."
+  if git -C "$checkout" show-ref --verify --quiet "$local_ref"; then
+    if git -C "$checkout" show-ref --verify --quiet "$remote_ref"; then
+      if git -C "$checkout" merge-base --is-ancestor "$remote_ref" "$local_ref"; then
+        effective_ref="$local_ref"
+      elif git -C "$checkout" merge-base --is-ancestor "$local_ref" "$remote_ref"; then
+        effective_ref="$remote_ref"
+      else
+        fail "Diverged branch in imaging-$target. Reconcile it before syncing."
+      fi
+    else
+      effective_ref="$local_ref"
+    fi
+  elif git -C "$checkout" show-ref --verify --quiet "$remote_ref"; then
+    effective_ref="$remote_ref"
+  else
+    effective_ref="$(git -C "$checkout" symbolic-ref refs/remotes/origin/HEAD)"
+  fi
+  if [[ "$target" == api ]] &&
+     git -C "$checkout" cat-file -e "$effective_ref:LICENSE" 2>/dev/null; then
+    cmp -s "$repo_dir/ig-api/LICENSE" <(git -C "$checkout" show "$effective_ref:LICENSE") ||
+      fail "API destination LICENSE differs; review it before syncing."
   fi
 done
 
