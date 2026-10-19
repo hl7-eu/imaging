@@ -46,13 +46,13 @@ IF EXIST "%input_cache_path%%publisher_jar%" (
 :: Known first arguments select a menu option; anything else is passed through to the publisher
 SET "extraArgs="
 IF "%~1"=="" GOTO showMenu
-IF /I "%~1"=="update" SET "userChoice=1" & GOTO parseExtra
-IF /I "%~1"=="build" SET "userChoice=2" & GOTO parseExtra
-IF /I "%~1"=="nosushi" SET "userChoice=3" & GOTO parseExtra
-IF /I "%~1"=="notx" SET "userChoice=4" & GOTO parseExtra
-IF /I "%~1"=="jekyll" SET "userChoice=5" & GOTO parseExtra
-IF /I "%~1"=="clean" SET "userChoice=6" & GOTO parseExtra
-IF /I "%~1"=="exit" SET "userChoice=0" & GOTO parseExtra
+IF /I "%~1"=="update" (SET "userChoice=1" & GOTO parseExtra)
+IF /I "%~1"=="build" (SET "userChoice=2" & GOTO parseExtra)
+IF /I "%~1"=="nosushi" (SET "userChoice=3" & GOTO parseExtra)
+IF /I "%~1"=="notx" (SET "userChoice=4" & GOTO parseExtra)
+IF /I "%~1"=="jekyll" (SET "userChoice=5" & GOTO parseExtra)
+IF /I "%~1"=="clean" (SET "userChoice=6" & GOTO parseExtra)
+IF /I "%~1"=="exit" (SET "userChoice=0" & GOTO parseExtra)
 :: Unknown first arg - default to build, pass all args through
 SET "userChoice=2"
 GOTO collectArgs

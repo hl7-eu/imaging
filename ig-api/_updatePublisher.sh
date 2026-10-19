@@ -3,6 +3,7 @@ pubsource=https://github.com/HL7/fhir-ig-publisher/releases/latest/download/
 publisher_jar=publisher.jar
 dlurl=$pubsource$publisher_jar
 
+cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
 input_cache_path=$PWD/input-cache/
 publisher_home="${FHIR_PUBLISHER_HOME:-$HOME/.fhir/tools/publisher}"
 
