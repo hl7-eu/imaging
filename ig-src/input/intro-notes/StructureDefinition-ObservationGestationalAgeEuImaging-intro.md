@@ -2,4 +2,6 @@ Gestational age is the age (duration) of a pregnancy, usually measured from the 
 
 This profile is aligned with the equivalent European Patient Summary (EPS) profile. See the current build version of the EPS profile: [Observation: Pregnancy - Gestational Age (EPS)](https://build.fhir.org/ig/hl7-eu/eps/branches/master/StructureDefinition-observation-pregnancy-gestationalAge-eu-eps.html).
 
+The value is bound (required) to the FHIR `units-of-time` value set. In addition, a preferred additional binding points to the `ValueSetGestationalAgeTimeUnitsEuImaging` value set, which lists the UCUM units most commonly used for gestational age: month (`mo`) and week (`wk`).
+
 {% include worknote.html text="Tracked by <a href='https://jira.hl7.org/browse/FHIR-56316'>FHIR-56316</a>: once this ticket is resolved, this profile must be aligned with the EU core profile. If the overlap is complete, it will be removed from this specification and the specification will refer to the EU core definition instead." %}
