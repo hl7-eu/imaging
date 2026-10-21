@@ -56,15 +56,6 @@ ignored source fingerprint; any authoring change or deletion requires rebuilding
 before synchronization. Existing unrelated QA issues do not prevent a completed
 Publisher build from being synchronized.
 
-API export includes `input/`, `ig-template/`, `.gitignore`, `ig.ini`,
-`sushi-config.yaml`, `_source-state.sh`, and the shell/Windows `_build`,
-`_genonce`, `_gencontinuous`, and `_updatePublisher` wrappers. It does not export
-the legacy nested `ig-src/`, generated output/cache, downloaded templates,
-translations, Publisher JAR, generated XML, template databases/indexes, or the
-local build fingerprint. Source deletions propagate within managed export paths.
-Destination README and LICENSE are preserved; a differing API license requires
-explicit review.
-
 Useful modes:
 
 ```sh
