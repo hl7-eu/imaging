@@ -1,5 +1,6 @@
 Profile: DocumentReferenceImagingReport
 Parent: EehrxfMhdDocumentReference
+//{{R5}} Parent: DocumentReference
 Title: "EEHRxF MHD DocumentReference Profile for Imaging Reports"
 Description: "R4 DocumentReference for indexing imaging report Bundles in the EEHRxF API."
 * insert SetFmmAndStatusRule( 1, draft )
@@ -7,6 +8,7 @@ Description: "R4 DocumentReference for indexing imaging report Bundles in the EE
 
 // practice setting
 * context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+//{{R5}} * practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
 
 * status 1..1
 
@@ -16,6 +18,7 @@ Description: "R4 DocumentReference for indexing imaging report Bundles in the EE
 
 // subject
 * subject 1..1
+//{{R5}} * subject only Reference( $EuPatient )
 
 // date
 * date 1..1
@@ -44,13 +47,25 @@ Description: "R4 DocumentReference for indexing imaging report Bundles in the EE
   * valueCodeableConcept from http://hl7.eu/fhir/imaging/ValueSet/im-anatomical-region-valueset (extensible)
   * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
   * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+//{{R5}} * bodySite
+//{{R5}}   * ^short = "The anatomical region of the patient that is the focus of the imaging manifest, concept field is required."
+//{{R5}}   * ^definition = "This field may be used to provide additional information about the anatomical region of interest for the imaging manifest."
+//{{R5}}   * concept 1..1
+//{{R5}}     * coding from ValueSetAnatomicalRegion (extensible)
 
 // modality
 * extension contains $ihe-mado-docref-modality named modality 1..*
+//{{R5}} * modality 1..*
 
 * content 1..1
   * extension contains ImDocumentReferenceContentProfile named profile 1..*
   * extension[profile] ^short = "Contains the profile of the referred report"
+//{{R5}} * content 1..1
+//{{R5}}   * profile 1..*
+//{{R5}}     * insert SliceElement( #value, value )
+//{{R5}}   * profile contains bundle-report 0..1 and bundle-report-minimal-metadata 0..1
+//{{R5}}   * profile[bundle-report].valueCanonical = Canonical(BundleReportEuImaging)
+//{{R5}}   * profile[bundle-report-minimal-metadata].valueCanonical = Canonical(BundleReportMinimalMetadataEuImaging)
   
 
 

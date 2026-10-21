@@ -38,6 +38,7 @@ Alias: $ihe-mado-docref-bodysite                          = https://profiles.ihe
 Alias: $CrossVersion-R5-ImagingSelection-for-R4           = http://hl7.org/fhir/5.0/StructureDefinition/profile-ImagingSelection
 Alias: $CrossVersion-R5-DocumentReference.version-for-R4  = http://hl7.org/fhir/5.0/StructureDefinition/extension-DocumentReference.version
 Alias: $diagnosticReport-composition = http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.composition
+//{{R5}} Alias: $textLink                              = http://hl7.org/fhir/StructureDefinition/textLink
 
 Alias: $hl7euDiagnosticReferenceReference     =  http://hl7.eu/fhir/extensions/StructureDefinition/composition-diagnosticReportReference
 Alias: $rendering-xhtml-url                   =  http://hl7.org/fhir/StructureDefinition/rendering-xhtml
