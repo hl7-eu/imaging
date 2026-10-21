@@ -19,14 +19,17 @@ This repository contains the source files to build and deploy a multi-FHIR versi
 ┌───────────────────────────┐                 
 │                           │     ┌──────────────────────────────┐ 
 │ github.com/hl7eu/imaging  ┼─────► github.com/hl7eu/imaging-r4  │ 
-│                           │     └──────────────────────────────┘  │                              │ 
+│                           │     └──────────────────────────────┘ 
 └────────────┬──────────────┘               
              │                    ┌──────────────────────────────┐
-             └────────────────────► github.com/hl7eu/imaging-r5  │
+             ├────────────────────► github.com/hl7eu/imaging-r5  │
+             │                    └──────────────────────────────┘
+             │                    ┌──────────────────────────────┐
+             └────────────────────► github.com/hl7eu/imaging-api │
                                   └──────────────────────────────┘
 ```
 
-The content of this repository is processed and generates the content of the imaging-r4 and imaging-r5 repositories. The content of these repositories is not edited directly but generated based on the content of this repository.
+The content of this repository is processed and generates the content of the imaging-r4 and imaging-r5 repositories. The content of these repositories is not edited directly but generated based on the content of this repository. The standalone R4 API guide (imaging-api) is authored in `ig-api/` and copied unchanged, without preprocessing.
 
 This approach has been chosen as it allows both versions of the specification to be generated from a single codebase and still allows the R4 and R5 versions to be build using the FHIR autobuilder.
 
@@ -38,7 +41,59 @@ Structure of this repository
 
 The versions in the igs/imaging-r4 and igs/imaging-r5 directory can be used to check the R4 and R5 versions during editing.
 
-Once the changes have checked and results can be committed, the script `_commitToMainRepos.sh` should be run. This will checkout the corresponding branch on the imaging-r4 and imaging-r5 repositories, copy the contents of the igs/imaging-r4 and igs/imaging-r5 directories and check in the changes. 
+Once changes are checked and committed, run `bash ./_commitToMainRepos.sh`. This
+commits and pushes each child repository on the same branch as this source
+repository:
+
+| Source | Child repository | Local checkout |
+|---|---|---|
+| `igs/imaging-r4/` | [hl7-eu/imaging-r4](https://github.com/hl7-eu/imaging-r4) | `subigs/imaging-r4/` |
+| `igs/imaging-r5/` | [hl7-eu/imaging-r5](https://github.com/hl7-eu/imaging-r5) | `subigs/imaging-r5/` |
+| `ig-api/` | [hl7-eu/imaging-api](https://github.com/hl7-eu/imaging-api) | `subigs/imaging-api/` |
+
+The API is a standalone, static **FHIR R4** project, not a preprocessing target.
+Keep editing its source under `ig-api/` in this repository, not in the child
+repository. Build it with `bash ig-api/_genonce.sh` (provision the Publisher with
+`bash ig-api/_updatePublisher.sh -y` if needed). A successful build records an
+ignored source fingerprint; any authoring change or deletion requires rebuilding
+before synchronization. Existing unrelated QA issues do not prevent a completed
+Publisher build from being synchronized.
+
+Useful modes:
+
+```sh
+# Prepare API-only local commits for review; do not push any child.
+bash ./_commitToMainRepos.sh --api-only --no-push
+# Commit and push only API content after reviewing its destination/branch.
+bash ./_commitToMainRepos.sh --api-only
+```
+
+Child repositories must be clean, have the expected GitHub origin and
+non-diverged branches. New branches start from the destination's default-branch
+history. Synchronization never force-pushes; a rerun also retries an already
+committed but unpushed update. Multi-repository pushes are not atomic: if a push
+fails, inspect the reported completed targets before retrying.
+
+Run the isolated Git regression tests with
+`bash scripts/test-child-repo-sync.sh`; these use temporary local remotes, not
+production GitHub repositories.
+
+### Automated validation and deployment (GitHub Actions)
+
+- `.github/workflows/validate.yml` runs `_preProcessAndCheckAll.sh` on pushes to
+  `master` and on pull requests. It builds Imaging R4, Imaging R5 and the
+  standalone API R4 guide.
+- `.github/workflows/deploy-to-repos.yml` runs on pushes (except the
+  `1.0.0-ballot` branch) and on manual dispatch. It validates R4, R5 and the API
+  guide (`validate-r4`, `validate-r5`, `validate-api`), then deploys to the child
+  repositories on the same branch name (`deploy-r4`, `deploy-r5`, `deploy-api`).
+  `deploy-api` needs all three validations and uses the same export rules and
+  license check as `_commitToMainRepos.sh`.
+- The deploy jobs need a `DEPLOY_TOKEN` repository secret (a personal access
+  token with write access to the child repositories). Optional repository
+  variables `R4_REPO_URL`, `R5_REPO_URL` and `API_REPO_URL` override the target
+  repositories. See [.github/workflows/README.md](.github/workflows/README.md)
+  for setup details.
 
 ## Multi-version process
 
@@ -89,4 +144,4 @@ The different sections are clearly marked and the line numbering is not compromi
    ```
 2. The compiled IGs will be found in the `igs/r4` and `igs/r5` directories.
 3. Run `./_updatePublisher.sh` and then `./_genonce.sh` to build each IG.
-
+4. The standalone API guide is not generated by preprocessing: build it directly with `bash ig-api/_genonce.sh` (after `bash ig-api/_updatePublisher.sh -y` if needed).

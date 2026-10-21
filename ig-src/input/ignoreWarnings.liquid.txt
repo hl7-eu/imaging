@@ -136,7 +136,6 @@ MSG_DEPENDS_ON_DEPRECATED
 
 # Not updated dependencies
 The ImplementationGuide uses package hl7.terminology.r4#7.0.1 released on 2025-12-11, but the most recent appropriate version is 7.1.0. This reference is getting old and the more recent version should be considered
-The ImplementationGuide uses package ihe.iti.mhd#4.2.3 released on 2025-10-31, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
 
 # R5 Doc Bundle rules pre-adopted
 BUNDLE_BUNDLE_ENTRY_REVERSE_R4
@@ -179,7 +178,6 @@ MSG_DEPENDS_ON_DEPRECATED
 
 # Not updated dependencies
 The ImplementationGuide uses package hl7.terminology.r4#7.0.1 released on 2025-12-11, but the most recent appropriate version is 7.1.0. This reference is getting old and the more recent version should be considered
-The ImplementationGuide uses package ihe.iti.mhd#4.2.3 released on 2025-10-31, but the most recent appropriate version is 5.0.0. This reference is getting old and the more recent version should be considered
 
 
 # R5 Doc Bundle rules pre-adopted
