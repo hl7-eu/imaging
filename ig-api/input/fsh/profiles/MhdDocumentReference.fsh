@@ -7,7 +7,8 @@ Description: "R4 DocumentReference for indexing imaging report Bundles in the EE
 
 
 // practice setting
-* context.practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
+* context.practiceSetting ^short = "Clinical specialty that created the imaging report"
+* context.practiceSetting from ImagingReportPracticeSetting (preferred)
 //{{R5}} * practiceSetting ^short = "Clinical specialty (e.g., radiology, laboratory) - SHOULD be used for lab vs imaging differentiation"
 
 * status 1..1
