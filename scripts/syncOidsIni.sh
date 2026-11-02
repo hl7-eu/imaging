@@ -1,10 +1,18 @@
 #!/bin/bash
-# Copy the per-resource OID assignments written by the IG Publisher
-# (igs/imaging-r4/oids.ini, igs/imaging-r5/oids.ini) back into the single
-# source file ig-src/oids.liquid.ini, so they survive the next preprocess.
+# `auto-oid-root` in ig-src/sushi-config.liquid.yaml configures each version's
+# root OID. SUSHI passes that parameter to the IG Publisher; the Publisher
+# assigns full OIDs to canonical resources during the build and records those
+# assignments in oids.ini. The root setting alone does not preserve each
+# resource's assigned OID across builds.
 #
-# The root OIDs are set by `auto-oid-root` in ig-src/sushi-config.liquid.yaml.
-# If a version's oids.ini is missing, the existing block for that version is kept.
+# Preprocessing wipes the generated igs/imaging-r4 and igs/imaging-r5 folders,
+# so their oids.ini files would otherwise be lost. This script copies the
+# Publisher's per-resource mappings back into ig-src/oids.liquid.ini, which
+# preprocessing renders into each version before its next build. Commit that
+# source template to keep resource OIDs stable across builds.
+#
+# If a version's oids.ini is missing, its existing template block is kept.
+# After running _genonce.sh directly, run this script to persist new mappings.
 #
 # Usage (from the fork root or any directory): ./scripts/syncOidsIni.sh
 
