@@ -77,13 +77,6 @@
         note[finding] = "..."
         note[finding] = "..."
         note[finding] = "..."
-    {% if isR4 %}
-        extension[finding]: StructuredKeyimageRestR4
-        extension[finding]: StructuredKeyImageStressR4
-    {% else %}
-        extension[finding]: StructuredKeyimageRest
-        extension[finding]: StructuredKeyImageStress
-    {% endif %}
         result: WMSI observations
     }
 

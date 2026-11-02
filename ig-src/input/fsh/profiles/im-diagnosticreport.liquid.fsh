@@ -190,14 +190,6 @@ automated tools, or by the radiologists themselves.
 Imaging procedure used to acquire the study.
 """
 
-* extension contains HL7IDRFindingExt named finding 0..* MS
-* extension[finding] ^short = "Key image findings"
-* extension[finding] ^definition = """
-Key images in the report
-"""
-* extension[findings]
-
-
 * extension contains HL7IDRImpressionExt named impression 0..* MS
 * extension[impression] ^short = "Impression"
 * extension[impression] ^definition = """
@@ -226,7 +218,6 @@ Communications captures what communications have been made with other care provi
 // * obeys hl7eu-im-dr-impression
 // * obeys hl7eu-im-dr-recommendation
 // * obeys hl7eu-im-dr-communication
-// * obeys hl7eu-im-dr-finding
 
 Extension: HL7IDRComparisonStudiesExt
 Title: "Extension: HL7IDR DiagnosticReport Comparison Study"
@@ -249,13 +240,6 @@ Id: HL7IDRImagingProcedure
 Description: "Imaging procedure used for the imaging acquisition and procedure specific information."
 Context: DiagnosticReport
 * value[x] only Reference(ProcedureEuImaging or AdverseEvent or ObservationRadiationDoseEuImaging)
-
-Extension: HL7IDRFindingExt
-Title: "Extension: HL7IDR KeyImage Finding"
-Id: HL7IDRFinding
-Description: "KeyImage in the imaging report"
-Context: DiagnosticReport
-* value[x] only Reference(ObservationFindingEuImaging or ImagingSelectionKeyImageEuImaging {% if isR4 %} or MediaKeyImageEuImaging or Media or DocumentReference {% else %} or DocumentReferenceKeyImageEuImaging or DocumentReference {% endif %} )
 
 Extension: HL7IDRImpressionExt
 Title: "Extension: HL7IDR Impression"
