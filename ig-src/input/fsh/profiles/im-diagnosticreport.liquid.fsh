@@ -274,7 +274,7 @@ Title: "Extension: HL7IDR Communication"
 Id: HL7IDRCommunication
 Description: "Communications captures what communications have been made with other care providers"
 Context: DiagnosticReport
-* value[x] only Reference
+* value[x] only Reference(Communication)
 
 // ////////////////////////// Invariants ///////////////////////////////////////////////////////////////////
 
