@@ -146,6 +146,13 @@ parameters:
   releaselabel: 0.1.1-build
   
   special-url-base: https://www.xt-ehr.eu/specifications/fhir
+  # Root OID per package (assigned by HL7 Europe); per-resource OIDs are kept in ig-src/oids.liquid.ini
+{% if isR4 %}
+  auto-oid-root: 2.16.840.1.113883.2.51.22.10
+{% endif %}
+{% if isR5 %}
+  auto-oid-root: 2.16.840.1.113883.2.51.22.12
+{% endif %}
   # add all fsh results to _data directory
   # produce-jekyll-data: true
   # broken links are not errors, but warnings

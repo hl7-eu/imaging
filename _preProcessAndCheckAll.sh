@@ -57,6 +57,10 @@ if [ "$version" = "5.0.0" ] || [ -z "$version" ]; then
 fi
 
 echo ==================================================================================
+echo "sync Publisher OID assignments back to ig-src/oids.liquid.ini"
+./scripts/syncOidsIni.sh
+
+echo ==================================================================================
 echo "check standalone R4 API IG (no preprocessing)"
 if [[ -d "ig-api" && -f "ig-api/sushi-config.yaml" && ( "$version" = "4.0.1" || -z "$version" ) ]]; then
 	if [[ ! -f "ig-api/input-cache/publisher.jar" && ! -f "ig-api/publisher.jar" ]]; then
