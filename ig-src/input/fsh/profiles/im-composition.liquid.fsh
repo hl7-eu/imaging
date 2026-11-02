@@ -50,8 +50,14 @@ The `text` field of each section SHALL contain a textual representation of all l
     authoringDevice 0..* and
     organization 0..*
 * author[author] only Reference( $EuPractitioner or $EuPractitionerRole )
+  * ^short = "Healthcare professional who authored the report"
+  * ^definition = "The author should identify a healthcare professional."
 * author[authoringDevice] only Reference( $EuDevice )
+  * ^short = "System used to generate the report"
+  * ^definition = "Identifies the Device used to generate the report. Device as the only author SHOULD only be used when a practitioner was not involved in the imaging acquisition or the practitioner is not known."
 * author[organization] only Reference( $EuOrganization )
+  * ^short = "Organization author"
+  * ^definition = "Organization as the only author SHOULD only be used when a practitioner was not involved in the imaging acquisition or the practitioner is not known."
 
 // type of the report. Matching DiagnosticReport.code
 // code 

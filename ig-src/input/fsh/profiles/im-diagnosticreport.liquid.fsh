@@ -4,6 +4,7 @@ Title: "DiagnosticReport: Imaging Report"
 Description: """
 DiagnosticReport profile for Imaging Reports. This document represents the report of an imaging study. It is the anchor resource that refers to all structured data as well as the `Composition` resource that contains the narrative text of the report.   
 The structure of the modelled has been aligned with the DiagnosticResource as defined by [IHE-RAD-IDR](https://build.fhir.org/ig/IHE/RAD.IDR/StructureDefinition-imaging-diagnosticreport.html). As this specification has not been published yet, the relevant extensions have been included in this specification.
+The healthcare professional who interprets the results is identified by `resultsInterpreter[author]`. The Composition author should identify a healthcare professional; its authoring Device may identify the system used to generate the report. Device or Organization as the only Composition author SHOULD only be used when a practitioner was not involved in the imaging acquisition or the practitioner is not known.
 """
 * insert SetFmmAndStatusRule( 1, draft )
 // * insert MandateLanguageAndSecurity
@@ -148,6 +149,7 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
 // author etc.
 // EU Core already slices resultsInterpreter and constrains the author slice to practitionerRole-eu-core.
 * resultsInterpreter[author] ^short = "Primary interpreter of results"
+* resultsInterpreter[author] ^definition = "The healthcare professional who interprets the imaging results."
 
 * result 0..* MS
 * result only Reference(ObservationFindingEuImaging or ObservationNarrativeReport)
