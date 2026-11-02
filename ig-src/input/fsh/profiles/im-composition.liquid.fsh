@@ -240,7 +240,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[report]
   * ^short = "Report - all content in one section"
 // a proper code is needed
-  * code = $loinc#LP173421-1 // "Report"
+  * code = $sct#4201000179104 "Imaging report"
   * entry
     * insert SliceElement( #profile, $this )
   * entry contains narrative-report 1..*
