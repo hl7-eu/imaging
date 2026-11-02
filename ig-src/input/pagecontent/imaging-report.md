@@ -7,7 +7,7 @@ The imaging report represents a report made by a radiologist based on an imaging
 
 The figure below illustrates the structure of the Imaging Report.
 
-{% include img.html img="imaging-report-overview.drawio.png" caption="Figure 1: Imaging report overview" %}
+{% include img.html img="imaging-report-overview.drawio.svg" caption="Figure 1: Imaging report overview" %}
 
 An Imaging Report is a FHIR Clinical Document that contains both a [[[DiagnosticReport]]] and a [[[Composition]]] resource.
 The report uses the [[[DiagnosticReportEuImaging]]] to store the structured data. This resource might also include a rendered version of the document. The [[[CompositionEuImaging]]] resource is used to present a rendered version of the document as a FHIR document.
