@@ -116,7 +116,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * code = $loinc#18726-0
   * entry 
     * insert SliceElement( #profile, $this )
-  * entry contains imagingstudy 1..*
+  * entry contains imagingstudy 0..*
   * entry[imagingstudy]
     * ^short = "Imaging Study Reference"
     * ^definition = "This entry holds a reference to the Imaging Study instance that is associated with this Composition."
@@ -259,9 +259,9 @@ Severity: #error
 Expression: "entry.empty().not() or emptyReason.exists() or section.exists() or extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
 
 Invariant: eu-imaging-composition-2
-Description: "A section must contain at least one of text, entries, or sub-sections."
+Description: "A section must contain at least one of text, entries, sub-sections, or an emptyReason."
 Severity: #error 
-Expression: "text.exists() or entry.exists() or section.exists()"
+Expression: "text.exists() or entry.exists() or section.exists() or emptyReason.exists()"
 
 // ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
 
