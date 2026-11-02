@@ -37,7 +37,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
 
-* attester[resultValidator].party.extension contains DeviceAttesterExt named deviceAttester 0..1
+* attester[validator].party.extension contains DeviceAttesterExt named deviceAttester 0..1
 
 * author 1..*
   // * insert SliceElement( #profile, [[$this.resolve()]] )

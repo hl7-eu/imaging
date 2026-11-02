@@ -118,11 +118,10 @@ The regions SHALL overlap with the bodysite references from `ImagingStudy.serie.
   * ^short = "Type of Imaging Diagnostic Report"
   * ^definition = "Defines the document type, it is recommended to take this from the suggested LOINC set."
 
-// R5 EU Core already slices category and defines the diagnostic-service slice; R4 EU Core does not.
-{{R4}}* category 0..*
-{{R4}}  * insert SliceElement( #value, $this )
-// EU Core already defines the diagnostic-service category slice.
-* category contains imaging-report 1..1 and imaging 1..1
+// EU Core 2.0.1 no longer slices category; define the Imaging slices in both versions.
+* category 0..*
+  * insert SliceElement( #value, $this )
+* category contains diagnostic-service 0..1 and imaging-report 1..1 and imaging 1..1
 * category[diagnostic-service] from $diagnostic-service-sections (required)
 * category[imaging] = http://hl7.eu/fhir/{% if isR5 %}eu-{% endif %}health-data-api/CodeSystem/eehrxf-document-priority-category-cs#Medical-Imaging
   * ^definition = "Defines the priority category of the report as defined in the API spec."
