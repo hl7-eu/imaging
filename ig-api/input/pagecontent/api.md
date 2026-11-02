@@ -32,9 +32,9 @@ The different actors defined in this specification are presented in the figure b
 
 The main actors Resource Access Provider and Resource Consumer are refined in this specification and imaging report specific versions are defined.
 
-### Report Bundle generation
+### Report retrieval
 
-Resource Access Providers that support DiagnosticReport SHOULD support the instance-level [DiagnosticReport/$document](OperationDefinition-DiagnosticReport-fhir-report.html) operation to generate a report Bundle conforming to BundleReportEuImaging.
+Consumers SHOULD discover imaging reports by searching DocumentReference (ITI-67), then retrieve the indexed report content using the reference in `DocumentReference.content.attachment.url`. Retrieve FHIR document Bundles or Binary content using the corresponding read interaction (ITI-68) declared by the Document Access Provider CapabilityStatement.
 
 ### Report indexing and versioning
 
