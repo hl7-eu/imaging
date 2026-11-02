@@ -32,6 +32,7 @@ const TSV_FILE = path.join(__dirname, 'xtehr-model-mapping.tsv');
 const OUT_CSV = path.join(__dirname, 'eu-imaging-obligations.csv');
 const GAPS_CSV = path.join(__dirname, 'eu-imaging-obligations-gaps.csv');
 const MISMATCH_CSV = path.join(__dirname, 'eu-imaging-obligations-mismatches.csv');
+const EXCLUDED_OBLIGATION_SOURCE_RESOURCES = new Set(['EHDSImagingStudy']);
 
 const EU_URL_MARKER = 'hl7.eu/fhir/imaging';
 
@@ -186,7 +187,9 @@ function buildObligationOverlay() {
     lines.slice(1).forEach(line => {
         if (!line.trim()) return;
         const c = line.split('\t');
-        const ehdsSrc = `${clean(c[TSV.srcResource])}.${clean(c[TSV.srcField])}`;
+        const srcResource = clean(c[TSV.srcResource]);
+        if (EXCLUDED_OBLIGATION_SOURCE_RESOURCES.has(srcResource)) return;
+        const ehdsSrc = `${srcResource}.${clean(c[TSV.srcField])}`;
         const ehdsDesc = clean(c[TSV.srcDesc]);
         const ehdsProd = clean(c[TSV.ehdsProducer]);
         const ehdsCons = clean(c[TSV.ehdsConsumer]);
@@ -207,7 +210,7 @@ function buildObligationOverlay() {
             const cons = clean(c[consCol]);
             if (prodCol === TSV.r5Producer) { o.r5Prod = strongestObligation(o.r5Prod, prod); o.r5Cons = strongestObligation(o.r5Cons, cons); }
             else { o.r4Prod = strongestObligation(o.r4Prod, prod); o.r4Cons = strongestObligation(o.r4Cons, cons); }
-            if (clean(c[TSV.srcResource]).startsWith('EHDS') && clean(c[TSV.srcField])) {
+            if (srcResource.startsWith('EHDS') && clean(c[TSV.srcField])) {
                 const srcLabel = ehdsSrc;
                 if (!o.sources.some(s => s.src === srcLabel)) {
                     o.sources.push({ src: srcLabel, desc: ehdsDesc, prod: ehdsProd, cons: ehdsCons });

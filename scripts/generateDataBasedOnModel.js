@@ -863,6 +863,7 @@ function generateMappingIndex(generatedFiles, nonCoreWithR, resourcesWithoutR, p
 
 function generateObligationFiles(parsedData) {
     const IG_NAME_SUFFIX = 'EuImaging';
+    const EXCLUDED_OBLIGATION_SOURCE_RESOURCES = new Set(['EHDSImagingStudy']);
     const RESOURCE_TITLES = {
         CompositionEuImaging: 'Composition: Imaging Report',
         ServiceRequestOrderEuImaging: 'ServiceRequest: Imaging Order',
@@ -876,6 +877,10 @@ function generateObligationFiles(parsedData) {
         return (idx !== undefined && row[idx] !== undefined && row[idx] !== null)
             ? row[idx].trim()
             : '';
+    }
+
+    function includeObligationSource(row) {
+        return !EXCLUDED_OBLIGATION_SOURCE_RESOURCES.has(getValue(row, indices.srcResource));
     }
 
     function ensureOutputDir(relativeDir) {
@@ -908,6 +913,7 @@ function generateObligationFiles(parsedData) {
         const sourceMappings = new Set(
             parsedData
                 .filter((row, index) => index > 0)
+                .filter(includeObligationSource)
                 .filter(row => {
                     const targetResource = liquidCondition === 'isR5'
                         ? getValue(row, indices.tgtResource)
@@ -1031,6 +1037,7 @@ function generateObligationFiles(parsedData) {
     function buildVersionData(resourceName, targetResourceIndex, targetElementIndex, actorVersionConfigs) {
         const rows = parsedData
             .filter((row, index) => index > 0)
+            .filter(includeObligationSource)
             .filter(row => getValue(row, targetResourceIndex) === resourceName)
             .filter(row => getValue(row, targetElementIndex).length > 0)
             .filter(row => actorVersionConfigs.some(cfg => getValue(row, cfg.obligationCodeIndex).length > 0));
@@ -1081,7 +1088,7 @@ function generateObligationFiles(parsedData) {
             .forEach(row => {
                 const resource = getValue(row, targetResourceIndex);
                 const hasAnyObligation = actorVersionConfigs.some(cfg => getValue(row, cfg.obligationCodeIndex).length > 0);
-                if (resource.length > 0 && hasAnyObligation) {
+                if (includeObligationSource(row) && resource.length > 0 && hasAnyObligation) {
                     names.add(resource);
                 }
             });
@@ -1119,6 +1126,7 @@ function generateObligationFiles(parsedData) {
             Array.from(data.obligationMap.keys()).forEach(obligation => {
                 const rows = parsedData
                     .filter(row => getValue(row, indices.srcResource).length > 0)
+                    .filter(includeObligationSource)
                     .filter(row => {
                         const targetElement = liquidCondition === 'isR5'
                             ? getValue(row, indices.tgtElement)
