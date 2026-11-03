@@ -4,4 +4,4 @@ This profile is aligned with the equivalent European Patient Summary (EPS) profi
 
 The value is bound (required) to the FHIR `units-of-time` value set. In addition, a preferred additional binding points to the `ValueSetGestationalAgeTimeUnitsEuImaging` value set, which lists the UCUM units most commonly used for gestational age: month (`mo`) and week (`wk`).
 
-{% include worknote.html text="Tracked by <a href='https://jira.hl7.org/browse/FHIR-56316'>FHIR-56316</a>: once this ticket is resolved, this profile must be aligned with the EU core profile. If the overlap is complete, it will be removed from this specification and the specification will refer to the EU core definition instead." %}
+{% include worknote.html text="Updated for <a href='https://jira.hl7.org/browse/FHIR-59663'>FHIR-59663</a>: the valueQuantity binding uses FHIR units-of-time, with months and weeks as preferred gestational-age units. Examples demonstrate gestational age in weeks and days." %}

@@ -7,6 +7,10 @@ Description: "Represents the gestational age of the current pregnancy, expressed
 
 * code 1..1
 * code from ValueSetGestationalAgeEuImaging (required)
+* component 0..0
+* specimen 0..0
+* subject 1..
+* subject only Reference($EuPatient)
 * value[x] only Quantity
 * valueQuantity 1..1 
 * valueQuantity from http://hl7.org/fhir/ValueSet/units-of-time (required)
