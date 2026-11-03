@@ -37,7 +37,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * custodian only Reference( $EuOrganization )
   * ^short = "Organization that manages the Imaging Report"
 
-* attester[resultValidator].party.extension contains DeviceAttesterExt named deviceAttester 0..1
+* attester[validator].party.extension contains DeviceAttesterExt named deviceAttester 0..1
 
 * author 1..*
   // * insert SliceElement( #profile, [[$this.resolve()]] )
@@ -50,8 +50,14 @@ The `text` field of each section SHALL contain a textual representation of all l
     authoringDevice 0..* and
     organization 0..*
 * author[author] only Reference( $EuPractitioner or $EuPractitionerRole )
+  * ^short = "Healthcare professional who authored the report"
+  * ^definition = "The author should identify a healthcare professional."
 * author[authoringDevice] only Reference( $EuDevice )
+  * ^short = "System used to generate the report"
+  * ^definition = "Identifies the Device used to generate the report. Device as the only author SHOULD only be used when a practitioner was not involved in the imaging acquisition or the practitioner is not known."
 * author[organization] only Reference( $EuOrganization )
+  * ^short = "Organization author"
+  * ^definition = "Organization as the only author SHOULD only be used when a practitioner was not involved in the imaging acquisition or the practitioner is not known."
 
 // type of the report. Matching DiagnosticReport.code
 // code 
@@ -116,7 +122,7 @@ The `text` field of each section SHALL contain a textual representation of all l
   * code = $loinc#18726-0
   * entry 
     * insert SliceElement( #profile, $this )
-  * entry contains imagingstudy 1..*
+  * entry contains imagingstudy 0..*
   * entry[imagingstudy]
     * ^short = "Imaging Study Reference"
     * ^definition = "This entry holds a reference to the Imaging Study instance that is associated with this Composition."
@@ -240,7 +246,7 @@ The `text` field of each section SHALL contain a textual representation of all l
 * section[report]
   * ^short = "Report - all content in one section"
 // a proper code is needed
-  * code = $loinc#LP173421-1 // "Report"
+  * code = $sct#4201000179104 "Imaging report"
   * entry
     * insert SliceElement( #profile, $this )
   * entry contains narrative-report 1..*
@@ -259,9 +265,9 @@ Severity: #error
 Expression: "entry.empty().not() or emptyReason.exists() or section.exists() or extension('http://hl7.org/fhir/StructureDefinition/note').value.text.exists()"
 
 Invariant: eu-imaging-composition-2
-Description: "A section must contain at least one of text, entries, or sub-sections."
+Description: "A section must contain at least one of text, entries, sub-sections, or an emptyReason."
 Severity: #error 
-Expression: "text.exists() or entry.exists() or section.exists()"
+Expression: "text.exists() or entry.exists() or section.exists() or emptyReason.exists()"
 
 // ////////////////////////// Status <-> relatesTo correspondence //////////////////////////
 

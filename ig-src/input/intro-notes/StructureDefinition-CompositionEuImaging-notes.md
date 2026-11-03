@@ -35,10 +35,10 @@ The following table lists the elements that should be included in the narrative 
 | DiagnosticReportEuImaging | effectivePeriod |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.period |
 | CompositionEuImaging | version |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.version |
 | DiagnosticReportEuImaging | extension[artifactVersion] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.version |
-| CompositionEuImaging | attester[resultValidator] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation |
-| CompositionEuImaging | attester[resultValidator].party | EuPractitionerRole | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation.attester[x] |
-| CompositionEuImaging | attester[resultValidator].party.extension[deviceAttester] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation.attester[x] |
-| CompositionEuImaging | attester[resultValidator].time |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation.datetime |
+| CompositionEuImaging | attester[validator] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation |
+| CompositionEuImaging | attester[validator].party | EuPractitionerRole | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation.attester[x] |
+| CompositionEuImaging | attester[validator].party.extension[deviceAttester] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation.attester[x] |
+| CompositionEuImaging | attester[validator].time |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.attestation.datetime |
 | CompositionEuImaging | attester[legalAuthenticator] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.legalAuthentication |
 | CompositionEuImaging | attester[legalAuthenticator].time |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.legalAuthentication.datetime |
 | CompositionEuImaging | category[diagnostic-service] | ImagingStudyEuImaging | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).header.eventType |
@@ -177,4 +177,3 @@ The following table lists the elements that should be included in the narrative 
 | First order resource | Element | Referenced resource | Logical model resource.field | Comments |
 | -------- | ------- | -------------- | --------------------- | -------- |
 | R5 Mapped Resource | R5 Mapped Field |  | [Xt-EHR resource](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-Xt-EHR resource.html).Xt-EHR field | R5 Comments |
-

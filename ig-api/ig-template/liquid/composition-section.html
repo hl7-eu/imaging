@@ -1,0 +1,65 @@
+{% if section.title %}
+  <h4>{{section.title}}</h4>
+  {% if section.code.exists() %}
+    <p><b>Code:</b>{% include codeable-concept.html cc=section.code %}</p>
+  {% endif %}
+{% elsif section.code.exists() %}
+  <h4>{% include codeable-concept.html cc=section.code %}</h4>
+{% else %}
+  <h4>Section</h4>
+{% endif %}
+
+{% if section.text.exists() %}
+  {% if section.text.status.exists() %}
+  <p><b>Status:</b> {{section.text.status}}</p>
+  {% endif %}
+  {% if section.text.div.exists() %}
+  <p><b>div:</b> {{""+section.text.div}}</p>
+  {% endif %}
+{% endif %}
+
+{% if section.focus.exists() %}
+  <p><b>Focus:</b>></p>
+  {{section.focus}}
+{% endif %}
+
+{% if section.author.exists() %}
+  <p><b>Authors:</b>></p>
+  <ul>
+    {% for author in section.author %}
+      <li>{{author}}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if section.extension.exists() %}
+  {% for extension in section.extension %}
+    {% if extension.url.exists() %}
+      {% if extension.url='http://hl7.org/fhir/StructureDefinition/note' %}
+        {% include annotation.html annotation=extension.valueAnnotation %}
+      {% else %}
+        <p>Extension: {{extension.url}}</p>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if section.emptyReason.exists() %}
+  <p><b>Reason for absence of content:</b></p>
+  {% include codeable-concept.html cc=section.emptyReason %}
+{% endif %}
+
+{% if section.entry.exists() %}
+  <p><b>References:</b></p>
+  <ul>
+    {% for entry in section.entry %}
+      <li>{{entry}}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% if section.section.exists() %}
+  {% for subsection in section.section %}
+    {% include composition-section.html section=subsection %}
+  {% endfor %}
+{% endif %}

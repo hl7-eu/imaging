@@ -101,6 +101,10 @@ Obligations are stored in dedicated `<Resource>ObligationEuImaging` profiles, ge
 `xtehr-model-mapping.tsv` by `generateDataBasedOnModel.js`. When several source elements map to the
 same target element, the **strongest** obligation applies (`SHALL` > `SHOULD` > `MAY`).
 
+For FHIR-56761, EHDSImagingStudy source-to-FHIR mappings remain available in the mapping tables, but
+EHDSImagingStudy rows are excluded when generating obligation codes and source provenance. The
+Imaging Report obligations are not derived from the separate ImagingStudy logical model.
+
 ### Obligations table + consistency check
 
 `updateEuImagingObligations.js` builds `eu-imaging-obligations.csv` — all fields of all EU Imaging

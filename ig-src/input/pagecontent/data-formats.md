@@ -4,8 +4,6 @@ The EHDS Imaging Report specification supports the use of different data formats
 
 Comprised of a `Bundle` of type collection containing a `DiagnosticReport` with a reference to a PDF (or other renderable format) attachment through .presentedForm, the `ImagingStudy` resource(s) that is the object of the report, the `ServiceRequest` that represented the original order for the study, and the `Patient` to whom the report belongs. Other resources are also allowed to encode additional elements of the report environment, as specified by this IG. Optionally, if the only available information about the study and the order are their identifiers, those can be encoded as `DiagnosticReport.study.identifier` and `DiagnosticReport.basedOn.identifier`, without having to include `ImagingStudy` and `ServiceRequest` resources in the `Bundle`.
 
-A `DocumentReference` resource wrapper pointing to the `Bundle` is used to encode the elements used as search parameters to fulfill functional requirements of the ACCESSOR actor.
-
 Note that no `Composition` resource is used in this case, and the `DiagnosticReport` is used as the main resource to represent the report.
 
 This level of structure allows for a human-readable report (the PDF) that can fulfill the requirements of the DISPLAYER actor, while also having some basic metadata about the report and its connection with the imaging study and service request.
@@ -20,7 +18,7 @@ An example of this type of report format can be found [here](example-unstructure
 
 ### Section-structured report with processable narrative
 
-Building on top of the previous data format, the `DiagnosticReport` is exchanged alongside a `Composition` as entries of a `Bundle` of type `document`. Both `DiagnosticReport` and `Composition` encode the same information, but the `Composition` can be used for display purposes, especially the narrative sections of the report, while the `DiagnosticReport` can be used for the interpretation of the structured data. The `DocumentReference` resource wrapper, as in the previous case, serves as an interface layer to surface search parameters that allow finding and retrieving the report.
+Building on top of the previous data format, the `DiagnosticReport` is exchanged alongside a `Composition` as entries of a `Bundle` of type `document`. Both `DiagnosticReport` and `Composition` encode the same information, but the `Composition` can be used for display purposes, especially the narrative sections of the report, while the `DiagnosticReport` can be used for the interpretation of the structured data.
 
 In this case, the PDF loses relevance, as the narrative can be exchanged in processable form through `ObservationNarrativeReport` resources referenced from `DiagnosticReport.result` and from the corresponding `Composition.section.entry[finding]`, while `Composition` still supports section-specific display-oriented rendering that can adapt dynamically to different UIs. However, the PDF can still be included as an attachment in the `DiagnosticReport` for archival purposes, or for use cases where a human-readable report is needed without the requirement for structured data. Creators of this type of report must ensure tight consistency between the narrative represented in `Composition`, the referenced `ObservationNarrativeReport` resources, and the PDF, as they are all intended to represent the same report content.
 

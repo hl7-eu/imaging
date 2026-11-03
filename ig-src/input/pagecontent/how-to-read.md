@@ -26,7 +26,6 @@ If you are a policy or functional stakeholder, focus on:
 If you are an implementer, architect, or validator, focus on:
 
 - [Data formats](data-formats.html)
-- [EU Health Data API for Imaging Reports](api.html)
 - [Patterns and Guidelines](patterns-and-guidelines.html)
 - [Artifacts](artifacts.html)
 - [Obligations](artifacts-obligations.html)

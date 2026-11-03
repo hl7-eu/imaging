@@ -51,6 +51,8 @@ This implementation guide specifies imaging study report data in the **European*
 * Example implementations of the defined models for Imaging Study Reports.
 * Relation of this specification with the existing ecosystem, including IHE MADO, IHE RAD, and EHDS API specifications.
 
+The functional Xt-EHR F7.2 deliverable that informs this specification includes all DICOM objects in its scope, which can include DICOM ECG waveforms. This IG currently addresses imaging-based reports; inclusion of an object in the functional scope does not establish conformance guidance for waveform-based reporting. More implementation experience is needed before this IG can address ECG and other waveform-based reports in its profiles and examples.
+
 This specification has been designed to be compatible with {% raw %}{{EuridiceHealthDataAPI}}{% endraw %}.
 
 ### Relationship and scope boundaries

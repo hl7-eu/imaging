@@ -1,6 +1,6 @@
 Profile: ImagingStudyEuImaging
 Parent: ImagingStudy
-Title: "ImagingStudy: Reported Study"
+Title: "Imaging Study: Reported Study"
 Description: """ 
 This profile represents an imaging study instance.
 """
@@ -83,4 +83,3 @@ Invariant: im-imagingstudy-01
 Description: "A DICOM instance UID must start with 'urn:oid:'"
 Severity: #warning
 Expression: "identifier.where(system='urn:dicom:uid').value.startsWith('urn:oid:')"
-

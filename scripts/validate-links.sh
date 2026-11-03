@@ -6,7 +6,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 # Configuration
 R4_OUTPUT="${REPO_ROOT}/igs/imaging-r4/output"
@@ -62,7 +62,7 @@ validate_html_links() {
         echo -e "${YELLOW}Warning: Found /branches/master/ URLs (outdated branch reference)${NC}"
         grep "branches/master" "${temp_urls_file}.unique" | while read url; do
             echo "  - $url"
-            ((broken_count++))
+            ((broken_count += 1))
         done
     fi
     
@@ -70,12 +70,12 @@ validate_html_links() {
     if grep -q "www.hl7.org/fhir/R4/ImagingSelection.html" "${temp_urls_file}.unique"; then
         echo -e "${RED}Error: Found broken FHIR R4 link to ImagingSelection (does not exist in R4)${NC}"
         echo "  - https://www.hl7.org/fhir/R4/ImagingSelection.html"
-        ((broken_count++))
-        ((BROKEN_LINKS_FOUND++))
+        ((broken_count += 1))
+        ((BROKEN_LINKS_FOUND += 1))
     fi
     
     if [[ ${broken_count} -gt 0 ]]; then
-        ((VALIDATION_ERRORS++))
+        ((VALIDATION_ERRORS += 1))
     fi
     
     rm -f "${temp_urls_file}" "${temp_urls_file}.unique"

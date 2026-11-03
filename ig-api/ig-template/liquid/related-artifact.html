@@ -1,0 +1,56 @@
+{% if include.relatedArtifact.where(type = 'documentation' or type = 'justification').exists() %}
+<p><b>Documentation</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'documentation' or type = 'justification') %}
+    <li><a href="{{artifact.url}}">{{artifact.label}} {{artifact.display}}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if include.relatedArtifact.where(type = 'citation').exists() %}
+<p><b>References</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'citation') %}
+    <li>{{artifact.citation}}<br/><a href="{{artifact.url}}">{{artifact.url}}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if include.relatedArtifact.where(type = 'depends-on').exists() %}
+<p><b>Dependencies</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'depends-on') %}
+    <li>{{artifact.resource}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if include.relatedArtifact.where(type = 'composed-of').exists() %}
+<p><b>Components</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'composed-of') %}
+    <li>{{artifact.resource}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if include.relatedArtifact.where(type = 'derived-from').exists() %}
+<p><b>Derived From</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'derived-from') %}
+    <li>{{artifact.resource}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if include.relatedArtifact.where(type = 'successor').exists() %}
+<p><b>Successor</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'successor') %}
+    <li>{{artifact.resource}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% if include.relatedArtifact.where(type = 'predecessor').exists() %}
+<p><b>Predecessor</b></p>
+<ul>
+    {% for artifact in include.relatedArtifact.where(type = 'predecessor') %}
+    <li>{{artifact.resource}}</li>
+    {% endfor %}
+</ul>
+{% endif %}

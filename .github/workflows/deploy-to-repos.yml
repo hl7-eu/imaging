@@ -82,6 +82,37 @@ jobs:
           pwd
           ./_genonce.sh
 
+  validate-api:
+    runs-on: ubuntu-latest
+    name: Validate API R4 IG
+    env:
+      JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Jekyll
+        run: sudo gem install jekyll
+
+      - name: Install Sushi
+        run: sudo npm install -g fsh-sushi
+
+      - name: Update IG publisher
+        working-directory: ./ig-api
+        run: |
+          mkdir -p input-cache
+          curl -fL https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+            -o input-cache/publisher.jar --retry 3
+          echo "IG Publisher downloaded to $(pwd)/input-cache/publisher.jar"
+
+      # The API IG is authored directly in ig-api/ and needs no preprocessing.
+      - name: Validate API R4 IG
+        working-directory: ./ig-api
+        run: |
+          pwd
+          chmod u+x *.sh
+          ./_genonce.sh
+
   # Deployment jobs only run if validation passes
   deploy-r4:
     runs-on: ubuntu-latest
@@ -258,3 +289,96 @@ jobs:
           
           git push origin "${{ github.ref_name }}"
           echo "R5 repository updated successfully - auto-ig-builder should trigger"
+
+  deploy-api:
+    runs-on: ubuntu-latest
+    needs: [validate-r4, validate-r5, validate-api]
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # DEPLOY_TOKEN is only needed to clone the target repo.
+          token: ${{ github.token }}
+
+      - name: Setup Git configuration
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Clone API target repository
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          API_REPO_URL: ${{ vars.API_REPO_URL || format('{0}/{1}-api', github.repository_owner, github.event.repository.name) }}
+        run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "Error: DEPLOY_TOKEN secret not configured."
+            echo "Add secret DEPLOY_TOKEN with write access to $API_REPO_URL."
+            exit 1
+          fi
+          git clone https://x-access-token:${DEPLOY_TOKEN}@github.com/$API_REPO_URL.git api-repo
+
+      - name: Prepare API repository branch
+        working-directory: ./api-repo
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          echo "Working with branch: $BRANCH_NAME"
+
+          if git ls-remote --heads origin "$BRANCH_NAME" | grep -qF "$BRANCH_NAME"; then
+            echo "Branch $BRANCH_NAME exists remotely, checking out"
+            git checkout "$BRANCH_NAME"
+          else
+            echo "Branch $BRANCH_NAME doesn't exist, creating new branch"
+            git checkout -b "$BRANCH_NAME"
+          fi
+
+      - name: Check API destination license
+        run: |
+          # The destination LICENSE is protected: stop if it differs from the source.
+          if [ -f api-repo/LICENSE ] && ! cmp -s ig-api/LICENSE api-repo/LICENSE; then
+            echo "Error: API destination LICENSE differs from ig-api/LICENSE; review it before syncing."
+            exit 1
+          fi
+
+      # Only the authoring sources are synchronized; the destination README,
+      # LICENSE and generated/cache output are left untouched.
+      - name: Sync API content
+        run: |
+          rsync -a --delete \
+            --exclude='/.git' --exclude='/README.md' --exclude='/LICENSE' \
+            --exclude='/output/' --exclude='/temp/' --exclude='/input-cache/' \
+            --exclude='/fsh-generated/' --exclude='/template/' --exclude='/translations/' \
+            --exclude='/publisher.jar' --exclude='/Requirements-fromNarrative.json' \
+            --exclude='/FHIR-eu-imaging-api.xml' --exclude='/.build-source.sha256' \
+            --exclude='*.db' --exclude='*index.json' \
+            --include='/input/***' --include='/ig-template/***' \
+            --include='/.gitignore' --include='/ig.ini' --include='/sushi-config.yaml' \
+            --include='/_build.sh' --include='/_build.bat' \
+            --include='/_genonce.sh' --include='/_genonce.bat' \
+            --include='/_gencontinuous.sh' --include='/_gencontinuous.bat' \
+            --include='/_updatePublisher.sh' --include='/_updatePublisher.bat' \
+            --include='/_source-state.sh' --exclude='/*' \
+            ./ig-api/ ./api-repo/
+
+          if [ ! -e api-repo/LICENSE ] && [ -f ig-api/LICENSE ]; then
+            cp ig-api/LICENSE api-repo/LICENSE
+          fi
+
+          find ./api-repo -name '.~lock.*#' -delete 2>/dev/null || true
+
+      - name: Commit and push API changes
+        working-directory: ./api-repo
+        run: |
+          git add -A
+
+          if git diff --staged --quiet; then
+            echo "No content changes for the API repository."
+          else
+            git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
+          fi
+
+          # Always push: an earlier attempt may have committed but failed to push.
+          git push origin "${{ github.ref_name }}"
+          echo "API repository updated successfully"

@@ -11,15 +11,6 @@ skinparam class {
   ArrowColor Black
 }
 
-class DocumentReference {
-  +subject : Reference~Patient~
-  +date : dateTime
-  +type : CodeableConcept
-  +category : CodeableConcept
-  +content : Bundle
-  ...
-}
-
 class Bundle <<type: document>> {
 }
 
@@ -53,7 +44,6 @@ class ObservationNarrativeReport <<report narrative>> {
 }
 
 
-DocumentReference --> Bundle : content
 Bundle --> Composition : entry[0]
 Bundle --> DiagnosticReport : entry
 ' Bundle --> ImagingStudy : entry

@@ -7,7 +7,7 @@ The imaging report represents a report made by a radiologist based on an imaging
 
 The figure below illustrates the structure of the Imaging Report.
 
-{% include img.html img="imaging-report-overview.drawio.png" caption="Figure 1: Imaging report overview" %}
+{% include img.html img="imaging-report-overview.drawio.svg" caption="Figure 1: Imaging report overview" interactiveSvg=true %}
 
 An Imaging Report is a FHIR Clinical Document that contains both a [[[DiagnosticReport]]] and a [[[Composition]]] resource.
 The report uses the [[[DiagnosticReportEuImaging]]] to store the structured data. This resource might also include a rendered version of the document. The [[[CompositionEuImaging]]] resource is used to present a rendered version of the document as a FHIR document.
@@ -19,6 +19,8 @@ As described by {{iheIDR}}, all radiology reports contain similar information. T
 
 General information on the report. Most of the information elements in this part of the report overlap with other clinical reports. The document header includes information on the patient, source organization, author, attester and custodian of the report.
 
+The author should identify a healthcare professional. A Device may also be used to indicate the system used to generate the report. Device or Organization as the only author SHOULD only be used when a practitioner was not involved in the imaging acquisition or the practitioner is not known.
+
 #### Document sections
 
 ##### Imaging Study
@@ -28,8 +30,8 @@ Information on the studies that this report is reporting on. It includes informa
 The amount of imaging study information available to the report creator varies by setting. Systems with full access to a PACS can populate the complete study metadata, while other systems (e.g. reports from dentistry, dermatology, or legacy systems) may know only part of it, or nothing at all. The following rules and use cases describe how to populate the imaging study information accordingly:
 
 * The Study Instance UID SHALL be populated whenever it is known, as it is the key used to retrieve the imaging manifest ({{iheMADO}}) and the images.
-* If the report creator knows and has access to a corresponding study that exists in the PACS, it SHALL populate an [[[ImagingStudyEuImaging]]] resource with the known identifiers (Study Instance UID and/or Accession number) and any available study metadata (e.g. modality, anatomy, procedure code, date and time), and reference it in the model.
-* When nothing about the study is known, `section[imagingstudy]` MAY be omitted from the report.
+* If the report creator knows that an entry in the PACS exists, it SHALL populate an [[[ImagingStudyEuImaging]]] resource with known identifiers (Study Instance UID and/or Accession number) and any available study metadata (e.g. modality, anatomy, procedure code, date and time), and reference it in the model.
+* When nothing about the study is known, `section[imagingstudy]` SHALL be present but empty, with `section.emptyReason` conveying why.
 
 For a detailed description of the possible use cases and how to represent the imaging study information in each of them, see [Imaging study population use cases](design-considerations.html#imaging-study-population-use-cases).
 
@@ -149,15 +151,14 @@ Document versioning is tracked using different concepts:
  
 These fields are present on the key resources of this IG as is illustrated by the table below:
 
-| Concept                                      | DocumentReferenceImagingReport                        | DiagnosticReportEuImaging | CompositionEuImaging                              | BundleReportEuImaging |
-| -------------------------------------------- | ----------------------------------------------------- | ------------------------- | -------------------------------------------------- | --------------------- |
-| clinically effective time (when study took place) | {%if isR4%}context.period{%else%}period{%endif%} | effective[x]              | {%if isR4%}event.period{%else%}period{%endif%}     | -                     |
-| report content last logically changed by the author | -                                                  | -                         | date                                               | -                     |
-| report version issued/released to providers  | -                                                     | issued                    | -                                                  | -                     |
-| document created/assembled                   | content.attachment.creation                          | -                         | -                                                  | timestamp             |
-| document reference created/indexed           | date                                                  | -                         | -                                                  | -                     |
-| version                                      | {%if isR4%}extension[version]{%else%}version{%endif%} | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} | -                     |
-| related                                      | {%if isR4%}related{%else%}relatesTo{%endif%}          | -                         | relatesTo                                          | -                     |
+| Concept | DiagnosticReportEuImaging | CompositionEuImaging | BundleReportEuImaging |
+| ------- | ------------------------- | -------------------- | --------------------- |
+| clinically effective time (when study took place) | effective[x] | {%if isR4%}event.period{%else%}period{%endif%} | - |
+| report content last logically changed by the author | - | date | - |
+| report version issued/released to providers | issued | - | - |
+| document created/assembled | - | - | timestamp |
+| version | extension[artifactVersion] | {%if isR4%}extension[version]{%else%}version{%endif%} | - |
+| related | - | relatesTo | - |
  
 
 Imaging Report Producers SHOULD include version information in the documents, Consumers SHOULD take versioning into account.

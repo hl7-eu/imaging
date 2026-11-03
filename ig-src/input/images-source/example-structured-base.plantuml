@@ -1,8 +1,4 @@
 @startuml
-    DocumentReferenceStructuredReport --> BundleReportStructured: content.attachment.url
-    DocumentReferenceStructuredReport --> Patient: subject
-    DocumentReferenceStructuredReport --> UltrasoundCentrum: custodian
-
     BundleReportStructured --> Composition: entry
     BundleReportStructured --> DiagnosticReport: entry
     BundleReportStructured --> Patient: entry
@@ -19,7 +15,6 @@
         class DvdJochemsen <<Practitioner>>
     }
 
-        class DocumentReferenceStructuredReport <<DocumentReference>> [[./DocumentReference-DocumentReferenceStructuredReport.html]]
         class BundleReportStructured <<Bundle>> [[./Bundle-bundle-report-structured.html]] {
             +type : #document
         }

@@ -7,6 +7,20 @@ This document explains how to configure the automatic validation and deployment 
 
 ## Required Setup
 
+### Manual child-repository synchronization
+
+The source repository's `_commitToMainRepos.sh` additionally synchronizes the
+standalone R4 API project from `ig-api/` to `hl7-eu/imaging-api`, alongside
+Imaging R4/R5. It uses matching branches, excludes generated/cache files, and
+supports `--api-only` and `--no-push`. See the root [README](../../README.md)
+for build prerequisites and safeguards.
+
+The GitHub Actions jobs described below are separate from this script and do
+not invoke it, but `deploy-to-repos.yml` applies the same API synchronization
+rules (`validate-api` and `deploy-api` jobs). Ensure a `DEPLOY_TOKEN` used by
+the script or the workflow can write to all selected child repositories; the
+script does not store the token in remote URLs.
+
 ### 1. GitHub Secrets
 
 You need to create the following secret in your repository settings:
@@ -35,9 +49,14 @@ You can optionally configure the following variables to specify custom repositor
 - **Default**: `oijauregui/ehdsimaging-r5`
 - **Description**: The target repository for R5 content in format `owner/repo-name`
 
+#### `API_REPO_URL`
+- **Type**: Repository Variable
+- **Default**: `<owner>/<repo>-api` (for `hl7-eu/imaging`: `hl7-eu/imaging-api`)
+- **Description**: The target repository for the standalone API R4 content in format `owner/repo-name`
+
 ### 3. Target Repository Setup
 
-Make sure the target repositories (`ehdsimaging-r4` and `ehdsimaging-r5`) exist and the token has write access to them.
+Make sure the target repositories (`ehdsimaging-r4`, `ehdsimaging-r5` and the API repository) exist and the token has write access to them.
 
 ## How It Works
 
@@ -52,9 +71,13 @@ The workflow (`deploy-to-repos.yml`) triggers on any push to any branch and foll
   - Runs preprocessing (`_preprocessMultiVersion.sh`)
   - Updates IG Publisher
   - Runs full validation (`_genonce.sh`)
+- **validate-api**: Validates the standalone API R4 IG
+  - Builds `ig-api/` directly (no preprocessing)
+  - Updates IG Publisher
+  - Runs full validation (`_genonce.sh`)
 
 ### **Step 2: Deployment (Only if validation passes)**
-If both validations succeed:
+If the validations succeed (`deploy-api` requires all three):
 - **deploy-r4**: Deploys to R4 repository
   - Runs preprocessing
   - Clones target R4 repository
@@ -69,6 +92,12 @@ If both validations succeed:
   - Syncs content from `igs/imaging-r5/` to repository root
   - Commits and pushes changes
   - Creates build trigger for auto-ig-builder
+- **deploy-api**: Deploys to the API repository (`hl7-eu/imaging-api`)
+  - Clones target API repository
+  - Creates or switches to the same branch name as the source
+  - Stops if the destination `LICENSE` differs from `ig-api/LICENSE`
+  - Syncs only the authoring sources of `ig-api/` (`input/`, `ig-template/`, `sushi-config.yaml`, `ig.ini`, build scripts); the destination README/LICENSE and generated files are preserved, and removed sources are deleted
+  - Commits and pushes changes only when content changed (no build trigger file)
 
 **If validation fails**: Deployment is skipped and the workflow stops with an error.
 

@@ -68,6 +68,10 @@ if [ "$version" = "5.0.0" ] || [ -z "$version" ]; then
 fi
 
 echo ==================================================================================
+echo "sync Publisher OID assignments back to ig-src/oids.liquid.ini"
+./scripts/syncOidsIni.sh
+
+echo ==================================================================================
 echo validate external links in rendered output
 if [ -f "./scripts/validate-links.sh" ]; then
 	bash ./scripts/validate-links.sh

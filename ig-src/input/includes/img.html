@@ -1,8 +1,14 @@
 <!-- all this Bootstrap html for getting an narrow image to fit nicely in text - 640 pix wide -->
 
 <div>
-    <figure class="figure">
+    <figure class="figure{% if include.interactiveSvg %} diagram{% endif %}">
+      {% if include.interactiveSvg %}
+      <object data="{{include.img}}" type="image/svg+xml" class="figure-img img-responsive img-rounded center-block" aria-label="{{include.img}}">
+        <img src="{{include.img}}" class="figure-img img-responsive img-rounded center-block" alt="{{include.img}}">
+      </object>
+      {% else %}
       <img src="{{include.img}}" class="figure-img img-responsive img-rounded center-block" alt="{{include.img}}">
+      {% endif %}
       <figcaption class="figure-caption"><strong>{{include.caption | default: ""}}</strong></figcaption>
     </figure>
     <p></p>
