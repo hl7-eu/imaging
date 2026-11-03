@@ -21,7 +21,7 @@ the requested modality.
 
 * code
   * ^short = "Requested procedure"
-* code from ProcedureEuImagingType (example)
+* code from ProcedureEuImagingTypeSnomed (example)
 
 {{R4}}* supportingInfo.extension contains 
 {{R4}}    http://hl7.org/fhir/5.0/StructureDefinition/extension-ServiceRequest.supportingInfo named codeableConcept 0..*

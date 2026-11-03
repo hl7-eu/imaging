@@ -38,6 +38,32 @@ Usage: #example
 {{R4}}* performedDateTime = "2025-04-29T09:15:00+02:00"
 {{R5}}* occurrenceDateTime = "2025-04-29T09:15:00+02:00"
 
+Instance: ProcedureMrFootLoincExample
+InstanceOf: ProcedureEuImaging
+Title: "Procedure: MR imaging of both feet, LOINC-coded"
+Description: "Example imaging Procedure represented with its LOINC radiology orderable code."
+Usage: #example
+* status = #completed
+* code.coding[loinc] = $loinc#26241-0 "MR Foot - bilateral"
+* subject = Reference(PatientSemiStructuredReport)
+{{R4}}* performedDateTime = "2025-04-29T09:15:00+02:00"
+{{R5}}* occurrenceDateTime = "2025-04-29T09:15:00+02:00"
+
+Instance: ProcedureMrFootDualCodingExample
+InstanceOf: ProcedureEuImaging
+Title: "Procedure: MR imaging of both feet, SNOMED and LOINC coded"
+Description: """
+The SNOMED CT magnetic-resonance-imaging code and the more specific LOINC code
+for bilateral MR foot imaging are both included for the same procedure.
+"""
+Usage: #example
+* status = #completed
+* code = $sct#113091000 "Magnetic resonance imaging"
+* code.coding[loinc] = $loinc#26241-0 "MR Foot - bilateral"
+* subject = Reference(PatientSemiStructuredReport)
+{{R4}}* performedDateTime = "2025-04-29T09:15:00+02:00"
+{{R5}}* occurrenceDateTime = "2025-04-29T09:15:00+02:00"
+
 // function is a pattern, not a fixed value: the required SNOMED coding must be present,
 // but additional codings are permitted and their order is not significant.
 * performer[performer]

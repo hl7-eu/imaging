@@ -14,7 +14,15 @@ referred as the 'Performed Procedure Step' (PPS). This profile is used to captur
 // * insert BasedOnServiceRequestOrderEuImagingReference( ServiceRequestOrderEuImagingaccession )
 
 * code 1..1
-* code from ProcedureEuImagingType (extensible)
+* code from ProcedureEuImagingTypeAllowed (required)
+* code.coding ^slicing.discriminator.type = #value
+* code.coding ^slicing.discriminator.path = "system"
+* code.coding ^slicing.rules = #open
+* code.coding contains snomed 0..1 and loinc 0..1
+* code.coding[snomed].system = $sct (exactly)
+* code.coding[snomed].code from ProcedureEuImagingTypeSnomed (preferred)
+* code.coding[loinc].system = $loinc (exactly)
+* code.coding[loinc].code from ProcedureEuImagingTypeLoinc (preferred)
 
 * performer 0..*
   * insert SliceElementWithDescription( #value, function, [[Different performers can be added to the procedure.]] )
