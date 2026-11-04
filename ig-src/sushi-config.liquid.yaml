@@ -91,6 +91,8 @@ pages:
     title: System actors
   use-cases.md:
     title: Use Cases
+  related-specifications.md:
+    title: Related specifications
   data-formats.md:
     title: Data formats
   examples.md:
@@ -172,6 +174,7 @@ menu:
   Functional:
     System actors: actors-and-transactions.html
     Use Cases: use-cases.html
+    Related specifications: related-specifications.html
   Implementation:
     Imaging Report: StructureDefinition-BundleReportEuImaging.html
     Data formats: data-formats.html
