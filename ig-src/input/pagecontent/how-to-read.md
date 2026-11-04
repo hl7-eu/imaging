@@ -8,7 +8,7 @@ Start here:
 2. Read [Background and context](background.html) to understand high-level context and relations of this IG with  EHDS, Xt-EHR, HL7 Europe, and IHE.
 3. Open [Use Cases](use-cases.html) to understand clinical and workflow context represented in this IG.
 4. Review [System actors](actors-and-transactions.html) for roles and responsibilities.
-5. Continue with [Imaging Report](imaging-report.html) and [Data formats](data-formats.html) to understand the model and exchange options.
+5. Continue with [Imaging Report](StructureDefinition-BundleReportEuImaging.html) and [Data formats](data-formats.html) to understand the model and exchange options.
 6. Use [Patterns and Guidelines](patterns-and-guidelines.html) and [Design considerations](design-considerations.html) for implementation rules and rationale.
 7. Use [Examples](examples.html) and [Artifacts](artifacts.html) for conformance and testing.
 
@@ -20,7 +20,7 @@ If you are a policy or functional stakeholder, focus on:
 - [Use Cases](use-cases.html)
 - [Xt-EHR mapping](xtehr-mapping.html)
 - [System actors](actors-and-transactions.html)
-- [Imaging Report](imaging-report.html)
+- [Imaging Report](StructureDefinition-BundleReportEuImaging.html)
 
 
 If you are an implementer, architect, or validator, focus on:
