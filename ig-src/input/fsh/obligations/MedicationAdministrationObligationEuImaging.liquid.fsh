@@ -3,7 +3,7 @@
 // Generated file. Do not edit.
 ////////////////////////////////////////////////////
 Profile: MedicationAdministrationObligationEuImaging
-Parent: $EuMedicationAdministration
+Parent: MedicationAdministrationEuImaging
 Id: medication-administration-obligation-eu-imaging
 Title: "MedicationAdministration: Obligations"
 Description: "Obligations for MedicationAdministration"

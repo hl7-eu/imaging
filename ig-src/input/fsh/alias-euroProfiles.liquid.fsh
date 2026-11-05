@@ -66,9 +66,6 @@ Alias: $EuMedicationUrl        = http://hl7.org/fhir/StructureDefinition/Medicat
 Alias: $EuObservation          = Observation
 Alias: $EuObservationUrl       = http://hl7.org/fhir/StructureDefinition/Observation
 
-Alias: $EuMedicationAdministration = MedicationAdministration
-Alias: $EuMedicationAdministrationUrl = http://hl7.org/fhir/StructureDefinition/MedicationAdministration
-
 Alias: $EuOrganization         = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/organization-eu-core
 Alias: $EuOrganizationUrl      = http://hl7.eu/fhir/base{{eu-core-r-code}}/StructureDefinition/organization-eu-core
 

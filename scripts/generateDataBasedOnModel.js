@@ -167,13 +167,12 @@ function getEquivalenceDisplay(code) {
     return map[code] || code || "";
 }
 
-// Xt-EHR mapping target cells sometimes reference an alias (e.g. $EuCarePlan,
-// $EuMedicationAdministration) that resolves to a base FHIR resource rather than an EU profile
+// Xt-EHR mapping target cells sometimes reference an alias (e.g. $EuCarePlan)
+// that resolves to a base FHIR resource rather than an EU profile
 // defined in this IG (FHIR-56572, ask 4). Render these as the base resource type they alias,
 // linking to the core FHIR resource, so no non-existent IG profile is implied.
 const ALIAS_TO_BASE_RESOURCE = {
-    'EuCarePlan': { type: 'CarePlan', url: 'https://hl7.org/fhir/careplan.html' },
-    'EuMedicationAdministration': { type: 'MedicationAdministration', url: 'https://hl7.org/fhir/medicationadministration.html' }
+    'EuCarePlan': { type: 'CarePlan', url: 'https://hl7.org/fhir/careplan.html' }
 };
 
 // Render the target-resource table cell for a mapping row.
@@ -870,7 +869,7 @@ function generateObligationFiles(parsedData) {
         ImagingStudyEuImaging: 'ImagingStudy: Reported Study',
         DiagnosticReportEuImaging: 'DiagnosticReport: Imaging Report',
         ObservationFindingEuImaging: 'Observation: Imaging Finding',
-        EuMedicationAdministration: 'MedicationAdministration'
+        MedicationAdministrationEuImaging: 'MedicationAdministration'
     };
 
     function getValue(row, idx) {
