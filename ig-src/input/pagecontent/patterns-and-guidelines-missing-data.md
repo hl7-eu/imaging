@@ -94,7 +94,7 @@ Example fragment (Immunization): exact occurrence date is unknown, but the perio
  "_occurrenceDateTime": {
  "extension": [
  {
- "url": "http://hl7.eu/fhir/base/StructureDefinition/periods-of-life",
+ "url": "http://hl7.eu/fhir/extensions/StructureDefinition/periods-of-life",
  "valueCodeableConcept": {
  "coding": [
  {

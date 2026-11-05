@@ -91,6 +91,8 @@ pages:
     title: System actors
   use-cases.md:
     title: Use Cases
+  related-specifications.md:
+    title: Related specifications
   data-formats.md:
     title: Data formats
   examples.md:
@@ -115,8 +117,6 @@ pages:
       title: Structural artifacts
     artifacts-obligations.md:
       title: Obligations
-    imaging-report.md:
-      title: Imaging Report
 # The parameters property represents IG.definition.parameter. Rather
 # than a list of code/value pairs (as in the ImplementationGuide
 # resource), the code is the YAML key. If a parameter allows repeating
@@ -174,8 +174,9 @@ menu:
   Functional:
     System actors: actors-and-transactions.html
     Use Cases: use-cases.html
+    Related specifications: related-specifications.html
   Implementation:
-    Imaging Report: imaging-report.html
+    Imaging Report: StructureDefinition-BundleReportEuImaging.html
     Data formats: data-formats.html
     Imaging Report Examples: examples.html
     Mapping to EHDS Logical Model profiles: xtehr-mapping.html

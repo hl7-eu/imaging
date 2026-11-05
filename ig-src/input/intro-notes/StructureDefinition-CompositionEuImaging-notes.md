@@ -118,8 +118,8 @@ The following table lists the elements that should be included in the narrative 
 | DiagnosticReportEuImaging | extension[procedure] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).body.exposureInformation | Comments in this issue https://github.com/Xt-EHR/xt-ehr-common/issues/365 |
 | CompositionEuImaging | section[procedure].entry[procedure] | EuProcedure | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.imagingProcedures |  |
 | CompositionEuImaging | section[procedure].entry[adverse-event] |  | [EHDSImagingReport](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSImagingReport.html).body.examinationReport.adverseReaction |  |
-| EuMedicationAdministration | reason |  | [EHDSMedicationAdministration](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSMedicationAdministration.html).reason[x] |  |
-| EuMedicationAdministration | note |  | [EHDSMedicationAdministration](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSMedicationAdministration.html).note |  |
+| MedicationAdministrationEuImaging | reason |  | [EHDSMedicationAdministration](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSMedicationAdministration.html).reason[x] |  |
+| MedicationAdministrationEuImaging | note |  | [EHDSMedicationAdministration](https://www.xt-ehr.eu/fhir/models/1.0.0/StructureDefinition-EHDSMedicationAdministration.html).note |  |
 
 ### Comparison
 
