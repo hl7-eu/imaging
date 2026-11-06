@@ -6,3 +6,5 @@ Description:   """Imaging Study series performer type codes, it extends on the b
 * ^experimental = false
 * include codes from valueset http://hl7.org/fhir/ValueSet/series-performer-function
 * http://terminology.hl7.org/CodeSystem/v3-ParticipationType#CST	"custodian"
+* http://terminology.hl7.org/CodeSystem/v3-ParticipationType#DEV	"device"
+* http://terminology.hl7.org/CodeSystem/v3-ParticipationType#LOC	"location"
