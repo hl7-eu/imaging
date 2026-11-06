@@ -26,3 +26,4 @@ Besides the requirements defined in the {{ehnImagingGuidelines}}, it also uses i
   * {{DICOM}}
   * {{DICOMwebWado}}
   * {{ArgImg}}
+  * {{fhirClinicalDocuments}}

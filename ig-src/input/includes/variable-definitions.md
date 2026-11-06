@@ -45,3 +45,4 @@
 {% assign manifest          = "[Imaging Manifest](https://hl7.eu/fhir/imaging-manifest/1.0.0-ballot/)" %}
 
 {% assign euridiceAPI       = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/jwg-api/branches/main/en/)" %}
+{% assign fhirClinicalDocuments = "[FHIR Clinical Documents](https://build.fhir.org/ig/HL7/fhir-clinical-document/index.html)" %}

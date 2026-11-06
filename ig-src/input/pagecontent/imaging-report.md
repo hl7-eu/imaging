@@ -11,6 +11,7 @@ The figure below illustrates the structure of the Imaging Report.
 
 An Imaging Report is a FHIR Clinical Document that contains both a [[[DiagnosticReport]]] and a [[[Composition]]] resource.
 The report uses the [[[DiagnosticReportEuImaging]]] to store the structured data. This resource might also include a rendered version of the document. The [[[CompositionEuImaging]]] resource is used to present a rendered version of the document as a FHIR document.
+For more information on clinical document dynamics, see {{fhirClinicalDocuments}}.
 
 As described by {{iheIDR}}, all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see [[[DiagnosticReportEuImaging]]]) and recommends it as the structure for sections defined in the [[[CompositionEuImaging]]].
 
