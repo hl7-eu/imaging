@@ -122,6 +122,10 @@ The communication entry typically records the date, time, and method of communic
 
 Typically a [[[Communication]]] resource is used to represent such an event.
 
+##### Report
+
+When the report is represented as one complete narrative rather than separate document sections, `Composition.section[report]` carries the full report content. This section is distinct from `Composition.extension[diagnosticreport-reference]`, which points to the corresponding `DiagnosticReport` resource; the extension references the resource and does not carry the report content.
+
 ### Representing unstructured (narrative) text in the report
 
 The unstructured (narrative) text present in most imaging reports SHALL be encoded in each `Composition.section[].text` of the [`CompositionEuImaging`](StructureDefinition-CompositionEuImaging.html) profile,  if sections are present in the report, or in `Composition.section[report].text` if no sections are present.
