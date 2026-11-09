@@ -111,7 +111,7 @@ jobs:
         run: |
           pwd
           chmod u+x *.sh
-          ./_genonce.sh
+          ./_build-and-fingerprint.sh
 
   # Deployment jobs only run if validation passes
   deploy-r4:
@@ -357,6 +357,7 @@ jobs:
             --include='/.gitignore' --include='/ig.ini' --include='/sushi-config.yaml' \
             --include='/_build.sh' --include='/_build.bat' \
             --include='/_genonce.sh' --include='/_genonce.bat' \
+            --include='/_build-and-fingerprint.sh' \
             --include='/_gencontinuous.sh' --include='/_gencontinuous.bat' \
             --include='/_updatePublisher.sh' --include='/_updatePublisher.bat' \
             --include='/_source-state.sh' --exclude='/*' \

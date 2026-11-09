@@ -1410,7 +1410,8 @@ function main() {
                 
         generateObligationFiles(parsedData);  
         
-        generateSectionTablesMarkdown(parsedData);
+        // Keep the generator available, but don't overwrite the manually maintained Composition notes.
+        // generateSectionTablesMarkdown(parsedData);
 
         // generateCodeSystem(parsedData, srcResources);
     });

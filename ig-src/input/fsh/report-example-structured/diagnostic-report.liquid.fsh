@@ -93,12 +93,6 @@ See you next year.
 // RECOMMENDATION
 * extension[recommendation].valueReference = Reference (ComeBackNextYearServiceRequest)
 
-* presentedForm
-  * contentType = #application/pdf
-  * language = #de-DE
-{{R5}}  * pages = 3
-  * url = "Binary/BinaryStructuredReport"
-
 // Loading the binary from .json in input/resources
 
 // Instance: BinaryStructuredReport
