@@ -23,22 +23,26 @@
 {% if isR5 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
 {% assign iheXcWado         = "[IHE-XC-WADO](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD-Suppl_XC-WADO.pdf) %}
 
-{% assign hl7EuBase         = "[HL7 EU Base](https://build.fhir.org/ig/hl7-eu/base-r5/)" %}
-{% assign hl7EuExtensions   = "[HL7 Europe Extensions](https://build.fhir.org/ig/hl7-eu/extensions-r5/)" %}
-{% assign hl7EuLabs         = "[HL7 EU Laboratory Reports](https://build.fhir.org/ig/hl7-eu/laboratory/branches/master/index.html)" %}
-{% assign hl7EuHdr          = "[HL7 EU Hospital Discharge Reports](https://build.fhir.org/ig/hl7-eu/hdr/index.html)" %}
-{% assign hl7EuEps          = "[HL7 Europe Patient Summary](https://build.fhir.org/ig/hl7-eu/eps/)" %}
+{% assign hl7EuBaseR4       = "[HL7 EU Base](https://hl7.eu/fhir/base/2.0.1/)" %}
+{% assign hl7EuBaseR5       = "[HL7 EU Base](https://hl7.eu/fhir/base-r5/2.0.1/)" %}
+{% assign hl7EuExtensionsR4 = "[HL7 Europe Extensions](https://hl7.eu/fhir/extensions/1.3.1/)" %}
+{% assign hl7EuExtensionsR5 = "[HL7 Europe Extensions](https://hl7.eu/fhir/extensions/1.3.1/)" %}
+{% assign hl7EuLabs         = "[HL7 EU Laboratory Reports](https://hl7.eu/fhir/laboratory/2.1.0/)" %}
+{% assign hl7EuHdr          = "[HL7 EU Hospital Discharge Reports](https://hl7.eu/fhir/hdr/1.0.0/)" %}
+{% assign hl7EuEps          = "[HL7 Europe Patient Summary](https://hl7.eu/fhir/eps/1.0.0-ballot/)" %}
 
 {% assign EuridiceHealthDataAPI = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/eu-health-data-api/en/)" %}
 
 {% assign ArgImg            = "[Argonaut Imaging](https://github.com/sync-for-science/imaging)" %}
 
 {% assign DICOMwebWado      = "[DICOMweb-WADO](https://www.dicomstandard.org/using/dicomweb/retrieve-wado-rs-and-wado-uri/)" %}
+{% assign DICOM             = "[DICOM](https://dicom.nema.org/medical/dicom/current/output/chtml/part01/PS3.1.html)" %}
 {% assign DICOMpart18       = "[DICOM part18](https://dicom.nema.org/medical/dicom/current/output/html/part18.html)" %}
  
 {% assign usCore            = "[US core v7.0.0](https://hl7.org/fhir/us/core/STU7/)" %}
 {% assign dicomSr2fhir      = "[DICOM-SR-2-FHIR](https://build.fhir.org/ig/HL7/dicom-sr/)" %}
 
-{% assign manifest          = "[Imaging Manifest](https://build.fhir.org/ig/hl7-eu/imaging-manifest/)" %}
+{% assign manifest          = "[Imaging Manifest](https://hl7.eu/fhir/imaging-manifest/1.0.0-ballot/)" %}
 
 {% assign euridiceAPI       = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/jwg-api/branches/main/en/)" %}
+{% assign fhirClinicalDocuments = "[FHIR Clinical Documents](https://build.fhir.org/ig/HL7/fhir-clinical-document/index.html)" %}

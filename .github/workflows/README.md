@@ -74,7 +74,7 @@ The workflow (`deploy-to-repos.yml`) triggers on any push to any branch and foll
 - **validate-api**: Validates the standalone API R4 IG
   - Builds `ig-api/` directly (no preprocessing)
   - Updates IG Publisher
-  - Runs full validation (`_genonce.sh`)
+  - Runs the project-owned `_build-and-fingerprint.sh` wrapper around Publisher-managed `_genonce.sh`
 
 ### **Step 2: Deployment (Only if validation passes)**
 If the validations succeed (`deploy-api` requires all three):
