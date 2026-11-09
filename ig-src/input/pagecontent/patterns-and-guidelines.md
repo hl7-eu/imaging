@@ -12,6 +12,8 @@ The `Composition` carries narrative at two levels, which serve different purpose
 
 For a full explanation of what to place where, and how the attested narrative relates to the structured entries, see the FHIR guidance on [Document presentation](https://hl7.org/fhir/R4/documents.html#presentation). Worked examples are available in the [structured](Composition-CompositionStructured.html) and [semi-structured](Composition-CompositionSemiStructured.html) Imaging Report examples.
 
+When a Composition is derived from a source PDF, record this relationship in `Composition.relatesTo` using the `transforms` relationship and a stable identifier for the source PDF (`code` and `targetIdentifier` in R4; `type` and `resourceReference.identifier` in R5). Do not use `DiagnosticReport.presentedForm` for the source PDF. `DiagnosticReport.presentedForm` may contain a PDF only when it is an equivalent rendering of the Composition.
+
 ### Inclusion of tables
 
 The annotations are entered as markdown which allows inclusion of tables
