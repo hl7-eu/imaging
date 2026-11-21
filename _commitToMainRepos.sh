@@ -46,9 +46,9 @@ check_build() {
     [[ -s "$source/$evidence" ]] || fail "Missing build evidence: $source/$evidence. Rebuild $target first."
   done
   if [[ "$target" == api ]]; then
-    [[ -f "$source/.build-source.sha256" ]] || fail "Missing API source fingerprint; run ig-api/_genonce.sh."
+    [[ -f "$source/.build-source.sha256" ]] || fail "Missing API source fingerprint; run ig-api/_build-and-fingerprint.sh."
     [[ "$(bash "$source/_source-state.sh")" == "$(cat "$source/.build-source.sha256")" ]] ||
-      fail "API sources changed since the successful build; run ig-api/_genonce.sh."
+      fail "API sources changed since the successful build; run ig-api/_build-and-fingerprint.sh."
   else
     [[ -d ig-src ]] || fail "Missing ig-src."
     while IFS= read -r -d '' file; do
@@ -151,6 +151,7 @@ for target in "${targets[@]}"; do
       --include='/.gitignore' --include='/ig.ini' --include='/sushi-config.yaml'
       --include='/_build.sh' --include='/_build.bat'
       --include='/_genonce.sh' --include='/_genonce.bat'
+      --include='/_build-and-fingerprint.sh'
       --include='/_gencontinuous.sh' --include='/_gencontinuous.bat'
       --include='/_updatePublisher.sh' --include='/_updatePublisher.bat'
       --include='/_source-state.sh' --exclude='/*')

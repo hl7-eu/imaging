@@ -58,7 +58,7 @@ First download the Google spreadsheet as a tab-separated-file (.tsv). This can b
 
 ### Run script
 
-Run `xtehr-mapping.sh`, which will read the `xtehr-mode-mapping.tsv` file and generate the files in the input directory.
+Run `xtehr-mapping.sh`, which will read the `xtehr-mode-mapping.tsv` file and generate mapping artifacts in the input directory. It does not generate `StructureDefinition-CompositionEuImaging-notes.md`; that file is maintained manually.
 
 > ./xtehr-mapping.sh
 

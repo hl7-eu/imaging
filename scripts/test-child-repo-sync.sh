@@ -61,20 +61,30 @@ printf 'test package\n' > output/package.tgz
 EOF
 chmod +x "$work/bin/curl" "$work/bin/java"
 touch "$source/ig-api/input-cache/publisher.jar"
-PATH="$work/bin:$PATH" bash "$source/ig-api/_genonce.sh"
+PATH="$work/bin:$PATH" bash "$source/ig-api/_build-and-fingerprint.sh"
 test -s "$source/ig-api/.build-source.sha256"
-if PATH="$work/bin:$PATH" SYNC_TEST_JAVA_FAIL=true bash "$source/ig-api/_genonce.sh"; then
-  echo 'Failed Publisher must fail the build' >&2; exit 1
+if PATH="$work/bin:$PATH" SYNC_TEST_JAVA_FAIL=true bash "$source/ig-api/_build-and-fingerprint.sh"; then
+  echo 'Failed Publisher must fail the fingerprinted build' >&2; exit 1
 fi
 test ! -f "$source/ig-api/.build-source.sha256"
 mv "$source/ig-api/input-cache/publisher.jar" "$source/publisher.jar"
-PATH="$work/bin:$PATH" bash "$source/ig-api/_genonce.sh"
+PATH="$work/bin:$PATH" bash "$source/ig-api/_build-and-fingerprint.sh"
 test -s "$source/ig-api/.build-source.sha256"
 mv "$source/publisher.jar" "$work/publisher-home/publisher.jar"
-PATH="$work/bin:$PATH" FHIR_PUBLISHER_HOME="$work/publisher-home" bash "$source/ig-api/_genonce.sh"
+PATH="$work/bin:$PATH" FHIR_PUBLISHER_HOME="$work/publisher-home" bash "$source/ig-api/_build-and-fingerprint.sh"
 test -s "$source/ig-api/.build-source.sha256"
-expect_failure 'Publisher NOT FOUND' env PATH="$work/bin:$PATH" FHIR_PUBLISHER_HOME="$work/missing-publisher" bash "$source/ig-api/_genonce.sh"
+expect_failure 'Publisher NOT FOUND' env PATH="$work/bin:$PATH" FHIR_PUBLISHER_HOME="$work/missing-publisher" bash "$source/ig-api/_build-and-fingerprint.sh"
 test ! -f "$source/ig-api/.build-source.sha256"
+
+# The Publisher update downloads this script again; the wrapper remains project-owned.
+cp "$source/ig-api/_genonce.sh" "$work/original-genonce.sh"
+cat > "$source/ig-api/_genonce.sh" <<'EOF'
+#!/usr/bin/env bash
+java -jar publisher.jar -ig . "$@"
+EOF
+PATH="$work/bin:$PATH" bash "$source/ig-api/_build-and-fingerprint.sh"
+test -s "$source/ig-api/.build-source.sha256"
+cp "$work/original-genonce.sh" "$source/ig-api/_genonce.sh"
 
 refresh
 run_sync
@@ -86,6 +96,7 @@ test ! -e "$child/output"
 test ! -e "$child/ig-src"
 test ! -e "$child/.build-source.sha256"
 test -f "$child/ig-template/package/package.json"
+test -f "$child/_build-and-fingerprint.sh"
 first="$(git -C "$child" rev-parse HEAD)"
 run_sync
 test "$(git -C "$child" rev-parse HEAD)" = "$first"

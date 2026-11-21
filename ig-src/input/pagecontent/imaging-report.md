@@ -11,6 +11,7 @@ The figure below illustrates the structure of the Imaging Report.
 
 An Imaging Report is a FHIR Clinical Document that contains both a [[[DiagnosticReport]]] and a [[[Composition]]] resource.
 The report uses the [[[DiagnosticReportEuImaging]]] to store the structured data. This resource might also include a rendered version of the document. The [[[CompositionEuImaging]]] resource is used to present a rendered version of the document as a FHIR document.
+For more information on clinical document dynamics, see {{fhirClinicalDocuments}}.
 
 As described by {{iheIDR}}, all radiology reports contain similar information. This specification reuses this subdivision to label the structured data (see [[[DiagnosticReportEuImaging]]]) and recommends it as the structure for sections defined in the [[[CompositionEuImaging]]].
 
@@ -120,6 +121,10 @@ Communication is not listed as a separate section in the ACR guidance, but codes
 The communication entry typically records the date, time, and method of communication, the person/organization contacted, and may summarize the content communicated.
 
 Typically a [[[Communication]]] resource is used to represent such an event.
+
+##### Report
+
+When the report is represented as one complete narrative rather than separate document sections, `Composition.section[report]` carries the full report content. This section is distinct from `Composition.extension[diagnosticreport-reference]`, which points to the corresponding `DiagnosticReport` resource; the extension references the resource and does not carry the report content.
 
 ### Representing unstructured (narrative) text in the report
 

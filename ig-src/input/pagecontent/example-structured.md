@@ -14,6 +14,8 @@ The figure below shows the pdf of the report. The document is annotated to show 
 
 The set of resources related to this example is much larger than the previous one so a uml diagram does not really add value. Instead we will focus on some aspects of the example.
 
+In this example, the PDF is the source document from which the structured report is derived. The `Composition` identifies it through `relatesTo` with the `transforms` relationship and a stable identifier; the PDF remains available as a `Binary` in the Bundle. It is not an equivalent rendering of the `Composition`, so it is not included in `DiagnosticReport.presentedForm`.
+
 The figure below shows the main structure of the report.
 
 <figure>
