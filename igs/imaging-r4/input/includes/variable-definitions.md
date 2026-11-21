@@ -21,7 +21,7 @@
 {% assign iheMHD-R4         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
 {% assign iheMHD-R5         = "[IHE-MHD](https://profiles.ihe.net/ITI/MHD/index.html)" %}
 {% if isR5 %}{% assign iheMHD = iheMHD-R5 %}{% else %}{% assign iheMHD = iheMHD-R4 %}{% endif %}
-{% assign iheXcWado         = "[IHE-XC-WADO](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD-Suppl_XC-WADO.pdf) %}
+{% assign iheXcWado         = "[IHE-XC-WADO](https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD-Suppl_XC-WADO.pdf)" %}
 
 {% assign hl7EuBase         = "[HL7 EU Base](https://build.fhir.org/ig/hl7-eu/base-r5/)" %}
 {% assign hl7EuExtensions   = "[HL7 Europe Extensions](https://build.fhir.org/ig/hl7-eu/extensions-r5/)" %}
@@ -42,3 +42,4 @@
 {% assign manifest          = "[Imaging Manifest](https://build.fhir.org/ig/hl7-eu/imaging-manifest/)" %}
 
 {% assign euridiceAPI       = "[EU Health Data API](https://build.fhir.org/ig/euridice-org/jwg-api/branches/main/en/)" %}
+{% assign imagingApiIgName  = "[HL7 Europe Imaging API](https://build.fhir.org/ig/hl7-eu/imaging-api/en/)" %}

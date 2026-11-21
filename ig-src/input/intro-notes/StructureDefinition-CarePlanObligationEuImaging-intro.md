@@ -1,0 +1,1 @@
+In this implementation guide, CarePlan represents recommended follow-up care or imaging suggested by an imaging report. Examples include further diagnostic assessment with a different imaging study or consultation with a particular clinical specialty. These recommendations are usually recorded in the recommendation section of the report.
